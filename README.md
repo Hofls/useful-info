@@ -7,5 +7,5 @@
   firewall-cmd --permanent --zone=public --add-port=433/tcp
   firewall-cmd --reload
   ```
-  Opens ports in firewall
+  Opens ports `80` and `443` in firewall
  * sdsd
