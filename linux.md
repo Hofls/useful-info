@@ -1,4 +1,4 @@
-# linux-commands
+# Commands
 * Find file with name containing 'specopsfls' in this folder and all subfolders
   * `find . -name *specopsfls*` 
 * Find folder with name containing 'fldtofnd' in this folder and all subfolders 
@@ -14,5 +14,5 @@
   
  * todo
 
-# tunneling
+# Tunneling
 * todo - describe use case
