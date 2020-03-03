@@ -1,13 +1,17 @@
 # linux-commands
-* `find . -name *specopsfls*` Find file with name containing 'specopsfls' in this folder and all subfolders
-* `find / -type d -name '*fldtofnd*'` Find folder with name containing 'fldtofnd' in this folder and all subfolders
-* `netstat -tuplen` Shows ports in use
-* ```
+* Find file with name containing 'specopsfls' in this folder and all subfolders
+  * `find . -name *specopsfls*` 
+* Find folder with name containing 'fldtofnd' in this folder and all subfolders 
+  * `find / -type d -name '*fldtofnd*'` 
+* Shows ports in use
+  * `netstat -tuplen` 
+* Opens ports `80` and `443` in firewall
+  ```
   firewall-cmd --permanent --zone=public --add-port=80/tcp
   firewall-cmd --permanent --zone=public --add-port=433/tcp
   firewall-cmd --reload
   ```
-  Opens ports `80` and `443` in firewall
+  
  * todo
 
 # tunneling
