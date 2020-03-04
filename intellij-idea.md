@@ -22,3 +22,5 @@
     * `ctrl + alt + h`
 * Evaluate expression (during debug)
     * `alt + f8`
+* Add bookmark, open bookmark
+    * `f11`, `shift + f11`
