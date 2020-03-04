@@ -11,8 +11,12 @@
   firewall-cmd --permanent --zone=public --add-port=433/tcp
   firewall-cmd --reload
   ```
-  
- * todo
+ * Find and kill process with name containing "prctodth"
+  ```
+  ps aux | grep prctodth
+  kill -9 832747
+  ```
+* todo
 
 # Tunneling
 * todo - describe use case
