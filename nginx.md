@@ -1,4 +1,4 @@
-# nginx-config-example
+# Nginx
 
 ## Reverse proxy. Ubuntu
 #### 1. Run http server

@@ -1,4 +1,5 @@
-# Commands
+# Linux
+## Commands
 * Find file with name containing 'specopsfls' in this folder and all subfolders
   * `find . -name *specopsfls*` 
 * Find folder with name containing 'fldtofnd' in this folder and all subfolders 
@@ -19,5 +20,5 @@
 * Display amount of available disk space
   * `df -h`
 
-# Tunneling
+## Tunneling
 * todo - describe use case
