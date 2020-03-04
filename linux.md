@@ -16,7 +16,8 @@
    ps aux | grep prctodth
    kill -9 832747
    ```
-* todo
+* Display amount of available disk space
+  * `df -h`
 
 # Tunneling
 * todo - describe use case
