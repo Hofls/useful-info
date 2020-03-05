@@ -24,3 +24,18 @@
     from filtered
     group by filtered.house_id
     ```
+* Complex query structure
+    ```
+    WITH 
+      specials AS (SELECT * FROM ...),
+      verifications AS (SELECT * FROM ...),
+      cadnumbers AS (SELECT * FROM ...)
+    SELECT 
+      fluff_id,
+      CASE WHEN sto_type = 'EXTRA_SIGN' THEN 'Sign found' ELSE 'Sign not found' END AS tip
+    FROM specials
+    LEFT JOIN verifications ON verifications.id = specials.ver_id
+    LEFT JOIN cadnumbers ON cadnumbers.id = verifications.cad_id
+    ```
+
+
