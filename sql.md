@@ -1,4 +1,7 @@
 # Sql
+* Explain visualizer
+    * https://tatiyants.com/pev/#/plans
+
 ## Queries
 * Update/Insert based on bunch of selects
     ```
