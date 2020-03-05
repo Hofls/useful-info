@@ -1,5 +1,7 @@
 # Linux
 ## Commands
+* Run command 'standalone.sh' in the background, immune to hangups
+  * `nohup /opt/wildfly-15.0.1.Final/bin/standalone.sh &`
 * Find file with name containing 'specopsfls' in this folder and all subfolders
   * `find . -name *specopsfls*` 
 * Find folder with name containing 'fldtofnd' in this folder and all subfolders 
