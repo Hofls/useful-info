@@ -21,6 +21,12 @@
    ```
 * Display amount of available disk space
   * `df -h`
+* Show recent commands
+  * `history`
+* Live feed of process resource usage
+  * `top`
+* Current user and group
+  * `id`
   
 ## Connect to server using ssh key
 * Generate ssh keys (private and public)
