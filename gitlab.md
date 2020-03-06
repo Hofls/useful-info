@@ -1,4 +1,5 @@
 # Gitlab
+
 ## Sane defaults
 * Delete source after merge
     * `Repository` => `Settings` => `General` => `Merge requests` => `Enable 'Delete source branch' option by default`
@@ -8,8 +9,9 @@
     * `Repository` => `Settings` => `Repository` => `Protected Branches` => `Allowed to merge - Maintaners`
 * No one is allowed to push to protected branch (master/develop)
     *  `Repository` => `Settings` => `Repository` => `Protected Branches` => `Allowed to push - No one`
+    
 ## `.gitlab-ci.yml`
-* fail pipeline if commit name is wrong
+* Fail pipeline if commit name is wrong
     ```
     check-commit-name:
       stage: build
