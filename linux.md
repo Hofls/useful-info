@@ -31,6 +31,7 @@
   * `sudo su`
   
 ## Connect to server using ssh key
+* Use case - you got tired of entering password each time / want to improve level of security
 * Generate ssh keys (private and public)
     * On Windows - use `PuTTYgen.exe`
     * On Linux - `ssh-keygen -t rsa`
