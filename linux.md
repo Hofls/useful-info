@@ -27,6 +27,8 @@
   * `top`
 * Current user and group
   * `id`
+* Became almighty root user
+  * `sudo su`
   
 ## Connect to server using ssh key
 * Generate ssh keys (private and public)
