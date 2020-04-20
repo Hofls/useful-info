@@ -1,3 +1,4 @@
+# Resources to keep up ever-changing technologies:
 * Reddit
     * https://www.reddit.com/r/programming/top/?t=week
     * https://www.reddit.com/r/webdev/top/?t=week
