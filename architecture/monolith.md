@@ -7,7 +7,7 @@
     * It is difficult to work with huge code base, IDE is overloaded
     * App start time is becoming too slow, same as linters/prettifiers/tests/IDE
     * Problems in code affect entire application (e.g. leaking memory)
-    * We cannot scale each component independently (e.g. if one is CPU intensive, while another is all about memory)
-    * You cannot easily assign different components to different teams
+    * Impossible scale each component independently (e.g. if one is CPU intensive, while another is all about memory)
+    * It is hard to assign different components to different teams
     * Requires sticking to one technology stack
         * (the only way to change it - is to rewrite entire app, you cannot rewrite one component at a time)
