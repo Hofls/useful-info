@@ -29,6 +29,9 @@
   * `id`
 * Became almighty root user
   * `sudo su`
+* Install Docker
+  * `apt-get update`
+  * `apt-get install docker.io`
   
 ## Connect to server using ssh key
 * Use case - you got tired of entering password each time / want to improve level of security
