@@ -9,3 +9,7 @@
     * `choco install nodejs`
 * Uninstall `Node JS`
     * `choco uninstall nodejs`
+
+## Software
+* To find and delete folders that take too much space:
+    * `TreeSize Free`, run as Admin
