@@ -9,8 +9,8 @@
     * Create new branch `release-2.0.6` based on `release-2.0.5`
     * If wild task appeared (that should be in `release-2.0.5`), then push it to both releases
     * After release 2.0.5 is done
-        * go to branch `release-2.0.5` merge/pull from `master` with strategy `ours`, then push to `master`
-        * add tag `release-2.0.5` on `master` branch
-        * remove branch `release-2.0.5`
+        * Go to branch `release-2.0.5` merge/pull from `master` with strategy `ours`, then push to `master`
+        * Add tag `release-2.0.5` on `master` branch
+        * Remove branch `release-2.0.5`
     * Increment release number, then go to the next iteration of this instruction
 
