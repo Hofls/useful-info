@@ -2,6 +2,8 @@
     * `git reset HEAD~1 --soft`
 * What is `git pull`? 
     * `git fetch` + `git merge`
+* Difference between `merge request` and `pull request`?
+    * They are synonyms
 * Battle-tested branching schema:
     * Prerequisites - you should have branches `release-2.0.5` and `master`
     * Finish all tasks related to release-2.0.5
