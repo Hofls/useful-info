@@ -13,3 +13,5 @@
 ## Software
 * To find and delete folders that take too much space:
     * `TreeSize Free`, run as Admin
+* To record sound:
+    * `Audacity`
