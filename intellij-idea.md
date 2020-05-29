@@ -1,4 +1,8 @@
 # Intellij Idea
+## Features
+* Execute any code during debug
+    * `ctrl + shift + a` => `evaluate`
+    
 ## Hotkeys
 * Go to class/method implementation
     * `ctrl + click`
