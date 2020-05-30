@@ -1,9 +1,9 @@
 # Windows
 ## Commands
-* Find 'java.exe' in environment variables
+* Find `java.exe` in environment variables
   * `for %i in (java.exe) do @echo.   %~$PATH:i`
 * Set environment variable
-    * `setx RANDOOP_JAR "C:\Programs\Randoop"`
+    * `setx RANDOOP_JAR "C:\Programs\Randoop\randoop-all-4.2.3.jar"`
     * Restart console
 * Get environment variable
     * `echo %RANDOOP_JAR%`
