@@ -23,3 +23,6 @@
     * `TreeSize Free`, run as Admin
 * To record all the sounds that you hear in your headphones:
     * `Audacity`
+* To take screenshots:
+    * `Lightshot`
+
