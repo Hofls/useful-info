@@ -25,4 +25,5 @@
     * `Audacity`
 * To take screenshots:
     * `Lightshot`
-
+* To not ruin eyesight while working at night:
+    * `F.lux`
