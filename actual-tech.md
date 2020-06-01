@@ -16,5 +16,6 @@
     * https://stackshare.io/stacks
 * Java libraries
     * https://mvnrepository.com/popular?p=1
+* Look at `connect-web-apps.md` (ifttt, zapier...)
 * Any job listings
     * ...
