@@ -32,6 +32,8 @@
 * Install Docker
   * `apt-get update`
   * `apt-get install docker.io`
+* Copy from console
+  * Select text
   
 ## Connect to server using ssh key
 * Use case - you got tired of entering password each time / want to improve level of security

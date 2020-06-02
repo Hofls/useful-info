@@ -7,7 +7,8 @@
     * Restart console
 * Get environment variable
     * `echo %RANDOOP_JAR%`
-      
+* Copy text from console
+    * Select text, `ctrl+c`
 
 ## Package managers
 ### Chocolatey
