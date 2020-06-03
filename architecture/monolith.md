@@ -1,4 +1,4 @@
-#Monolithic architecture
+# Monolithic architecture
 
 * Monolith - all of the application code is in one project.
 * This approach works great for small applications, because of its simplicity.
