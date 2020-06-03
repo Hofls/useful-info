@@ -2,6 +2,8 @@
 ## Features
 * Execute any code during debug
     * `ctrl + shift + a` => `evaluate`
+* Generate method comment
+    * On top of the method, write `/**`, press `enter`
     
 ## Hotkeys
 * Go to class/method implementation
