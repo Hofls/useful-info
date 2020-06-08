@@ -33,7 +33,9 @@
   * `apt-get update`
   * `apt-get install docker.io`
 * Copy from console
-  * Select text
+  * Select text with mouse
+* Show path of an IP packet
+  * traceroute google.com
   
 ## Connect to server using ssh key
 * Use case - you got tired of entering password each time / want to improve level of security
