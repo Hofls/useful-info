@@ -35,7 +35,9 @@
 * Copy from console
   * Select text with mouse
 * Show path of an IP packet
-  * traceroute google.com
+  * `traceroute google.com`
+* Show RAM/swap usage
+  * `free -h`
   
 ## Connect to server using ssh key
 * Use case - you got tired of entering password each time / want to improve level of security
