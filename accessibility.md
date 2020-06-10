@@ -10,7 +10,7 @@
 * Use `aria-label` if control has no related label or text
 * Custom controls should have appropriate roles
 * If content should be hidden from a screen reader, set `aria-hidden=”true”` and tabindex=”-1”``
-* User should be able to navigate webite using keyboard only
+* User should be able to navigate website using keyboard only
 * Use html semantics to convey meaning (e.g. use `<nav>, <label>, <article>` instead of `<div>`)	
 * Transcripts for Audio
 * Site should be readable with different zoom settings
