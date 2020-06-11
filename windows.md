@@ -22,6 +22,24 @@
 ## Software
 * To find and delete folders that take too much space:
     * `TreeSize Free`, run as Admin
+* To connect to remote desktop:
+    * `Anydesk`
+* To connect to remote server via SSH:
+    * `Putty`
+* To transfer files to/from remote server:
+    * `WinSCP`
+* To connect to database:
+    * `DBeaver`
+* To send SOAP requests:
+    * `SoapUI`
+* To send HTTP requests:
+    * `Postman`
+* To limit resources available to the process:
+    * `Battle Encoder Shirase`
+* To check hardware temperature:
+    * `SpeedFan`
+* To play videos:
+    * `VLC`
 * To record all the sounds that you hear in your headphones:
     * `Audacity`
 * To take screenshots:
