@@ -5,10 +5,12 @@
 * Simple example
     * `RabbitMQ Hello World`
     * `RabbitMQ Getting Started`
-* Peoples opinion
+* Opinion of the people
     * `site:reddit.com`
 * Bunch of related topics
     * `web developer roadmap`
+* Compressed info about specific topic
+    * `java interview questions` 
 * Alternatives
     * `heroku vs`
 * Direct quote
