@@ -38,6 +38,8 @@
   * `traceroute google.com`
 * Show RAM/swap usage
   * `free -h`
+* Show full path to current working directory
+  * `pwd`
   
 ## Connect to server using ssh key
 * Use case - you got tired of entering password each time / want to improve level of security
