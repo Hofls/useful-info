@@ -8,6 +8,16 @@
     * `SWOT analysis` - helps to identify the most important parameters - strengths, weaknesses, opportunities, and threats
     * `Hedonic treadmill` - tendency of humans to return to base level of happiness despite major positive or negative life changes
     * `Tit for tat` -  strategy in which agent's first move is cooperation, while all other moves should replicate opponent's previous action
+    * `Backup` - copy of data stored elsewhere so that it may be used to restore the original after a data loss event
+    * `Prototype` - early sample, built to test a concept or process
+    * `Design thinking` - research users => state users needs/problems => generate ideas => create solution prototypes => test solutions
+    * `Minimum viable product` - version of a product with just enough features to satisfy early customers
+    * `Lean methodology` - continuous cycle of improvement (identify problems => plan solutions => implement changes => review results)
+    * `Reinforcement` - consequences to the actions, that will guide future behavior
+    * `Occam's Razor` - entities should not be multiplied unnecessarily (simplicity - good, complexity - bad)
+    * `Pareto Principle` - most things are not distributed evenly (20% of the input creates 80% of the result)
+    * 
+    * 
 
 * Problem-solving strategies:
     * `Abstraction`: solving the problem in a model of the system before applying it to the real system
