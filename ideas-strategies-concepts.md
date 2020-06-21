@@ -16,8 +16,12 @@
     * `Reinforcement` - consequences to the actions, that will guide future behavior
     * `Occam's Razor` - entities should not be multiplied unnecessarily (simplicity - good, complexity - bad)
     * `Pareto Principle` - most things are not distributed evenly (20% of the input creates 80% of the result)
-    * 
-    * 
+    * `Diminishing returns` -  the more you increase one single factor, the less results it brings
+    * `Principle of least effort` - to accomplish a task - the path with the least amount of effort involved will most likely be chosen
+    * `Trial and error` - repeated, varied attempts which are continued until success
+    * `Scientific method` - research => hypothesis => experiment => conclusions
+    * `The Barbell Strategy` - 90% in safety, 10% in risk, 0% in the middle
+    * `Decomposition ` - is breaking a complex problem or system into parts that are easier to understand
 
 * Problem-solving strategies:
     * `Abstraction`: solving the problem in a model of the system before applying it to the real system
