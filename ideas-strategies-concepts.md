@@ -22,6 +22,8 @@
     * `Scientific method` - research => hypothesis => experiment => conclusions
     * `The Barbell Strategy` - 90% in safety, 10% in risk, 0% in the middle
     * `Decomposition ` - is breaking a complex problem or system into parts that are easier to understand
+    * `CBT` - challenges cognitive/behavioral distortions, develops personal strategies
+    * `Mindfulness` - brings attention to experiences occurring in the present moment without judging/thinking
 
 * Problem-solving strategies:
     * `Abstraction`: solving the problem in a model of the system before applying it to the real system
