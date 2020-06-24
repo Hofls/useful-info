@@ -1,4 +1,5 @@
 # General info
+* Latency numbers: RAM < HDD < SSD < Network
 * Optimization starts with picking `architecture` that suits project needs
 * `Computational complexity` should be constant O(1), logarithmic O(log n) or linear O(n)
 * A general technique to improve performance is to avoid work
