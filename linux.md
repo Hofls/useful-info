@@ -40,6 +40,8 @@
   * `free -h`
 * Show full path to current working directory
   * `pwd`
+* Show info about linux distributive
+    * `cat /etc/*-release`
   
 ## Connect to server using ssh key
 * Use case - you got tired of entering password each time / want to improve level of security
