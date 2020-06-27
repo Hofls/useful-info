@@ -1,7 +1,7 @@
 Typical information to store in wiki:
 * Instructions (how to)
     * Release new product version
-    * Install tool
+    * Install tools
     * Solve specific problem (tech support FAQ)
     * Git branching strategy
     * How to look at logs
@@ -13,6 +13,7 @@ Typical information to store in wiki:
 * Description
     * Architecture
     * Development standards/ideology/rules
+    * How to conduct code review
     * Entire system (abstract)
     * Each module of the system (in detail)
     * Integration tests
