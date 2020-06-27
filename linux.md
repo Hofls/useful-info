@@ -42,40 +42,4 @@
   * `pwd`
 * Show info about linux distributive
     * `cat /etc/*-release`
-  
-## Connect to server using ssh key
-* Use case - you got tired of entering password each time / want to improve level of security
-* Generate ssh keys (private and public)
-    * On Windows - use `PuTTYgen.exe`
-    * On Linux - `ssh-keygen -t rsa`
-* Add public key to authorized list on server
-    * `cd ~/.ssh/`
-    * Copy public key into file `authorized_keys`
-    * Public key should look like `ssh-rsa AAAAB3N...2DA key-comment`
-* Connect via Putty
-    * Add private key in `Connection => SSH => Auth => Private key file for authentication:`
-    * Go to `Session`, set Host Name (or IP address)
-        * Save session
-        * Open connection
-
-## SSH Tunneling (Port Forwarding)
-* Use case - app is running on a server, has web-interface on localhost. For some reasons you cant open it to outside world.
-* Create SSH tunnel in `PUTTY`:
-    * Go to `Connection` => `SSH` => `Tunnels`, set values
-        * `Destination - Dynamic`
-        * `Source port - 9999`
-        * Press `Add`
-    * Go to `Session`, set Host Name (or IP address)
-        * Save session
-        * Open connection
-* Create `Google Chrome` shortcut
-    * Change run parameters, so they look like this
-        * `"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --proxy-server="socks5://127.0.0.1:9999"`
-    * Open `Google Chrome`
-* Check your ip address on any service, to make sure it is changed
-* To access remote localhost
-    * Add following line to `/etc/hosts` file on the server
-        * `127.0.0.1 remote.host`
-    * To access app running on a remote localhost, on port 8081, use:
-        * http://remote.host:8081
 
