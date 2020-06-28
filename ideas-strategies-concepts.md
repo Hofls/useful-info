@@ -4,16 +4,13 @@
     * `Back-of-the-envelope calculation`- rough calculation with simplified assumptions
     * `Fermi estimations` - good approximate calculations with little or no actual data (by making justified guesses)
     * `Proof of Concept` - small test that shows if theoretical idea can be achieved in reality
-    * `Think outside of the box` - looking for not obvious solutions, questioning assumptions/limitations
     * `SWOT analysis` - helps to identify the most important parameters - strengths, weaknesses, opportunities, and threats
-    * `Hedonic treadmill` - tendency of humans to return to base level of happiness despite major positive or negative life changes
     * `Tit for tat` -  strategy in which agent's first move is cooperation, while all other moves should replicate opponent's previous action
     * `Backup` - copy of data stored elsewhere so that it may be used to restore the original after a data loss event
     * `Prototype` - early sample, built to test a concept or process
     * `Design thinking` - research users => state users needs/problems => generate ideas => create solution prototypes => test solutions
     * `Minimum viable product` - version of a product with just enough features to satisfy early customers
     * `Lean methodology` - continuous cycle of improvement (identify problems => plan solutions => implement changes => review results)
-    * `Reinforcement` - consequences to the actions, that will guide future behavior
     * `Occam's Razor` - entities should not be multiplied unnecessarily (simplicity - good, complexity - bad)
     * `Pareto Principle` - most things are not distributed evenly (20% of the input creates 80% of the result)
     * `Diminishing returns` -  the more you increase one single factor, the less results it brings
@@ -22,8 +19,6 @@
     * `Scientific method` - research => hypothesis => experiment => conclusions
     * `The Barbell Strategy` - 90% in safety, 10% in risk, 0% in the middle
     * `Decomposition ` - is breaking a complex problem or system into parts that are easier to understand
-    * `CBT` - challenges cognitive/behavioral distortions, develops personal strategies
-    * `Mindfulness` - brings attention to experiences occurring in the present moment without judging/thinking
 
 * Problem-solving strategies:
     * `Abstraction`: solving the problem in a model of the system before applying it to the real system
