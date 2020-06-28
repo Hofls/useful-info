@@ -9,4 +9,4 @@
 * `Mindfulness` - brings attention to experiences occurring in the present moment without judging/thinking
 * `Reinforcement` - consequence applied to the action, that will guide future behavior
 * `Hedonic treadmill` - tendency of humans to return to base level of happiness despite major positive or negative life changes
-* `Think outside of the box` - looking for not obvious solutions, questioning assumptions/limitations
+* `Thinking outside of the box` - looking for not obvious solutions, questioning assumptions/limitations
