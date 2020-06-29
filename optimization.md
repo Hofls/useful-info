@@ -17,7 +17,9 @@
 * Denormalization
 * Hash
 * Index
-* Pagination
+* Pagination (with infinite scroll)
 * Minification
 * Lazy loading (on-demand)
 * Prefetching
+* Storage with smaller latency numbers (e.g. RAM)
+* 
