@@ -22,4 +22,5 @@
 * Lazy loading (on-demand)
 * Prefetching
 * Storage with smaller latency numbers (e.g. RAM)
-* 
+* Decrease computational complexity
+
