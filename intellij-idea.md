@@ -4,6 +4,8 @@
     * `ctrl + shift + a` => `evaluate`
 * Generate method comment
     * On top of the method, write `/**`, press `enter`
+* Fix some weird problems
+    * `File` => `Invalidate caches / Restart`
     
 ## Hotkeys
 * Go to class/method implementation
