@@ -31,7 +31,7 @@
     * `Protected variations` - identify points of likely variation or instability, create a stable interface around them
     * `Pure fabrication` - class that does not represent a concept in the problem domain, specially made up to achieve low coupling, high cohesion, and the reuse potential
         (e.g. Service in DDD)
-* 
+* `Information hiding`
     * 
     * 
 * 
