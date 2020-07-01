@@ -17,13 +17,20 @@
 * `Defensive programming` - anticipate failures in your code, then add supporting code to detect, isolate, and in some cases, recover from the anticipated failure.
 * `Discoverability` - degree of ease with which the user can find all the elements and features of a new system when they first encounter it
 * `DRY` - Don't repeat yourself (Every piece of knowledge must have a single representation in the system)
-* 
-* 
-    * 
-    * 
-* 
-    * 
-    * 
+* `Fail-fast` - system which immediately reports at its interface any condition that is likely to indicate a failure
+* `Gall's law` - start with simple system and then gradually evolve it 
+* `GRASP` - guidelines for assigning responsibility to classes in object-oriented design
+    * `Controller` - first object beyond the UI layer that receives and coordinates ("controls") a system operation.
+        The controller should delegate the work that needs to be done to other objects.
+    * `Creator` - creates objects (e.g. Factory pattern)
+    * `Indirection` - assigns responsibility of mediation to an intermediate object (e.g. Controller in MVC)
+    * `Information expert` - assign responsibility to the class that has the information necessary to fulfill the responsibility
+    * `High cohesion`
+    * `Low coupling`
+    * `Polymorphism` - single interface with multiple implementations
+    * `Protected variations` - identify points of likely variation or instability, create a stable interface around them
+    * `Pure fabrication` - class that does not represent a concept in the problem domain, specially made up to achieve low coupling, high cohesion, and the reuse potential
+        (e.g. Service in DDD)
 * 
     * 
     * 
