@@ -10,4 +10,5 @@ Common errors checklist:
 * Simulate slow internet/cut it off completely
 * Turn off application in most inconvenient moment
 * Simulate downtime of a service your app relies on (there should be sane error messages, app should not crash)
+* Try to work with system from perspective of user with disabilities
 * 
