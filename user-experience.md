@@ -15,5 +15,5 @@
 * Sane defaults - couple clicks and everything is working out of the box
 * Instant Sign Up / Log In - via OAUTH, using social network account
 * Infinite-scroll - provides seamless experience when looking at endless content
-* 
+* Try to predict user actions and make them easier - e.g. in article with code blocks there is button to copy it
 * Use information visualization (charts/graphs/..) instead of showing a lot of numbers
