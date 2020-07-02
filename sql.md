@@ -1,8 +1,13 @@
-# Sql
+# SQL
 * Explain visualizer
     * https://tatiyants.com/pev/#/plans
 
 ## Queries
+* Sane way to handle nulls:
+    ```
+        SELECT * FROM contact
+        WHERE COALESCE(home_phone, '') <> COALESCE(mobile_phone, '')
+    ```
 * Update/Insert based on bunch of selects
     ```
     MERGE INTO unique_trade_object uto
