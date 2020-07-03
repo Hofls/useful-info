@@ -28,4 +28,7 @@
     * If you can predict that data will be needed soon - fetch it in advance 
 * `Storage with smaller latency numbers` (e.g. RAM)
 * `Decrease computational complexity`
+* `Parallel computing`
+    * Divide task into parts, process each part simultaneously
+* `Remove everything` (that is not necessary)
 
