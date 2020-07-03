@@ -10,17 +10,22 @@
 * Use `profilers` to analyze performance and identify areas that need improvement
 
 # Ways to optimize
-* Approximate computing
-* Cache
-* Compression
-* CDN (Content Delivery Networks)
-* Denormalization
-* Hash
-* Index
-* Pagination (with infinite scroll)
-* Minification
-* Lazy loading (on-demand)
-* Prefetching
-* Storage with smaller latency numbers (e.g. RAM)
-* Decrease computational complexity
+* `Approximate computing`
+* `Cache`
+* `Compression`
+* `CDN` (Content Delivery Networks)
+* `Denormalization`
+* `Hash`
+    * Input - data of any size. Output - fixed size value. Same input always produces same output
+* `Index`
+    * Occupies space, makes inserts/updates a bit slower. But takes search from `O(n)` to `O(log n)`
+* `Pagination` (with infinite scroll)
+* `Minification`
+* `Lazy loading` (on-demand)
+    * Make sure that all loaded data is needed for computations (nothing excessive)
+    * Only load data that is visible to the user
+* `Prefetching` (eager)
+    * If you can predict that data will be needed soon - fetch it in advance 
+* `Storage with smaller latency numbers` (e.g. RAM)
+* `Decrease computational complexity`
 
