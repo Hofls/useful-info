@@ -9,6 +9,8 @@
     * `echo %RANDOOP_JAR%`
 * Copy text from console
     * Select text, `ctrl+c`
+* Find files/folders with name containing 'masdev' in this folder and all subfolders
+    * `dir /s *masdev*`
 
 ## Package managers
 ### Chocolatey
