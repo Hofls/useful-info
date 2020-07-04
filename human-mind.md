@@ -10,3 +10,5 @@
 * `Reinforcement` - consequence applied to the action, that will guide future behavior
 * `Hedonic treadmill` - tendency of humans to return to base level of happiness despite major positive or negative life changes
 * `Thinking outside of the box` - looking for not obvious solutions, questioning assumptions/limitations
+* `Soft skills`: Communication, Flexibility, Integrity(ethics), Interpersonal skills, Positive attitude, Professionalism, Responsibility, Teamwork, Work ethic
+ 
