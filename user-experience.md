@@ -17,3 +17,8 @@
 * Infinite-scroll - provides seamless experience when looking at endless content
 * Try to predict user actions and make them easier - e.g. in article with code blocks there is button to copy it
 * Use information visualization (charts/graphs/..) instead of showing a lot of numbers
+* Setting up:
+    * Snyk.io:
+        * Asks what user wants to do (analyze open source code)
+        * Asks where code is located (github)
+        * Asks what snyk is allowed to do (with sane defaults)
