@@ -5,6 +5,7 @@ What is happening overall? Without details, based on method/class names alone.
 * Figure out two algorithms:
     * How it was working before changes
     * How it is working after changes
+* Make sure each complex method/class has comment
 #### Details
 Is implementation details up to standard?
 * Make sure that code makes sense based on names alone:
