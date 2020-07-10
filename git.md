@@ -1,7 +1,12 @@
+## Commands
 * Revert not pushed commit
     * `git reset HEAD~1 --soft`
 * What is `git pull`? 
     * `git fetch` + `git merge`
+* To copy commit from another branch
+    * `git cherry-pick`
+
+ ## Info
 * Difference between `merge request` and `pull request`?
     * They are synonyms
 * Battle-tested branching schema:
