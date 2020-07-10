@@ -20,6 +20,9 @@
     * `The Barbell Strategy` - 90% in safety, 10% in risk, 0% in the middle
     * `Decomposition ` - is breaking a complex problem or system into parts that are easier to understand
     * `Postmortem` - way to document the events that led to the failure and to make sure it wont happen again
+    * `Antifragile system` - System that gets better when exposed to shocks, disorder, stressors and uncertainty. 
+      	E.g. evolution - system that consists of fragile components, gets better over time because only the most adaptive species survive.
+      	Other examples - poison tolerance, muscle growth, free market, learning from mistakes.
 
 * Problem-solving strategies:
     * `Abstraction`: solving the problem in a model of the system before applying it to the real system
