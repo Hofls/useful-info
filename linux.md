@@ -43,6 +43,12 @@
 * Show full path to current working directory
   * `pwd`
 * Show info about linux distributive
-    * `cat /etc/*-release`
+  * `cat /etc/*-release`
 * Write last 20k lines from services.log to temp.log
-    * `tail -n 20000 services.log > temp.log`
+  * `tail -n 20000 services.log > temp.log`
+* Run docker-compose on OS start
+  * `crontab -e`
+  * Add line `@reboot cd /opt/highload && docker-compose up -d`
+  * `:wq`
+* Give all permissions to script `reload.sh`
+  * `chmod 777 reload.sh`
