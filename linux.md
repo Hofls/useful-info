@@ -42,4 +42,5 @@
   * `pwd`
 * Show info about linux distributive
     * `cat /etc/*-release`
-
+* Write last 20k lines from services.log to temp.log
+    * `tail -n 20000 services.log > temp.log`
