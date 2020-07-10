@@ -29,6 +29,8 @@
   * `id`
 * Became almighty root user
   * `sudo su`
+* Ordered list of files/folders in current directory
+  * `ls -l`
 * Install Docker
   * `apt-get update`
   * `apt-get install docker.io`
