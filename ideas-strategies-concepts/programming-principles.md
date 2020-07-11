@@ -39,6 +39,11 @@
 	* `Horizontal` - adding more nodes (computers) to the system
 	* `Vertical` - adding more resources (CPU/RAM) to a single node
 * `Extensibility` - ability to add new functionality/change existing functionality
+* `KISS` - simplicity should be a key goal in design, and unnecessary complexity should be avoided
+* `Load balancing` - process of distributing a set of tasks over a set of resources (computers)
+* `Cloud computing` - computing resources on demand
+* `Separation of concerns` - separation of a program into distinct sections (1 section = 1 concern)
+* `Convention over configuration` - paradigm that attempts to decrease number of decision that developer is required to make (sane defaults)
 * 
     * 
     * 
