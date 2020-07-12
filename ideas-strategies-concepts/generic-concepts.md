@@ -23,6 +23,7 @@
     * `Antifragile system` - System that gets better when exposed to shocks, disorder, stressors and uncertainty. 
       	E.g. evolution - system that consists of fragile components, gets better over time because only the most adaptive species survive.
       	Other examples - poison tolerance, muscle growth, free market, learning from mistakes.
+    * `Data-driven` - progress in an activity is compelled by data, rather than by intuition or by personal experience
 
 * Problem-solving strategies:
     * `Abstraction`: solving the problem in a model of the system before applying it to the real system
