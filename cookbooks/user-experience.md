@@ -5,8 +5,7 @@
 * `Discoverability` - degree of ease with which the user can find all the elements and features of a new system when they first encounter it
 * `Low-hanging fruit` - Tasks that have the greatest positive effect for the least effort
 * `Progressive disclosure` - defering some advanced or rarely used features to a secondary screen
-* `Gold plating` - phenomenon of working on a project past the point of diminishing returns
-* `Signal–to–Noise Ratio` - Relevant information is “signal,” irrelevant information is “noise”. A high signal–to–noise ratio is a key target of good UI.
+* `Signal–to–Noise Ratio` - Relevant information is “signal,” irrelevant information is “noise”. A high signal–to–noise ratio is a key target of good UI
 
 ### Cookbook
 * If common problem occurred - notify user and propose a solution.

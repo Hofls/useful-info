@@ -55,7 +55,14 @@
 * `Inversion of control` - inverts traditional control flow. 
 	* Traditional approach - code expliciltly calls constructor of specific implementation (new BoxService())
 	* Inverse approach - code describes type, framework provides implementation (@Autowired)
-* 
+* `Worse is better` - Software that is limited (worse), but simple to use, may be more appealing to the users (better)
+	* `Simplicity` - The design must be simple, both in implementation and interface. Simplicity is the most important consideration in a design
+	* `Correctness` - The design should be correct, but It is slightly better to be simple than correct
+	* `Consistency` - The design must not be overly inconsistent. However consistency can be sacrificed for simplicity in some cases.
+	* `Completeness` - Completeness must be sacrificed whenever implementation simplicity is jeopardized
+* `YAGNI` - implement things when you actually need them, not when you just foresee that you need them
+* `Overengineering` - act of designing a product to be more robust or have more features than necessary for its intended use, or for a process to be unnecessarily complex.
+* `Gold plating` - phenomenon of working on a project past the point of diminishing returns
     * 
     * 
 * 
