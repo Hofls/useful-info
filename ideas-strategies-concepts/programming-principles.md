@@ -44,6 +44,17 @@
 * `Cloud computing` - computing resources on demand
 * `Separation of concerns` - separation of a program into distinct sections (1 section = 1 concern)
 * `Convention over configuration` - paradigm that attempts to decrease number of decision that developer is required to make (sane defaults)
+* `SOLID` - principles intended to make software designs more understandable, flexibe and maintainable:
+	* `Single-responsibility` - every module should have one responsibility, that is entirely encapsulated by the module
+	* `Open–closed` - modules should be open for extension, but closed for modification 
+		(e.g. extend code by adding new implementation of interface)
+	* `Liskov substitution` - superclass objects should be replaceable with objects of its subclasses without breaking the application.
+		(e.g. design by contract - write code on interface level first, add implementations later)
+	* `Interface segregation` - many client-specific interfaces are better than one general-purpose interface
+	* `Dependency inversion` - one should "depend on abstractions, not implementations
+* `Inversion of control` - inverts traditional control flow. 
+	* Traditional approach - code expliciltly calls constructor of specific implementation (new BoxService())
+	* Inverse approach - code describes type, framework provides implementation (@Autowired)
 * 
     * 
     * 
