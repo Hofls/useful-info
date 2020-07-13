@@ -8,6 +8,8 @@ List:
 
 [Link](https://google.com)
 
+[Relative link](../cookbooks/wiki.md)
+
 `quote`
 
 ```
