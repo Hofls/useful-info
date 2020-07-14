@@ -19,6 +19,8 @@
     * Input - data of any size. Output - fixed size value. Same input always produces same output
 * `Index`
     * Occupies space, makes inserts/updates a bit slower. But takes search from `O(n)` to `O(log n)`
+    * Composite index (index on multiple columns):
+        * Index on (organization_id, date) = finds area of rows with specific organization_id, then inside this area - finds date 
 * `Pagination` (with infinite scroll)
 * `Minification`
 * `Lazy loading` (on-demand)
