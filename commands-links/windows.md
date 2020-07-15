@@ -11,6 +11,8 @@
     * Select text, `ctrl+c`
 * Find files/folders with name containing 'masdev' in this folder and all subfolders
     * `dir /s *masdev*`
+* Write output of command `dir` into `list.txt`
+    * `dir > list.txt`
 
 ## Package managers
 ### Chocolatey
