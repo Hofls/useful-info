@@ -13,3 +13,8 @@ Is implementation details up to standard?
 * Possible nulls should be handled correctly:
     * `getAccount().getUser()` could produce NPE
 * Check locations (is file in the right folder, is method in the right class etc)
+* Make sure that nothing is done manually, if it can be automated:
+    * No manual mappings (e.g. moving data from entity to dto). Better use `mapstruct` or alternatives
+    * No manual toString/Equals/Hashcode/Getters/Setters. Better use `lombok` or alternatives
+* Wheel is not being reinvented. Use existing solutions
+
