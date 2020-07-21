@@ -7,10 +7,12 @@ Typical information to store in wiki:
     * How to look at logs
     * Test the system manually
 * Lists
+    * Abbreviations
     * Tools (for developers/testers/analytics)
     * Links to products (dev/test/prod, rest/soap/ui)
     * List of useful links (other wikis, telegram bots, gitlab, jira, artifactory)
 * Description
+    * Domain
     * Architecture
     * Development standards/ideology/rules
     * How to conduct code review
