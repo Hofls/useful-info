@@ -38,6 +38,9 @@
     * `SoapUI`
 * To send HTTP requests:
     * `Postman`
+* To write down everything:
+    * `Notepad++` 
+        * To create second view - right click on tab -> `move to other view`
 * To limit resources available to the process:
     * `Battle Encoder Shirase`
 * To check hardware temperature:
