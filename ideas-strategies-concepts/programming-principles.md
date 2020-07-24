@@ -65,9 +65,14 @@
 * `Gold plating` - phenomenon of working on a project past the point of diminishing returns
 * `Bus factor` - minimum number of team members that have to suddenly disappear from a project before the project stalls
 * `Bottleneck` - occurs when capacity of an application is limited by a single component
-*
-    * 
-    * 
+* `Programming paradigm`
+    * `Imperative` - programmer instructs the machine how to change its state
+        * `Procedural` - groups instructions into procedures (e.g. Pascal)
+        * `Object-oriented` - based on the concept of "objects", which can contain data + methods (e.g. Java)
+    * `Declarative` - programmer declares properties of the desired result, but not how to compute it
+        * `Functional` - programs are constructed by applying and composing functions (e.g. Haskell)
+        * `Dataflow` - models a program as a directed graph of the data flowing between operations (e.g. Tensorflow)
+        * `Reactive` - deals with data streams and the propagation of change (sequences of events), e.g. react
 * 
     * 
     * 
