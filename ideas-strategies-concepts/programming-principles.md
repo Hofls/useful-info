@@ -73,6 +73,9 @@
         * `Functional` - programs are constructed by applying and composing functions (e.g. Haskell)
         * `Dataflow` - models a program as a directed graph of the data flowing between operations (e.g. Tensorflow)
         * `Reactive` - deals with data streams and the propagation of change (sequences of events), e.g. react
+* `Chaos engineering` - causing failure of system components in production, in order to build resilent system:
+  	* `Chaos Monkey` - shuts down random servers
+  	* `Latency Monkey` - introduces communication delays
 * 
     * 
     * 
