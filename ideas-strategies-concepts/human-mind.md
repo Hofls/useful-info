@@ -11,4 +11,6 @@
 * `Hedonic treadmill` - tendency of humans to return to base level of happiness despite major positive or negative life changes
 * `Thinking outside of the box` - looking for not obvious solutions, questioning assumptions/limitations
 * `Soft skills`: Communication, Flexibility, Integrity(ethics), Interpersonal skills, Positive attitude, Professionalism, Responsibility, Teamwork, Work ethic
+* `Incentive` - motivators which reward actions to yield a desired outcome
+* `Human–computer interaction (HCI)` - studies the design and use of computer technology, focused on the interfaces between people and computers
  

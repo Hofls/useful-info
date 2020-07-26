@@ -76,6 +76,8 @@
 * `Chaos engineering` - causing failure of system components in production, in order to build resilent system:
   	* `Chaos Monkey` - shuts down random servers
   	* `Latency Monkey` - introduces communication delays
+* `A/B testing` - testing a subject's response to variant A against variant B, and determining which of the two variants is more effective
+* `Smoke test` - preliminary testing to reveal obvious failures
 * 
     * 
     * 
