@@ -25,6 +25,7 @@
       	Other examples - poison tolerance, muscle growth, free market, learning from mistakes.
     * `Data-driven` - progress in an activity is compelled by data, rather than by intuition or by personal experience
     * `Red team` - group that plays as opposition in simulated situation
+    * `Reverse engineering` - process of object deconstruction, used to reveal its designs, architecture, code.
 
 * Problem-solving strategies:
     * `Abstraction`: solving the problem in a model of the system before applying it to the real system
