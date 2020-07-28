@@ -13,6 +13,8 @@
     * `dir /s *masdev*`
 * Write output of command `dir` into `list.txt`
     * `dir > list.txt`
+* Copy `service.war` to `deployments` folder. Answers `y` on question about files replacement
+    * `echo y | copy target\service.war %WILDFLY_HOME%\standalone\deployments`
 
 ## Package managers
 ### Chocolatey
