@@ -18,6 +18,8 @@
     * Grafana. Readable error messages:
         * If config is incorrect (missing necessary parameters / wrong values etc)
         * If external dependency is not installed - asks user to install it 
+    * DBeaver:
+        * If you try to execute `DELETE` without `WHERE` clause - appears warning
 * In-app search - allows searching inside application options, great navigation technique (IntelliJ IDEA => Find Action)
 * Sane defaults - couple clicks and everything is working out of the box
 * Simple installation process (minimum user involvement)
