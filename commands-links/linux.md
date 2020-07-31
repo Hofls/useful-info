@@ -32,6 +32,7 @@
 * Ordered list of files/folders in current directory
   * `ls -l`
 * Install Docker
+  * `apt update`
   * `apt install docker.io`
 * Copy from console
   * Select text with mouse
