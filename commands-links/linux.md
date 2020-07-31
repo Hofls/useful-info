@@ -52,3 +52,6 @@
   * `:wq`
 * Give all permissions to script `reload.sh`
   * `chmod 777 reload.sh`
+* Boot up file manager
+  * `mc`
+  * `ranger`
