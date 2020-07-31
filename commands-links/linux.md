@@ -58,3 +58,7 @@
 * Show documentation for `ls` command:
   * Detailed description, without examples: `man ls`
   * Brief description, with examples: `tldr ls`
+
+* Service manager
+  * List all services `systemctl list-units --type=service`
+  * Restart service acpache2 `systemctl restart apache2`
