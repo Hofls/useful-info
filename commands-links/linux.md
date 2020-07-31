@@ -55,3 +55,6 @@
 * Boot up file manager
   * `mc`
   * `ranger`
+* Show documentation for `ls` command:
+  * Detailed description, without examples: `man ls`
+  * Brief description, with examples: `tldr ls`
