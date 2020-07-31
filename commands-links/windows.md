@@ -51,6 +51,8 @@
     * `VLC`
 * To record all the sounds that you hear in your headphones:
     * `Audacity`
+* To record screen + sound:
+    * `Bandicam`
 * To take screenshots:
     * `Lightshot`
 * To not ruin eyesight while working at night:
