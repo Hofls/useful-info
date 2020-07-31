@@ -23,7 +23,7 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
 * Logs are accessible via `graylog` or alternatives
 * There is no passwords/tokens hardcoded in the project (those should be stored as environment variables)
 * Make sure that request is merged only after review from another person
-* ? Project runs inside of a container (docker)
+* Project runs inside of a container (docker)
 
 ### Database
 * Migrations are done via liquibase/flyway
@@ -46,6 +46,7 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
 * Expected dependencies (or their alternatives): lombok, mapstruct, mockito, h2db, spring-boot-starter-test
 * Swagger (or alternative) is used to generate frontend code
 * Web interface is restful
+* Each complex method/class has comments (javadoc)
 
 ### Security
 * Database backup is done periodically
