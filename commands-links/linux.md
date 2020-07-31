@@ -32,8 +32,7 @@
 * Ordered list of files/folders in current directory
   * `ls -l`
 * Install Docker
-  * `apt-get update`
-  * `apt-get install docker.io`
+  * `apt install docker.io`
 * Copy from console
   * Select text with mouse
 * Show path of an IP packet
