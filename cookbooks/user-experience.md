@@ -5,7 +5,7 @@
 * `Discoverability` - degree of ease with which the user can find all the elements and features of a new system when they first encounter it
 * `Low-hanging fruit` - Tasks that have the greatest positive effect for the least effort
 * `Progressive disclosure` - defering some advanced or rarely used features to a secondary screen
-* `Signal–to–Noise Ratio` - Relevant information is “signal,” irrelevant information is “noise”. A high signal–to–noise ratio is a key target of good UI
+* `Signal–to–Noise Ratio` - Relevant information is “signal” irrelevant information is “noise”. A high signal–to–noise ratio is a key target of good UI
 
 ### Cookbook
 * If common problem occurred - notify user and propose a solution.
@@ -20,6 +20,8 @@
         * If external dependency is not installed - asks user to install it 
     * DBeaver:
         * Warning appears if you try to execute `DELETE` without `WHERE` clause
+    * apache2:
+        * After adding configuration via `a2ensite`, appears text `To activate the new configuration, you need to run: systemctl reload apache2`
 * In-app search - allows searching inside application options, great navigation technique (IntelliJ IDEA => Find Action)
 * Sane defaults - couple clicks and everything is working out of the box
 * Simple installation process (minimum user involvement)
