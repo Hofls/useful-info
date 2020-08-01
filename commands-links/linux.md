@@ -25,6 +25,7 @@
   * `history`
 * Live feed of process resource usage
   * `top`
+    * Press `e` to switch format of value (kb -> mb -> gb))
     * `shift+m` to sort by RAM usage
     * `shift+p` to sort by CPU usage
 * Current user and group
