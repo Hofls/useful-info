@@ -58,6 +58,8 @@
 * Show documentation for `ls` command:
   * Detailed description, without examples: `man ls`
   * Brief description, with examples: `tldr ls`
+* Find process that holds open files in folder "/var/lib/docker":
+  * `lsof | grep /var/lib/docker`
 
 * Service manager
   * List all services `systemctl list-units --type=service`
