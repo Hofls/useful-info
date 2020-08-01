@@ -61,8 +61,17 @@
 * Show documentation for `ls` command:
   * Detailed description, without examples: `man ls`
   * Brief description, with examples: `tldr ls`
-* Find process that holds open files in folder "/var/lib/docker":
-  * `lsof | grep /var/lib/docker`
+  
+* If you are unable to delete some files/folders:
+    * Kill process:
+        * Find process that holds open files in folder "/var/lib/docker":
+          * `lsof | grep /var/lib/docker`
+        * Kill it
+    * Resolve mounting issues:
+        * Try to delete folder: `rm -r docker`
+            * Errors will show full path to problematic files/folders
+        * Umount each of them: `umount docker/containers/82JDSAJDK2/shm`
+    
 
 * Service manager
   * List all services `systemctl list-units --type=service`
