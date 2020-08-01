@@ -45,7 +45,7 @@
   * `free -h`
 * Show full path to current working directory
   * `pwd`
-* Show info about linux distributive
+* Show info about linux distributive (version)
   * `cat /etc/*-release`
 * Write last 20k lines from services.log to temp.log
   * `tail -n 20000 services.log > temp.log`
