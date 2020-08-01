@@ -25,6 +25,8 @@
   * `history`
 * Live feed of process resource usage
   * `top`
+    * `shift+m` to sort by RAM usage
+    * `shift+p` to sort by CPU usage
 * Current user and group
   * `id`
 * Became almighty root user
@@ -38,7 +40,7 @@
   * Select text with mouse
 * Show path of an IP packet
   * `traceroute google.com`
-* Show RAM/swap usage
+* Show total memory usage (RAM/swap)
   * `free -h`
 * Show full path to current working directory
   * `pwd`
