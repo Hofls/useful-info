@@ -75,4 +75,5 @@
 
 * Service manager
   * List all services `systemctl list-units --type=service`
-  * Restart service acpache2 `systemctl restart apache2`
+  * Restart service apache2 `systemctl restart apache2`
+  * Look at service logs `journalctl -u apache2.service`
