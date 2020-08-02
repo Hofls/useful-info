@@ -15,6 +15,10 @@
 * Show documentation for `ls` command:
   * Detailed description, without examples: `man ls`
   * Brief description, with examples: `tldr ls`
+* Autocomplete:
+  * `echo "hey" > example.text`
+  * `cat ex`
+  * Press `Tab`
    
 #### Processes
 * Run command 'standalone.sh' in the background, immune to hangups
