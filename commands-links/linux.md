@@ -61,7 +61,16 @@
 * Show documentation for `ls` command:
   * Detailed description, without examples: `man ls`
   * Brief description, with examples: `tldr ls`
-  
+* Make long command readable:
+  ```
+  docker run \
+    --network host \
+    --add-host camel.test.keras.ru:32.2.121.43 \
+    --name rest-backend \ 
+    --env-file ./environment.list \
+  rest-sp-back:1.0` 
+  ```
+ 
 * If you are unable to delete some files/folders:
     * Kill process:
         * Find process that holds open files in folder "/var/lib/docker":

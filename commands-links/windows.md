@@ -15,6 +15,15 @@
     * `dir > list.txt`
 * Copy `service.war` to `deployments` folder. Answers `y` on question about files replacement
     * `echo y | copy target\service.war %WILDFLY_HOME%\standalone\deployments`
+* Make long command readable:
+  ```
+  docker run ^
+    --network host ^
+    --add-host camel.test.keras.ru:32.2.121.43 ^
+    --name rest-backend ^
+    --env-file ./environment.list ^
+  rest-sp-back:1.0` 
+  ```
 
 ## Package managers
 ### Chocolatey
