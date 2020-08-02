@@ -7,6 +7,9 @@
     * Restart console
 * Get environment variable
     * `echo %RANDOOP_JAR%`
+* Call `java.exe` from cmd by its name alone, without full path:
+    * Add path `C:\ProgramData\Oracle\Java\javapath` to `PATH` environment variable
+    * `java -version`
 * Copy text from console
     * Select text, `ctrl+c`
 * Find files/folders with name containing 'masdev' in this folder and all subfolders
