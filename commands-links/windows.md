@@ -27,6 +27,8 @@
     --env-file ./environment.list ^
   rest-sp-back:1.0` 
   ```
+* Local DNS
+  * In file `C:\Windows\System32\drivers\etc` insert `231.23.143.25 camel.keras.com`
 
 ## Package managers
 ### Chocolatey

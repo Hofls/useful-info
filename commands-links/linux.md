@@ -73,6 +73,9 @@
 * Call `java` from CLI by its name alone, without full path:
     * Copy java executable to `/usr/bin`
     * Call `java -version`
+
+* Local DNS:
+  * In file `etc/hosts` insert `231.23.143.25 camel.keras.com`
  
 * If you are unable to delete some files/folders:
     * Kill process:
