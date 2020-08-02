@@ -14,7 +14,7 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
 * Continuous delivery is automated
 * Notification is sent in dev chat whenever merge request is open
 * Each commit should have link to task (and check for the link is automated)
-* Reverse proxy / load balancer config is present in the project (nginx)
+* All related configs is present in the project (nginx, apache2, gitlab-ci, docker, kubernetes..)
 * There is README.md with information on how to install/build/run project
 * Endpoint with metrics (e.g. micrometer-actuator) for monitoring
 * There is at least three different environments - dev, test, production
