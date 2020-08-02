@@ -70,6 +70,9 @@
     --env-file ./environment.list \
   rest-sp-back:1.0` 
   ```
+* Call `java` from CLI by its name alone, without full path:
+    * Copy java executable to `/usr/bin`
+    * Call `java -version`
  
 * If you are unable to delete some files/folders:
     * Kill process:
