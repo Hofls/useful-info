@@ -32,6 +32,7 @@
 * Service manager
   * List all services `systemctl list-units --type=service`
   * Restart service apache2 `systemctl restart apache2`
+  * Show apache2 status `systemctl status apache2`
   * Look at service logs `journalctl -u apache2.service`
 
 #### Files/Folders
