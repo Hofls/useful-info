@@ -19,6 +19,16 @@
   * `echo "hey" > example.text`
   * `cat ex`
   * Press `Tab`
+  
+#### Commands combo
+* Execute commands in parallel:
+  * `echo "a" & echo "b"`
+* Execute commands sequentially:
+  * `echo "a" && echo "b"`
+* Pipeline output of one command to input of another:
+  * `echo "good" | grep go`
+* Write output of command to file:
+  * `echo "a" > example.txt`
    
 #### Processes
 * Run command 'standalone.sh' in the background, immune to hangups
