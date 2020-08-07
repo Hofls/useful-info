@@ -27,7 +27,7 @@
     ```
 
 ## Webhooks
-* Send notification when something happens:
+* Send notification to group chat when something happens:
     * `Settings => Webhooks`
         * URL https://integram.org/gitlab/cj2Dsjk2dZ
         * \+ Merge Requests Events 
