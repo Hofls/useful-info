@@ -25,3 +25,12 @@
           exit 1;
         fi
     ```
+
+## Webhooks
+* Send notification when something happens:
+    * `Settings => Webhooks`
+        * URL https://integram.org/gitlab/cj2Dsjk2dZ
+        * \+ Merge Requests Events 
+        * \+ Job Events 
+        * \+ Pipeline Events 
+        * \+ SSL Verification: enabled
