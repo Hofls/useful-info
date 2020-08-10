@@ -47,6 +47,7 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
 * Swagger (or alternative) is used to generate frontend code
 * Web interface is restful
 * Each complex method/class has comments (javadoc)
+* If something goes wrong - backend returns descriptive error messages
 
 ### Security
 * Database backup is done periodically
