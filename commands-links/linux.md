@@ -15,6 +15,8 @@
 * Show documentation for `ls` command:
   * Detailed description, without examples: `man ls`
   * Brief description, with examples: `tldr ls`
+* Quickly find out what `-t` parameter means in `ssh-keygen` command:
+  * `man ssh-keygen | grep -- -t`
 * Autocomplete:
   * `echo "hey" > example.text`
   * `cat ex`
