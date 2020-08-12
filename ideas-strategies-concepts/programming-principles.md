@@ -78,6 +78,8 @@
   	* `Latency Monkey` - introduces communication delays
 * `A/B testing` - testing a subject's response to variant A against variant B, and determining which of the two variants is more effective
 * `Smoke test` - preliminary testing to reveal obvious failures
+* `Configuration management` - automatically interacting with multiple servers to conduct sysadmin tasks (e.g. Ansible)
+* `Infrastructure as code (IaC)` - managing IT infrastructure using configuration files (e.g. provisioning VMs in cloud)
 * 
     * 
     * 
