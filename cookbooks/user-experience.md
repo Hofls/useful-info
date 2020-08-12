@@ -24,6 +24,8 @@
         * After adding configuration via `a2ensite`, appears text `To activate the new configuration, you need to run: systemctl reload apache2`
     * systemctl:
         * After failing to start, appears text `See "systemctl status apache2.service" and "journalctl -xe" for details.`
+    * Ubuntu:
+        * If you try to run not install program, installation instruction appears `Command 'mc' not found, but can be installed with: apt install mc`
 * In-app search - allows searching inside application options, great navigation technique (IntelliJ IDEA => Find Action)
 * Sane defaults - couple clicks and everything is working out of the box
 * Simple installation process (minimum user involvement)
