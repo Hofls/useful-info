@@ -40,7 +40,6 @@
 * todo
 
 ## Software
-
 * `Anydesk` to connect to remote desktop
 * `Putty` to connect to remote server via SSH
 * `WinSCP` to transfer files to/from remote server
