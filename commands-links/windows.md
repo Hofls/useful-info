@@ -39,6 +39,12 @@
 ### WinGet
 * todo
 
+## Windows installation:
+* Download `.iso` image
+* Upload it to flash drive, using `rufus`
+* Restart PC, go to BIOS (by spamming `DEL`/`F8`/etc)
+* Choose to boot from flash drive, save and exit
+
 ## Software
 * `Anydesk` to connect to remote desktop
 * `Putty` to connect to remote server via SSH
