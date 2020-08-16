@@ -47,7 +47,7 @@
 * `SoapUI` to send SOAP requests
 * `Postman` to send HTTP requests
 * `Battle Encoder Shirase` to limit resources available to the process
-* `SpeedFan` to check hardware temperature
+* `Open Hardware Monitor` to check hardware load
 * `VLC` to play videos
 * `Audacity` to record all the sounds that you hear in your headphones
 * `Bandicam` to record screen + sound
