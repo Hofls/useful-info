@@ -6,6 +6,9 @@
     * On top of the method, write `/**`, press `enter`
 * Fix some weird problems
     * `File` => `Invalidate caches / Restart`
+* If unable to import `gradle` project:
+    * Install `gradle` locally
+    * Use it: `File` => `Settings` => `Build, Execution` => `Build Tools` => `Gradle` => `Use Gradle from:`
     
 ## Hotkeys
 * Go to class/method implementation
