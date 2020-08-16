@@ -47,13 +47,13 @@
 * `SoapUI` to send SOAP requests
 * `Postman` to send HTTP requests
 * `Battle Encoder Shirase` to limit resources available to the process
-
 * `VLC` to play videos
 * `Audacity` to record all the sounds that you hear in your headphones
 * `Bandicam` to record screen + sound
 * `Lightshot` to take screenshots
 * `F.lux` to not ruin eyesight while working at night
 * `Docker` to run containers
+* `Microsoft Office Starter` to edit .docx, .xlsx documents
 * To check hardware load:
     * `Open Hardware Monitor`
     * `SpeedFan`
