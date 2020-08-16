@@ -47,13 +47,16 @@
 * `SoapUI` to send SOAP requests
 * `Postman` to send HTTP requests
 * `Battle Encoder Shirase` to limit resources available to the process
-* `Open Hardware Monitor` to check hardware load
+
 * `VLC` to play videos
 * `Audacity` to record all the sounds that you hear in your headphones
 * `Bandicam` to record screen + sound
 * `Lightshot` to take screenshots
 * `F.lux` to not ruin eyesight while working at night
 * `Docker` to run containers
+* To check hardware load:
+    * `Open Hardware Monitor`
+    * `SpeedFan`
 * To write down everything:
     * `Notepad++` 
         * To create second view - right click on tab -> `move to other view`
