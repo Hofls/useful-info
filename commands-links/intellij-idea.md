@@ -1,4 +1,7 @@
 # Intellij Idea
+## GUI Customization
+* Left click on tabs => `Configure editor tabs...` => `Tab placement: Right`
+
 ## Features
 * Execute any code during debug
     * `ctrl + shift + a` => `evaluate`
