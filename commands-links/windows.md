@@ -40,36 +40,25 @@
 * todo
 
 ## Software
-* To find and delete folders that take too much space:
-    * `TreeSize Free` (run as Admin)
-* To connect to remote desktop:
-    * `Anydesk`
-* To connect to remote server via SSH:
-    * `Putty`
-* To transfer files to/from remote server:
-    * `WinSCP`
-* To connect to database:
-    * `DBeaver`
-* To send SOAP requests:
-    * `SoapUI`
-* To send HTTP requests:
-    * `Postman`
+
+* `Anydesk` to connect to remote desktop
+* `Putty` to connect to remote server via SSH
+* `WinSCP` to transfer files to/from remote server
+* `DBeaver` to connect to database
+* `SoapUI` to send SOAP requests
+* `Postman` to send HTTP requests
+* `Battle Encoder Shirase` to limit resources available to the process
+* `SpeedFan` to check hardware temperature
+* `VLC` to play videos
+* `Audacity` to record all the sounds that you hear in your headphones
+* `Bandicam` to record screen + sound
+* `Lightshot` to take screenshots
+* `F.lux` to not ruin eyesight while working at night
+* `Docker` to run containers
 * To write down everything:
     * `Notepad++` 
         * To create second view - right click on tab -> `move to other view`
-* To limit resources available to the process:
-    * `Battle Encoder Shirase`
-* To check hardware temperature:
-    * `SpeedFan`
-* To play videos:
-    * `VLC`
-* To record all the sounds that you hear in your headphones:
-    * `Audacity`
-* To record screen + sound:
-    * `Bandicam`
-* To take screenshots:
-    * `Lightshot`
-* To not ruin eyesight while working at night:
-    * `F.lux`
+* To find and delete folders that take too much space:
+    * `TreeSize Free` (run as Admin)
 * No need for introduction:
     `IntelliJ IDEA`, `Google chrome`, `7zip`, `Telegram`, `uTorrent`, `OpenJDK`
