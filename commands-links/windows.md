@@ -41,7 +41,7 @@
 
 ## Software
 * To find and delete folders that take too much space:
-    * `TreeSize Free`, run as Admin
+    * `TreeSize Free` (run as Admin)
 * To connect to remote desktop:
     * `Anydesk`
 * To connect to remote server via SSH:
@@ -71,3 +71,5 @@
     * `Lightshot`
 * To not ruin eyesight while working at night:
     * `F.lux`
+* No need for introduction:
+    `IntelliJ IDEA`, `Google chrome`, `7zip`, `Telegram`, `uTorrent`, `OpenJDK`
