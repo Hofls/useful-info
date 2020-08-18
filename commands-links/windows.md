@@ -49,7 +49,6 @@
 * `Anydesk` to connect to remote desktop
 * `Putty` to connect to remote server via SSH
 * `WinSCP` to transfer files to/from remote server
-* `DBeaver` to connect to database
 * `SoapUI` to send SOAP requests
 * `Postman` to send HTTP requests
 * `Battle Encoder Shirase` to limit resources available to the process
@@ -60,6 +59,8 @@
 * `F.lux` to not ruin eyesight while working at night
 * `Docker` to run containers
 * `Microsoft Office Starter` to edit .docx, .xlsx documents
+* `DBeaver` to connect to database
+    * `Edit connection` => `PostgreSQL` => `Show all databases`
 * To check hardware load:
     * `Open Hardware Monitor`
     * `SpeedFan`
