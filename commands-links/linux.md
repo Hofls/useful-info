@@ -80,6 +80,9 @@
     * `shift+p` to sort by CPU usage
 * Show total memory usage (RAM/swap)
   * `free -h`
+    * Column `free` - amount of memory that is not used at all
+    * Column `available` - free memory + memory that is used for cache/buffer (can become available if needed)
+  * `cat /proc/meminfo` is less human readable, but has more information
 
 #### Network
 * Shows ports in use
