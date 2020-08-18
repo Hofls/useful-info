@@ -1,4 +1,8 @@
 # Intellij Idea
+## Plugins
+#### Java:
+* Lombok, TestMe, GenerateAllSetter 
+
 ## GUI Customization
 * Right click on tabs => `Configure editor tabs...` => `Tab placement: Right`
 
