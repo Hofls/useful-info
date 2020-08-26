@@ -53,6 +53,7 @@
 * `Postman` to send HTTP requests
 * `Battle Encoder Shirase` to limit resources available to the process
 * `VLC` to play videos
+* `AIMP` to play audio
 * `Audacity` to record all the sounds that you hear in your headphones
 * `Bandicam` to record screen + sound
 * `Lightshot` to take screenshots
