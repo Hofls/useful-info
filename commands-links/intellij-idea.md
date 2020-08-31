@@ -4,8 +4,10 @@
 * Lombok, TestMe, GenerateAllSetter 
 
 ## GUI Customization
-* Right click on tabs => `Configure editor tabs...` => `Tab placement: Right`
-
+* Right click on tabs => `Configure editor tabs...` => 
+    * `Tab placement: Right`
+    * `Tab limit: 30`
+    
 ## Features
 * Execute any code during debug
     * `ctrl + shift + a` => `evaluate`
