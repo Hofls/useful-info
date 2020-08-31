@@ -5,6 +5,8 @@
     * `git fetch` + `git merge`
 * To copy commit from another branch
     * `git cherry-pick`
+* To keep empty folder
+    * Create file `.gitkeep`
 
  ## Info
 * Difference between `merge request` and `pull request`?
