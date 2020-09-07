@@ -17,6 +17,7 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
 * All related configs is present in the project (nginx, apache2, gitlab-ci, docker, kubernetes..)
 * There is README.md with information on how to install/build/run project
 * Endpoint with metrics (e.g. micrometer-actuator) for monitoring
+* Monitoring is present, with automatic alerts if something goes wrong
 * There is at least three different environments - dev, test, production
 * Git branching schema makes sense
 * Gitlab is [configured properly](../commands-links/gitlab.md)
