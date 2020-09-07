@@ -13,6 +13,8 @@
     * `java interview questions` 
 * Alternatives
     * `heroku vs`
+* Something is not working, and there is no error message:
+    * `debug kubernetes`
 * Direct quote
     * `"apple is banana"`
 * Exclude word from search
