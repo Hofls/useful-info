@@ -15,15 +15,13 @@
     * Examples: `Sudoku`
 * `Brute-force` - enumerates all possible solution candidates, until finding one which satisfies problem statement
 * `Dynamic Programming` - if problem has overlapping subproblems - solve each subproblem once and cache the result
-* `Kernelization` - stage before main algorithm, in which input reduced to a smaller input, called "kernel" 
+* `Kernelization` - stage before a main algorithm, in which input reduced to a smaller input, called "kernel" 
 * `Hybrid algorithm` - combination of multiple algorithms to solve the same problem.
     * Example: Use approximation algorithm to find imprecise solution. Then use it as starting point for precise algorithm
 * `Heuristic algorithm` - provides approximate solution
     * `Greedy algorithm` - makes locally optimal choice at each step
-    * https://en.wikipedia.org/wiki/Heuristic_(computer_science)
-    * https://en.wikipedia.org/wiki/Category:Heuristic_algorithms
-* `Genetic algorithm` - https://en.wikipedia.org/wiki/Genetic_algorithm
-
+    * `Malware detection` - looks for behavioral patterns
+* `Evolutionary algorithm` - generates a bunch of solution candidates, picks good ones, inflicts random changes on them, repeats the process
 
 ### Algorithms essence
 * `Mergesort`:
@@ -32,5 +30,8 @@
 * `Binary search`:
     * Compare target value to middle of array, if not equal - middle of array becomes border (top or bottom)
     * Thus, after each step search space becomes smaller and smaller
-* `Sudoku`:
-    * Like depth-first tree search, with checking for constraints and going to parent nodes if check failed
+* `Tree sort`: 
+    * Create binary search tree (element < parent ? to the left : to the right)
+    * Now tree has some property, which we can use to traverse it: (1.left 2.current 3.right)
+    * Also we can find any specific element (using rule from beginning)
+
