@@ -9,7 +9,7 @@
 
 ### Algorithm design paradigms
 * `Divide-and-conquer` - breaks down problem into multiple sub-problems, solves them, then combines them back
-    * Examples: `Mergesort`
+    * Examples: `Mergesort`, `Quicksort`
 * `Decrease and conquer` - reduces problem to a smaller problem, tries to solve it, if not solved - reduces again
     * Examples: `Binary search`
 * `Backtracking` - builds solution candidates, then abandons (backtracks) those that do not satisfy the constraints
@@ -26,8 +26,9 @@
 
 ### Algorithms essence
 * `Mergesort`:
-    * Divide array into groups (2 elements in each), sort every group. Now groups have new property - being sorted
-    * We can use it to combine groups together
+    * Divide array into 2 partitions recursively, until you hit partition with 1 element
+    * Now merge the partitions, by comparing first elements of each partition, and moving smaller one in result
+    * Explanation - each partition has a property that we use, to merge them
 * `Binary search`:
     * Compare target value to middle of array, if not equal - middle of array becomes border (top or bottom)
     * Thus, after each step search space becomes smaller and smaller
@@ -35,4 +36,13 @@
     * Create binary search tree (element < parent ? to the left : to the right)
     * Now tree has some property, which we can use to traverse it: (1.left 2.current 3.right)
     * Also we can find any specific element (using rule from beginning)
+* `Quicksort`:
+    * Pick middle element as pivot, gather all elements less than pivot in one partition, elements greater than pivot - in another 
+    * Call quicksort on each partition and combine the result - `quicksort(lesser) + pivot + quicksort(greater)`
+    * Explanation - each partition has property that we use, to combine result
+* `Hashtable search`:
+    * Hash function converts current_input to array index (hash code)
+    * Using index, jumps to array element in constant time (element_size * index = position_in_memory)
+    * Because of collisions, element has list of {value, original_input}, pick value of object where (original_input == current_input)
+
 
