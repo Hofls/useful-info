@@ -11,10 +11,14 @@
 
 # Ways to optimize
 * `Approximate computing`
+    * Sacrificing precision to reduce resources consumption + increase speed
 * `Cache`
+    * Agrees to tolerate stale data, to reduce resources consumption + increase speed
 * `Compression`
+    * Increases load on CPU to reduce file size (for storage/transfer)
 * `CDN` (Content Delivery Networks)
 * `Denormalization`
+    * Increases read performance by reducing write performance + increasing complexity
 * `Hash`
     * Input - data of any size. Output - fixed size value. Same input always produces same output
 * `Index`
@@ -23,12 +27,13 @@
         * Index on (organization_id, date) = finds area of rows with specific organization_id, then inside this area - finds date 
 * `Pagination` (with infinite scroll)
 * `Minification`
+    * Removes all unnecessary characters from source code to reduce file size (for storage/transfer)
 * `Lazy loading` (on-demand)
     * Make sure that all loaded data is needed for computations (nothing excessive)
     * Only load data that is visible to the user
 * `Prefetching` (eager)
     * If you can predict that data will be needed soon - fetch it in advance 
-* `Storage with smaller latency numbers` (e.g. RAM)
+* `Using storage with smaller latency numbers` (e.g. RAM)
 * `Decrease computational complexity`
 * `Parallel computing`
     * Divide task into parts, process each part simultaneously

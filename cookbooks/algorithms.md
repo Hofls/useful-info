@@ -3,6 +3,7 @@
 * `Algorithm running time` - number of executed operations
     * log n < n < n*(log n) < n^2
 * `Asymptotic analysis` - estimates resource consumption of algorithm
+* `Computational complexity` - amount of resources required to run an algorithm
 * `Logarithm` - inverse function to exponentiation (log 100 = 2)
 * `n` - number of input elements
 
