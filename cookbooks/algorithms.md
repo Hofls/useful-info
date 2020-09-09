@@ -5,6 +5,7 @@
 * `Asymptotic analysis` - estimates resource consumption of algorithm
 * `Computational complexity` - amount of resources required to run an algorithm
 * `Logarithm` - inverse function to exponentiation (log 100 = 2)
+* `NP-complete` problems have no known fast solution (best bet - approximation algorithm)
 * `n` - number of input elements
 
 ### Algorithm design paradigms
@@ -35,7 +36,7 @@
 * `Tree sort`: 
     * Create binary search tree (element < parent ? to the left : to the right)
     * Now tree has some property, which we can use to traverse it: (1.left 2.current 3.right)
-    * Also we can find any specific element (using rule from beginning)
+    * Also, we can find any specific element (using rule from beginning)
 * `Quicksort`:
     * Pick middle element as pivot, gather all elements less than pivot in one partition, elements greater than pivot - in another 
     * Call quicksort on each partition and combine the result - `quicksort(lesser) + pivot + quicksort(greater)`
@@ -44,5 +45,10 @@
     * Hash function converts current_input to array index (hash code)
     * Using index, jumps to array element in constant time (element_size * index = position_in_memory)
     * Because of collisions, element has list of {value, original_input}, pick value of object where (original_input == current_input)
-
+* `Breadth-first search`:
+    * Go to the node, save all child nodes in todo list. Visit each node from list, while filling next todo list
+* `Dijkstra's algorithm`:
+    * Visit node, check neighbours cost, if its lower - update their weights. Go to a next unvisited node
+    * After assigning weights, to find the cheapest path from A to Z - move backwards from Z, picking nodes with the lowest weight
+    * Explanation - only save lowest cost, do not visit same node more than once
 
