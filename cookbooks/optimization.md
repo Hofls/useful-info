@@ -38,4 +38,8 @@
 * `Parallel computing`
     * Divide task into parts, process each part simultaneously
 * `Remove everything` (that is not necessary)
+* `MapReduce` - used to process big data (>1 TB) on a cluster
+    * Map - Split data into chunks, distribute them to different computers
+    * Reduce - Consolidate results of processing each chunk into single result
+    * Example - to count words in text, split text into even parts, process them, sum all the results
 

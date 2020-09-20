@@ -22,7 +22,6 @@
     * Example: Use approximation algorithm to find imprecise solution. Then use it as starting point for precise algorithm
 * `Heuristic algorithm` - provides approximate solution
     * `Greedy algorithm` - makes locally optimal choice at each step
-    * `Malware detection` - looks for behavioral patterns
 * `Evolutionary algorithm` - generates a bunch of solution candidates, picks good ones, inflicts random changes on them, repeats the process
 
 ### Algorithms essence
@@ -33,8 +32,9 @@
 * `Binary search`:
     * Compare target value to middle of array, if not equal - middle of array becomes border (top or bottom)
     * Thus, after each step search space becomes smaller and smaller
+    * Inserts to array cost a lot, better use `Binary search tree`
 * `Tree sort`: 
-    * Create binary search tree (element < parent ? to the left : to the right)
+    * Create `Binary search tree` (element < parent ? to the left : to the right)
     * Now tree has some property, which we can use to traverse it: (1.left 2.current 3.right)
     * Also, we can find any specific element (using rule from beginning)
 * `Quicksort`:
@@ -50,5 +50,11 @@
 * `Dijkstra's algorithm`:
     * Visit node, check neighbours cost, if its lower - update their weights. Go to a next unvisited node
     * After assigning weights, to find the cheapest path from A to Z - move backwards from Z, picking nodes with the lowest weight
-    * Explanation - only save lowest cost, do not visit same node more than once
-
+    * Details - only save the lowest cost, do not visit same node more than once
+* `K nearest neighbors`:
+    * Use numbers to describe categories, start with bunch of manually categorized items.
+    * To categorize new item - check his nearest neighbors, pick category with most occurrences.
+* `Bloom filter`:
+    * Like `Hash table`, but ignores collisions, meaning it takes way less space and provides approximate answers
+* `SimHash`, `MinHash`:
+    * Quick estimation of how similar two sets are (hashes for two similar texts will be similar too)
