@@ -44,3 +44,5 @@
     * `alt + f8`
 * Add bookmark, open bookmark
     * `f11`, `shift + f11`
+* Search everywhere
+    * `shift+shift`
