@@ -58,3 +58,16 @@
     * Like `Hash table`, but ignores collisions, meaning it takes way less space and provides approximate answers
 * `SimHash`, `MinHash`:
     * Quick estimation of how similar two sets are (hashes for two similar texts will be similar too)
+* `Recursion`:
+    * Function that calls itself. Useful when solution depends on solutions of smaller instances of same problem
+    * Is limited (problems start about 1k calls deep - e.g. StackOverflow). In such case - use iteration
+
+#### How to solve a problem
+* Ask clarifying questions
+* If problem is big - break it into smaller problems
+* Solve small instances of problem manually, save expected values in unit tests
+* Write unit tests for edge cases
+* Solve a problem with any solution
+* Try to improve it (reduce resources usage/reduce cognitive complexity)
+    * Look for properties that you can use
+

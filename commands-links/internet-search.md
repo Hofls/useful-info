@@ -5,6 +5,8 @@
 * Simple example
     * `RabbitMQ Hello World`
     * `RabbitMQ Getting Started`
+    * `RabbitMQ Foundations`
+    * `RabbitMQ 101`
 * Opinion of the people
     * `site:reddit.com`
 * Bunch of related topics
