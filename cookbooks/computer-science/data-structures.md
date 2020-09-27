@@ -1,8 +1,17 @@
 
 ### Data structures essence
-
-* `Array` / `List`
-* `HashMap`
-* `Set`
-* `Tree` / `Linked list` / `Graph`
-* `Disjoint set`
+* `Array` - O(1) Access (via index)
+* `Hash Table` / `Map` / `Associative array` - O(1) Everything. Key-value storage
+* `Set` - Collection of unique elements. Used to remove duplicates
+* `Linked list` - O(1) Insertion & Deletion    
+* `Stack` / `Queue` - LIFO / FIFO
+* `Graph` - represents connectivity using nodes (e.g. roads between cities)
+* `Tree` is a restricted form of `graph` (it has direction - parent/child, doesn't contain cycles)
+    * `Binary tree` - O(log(n)) Everything. 
+    * `Heap` - tree with property: value of parent >= child's value (max heap; min heap is opposite)
+    * `Trie` - each value is a letter, you can construct words by traversing down the tree.
+        Usage - autocomplete, fulltext search, sorting
+    * `Balanced Tree` - For each node, condition is true: left and right subtrees heights differ by at most one
+* `Disjoint set` - collection of non-overlapping sets (each set has unique values)
+* `Matrix` - 
+    * Images (1 cell = 1 pixel)
