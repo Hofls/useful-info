@@ -63,11 +63,10 @@
     * Is limited (problems start about 1k calls deep - e.g. StackOverflow). In such case - use iteration
 
 #### How to solve a problem
-* Ask clarifying questions
-* If problem is big - break it into smaller problems
+* Visualize a problem, ask clarifying questions
+* If problem is big - break it into subproblems
 * Solve small instances of problem manually, save expected values in unit tests
+* Identify useful data-structures, write solution in pseudocode
+* Create a prototype, then try to improve it
 * Write unit tests for edge cases
-* Solve a problem with any solution
-* Try to improve it (reduce resources usage/reduce cognitive complexity)
-    * Look for properties that you can use
 
