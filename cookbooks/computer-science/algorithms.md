@@ -4,7 +4,7 @@
     * log n < n < n*(log n) < n^2
 * `Asymptotic analysis` - estimates resource consumption of algorithm
 * `Computational complexity` - amount of resources required to run an algorithm
-* `Logarithm` - inverse function to exponentiation (log 100 = 2)
+* `Logarithm` - inverse function to exponentiation (10^2=100;log 100 = 2)
 * `NP-complete` problems have no known fast solution (best bet - approximation algorithm)
 * `n` - number of input elements
 
@@ -23,6 +23,11 @@
 * `Heuristic algorithm` - provides approximate solution
     * `Greedy algorithm` - makes locally optimal choice at each step
 * `Evolutionary algorithm` - generates a bunch of solution candidates, picks good ones, inflicts random changes on them, repeats the process
+
+### Hints
+* On exploration problems - makes sense to set depth limit
+* Use metadata as primary object descriptor (e.g. size, elements sum, accuracy)
+* No need to recalculate every value in an array, just move borders around
 
 ### Algorithms essence
 * `Mergesort`:
@@ -64,6 +69,7 @@
 
 #### How to solve a problem
 * Visualize a problem, ask clarifying questions
+* Simplify problem description, use IRL terms
 * If problem is big - break it into subproblems
 * Solve small instances of problem manually, save expected values in unit tests
 * Identify useful data-structures, write solution in pseudocode
