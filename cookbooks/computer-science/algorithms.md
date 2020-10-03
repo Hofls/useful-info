@@ -38,21 +38,13 @@
     * Now merge the partitions, by comparing first elements of each partition, and moving smaller one in result
     * Explanation - each partition has a property that we use, to merge them
 * `Binary search`:
-    * Compare target value to middle of array, if not equal - middle of array becomes border (top or bottom)
+    * Compare target value to middle of sorted array, if not equal - middle of array becomes border (top or bottom)
     * Thus, after each step search space becomes smaller and smaller
     * Inserts to array cost a lot, better use `Binary search tree`
-* `Tree sort`: 
-    * Create `Binary search tree` (element < parent ? to the left : to the right)
-    * Now tree has some property, which we can use to traverse it: (1.left 2.current 3.right)
-    * Also, we can find any specific element (using rule from beginning)
 * `Quicksort`:
     * Pick middle element as pivot, gather all elements less than pivot in one partition, elements greater than pivot - in another 
     * Call quicksort on each partition and combine the result - `quicksort(lesser) + pivot + quicksort(greater)`
     * Explanation - each partition has property that we use, to combine result
-* `Hashtable search`:
-    * Hash function converts current_input to array index (hash code)
-    * Using index, jumps to array element in constant time (element_size * index = position_in_memory)
-    * Because of collisions, element has list of {value, original_input}, pick value of object where (original_input == current_input)
 * `Breadth-first search`:
     * Go to the node, save all child nodes in todo list. Visit each node from list, while filling next todo list
 * `Dijkstra's algorithm`:
@@ -60,7 +52,7 @@
     * After assigning weights, to find the cheapest path from A to Z - move backwards from Z, picking nodes with the lowest weight
     * Details - only save the lowest cost, do not visit same node more than once
 * `K nearest neighbors`:
-    * Use numbers to describe categories, start with bunch of manually categorized items.
+    * Use numbers to describe categories, start with a bunch of manually categorized items.
     * To categorize new item - check his nearest neighbors, pick category with most occurrences.
 * `Bloom filter`:
     * Like `Hash table`, but ignores collisions, meaning it takes way less space and provides approximate answers
