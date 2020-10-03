@@ -78,7 +78,7 @@
 * Prototype:
     * Solve small instances of problem manually, save expected values in unit tests
     * Identify all edge cases, write tests for them
-    * Identify useful data-structures, write solution in pseudocode
+    * Implement solution (possibly starting with pseudocode)
         * Don't think about optimizations yet, just solve the problem in any way
 * Improvements:
     * Optimize solution
