@@ -21,6 +21,7 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
 * There is at least three different environments - dev, test, production
 * Git branching schema makes sense
 * Gitlab is [configured properly](../commands-links/gitlab.md)
+* There is no stale branches
 * Logs are accessible via `graylog` or alternatives
 * There is no passwords/tokens hardcoded in the project (those should be stored as environment variables)
 * Make sure that request is merged only after review from another person
@@ -49,6 +50,7 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
 * Web interface is restful
 * Each complex method/class has comments (javadoc)
 * If something goes wrong - backend returns descriptive error messages
+* There is no old "// TODO" comments 
 
 ### Security
 * Database backup is done periodically

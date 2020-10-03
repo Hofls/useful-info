@@ -28,6 +28,9 @@
 * On exploration problems - makes sense to set depth limit
 * Use metadata as primary object descriptor (e.g. size, elements sum, accuracy)
 * No need to recalculate every value in an array, just move borders around
+* Think about the worst case, best case and average. The worst case is usually easy to optimize
+* No need to calculate each element independently, maybe it is possible to derive values from its neighbours
+* 
 
 ### Algorithms essence
 * `Mergesort`:
@@ -68,11 +71,15 @@
     * Is limited (problems start about 1k calls deep - e.g. StackOverflow). In such case - use iteration
 
 #### How to solve a problem
-* Visualize a problem, ask clarifying questions
-* Simplify problem description, use IRL terms
-* If problem is big - break it into subproblems
-* Solve small instances of problem manually, save expected values in unit tests
-* Identify useful data-structures, write solution in pseudocode
-* Create a prototype, then try to improve it
-* Write unit tests for edge cases
-
+* Preparation:
+    * Visualize a problem, ask clarifying questions
+    * Simplify problem description, use IRL terms
+    * If problem is big - break it into subproblems
+* Prototype:
+    * Solve small instances of problem manually, save expected values in unit tests
+    * Identify all edge cases, write tests for them
+    * Identify useful data-structures, write solution in pseudocode
+        * Don't think about optimizations yet, just solve the problem in any way
+* Improvements:
+    * Optimize solution
+    * Refactor code
