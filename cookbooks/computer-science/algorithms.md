@@ -30,7 +30,8 @@
 * No need to recalculate every value in an array, just move borders around
 * Think about the worst case, best case and average. The worst case is usually easy to optimize
 * No need to calculate each element independently, maybe it is possible to derive values from its neighbours
-* 
+* Maybe its possible to think in terms of intervals, rather than specific points (1-7 is better than 1,2,3,4,5,6,7)
+* Think in terms of deltas (differences between objects/ranges)
 
 ### Algorithms essence
 * `Mergesort`:
@@ -71,7 +72,9 @@
     * Solve small instances of problem manually, save expected values in unit tests
     * Identify all edge cases, write tests for them
     * Implement solution (possibly starting with pseudocode)
-        * Don't think about optimizations yet, just solve the problem in any way
+        * Don't think about optimizations yet, just solve the problem in any way (naive/brute force)
 * Improvements:
     * Optimize solution
+        * Use prototype to test optimized solution (via unit tests)
+        * If unsure - generate big amount of input data (e.g. millions of random numbers), check if algorithm processes it instantly
     * Refactor code

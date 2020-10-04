@@ -17,6 +17,8 @@
         * Usage - finding min/max values O(1)
     * `Trie` - each value is a letter, you can construct words by traversing down the tree.
         * Usage - autocomplete, fulltext search, sorting
+    * `Segment tree` - supports searching for all the intervals that contain a given point in log(n)
+        * 
     * `Quadtree` - 
     * `Balanced tree` - For each node, condition is true: left and right subtrees heights differ by at most one
     * `Binary tree` - each node has at most two children
