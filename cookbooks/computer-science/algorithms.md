@@ -25,13 +25,18 @@
 * `Evolutionary algorithm` - generates a bunch of solution candidates, picks good ones, inflicts random changes on them, repeats the process
 
 ### Hints
-* On exploration problems - makes sense to set depth limit
-* Use metadata as primary object descriptor (e.g. size, elements sum, accuracy)
-* No need to recalculate every value in an array, just move borders around
-* Think about the worst case, best case and average. The worst case is usually easy to optimize
+* Use metadata as primary object descriptor (e.g. size, elements sum, count, borders)
 * No need to calculate each element independently, maybe it is possible to derive values from its neighbours
 * Maybe its possible to think in terms of intervals, rather than specific points (1-7 is better than 1,2,3,4,5,6,7)
 * Think in terms of deltas (differences between objects/ranges)
+* Use different data-structures to solve different problems (e.g. hashmap to store metadata, stack to store order of elements)
+* Think in terms of events (0-def_start, 1-def_start, 2- atk_start, 3-def_end (x2), 4-atk_end)
+* Sometimes makes sense to move from the opposite direction
+    * E.g. "are those areas overlapping?" is hard, while "are those areas not overlapping?" is easy (just use negation)
+* On exploration problems - makes sense to set depth limit
+* No need to recalculate every value in an array, just move borders around
+* Think about the worst case, best case and average. The worst case is usually easy to optimize
+
 
 ### Algorithms essence
 * `Mergesort`:
