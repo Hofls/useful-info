@@ -33,6 +33,7 @@
 * Think in terms of events (0-def_start, 1-def_start, 2- atk_start, 3-def_end (x2), 4-atk_end)
 * Sometimes makes sense to move from the opposite direction
     * E.g. "are those areas overlapping?" is hard, while "are those areas not overlapping?" is easy (just use negation)
+* Pick algorithm with constraints in mind. E.g. if values of array are small, use counting sort
 * On exploration problems - makes sense to set depth limit
 * No need to recalculate every value in an array, just move borders around
 * Think about the worst case, best case and average. The worst case is usually easy to optimize
