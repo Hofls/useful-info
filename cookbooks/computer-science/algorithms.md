@@ -82,5 +82,6 @@
 * Improvements:
     * Optimize solution
         * Use prototype to test optimized solution (via unit tests)
-        * If unsure - generate big amount of input data (e.g. millions of random numbers), check if algorithm processes it instantly
+        * Compare correctness of optimized solution with brute forced one (generate bunch of random datasets)
+        * If unsure about big O - generate big amount of input data (e.g. millions of random numbers), check if algorithm processes it instantly
     * Refactor code
