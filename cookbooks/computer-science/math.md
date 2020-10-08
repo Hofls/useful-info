@@ -9,5 +9,5 @@
     * `if (n % k == 0)` then `n` is an exact multiple of `k`
     * Converts any number to number within borders `index = hashcode % array.getLength()`
 * `Factorial` - number of ways to arrange n objects
-    * e.g. letters `qwe` can be arranged `3! = 6 times` (`qwe, qew, ewq, eqw, wqe, weq`)
+    * e.g. letters `qwe` can be arranged `3! = 3 * 2 * 1 = 6 times` (`qwe, qew, ewq, eqw, wqe, weq`)
 * 

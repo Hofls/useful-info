@@ -5,7 +5,7 @@
 * `Asymptotic analysis` - estimates resource consumption of algorithm
 * `Computational complexity` - amount of resources required to run an algorithm
 * `Logarithm` - inverse function to exponentiation (10^2=100;log 100 = 2)
-* `NP-complete` problems have no known fast solution (best bet - approximation algorithm)
+* `NP-complete` - problems have no known fast solution (2^n or slower) best bet - approximation algorithm
 * `n` - number of input elements
 
 ### Algorithm design paradigms
@@ -22,7 +22,9 @@
     * Example: Use approximation algorithm to find imprecise solution. Then use it as starting point for precise algorithm
 * `Heuristic algorithm` - provides approximate solution
     * `Greedy algorithm` - makes locally optimal choice at each step
+* `Local search` - starts from an imperfect solution and moves away from it, by determining the viability of nearby solutions 
 * `Evolutionary algorithm` - generates a bunch of solution candidates, picks good ones, inflicts random changes on them, repeats the process
+* `Linear programming` - finds the best outcome in a math model (its requirements should be represented as linear relationships)
 
 ### Hints
 * Use metadata as primary object descriptor (e.g. size, elements sum, count, borders)

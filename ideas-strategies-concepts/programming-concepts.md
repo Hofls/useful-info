@@ -83,6 +83,7 @@
 * `Deep modules` - individual unit of abstraction should do a lot of work, but with simple interface
 * `Opinionated system` - provides one easy way of doing things (way chosen based on opinion of system's authors)
 * `Vendor lock-in` - dependency on one specific vendor, without ability to switch
+* `UUID` - Universally unique identifier. When systems need to generate unique numbers without coordination
 * 
     * 
     * 
