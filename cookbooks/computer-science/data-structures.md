@@ -19,6 +19,8 @@
         * Usage - autocomplete, fulltext search, sorting
     * `Segment tree` - supports searching for all the intervals that contain a given point in log(n)
         * 
+    * `Spatial tree` - used to store spatial objects (locations)
+        * Example - find all museums within 2 km of my current location
     * `Quadtree` - 
     * `Balanced tree` - For each node, condition is true: left and right subtrees heights differ by at most one
     * `Binary tree` - each node has at most two children

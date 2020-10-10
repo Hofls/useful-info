@@ -35,6 +35,7 @@
 * Think in terms of events (0-def_start, 1-def_start, 2- atk_start, 3-def_end (x2), 4-atk_end)
 * Sometimes makes sense to move from the opposite direction
     * E.g. "are those areas overlapping?" is hard, while "are those areas not overlapping?" is easy (just use negation)
+* Round geometrical shape can be approximated by a bunch of rectangles
 * Pick algorithm with constraints in mind. E.g. if values of array are small, use counting sort
 * On exploration problems - makes sense to set depth limit
 * No need to recalculate every value in an array, just move borders around
@@ -70,6 +71,10 @@
 * `Recursion`:
     * Function that calls itself. Useful when solution depends on solutions of smaller instances of same problem
     * Is limited (problems start about 1k calls deep - e.g. StackOverflow). In such case - use iteration
+* `Nearest neighbors search`:
+    * Divide space into sections, search for neighbours in the nearest sections,
+    * If not found enough neighbours - pick next nearest sections
+    * 
 
 #### How to solve a problem
 * Preparation:
