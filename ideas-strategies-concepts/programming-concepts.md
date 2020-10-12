@@ -85,6 +85,13 @@
 * `Vendor lock-in` - dependency on one specific vendor, without ability to switch
 * `UUID` - Universally unique identifier. When systems need to generate unique numbers without coordination
 * `LCNC` - Low-code/no-code development. Develop apps without writing code (e.g. combining reusable component via drag-and-drop)
+* `QR code` - Quick Response code. Allows quick transfer of real world information to computer (e.g. link to a web page)
+* `Digital signature` - guarantees that the contents of a message have not been altered in transit
+    * Server generates hash using private+public keys, adds it to the message and sends to client
+    * Client generates hash and compares them. If hashes are different - message was altered
+* `Public key certificate` (digital/identity certificate) - electronic document used to prove the ownership of a public key
+    * Client requests page. Server sends public key + cert. Client checks everything and continues keys exchange. 
+    * After exchange - everything is encrypted with symmetric key 
 * 
     * 
     * 

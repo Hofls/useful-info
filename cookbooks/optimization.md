@@ -19,7 +19,7 @@
 * `CDN` (Content Delivery Networks)
 * `Denormalization`
     * Increases read performance by reducing write performance + increasing complexity
-* `Hash`
+* `Fingerprint` / `Hash`
     * Input - data of any size. Output - fixed size value. Same input always produces same output
 * `Index`
     * Occupies space, makes inserts/updates a bit slower. But takes search from `O(n)` to `O(log n)`
@@ -42,4 +42,6 @@
     * Map - Split data into chunks, distribute them to different computers
     * Reduce - Consolidate results of processing each chunk into single result
     * Example - to count words in text, split text into even parts, process them, sum all the results
+* `Metadata`/`Delta` as primary object descriptor (e.g. size, elements sum, count, borders)
+* Look at hints in [algorithms](computer-science/algorithms.md)
 
