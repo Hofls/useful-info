@@ -84,12 +84,10 @@
 * `Opinionated system` - provides one easy way of doing things (way chosen based on opinion of system's authors)
 * `Vendor lock-in` - dependency on one specific vendor, without ability to switch
 * `UUID` - Universally unique identifier. When systems need to generate unique numbers without coordination
+* `LCNC` - Low-code/no-code development. Develop apps without writing code (e.g. combining reusable component via drag-and-drop)
 * 
     * 
     * 
 * 
     * 
     * 
-* `SOLID`
-    * 
-    * `Dependency inversion` - dependencies should be injected via DI Framework (opposed to instantiating them yourself)

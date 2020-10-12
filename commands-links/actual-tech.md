@@ -16,10 +16,14 @@
     * https://stackshare.io/stacks
 * Technology macro trends
     * https://www.thoughtworks.com/radar
-* Search for `State of <topic>`, e.g. `State of devops`
-* MOOC (Table of contents is enough)
+* Search for: 
+    * `State of <topic>`, e.g. `State of devops`
+    * `<topic> trends 2020`, e.g. `devops trends 2020`
+    * `<topic> roadmap`, e.g. `web developer roadmap`
+* Freelance sites
 * Any job listings
     * ...
-* Java libraries
+* MOOC (Table of contents is enough)
+* Most used libraries
     * https://mvnrepository.com/popular?p=1
 * Look at `connect-web-apps.md` (ifttt, zapier...)

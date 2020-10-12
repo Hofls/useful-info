@@ -50,6 +50,8 @@
   * Restart service apache2 `systemctl restart apache2`
   * Show apache2 status `systemctl status apache2`
   * Look at service logs `journalctl -u apache2.service`
+* Monitor system calls and signals
+  * `strace ls`
 
 #### Files/Folders
 * Find file with name containing 'specopsfls' in this folder and all subfolders
@@ -99,6 +101,11 @@
   * `traceroute google.com`
 * SSH, SCP
   * Commands moved to `devops` repository
+  
+#### Text processing
+* Replace every occurrence of `Sam` with `Mike` in `report.txt`
+  * `sed 's/Sam/Mike/g' report.txt > report_new.txt`
+* `awk` is outdated, better use `python`
   
 #### Others
 * Install Docker

@@ -27,6 +27,8 @@
     * `Red team` - group that plays as opposition in simulated situation
     * `Reverse engineering` - process of object deconstruction, used to reveal its designs, architecture, code
     * `Simulation` - approximate imitation of the operation of a process or system
+    * `Game theory` - study of mathematical models of strategic interaction among rational decision-makers
+    * `Data mining` is a process of discovering patterns in large data sets
 
 * Problem-solving strategies:
     * `Abstraction`: solving the problem in a model of the system before applying it to the real system
