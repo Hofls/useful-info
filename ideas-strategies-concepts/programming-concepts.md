@@ -91,7 +91,10 @@
     * Client generates hash and compares them. If hashes are different - message was altered
 * `Public key certificate` (digital/identity certificate) - electronic document used to prove the ownership of a public key
     * Client requests page. Server sends public key + cert. Client checks everything and continues keys exchange. 
-    * After exchange - everything is encrypted with symmetric key 
+    * After exchange - everything is encrypted with symmetric key
+* `Data mining` is a process of discovering patterns in large data sets
+* `Overengineered` - unnecessarily complex product
+* `Vendor lock-in` - dependency on a vendor for products and services, unable to use another vendor without substantial switching costs
 * 
     * 
     * 

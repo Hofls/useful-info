@@ -17,6 +17,7 @@
     * `heroku vs`
 * Something is not working, and there is no error message:
     * `debug kubernetes`
+    * Alternatives: `diagnostics` / `introspection` / `tracing`
 * Direct quote
     * `"apple is banana"`
 * Exclude word from search

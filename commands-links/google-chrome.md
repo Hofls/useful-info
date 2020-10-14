@@ -5,3 +5,4 @@
     * After installation, you have to manually set primary language
 * `Octotree` - github on steroids
 * `Hola Free VPN` - some website banned your entire country? no problem, you can still access it.
+* `JSON Formatter` - boosts json readability
