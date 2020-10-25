@@ -3,10 +3,7 @@
 * Simple explanation
     * `cloud computing ELI5`
 * Simple example
-    * `RabbitMQ Hello World`
-    * `RabbitMQ Getting Started`
-    * `RabbitMQ Foundations`
-    * `RabbitMQ 101`
+    * `RabbitMQ Hello World` or `Getting Started` / `Fundamentals` / `Core Concepts` / `101`
 * Opinion of the people
     * `site:reddit.com`
 * Bunch of related topics
@@ -16,8 +13,7 @@
 * Alternatives
     * `heroku vs`
 * Something is not working, and there is no error message:
-    * `debug kubernetes`
-    * Alternatives: `diagnostics` / `introspection` / `tracing`
+    * `debug kubernetes` or `diagnostics` / `introspection` / `tracing`
 * Direct quote
     * `"apple is banana"`
 * Exclude word from search
