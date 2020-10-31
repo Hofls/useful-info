@@ -1,7 +1,9 @@
 # Intellij Idea
 ## Plugins
 #### Java:
-* Lombok, TestMe, GenerateAllSetter 
+* Lombok - to teach IDEA about Lombok
+* TestMe - to generate unit tests
+* GenerateAllSetter - to generate calls to all setters of a class
 
 ## GUI Customization
 * Right click on tabs => `Configure editor tabs...` => 
