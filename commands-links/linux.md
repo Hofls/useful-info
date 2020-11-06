@@ -62,6 +62,10 @@
   * `tail -n 20000 services.log > temp.log`
 * Give all permissions to script `reload.sh`
   * `chmod 777 reload.sh`
+* Add a folder to uncompressed archive (.tar):
+  * `tar -cvf uncompressed.tar myfolder`
+* Extract everything from .tar archive:
+  * `tar -xvf uncompressed.tar`
 * If you are unable to delete some files/folders:
   * Kill process:
     * Find process that holds open files in folder "/var/lib/docker":
