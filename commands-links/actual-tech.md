@@ -20,6 +20,7 @@
     * `State of <topic>`, e.g. `State of devops`
     * `<topic> trends 2020`, e.g. `devops trends 2020`
     * `<topic> roadmap`, e.g. `web developer roadmap`
+    * `<topic> top` e.g. `javascript top libraries`
 * Freelance sites
 * Any job listings
     * ...

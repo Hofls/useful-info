@@ -29,6 +29,9 @@
     * Windows:
         * Automatically downloads and installs drivers
         * You can configure elements by right-clicking on them (date widget, taskbar, audio, etc)
+    * AWS:
+        * Each disabled option has a hint that explains why it is disabled
+        * To delete something - you have to type its name (for confirmation)
 * In-app search - allows searching inside application options, great navigation technique (IntelliJ IDEA => Find Action)
 * Sane defaults - couple clicks and everything is working out of the box
 * Simple installation process (minimum user involvement)

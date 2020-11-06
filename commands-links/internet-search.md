@@ -18,3 +18,5 @@
     * `"apple is banana"`
 * Exclude word from search
     * `hawking -stephen`
+* List of useful links
+    * `java awesome list`
