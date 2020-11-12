@@ -40,11 +40,13 @@
    ps aux | grep prctodth
    kill -9 832747
    ```
-* Ordered list of files/folders in current directory
-  * `ls -l`
 * Call `java` from CLI by its name alone, without full path:
-    * Copy java executable to `/usr/bin`
-    * Call `java -version`
+    * 1st way
+        * Copy java executable to `/usr/bin`
+        * Call `java -version`
+    * 2nd way
+        * `export JAVA_HOME=/opt/jdk-15.0.1`
+        * `export PATH=$JAVA_HOME/bin:$PATH`
 * Service manager
   * List all services `systemctl list-units --type=service`
   * Restart service apache2 `systemctl restart apache2`
@@ -66,6 +68,8 @@
   * `tar -cvf uncompressed.tar myfolder`
 * Extract everything from .tar archive:
   * `tar -xvf uncompressed.tar`
+* Ordered list of files/folders in current directory
+  * `ls -l`
 * If you are unable to delete some files/folders:
   * Kill process:
     * Find process that holds open files in folder "/var/lib/docker":
@@ -105,11 +109,17 @@
   * `traceroute google.com`
 * SSH, SCP
   * Commands moved to `devops` repository
+* Download file from internet
+  * `wget "https://apache-mirror.com/file.tar.gz"`
+* Send get request
+  * `curl https://example.com`
   
 #### Text processing
 * Replace every occurrence of `Sam` with `Mike` in `report.txt`
   * `sed 's/Sam/Mike/g' report.txt > report_new.txt`
 * `awk` is outdated, better use `python`
+* Edit text file
+  * `nano /etc/gitlab-runner/config.toml`
   
 #### Others
 * Install Docker
