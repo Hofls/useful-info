@@ -35,7 +35,8 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
 ### Tests
 * Unit tests and integration tests is a must. Mutation tests is a possibility
 * Everything should be tested! e.g. - auth, rest, db...
-* Should be possible to run specific test in isolation (Ctrl+Shift+F10)
+* Should be possible to run specific test in isolation (Ctrl+Shift+F10 in `IDEA`)
+* E2E tests (UI) (e.g. puppeteer/cypress/selenium)
 
 ### Code
 * At least two profiles:
