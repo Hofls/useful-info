@@ -17,7 +17,7 @@
 		* If you write code in outdated style - IDEA asks to rewrite it for you in modern style
     * Grafana. Readable error messages:
         * If config is incorrect (missing necessary parameters / wrong values etc)
-        * If external dependency is not installed - asks user to install it 
+        * If external dependency not installed - asks user to install it 
     * DBeaver:
         * Warning appears if you try to execute `DELETE` without `WHERE` clause
     * apache2:
@@ -32,6 +32,8 @@
     * AWS:
         * Each disabled option has a hint that explains why it is disabled
         * To delete something - you have to type its name (for confirmation)
+    * VLC media player:
+        * You stop watching video without reaching its end. Next time VLC asks if you want to continue watching.
 * In-app search - allows searching inside application options, great navigation technique (IntelliJ IDEA => Find Action)
 * Sane defaults - couple clicks and everything is working out of the box
 * Simple installation process (minimum user involvement)

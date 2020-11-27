@@ -59,6 +59,13 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
 * There is no common [vulnerabilities](https://github.com/Hofls/computer-security/tree/master/vulnerabilities-examples/frontend/src/vulnerability)
 * Authentication is working correctly
 
+### Culture
+* Everything should be reviewed by at least 1 person (from tech stack decisions, to architecture, to implementation)
+* Decisions should be made collectively
+* If something bad happens - identify root causes to make sure it won't repeat in the future (Retrospective)
+* Always move forward, adapt new technologies and ideas
+* Before investing heavily into something - build cheap prototype
+
 ### Outside of review scope, but if you have extra time:
 * Acessibility
 * Optimization
