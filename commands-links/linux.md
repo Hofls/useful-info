@@ -143,3 +143,10 @@
     --env-file ./environment.list \
   rest-sp-back:1.0` 
   ```
+
+## File system hierarchy
+* `etc` - configurations
+* `opt` - optional, 3rd party software
+* `tmp` - temporary files
+* `var` - variable data
+    * `/var/log` - logs
