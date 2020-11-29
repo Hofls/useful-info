@@ -13,9 +13,9 @@ There are 2 hard problems in computer science: cache invalidation, `naming thing
     * Formatter, Parser, Extractor, Service, Manager, Processor, Handler, Converter, Provider, Tracker
     * Mapper, Filler
 * Based on [OOP patterns](https://github.com/Hofls/design-patterns):
-    * `Behavioral` - 
-    * `Creational` - 
-    * `Structural` - 
+    * `Behavioral` - Chain, Command, Iterator, Mediator, Memento, Observer
+    * `Creational` - Factory, Builder, Pool, Singleton
+    * `Structural` - Adapter, Wrapper, Decorator, Proxy
 * `Builder` - construct complex objects step by step
 * `Utils` `Helper` - collection of static methods
 * `Controller` - rest/soap endpoints
@@ -33,5 +33,5 @@ There are 2 hard problems in computer science: cache invalidation, `naming thing
 * `Request` `Response` - rest/soap
 * `Metadata`
 * `Specification`
-* Options, Config
-
+* No need for introduction:
+    * Options, Config, Lite
