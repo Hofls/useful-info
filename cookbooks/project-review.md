@@ -45,13 +45,14 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
 * Hot-swap (code reloading) should be present
 * Linter and code formatter should be present
 * Code that is executed on the frontend should be minifed and obfuscated
-* All errors should be logged
+* All errors should be logged, possibly with user ID
 * Expected dependencies (or their alternatives): lombok, mapstruct, mockito, h2db, spring-boot-starter-test
 * Swagger (or alternative) is used to generate frontend code
 * Web interface is restful
 * Each complex method/class has comments (javadoc)
 * If something goes wrong - backend returns descriptive error messages
-* There is no old "// TODO" comments 
+* There is no old "// TODO" comments
+* Rest request examples for each endpoint (e.g. via swagger)
 
 ### Security
 * Database backup is done periodically
@@ -65,6 +66,7 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
 * If something bad happens - identify root causes to make sure it won't repeat in the future (Retrospective)
 * Always move forward, adapt new technologies and ideas
 * Before investing heavily into something - build cheap prototype
+* Bus factor of anything is more than 1 (easy way is to just write instructions in wiki)
 
 ### Outside of review scope, but if you have extra time:
 * Acessibility
