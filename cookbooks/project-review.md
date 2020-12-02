@@ -72,4 +72,4 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
 * Acessibility
 * Optimization
 * UX
-* Wiki
+* [Wiki](wiki.md)
