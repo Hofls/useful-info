@@ -6,7 +6,7 @@ List:
     * Element
 * Element
 
-[Jump to header](#Header-for-link)
+[Jump to header](#Jump-lands-you-here)
 
 [Link](https://google.com)
 
@@ -27,4 +27,4 @@ code {
 
 ![](https://octodex.github.com/images/yaktocat.png)
 
-### Header for link
+### Jump lands you here
