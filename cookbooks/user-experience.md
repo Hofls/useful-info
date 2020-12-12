@@ -8,8 +8,23 @@
 * `Signal–to–Noise Ratio` - Relevant information is “signal” irrelevant information is “noise”. A high signal–to–noise ratio is a key target of good UI
 
 ### Cookbook
-* If common problem occurred - notify user and propose a solution.
-	* Discord notices when there is no microphone available, shows popup that leads to microphone settings.
+* In-app search - allows searching inside application options, great navigation technique (IntelliJ IDEA => Find Action)
+* Sane defaults - couple clicks and everything is working out of the box
+* Simple installation process (minimum user involvement)
+* Instant Sign Up / Log In - via OAUTH, using social network account
+* Infinite-scroll - provides seamless experience when looking at endless content
+* Try to predict user actions and make them easier - e.g. in article with code blocks there is button to copy it
+* Use information visualization (charts/graphs/..) instead of showing a lot of numbers
+* Good setting up experience:
+    * Snyk.io:
+        * Asks what user wants to do (analyze open source code)
+        * Asks where code is located (github)
+        * Asks what snyk is allowed to do (with sane defaults)
+* Great usability examples:
+    * Amazon QuickSight:
+        * Allows asking questions in natural language. To build graph: `What is weekly sales in Paris vs London this year`
+	* Discord:
+	    * Notices when there is no microphone available, shows popup that leads to microphone settings.
 	* IntelliJ IDEA:
 		* Proposes auto-import of project dependencies
 		* Reminds to setup project SDK (with link to SDK settings)
@@ -34,15 +49,3 @@
         * To delete something - you have to type its name (for confirmation)
     * VLC media player:
         * You stop watching video without reaching its end. Next time VLC asks if you want to continue watching.
-* In-app search - allows searching inside application options, great navigation technique (IntelliJ IDEA => Find Action)
-* Sane defaults - couple clicks and everything is working out of the box
-* Simple installation process (minimum user involvement)
-* Instant Sign Up / Log In - via OAUTH, using social network account
-* Infinite-scroll - provides seamless experience when looking at endless content
-* Try to predict user actions and make them easier - e.g. in article with code blocks there is button to copy it
-* Use information visualization (charts/graphs/..) instead of showing a lot of numbers
-* Good setting up experience:
-    * Snyk.io:
-        * Asks what user wants to do (analyze open source code)
-        * Asks where code is located (github)
-        * Asks what snyk is allowed to do (with sane defaults)
