@@ -59,6 +59,7 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
 * Data flows over secure connection (https)
 * There is no common [vulnerabilities](https://github.com/Hofls/computer-security/tree/master/vulnerabilities-examples/frontend/src/vulnerability)
 * Authentication is working correctly
+* Software on the server should be updated regularly (to patch all known vulnerabilities)
 
 ### Culture
 * Everything should be reviewed by at least 1 person (from tech stack decisions, to architecture, to implementation)
