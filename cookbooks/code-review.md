@@ -17,4 +17,9 @@ Is implementation details up to standard?
     * No manual mappings (e.g. moving data from entity to dto). Better use `mapstruct` or alternatives
     * No manual toString/Equals/Hashcode/Getters/Setters. Better use `lombok` or alternatives
 * Wheel is not being reinvented. Use existing solutions
-
+* Variable name should be equal to class name
+    * `private EArea location;` looks like bug
+    * `private EArea area;` OK
+* One thing - one name (no synonyms):
+    * `branch.setAreaId(locationId)` looks like bug
+    * `branch.setAreaId(areaId)` OK
