@@ -16,6 +16,7 @@
     * https://stackshare.io/stacks
 * Technology macro trends
     * https://www.thoughtworks.com/radar
+    * https://www.infoq.com/infoq-trends-report/
 * Search for: 
     * `State of <topic>`, e.g. `State of devops`
     * `<topic> trends 2020`, e.g. `devops trends 2020`
