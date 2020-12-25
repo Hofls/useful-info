@@ -95,7 +95,8 @@
 * `Data mining` is a process of discovering patterns in large data sets
 * `Overengineered` - unnecessarily complex product
 * `Vendor lock-in` - dependency on a vendor for products and services, unable to use another vendor without substantial switching costs
-* `Blue-green deployment` - two prod environments, release updates only one (if something goes wrong - you can easily rollback to another one) 
+* `Blue-green deployment` - two prod environments, release updates only one (if something goes wrong - you can easily rollback to another one)
+* `Profiling` - runtime analysis of performance and resource usage
 * 
     * 
     * 
