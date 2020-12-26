@@ -55,6 +55,7 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
 * Rest request examples for each endpoint (e.g. via swagger)
 
 ### Security
+* Automatic vulnerability scanning
 * Database backup is done periodically
 * Data flows over secure connection (https)
 * There is no common [vulnerabilities](https://github.com/Hofls/computer-security/tree/master/vulnerabilities-examples/frontend/src/vulnerability)
