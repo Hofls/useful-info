@@ -30,6 +30,7 @@
     * `Game theory` - study of mathematical models of strategic interaction among rational decision-makers
     * `Opportunity cost` - missed benefits when choosing one alternative over another
     * `Economy of scale` - cost per unit of output decreasing with increasing scale
+    * `OSINT` - open-source intelligence (collecting, analyzing publicly available data)
 
 * Problem-solving strategies:
     * `Abstraction`: solving the problem in a model of the system before applying it to the real system

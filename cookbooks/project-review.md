@@ -71,6 +71,7 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
 * Bus factor of anything is more than 1 (easy way is to just write instructions in wiki)
 
 ### Outside of review scope, but if you have extra time:
+* Google Lighthouse - measure quality of web pages
 * Acessibility
 * Optimization
 * UX
