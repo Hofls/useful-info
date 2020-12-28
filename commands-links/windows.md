@@ -70,5 +70,8 @@
         * To create second view - right click on tab -> `move to other view`
 * To find and delete folders that take too much space:
     * `TreeSize Free` (run as Admin)
+* To run virtual machines:
+    * `VMware`, `VirtualBox`
+        * Possibly getting obsolete in new windows versions
 * No need for introduction:
     `IntelliJ IDEA`, `Google chrome`, `7zip`, `Telegram`, `uTorrent`, `OpenJDK`
