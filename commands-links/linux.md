@@ -113,6 +113,8 @@
   * `wget "https://apache-mirror.com/file.tar.gz"`
 * Send get request
   * `curl https://example.com`
+* Get your IP address (useful on VMs)
+  * `ip addr | grep inet`
   
 #### Text processing
 * Replace every occurrence of `Sam` with `Mike` in `report.txt`
