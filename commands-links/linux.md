@@ -42,7 +42,7 @@
    ```
 * Call `java` from CLI by its name alone, without full path:
     * 1st way
-        * Copy java executable to `/usr/bin`
+        * Create symlink in `/usr/bin`
         * Call `java -version`
     * 2nd way
         * `export JAVA_HOME=/opt/jdk-15.0.1`
@@ -70,6 +70,8 @@
   * `tar -xvf uncompressed.tar`
 * Ordered list of files/folders in current directory
   * `ls -l`
+* Create symlink
+  * `ln -s /usr/lib/jvm/jre7/bin/java /usr/bin/java`
 * If you are unable to delete some files/folders:
   * Kill process:
     * Find process that holds open files in folder "/var/lib/docker":
