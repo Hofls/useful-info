@@ -48,4 +48,6 @@
         * Each disabled option has a hint that explains why it is disabled
         * To delete something - you have to type its name (for confirmation)
     * VLC media player:
-        * You stop watching video without reaching its end. Next time VLC asks if you want to continue watching.
+        * You stop watching video without reaching its end. Next time VLC asks if you want to continue watching
+    * Google chrome:
+        * Alerts if you use leaked password 
