@@ -37,6 +37,8 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
 * Everything should be tested! e.g. - auth, rest, db...
 * Should be possible to run specific test in isolation (Ctrl+Shift+F10 in `IDEA`)
 * E2E tests (UI) (e.g. puppeteer/cypress/selenium)
+* Load tests (e.g. sending bunch of requests at same time)
+* Stress tests (e.g. turning off a random microservice)
 
 ### Code
 * At least two profiles:
