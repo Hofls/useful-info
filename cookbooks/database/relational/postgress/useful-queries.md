@@ -14,7 +14,7 @@ SELECT pg_terminate_backend(pid);
 ```
 * All users:
 ```
-select * from pg_user;
+SELECT * FROM pg_user;
 ```
 * Table index usage
 ```
@@ -32,4 +32,12 @@ AND idx_scan = 0
 AND idx_tup_read = 0
 AND idx_tup_fetch = 0
 ORDER BY pg_relation_size(indexrelname::regclass) DESC;
+```
+* Settings:
+```
+SELECT * FROM pg_settings;
+```
+* Active connections:
+```
+SELECT * FROM pg_stat_activity;
 ```

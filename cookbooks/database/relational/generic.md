@@ -12,3 +12,6 @@
 * `Distributed DB`:
     * `Horizontal partitioning` - different rows in different tables (e.g. customers_europe, customers_africa)
     * `Vertical partitioning` - different columns in different tables (e.g. infrequently used data, very wide columns)
+* `Connections`
+    * 1 connection = 1 operation at the same time
+    * Connections are expensive to create. Solution - `connection pool`. Create n connections once, use them forever

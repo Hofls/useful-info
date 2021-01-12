@@ -8,7 +8,7 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
 * System architecture is good, diagram is present in the project
 * High level architecture style should suit the project needs (microservices/monolith etc)
 * Folders structure makes sense
-* ? Architecture is enforced via ArchUnit
+* Architecture is enforced automatically (e.g. via ArchUnit)
 
 ### Devops
 * Continuous delivery is automated
