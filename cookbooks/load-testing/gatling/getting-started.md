@@ -12,7 +12,7 @@
 * Run `Google Chrome` 
     * `Proxy Helper` -> Activate `HTTP PROXY` 
     * Go to http://computer-database.gatling.io/computers
-    * Browse around
+    * Browse around, click buttons
 * `Gatling recorder` -> `Stop & Save`
 * Recorded test should appear in folder `\Gatling\user-files\simulations`
 
