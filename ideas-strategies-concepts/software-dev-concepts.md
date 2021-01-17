@@ -97,9 +97,19 @@
 * `Vendor lock-in` - dependency on a vendor for products and services, unable to use another vendor without substantial switching costs
 * `Blue-green deployment` - two prod environments, release updates only one (if something goes wrong - you can easily rollback to another one)
 * `Profiling` - runtime analysis of performance and resource usage
-* 
-    * 
-    * 
+* `Twelve factor app` - methodology for building SAAS
+    * `Codebase` - one codebase, many deployments (dev/stage/prod)
+    * `Dependencies` - all dependencies should be explicit
+    * `Config` - store config in the environment
+    * `Backing services` - treat them (e.g. DB, MQ, Cache) as attached resources (URL in config)
+    * `Build, release, run` - must have pipeline stages
+    * `Processes` - apps should be stateless, with state stored in backing service
+    * `Port binding` - services should make themselves available to other services by specified ports
+    * `Concurrency` - scale horizontally (by launching multiple instances of an app)
+    * `Disposability` - fast startup and shutdown
+    * `Dev/Prod parity` - keep environments as similar as possible
+    * `Logs` - write all logs to stdout (terminal)
+    * `Admin Processes` - any admin/maintenance tasks should a part of the application
 * 
     * 
     * 

@@ -60,6 +60,7 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
 * Automatic vulnerability scanning
 * Database backup is done periodically
 * Data flows over secure connection (https)
+    * https://letsencrypt.org/
 * There is no common [vulnerabilities](https://github.com/Hofls/computer-security/tree/master/vulnerabilities-examples/frontend/src/vulnerability)
 * Authentication is working correctly
 * Software on the server should be updated regularly (to patch all known vulnerabilities)
