@@ -1,10 +1,7 @@
 # Project review
 Want to figure out what to improve in the project? Here is checklist. Technologies are specific to java ecosystem, but ideas are universal.
 
-### Smoke test
-* Just go around each folder, look at files randomly, see if you notice anything crazy
-
-### Architecutre
+### Architecture
 * System architecture is good, diagram is present in the project
 * High level architecture style should suit the project needs (microservices/monolith etc)
 * Folders structure makes sense
@@ -45,7 +42,8 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
     * Run locally - fast, without plugins/tests 
     * Build - slow, with all the plugins and tests.
 * Hot-swap (code reloading) should be present
-* Linter and code formatter should be present
+* Linter and code formatter
+* Static code analyzer
 * Code that is executed on the frontend should be minifed and obfuscated
 * All errors should be logged, possibly with user ID
 * Expected dependencies (or their alternatives): lombok, mapstruct, mockito, h2db, spring-boot-starter-test
@@ -73,9 +71,10 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
 * Before investing heavily into something - build cheap prototype
 * Bus factor of anything is more than 1 (easy way is to just write instructions in wiki)
 
-### Outside of review scope, but if you have extra time:
-* Google Lighthouse - measure quality of web pages
-* Acessibility
-* Optimization
-* UX
+### Etc:
+* [Optimization](optimization.md)
+* [UX](user-experience.md)
+* [SEO](seo.md)
 * [Wiki](wiki.md)
+* Acessibility
+* Google Lighthouse - measure quality of web pages

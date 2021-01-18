@@ -16,4 +16,4 @@
 * `Meditation` - process of focusing on an object (e.g. breath) to achieve a mentally clear and stable state
 * `Flow` - complete absorption in activity, resulting in transformation of subjective sense of time
     * Challenge of the activity should match skill level
-* 
+* `Kaizen` - continuously improve all functions and involve all employees
