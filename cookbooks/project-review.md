@@ -16,13 +16,21 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
 * Endpoint with metrics (e.g. micrometer-actuator) for monitoring
 * Monitoring is present, with automatic alerts if something goes wrong
 * There is at least three different environments - dev, test, production
-* Git branching schema makes sense
-* Gitlab is [configured properly](../commands-links/gitlab.md)
 * There is no stale branches
 * Logs are accessible via `graylog` or alternatives
 * There is no passwords/tokens hardcoded in the project (those should be stored as environment variables)
-* Make sure that request is merged only after review from another person
+
 * Project runs inside of a container (docker)
+
+### Git
+* Git branching schema makes sense
+* Gitlab is [configured properly](../commands-links/gitlab.md)
+* Make sure that request is merged only after review from another person
+
+### Code review
+* Dont mix big refactoring with functional changes. Reasons:
+    * Refactoring hides functional changes (on review, later in bug search)
+    * Impossible to revert only functional changes (or only refactoring), you have to revert both
 
 ### Database
 * Migrations are done via liquibase/flyway
