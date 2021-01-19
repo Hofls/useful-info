@@ -5,40 +5,40 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
 * System architecture is good, diagram is present in the project
 * High level architecture style should suit the project needs (microservices/monolith etc)
 * Folders structure makes sense
-* Architecture is enforced automatically (e.g. via ArchUnit)
+* Architecture enforced automatically (e.g. via ArchUnit)
 
 ### Devops
-* Continuous delivery is automated
-* Notification is sent in dev chat whenever merge request is open
-* Each commit should have link to task (and check for the link is automated)
+* Continuous delivery automated
+* Notification sent in dev chat whenever merge request is open
+* Each commit should have a link to task (and check for the link automated)
 * All related configs is present in the project (nginx, apache2, gitlab-ci, docker, kubernetes..)
-* There is README.md with information on how to install/build/run project
+* There is a README.md with information on how to install/build/run project
 * Endpoint with metrics (e.g. micrometer-actuator) for monitoring
 * Monitoring is present, with automatic alerts if something goes wrong
 * There is at least three different environments - dev, test, production
 * There is no stale branches
 * Logs are accessible via `graylog` or alternatives
-* There is no passwords/tokens hardcoded in the project (those should be stored as environment variables)
+* No passwords/tokens hardcoded in the project (those should be stored as environment variables)
 
 * Project runs inside of a container (docker)
 
 ### Git
 * Git branching schema makes sense
 * Gitlab is [configured properly](../commands-links/gitlab.md)
-* Make sure that request is merged only after review from another person
+* Request merged only after review from another person
 
 ### Code review
-* Dont mix big refactoring with functional changes. Reasons:
+* Don't mix big refactoring with functional changes. Reasons:
     * Refactoring hides functional changes (on review, later in bug search)
     * Impossible to revert only functional changes (or only refactoring), you have to revert both
 
 ### Database
 * Migrations are done via liquibase/flyway
 * Database schema makes sense
-* There is indexes/validations
+* There are indexes/validations
 
 ### Tests
-* Unit tests and integration tests is a must. Mutation tests is a possibility
+* Unit tests and integration tests is a must. Mutation tests is a possibility.
 * Everything should be tested! e.g. - auth, rest, db...
 * Should be possible to run specific test in isolation (Ctrl+Shift+F10 in `IDEA`)
 * E2E tests (UI) (e.g. puppeteer/cypress/selenium)
@@ -77,12 +77,12 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
 * If something bad happens - identify root causes to make sure it won't repeat in the future (Retrospective)
 * Always move forward, adapt new technologies and ideas
 * Before investing heavily into something - build cheap prototype
-* Bus factor of anything is more than 1 (easy way is to just write instructions in wiki)
+* Bus factor of anything is more than 1 (easy way is to just write instructions in a wiki)
 
 ### Etc:
 * [Optimization](optimization.md)
 * [UX](user-experience.md)
 * [SEO](seo.md)
 * [Wiki](wiki.md)
-* Acessibility
+* Accessibility
 * Google Lighthouse - measure quality of web pages
