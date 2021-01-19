@@ -1,5 +1,5 @@
 # Windows
-## Commands
+##### Commands
 * Find `java.exe` in environment variables
   * `for %i in (java.exe) do @echo.   %~$PATH:i`
 * Set environment variable
@@ -31,12 +31,12 @@
   * In file `C:\Windows\System32\drivers\etc` insert `231.23.143.25 camel.keras.com`
 
 ## Package managers
-### Chocolatey
+##### Chocolatey
 * Install `Node JS`
     * `choco install nodejs`
 * Uninstall `Node JS`
     * `choco uninstall nodejs`
-### WinGet
+##### WinGet
 * todo
 
 ## Windows installation:
@@ -44,6 +44,18 @@
 * Upload it to flash drive, using `rufus`
 * Restart PC, go to BIOS (by spamming `DEL`/`F8`/etc)
 * Choose to boot from flash drive, save and exit
+
+## Virtual environment / Sandbox
+##### Windows sandbox
+* Installation:
+    * `Task Manager` -> `Performance` -> `Virtualization` should be enabled
+    * `Windows Features` -> `Windows Sandbox` -> Restart PC
+##### Windows Subsystem for Linux
+* todo
+##### VMware
+* Runs any `.iso` / `.vmdk` images!
+* Highly recommended installing `VMware tools` on guest OS
+    * Fixes screen resolution, provides ability to share clipboard (text/files)
 
 ## Software
 * `Anydesk` to connect to remote desktop
