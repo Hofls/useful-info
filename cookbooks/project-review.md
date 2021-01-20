@@ -48,15 +48,17 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
 ### Code
 * At least two profiles:
     * Run locally - fast, without plugins/tests 
-    * Build - slow, with all the plugins and tests.
+    * Build - slow, with all the plugins and tests
 * Hot-swap (code reloading) should be present
 * Linter and code formatter
 * Static code analyzer
+* Unique and searchable names for global parameters (cache names, profiles, environment-variables...)
+    * Otherwise its hard to find their usage in codebase 
 * Code that is executed on the frontend should be minifed and obfuscated
 * All errors should be logged, possibly with user ID
 * Expected dependencies (or their alternatives): lombok, mapstruct, mockito, h2db, spring-boot-starter-test
 * Swagger (or alternative) is used to generate frontend code
-* Web interface is restful
+* Web interface is restful (or graphql)
 * Each complex method/class has comments (javadoc)
 * If something goes wrong - backend returns descriptive error messages
 * There is no old "// TODO" comments
