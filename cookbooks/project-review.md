@@ -28,9 +28,7 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
 * Request merged only after review from another person
 
 ### Code review
-* Don't mix big refactoring with functional changes. Reasons:
-    * Refactoring hides functional changes (on review, later in bug search)
-    * Impossible to revert only functional changes (or only refactoring), you have to revert both
+* Moved to [code-review.md](code-review.md)
 
 ### Database
 * Migrations are done via liquibase/flyway
