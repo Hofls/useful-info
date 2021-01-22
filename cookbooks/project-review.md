@@ -54,7 +54,7 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
     * Otherwise its hard to find their usage in codebase 
 * Code that is executed on the frontend should be minifed and obfuscated
 * All errors should be logged, possibly with user ID
-* Expected dependencies (or their alternatives): lombok, mapstruct, mockito, h2db, spring-boot-starter-test
+* Expected dependencies (or their alternatives): lombok, mapstruct, java-verbal-expressions, mockito, h2db, spring-boot-starter-test
 * Swagger (or alternative) is used to generate frontend code
 * Web interface is restful (or graphql)
 * Each complex method/class has comments (javadoc)

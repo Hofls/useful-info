@@ -13,6 +13,7 @@
     * [Accessibility](accessibility.md)
 * High quality content
     * [Search Quality Raters](https://guidelines.raterhub.com/searchqualityevaluatorguidelines.pdf)
+    * Follow trends
 * Google-first (Most popular search engine)
 * Analytics
     * [Google search console](https://search.google.com/search-console/about)

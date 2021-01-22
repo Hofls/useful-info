@@ -29,7 +29,7 @@
 * `Minification`
     * Removes all unnecessary characters from source code to reduce file size (for storage/transfer)
 * `Lazy loading` (on-demand)
-    * Make sure that all loaded data is needed for computations (nothing excessive)
+    * Make sure all loaded data needed for computations (nothing excessive)
     * Only load data that is visible to the user
 * `Prefetching` (eager)
     * If you can predict that data will be needed soon - fetch it in advance 
