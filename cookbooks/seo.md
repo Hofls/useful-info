@@ -21,13 +21,19 @@
 
 #### Details
 * Security (https)
-* Meta Titles And Descriptions (what a page is about)
+* Titles And Descriptions (what a page is about)
+    * `<meta name="description"`
+    * `<head><title>`
 * Clear Structure Markup (HTML)
 * Semantic markup
     * [Rich Result Tester](https://search.google.com/test/rich-results)
 * Sitemap (list of urls for web-crawler)
 * Descriptive URLs
-    * site.com/book-reviews/harry-potter/
+    * `site.com/book-reviews/harry-potter/`
 * Assets Optimization (minification, compression)
 * External Links (to reputable sites with good SEO)
 * Backlinks (from reputable sites with good SEO)
+* Add `nofollow` to all user-created links
+
+#### Advanced
+* https://developers.google.com/search/docs/advanced/guidelines/get-started
