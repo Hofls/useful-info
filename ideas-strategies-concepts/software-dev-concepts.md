@@ -110,6 +110,7 @@
     * `Dev/Prod parity` - keep environments as similar as possible
     * `Logs` - write all logs to stdout (terminal)
     * `Admin Processes` - any admin/maintenance tasks should a part of the application
+* `MVP` - minimum viable product
 * 
     * 
     * 
