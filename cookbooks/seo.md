@@ -37,3 +37,4 @@
 
 #### Advanced
 * https://developers.google.com/search/docs/advanced/guidelines/get-started
+* https://static.googleusercontent.com/media/guidelines.raterhub.com/en//searchqualityevaluatorguidelines.pdf
