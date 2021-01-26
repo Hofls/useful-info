@@ -41,3 +41,10 @@ SELECT * FROM pg_settings;
 ```
 SELECT * FROM pg_stat_activity;
 ```
+* Active connections (grouped):
+```
+SELECT client_hostname, count(*) 
+FROM pg_stat_activity
+group by client_hostname
+order by client_hostname;
+```
