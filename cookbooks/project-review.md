@@ -40,8 +40,9 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
 * Everything should be tested! e.g. - auth, rest, db...
 * Should be possible to run specific test in isolation (Ctrl+Shift+F10 in `IDEA`)
 * E2E tests (UI) (e.g. puppeteer/cypress/selenium)
-* Load tests (e.g. sending bunch of requests at same time)
+* [Load tests](load-testing/load-testing.md) (e.g. sending bunch of requests at same time)
 * Stress tests (e.g. turning off a random microservice)
+* A/B testing
 
 ### Code
 * At least two profiles:
@@ -51,8 +52,8 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
 * Linter and code formatter
 * Static code analyzer
 * Unique and searchable names for global parameters (cache names, profiles, environment-variables...)
-    * Otherwise its hard to find their usage in codebase 
-* Code that is executed on the frontend should be minifed and obfuscated
+    * Otherwise, it's hard to find their usage in codebase 
+* Code that is executed on the frontend should be minified and obfuscated
 * All errors should be logged, possibly with user ID
 * Expected dependencies (or their alternatives): lombok, mapstruct, java-verbal-expressions, mockito, h2db, spring-boot-starter-test
 * Swagger (or alternative) is used to generate frontend code
@@ -84,5 +85,4 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
 * [UX](user-experience.md)
 * [SEO](seo.md)
 * [Wiki](wiki.md)
-* Accessibility
-* Google Lighthouse - measure quality of web pages
+* [Accessibility](accessibility.md)
