@@ -19,8 +19,7 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
 * There is no stale branches
 * Logs are accessible via `graylog` or alternatives
 * No passwords/tokens hardcoded in the project (those should be stored as environment variables)
-
-* Project runs inside of a container (docker)
+* Project runs inside of a container (docker), possibly in kubernetes
 
 ### Git
 * Git branching schema makes sense
