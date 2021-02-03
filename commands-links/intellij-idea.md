@@ -6,10 +6,12 @@
 * GenerateAllSetter - to generate calls to all setters of a class
 * SonarLint - static code analysis
 
-## GUI Customization
+## Customization
 * Right click on tabs => `Configure editor tabs...` => 
     * `Tab placement: Right`
     * `Tab limit: 30`
+* To turn off imports auto-ordering (e.g. when project has auto-formatter)
+    * `File -> Settings -> Editor -> General -> Auto Import -> Optimize imports on the fly`
     
 ## Features
 * Execute any code during debug
