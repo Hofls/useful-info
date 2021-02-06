@@ -52,7 +52,7 @@
     * `Windows Features` -> `Windows Sandbox` -> Restart PC
 ##### Windows Subsystem for Linux
 * todo
-##### VMware
+##### VMware Workstation Player
 * Runs any `.iso` / `.vmdk` images!
 * Highly recommended installing `VMware tools` on guest OS
     * Fixes screen resolution, provides ability to share clipboard (text/files)
