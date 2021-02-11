@@ -27,6 +27,9 @@
 * If unable to import `gradle` project:
     * Install `gradle` locally
     * Use it: `File` => `Settings` => `Build, Execution` => `Build Tools` => `Gradle` => `Use Gradle from:`
+  
+## Update
+* Use `JetBrains Toolbox`
     
 ## Hotkeys
 * Go to class/method implementation
