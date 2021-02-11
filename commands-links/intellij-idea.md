@@ -1,4 +1,8 @@
 # Intellij Idea
+## Community vs Ultimate
+* Community is free, Ultimate is paid
+* 
+
 ## Plugins
 #### Java:
 * Lombok - to teach IDEA about Lombok
