@@ -115,6 +115,8 @@
   * `wget "https://apache-mirror.com/file.tar.gz"`
 * Send get request
   * `curl https://example.com`
+* Send anything to IP:PORT
+  * `telnet 84.154.131.23 9200`
 * Get your IP address (useful on VMs)
   * `ip addr | grep inet`
   
