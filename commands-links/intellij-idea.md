@@ -1,7 +1,9 @@
 # Intellij Idea
 ## Community vs Ultimate
 * Community is free, Ultimate is paid
-* 
+* Community lacks Spring Boot integration:
+  * All properties in `application.yaml` marked as `unused`. No autocomplete.
+  * All beans and rest endpoints marked as `unused`
 
 ## Plugins
 #### Java:
