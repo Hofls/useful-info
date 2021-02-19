@@ -51,6 +51,8 @@
     * Each disabled option has a hint that explains why it is disabled
     * To delete something - you have to type its name (for confirmation)
 * VLC media player:
-    * You stop watching video without reaching its end. Next time VLC asks if you want to continue watching
+    * If you stop watching video without reaching its end, then next time VLC asks if you want to continue watching
 * Google chrome:
     * Alerts if you use leaked password 
+* Swagger UI:
+    * Increases discoverability by providing list of available endpoints. 1 click to send example request
