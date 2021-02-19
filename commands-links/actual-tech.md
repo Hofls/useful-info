@@ -1,9 +1,10 @@
 # Resources to keep up with ever-changing technologies:
+
+#### General
 * Reddit
     * https://www.reddit.com/r/programming/top/?t=week
     * https://www.reddit.com/r/webdev/top/?t=week
     * https://www.reddit.com/r/devops/top/?t=week
-    * https://www.reddit.com/r/java/top/?t=week
 * Hacker news
     * https://news.ycombinator.com/best
 * Github
@@ -29,3 +30,9 @@
 * Most used libraries
     * https://mvnrepository.com/popular?p=1
 * Look at `connect-web-apps.md` (ifttt, zapier...)
+* Look at `dev-platforms-integration` in `devops` repository
+
+#### Java:
+* https://www.jhipster.tech/
+* https://www.reddit.com/r/java/top/?t=week
+* 
