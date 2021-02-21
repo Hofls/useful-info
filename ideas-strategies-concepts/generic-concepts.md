@@ -1,6 +1,6 @@
 # List of ideas/strategies/concepts easily applicable in practice:
 
-* 
+* Generic:
     * `Back-of-the-envelope calculation`- rough calculation with simplified assumptions
     * `Fermi estimations` - good approximate calculations with little or no actual data (by making justified guesses)
     * `Proof of Concept` - small test that shows if theoretical idea can be achieved in reality
@@ -8,11 +8,12 @@
     * `Tit for tat` -  strategy in which agent's first move is cooperation, while all other moves should replicate opponent's previous action
     * `Backup` - copy of data stored elsewhere so that it may be used to restore the original after a data loss event
     * `Prototype` - early sample, built to test a concept or process
+    * `Diversification` - don't store all eggs in one basket 
     * `Design thinking` - research users => state users needs/problems => generate ideas => create solution prototypes => test solutions
     * `Minimum viable product` - version of a product with just enough features to satisfy early customers
     * `Lean methodology` - continuous cycle of improvement (identify problems => plan solutions => implement changes => review results)
     * `Occam's Razor` - entities should not be multiplied unnecessarily (simplicity - good, complexity - bad)
-    * `Pareto Principle` - most things are not distributed evenly (20% of the input creates 80% of the result)
+    * `Pareto Principle` - most things not distributed evenly (20% of the input creates 80% of the result)
     * `Diminishing returns` -  the more you increase one single factor, the less results it brings
     * `Principle of least effort` - to accomplish a task - the path with the least amount of effort involved will most likely be chosen
     * `Trial and error` - repeated, varied attempts which are continued until success
