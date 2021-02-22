@@ -56,3 +56,5 @@
     * Alerts if you use leaked password 
 * Swagger UI:
     * Increases discoverability by providing list of available endpoints. 1 click to send example request
+* Yandex Cloud:
+    * When spinning new VM - all the fields filled with sane defaults. User is one click away from running it.
