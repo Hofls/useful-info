@@ -17,6 +17,7 @@
   * Brief description, with examples: `tldr ls`
 * Quickly find out what `-t` parameter means in `ssh-keygen` command:
   * `man ssh-keygen | grep -- -t`
+  * `Double dash --` signifies the end of command options, after which only positional parameters accepted
 * Autocomplete:
   * `echo "hey" > example.text`
   * `cat ex`
