@@ -4,6 +4,8 @@
 #### CLI Usage
 * Show recent commands
   * `history`
+* Clear CLI
+  * `clear`
 * Current user and group
   * `id`
 * Became almighty root user
