@@ -129,6 +129,7 @@
 * `awk` is outdated, better use `python`
 * Edit text file
   * `nano /etc/gitlab-runner/config.toml`
+  * `vim /etc/gitlab-runner/config.toml`
   
 #### Others
 * Install Docker
