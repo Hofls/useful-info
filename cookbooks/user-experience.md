@@ -53,8 +53,11 @@
 * VLC media player:
     * If you stop watching video without reaching its end, then next time VLC asks if you want to continue watching
 * Google chrome:
-    * Alerts if you use leaked password 
+    * Alerts if you use leaked password
+    * Updates automatically 
 * Swagger UI:
     * Increases discoverability by providing list of available endpoints. 1 click to send example request
 * Yandex Cloud:
     * When spinning new VM - all the fields filled with sane defaults. User is one click away from running it.
+* npm:
+    * Looks for a new version after each run. If found - `New major version of npm available! "Run npm install -g npm to update!"`
