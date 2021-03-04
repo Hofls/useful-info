@@ -12,4 +12,8 @@ Common errors checklist:
 * Turn off application in most inconvenient moment
 * Simulate downtime of a service your app relies on (there should be sane error messages, app should not crash)
 * Try to work with system from perspective of user with disabilities
+* Click same button multiple times, to make sure it's blocked after first click
+* Use keyboard navigation (Tab, Enter)
+    * E.g. click button to save form, then hold enter
+    * Use tab to navigate to invisible elements/buttons, try to fill/press them
 * 
