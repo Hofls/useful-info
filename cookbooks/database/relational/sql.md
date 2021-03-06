@@ -8,7 +8,7 @@
         SELECT * FROM contact
         WHERE COALESCE(home_phone, '') <> COALESCE(mobile_phone, '')
     ```
-* Update/Insert based on bunch of selects
+* Update/Insert based on a bunch of selects
     ```
     MERGE INTO unique_trade_object uto
       USING (
@@ -42,5 +42,14 @@
     LEFT JOIN verifications ON verifications.id = specials.ver_id
     LEFT JOIN cadnumbers ON cadnumbers.id = verifications.cad_id
     ```
-
-
+* WINDOW functions:
+    * TLDR: same as GROUP BY, but without reducing number of rows
+    * [GROUP BY vs PARTITION BY (window)](https://stackoverflow.com/questions/2404565/sql-server-difference-between-partition-by-and-group-by)
+    * Example:
+    ```
+    SELECT
+        COUNT(*) FILTER(WHERE patient.age >= 25)
+            OVER patient_window AS adults_count
+    FROM patient
+    WINDOW patient_window AS (PARTITION BY patient.area_id);
+    ```
