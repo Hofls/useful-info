@@ -1,1 +1,1 @@
-Moved into devops repository
+Moved into its own repository
