@@ -37,3 +37,15 @@
      * EPS growth
      * P/E Ratio < 30
      * P/S Ratio < 10
+
+##### Promising ETFS
+> To find specific stock - search "${ETF_NAME} holdings"
+* https://ark-invest.com/
+* iShares:
+    * Exponential Technologies ETF
+    * Robotics and Artificial Intelligence Multisector ETF
+    * Cybersecurity and Tech ETF
+* BlackRock Future Tech ETF
+* Vanguard Information Technology ETF
+* ROBO Global Artificial Intelligence ETF
+
