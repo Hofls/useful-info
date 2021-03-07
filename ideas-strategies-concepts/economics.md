@@ -15,11 +15,20 @@
 
 ### Investing
 * `Diversification` - variety of investments (different countries, sectors, currency...)
+    * Always have funds to buy shares during market crash
 * Investments should be long term (at least 5 years)
 * Indicators:
-    * 
-    * 
-    * 
+    * `Market cap` - Value of all shares (price * count)
+    * `Ebitda` - Earnings Before Interest, Taxes, Depreciation and Amortization
+        * `Ebitda * (10 or 20 years)` should equal to `Market Cap` (EV/EBITDA multiple)
+    * `P/E` - (share Price) to (company Earnings per share) ratio
+        * Should be `< 40`
+        * A lot of growing companies have no earnings, so `P/E` makes no sense
+    * `P/S` - (shares Price) to (company Sales) ratio 
+        * Should be `< 20`
+    * `EPS` - (company Earnings) Per Share
+        * Should be `> 10%` per year
+    * `ROE` - Return on Equity
 
 ##### Promising stocks
 * You should expect that company in the future will be at better position than it is now
@@ -30,13 +39,12 @@
 * How hard is it for competition to offer a similar product? The harder it is - the better.
     * Creating culinary site is easy, GPU production is hard.
 * Stock related to next big thing (e.g. ai, ev, green energy, space, robots...)
+* Finally, look at Indicators (Ebitda, P/S, Debt/Equity...)
 * Indicators:
+     * ROE > 20%
+     * ROA > 10%
+     * ROI > 15%
      * Debt/Equity < 0.7 (70%)
-     * ROE > 8%
-     * ROA > 6%
-     * EPS growth
-     * P/E Ratio < 30
-     * P/S Ratio < 10
 
 ##### Promising ETFS
 > To find specific stock - search "${ETF_NAME} holdings"
