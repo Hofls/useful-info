@@ -29,6 +29,13 @@
     * `EPS` - (company Earnings) Per Share
         * Should be `> 10%` per year
     * `ROE` - Return on Equity
+        * Should be `> 20%`
+    * `ROA` - Return on Assets
+        * Should be `> 10%`
+    * `ROI` - Return on Investment
+        * Should be `> 15%`
+    * `D/E` - Debt to Equity ratio
+        * Should be `< 0.7 (70%)`
 
 ##### Promising stocks
 * You should expect that company in the future will be at better position than it is now
@@ -40,11 +47,6 @@
     * Creating culinary site is easy, GPU production is hard.
 * Stock related to next big thing (e.g. ai, ev, green energy, space, robots...)
 * Finally, look at Indicators (Ebitda, P/S, Debt/Equity...)
-* Indicators:
-     * ROE > 20%
-     * ROA > 10%
-     * ROI > 15%
-     * Debt/Equity < 0.7 (70%)
 
 ##### Promising ETFS
 > To find specific stock - search "${ETF_NAME} holdings"
@@ -53,6 +55,7 @@
     * Exponential Technologies ETF
     * Robotics and Artificial Intelligence Multisector ETF
     * Cybersecurity and Tech ETF
+    * Global Clean Energy ETF
 * BlackRock Future Tech ETF
 * Vanguard Information Technology ETF
 * ROBO Global Artificial Intelligence ETF
