@@ -61,3 +61,5 @@
     * When spinning new VM - all the fields filled with sane defaults. User is one click away from running it.
 * npm:
     * Looks for a new version after each run. If found - `New major version of npm available! "Run npm install -g npm to update!"`
+* GitLab:
+    * If no runners available - shows how to configure them (link to guide)
