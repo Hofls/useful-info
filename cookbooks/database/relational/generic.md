@@ -1,6 +1,7 @@
 * `Decision influencing factors`
     * Simplicity, Performance, Ease of writing/reading SQL queries
-* `3rd normal form` is a good default
+* `Primary key` - person.id
+* `Foreign Key` - person.university_id
 * `Names` should be singular, lowercase, snake case
     * user, extra_coupon
 * `Identifier column name` = table name + id
