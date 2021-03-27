@@ -62,6 +62,15 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
 * There is no old "// TODO" comments
 * Rest request examples for each endpoint (e.g. via swagger)
 
+### Versions
+* Sane versioning schema (e.g. [Semantic Versioning](https://semver.org/))
+* All versions are explicit, otherwise they may change and break stuff (e.g. playwright 1.9.1 broke selectors)
+    * package-lock.json:
+        * Bad: `"playwright": "^1.9.1"`. Good `"playwright": "1.9.1"`
+    * Dockerfile:
+        * Bad: `FROM mcr.microsoft.com/playwright:bionic`. Good: `FROM mcr.microsoft.com/playwright:v1.9.1-bionic`
+* package-lock.json checked in version control (to force same exact versions everywhere)
+
 ### Security
 * Automatic vulnerability scanning
 * Database backup is done periodically
