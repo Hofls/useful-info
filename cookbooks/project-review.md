@@ -64,7 +64,7 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
 
 ### Versions
 * Sane versioning schema (e.g. [Semantic Versioning](https://semver.org/))
-* All versions are explicit, otherwise they may change and break stuff (e.g. playwright 1.9.1 broke selectors)
+* All versions are explicit, otherwise they may change and break stuff (e.g. playwright 1.9.1 changed selectors behavior)
     * package-lock.json:
         * Bad: `"playwright": "^1.9.1"`. Good `"playwright": "1.9.1"`
     * Dockerfile:
