@@ -17,6 +17,7 @@
 * `Diversification` - variety of investments (different countries, sectors, currency...)
     * Always have funds to buy shares during market crash
 * Investments should be long term (at least 5 years)
+* If stock price falls > 40%, but you still believe in company - consider buying more shares
 * Indicators:
     * `Market cap` - Value of all shares (price * count)
     * `Ebitda` - Earnings Before Interest, Taxes, Depreciation and Amortization
@@ -49,7 +50,7 @@
 * Finally, look at Indicators (Ebitda, P/S, Debt/Equity...)
 
 ##### Promising ETFS
-> To find specific stock - search "${ETF_NAME} holdings"
+> To find ETF companies - search "${ETF_NAME} holdings"
 * https://ark-invest.com/
 * iShares:
     * Exponential Technologies ETF
