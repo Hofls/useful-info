@@ -18,25 +18,26 @@
     * Always have funds to buy shares during market crash
 * Investments should be long term (at least 5 years)
 * If stock price falls > 40%, but you still believe in company - consider buying more shares
-* Indicators:
-    * `Market cap` - Value of all shares (price * count)
-    * `Ebitda` - Earnings Before Interest, Taxes, Depreciation and Amortization
-        * `Ebitda * (10 or 20 years)` should equal to `Market Cap` (EV/EBITDA multiple)
-    * `P/E` - (share Price) to (company Earnings per share) ratio
-        * Should be `< 40`
-        * A lot of growing companies have no earnings, so `P/E` makes no sense
-    * `P/S` - (shares Price) to (company Sales) ratio 
-        * Should be `< 20`
-    * `EPS` - (company Earnings) Per Share
-        * Should be `> 10%` per year
-    * `ROE` - Return on Equity
-        * Should be `> 20%`
-    * `ROA` - Return on Assets
-        * Should be `> 10%`
-    * `ROI` - Return on Investment
-        * Should be `> 15%`
-    * `D/E` - Debt to Equity ratio
-        * Should be `< 0.7 (70%)`
+
+#### Indicators
+* `Market cap` - Value of all shares (price * count)
+* `Ebitda` - Earnings Before Interest, Taxes, Depreciation and Amortization
+    * `Ebitda * (10 or 20 years)` should equal to `Market Cap` (EV/EBITDA multiple)
+* `P/E` - (share Price) to (company Earnings per share) ratio
+    * Should be `< 40`
+    * A lot of growing companies have no earnings, so `P/E` makes no sense
+* `P/S` - (shares Price) to (company Sales) ratio 
+    * Should be `< 20`
+* `EPS` - (company Earnings) Per Share
+    * Should be `> 10%` per year
+* `ROE` - Return on Equity
+    * Should be `> 20%`
+* `ROA` - Return on Assets
+    * Should be `> 10%`
+* `ROI` - Return on Investment
+    * Should be `> 15%`
+* `D/E` - Debt to Equity ratio
+    * Should be `< 0.7 (70%)`
 
 ##### Promising stocks
 * You should expect that company in the future will be at better position than it is now
@@ -47,6 +48,7 @@
 * How hard is it for competition to offer a similar product? The harder it is - the better.
     * Creating culinary site is easy, GPU production is hard.
 * Stock related to next big thing (e.g. ai, ev, green energy, space, robots...)
+* Check for daughter companies (subsidiaries)  
 * Finally, look at Indicators (Ebitda, P/S, Debt/Equity...)
 
 ##### Promising ETFS
