@@ -11,4 +11,3 @@
 * `Central bank` - manages a country’s currency, alters money supply and interest rates
 * `Economic moat` - advantage that allows company to protect market share from competitors
 * `Economic bubble` - asset at a price that strongly exceeds the asset's intrinsic value
-    * Apple, Tesla 

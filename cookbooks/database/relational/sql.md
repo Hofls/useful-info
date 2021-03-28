@@ -53,3 +53,22 @@
     FROM patient
     WINDOW patient_window AS (PARTITION BY patient.area_id);
     ```
+* Combine inserts/updates:
+    ```
+    WITH updated_customers AS (
+         UPDATE customer
+         SET discount = 20
+         WHERE status = 'vip'
+         RETURNING id, name, product_id
+    ),
+    created_products AS (
+        INSERT INTO product(name)
+        SELECT special_name
+        FROM outdated_products
+        RETURNING id, name, timestamp 
+    )
+    INSERT INTO revision (rev_name, rev_product)
+    SELECT name, product_id
+    FROM updated_customers 
+    INNER JOIN created_products ON updated_customers.product_id = created_products.id 
+    ```
