@@ -101,7 +101,9 @@
 
 #### Network
 * Shows ports in use
-  * `netstat -tuplen` 
+  * `netstat -tuplen`
+    * Local Address `0.0.0.0:` means its accessible from outside
+    * Local Address `127.0.0.1:` means its accessible only from localhost
 * Opens ports `80` and `443` in firewall
   ```
   firewall-cmd --permanent --zone=public --add-port=80/tcp
