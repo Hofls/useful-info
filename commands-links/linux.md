@@ -102,8 +102,8 @@
 #### Network
 * Shows ports in use
   * `netstat -tuplen`
-    * Local Address `0.0.0.0:` means its accessible from outside
-    * Local Address `127.0.0.1:` means its accessible only from localhost
+    * Local Address `0.0.0.0:6080` / `:::6080` means its accessible from outside
+    * Local Address `127.0.0.1:6080` means its accessible only from localhost
 * Opens ports `80` and `443` in firewall
   ```
   firewall-cmd --permanent --zone=public --add-port=80/tcp
@@ -124,6 +124,8 @@
   * `telnet 84.154.131.23 9200`
 * Get your IP address (useful on VMs)
   * `ip addr | grep inet`
+* Redirect traffic
+  * Look at `devops` repository
   
 #### Text processing
 * Replace every occurrence of `Sam` with `Mike` in `report.txt`
