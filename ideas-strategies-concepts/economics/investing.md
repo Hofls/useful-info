@@ -32,6 +32,8 @@
 * Earnings should be growing each year
 * How hard is it for competition to offer a similar product? The harder it is - the better.
     * Creating culinary site is easy, GPU production is hard.
+* It shouldn't be too narrow focused
+    * E.g. producing one part of a plane
 * Stock related to next big thing (e.g. ai, ev, green energy, space, robots...)
 * Check for daughter companies (subsidiaries)  
 * Finally, look at Indicators (Ebitda, P/S, Debt/Equity...)
