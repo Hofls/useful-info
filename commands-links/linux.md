@@ -24,6 +24,8 @@
   * `echo "hey" > example.text`
   * `cat ex`
   * Press `Tab`
+* Erase command line
+  * `ctrl-u`
   
 #### Commands combo
 * Execute commands in parallel:
@@ -136,6 +138,15 @@
   * `nano /etc/gitlab-runner/config.toml`
   * `vim /etc/gitlab-runner/config.toml`
   
+#### Special characters
+* `&` - run in background
+* `|` - pipe output of one command as input of another
+* `;` - command separator
+* `>` - output redirect
+* `*` `?` - wildcards
+* `#` - Comment
+* `\` - Escape next character
+
 #### Others
 * Install Docker
   * `apt update`
@@ -149,6 +160,9 @@
 * Boot up file manager
   * `mc`
   * `ranger`
+* Print environment variables
+    * `printenv`
+    * `echo $JAVA_HOME`
 * Make long command readable:
   ```
   docker run \
