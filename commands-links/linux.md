@@ -124,8 +124,9 @@
   * `telnet 84.154.131.23 9200`
 * Get your IP address (useful on VMs)
   * `ip addr | grep inet`
-* Redirect traffic
-  * Look at `devops` repository
+* Redirect traffic (Port-forwarding)
+  * `socat tcp-listen:9090,reuseaddr,fork tcp:localhost:8000`
+  * For more info look at `devops` repository
   
 #### Text processing
 * Replace every occurrence of `Sam` with `Mike` in `report.txt`
