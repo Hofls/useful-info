@@ -63,3 +63,13 @@
     * Looks for a new version after each run. If found - `New major version of npm available! "Run npm install -g npm to update!"`
 * GitLab:
     * If no runners available - shows how to configure them (link to guide)
+* InfluxDB:
+    * 1 command to install & run: `docker run...`
+    * Great onboarding via web UI:
+        * 3 paths - novice, intermediate, expert
+        * Getting started - Load your data, Build dashboard, Set up alerting
+    * After picking language, provides code snippets:
+        * Add dependency (gradle/maven)
+        * Initialize a client (token, ip/port, bucket)
+        * Typical usage examples (send requests, process responses)
+    * Each non-trivial field has `?` icon, with short description and link to detailed documentation (all links are unique)
