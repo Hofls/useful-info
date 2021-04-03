@@ -73,3 +73,6 @@
         * Initialize a client (token, ip/port, bucket)
         * Typical usage examples (send requests, process responses)
     * Each non-trivial field has `?` icon, with short description and link to detailed documentation (all links are unique)
+* Certbot:
+    * Asks for your load balancer and OS, generates unique instruction
+    * Automatically renews certificate
