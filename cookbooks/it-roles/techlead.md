@@ -6,15 +6,16 @@
 
 #### Responsibilities (should be spread over entire team)
 * Guide team through challenges
-* Hire and train
+* Hire, onboard, train
 * Identify and fix technical problems
 * Make sure everything is up to date (e.g. no outdated dependencies/systems)
-* Enforce quality standards, supervise system changes (e.g. code review, architecture review)
-* Conduct security audits
+* Enforce quality standards, supervise system changes 
+    * e.g. review of code, architecture, devops, tests, monitoring, db, security...
 * Work on increasing productivity of the team, reducing the waste, optimize processes
 * Identify risks and plan mitigation action
 * Keep up-to-date with industry trends and developments
 * Provide project estimates and timelines
+* Spread knowledge (e.g. wiki)
 
 #### Responsibilities (unique to role)
 * Act as interface between tech part of team and outside world (e.g. other teams)
