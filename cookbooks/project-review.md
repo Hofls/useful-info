@@ -32,7 +32,8 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
 ### Database
 * Migrations are done via liquibase/flyway
 * Database schema makes sense
-* There are indexes/validations
+* All the necessary indexes/validations present
+* No abuse of weird features (e.g. triggers)
 
 ### Tests
 * Unit tests and integration tests is a must. Mutation tests is a possibility.
@@ -80,15 +81,8 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
 * Authentication is working correctly
 * Software on the server should be updated regularly (to patch all known vulnerabilities)
 
-### Culture
-* Everything should be reviewed by at least 1 person (from tech stack decisions, to architecture, to implementation)
-* Decisions should be made collectively
-* If something bad happens - identify root causes to make sure it won't repeat in the future (Retrospective)
-* Always move forward, adapt new technologies and ideas
-* Before investing heavily into something - build cheap prototype
-* Bus factor of anything is more than 1 (easy way is to just write instructions in a wiki)
-
 ### Etc:
+* [Team](team.md)
 * [Optimization](optimization.md)
 * [UX](user-experience.md)
 * [SEO](seo.md)
