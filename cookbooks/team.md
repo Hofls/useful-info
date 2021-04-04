@@ -18,4 +18,4 @@
 * Conflicts resolved by `fact-based arguments`, possibly by reaching compromise
 
 #### Etc
-* For detailed info about each role look at [it-roles](./it-roles)
+* For detailed info about each role look at [it-roles](it-roles)

@@ -71,6 +71,7 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
     * Dockerfile:
         * Bad: `FROM mcr.microsoft.com/playwright:bionic`. Good: `FROM mcr.microsoft.com/playwright:v1.9.1-bionic`
 * package-lock.json checked in version control (to force same exact versions everywhere)
+* No outdated dependencies/systems
 
 ### Security
 * Automatic vulnerability scanning
