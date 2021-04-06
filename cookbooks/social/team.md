@@ -18,4 +18,5 @@
 * Conflicts resolved by `fact-based arguments`, possibly by reaching compromise
 
 #### Etc
+* Each team member should have good [soft-skills](soft-skills.md)
 * For detailed info about each role look at [it-roles](it-roles)
