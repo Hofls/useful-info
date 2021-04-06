@@ -5,7 +5,6 @@
 * Flexibility
 * Integrity(ethics)
 * Interpersonal skills
-* Positive attitude
 * Professionalism
 * Responsibility
 * Teamwork
@@ -18,5 +17,11 @@
     * Move conflict away from emotions, in the constructive direction (facts and data matter the most)
     * If both sides have good arguments - try to reach compromise
     * If unable to resolve conflict - involve 3rd party, for independent opinion
+* Emotional intelligence
+    * Recognize emotions of people (including your own)
+    * Control impulses and emotions (self-regulation)
+* Self-Reflection
+* Critical thinking
+* Continuous learning 
 * Networking
-
+* Positive attitude
