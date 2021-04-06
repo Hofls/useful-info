@@ -1,3 +1,4 @@
+#### Cookbook
 * Tools to check accessibility:
 	* Screen reader - `ChromeVox`
 	* Accessibility audit:
@@ -18,4 +19,11 @@
 	* Some people need to enlarge web content in order to read it
 * Users have enough time to read and use the content
 * Users can easily navigate, find content, and determine where they are
-* Users are helped to avoid and correct mistakes
+* Automatic help for users to avoid and correct mistakes
+
+#### Great accessibility examples
+* Wikipedia
+    * Land on any page, press tab. At first appears `Jump to navigation`, then `Jump to search`
+* Youtube
+    * Land on any page, press tab couple times. Appears `SKPI NAVIGATION` button
+
