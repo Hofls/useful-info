@@ -20,7 +20,16 @@
 * Emotional intelligence
     * Recognize emotions of people (including your own)
     * Control impulses and emotions (self-regulation)
-* Self-Reflection
+* Self-Reflection (Introspection)
+    * Analyze your thoughts/emotions/behavior
+* Decision-making
+    * Look which decisions made other people in similar situations and how it turned out
+    * Think outside of the box, from different perspectives, on different levels
+    * Create list of possible decisions, compare their advantages/disadvantages
+* Strategic vision (long term target)
+    * Short-term(tactical) decisions should help achieve long term target
+* Prioritization
+    * Sort tasks by importance, to the most important first
 * Critical thinking
 * Continuous learning 
 * Networking
