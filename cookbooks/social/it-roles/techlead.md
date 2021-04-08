@@ -11,7 +11,7 @@
 * Identify and fix technical problems
 * Make sure everything is up to date (e.g. no outdated dependencies/systems)
 * Enforce quality standards, supervise system changes 
-    * e.g. review of code, architecture, devops, tests, monitoring, db, security...
+    * e.g. review of code, architecture, devops, tests, monitoring, refactoring, db, security...
 * Work on increasing productivity of the team, reducing the waste, optimize processes
 * Identify risks and plan mitigation action
 * Keep up-to-date with industry trends and developments

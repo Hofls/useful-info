@@ -23,7 +23,7 @@
         * Asks what snyk is allowed to do (with sane defaults)
         * Asks where code is located (github)
         
-##### Great usability examples
+##### Great usability examples. Product first
 * Amazon QuickSight:
     * Allows asking questions in natural language. To build graph: `What is weekly sales in Paris vs London this year`
 * Discord:
@@ -76,3 +76,7 @@
 * Certbot:
     * Asks for your load balancer and OS, generates unique instruction
     * Automatically renews certificate
+    
+##### Great usability examples. Feature first
+* Most useful/important things come first:
+    * Youtube/Reddit comments, Stackoverflow answers

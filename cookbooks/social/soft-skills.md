@@ -32,5 +32,7 @@
     * Sort tasks by importance, to the most important first
 * Critical thinking
 * Continuous learning 
+* Open mind
 * Networking
 * Positive attitude
+

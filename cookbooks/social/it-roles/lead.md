@@ -3,8 +3,8 @@
 
 #### Responsibilities (should be spread over entire team)
 * Facilitate discussion
-    * https://tlroadmap.io/self-skills/communications/facilitation.html
-* 
+* Roadblock removal
+    * If somebody stuck - identify a blocker, make sure it's removed
 * 
 
 #### Responsibilities (unique to role)
