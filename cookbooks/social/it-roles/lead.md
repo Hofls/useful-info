@@ -5,7 +5,8 @@
 * Facilitate discussion
 * Roadblock removal
     * If somebody stuck - identify a blocker, make sure it's removed
-* 
+* Brand development
+    * Company's public image, product quality, employee's feedback, content created by company (e.g. blog posts)
 
 #### Responsibilities (unique to role)
 * Act as interface (proxy) between your team and outside world (e.g. other teams)
