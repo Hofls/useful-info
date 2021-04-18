@@ -2,6 +2,7 @@
 * Communication
     * Message should be simple and short (concise)
     * Deploy unique approach for each target audience
+    * Open and honest (e.g. own your mistakes)
 * Flexibility
 * Integrity(ethics)
 * Interpersonal skills
@@ -33,6 +34,8 @@
 * Critical thinking
 * Continuous learning 
 * Open mind
+* Orientation on result
+* Risk management
 * Networking
 * Positive attitude
 

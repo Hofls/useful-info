@@ -23,6 +23,16 @@
     * Help set personal development targets (e.g. using SMART criteria)
     * Encourage continuous learning/development
     * Provide useful blogs/sites, books, courses, tickets to conferences
+* Promote corporate culture
+    * Know culture, let it influence decision-making, spread it to employees
+    * Culture parts: mission, values, best practices, narrative (history)
+* Understand company culture
+    * What other teams do, how they can help your team, how your team can help them
+* Business knowledge
+    * Business-model, revenue sources, structure, news
+* Methodology management
+    * e.g. plan -> develop -> test -> deploy -> hotfix
+* [Agile development](../agile/agile-development.md)
 
 #### Responsibilities (unique to role)
 * Act as interface (proxy) between your team and outside world (e.g. other teams)

@@ -72,6 +72,7 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
         * Bad: `FROM mcr.microsoft.com/playwright:bionic`. Good: `FROM mcr.microsoft.com/playwright:v1.9.1-bionic`
 * package-lock.json checked in version control (to force same exact versions everywhere)
 * No outdated dependencies/systems
+    * People don't want to work with outdated tech. It affects hiring/retention. 
 
 ### Security
 * Automatic vulnerability scanning
@@ -86,6 +87,6 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
 * [Team](social/team.md)
 * [Optimization](optimization.md)
 * [UX](user-experience.md)
-* [SEO](seo.md)
 * [Wiki](wiki.md)
+* [SEO](seo.md)
 * [Accessibility](accessibility.md)
