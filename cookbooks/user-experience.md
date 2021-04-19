@@ -63,6 +63,7 @@
     * Looks for a new version after each run. If found - `New major version of npm available! "Run npm install -g npm to update!"`
 * GitLab:
     * If no runners available - shows how to configure them (link to guide)
+    * If project moves to another namespace - sends email with git commands to update remote url
 * InfluxDB:
     * 1 command to install & run: `docker run...`
     * Great onboarding via web UI:
