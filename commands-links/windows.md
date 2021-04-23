@@ -50,6 +50,11 @@
 * Installation:
     * `Task Manager` -> `Performance` -> `Virtualization` should be enabled
     * `Windows Features` -> `Windows Sandbox` -> Restart PC
+##### Docker
+* Prerequisites:
+    * Right click on windows -> Apps and features -> Programs and features -> Turn Windows features on or off
+    * Enable Windows Hypervisor Platform
+    * Enable Hyper-v
 ##### Windows Subsystem for Linux
 * todo
 ##### VMware Workstation Player
