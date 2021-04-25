@@ -26,6 +26,7 @@
 * Freelance sites
 * Any job listings
     * ...
+* Look at integrations/images/services at cloud providers (AWS, GCP, Azure)
 * MOOC (Table of contents is enough)
 * Most used libraries
     * https://mvnrepository.com/popular?p=1
