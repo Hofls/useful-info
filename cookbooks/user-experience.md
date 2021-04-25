@@ -77,6 +77,8 @@
 * Certbot:
     * Asks for your load balancer and OS, generates unique instruction
     * Automatically renews certificate
+* Docker:
+    * `docker run` automatically pulls image (if not found locally)
     
 ##### Great usability examples. Feature first
 * Most useful/important things come first:
