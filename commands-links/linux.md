@@ -1,4 +1,6 @@
 # Linux
+* `snapd` - universal package manager
+
 ## Commands
 
 #### CLI Usage
