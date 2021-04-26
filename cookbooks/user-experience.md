@@ -50,6 +50,9 @@
 * AWS:
     * Each disabled option has a hint that explains why it is disabled
     * To delete something - you have to type its name (for confirmation)
+* Azure:
+    * When you open something for a first time - shows hints
+    * If table is empty - in background appears short description of service
 * VLC media player:
     * If you stop watching video without reaching its end, then next time VLC asks if you want to continue watching
 * Google chrome:
