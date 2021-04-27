@@ -53,6 +53,7 @@
 * Azure:
     * When you open something for a first time - shows hints
     * If table is empty - in background appears short description of service
+    * Helps choose 1 of 4 load balancers based on a questionnaire
 * VLC media player:
     * If you stop watching video without reaching its end, then next time VLC asks if you want to continue watching
 * Google chrome:
