@@ -24,3 +24,6 @@
 * `Everything in different tables`
     * Joins are expensive
 * `UUID as primary key`
+* `Unnecessary cache`
+    * If most queries are unique - cache makes no sense.
+    * In this case cache ignored, but still takes time to maintain 
