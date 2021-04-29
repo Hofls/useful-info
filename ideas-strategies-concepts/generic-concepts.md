@@ -3,7 +3,7 @@
 * Generic:
     * `Back-of-the-envelope calculation`- rough calculation with simplified assumptions
     * `Fermi estimations` - good approximate calculations with little or no actual data (by making justified guesses)
-    * `Proof of Concept` - small test that shows if theoretical idea can be achieved in reality
+    * `Proof of Concept` - small test which shows if theoretical idea can be achieved in reality
     * `SWOT analysis` - helps to identify the most important parameters - strengths, weaknesses, opportunities, and threats
     * `Tit for tat` -  strategy in which agent's first move is cooperation, while all other moves should replicate opponent's previous action
     * `Backup` - copy of data stored elsewhere so that it may be used to restore the original after a data loss event
@@ -24,8 +24,9 @@
     * `Antifragile system` - System that gets better when exposed to shocks, disorder, stressors and uncertainty. 
       	E.g. evolution - system that consists of fragile components, gets better over time because only the most adaptive species survive.
       	Other examples - poison tolerance, muscle growth, free market, learning from mistakes.
-    * `Data-driven` - progress in an activity is compelled by data, rather than by intuition or by personal experience
-    * `Red team` - group that plays as opposition in simulated situation
+    * `Data-driven` - progress in an activity compelled by data, rather than by intuition or by personal experience
+        * Also `Metrics driven`, `Facts based`
+    * `Red team` - group which plays as opposition in simulated situation
     * `Reverse engineering` - process of object deconstruction, used to reveal its designs, architecture, code
     * `Simulation` - approximate imitation of the operation of a process or system
     * `Game theory` - study of mathematical models of strategic interaction among rational decision-makers
@@ -34,13 +35,13 @@
     * `OSINT` - open-source intelligence (collecting, analyzing publicly available data)
 
 * Problem-solving strategies:
-    * `Abstraction`: solving the problem in a model of the system before applying it to the real system
-    * `Analogy`: using a solution that solves an analogous problem
-    * `Brainstorming`: (especially among groups of people) suggesting a large number of solutions or ideas and combining and developing them until an optimum solution is found
-    * `Divide and conquer`: breaking down a large, complex problem into smaller, solvable problems
-    * `Hypothesis` testing: assuming a possible explanation to the problem and trying to prove (or, in some contexts, disprove) the assumption
-    * `Proof`: try to prove that the problem cannot be solved. The point where the proof fails will be the starting point for solving it
-    * `Reduction`: transforming the problem into another problem for which solutions exist
-    * `Research`: employing existing ideas or adapting existing solutions to similar problems
-    * `Root cause analysis`: identifying the cause of a problem
-    * `Trial-and-error`: testing possible solutions until the right one is found
+    * `Abstraction` - solving the problem in a model of the system before applying it to the real system
+    * `Analogy` - using a solution that solves an analogous problem
+    * `Brainstorming` - (especially among groups of people) suggesting a large number of solutions or ideas and combining and developing them until an optimum solution is found
+    * `Divide and conquer` - breaking down a large, complex problem into smaller, solvable problems
+    * `Hypothesis` testing - assuming a possible explanation to the problem and trying to prove (or, in some contexts, disprove) the assumption
+    * `Proof` - try to prove that the problem cannot be solved. The point where the proof fails will be the starting point for solving it
+    * `Reduction` - transforming the problem into another problem for which solutions exist
+    * `Research` - employing existing ideas or adapting existing solutions to similar problems
+    * `Root cause analysis` - identifying the cause of a problem
+    * `Trial-and-error` - testing possible solutions until the right one is found
