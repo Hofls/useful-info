@@ -14,6 +14,14 @@ List:
 
 `quote`
 
+
+| Header 1        | Header 2     |
+|-----------------|--------------|
+| Cell 1          | Cell 3       |
+| Cell 2          | Cell 4       |
+Table genereated by https://tableconvert.com/ (Import -> Excel -> Paste lines)
+
+
 ```
 code {
     maven {
