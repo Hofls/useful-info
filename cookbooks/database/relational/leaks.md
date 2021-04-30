@@ -10,4 +10,4 @@
         * https://stackoverflow.com/questions/31557076/spring-hibernate-query-plan-cache-memory-usage
         * Fix - decrease 'query plan' cache size (Hibernate)
     * Big amount of queries text in dump
-        * Fix - turn off 'prepared statement' cache (Postgres)
+        * Fix - turn off 'prepared statement' cache (Postgres connection)
