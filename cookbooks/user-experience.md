@@ -87,3 +87,6 @@
 ##### Great usability examples. Feature first
 * Most useful/important things come first:
     * Youtube/Reddit comments, Stackoverflow answers
+* Automatically generated code
+    * Azure/AWS - use/configure services via UI. Export as YAML/JSON for automation
+    * Airtest/Poco/Gatling - work in app like a normal user would. 1 action = 1 generated line of code.
