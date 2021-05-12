@@ -3,6 +3,8 @@
     * Run emulator
     * `View` -> `Tool Windows` -> `Profiler`
     * `Start new session` -> Pick emulator -> Click on `NETWORK` timeline
+* To look at http requests/responses (Fiddler):
+    * Go to `security` repository
 
 * Show info about UI components currently displayed on Android Emulator. Allows to jump from UI straight to the code
     * `uiautomatorviewer.exe`
