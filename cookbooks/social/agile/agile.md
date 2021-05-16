@@ -20,14 +20,16 @@
     * Owns product backlog, sets goals, listens to users and stakeholders (e.g. talks, looks at metrics/KPI)
 * `Developer` - builds the product
     * Cross-functional, self-organizing, responsible for quality (tests, review, CI/CD, refactoring, automation, architecture)
-* `Business analyst` - 
+* `Business analyst` - analyzes the business domain, creates items for backlog
+* `Stakeholder` - anybody interested in project success
+
 
 #### Meetings
 * `Sprint Planning` - event where team decides which tasks should be in the sprint backlog
     * Sum of ticket estimations should be equal to sprint capacity
 * `Sprint Review` - team and stakeholders inspect the latest increment
     * Demonstrate sprint results, listen for feedback, update product backlog
-* `Daily Scrum` - meeting to sync up (same time every day)
+* `Daily Stand-Up` - meeting to sync up (same time every day)
     * Tell what you did, what you plan to do, is there any impediments?
 * `Retrospective` - meeting after each sprint (for continuous improvement)
     * What you like/dislike in the previous sprint, ideas for improvement
