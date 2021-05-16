@@ -12,17 +12,15 @@
 * `Sprint goals` - sprint objective 
     * E.g. - Implement feedback mechanism. Implement payment integration. Fix all critical bugs.
     * ? IDK, seems too narrow to be useful ?
-
-#### Team
-* `Scrum master` - responsible for establishing scrum
-    * Manages scrum framework, facilitates events, teaches, removes impediments
-* `Product owner` - represents the needs of users and stakeholders
-    * Owns product backlog, sets goals, listens to users and stakeholders (e.g. talks, looks at metrics/KPI)
-* `Developer` - builds the product
-    * Cross-functional, self-organizing, responsible for quality (tests, review, CI/CD, refactoring, automation, architecture)
-* `Business analyst` - analyzes the business domain, creates items for backlog
-* `Stakeholder` - anybody interested in project success
-
+    
+#### Values
+* Individuals and interactions over processes and tools
+    * E.g. - Fluid communication (when need arises) > Scheduled communication
+* Working software over comprehensive documentation
+    * Short, concise documentation is enough in most cases
+* Customer collaboration over contract negotiation
+    * Continuously discover needs of users > Plan everything ahead (contract) 
+* Responding to change over following a plan
 
 #### Meetings
 * `Sprint Planning` - event where team decides which tasks should be in the sprint backlog
@@ -33,3 +31,13 @@
     * Tell what you did, what you plan to do, is there any impediments?
 * `Retrospective` - meeting after each sprint (for continuous improvement)
     * What you like/dislike in the previous sprint, ideas for improvement
+    
+#### Team
+* `Scrum master` - responsible for establishing scrum
+    * Manages scrum framework, facilitates events, teaches, removes impediments
+* `Product owner` - represents the needs of users and stakeholders
+    * Owns product backlog, sets goals, listens to users and stakeholders (e.g. talks, looks at metrics/KPI)
+* `Developer` - builds the product
+    * Cross-functional, self-organizing, responsible for quality (tests, review, CI/CD, refactoring, automation, architecture)
+* `Business analyst` - analyzes the business domain, creates items for backlog
+* `Stakeholder` - anybody interested in project success
