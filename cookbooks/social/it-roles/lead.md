@@ -32,7 +32,7 @@
     * Business-model, revenue sources, structure, news
 * Methodology management
     * e.g. plan -> develop -> test -> deploy -> hotfix
-* [Agile development](../agile/agile-development.md)
+* [Agile development](../agile/agile.md)
 
 #### Responsibilities (unique to role)
 * Act as interface (proxy) between your team and outside world (e.g. other teams)
