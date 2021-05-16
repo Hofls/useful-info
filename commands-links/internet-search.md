@@ -1,5 +1,5 @@
 * Quick summary
-    * `javascript cheatsheet`
+    * `javascript cheatsheet` / `agile factsheet`
 * Simple explanation
     * `cloud computing ELI5`
 * Simple example
