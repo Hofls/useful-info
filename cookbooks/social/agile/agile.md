@@ -12,8 +12,24 @@
 * Responding to change over following a plan
 
 #### Principles
-    * 
-    
+* Customer satisfaction by early and continuous delivery of valuable software
+* Welcome changing requirements (even in late development)
+* Deliver working software frequently
+* Close, daily cooperation between business people and developers
+* Projects built around motivated individuals, who should be trusted
+* Face-to-face conversation is the best form of communication (co-location)
+    * IDK, varies from person to person
+* Sustainable development, able to maintain a constant pace
+* Continuous attention to technical excellence and good design
+* Simplicity — the art of maximizing the amount of work not done — is essential
+* The best architectures, requirements, and designs emerge from self-organizing teams
+* Regularly, the team reflects on how to become more effective, and adjusts accordingly
+
+#### Practices
+* 
+* 
+* 
+
 #### Practices
 * `Sprint Planning` - event where team decides which tasks should be in the sprint backlog
     * Sum of ticket estimations should be equal to sprint capacity
