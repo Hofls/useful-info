@@ -26,15 +26,32 @@
 * Regularly, the team reflects on how to become more effective, and adjusts accordingly
 
 #### Practices
-* 
-* 
-* 
-
-#### Practices
-* `Sprint Planning` - event where team decides which tasks should be in the sprint backlog
-    * Sum of ticket estimations should be equal to sprint capacity
+* Acceptance test–driven development (`ATDD`)
+    * Test format - `Given` balance $18, `When` user tries to withdraw $25, `Then` withdrawal forbidden
+* `Agile modeling` - set of best practices for modeling (e.g. creating diagrams)
+* `Agile testing` - continuous, involves whole team
+* `Backlog (product/sprint)` - tasks
+* `Behavior-driven development` - behavior descriptions (can be automated into tests)
+    * Test format - `Given`, `When`, `Then`
+* `Continuous integration` - merging all developers work into dev branch daily
+* `Cross-functional team` - team of people with different expertise (e.g. developer, analyst, tester)
 * `Daily Stand-Up` - meeting to sync up (same time every day)
     * Tell what you did, what you plan to do, is there any impediments?
+* `Domain-driven design` - code should match business domain
+* `Iterative and incremental development` - For each feature: plan -> build -> deliver
+* `Pair programming` - one writes code, other observes/reviews
+* `Planning poker` - consensus-based, gamified technique for estimating effort
+* `Refactoring` - improving structure without changing behavior
 * `Retrospective` - meeting after each sprint (for continuous improvement)
     * What you like/dislike in the previous sprint, ideas for improvement
-  
+* `Sprint Planning` - event where team decides which tasks should be in the sprint backlog
+    * Sum of ticket estimations should be equal to sprint capacity
+* `Specification by example` - illustrate requirements using realistic examples
+    * Automating tests based on examples
+* `Story-driven modeling` - concrete example scenarios
+    * Textual scenarios -> GUI mock-ups -> Storyboarding -> Class diagram -> Algorithm design -> Implementation -> Testing 
+* `Test-driven development` - tests first, code second
+* `Timeboxing` - fixed time period for activity (daily, retro, review etc)
+* `User story` - informal, natural language description of a feature (written from user perspective)
+* `Velocity` - metric for work done
+ 
