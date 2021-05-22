@@ -25,17 +25,18 @@
 * The best architectures, requirements, and designs emerge from self-organizing teams
 * Regularly, the team reflects on how to become more effective, and adjusts accordingly
 
+
 #### Practices
 * Acceptance test–driven development (`ATDD`)
     * Test format - `Given` balance $18, `When` user tries to withdraw $25, `Then` withdrawal forbidden
 * `Agile modeling` - set of best practices for modeling (e.g. creating diagrams)
 * `Agile testing` - continuous, involves whole team
-* `Backlog (product/sprint)` - tasks
+* `Backlog (product/sprint)` - tasks (description should be simple)
 * `Behavior-driven development` - behavior descriptions (can be automated into tests)
     * Test format - `Given`, `When`, `Then`
 * `Continuous integration` - merging all developers work into dev branch daily
 * `Cross-functional team` - team of people with different expertise (e.g. developer, analyst, tester)
-* `Daily Stand-Up` - meeting to sync up (same time every day)
+* `Daily Stand-Up/Scrum` - meeting to sync up (same time every day)
     * Tell what you did, what you plan to do, is there any impediments?
 * `Domain-driven design` - code should match business domain
 * `Iterative and incremental development` - For each feature: plan -> build -> deliver
