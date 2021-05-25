@@ -136,6 +136,13 @@
 * Redirect traffic (Port-forwarding)
     * `socat tcp-listen:9090,reuseaddr,fork tcp:localhost:8000`
     * For more info look at `devops` repository
+* Send SOAP request
+    ```
+    curl -X POST -H "Content-Type: text/xml" \
+    --data-binary @request.xml \
+    http://someamel.test.edias.som.ru/proxy/IMIS/IMIS/v5S/ProxyService \
+    > response.xml
+    ```
     
 #### Text processing
 * Replace every occurrence of `Sam` with `Mike` in `report.txt`
