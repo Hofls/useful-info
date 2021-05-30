@@ -29,6 +29,8 @@
     * Press `Tab`
 * Erase command line
     * `ctrl-u`
+* Delete a word to the left/right
+    * `ctrl+w` / `alt+d`
     
 #### Commands combo
 * Execute commands in parallel:

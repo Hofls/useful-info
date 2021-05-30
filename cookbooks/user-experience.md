@@ -58,7 +58,9 @@
     * If you stop watching video without reaching its end, then next time VLC asks if you want to continue watching
 * Google chrome:
     * Alerts if you use leaked password
-    * Updates automatically 
+    * Updates automatically
+* Google courses:
+    * Shows prerequisites for a course and where you can learn them
 * Swagger UI:
     * Increases discoverability by providing list of available endpoints. 1 click to send example request
 * Yandex Cloud:
