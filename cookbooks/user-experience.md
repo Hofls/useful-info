@@ -17,6 +17,7 @@
 * Infinite-scroll - provides seamless experience when looking at endless content
 * Try to predict user actions and make them easier - e.g. "copy" button in an article with code blocks
 * Use information visualization (charts/graphs/..) instead of showing a lot of numbers
+* Most used/popular elements should come first (ease of access)
 * Good setting up experience:
     * Snyk.io:
         * Asks what user wants to do (analyze open source code)
