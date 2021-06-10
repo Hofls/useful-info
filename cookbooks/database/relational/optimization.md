@@ -10,3 +10,5 @@
 * Pick specific columns, don't use `*`
 * Use `UNION ALL` instead of `UNION` (`UNION` wastes resources to remove duplicates)
 * Use pagination if possible
+* Use connection pool to avoid constantly creating new connections (it's expensive)
+    * e.g. HikariCP (best used as fixed-size connection pool)
