@@ -1,4 +1,4 @@
-#### How to find a leak
+#### How to find memory leaks
 * Check metrics (e.g. grafana)
 * Get heap dump, analyze it
 * Reproduce the problem in test environment
@@ -14,3 +14,14 @@
     * Big amount of queries text in dump
         * Fix - turn off 'prepared statement' cache (Postgres connection)
             * `jdbc:postgresql://potr-db-t:5432/puds2?preparedStatementCacheQueries=0`
+
+#### How to find connection leaks
+* Connection leak: transaction (connection) open for too long. Leads to lack of available connections.
+    * Error example: `Unable to acquire JDBC Connection. HikariPool-2 - Connection is not available, request timed out after 30000ms`
+* To reproduce: put sleep inside transactional method, execute it multiple times.
+* To find/fix (`HikariCP`):
+    * `spring.datasource.hikari.leak-detection-threshold=35000`
+        * Will write in logs `Connection leak detection triggered`, `Apparent connection leak detected`
+    * `<logger level="DEBUG" name="com.zaxxer.hikari" />`
+        * Shows parameters on start (`jdbcUrl, maximumPoolSize, leakDetectionThreshold`)
+        * Shows pool stats every 30 seconds `(total=9, active=1, idle=10, waiting=0)`
