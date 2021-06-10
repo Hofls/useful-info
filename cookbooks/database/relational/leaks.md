@@ -1,7 +1,9 @@
-#### How to find memory leaks
-* Check metrics (e.g. grafana)
-* Get heap dump, analyze it
-* Reproduce the problem in test environment
+#### Memory leaks
+* Memory leak: too much data stored in RAM (e.g. query cache, query plans)
+* To find:
+    * Check metrics (e.g. grafana)
+    * Get heap dump, analyze it
+* Reproduce the problem in test environment:
     * Non-stop send requests from 100 threads
     * Each request should be unique (different parameters)
 * Typical problems:
@@ -15,7 +17,7 @@
         * Fix - turn off 'prepared statement' cache (Postgres connection)
             * `jdbc:postgresql://potr-db-t:5432/puds2?preparedStatementCacheQueries=0`
 
-#### How to find connection leaks
+#### Connection leaks
 * Connection leak: transaction (connection) open for too long. Leads to lack of available connections.
     * Error example: `Unable to acquire JDBC Connection. HikariPool-2 - Connection is not available, request timed out after 30000ms`
 * To reproduce: put sleep inside transactional method, execute it multiple times.
