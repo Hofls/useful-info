@@ -2,7 +2,6 @@
 * `Graphic design` - uses visuals to convey a message
 * Keep it simple. Too much stuff becomes overwhelming for a viewer
 
-
 ##### Fundamentals
 * `Line` - shape that connects two or more points
     * Usage:
@@ -36,4 +35,38 @@
 ##### Brand & Identity
 * `Brand` - distinct identity of a company (name, logo, design, theme, mission, story)
     * `Visual identity` - how brand looks like (logo, color palette, typography)
+* `Style guide` - set of standards
+    
+##### Typography
+* `Typography` - style of text
+* `Fonts`:
+    * Serif - classic, traditional
+    * Sans Serif - clean and modern
+* `Display fonts` - decorative, for a small amount of text (e.g. headers)
+    * Gang of Three - asian style
+    * Old london - medieval
+    * Square one - techno
+
+##### Color
+* `Color palette` - primary and secondary colors used in design
+    * Usually primary colors derived from company logo
+* Bright colors - fun and modern
+* Desaturated colors - business-like
+
+##### Layout/Composition
+* `Layout/Composition` - arrangement of visual elements
+* Basic principles:
+    * `Proximity` - related elements grouped together, groups should be separated
+        * On a business card - name and speciality; phone number and email; skills and qualifications
+    * `White space` - negative space (space between content, lines and margins)
+    * `Alignment` - lining up elements (left side, center, right side)
+    * `Contrast` - difference between items (e.g. black and white, thick and thin)
+    * `Repetition` - reinforce design by reusing same elements
+* `Hierarchy` - show the importance of elements by manipulating size, color, proximity, etc
+
+
+#### Examples
+* [Improving existing designs](https://www.youtube.com/watch?v=Tm25IxJQPWM)
+* 
+*
 * 
