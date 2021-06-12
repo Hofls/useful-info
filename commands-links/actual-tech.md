@@ -19,8 +19,10 @@
     * https://www.thoughtworks.com/radar
     * https://www.infoq.com/infoq-trends-report/
 * Search for: 
+    * Search settings:
+        * Limit by year
     * `State of <topic>`, e.g. `State of devops`
-    * `<topic> trends 2020`, e.g. `devops trends 2020`
+    * `<topic> trends`, e.g. `devops trends`
     * `<topic> roadmap`, e.g. `web developer roadmap`
     * `<topic> top` e.g. `javascript top libraries`
     * `Tranding software technology`
