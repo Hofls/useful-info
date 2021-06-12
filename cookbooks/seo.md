@@ -10,7 +10,7 @@
 * Good metrics (e.g. lighthouse)
     * [Optimization](optimization.md)
         * [PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/)
-    * [Accessibility](accessibility.md)
+    * [Accessibility](human-computer/accessibility.md)
 * High quality content
     * [Search Quality Raters](https://guidelines.raterhub.com/searchqualityevaluatorguidelines.pdf)
     * Follow trends

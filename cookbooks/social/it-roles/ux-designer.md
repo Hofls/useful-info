@@ -1,7 +1,7 @@
 #### UX Designer
 * `UX Designer` - responsible for good user experience
     * Subsets: Usability, UI 
-* [More UX info](../../user-experience.md)
+* [More UX info](../../human-computer/user-experience.md)
 
 #### Responsibilities
 * Develop personas and usage scenarios

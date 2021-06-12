@@ -86,7 +86,7 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
 ### Etc:
 * [Team](social/team.md)
 * [Optimization](optimization.md)
-* [UX](user-experience.md)
+* [UX](human-computer/user-experience.md)
 * [Wiki](wiki.md)
 * [SEO](seo.md)
-* [Accessibility](accessibility.md)
+* [Accessibility](human-computer/accessibility.md)
