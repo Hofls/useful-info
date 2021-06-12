@@ -62,11 +62,22 @@
     * `Alignment` - lining up elements (left side, center, right side)
     * `Contrast` - difference between items (e.g. black and white, thick and thin)
     * `Repetition` - reinforce design by reusing same elements
-* `Hierarchy` - show the importance of elements by manipulating size, color, proximity, etc
+* `Hierarchy` - show the importance of elements by manipulating size, color, position, proximity, etc
+    * e.g. slogan/most important part should stand out from the rest
+* `Flow` - movement and direction (leading an eye from one part to another)
+
+##### Design checklist
+* Check balance, proximity, alignment, flow
+* Check hierarchy
+    * Highlight using existing color scheme
+* If left with big chunks of nothing - think about filling them with shapes
+* Simplify - remove small and unnecessary details
 
 
-#### Examples
-* [Improving existing designs](https://www.youtube.com/watch?v=Tm25IxJQPWM)
+#### Design process showcase
+* Analyse and improve existing design:
+    * https://www.youtube.com/watch?v=Tm25IxJQPWM
+    * https://www.youtube.com/watch?v=INMuAYZDums
 * 
 *
 * 
