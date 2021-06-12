@@ -33,4 +33,7 @@
     * Symmetrical - similar on both sides (e.g. centered)
     * Asymmetrical - sides are different but have the same weight (e.g. image on the left, text on the right)
     
-
+##### Brand & Identity
+* `Brand` - distinct identity of a company (name, logo, design, theme, mission, story)
+    * `Visual identity` - how brand looks like (logo, color palette, typography)
+* 
