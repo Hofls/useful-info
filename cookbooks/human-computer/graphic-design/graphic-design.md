@@ -1,6 +1,8 @@
 ### Graphic design
 * `Graphic design` - uses visuals to convey a message
 * Keep it simple. Too much stuff becomes overwhelming for a viewer
+* Important goal - transmit information to a viewer as quickly as possible 
+    * e.g. 2 second glance should be enough
 
 ##### Fundamentals
 * `Line` - shape that connects two or more points
@@ -63,24 +65,25 @@
     * Blue - masculine, trust, strength
     * Pink - feminine, fun, sweet
 
-##### Layout/Composition
+##### Other elements
 * `Layout/Composition` - arrangement of visual elements
-* Basic principles:
     * `Proximity` - related elements grouped together, groups should be separated
         * On a business card - name and speciality; phone number and email; skills and qualifications
     * `White space` - negative space (space between content, lines and margins)
     * `Alignment` - lining up elements (left side, center, right side)
-    * `Contrast` - difference between items (e.g. black and white, thick and thin)
+    * `Contrast` - difference between items
+        * e.g. between a header and body: black and white, thick and thin, serif and sans serif
     * `Repetition` - reinforce design by reusing same elements
 * `Hierarchy` - show the importance of elements by manipulating size, color, background, position etc
     * Most important parts should stand out from the rest (e.g. slogan, buy/try/proceed button)
 * `Flow` - movement and direction (leading an eye from one part to another)
 * `Harmony` - combination of similar or related elements (adjacent colors, shapes, texture)
+* `Focal point` - point of interest, focus (draws attention)
 
 ##### Design checklist
 * Check balance, proximity, alignment, flow, harmony, font
 * Is main colors are good fit for the message?
-* Check hierarchy
+* Check hierarchy, contrast
     * Highlight using existing color scheme
 * If left with big chunks of nothing - think about filling them with shapes
 * Simplify - remove small and unnecessary details
