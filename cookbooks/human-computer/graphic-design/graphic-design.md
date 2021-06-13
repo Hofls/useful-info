@@ -52,6 +52,16 @@
     * Usually primary colors derived from company logo
 * Bright colors - fun and modern
 * Desaturated colors - business-like
+* Color psychology:
+    * Black - power, professional, accuracy
+    * Grey - balance, neutral, calm
+    * Green - nature, growth, health
+    * Yellow - optimism, energetic, fun
+    * Orange - warm, impulse
+    * Red - brave, ambition, danger, anger, love
+    * White - pure, sincere
+    * Blue - masculine, trust, strength
+    * Pink - feminine, fun, sweet
 
 ##### Layout/Composition
 * `Layout/Composition` - arrangement of visual elements
@@ -62,22 +72,28 @@
     * `Alignment` - lining up elements (left side, center, right side)
     * `Contrast` - difference between items (e.g. black and white, thick and thin)
     * `Repetition` - reinforce design by reusing same elements
-* `Hierarchy` - show the importance of elements by manipulating size, color, position, proximity, etc
-    * e.g. slogan/most important part should stand out from the rest
+* `Hierarchy` - show the importance of elements by manipulating size, color, background, position etc
+    * Most important parts should stand out from the rest (e.g. slogan, buy/try/proceed button)
 * `Flow` - movement and direction (leading an eye from one part to another)
+* `Harmony` - combination of similar or related elements (adjacent colors, shapes, texture)
 
 ##### Design checklist
-* Check balance, proximity, alignment, flow
+* Check balance, proximity, alignment, flow, harmony, font
+* Is main colors are good fit for the message?
 * Check hierarchy
     * Highlight using existing color scheme
 * If left with big chunks of nothing - think about filling them with shapes
 * Simplify - remove small and unnecessary details
 
 
-#### Design process showcase
+##### Design process showcase
 * Analyse and improve existing design:
-    * https://www.youtube.com/watch?v=Tm25IxJQPWM
-    * https://www.youtube.com/watch?v=INMuAYZDums
+    * (Satori Graphics - Before & After Graphic Design)[https://www.youtube.com/channel/UCoeJKtPJLoIBqWq4o8TDLpA]
 * 
 *
+* 
+
+##### Apps
+* `Canva` - graphic design platform
+* 
 * 
