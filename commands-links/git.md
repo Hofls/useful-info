@@ -1,3 +1,7 @@
+## Settings
+* Turn off CRLF conversion:
+    * `git config --global core.autocrlf false`
+
 ## Commands
 * Revert not pushed commit
     * `git reset HEAD~1 --soft`

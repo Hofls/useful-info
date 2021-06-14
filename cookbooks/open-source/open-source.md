@@ -7,8 +7,11 @@
     * Practically unlimited resources (on the cloud)
 * Possible pitfalls:
     * Use LF instead of CRLF on Windows
+        * `git config --global core.autocrlf false`
+    * Path shouldn't have spaces or weird characters (e.g. cyrillic)
     
 ##### Develop locally. Host-Guest
+* Disclaimer: this method has limitations (e.g. no symlinks)
 * `VMware Player`:
     * Install `VMware Player`
     * Download & install `Ubuntu` image 
@@ -26,9 +29,11 @@
         * Run a VM
         * Execute on guest 
             * `mkdir /mnt/hgfs`
-            * `sudo vmhgfs-fuse .host:/ /mnt/hgfs/ -o allow_other -o uid=1000`
+            * `vmhgfs-fuse .host:/ /mnt/hgfs/ -o allow_other -o uid=1000`
             * `cd /mnt/hgfs/shared-folder`
             * `python3 hello.py`
+* `Docker`:
+    * TODO (Using volumes)
 
 ##### Develop locally. Client-Server
 * `IntelliJ IDEA`:
