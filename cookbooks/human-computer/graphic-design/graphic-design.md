@@ -91,7 +91,7 @@
 
 ##### Design process showcase
 * Analyse and improve existing design:
-    * (Satori Graphics - Before & After; Amateur vs PRO)[https://www.youtube.com/channel/UCoeJKtPJLoIBqWq4o8TDLpA]
+    * [Satori Graphics - Before & After; Amateur vs PRO](https://www.youtube.com/channel/UCoeJKtPJLoIBqWq4o8TDLpA)
 * 
 *
 * 
