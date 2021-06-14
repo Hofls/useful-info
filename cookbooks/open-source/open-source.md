@@ -1,14 +1,16 @@
 ## Open source
 
 ##### Develop locally
+* If all you want to do is edit code and run tests, Windows is enough
+    * Linux is must have to build and run code
 * Use IDE on windows, sync files with Linux, run/build/test on Linux
     * Linux is great on server-side, windows is good on client-side
     * Free your local OS from need to install a bunch of software / config tweaks
     * Practically unlimited resources (on the cloud)
-* Possible pitfalls:
-    * Use LF instead of CRLF on Windows
-        * `git config --global core.autocrlf false`
-    * Path shouldn't have spaces or weird characters (e.g. cyrillic)
+    * Possible pitfalls:
+        * Use LF instead of CRLF on Windows
+            * `git config --global core.autocrlf false`
+        * Path shouldn't have spaces or weird characters (e.g. cyrillic)
     
 ##### Develop locally. Host-Guest
 * Disclaimer: this method has limitations (e.g. no symlinks)
