@@ -1,7 +1,7 @@
 ### Node.js
 * https://github.com/nodejs/node
 
-#### Building
+#### Build
 * https://github.com/nodejs/node/blob/master/BUILDING.md
 * Install dependencies:
     ```
@@ -18,3 +18,8 @@
     * Run specific test: `node ./test/parallel/test-stream2-transform.js`
     * Lint: `make lint`
     * Build documentation: `make doc`
+
+#### Develop
+* JavaScript locations:
+    * Code: `lib`
+    * Tests: `test/parallel`
