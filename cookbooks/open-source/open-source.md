@@ -16,10 +16,10 @@
 * Disclaimer: this method has limitations (e.g. no symlinks)
 * `VMware Player`:
     * Install `VMware Player`
-    * Download & install `Ubuntu` image 
-        * .iso - install yourself [(slow)](https://ubuntu.com/download/desktop)
+    * Download & install `Ubuntu` server image 
+        * .iso - install yourself [(slow)](https://ubuntu.com/server)
             * File -> New Virtual Machine -> Installer disc image file (iso)
-        * .vmdk - already installed [(fast)](https://www.osboxes.org/ubuntu/)
+        * .vmdk - already installed [(fast)](https://www.osboxes.org/ubuntu-server/)
             * File -> New Virtual Machine -> I will install the OS later
             * Edit VM settings -> Add... -> Hard Disk -> Use an exiting virtual disk
             * Edit VM settings -> Pick old hard disk -> Remove
@@ -34,6 +34,10 @@
             * `vmhgfs-fuse .host:/ /mnt/hgfs/ -o allow_other -o uid=1000`
             * `cd /mnt/hgfs/shared-folder`
             * `python3 hello.py`
+    * Access guest web-service (from the host)  
+        * Get address: `ip addr | grep inet`
+        * Run web-service: `python3 -m http.server`
+        * Open URL on the host: http://GUEST_IP_ADDR:8000
 * `Docker`:
     * TODO (Using volumes)
 
