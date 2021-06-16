@@ -145,6 +145,14 @@
     http://someamel.test.edias.som.ru/proxy/IMIS/IMIS/v5S/ProxyService \
     > response.xml
     ```
+* Send POST request with JSON body
+    ```
+    curl \
+    --header "Content-Type: application/json" \
+    --request POST \
+    --data '{"text":"Hello world!"}' \
+    https://integram.org/webhook/dD3fFkdS2KL
+    ```
     
 #### Text processing
 * Replace every occurrence of `Sam` with `Mike` in `report.txt`
