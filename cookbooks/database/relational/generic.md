@@ -22,3 +22,9 @@
     * Makes sense only if app has fixed amount of query plans (different parameters = different plan)
     * `Query plan` cache
     * `Prepared statement` cache
+* `Locking`:
+    * `Optimistic Locking` - two people edit article, first saves, second gets error/notification
+        * Used when collisions are rare
+        * Implementation: store last change time for each record, compare them on save
+    * `Pessimistic Locking` - first person edits article, second is unable to (article locked)
+        * Use if you expect a lot of collisions
