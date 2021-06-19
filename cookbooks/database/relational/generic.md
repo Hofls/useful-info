@@ -26,5 +26,11 @@
     * `Optimistic Locking` - two people edit article, first saves, second gets error/notification
         * Used when collisions are rare
         * Implementation: store last change time for each record, compare them on save
-    * `Pessimistic Locking` - first person edits article, second is unable to (article locked)
+    * `Optimistic Locking (SQL)`:
+        * `update ... where version = 1` if no such record - throws error
+        * Means only 1 of multiple parallel queries would succeed
+    * `Pessimistic Locking` - first person edits article, second is unable to (article is locked)
         * Use if you expect a lot of collisions
+    * `Pessimistic Locking (SQL)`:
+        * `select ... for update` blocks specific record
+        * 1 locks, other parallel queries just wait (update, select for update)
