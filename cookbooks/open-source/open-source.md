@@ -53,7 +53,8 @@
         * Test connection -> OK
     * Start SSH:
         * Tools -> Start SSH session -> nodejs-ssh
-        * cd /opt; mkdir remote; chmod 777 remote
+        * `sudo su`
+        * `cd /opt; mkdir remote; chmod 777 remote`
     * Configure SFTP:
         * File -> Settings -> Build, Execution, Deployment
         * Add -> SFTP
