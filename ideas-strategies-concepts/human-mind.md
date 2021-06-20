@@ -15,5 +15,8 @@
 * `Human–computer interaction (HCI)` - studies the design and use of computer technology, focused on the interfaces between people and computers
 * `Meditation` - process of focusing on an object (e.g. breath) to achieve a mentally clear and stable state
 * `Flow` - complete absorption in activity, resulting in transformation of subjective sense of time
-    * Challenge of the activity should match skill level
+    * Conditions:
+        * Challenge of the activity should match skill level
+        * Fast feedback
+        * Clear goals
 * `Kaizen` - continuously improve all functions and involve all employees
