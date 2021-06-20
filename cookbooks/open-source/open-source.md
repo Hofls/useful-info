@@ -43,8 +43,30 @@
 
 ##### Develop locally. Client-Server
 * `IntelliJ IDEA`:
-    * https://www.jetbrains.com/help/idea/creating-a-remote-server-configuration.html
-    * https://www.jetbrains.com/help/idea/uploading-and-downloading-files.html#2a338ba
+    * Configure SSH:
+        * File -> Settings -> Tools -> SSH Configurations -> Add 
+            * Name -> nodejs-ssh
+            * Host -> 123.32.143.54
+            * User name -> hofls
+            * Authentication type -> Key pair
+            * Private key file -> C:\keys\private_key.ppk
+        * Test connection -> OK
+    * Start SSH:
+        * Tools -> Start SSH session -> nodejs-ssh
+        * cd /opt; mkdir remote; chmod 777 remote
+    * Configure SFTP:
+        * File -> Settings -> Build, Execution, Deployment
+        * Add -> SFTP
+            * Name -> nodejs-sftp
+            * SSH configuration -> nodejs-ssh
+            * Root Path -> /opt/remote
+        * Mappings -> 
+            * "Local path" -> C:\projects\open-source\nodejs\
+            * "Deployment path" -> /
+        * Test connection -> OK
+    * Sync up:
+        * Right click on `nodejs` folder -> Deployment -> Upload to 'temp' 
+        * Tools -> Deployment -> Automatic upload
 * `WinSCP`:
     * https://stackoverflow.com/questions/423362/best-way-to-instantly-mirror-sync-files-from-windows-to-linux-server
 * `Rsync`:
