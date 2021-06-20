@@ -31,6 +31,9 @@
     * `ctrl-u`
 * Delete a word to the left/right
     * `ctrl+w` / `alt+d`
+* Skip one word
+    * Backward - `alt+b`
+    * Forward - `alt+f`
     
 #### Commands combo
 * Execute commands in parallel:
@@ -161,6 +164,12 @@
 * Edit text file
     * `nano /etc/gitlab-runner/config.toml`
     * `vim /etc/gitlab-runner/config.toml`
+* Find error in logs
+    * Find lines with errors: 
+        * `grep -n "Connection is not available" logs.txt`
+        * Let's say error found at lines 1743, 2344, 3584
+    * Get full response text (around line 1743)
+        * `sed -n 1700,1800p logs.txt`
     
 #### Special characters
 * `&` - run in background
