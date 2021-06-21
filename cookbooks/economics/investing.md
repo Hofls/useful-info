@@ -3,6 +3,14 @@
     * Always have funds to buy shares during market crash
 * Investments should be long term (at least 5 years)
 * If stock price falls > 40%, but you still believe in company - consider buying more shares
+* Bogleheads:
+    * Invest early and often
+    * Never bear too much or too little risk
+    * Diversify
+        * e.g. 66% - index fund/etf/stock; 33% - bonds/cash 
+    * Mostly use index funds (but investing in some stocks you like is ok too) 
+    * ETFs with their 1% expense ratio is too expensive
+    * Optimize taxes
 
 ##### Indicators
 * `Market cap` - Value of all shares (price * count)
