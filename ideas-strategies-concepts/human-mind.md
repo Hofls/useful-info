@@ -19,4 +19,5 @@
         * Challenge of the activity should match skill level
         * Fast feedback
         * Clear goals
+        * Time limit (deadline)
 * `Kaizen` - continuously improve all functions and involve all employees
