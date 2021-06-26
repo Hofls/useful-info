@@ -66,7 +66,8 @@
             * "Deployment path" -> /
         * Test connection -> OK
     * Sync up:
-        * Right click on `nodejs` folder -> Deployment -> Upload to 'temp' 
+        * Right click on `nodejs` folder -> Deployment -> Upload to 'temp'
+            * Disclaimer: if it's too slow - just use `git clone` on server
         * Tools -> Deployment -> Automatic upload
 * `WinSCP`:
     * https://stackoverflow.com/questions/423362/best-way-to-instantly-mirror-sync-files-from-windows-to-linux-server
