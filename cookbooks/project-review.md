@@ -57,6 +57,7 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
 * All errors should be logged, possibly with user ID
 * Expected dependencies (or their alternatives): lombok, mapstruct, java-verbal-expressions, mockito, h2db, spring-boot-starter-test
 * Swagger (or alternative) is used to generate frontend code
+* DB Changesets (e.g. liquibase) generated from code
 * Web interface is restful (or graphql)
 * Each complex method/class has comments (javadoc)
 * If something goes wrong - backend returns descriptive error messages
