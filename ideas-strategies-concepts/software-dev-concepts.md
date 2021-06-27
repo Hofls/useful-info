@@ -113,3 +113,7 @@
 * `MVP` - minimum viable product
 * `Cargo cult` - development characterized by rituals that serve no real purpose
 * `User-agent` - tool that acts on the behalf of the user (e.g. web browser)
+* `TCP/IP` - separate protocols that work together to deliver data over network
+    * `IP` - obtains address to send data
+    * `TCP` - transmits data to the address
+* `TCP/IP vs OSI` - OSI is theoretical (never got implemented), TCP/IP is practical (describes what's actually happening)
