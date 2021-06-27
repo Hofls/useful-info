@@ -112,3 +112,4 @@
     * `Admin Processes` - any admin/maintenance tasks should a part of the application
 * `MVP` - minimum viable product
 * `Cargo cult` - development characterized by rituals that serve no real purpose
+* `User-agent` - tool that acts on the behalf of the user (e.g. web browser)
