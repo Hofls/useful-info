@@ -26,6 +26,7 @@
     * `<topic> roadmap`, e.g. `web developer roadmap`
     * `<topic> top` e.g. `javascript top libraries`
     * `Tranding software technology`
+    * `Programming buzzwords`
 * Freelance sites
 * Any job listings
     * ...
