@@ -29,7 +29,7 @@ Is implementation details up to standard?
     * `branch.setAreaId(areaId)` OK
 * Do not check for nulls directly, use utils if possible:
     * `StringUtils.isEmpty()`, `CollectionUtils.isEmpty()`
-* Some names should be highly searchable:
+* Some names should be highly searchable (unique):
     * It's very hard to find usage of profile with name `junit` because of false positive search results
         * Usage of profile with name `junit-profile` is highly searchable
     * Use cases: profiles, cache names, config names
