@@ -21,3 +21,12 @@
         * Clear goals
         * Time limit (deadline)
 * `Kaizen` - continuously improve all functions and involve all employees
+* `SMART criteria` - to set goals. Goal should be Specific, Measurable, Achievable, Relevant, Time-bound
+* `Maslow's hierarchy`
+    * Physiological Needs - food, warmth, rest
+    * Safety Needs - emotional, financial
+    * Love and Social Belonging - intimacy, friendship
+    * Esteem needs - achievements, mastery, independence
+    * Self-actualization - realization of full potential
+    * Transcendence - altruism/spirituality (desire to reach the infinite)
+

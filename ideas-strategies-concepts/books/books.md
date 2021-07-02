@@ -1,4 +1,0 @@
-* `Thinking, Fast and Slow`
-    * 
-    * 
-    *
