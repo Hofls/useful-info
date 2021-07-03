@@ -1,4 +1,6 @@
-* TLDR - book uses the Harry Potter story to promote rationality skills 
+* TLDR - alternative Harry Potter story that promotes rationality skills
+
+### Definitions
 * `Probability` - how likely an event is to occur (between 0 to 1)
 * `Fundamental attribution error` - tendency to believe that what people do reflects who they are
     * E.g. man drives aggressively because he is mean, not because he is late
@@ -15,4 +17,4 @@
 * `Sunk cost fallacy` - incurred cost influence peoples decisions 
     * e.g. governments continued to waste money on Concorde instead of cutting losses
 * `Hedonic motivation` - people approach pleasure and avoid pain
-* 
+* Other definitions - `Fermi estimations`, `Scientific method`
