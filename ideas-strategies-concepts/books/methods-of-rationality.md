@@ -1,4 +1,4 @@
-* TLDR - alternative Harry Potter story that promotes rationality skills
+TLDR - alternative Harry Potter story that promotes rationality skills
 
 ### Definitions
 * `Probability` - how likely an event is to occur (between 0 to 1)
