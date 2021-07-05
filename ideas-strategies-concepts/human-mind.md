@@ -29,4 +29,3 @@
     * Esteem needs - achievements, mastery, independence
     * Self-actualization - realization of full potential
     * Transcendence - altruism/spirituality (desire to reach the infinite)
-
