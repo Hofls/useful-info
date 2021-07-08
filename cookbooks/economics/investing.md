@@ -20,7 +20,7 @@
     * Should be `< 40`
     * A lot of growing companies have no earnings, so `P/E` makes no sense
 * `P/S` - (shares Price) to (company Sales) ratio 
-    * Should be `< 20`
+    * Should be `< 10`
 * `EPS` - (company Earnings) Per Share
     * Should be `> 10%` per year
 * `ROE` - Return on Equity

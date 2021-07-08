@@ -1,0 +1,9 @@
+TLDR - 
+
+### Definitions
+* `` - 
+* `` - 
+
+### Ideas
+* 
+* 

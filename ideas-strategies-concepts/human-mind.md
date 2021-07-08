@@ -29,3 +29,6 @@
     * Esteem needs - achievements, mastery, independence
     * Self-actualization - realization of full potential
     * Transcendence - altruism/spirituality (desire to reach the infinite)
+* `Procrastination` - unnecessary delaying something, despite negative consequences
+    * To strategically break it - develop habits
+    * To tactically break it - start working on a task for 5 minutes, after that if you still don't want to continue - stop
