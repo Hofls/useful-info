@@ -5,7 +5,12 @@
 	* `Humility` - not self-centered, not infallible, ready to admit mistake/lack of knowledge, open to self-improvement
 	* `Respect` - other people are important, valuable
 	* `Trust` - belief in reliability/abilities of others
-* `CBT` - challenges cognitive/behavioral distortions, develops personal strategies
+* `CBT` - challenges cognitive/behavioral distortions (e.g. thoughts/beliefs/attitudes)
+    * Actively analyse your thoughts (make sure they reflect reality)
+    * Cycle: Thoughts -> Feelings -> Behaviors (e.g. if you have negative feelings - identify thoughts that cause them)
+    * Let go of what you can't control, Focus on what you can control
+    * If you irrationally afraid of something - slowly build tolerance by exposing yourself to trigger
+    * Use behavioral experiments to check if your expectations match reality
 * `Mindfulness` - brings attention to experiences occurring in the present moment without judging/thinking
 * `Reinforcement` - consequence applied to the action, that will guide future behavior
 * `Hedonic treadmill` - tendency of humans to return to base level of happiness despite major positive or negative life changes
