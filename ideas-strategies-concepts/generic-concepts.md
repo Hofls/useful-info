@@ -50,3 +50,7 @@
         * Participative leadership, Open and clear communications, Valued diversity (of thoughts/experiences)
         * Mutual trust, Managing conflict, Clear goals, Defined roles and responsibilities, Cooperative relationship
         * Positive atmosphere (open, transparent, future-focused)
+* `ROWE` - Results Only Work Environment (employees paid for output/results)
+    * Employees should understand their role, responsibilities, measurement for success, repercussions of failing
+* `Servant leadership` - servant leader shares power, puts the needs of the employees first and helps people develop and perform as highly as possible
+* `Learning organization` - facilitates the learning of its members and continuously transforms itself

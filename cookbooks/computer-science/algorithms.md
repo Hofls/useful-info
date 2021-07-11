@@ -17,6 +17,7 @@
     * Examples: `Sudoku`
 * `Brute-force` - enumerates all possible solution candidates, until finding one which satisfies problem statement
 * `Dynamic Programming` - if problem has overlapping subproblems - solve each subproblem once and cache the result
+    * Example: Longest Common Subsequence
 * `Kernelization` - stage before a main algorithm, in which input reduced to a smaller input, called "kernel" 
 * `Hybrid algorithm` - combination of multiple algorithms to solve the same problem.
     * Example: Use approximation algorithm to find imprecise solution. Then use it as starting point for precise algorithm
