@@ -37,3 +37,4 @@
 * `Procrastination` - unnecessary delaying something, despite negative consequences
     * To strategically break it - develop habits
     * To tactically break it - start working on a task for 5 minutes, after that if you still don't want to continue - stop
+* `Peak–end rule` - people judge experience based on it's peak and end
