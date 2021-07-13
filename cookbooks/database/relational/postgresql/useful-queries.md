@@ -1,8 +1,8 @@
 * Running queries:
 ```
-SELECT pid, age(clock_timestamp(), query_start), usename, query 
+SELECT pid, state, age(clock_timestamp(), query_start), usename, query
 FROM pg_stat_activity 
-WHERE query != '<IDLE>' AND query NOT ILIKE '%pg_stat_activity%' 
+where state <> 'idle'
 ORDER BY query_start asc;
 ```
 * Kill query:
@@ -16,11 +16,20 @@ SELECT pg_terminate_backend(pid);
 ```
 SELECT * FROM pg_user;
 ```
+* Slow queries:
+```
+select query, calls, (total_time/calls)::integer as avg_time_ms 
+from pg_stat_statements
+where calls > 20 and query <> '<insufficient privilege>'
+order by avg_time_ms desc
+limit 400;
+```
 * Table index usage
 ```
 -- should be around 0.99 for all big tables:
-SELECT relname, 100 * idx_scan / (seq_scan + idx_scan) percent_of_times_index_used, n_live_tup rows_in_table
+SELECT relname, 100 * idx_scan / (seq_scan + idx_scan) percent_of_times_index_used
 FROM pg_stat_user_tables 
+WHERE (seq_scan + idx_scan) <> 0
 ORDER BY n_live_tup DESC;
 ```
 * Unused indexes:
