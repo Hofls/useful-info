@@ -161,9 +161,13 @@
 * Replace every occurrence of `Sam` with `Mike` in `report.txt`
     * `sed 's/Sam/Mike/g' report.txt > report_new.txt`
 * `awk` is outdated, better use `python`
-* Edit text file
-    * `nano /etc/gitlab-runner/config.toml`
-    * `vim /etc/gitlab-runner/config.toml`
+* Read/Edit text file
+    * `nano /etc/config.toml`
+    * `vim /etc/config.toml`
+    * `less /etc/config.toml`
+        * `/` - search forward; `?` - search backwards
+        * `n` - next result; `N` - previous result
+        * `v` - edit
 * Find error in logs
     * Find lines with errors: 
         * `grep -n "Connection is not available" logs.txt`
