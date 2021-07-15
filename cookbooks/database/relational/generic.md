@@ -34,3 +34,5 @@
     * `Pessimistic Locking (SQL)`:
         * `select ... for update` blocks specific record
         * 1 locks, other parallel queries just wait (update, select for update)
+* It's ok to create indexes on DB even during high load, just add `CONCURRENTLY` (Postgres):
+    * CREATE INDEX CONCURRENTLY idx_guest_address_id ON public.guest USING btree (address_id);
