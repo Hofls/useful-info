@@ -108,6 +108,9 @@
         * Column `free` - amount of memory that is not used at all
         * Column `available` - free memory + memory that is used for cache/buffer (can become available if needed)
     * `cat /proc/meminfo` is less human readable, but has more information
+* Process RAM usage
+    * `cat /proc/23231/status | grep VmSize`
+    * `pmap 23231 | tail -n 1`
 * CPU info:
     * `cat /proc/cpuinfo`
 * GPU info:
