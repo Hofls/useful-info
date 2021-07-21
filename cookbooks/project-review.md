@@ -63,6 +63,7 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
 * If something goes wrong - backend returns descriptive error messages
 * There is no old "// TODO" comments
 * Rest request examples for each endpoint (e.g. via swagger)
+* Look at `zero-to-one` in `architecture` repository
 
 ### Versions
 * Sane versioning schema (e.g. [Semantic Versioning](https://semver.org/))
