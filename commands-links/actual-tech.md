@@ -28,6 +28,9 @@
     * `Tranding software technology`
     * `Programming buzzwords`
 * Freelance sites
+* Developer surveys
+    * [stackoverflow](https://insights.stackoverflow.com/survey/2020)
+    * [jetbrains](https://www.jetbrains.com/lp/devecosystem-2021/)
 * Any job listings
     * ...
 * Look at integrations/images/services at cloud providers (AWS, GCP, Azure)
