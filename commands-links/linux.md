@@ -96,33 +96,31 @@
      * Umount each of them: `umount docker/containers/82JDSAJDK2/shm`
 
 #### Resources (RAM/CPU/Disk)
-* Shows wrong info inside container:
-    * Display amount of available disk space
-        * `df -h`
-    * Live feed of process resource usage
-        * `top`
-            * Press `e` to switch format of value (kb -> mb -> gb))
-            * `shift+m` to sort by RAM usage
-            * `shift+p` to sort by CPU usage
-    * Show total memory usage (RAM/swap)
-        * `free -h`
-            * Column `free` - amount of memory that is not used at all
-            * Column `available` - free memory + memory that is used for cache/buffer (can become available if needed)
+* Display amount of available disk space
+    * `df -h`
+* Live feed of process resource usage
+    * `top`
+        * Press `e` to switch format of value (kb -> mb -> gb))
+        * `shift+m` to sort by RAM usage
+        * `shift+p` to sort by CPU usage
+* Show total memory usage (RAM/swap)
+    * `free -h`
+        * Column `free` - amount of memory that is not used at all
+        * Column `available` - free memory + memory that is used for cache/buffer (can become available if needed)
     * `cat /proc/meminfo` is less human readable, but has more information
-* Shows adequate info inside container:
-    * RAM usage by process
-        * `cat /proc/23231/status | grep VmSize`
-        * `pmap 23231 | tail -n 1`
-    * RAM usage
-        * `cd /sys/fs/cgroup/memory`
-        * `ls` look at all the options:
-            * `cat memory.max_usage_in_bytes`
-            * `cat memory.usage_in_bytes`
-            * `cat memory.stat`
-    * CPU info:
-        * `cat /proc/cpuinfo`
-    * GPU info:
-        * `lshw -C display`
+* RAM usage by process
+    * `cat /proc/23231/status | grep VmSize`
+    * `pmap 23231 | tail -n 1`
+* RAM usage
+    * `cd /sys/fs/cgroup/memory`
+    * `ls` look at all the options:
+        * `cat memory.max_usage_in_bytes`
+        * `cat memory.usage_in_bytes`
+        * `cat memory.stat`
+* CPU info:
+    * `cat /proc/cpuinfo`
+* GPU info:
+    * `lshw -C display`
 
 #### Network
 * Shows ports in use
