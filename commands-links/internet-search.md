@@ -1,3 +1,4 @@
+### Generic
 * Quick summary
     * `javascript cheatsheet` / `agile factsheet`
 * Simple explanation
@@ -24,3 +25,8 @@
     * `after:2020`
 * Look for specific file type
     * `filetype:pdf algorithm design`
+
+### Specific
+* How to make different libraries work together:
+    * On github: `"library-x" "library-y" filename:package.json stars:>20`
+    * [Source](https://www.reddit.com/r/webdev/comments/oc45mc/why_does_frontend_have_to_be_so_bad/)
