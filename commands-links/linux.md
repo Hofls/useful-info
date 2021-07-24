@@ -121,6 +121,9 @@
     * `cat /proc/cpuinfo`
 * GPU info:
     * `lshw -C display`
+* List all storage devices and their partitions
+    * `lsblk`
+    * Sometimes it's possible to [increase available space](https://askubuntu.com/questions/1106795/ubuntu-server-18-04-lvm-out-of-space-with-improper-default-partitioning)
 
 #### Network
 * Shows ports in use
