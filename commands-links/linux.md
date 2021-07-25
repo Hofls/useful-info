@@ -44,6 +44,9 @@
     * `echo "good" | grep go`
 * Write output of command to file:
     * `echo "a" > example.txt`
+* Save output of command to a variable:
+    * `commit_message=$(git log --skip 1 -n 1 --format=%B)`
+    * `echo $commit_message`
      
 #### Processes
 * Run command 'standalone.sh' in the background, immune to hangups
