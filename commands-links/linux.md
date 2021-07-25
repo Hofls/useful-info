@@ -54,12 +54,16 @@
      kill -9 832747
      ```
 * Call `java` from CLI by its name alone, without full path:
-    * 1st way
+    * 1st way (permanent)
         * Create symlink in `/usr/bin`
         * Call `java -version`
-    * 2nd way
+    * 2nd way (temporary, only for the session)
         * `export JAVA_HOME=/opt/jdk-15.0.1`
         * `export PATH=$JAVA_HOME/bin:$PATH`
+    * 3d way (permanent)
+        * `nano /etc/environment`
+        * `JAVA_HOME=/opt/jdk-15.0.1`
+        * Add to the end of PATH - `:/opt/jdk-15.0.1/bin`
 * Service manager
     * List all services `systemctl list-units --type=service`
     * Restart service apache2 `systemctl restart apache2`
