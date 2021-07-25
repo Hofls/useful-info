@@ -64,6 +64,7 @@
         * `nano /etc/environment`
         * `JAVA_HOME=/opt/jdk-15.0.1`
         * Add to the end of PATH - `:/opt/jdk-15.0.1/bin`
+        * Restart server - `reboot`
 * Service manager
     * List all services `systemctl list-units --type=service`
     * Restart service apache2 `systemctl restart apache2`
