@@ -20,6 +20,7 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
 * Logs are accessible via `graylog` or alternatives
 * No passwords/tokens hardcoded in the project (those should be stored as environment variables)
 * Project runs inside of a container (docker), possibly in kubernetes
+* Dependency version should be set (without a version - the latest one will be used, possibly with broken backward compatibility)
 
 ### Git
 * Git branching schema makes sense
