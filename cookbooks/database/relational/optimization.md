@@ -12,3 +12,16 @@
 * Use pagination if possible
 * Use connection pool to avoid constantly creating new connections (it's expensive)
     * e.g. HikariCP (best used as fixed-size connection pool)
+* Index not working for OR clause
+    * Scans all rows in both tables - `where visit.customer_id = 23 or passive.customer_id = 23`
+    * Fix:
+        ```
+        visit_with_passive (
+            select * from visit 
+            where visit.customer_id = 23
+            union
+            select visit.* from passive 
+            join visit on passive.id = visit.passive_id
+            where passive.customer_id = 23
+        )
+        ```
