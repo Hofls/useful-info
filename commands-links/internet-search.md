@@ -3,6 +3,8 @@
     * `javascript cheatsheet` / `agile factsheet`
 * Simple explanation
     * `cloud computing ELI5`
+* Best practices
+    * `js best practices` / `js standards`
 * Simple example
     * `RabbitMQ Hello World` or `Getting Started` / `Fundamentals` / `Core Concepts` / `101`
 * Opinion of the people
