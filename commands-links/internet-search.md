@@ -21,7 +21,7 @@
     * `java awesome list`
 * Direct quote
     * `"apple is banana"`
-* Exclude word from search
+* Exclude a word from search
     * `hawking -stephen`
 * Exclude outdated results
     * `after:2020`
@@ -32,3 +32,6 @@
 * How to make different libraries work together:
     * On github: `"library-x" "library-y" filename:package.json stars:>20`
     * [Source](https://www.reddit.com/r/webdev/comments/oc45mc/why_does_frontend_have_to_be_so_bad/)
+
+### Learn new tech
+* VS -> Getting started -> Cheat sheet -> Best practices -> Cookbook -> Interview questions
