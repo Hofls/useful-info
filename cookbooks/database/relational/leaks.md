@@ -16,7 +16,6 @@
     * Big amount of queries text in dump
         * Fix - turn off 'prepared statement' cache (Postgres connection)
             * `jdbc:postgresql://potr-db-t:5432/puds2?preparedStatementCacheQueries=0`
-        * Price: higher CPU load
 
 #### Connection leaks
 * Connection leak: transaction (connection) open for too long. Leads to lack of available connections.
