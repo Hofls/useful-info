@@ -161,6 +161,8 @@
 * Redirect traffic (Port-forwarding)
     * `socat tcp-listen:9090,reuseaddr,fork tcp:localhost:8000`
     * For more info look at `devops` repository
+* Show internet usage
+    * Pick one: `apt-get install bmon slurm tcptrack`
 * Send SOAP request
     ```
     curl -X POST -H "Content-Type: text/xml" \
