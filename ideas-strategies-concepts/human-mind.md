@@ -38,3 +38,26 @@
     * To strategically break it - develop habits
     * To tactically break it - start working on a task for 5 minutes, after that if you still don't want to continue - stop
 * `Peak–end rule` - people judge experience based on it's peak and end
+* `Defence mechanism` - protects a person from anxiety-producing thoughts and feelings
+    * `Level 1: pathological` - abnormal, irrational, dysfunctional, dangerous
+        * Delusional projection - fixed belief that doesn't change in light of conflicting evidence
+        * Denial - refusal to accept reality
+        * Distortion - a gross reshaping of reality
+    * `Level 2: immature` - out of touch with reality, difficult to deal with
+        * Acting out - actions destructive to self/others, without conscious awareness of the emotion that drives it
+        * Hypochondriasis - excessive worrying about having a serious illness
+        * Passive-aggressive behavior - Indirect expression of hostility
+        * Projection - shifts unacceptable thoughts, feelings and impulses onto someone else
+        * Schizoid fantasy - retreat from reality into fantasy
+    * `Level 3: neurotic` - provides short-term advantages in coping, but causes long-term problems
+        * Displacement - shifts sexual or aggressive impulses to a more acceptable or less threatening target
+        * Dissociation - temporary drastic modification of one's personal identity/character
+        * Intellectualization - focusing on facts and logic, removing emotions
+        * Reaction formation - taking the opposite belief because the true belief causes anxiety
+        * Repression - unpleasant thoughts/memories pushed from the conscious mind
+    * `Level 4: mature` - conscious, healthy, leads to success in society and relationships
+        * Altruism - constructive service to others that brings pleasure and personal satisfaction
+        * Anticipation - realistic planning for future discomfort
+        * Humour - expressing ideas and feelings in form of humor
+        * Sublimation - transformation of unhelpful emotions/feelings into healthy actions, behaviours, or emotions (e.g. fuel aggression into boxing)
+        * Suppression - conscious decision to delay paying attention to a thought/emotion/need in order to cope with the present reality

@@ -5,5 +5,5 @@
 * `The 80/20 Principle` - 20% of efforts produce 80% of results
 * `Everybody lies: Big data` - to find truth - look at the actions, not words
 * `The Unicorn Project` - devops transformation of an entire company
-* 
+* `Hooked` - to build an addictive product - create a cycle (trigger -> action -> variable reward -> investment)
 * 
