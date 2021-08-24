@@ -43,6 +43,8 @@
         * Delusional projection - fixed belief that doesn't change in light of conflicting evidence
         * Denial - refusal to accept reality
         * Distortion - a gross reshaping of reality
+            * Black-and-white thinking, Overgeneralizing, Filtering, Jumping to conclusions,  Exaggeration/Minimization
+            * Emotional reasoning, Gratitude traps, Personalization of blaming, Always being right, Fallacy of fairness, Labeling
     * `Level 2: immature` - out of touch with reality, difficult to deal with
         * Acting out - actions destructive to self/others, without conscious awareness of the emotion that drives it
         * Hypochondriasis - excessive worrying about having a serious illness

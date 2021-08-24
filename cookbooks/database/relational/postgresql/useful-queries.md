@@ -1,3 +1,23 @@
+* Show who references table:
+```
+select 
+  (select r.relname from pg_class r where r.oid = c.conrelid) as table, 
+  (select array_agg(attname) from pg_attribute 
+   where attrelid = c.conrelid and ARRAY[attnum] <@ c.conkey) as col, 
+  (select r.relname from pg_class r where r.oid = c.confrelid) as ftable 
+from pg_constraint c 
+where c.confrelid = (select oid from pg_class where relname = 'INSERT_TABLE_NAME_HERE');
+```
+* List everything table refers to:
+```
+select 
+  (select r.relname from pg_class r where r.oid = c.conrelid) as table, 
+  (select array_agg(attname) from pg_attribute 
+   where attrelid = c.conrelid and ARRAY[attnum] <@ c.conkey) as col, 
+  (select r.relname from pg_class r where r.oid = c.confrelid) as ftable 
+from pg_constraint c 
+where c.conrelid = (select oid from pg_class where relname = 'INSERT_TABLE_NAME_HERE');
+```
 * Running queries:
 ```
 SELECT pid, state, age(clock_timestamp(), query_start), usename, query
