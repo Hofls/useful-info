@@ -28,7 +28,7 @@
 * `Pagination` (with infinite scroll)
 * `Minification`
     * Removes all unnecessary characters from source code to reduce file size (for storage/transfer)
-* `Lazy loading` (on-demand)
+* `Lazy loading` (on-demand, just in time)
     * Make sure all loaded data needed for computations (nothing excessive)
     * Only load data that is visible to the user
 * `Prefetching` (eager)

@@ -11,6 +11,7 @@
 
 #### Workflow
 * `Sprint` - time-box during which team creates value (e.g. by developing features)
+    * Deadline is always close, without it some people lose productivity
 * `Backlog Refinement` - update details/estimates on product backlog items, split them
 * `Sprint Review` - team and stakeholders inspect the latest increment
     * Demonstrate sprint results, listen for feedback, update product backlog
