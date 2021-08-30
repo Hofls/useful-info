@@ -1,6 +1,7 @@
 ##### Generic
 * Execution plan is main metric, less cost means better performance (`EXPLAIN` / `ANALYZE`)
 * Replace `Sequential scan` with `Index scan` by adding indexes
+    * Index for `name like 'Joh%'` is `varchar_pattern_ops`
 * First priority - minimize an amount of rows by applying filters
     * Only after that use functions, aggregates, etc
 * Try to avoid using functions/type conversions (especially in `WHERE`/`JOIN`)

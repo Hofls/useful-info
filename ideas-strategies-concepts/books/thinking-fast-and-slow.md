@@ -10,7 +10,7 @@ TLDR - two systems in brain are constantly fighting over control of behavior/act
     * `Framing` - context in which choices presented
         * Surgery survival rate - 90%, people accept. Surgery death rate - 10%, people deny.
     * `Overconfidence` - people often overestimate how much they understand about the world, underestimate role of chance
-    * `Prospect theory` - describes financial behavior of people
+    * `Prospect theory` - people make decisions by evaluating potential gains and losses through the lens of probability
     * `Affective forecasting` - prediction of one's affect (emotional state) in the future
 * Other definitions: `Planning fallacy`, `Sunk cost`, 
 
@@ -19,3 +19,4 @@ TLDR - two systems in brain are constantly fighting over control of behavior/act
     * Automatic, emotional, impulsive, quick, cheap and simple
     * Conscious, logical, slow, expensive and complex
 * Solving complicated problems takes mental work, so our brain cuts corners when we're tired or stressed
+* Make important decisions only with conscious system

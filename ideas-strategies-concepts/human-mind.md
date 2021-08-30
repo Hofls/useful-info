@@ -63,3 +63,5 @@
         * Humour - expressing ideas and feelings in form of humor
         * Sublimation - transformation of unhelpful emotions/feelings into healthy actions, behaviours, or emotions (e.g. fuel aggression into boxing)
         * Suppression - conscious decision to delay paying attention to a thought/emotion/need in order to cope with the present reality
+* `Nudge theory` - proposes positive reinforcement and indirect suggestions as ways to influence the behavior of people
+* `Mnemonic` - technique that helps information retention (e.g. imagine a scene)
