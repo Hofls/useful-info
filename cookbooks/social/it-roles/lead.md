@@ -47,3 +47,6 @@
     * Report to management, inform team about changes/news
 * Delegation
     * Increases bus factor, frees up time, helps employee development
+
+#### Etc
+* [Amazon leadership principles](https://www.amazon.jobs/en/principles)
