@@ -41,6 +41,7 @@
 * Facilitate feedback exchange between team members
     * e.g. periodically ask people to fill out Google Forms
     * Feedback helps people to grow and improve
+    * Praise publicly, critique privately
 * Personal brand
     * Write blog posts, be an active part of a professional community
 * Transparency
