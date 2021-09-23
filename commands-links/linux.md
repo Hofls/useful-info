@@ -106,6 +106,8 @@
 #### Resources (RAM/CPU/Disk)
 * Display amount of available disk space
     * `df -h`
+* Show folders size on current level (only folders visible with `ls`)
+    * `du --summarize --human-readable *`
 * Live feed of process resource usage
     * `top`
         * Press `e` to switch format of value (kb -> mb -> gb))
