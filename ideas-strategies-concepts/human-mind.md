@@ -65,6 +65,6 @@
         * Suppression - conscious decision to delay paying attention to a thought/emotion/need in order to cope with the present reality
 * `Nudge theory` - proposes positive reinforcement and indirect suggestions as ways to influence the behavior of people
 * `Mnemonic` - technique that helps information retention (e.g. imagine a scene)
-* `jit learning` (Just-in-time) - learn a new concept only if there is a need to use it. No need? No learning.
+* `JIT learning` (Just-in-time) - learn a new concept only if there is a need to use it. No need? No learning.
     * It's opposite of school/university, where you learn a lot of stuff, without using it to solve real problems
-* 
+* `Win-win` - a mutually beneficial outcome. It's often necessary to achieve compromise, put both parties on board and prevent resentment.
