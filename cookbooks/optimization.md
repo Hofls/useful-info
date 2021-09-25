@@ -28,9 +28,8 @@
     * `Trigram index` - looks for text in any place of the string (e.g. address ilike '%charles street%)
         * Standard indexes can only look for text in the beginning (e.g. address ilike 'charles street%')
         * Also can be configured to search for text that's pretty similar (e.g. smoke == stoke)
-* `Trigrams` - 
-    * Used to search in any place of the string 
 * `Pagination` (with infinite scroll)
+* `Fuzzy search` - used to find approximately equal text 
 * `Minification`
     * Removes all unnecessary characters from source code to reduce file size (for storage/transfer)
 * `Lazy loading` (on-demand, just in time)

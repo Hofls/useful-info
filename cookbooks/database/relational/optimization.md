@@ -17,7 +17,7 @@
     
 ##### Index not working / query execution plan is slow
 * `name like '%enjamin%'`
-    * Replace your old index with trigrams:
+    * Replace your old index with GIN trigrams:
         ```
         CREATE EXTENSION IF NOT EXISTS pg_trgm; 
       	CREATE INDEX CONCURRENTLY idx_guest_address ON VISIT USING GIN(guest_address gin_trgm_ops);
