@@ -6,9 +6,9 @@
     * Only after that use functions, aggregates, etc
 * Try to avoid using functions/type conversions (especially in `WHERE`/`JOIN`)
     * If you have 1 million rows, function will be called on every one of them
-* Never use wildcards for beginning of the phrase, because it disables indexes
-    * Good: `name like 'Benjami%'` 
-    * Bad: `name like '%enjamin%'`
+* Only use wildcards for beginning of the phrase if you use special indexes
+    * Standard indexes only work with this: `name like 'Benjami%'` 
+    * Special indexes (`gin_trgm_ops`) can work with this: `name like '%enjamin%'`
 * Pick specific columns, don't use `*`
 * Use `UNION ALL` instead of `UNION` (`UNION` wastes resources to remove duplicates)
 * Use pagination if possible
@@ -16,6 +16,12 @@
     * e.g. HikariCP (best used as fixed-size connection pool)
     
 ##### Index not working / query execution plan is slow
+* `name like '%enjamin%'`
+    * Replace your old index with trigrams:
+        ```
+        CREATE EXTENSION IF NOT EXISTS pg_trgm; 
+      	CREATE INDEX CONCURRENTLY idx_guest_address ON VISIT USING GIN(guest_address gin_trgm_ops);
+        ```
 * `OR clause`
     * Problem:
         * Scans all rows in both tables - `where visit.customer_id = 23 or passive.customer_id = 23`

@@ -23,8 +23,13 @@
     * Input - data of any size. Output - fixed size value. Same input always produces same output
 * `Index`
     * Occupies space, makes inserts/updates a bit slower. But takes search from `O(n)` to `O(log n)`
-    * Composite index (index on multiple columns):
-        * Index on (organization_id, date) = finds area of rows with specific organization_id, then inside this area - finds date 
+    * `Composite index` (index on multiple columns):
+        * Index on (organization_id, date) = finds area of rows with specific organization_id, then inside this area - finds date
+    * `Trigram index` - looks for text in any place of the string (e.g. address ilike '%charles street%)
+        * Standard indexes can only look for text in the beginning (e.g. address ilike 'charles street%')
+        * Also can be configured to search for text that's pretty similar (e.g. smoke == stoke)
+* `Trigrams` - 
+    * Used to search in any place of the string 
 * `Pagination` (with infinite scroll)
 * `Minification`
     * Removes all unnecessary characters from source code to reduce file size (for storage/transfer)
