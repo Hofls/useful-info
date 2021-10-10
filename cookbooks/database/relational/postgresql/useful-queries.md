@@ -99,3 +99,7 @@ FROM pg_stat_activity
 group by client_hostname
 order by client_hostname;
 ```
+* Locks held by open transactions:
+```
+SELECT count(distinct pid) FROM pg_locks WHERE granted = false;
+```
