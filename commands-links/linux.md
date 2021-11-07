@@ -185,6 +185,8 @@
 * Replace every occurrence of `Sam` with `Mike` in `report.txt`
     * `sed 's/Sam/Mike/g' report.txt > report_new.txt`
 * `awk` is outdated, better use `python`
+    * Extract a 3rd column of text:
+        * `ls -l | awk '{print $3}`
 * Read/Edit text file
     * `nano /etc/config.toml`
     * `vim /etc/config.toml`

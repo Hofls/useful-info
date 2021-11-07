@@ -6,3 +6,6 @@
     * After installation, you have to manually set primary language
 * `Octotree` - github on steroids
 * `Grammarly` - fixes grammar, helps to write texts
+
+## Sites:
+* `12ft.io` - bypass paywall

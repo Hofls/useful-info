@@ -16,6 +16,9 @@
     * Agrees to tolerate stale data, to reduce resources consumption + increase speed
 * `Compression`
     * Increases load on CPU to reduce file size (for storage/transfer)
+* `Fallback`
+    * Maintain two solutions: 1. Simple and fast; 2. Complex and slow.
+    * Try to solve a problem with simple solution. If it doesn't work (e.g. on edge cases) - fallback to complex solution.
 * `CDN` (Content Delivery Networks)
 * `Denormalization`
     * Increases read performance by reducing write performance + increasing complexity

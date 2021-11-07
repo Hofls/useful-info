@@ -80,6 +80,7 @@
 * `Smoke test` - preliminary testing to reveal obvious failures
 * `Configuration management` - automatically interacting with multiple servers to conduct sysadmin tasks (e.g. Ansible)
 * `Infrastructure as code (IaC)` - managing IT infrastructure using configuration files (e.g. provisioning VMs in cloud)
+* `Compliance Automation` - auto scan infrastructure to identify security issues
 * `Deep modules` - individual unit of abstraction should do a lot of work, but with simple interface
 * `Opinionated system` - provides one easy way of doing things (way chosen based on opinion of system's authors)
 * `Vendor lock-in` - dependency on one specific vendor, without ability to switch
