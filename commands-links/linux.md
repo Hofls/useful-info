@@ -235,6 +235,14 @@
         --env-file ./environment.list \
     rest-sp-back:1.0` 
     ```
+* Add new root user:
+    * Add user:
+        * `adduser hofls`
+        * `usermod -aG root hofls`
+    * Test:
+        * `groups`
+        * `sudo su`
+        * `ls -la /root`
 
 ## File system hierarchy
 * `etc` - configurations
