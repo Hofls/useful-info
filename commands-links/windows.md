@@ -69,6 +69,7 @@
 * `SoapUI` to send SOAP requests
 * `Postman` to send HTTP requests
 * `Battle Encoder Shirase` to limit resources available to the process
+* `CpuStres v2.0` to load CPU to 100%
 * `VLC` to play videos
 * `AIMP` to play audio
 * `Audacity` to record all the sounds that you hear in your headphones
