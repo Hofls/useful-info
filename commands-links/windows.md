@@ -75,7 +75,6 @@
 * `Audacity` to record all the sounds that you hear in your headphones
 * `Bandicam` to record screen + sound
 * `Lightshot` to take screenshots
-* `F.lux` to not ruin eyesight while working at night
 * `Docker` to run containers
 * `Microsoft Office Starter` to edit .docx, .xlsx documents
 * `DBeaver` to connect to database
@@ -93,3 +92,17 @@
         * Possibly getting obsolete in new windows versions
 * No need for introduction:
     `IntelliJ IDEA`, `Google chrome`, `7zip`, `Telegram`, `uTorrent`, `OpenJDK`
+
+## Software. Detailed
+* SoapUI:
+    * Generate request examples:
+        * New SOAP project -> http://example.com/events?wsdl
+    * To download all service files (necessary to generate connectors)
+        * Right click on service -> Export definition
+    * If service returns "Not authorized":
+        * Request -> Auth -> Basic -> Login/Password
+    * To fix generated queries, replace "?" with ""
+    * To send quotes inside quotes:
+        * `<keys query="IncidentID=&quot;IM92838221&quot;">`
+* 
+* 
