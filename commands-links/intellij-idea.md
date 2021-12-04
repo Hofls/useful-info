@@ -19,6 +19,8 @@
     * `Tab limit: 30`
 * To turn off imports auto-ordering (e.g. when project has auto-formatter)
     * `File -> Settings -> Editor -> General -> Auto Import -> Optimize imports on the fly`
+* To enable auto imports:
+    * `File -> Settings -> Editor -> General -> Auto Import`
     
 ## Features
 * Execute any code during debug
@@ -57,7 +59,7 @@
     * `ctrl + alt + h`
 * Evaluate expression (during debug)
     * `alt + f8`
-* Add bookmark, open bookmark
+* Add a bookmark, open bookmark
     * `f11`, `shift + f11`
 * Search everywhere
     * `shift+shift`
