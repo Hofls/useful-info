@@ -73,7 +73,7 @@
 * `VLC` to play videos
 * `AIMP` to play audio
 * `Audacity` to record all the sounds that you hear in your headphones
-* `Bandicam` to record screen + sound
+* `OBS` to record screen + sound
 * `Lightshot` to take screenshots
 * `Docker` to run containers
 * `Microsoft Office Starter` to edit .docx, .xlsx documents
