@@ -17,6 +17,15 @@
 * Good `risk management`: don't avoid it, have a plan in case things go wrong
 * Conflicts resolved by `fact-based arguments`, possibly by reaching compromise
 
+#### Team composition. Example
+* Universal:
+    * 3 analysts
+    * 3 testers
+    * 2 backend devs
+    * 2 frontend devs
+    * 2 mobile devs
+    * 1 project owner
+
 #### Etc
 * Each team member should have good [soft-skills](soft-skills.md)
 * For detailed info about each role look at [it-roles](it-roles)
