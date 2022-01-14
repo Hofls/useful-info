@@ -24,7 +24,7 @@
     * 2 backend devs
     * 2 frontend devs
     * 2 mobile devs
-    * 1 project owner
+    * 1 product owner
 
 #### Etc
 * Each team member should have good [soft-skills](soft-skills.md)
