@@ -1,5 +1,5 @@
 #### QA specialist
-* `QA specialist` - check quality of a product
+* `QA specialist` - checks quality of a product
 
 #### Responsibilities
 * Continuously monitor quality
