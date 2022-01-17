@@ -38,7 +38,7 @@
     * To strategically break it - develop habits
     * To tactically break it - start working on a task for 5 minutes, after that if you still don't want to continue - stop
 * `Peak–end rule` - people judge experience based on it's peak and end
-* `Defence mechanism` - protects a person from anxiety-producing thoughts and feelings
+* `Defense mechanism` - protects a person from anxiety-producing thoughts and feelings
     * `Level 1: pathological` - abnormal, irrational, dysfunctional, dangerous
         * Delusional projection - fixed belief that doesn't change in light of conflicting evidence
         * Denial - refusal to accept reality
