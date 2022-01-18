@@ -127,6 +127,8 @@
         * `cat memory.max_usage_in_bytes`
         * `cat memory.usage_in_bytes`
         * `cat memory.stat`
+* Disk load:
+    * `iostat`
 * CPU info:
     * `cat /proc/cpuinfo`
 * GPU info:
