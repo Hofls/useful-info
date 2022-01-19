@@ -9,6 +9,7 @@
 * Do you have a Docker/Kubernetes experience?
 * Which tools for DB migration you worked with? e.g. Liquibase, Flyway
 * What build tools you worked with? What you did with it, besides building?
+    * Library publication, code formatting/analysis, deploy
 * Have you worked with mapping libraries like Mapstruct? Is it better than manual mapping?
 * Question about REST architecture: when would you use GET request, when POST, when PUT etc
 * In which cases makes sense to use caching?
