@@ -35,6 +35,9 @@
   
 ## Update
 * Use `JetBrains Toolbox`
+
+## Bugs
+* To avoid problems with the cache, don't change code while background task is running (e.g. indexing)
     
 ## Hotkeys
 * Go to class/method implementation
