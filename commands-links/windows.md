@@ -104,5 +104,7 @@
     * To fix generated queries, replace "?" with ""
     * To send quotes inside quotes:
         * `<keys query="IncidentID=&quot;IM92838221&quot;">`
+    * Load test:
+        * Pick any SOAP request -> Add to TestCase -> New Load Test -> Run
 * 
 * 
