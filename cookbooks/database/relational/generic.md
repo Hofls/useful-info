@@ -35,7 +35,7 @@
         * `select ... for update` blocks specific record
         * 1 locks, other parallel queries just wait (update, select for update)
 * `Locking queries vs Non locking queries`
-    * Locking queries. If bunch of users work with the database, don't run those:
+    * Locking queries. If bunch of users work with the table, don't run those:
         * Field update for 5k+ rows. If you must - better use batching (e.g. 1k rows per transaction)
     * Non locking queries. Safe to run any time:
         * New field, new index (with `CONCURRENTLY`), view update
