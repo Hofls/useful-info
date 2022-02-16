@@ -118,3 +118,11 @@
     * `IP` - obtains address to send data
     * `TCP` - transmits data to the address
 * `TCP/IP vs OSI` - OSI is theoretical (never got implemented), TCP/IP is practical (describes what's actually happening)
+* Metrics
+    * `Four key metrics` of DevOps
+        * `Deployment Frequency` - how often releases go to production (multiple times a day)
+        * `Lead Time For Changes` - time until a commit goes to production (<1 day)
+        * `Mean Time to Restore` - time it takes to resolve a service impairment in production (<1 hour)
+        * `Change Failure Rate` - how often deployments lead to failure in production (0-15%)
+* `Expand and contract` - implement breaking change in API by adding new element, wait for clients to migrate from old to new, remove old element
+* `Strangler fig` - bunch of small `Expand and contract`, aimed to replace an entire legacy system
