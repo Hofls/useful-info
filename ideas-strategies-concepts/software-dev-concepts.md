@@ -126,3 +126,6 @@
         * `Change Failure Rate` - how often deployments lead to failure in production (0-15%)
 * `Expand and contract` - implement breaking change in API by adding new element, wait for clients to migrate from old to new, remove old element
 * `Strangler fig` - bunch of small `Expand and contract`, aimed to replace an entire legacy system
+* `BFF` (Backend for frontend) - each frontend has its own backend (one for mobile, one for browser, one for 3rd party apps, etc) 
+* `Templates` - replace placeholders with values
+    * Examples - Helm (generates yaml configs for k8s), Reports (pdf), Documents filling (simi)

@@ -67,4 +67,5 @@
 * `Mnemonic` - technique that helps information retention (e.g. imagine a scene)
 * `JIT learning` (Just-in-time) - learn a new concept only if there is a need to use it. No need? No learning.
     * It's opposite of school/university, where you learn a lot of stuff, without using it to solve real problems
-* `Win-win` - a mutually beneficial outcome. It's often necessary to achieve compromise, put both parties on board and prevent resentment.
+* `Win-win` - a mutually beneficial outcome. It's often necessary to achieve compromise, put both parties on board and prevent resentment
+* `High cognitive load` - high required amount of mental effort / mental resources
