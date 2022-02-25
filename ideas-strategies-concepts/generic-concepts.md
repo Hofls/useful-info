@@ -60,3 +60,4 @@
     * Give real medicine to trial group, fake medicine to control group. Measure and compare results.
 * `Anti-pattern` - popular/common solution to a problem that is wrong/ineffective
 * `Dark pattern` - typical immoral solution to a problem
+* `Consensus` - after discussion, team members arrive to the same conclusion (good alternative to order from a manager; or majority vote)
