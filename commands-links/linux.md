@@ -10,7 +10,6 @@
     * `clear`
 * Current user and group
     * `id`
-    * `id`
 * Became almighty root user
     * `sudo su`
 * Copy from console
@@ -160,8 +159,9 @@
     * `curl https://example.com`
 * Send anything to IP:PORT
     * `telnet 84.154.131.23 9200`
-* Get your IP address (useful on VMs)
-    * `ip addr | grep inet`
+* Get you IP address (useful):
+    * Standard - `curl ifconfig.co`
+    * On local VMs - `ip addr | grep inet`
 * Redirect traffic (Port-forwarding)
     * `socat tcp-listen:9090,reuseaddr,fork tcp:localhost:8000`
     * For more info look at `devops` repository
