@@ -1,5 +1,4 @@
-# Windows
-##### Commands
+## Commands
 * Find `java.exe` in environment variables
   * `for %i in (java.exe) do @echo.   %~$PATH:i`
 * Set environment variable
@@ -61,6 +60,16 @@
 * Runs any `.iso` / `.vmdk` images!
 * Highly recommended installing `VMware tools` on guest OS
     * Fixes screen resolution, provides ability to share clipboard (text/files)
+    
+## Etc
+###### Problem with the internet on PC?
+* No problem! Just use internet from a smartphone
+* Connect Android to PC via USB
+* On Android:
+    * Settings -> Network & Internet -> Access point & Modem -> USB modem (Tethering)
+* On PC:
+    * Deny offer to make PC discoverable on the net
+* Use your internet! But be careful, usually mobile internet is not unlimited
 
 ## Software
 * `Anydesk` to connect to remote desktop
