@@ -129,3 +129,5 @@
 * `BFF` (Backend for frontend) - each frontend has its own backend (one for mobile, one for browser, one for 3rd party apps, etc) 
 * `Templates` - replace placeholders with values
     * Examples - Helm (generates yaml configs for k8s), Reports (pdf), Documents filling (simi)
+* `Canary release` - make new features available to a limited selection of users (to reduce risk, gather metrics)
+* Thoughtworks `core values`: fast feedback, simplicity, clean code, repeatability (automation)
