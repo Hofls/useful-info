@@ -86,6 +86,8 @@
     * Automatically renews certificate
 * Docker:
     * `docker run` automatically pulls image (if not found locally)
+* TiDB: 
+    * After launching - shows all important urls (dashboard, prometheus, grafana, client endpoints)
     
 ##### Great usability examples. Feature first
 * Most useful/important things come first:
