@@ -131,3 +131,4 @@
     * Examples - Helm (generates yaml configs for k8s), Reports (pdf), Documents filling (simi)
 * `Canary release` - make new features available to a limited selection of users (to reduce risk, gather metrics)
 * Thoughtworks `core values`: fast feedback, simplicity, clean code, repeatability (automation)
+* `Hook` - inject custom code at specified points (e.g. query DB on form change)
