@@ -34,12 +34,12 @@
 * Any job listings
     * ...
 * Look at integrations/images/services at cloud providers (AWS, GCP, Azure)
-* MOOC (Table of contents is enough)
 * Most used libraries
     * https://mvnrepository.com/popular?p=1
 * Look at `connect-web-apps.md` (ifttt, zapier...)
 * Look at `dev-platforms-integration` in `devops` repository
-* Courses (event table of contents is enough)
+* Online courses (event table of contents is enough)
+* [Google trends](https://trends.google.com/trends/explore?q=%2Fm%2F07sbkfb,%2Fm%2F02p97)
 
 #### Java:
 * https://www.jhipster.tech/

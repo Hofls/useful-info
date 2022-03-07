@@ -72,38 +72,27 @@
 * Use your internet! But be careful, usually mobile internet is not unlimited
 
 ## Software
-* `Anydesk` to connect to remote desktop
-* `Putty` to connect to remote server via SSH
-* `WinSCP` to transfer files to/from remote server
-* `SoapUI` to send SOAP requests
-* `Postman` to send HTTP requests
-* `Battle Encoder Shirase` to limit resources available to the process
-* `CpuStres v2.0` to load CPU to 100%
-* `VLC` to play videos
-* `AIMP` to play audio
-* `Audacity` to record all the sounds that you hear in your headphones
-* `OBS` to record screen + sound
-* `Lightshot` to take screenshots
-* `Docker` to run containers
-* `Microsoft Office Starter` to edit .docx, .xlsx documents
+* `Putty`, `WinSCP`, `Anydesk`, `Postman`, `SoapUI`, `IntelliJ IDEA`, `Docker`, 
+* `VLC`, `AIMP`, `Lightshot`, `Google chrome`, `7zip`, `Telegram`, `uTorrent`, `OpenJDK`
+* `Notepad++` 
+    * To create second view - right click on tab -> `move to other view`
 * `DBeaver` to connect to database
     * `Edit connection` => `PostgreSQL` => `Show all databases`
-* To check hardware load:
-    * `Open Hardware Monitor`
-    * `SpeedFan`
-* To write down everything:
-    * `Notepad++` 
-        * To create second view - right click on tab -> `move to other view`
+* `OBS` to record screen + sound
+* `Audacity` to record all the sounds that you hear in your headphones
+* `Battle Encoder Shirase` to limit resources available to the process
+* `CpuStres v2.0` to load CPU to 100%
 * To find and delete folders that take too much space:
     * `TreeSize Free` (run as Admin)
 * To run virtual machines:
     * `VMware`, `VirtualBox`
         * Possibly getting obsolete in new windows versions
-* No need for introduction:
-    `IntelliJ IDEA`, `Google chrome`, `7zip`, `Telegram`, `uTorrent`, `OpenJDK`
+* To check hardware load:
+    * `Open Hardware Monitor`
+    * `SpeedFan`
 
 ## Software. Detailed
-* SoapUI:
+* `SoapUI`:
     * Generate request examples:
         * New SOAP project -> http://example.com/events?wsdl
     * To download all service files (necessary to generate connectors)
@@ -115,5 +104,4 @@
         * `<keys query="IncidentID=&quot;IM92838221&quot;">`
     * Load test:
         * Pick any SOAP request -> Add to TestCase -> New Load Test -> Run
-* 
 * 
