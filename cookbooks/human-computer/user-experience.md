@@ -3,9 +3,10 @@
 * `User Experience` - Useful, Usable, Findable, Credible, Desirable, Accessible, Valuable
 * `Affordances` - cues which give a hint how users may interact with something
 * `Discoverability` - degree of ease with which the user can find all the elements and features of a new system when they first encounter it
-* `Low-hanging fruit` - Tasks that have the greatest positive effect for the least effort
 * `Progressive disclosure` - deferring some advanced or rarely used features to a secondary screen
 * `Signal–to–Noise Ratio` - Relevant information is “signal” irrelevant information is “noise”. A high signal–to–noise ratio is a key target of good UI
+* `Optimistic UI` - update UI before receiving response from server 
+    * e.g.color "like" button in green, if later server returns error - color it back to gray
 
 ##### Cookbook
 * Create `MVP` to start gather feedback, metrics and analytics early
@@ -68,6 +69,7 @@
     * When spinning new VM - all the fields filled with sane defaults. User is one click away from running it.
 * npm:
     * Looks for a new version after each run. If found - `New major version of npm available! "Run npm install -g npm to update!"`
+    * Check for vulnerabilities
 * GitLab:
     * If no runners available - shows how to configure them (link to guide)
     * If project moves to another namespace - sends email with git commands to update remote url

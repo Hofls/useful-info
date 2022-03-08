@@ -61,3 +61,4 @@
 * `Anti-pattern` - popular/common solution to a problem that is wrong/ineffective
 * `Dark pattern` - typical immoral solution to a problem
 * `Consensus` - after discussion, team members arrive to the same conclusion (good alternative to order from a manager; or majority vote)
+* `Low-hanging fruit` - Tasks that have the greatest positive effect for the least effort

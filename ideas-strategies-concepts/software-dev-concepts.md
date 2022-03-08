@@ -132,3 +132,8 @@
 * `Canary release` - make new features available to a limited selection of users (to reduce risk, gather metrics)
 * Thoughtworks `core values`: fast feedback, simplicity, clean code, repeatability (automation)
 * `Hook` - inject custom code at specified points (e.g. query DB on form change)
+* `Design sprint` - Idea -> Build prototype -> Launch -> Get feedback
+    * Necessary to make sure you build product that market wants
+* `Lean canvas` - key assumptions of business model:
+    * Problem, Solution, Target customers, Unique value proposition, Advantage
+    * Revenue streams, Cost structure, Key metrics, Channels (path to customers)

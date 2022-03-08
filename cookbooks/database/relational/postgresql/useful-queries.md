@@ -1,4 +1,4 @@
-* Show who references table:
+* Show everything that references table:
 ```
 select 
   (select r.relname from pg_class r where r.oid = c.conrelid) as table, 
