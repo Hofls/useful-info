@@ -10,7 +10,7 @@
 #### Team. Specifics
 * The most important metric - `result` (reaching goals)
 * `Bus factor` of anything is more than 1 (easy way is to just write instructions in a wiki)
-* If something bad happens - identify root causes to make sure it won't repeat in the future (`Retrospective`)
+* If something bad happens - identify root causes to make sure it won't repeat in the future (`Retrospective`, `post mortem`)
 * Before investing heavily into something - build `cheap prototype`
 * Everything should be `reviewed` by at least 1 person (from tech stack decisions, to architecture, to implementation)
 * Optimal size `5-10 people`

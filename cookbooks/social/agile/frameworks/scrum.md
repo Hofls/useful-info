@@ -23,7 +23,7 @@
 * `Sprint Backlog` - tickets in the sprint (it's a forecast, not a commitment)
     * Owned by developers, flexible
 * `Product Increment` - tasks completed in sprint
-* `Estensions` - help people use scrum
+* `Extensions` - help people use scrum
     * `Burndown chart` - chart showing remaining work in a sprint
     * `Release burn-up chart` - track progress toward a release
     * `Definition of ready` - is item ready for development? (e.g. analysis done)
@@ -31,7 +31,7 @@
         * E.g. - coding complete, tests written and pass, code review performed
     * `Velocity` - how much work team can achieve in a sprint
     * `Spike` - period to research a concept or create a prototype
-    * `Tracer bullet` - e.g. implement a shot through all layers of an application (e.g. save user input to DB)
+    * `Tracer bullet` - implement a shot through all layers of an application (e.g. save user input to DB)
     * [Scrum software](https://en.wikipedia.org/wiki/Comparison_of_Scrum_software)
     
 

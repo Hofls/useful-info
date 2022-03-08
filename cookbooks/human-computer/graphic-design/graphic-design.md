@@ -88,15 +88,8 @@
 * If left with big chunks of nothing - think about filling them with shapes
 * Simplify - remove small and unnecessary details
 
-
-##### Design process showcase
+##### Links
+* Shows two designs, [pick good one](https://cantunsee.space/)
 * Analyse and improve existing design:
     * [Satori Graphics - Before & After; Amateur vs PRO](https://www.youtube.com/channel/UCoeJKtPJLoIBqWq4o8TDLpA)
-* 
-*
-* 
-
-##### Apps
 * `Canva` - graphic design platform
-* 
-* 
