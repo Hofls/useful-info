@@ -3,7 +3,7 @@
 * Check all possible logs
     * Look for errors/successes
 * Create memory dump, analyze it
-* If still not enough info - activate verbose mode
+* If still not enough info - activate verbose/debug mode
 * Try to send requests (CRUD)
 * If works partially:
     * Check each node, maybe some of them are malfunctioning
