@@ -18,11 +18,11 @@
 * `Trial and error` - repeated, varied attempts which are continued until success
 * `Scientific method` - research => hypothesis => experiment => conclusions
 * `The Barbell Strategy` - 90% in safety, 10% in risk, 0% in the middle
-* `Decomposition ` - is breaking a complex problem or system into parts that are easier to understand
+* `Decomposition ` - break a complex problem/system into parts that are easier to understand
 * `Postmortem` - way to document the events that led to the failure and to make sure it wont happen again
 * `Antifragile system` - System that gets better when exposed to shocks, disorder, stressors and uncertainty. 
-    E.g. evolution - system that consists of fragile components, gets better over time because only the most adaptive species survive.
-    Other examples - poison tolerance, muscle growth, free market, learning from mistakes.
+    *  E.g. evolution - system that consists of fragile components, gets better over time because only the most adaptive species survive.
+    *  Other examples - poison tolerance, muscle growth, free market, learning from mistakes.
 * `Data-driven` - progress in an activity compelled by data, rather than by intuition or by personal experience
     * Also `Metrics driven`, `Facts based`
 * `Red team` - group which plays as opposition in simulated situation
@@ -36,14 +36,14 @@
 * Problem-solving strategies:
     * `Abstraction` - solving the problem in a model of the system before applying it to the real system
     * `Analogy` - using a solution that solves an analogous problem
-    * `Brainstorming` - (especially among groups of people) suggesting a large number of solutions or ideas and combining and developing them until an optimum solution is found
+    * `Brainstorming` - suggesting a large number of solutions or ideas and combining and developing them until an optimum solution is found
     * `Divide and conquer` - breaking down a large, complex problem into smaller, solvable problems
-    * `Hypothesis` testing - assuming a possible explanation to the problem and trying to prove (or, in some contexts, disprove) the assumption
+    * `Hypothesis testing` - assuming a possible explanation to the problem and trying to prove (or disprove) the assumption
     * `Proof` - try to prove that the problem cannot be solved. The point where the proof fails will be the starting point for solving it
     * `Reduction` - transforming the problem into another problem for which solutions exist
     * `Research` - employing existing ideas or adapting existing solutions to similar problems
     * `Root cause analysis` - identifying the cause of a problem
-    * `Trial-and-error` - testing possible solutions until the right one is found
+    * `Trial-and-error` - testing possible solutions until the right one found
 * `Shared leadership` - evenly distributes leadership responsibility across team
 * `High-performance team` - group highly focused on the goal, achieve superior business results
     * Characteristics: 

@@ -11,7 +11,7 @@ TLDR - two systems in brain are constantly fighting over control of behavior/act
         * Surgery survival rate - 90%, people accept. Surgery death rate - 10%, people deny.
     * `Overconfidence` - people often overestimate how much they understand about the world, underestimate role of chance
     * `Prospect theory` - people make decisions by evaluating potential gains and losses through the lens of probability
-    * `Affective forecasting` - prediction of one's affect (emotional state) in the future
+    * `Affective forecasting` aka Hedonic forecasting - prediction of one's affect (emotional state) in the future
 * Other definitions: `Planning fallacy`, `Sunk cost`, 
 
 ### Ideas

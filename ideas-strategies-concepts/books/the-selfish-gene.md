@@ -4,7 +4,7 @@ TLDR - about genes and evolution
 * All started when `first replicator` appeared (out of random chemical reactions in primordial soup)
     * Some replications contained errors (`mutations`). Replicas with bad traits die off, with good traits - continue (`evolution`)
 * `Selfish gene` - means it's evolved to care about the only thing - it's survival.
-    * If survival for genes means jumping from one survival machine (people) to another (through procreation) - so be it
+    * If survival for genes means jumping from one survival machine (e.g. human) to another (through procreation) - so be it
     * Explains why family help each other, infanticide (Zoology)
 * If some behavior/trait persisted through evolution - it's very likely to give an advantage (to survival/reproduction)
 * Most animal species have 2 sexes because it allows fast spread of beneficial traits (genes) on population

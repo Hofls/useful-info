@@ -3,7 +3,7 @@
 	* `External` - belief that life is controlled by outside factors which the person cannot influence (random, fate)
 * Three pillars of `social skills`:
 	* `Humility` - not self-centered, not infallible, ready to admit mistake/lack of knowledge, open to self-improvement
-	* `Respect` - other people are important, valuable
+	* `Respect` - other people are important and valuable
 	* `Trust` - belief in reliability/abilities of others
 * `CBT` - challenges cognitive/behavioral distortions (e.g. thoughts/beliefs/attitudes)
     * Actively analyse your thoughts (make sure they reflect reality)

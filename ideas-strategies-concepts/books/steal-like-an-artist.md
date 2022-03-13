@@ -6,7 +6,7 @@ TLDR - learn from work of others, remix and reimagine
 ### Ideas
 * Produce content you want to consume (e.g. blog about stuff that interests you)
 * Do good work and share it with people (e.g. post about your game on reddit)
-* Thanks to internet - you learn from anyone, be inspired by anyone
+* Thanks to internet - you can learn from anyone, be inspired by anyone
 * Don’t steal just style, steal the thinking behind the style
 * Side Projects And Hobbies Are Important
     * Practice productive procrastination
