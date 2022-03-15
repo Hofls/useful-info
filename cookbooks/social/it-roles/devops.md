@@ -1,4 +1,5 @@
 ### DevOps
-
-### SRE
-* `SRE` - Site reliability engineering
+* Set up infrastructure (e.g. gitlab, k8s, sonarqube)
+* Automate and improve CI/CD processes
+* Incident Response (On-Call)
+* Monitoring
