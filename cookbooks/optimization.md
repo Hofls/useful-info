@@ -31,7 +31,7 @@
         * Standard indexes can only look for text in the beginning (e.g. address ilike 'charles street%')
         * Also can be configured to search for text that's pretty similar (e.g. smoke == stoke)
 * `Pagination` (with infinite scroll)
-* `Fuzzy search` - used to find approximately equal text 
+* `Fuzzy search` - used to find approximately equal text
 * `Minification`
     * Removes all unnecessary characters from source code to reduce file size (for storage/transfer)
 * `Lazy loading` (on-demand, just in time)
@@ -49,5 +49,6 @@
     * Reduce - Consolidate results of processing each chunk into single result
     * Example - to count words in text, split text into even parts, process them, sum all the results
 * `Metadata`/`Delta` as primary object descriptor (e.g. size, elements sum, count, borders)
+* `Partition data` - divide data into independent parts (e.g. shards, tables) Less data means higher processing speed
 * Look at hints in [algorithms](computer-science/algorithms.md)
 
