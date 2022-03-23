@@ -136,3 +136,7 @@
 * `Lean canvas` - key assumptions of business model:
     * Problem, Solution, Target customers, Unique value proposition, Advantage
     * Revenue streams, Cost structure, Key metrics, Channels (path to customers)
+* `Death march` - project with unreachable goals, that requires unsustainable overwork
+* `Feature creep` - excessive addition of new features (results in software bloat and over-complication)
+* `Outsourcing` - hiring a party outside a company to perform services / create goods
+* `Obfuscation` - code that is difficult for humans to understand (e.g. to prevent reverse-engineering)
