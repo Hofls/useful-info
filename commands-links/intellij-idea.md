@@ -33,6 +33,9 @@
 * If unable to import `gradle` project:
     * Install `gradle` locally
     * Use it: `File` => `Settings` => `Build, Execution` => `Build Tools` => `Gradle` => `Use Gradle from:`
+* If repository mirror not working (e.g. because of vpn), do it manually:
+    * `R.Click -> Git -> Repository -> Remote -> Add`
+    * `R.Click -> Git -> Repository -> Push -> Pick new remote`
   
 ## Update
 * Use `JetBrains Toolbox`
