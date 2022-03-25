@@ -90,6 +90,9 @@
     * `docker run` automatically pulls image (if not found locally)
 * TiDB: 
     * After launching - shows all important urls (dashboard, prometheus, grafana, client endpoints)
+* Alibaba Cloud:
+    * Documentation (Help center) -> Overview of all products
+    * Each product has learning path (Introduction -> Quick Start -> Practice -> Develop)
     
 ##### Great usability examples. Feature first
 * Most useful/important things come first:
