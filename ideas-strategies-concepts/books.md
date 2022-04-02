@@ -14,6 +14,7 @@
 * Why people believe weird things
 * The Omnivore's Dilemma
 * Cosmos
+* The Mythical Man-Month
 * Stephen Hawking
     * Theory of everything
     * ...
@@ -21,6 +22,4 @@
 * Harari
     * Sapiens 
     * 21 lessons
-* The Omnivore's Dilemma
-* Why People Believe Weird Things
 * 
