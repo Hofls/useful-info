@@ -1,3 +1,4 @@
+### Main
 * `ACID` - properties of database transactions
     * `Atomicity` - transaction is either succeeds completely, or fails completely
     * `Consistency` - transaction can only bring the database from one valid state to another (constraints are satisfied)
@@ -86,6 +87,9 @@
 * `Vendor lock-in` - dependency on one specific vendor, without ability to switch
 * `UUID` - Universally unique identifier. When systems need to generate unique numbers without coordination
 * `LCNC` - Low-code/no-code development. Develop apps without writing code (e.g. combining reusable component via drag-and-drop)
+    * Systems integration - `ifttt`, `zapier`, `integromat`, `automate.io`
+    * Website builder -`squarespace`, `wix`, `tilda`
+    * App builder - `appian`, `mendix`, `powerapps`
 * `QR code` - Quick Response code. Allows quick transfer of real world information to computer (e.g. link to a web page)
 * `Digital signature` - guarantees that the contents of a message have not been altered in transit
     * Server generates hash using private+public keys, adds it to the message and sends to client
@@ -140,3 +144,10 @@
 * `Feature creep` - excessive addition of new features (results in software bloat and over-complication)
 * `Outsourcing` - hiring a party outside a company to perform services / create goods
 * `Obfuscation` - code that is difficult for humans to understand (e.g. to prevent reverse-engineering)
+
+### Others
+* Pick the right tool for the job
+* Embrace the tools, don't fight them
+    * Use library/framework in a default/standard way
+* 
+* 
