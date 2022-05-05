@@ -82,6 +82,9 @@
 * `Audacity` to record all the sounds that you hear in your headphones
 * `Battle Encoder Shirase` to limit resources available to the process
 * `CpuStres v2.0` to load CPU to 100%
+* `Sandboxie` - safely run untrusted code
+    * Presets -> Block internet access
+    * Run -> Boxed tools -> Windows explorer
 * To find and delete folders that take too much space:
     * `TreeSize Free` (run as Admin)
 * To run virtual machines:
