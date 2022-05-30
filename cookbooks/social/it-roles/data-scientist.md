@@ -1,6 +1,6 @@
 ### Data scientist
 * In short - data scientists extracts knowledge from data sets
-* Typical steps:
+* Typical flow:
     * Collect data (Instrumentation, logging, sensors, external data, user generated content)
     * Move/Store data (Reliable data flow, infrastructure, pipelines, ETL, data storage)
     * Explore/Transform data (Cleaning, anomaly detection, prep)
