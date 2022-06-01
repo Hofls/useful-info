@@ -86,10 +86,6 @@
 * `Opinionated system` - provides one easy way of doing things (way chosen based on opinion of system's authors)
 * `Vendor lock-in` - dependency on one specific vendor, without ability to switch
 * `UUID` - Universally unique identifier. When systems need to generate unique numbers without coordination
-* `LCNC` - Low-code/no-code development. Develop apps without writing code (e.g. combining reusable component via drag-and-drop)
-    * Systems integration - `ifttt`, `zapier`, `integromat`, `automate.io`
-    * Website builder -`squarespace`, `wix`, `tilda`
-    * App builder - `appian`, `mendix`, `powerapps`
 * `QR code` - Quick Response code. Allows quick transfer of real world information to computer (e.g. link to a web page)
 * `Digital signature` - guarantees that the contents of a message have not been altered in transit
     * Server generates hash using private+public keys, adds it to the message and sends to client
