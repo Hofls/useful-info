@@ -27,7 +27,9 @@
 * Exclude a word from search
     * `hawking -stephen`
 * Exclude outdated results
-    * `after:2020`
+    * `after:2022`
+* Get version from cache
+    * `cache:https://github.com/`
 * Look for specific file type
     * `filetype:pdf algorithm design`
 
