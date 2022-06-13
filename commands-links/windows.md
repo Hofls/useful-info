@@ -73,7 +73,10 @@
 
 ## Software
 * `Putty`, `WinSCP`, `Anydesk`, `Postman`, `SoapUI`, `IntelliJ IDEA`, `Docker`, 
-* `VLC`, `AIMP`, `Lightshot`, `Google chrome`, `7zip`, `Telegram`, `uTorrent`, `OpenJDK`
+* `VLC`, `AIMP`, `Lightshot`, `Google chrome`, `Telegram`, `uTorrent`, `OpenJDK`
+* `7zip`
+    * Password-protected archive:
+        * Right click on files -> Add to archive... -> Set password -> Check "Encrypt file names"
 * `Notepad++` 
     * To create second view - right click on tab -> `move to other view`
 * `DBeaver` to connect to database
@@ -82,6 +85,7 @@
 * `Audacity` to record all the sounds that you hear in your headphones
 * `Battle Encoder Shirase` to limit resources available to the process
 * `CpuStres v2.0` to load CPU to 100%
+    * Useful to see how frontend behaves happens on slow PCs (e.g. to reproduce bugs) 
 * `Sandboxie` - safely run untrusted code
     * Presets -> Block internet access
     * Run -> Boxed tools -> Windows explorer
@@ -89,7 +93,7 @@
     * `TreeSize Free` (run as Admin)
 * To run virtual machines:
     * `VMware`, `VirtualBox`
-        * Possibly getting obsolete in new windows versions
+    * Got obsolete in new windows versions
 * To check hardware load:
     * `Open Hardware Monitor`
     * `SpeedFan`
