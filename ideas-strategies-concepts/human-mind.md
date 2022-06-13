@@ -5,7 +5,7 @@
 	* `Humility` - not self-centered, not infallible, ready to admit mistake/lack of knowledge, open to self-improvement
 	* `Respect` - other people are important and valuable
 	* `Trust` - belief in reliability/abilities of others
-* `CBT` - challenges cognitive/behavioral distortions (e.g. thoughts/beliefs/attitudes)
+* `CBT` - Cognitive behavioral therapy. Challenges cognitive/behavioral distortions (e.g. thoughts/beliefs/attitudes)
     * Actively analyse your thoughts (make sure they reflect reality)
     * Cycle: Thoughts -> Feelings -> Behaviors (e.g. if you have negative feelings - identify thoughts that cause them)
     * Let go of what you can't control, Focus on what you can control
