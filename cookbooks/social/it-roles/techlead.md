@@ -2,7 +2,7 @@
 * `Technical leader` - leads development team, has good technical background
     * Alternative titles - lead software engineer, lead programmer
 * [Responsibilities](lead.md) common for all leads
-* Disclaimer: 
+* Notice: 
     * Most responsibilities of this role should be spread over entire team
     * It should be a part-time role. E.g. person is 80% developer, 20% techlead
 
