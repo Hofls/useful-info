@@ -12,7 +12,7 @@
     * If you irrationally afraid of something - slowly build tolerance by exposing yourself to trigger
     * Use behavioral experiments to check if your expectations match reality
 * `Mindfulness` - brings attention to experiences occurring in the present moment without judging/thinking
-* `Reinforcement` - consequence applied to the action, that will guide future behavior
+* `Reinforcement/Punishment` - consequence applied to the action, that will guide future behavior
 * `Hedonic treadmill` - tendency of humans to return to base level of happiness despite major positive or negative life changes
 * `Thinking outside of the box` - looking for not obvious solutions, questioning assumptions/limitations
 * `Soft skills` - Communication, Flexibility, Integrity(ethics), Interpersonal skills, Positive attitude, Professionalism, Responsibility, Teamwork, Work ethic
@@ -63,6 +63,7 @@
         * Humour - expressing ideas and feelings in form of humor
         * Sublimation - transformation of unhelpful emotions/feelings into healthy actions, behaviours, or emotions (e.g. fuel aggression into boxing)
         * Suppression - conscious decision to delay paying attention to a thought/emotion/need in order to cope with the present reality
+* `Unconscious mind` - processes in the mind which occur automatically (e.g. feeling, automatic thoughts/skills/reactions)
 * `Nudge theory` - proposes positive reinforcement and indirect suggestions as ways to influence the behavior of people
 * `Mnemonic` - technique that helps information retention (e.g. imagine a scene)
 * `JIT learning` (Just-in-time) - learn a new concept only if there is a need to use it. No need? No learning.
