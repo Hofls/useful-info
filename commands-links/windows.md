@@ -51,15 +51,16 @@
     * `Windows Features` -> `Windows Sandbox` -> Restart PC
 ##### Docker
 * Prerequisites:
-    * Right click on windows -> Apps and features -> Programs and features -> Turn Windows features on or off
-    * Enable Windows Hypervisor Platform
-    * Enable Hyper-v
+    * `Windows search` -> `Turn Windows features on or off` -> `Enable Hyper-v`
+    * Not really necessary - Enable Windows Hypervisor Platform
 ##### Windows Subsystem for Linux
 * todo
 ##### VMware Workstation Player
 * Runs any `.iso` / `.vmdk` images!
 * Highly recommended installing `VMware tools` on guest OS
     * Fixes screen resolution, provides ability to share clipboard (text/files)
+* Prerequisites:
+    * `Windows search` -> `Turn Windows features on or off` -> `Disable Hyper-v`
     
 ## Etc
 ###### Problem with the internet on PC?
