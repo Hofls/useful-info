@@ -99,8 +99,10 @@
 ##### Great usability examples. Feature first
 * Most useful/important things come first:
     * Youtube/Reddit comments, Stackoverflow answers
+* Automate most popular actions:
+    * Yandex.cloud - if you hover over VM ip address - appears copy icon
+* Hold user hand:
+    * After downloading .exe file in a browser - button appears, that asks user to click on the file
 * Automatically generated code
     * Azure/AWS - use/configure services via UI. Export as YAML/JSON for automation
     * Airtest/Poco/Gatling - work in app like a normal user would. 1 action = 1 generated line of code.
-* Automate most popular actions
-    * Yandex.cloud - if you hover over VM ip address - appears copy icon
