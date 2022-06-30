@@ -2,6 +2,8 @@ Common errors checklist:
 * Enter borderline values (999999, 0, -99999), long texts, huge files, too many entities
 * Enter values in wrong format (text in a numerical field)
 * Enter weird symbols, bunch of line feeds
+* Paste "zero width space" into "must be filled" field
+    * .trim() in a lot of languages won't catch it, system may think that field is filled
 * Make changes in parallel, example:
     * Person A - opens page for editing
     * Person B - edits page and saves changes
