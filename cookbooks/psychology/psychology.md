@@ -15,8 +15,21 @@
         * `Hygiene hypothesis` - immune system got used to fight a lot of antigens. Now lack of antigens leads to allergies/autoimmune diseases
         * `Dopamine reward system` - brain programmed to continually seek pleasure, it was beneficial for survival and reproductive success
             * Now certain activities (gambling, drug use, eating, entertainment industry) exploit this system, leading to addictive behaviors
-        * `` - 
-* ``
+        * `Anxiety` - used to be a reaction to solve short-term problems/threats (e.g. run away from a predator)
+            * Now most problems are long term, long anxiety causes physical/mental health problems
+        * `Cognition` - people may identify patterns in random sequences
+    * `Sleep` - evolved to conserve energy at night (when activity would be less fruitful, more dangerous) 
+    * `Sensation/Perception` - gathers information about world, helps guide action
+    * `Learning/Conditioning` - evolved to solve problems about causal relationships
+    * `Self-esteem` - self estimate of one's status in the group
+    * `Mate seleciton` - necessary for high quality offspring 
+        * Males look for facial symmetry, femininity, physical beauty, waist–hip ratio, large breasts and youth
+        * Females look for resources, rank/social standing, physical beauty
+    * `Cinderella effect` - stepchildren have higher probability of being abused/neglected
+        * Because they don't have genes of their parents, subconsciously parents will invest more into their own biological children
+    * Benefits granted by evolutionary selection decrease with age (especially past child bearing age)
+    * `Revenge` instincts exist because it was important to be perceived as having a credible reputation for retaliation
+
 
 
 #### Psychotherapy types
