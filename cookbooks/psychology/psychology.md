@@ -29,7 +29,16 @@
         * Because they don't have genes of their parents, subconsciously parents will invest more into their own biological children
     * Benefits granted by evolutionary selection decrease with age (especially past child bearing age)
     * `Revenge` instincts exist because it was important to be perceived as having a credible reputation for retaliation
-
+    * `Variability hypothesis` - males have greater variability (e.g. way more people with very low/high IQ)
+* `Cognitive psychology`
+    * `Cognitive module` - sub-unit that can be used to resolve cognitive tasks
+        * Examples - fight or flight, libido, movement, beauty appreciation, hunger
+        * Disorders caused by cognitive modules running amok:
+            * `Jealously` - triggers aggression towards competitors (evolutionary strategy of safeguarding a mate)
+            * `Paranoia` - being excessively suspicious of other people or even situations (linked to human survival traits)
+            * `Transference` - e.g. one may be angry at a boss, but take the ange out on family
+            * `Schizophrenia` - cognitive modules triggered too often, overwhelming the brain with information
+        * 
 
 
 #### Psychotherapy types

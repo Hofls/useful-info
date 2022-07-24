@@ -69,4 +69,5 @@
 * `JIT learning` (Just-in-time) - learn a new concept only if there is a need to use it. No need? No learning.
     * It's opposite of school/university, where you learn a lot of stuff, without using it to solve real problems
 * `Win-win` - a mutually beneficial outcome. It's often necessary to achieve compromise, put both parties on board and prevent resentment
+* `Zero-sum game` - sum of all players points is zero (meaning one player gain is another player loss)
 * `High cognitive load` - high required amount of mental effort / mental resources
