@@ -71,3 +71,9 @@
 * `Win-win` - a mutually beneficial outcome. It's often necessary to achieve compromise, put both parties on board and prevent resentment
 * `Zero-sum game` - sum of all players points is zero (meaning one player gain is another player loss)
 * `High cognitive load` - high required amount of mental effort / mental resources
+* `Coping` - strategies used to reduce unpleasant emotions/stress
+    * Emotion-focused strategies:
+        * Releasing emotions, distracting oneself, meditating, anticipating
+        * Disclaiming, escape/avoidance, accepting responsibility/blame, self-control, positive reappraisal
+    * Maladaptive coping (does more harm than good):
+        * Dissociation, sensitization, safety behaviors, anxious avoidance, procrastination, rationalisation, escape 
