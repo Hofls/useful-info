@@ -22,6 +22,11 @@
         CREATE EXTENSION IF NOT EXISTS pg_trgm; 
       	CREATE INDEX CONCURRENTLY idx_guest_address ON VISIT USING GIN(guest_address gin_trgm_ops);
         ```
+    * (Optional) To search multiple columns at once - combine them:
+        ```
+        ALTER TABLE visit
+        ADD COLUMN guest_address text GENERATED ALWAYS AS (city || ' ' ||  street || ' ' || house) STORED;
+        ```
 * `OR clause`
     * Problem:
         * Scans all rows in both tables - `where visit.customer_id = 23 or passive.customer_id = 23`
