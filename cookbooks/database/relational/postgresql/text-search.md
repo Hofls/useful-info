@@ -12,22 +12,27 @@
     * Examples:
         * Look for `specially`, find `specially` and `special` 
         * Look for `аа` (rus), find `А123`, not find `АА753`
-        * Look for `a`, find nothing
+        * Look for `a`, find nothing (because of stop words)
     * Check it:
         * `select * from to_tsvector('english', 'specially:*');` -> `'special':1`
         * `select * from to_tsvector('russian', 'аа:*');` -> `'а':1`
         * `select * from to_tsvector('english', 'a:*');` -> ``
-* Search query example (will find Obama):
-    ```
-    select * from 
-        user,
-        to_tsquery('simple', 'Bara:*&Husse:*&Obam:*') q
-    where (
-        to_tsvector('simple', first_name) ||
-        to_tsvector('simple', middle_name) ||
-        to_tsvector('simple', last_name)
-    ) @@ q
-    ```
+* Examples
+    * Simple examples:
+        * `SELECT to_tsquery('big & dog') @@ to_tsvector('dog is pretty big');` -> `true`
+        * `SELECT to_tsquery('big & !dog') @@ to_tsvector('dog is pretty big');` -> `false`
+        * `SELECT to_tsquery('big | cat') @@ to_tsvector('dog is pretty big');` -> `true`
+    * Search query example (will find Obama):
+        ```
+        select * from 
+            user,
+            to_tsquery('simple', 'Bara:* & Husse:* & Obam:*') q
+        where (
+            to_tsvector('simple', first_name) ||
+            to_tsvector('simple', middle_name) ||
+            to_tsvector('simple', last_name)
+        ) @@ q
+        ```
 
 ### Fuzzy search
 * Example - Look for `GUMBO`, find `DUMBO`
