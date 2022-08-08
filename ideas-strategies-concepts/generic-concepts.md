@@ -44,6 +44,8 @@
     * `Research` - employing existing ideas or adapting existing solutions to similar problems
     * `Root cause analysis` - identifying the cause of a problem
     * `Trial-and-error` - testing possible solutions until the right one found
+    * `Business war games` - players pretend to operate a business, making moves and counter-moves
+    * `Thinking outside of the box` - looking for not obvious solutions, questioning assumptions/limitations
 * `Shared leadership` - evenly distributes leadership responsibility across team
 * `High-performance team` - group highly focused on the goal, achieve superior business results
     * Characteristics: 
@@ -63,3 +65,4 @@
 * `Consensus` - after discussion, team members arrive to the same conclusion (good alternative to order from a manager; or majority vote)
 * `Low-hanging fruit` - Tasks that have the greatest positive effect for the least effort
 * `Data science` - extract knowledge from structured/unstructured data
+* `Backtesting` - test predictive model on historical data

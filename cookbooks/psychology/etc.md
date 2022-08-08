@@ -1,3 +1,5 @@
+### Psychologs
+* Also, look at `generic-concepts.md`, `books`, `humor.md`
 * `Locus of control`:
 	* `Internal` - belief that one can control one's own life
 	* `External` - belief that life is controlled by outside factors which the person cannot influence (random, fate)
@@ -14,7 +16,6 @@
 * `Mindfulness` - brings attention to experiences occurring in the present moment without judging/thinking
 * `Reinforcement/Punishment` - consequence applied to the action, that will guide future behavior
 * `Hedonic treadmill` - tendency of humans to return to base level of happiness despite major positive or negative life changes
-* `Thinking outside of the box` - looking for not obvious solutions, questioning assumptions/limitations
 * `Soft skills` - Communication, Flexibility, Integrity(ethics), Interpersonal skills, Positive attitude, Professionalism, Responsibility, Teamwork, Work ethic
 * `Incentive` - motivators which reward actions to yield a desired outcome
 * `Human–computer interaction (HCI)` - studies the design and use of computer technology, focused on the interfaces between people and computers
@@ -73,7 +74,35 @@
 * `High cognitive load` - high required amount of mental effort / mental resources
 * `Coping` - strategies used to reduce unpleasant emotions/stress
     * Emotion-focused strategies:
-        * Releasing emotions, distracting oneself, meditating, anticipating
-        * Disclaiming, escape/avoidance, accepting responsibility/blame, self-control, positive reappraisal
+        * Releasing emotions, distracting oneself, meditating, anticipating, accepting responsibility/blame, self-control, positive reappraisal
     * Maladaptive coping (does more harm than good):
-        * Dissociation, sensitization, safety behaviors, anxious avoidance, procrastination, rationalisation, escape 
+        * Dissociation, sensitization, safety behaviors, denying, anxious avoidance, procrastination, rationalisation, escape/avoidance
+* `Life skills` - enable people to deal with challenges of life:
+    * Decision-making and problem-solving
+    * Creative and critical thinking
+    * 
+* Group decision-making techniques:
+    * Consensus - avoid winners and losers, try to find a compromise that everybody agree on
+    * Score voting - members score each option (from 0 to 10), option with the highest score wins
+    * Majority vote - requires support of more than 50% of the group
+    * Plurality vote - the largest faction of group decides (event if it's just 30%)
+* `Creativity` - is a phenomenon whereby something new and valuable is formed (idea, theory, painting, literary work)
+* `Motivation` - reason for which people initiate/terminate behavior
+    * Ways to increase motivation:
+        * Rewards that scale with results
+        * Positive (non-toxic) team, that's willing to help and collaborate
+        * Challenge that matches skill level
+        * Freedom and autonomy in means to achieve goals
+        * Adequate resources (time, money, instruments)
+        * Encouragement (recognitions, cheering, praising)
+        * Positive impact on the world/community (visible results)
+    * Also relevant - `Maslow's hierarchy`
+* `Thought experiment` - thinking through hypothetical situation
+    * Use cases - forecast the future, explain the past
+* `Adaptive performance` - adjusting to changes in workplace
+    * Handling emergencies (making quick decisions)
+    * Handling stress (being composed and focused on the task)
+    * Creative problem solving, innovation
+    * Learning new technology/approaches
+    * Interpersonal adaptability (being considerate of other people's points of view)
+
