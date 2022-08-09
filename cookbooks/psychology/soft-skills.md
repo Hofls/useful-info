@@ -9,6 +9,13 @@
 * Professionalism
 * Responsibility
 * Teamwork
+* Social skills:
+    * `Coordination` - adjusting actions in relation to others' actions
+    * `Mentoring` - teaching and helping others
+    * `Negotiation` - discussion aimed at reaching an agreement
+    * `Persuasion` - changing point of view of people (convincing)
+    * `Service orientation` - actively looking for ways to evolve/grow psycho-socially with other people
+    * `Social perceptiveness` - being aware of others reactions and able to respond in an understanding manner
 * Collaboration
     * Meet expectations as a reliable member of a team
     * Understand different perspectives

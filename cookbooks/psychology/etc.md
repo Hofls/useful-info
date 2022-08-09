@@ -80,7 +80,9 @@
 * `Life skills` - enable people to deal with challenges of life:
     * Decision-making and problem-solving
     * Creative and critical thinking
-    * 
+    * Communication and interpersonal skills
+    * Self-awareness and empathy
+    * Resilience and coping with emotions/stress
 * Group decision-making techniques:
     * Consensus - avoid winners and losers, try to find a compromise that everybody agree on
     * Score voting - members score each option (from 0 to 10), option with the highest score wins
@@ -112,3 +114,4 @@
     * Ability to manage strong impulses and feelings
     * Ability to remain hopeful, visualizing realistic and positive outcome
 * `Dialectic` - discourse between people holding different points of view, but wishing to establish the truth
+* `Introspection` - examination of one's own conscious thoughts and feelings
