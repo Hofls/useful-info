@@ -61,7 +61,7 @@
     * `Level 4: mature` - conscious, healthy, leads to success in society and relationships
         * Altruism - constructive service to others that brings pleasure and personal satisfaction
         * Anticipation - realistic planning for future discomfort
-        * Humour - expressing ideas and feelings in form of humor
+        * Humor - expressing ideas and feelings in form of humor
         * Sublimation - transformation of unhelpful emotions/feelings into healthy actions, behaviours, or emotions (e.g. fuel aggression into boxing)
         * Suppression - conscious decision to delay paying attention to a thought/emotion/need in order to cope with the present reality
 * `Unconscious mind` - processes in the mind which occur automatically (e.g. feeling, automatic thoughts/skills/reactions)
@@ -105,4 +105,10 @@
     * Creative problem solving, innovation
     * Learning new technology/approaches
     * Interpersonal adaptability (being considerate of other people's points of view)
-
+* `Psychological resilience` - ability to cope with a crisis and return to pre-crisis status quickly (elasticity, adaptation)
+    * Ability to make realistic plans and follow through with them
+    * Confidence in one's strengths and abilities (good self-esteem)
+    * Communication and problem-solving skills
+    * Ability to manage strong impulses and feelings
+    * Ability to remain hopeful, visualizing realistic and positive outcome
+* `Dialectic` - discourse between people holding different points of view, but wishing to establish the truth

@@ -31,7 +31,7 @@
     * Short-term(tactical) decisions should help achieve long term target
 * Prioritization
     * Sort tasks by importance, to the most important first
-* Critical thinking
+* `Critical thinking` - analysis of facts and evidence to form a judgement
 * Continuous learning 
 * Open mind
 * Orientation on result
