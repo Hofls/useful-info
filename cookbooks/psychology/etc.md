@@ -16,9 +16,7 @@
 * `Mindfulness` - brings attention to experiences occurring in the present moment without judging/thinking
 * `Reinforcement/Punishment` - consequence applied to the action, that will guide future behavior
 * `Hedonic treadmill` - tendency of humans to return to base level of happiness despite major positive or negative life changes
-* `Soft skills` - Communication, Flexibility, Integrity(ethics), Interpersonal skills, Positive attitude, Professionalism, Responsibility, Teamwork, Work ethic
 * `Incentive` - motivators which reward actions to yield a desired outcome
-* `Human–computer interaction (HCI)` - studies the design and use of computer technology, focused on the interfaces between people and computers
 * `Meditation` - process of focusing on an object (e.g. breath) to achieve a mentally clear and stable state
 * `Flow` - complete absorption in activity, resulting in transformation of subjective sense of time
     * Conditions:
@@ -26,8 +24,6 @@
         * Fast feedback
         * Clear goals
         * Time limit (deadline)
-* `Kaizen` - continuously improve all functions and involve all employees
-* `SMART criteria` - to set goals. Goal should be Specific, Measurable, Achievable, Relevant, Time-bound
 * `Maslow's hierarchy`
     * Physiological Needs - food, warmth, rest
     * Safety Needs - emotional, financial
@@ -69,8 +65,6 @@
 * `Mnemonic` - technique that helps information retention (e.g. imagine a scene)
 * `JIT learning` (Just-in-time) - learn a new concept only if there is a need to use it. No need? No learning.
     * It's opposite of school/university, where you learn a lot of stuff, without using it to solve real problems
-* `Win-win` - a mutually beneficial outcome. It's often necessary to achieve compromise, put both parties on board and prevent resentment
-* `Zero-sum game` - sum of all players points is zero (meaning one player gain is another player loss)
 * `High cognitive load` - high required amount of mental effort / mental resources
 * `Coping` - strategies used to reduce unpleasant emotions/stress
     * Emotion-focused strategies:
@@ -115,3 +109,6 @@
     * Ability to remain hopeful, visualizing realistic and positive outcome
 * `Dialectic` - discourse between people holding different points of view, but wishing to establish the truth
 * `Introspection` - examination of one's own conscious thoughts and feelings
+* `Autism` - problems with:     
+    * Communication and emotion recognition/expression, repetitive behaviors, resistance to changes
+    * Restricted interests, unusual reaction to certain sensory inputs

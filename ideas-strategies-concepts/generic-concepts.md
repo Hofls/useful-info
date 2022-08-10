@@ -66,3 +66,8 @@
 * `Low-hanging fruit` - Tasks that have the greatest positive effect for the least effort
 * `Data science` - extract knowledge from structured/unstructured data
 * `Backtesting` - test predictive model on historical data
+* `Human–computer interaction (HCI)` - studies the design and use of computer technology, focused on the interfaces between people and computers
+* `Kaizen` - continuously improve all functions and involve all employees
+* `SMART criteria` - to set goals. Goal should be Specific, Measurable, Achievable, Relevant, Time-bound
+* `Win-win` - a mutually beneficial outcome. It's often necessary to achieve compromise, put both parties on board and prevent resentment
+* `Zero-sum game` - sum of all players points is zero (meaning one player gain is another player loss)

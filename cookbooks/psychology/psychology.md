@@ -43,6 +43,3 @@
 
 #### Psychotherapy types
 * 
-
-#### Etc
-* Look at [human-mind.md](../ideas-strategies-concepts/human-mind.md)
