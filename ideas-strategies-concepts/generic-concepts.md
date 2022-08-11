@@ -71,3 +71,6 @@
 * `SMART criteria` - to set goals. Goal should be Specific, Measurable, Achievable, Relevant, Time-bound
 * `Win-win` - a mutually beneficial outcome. It's often necessary to achieve compromise, put both parties on board and prevent resentment
 * `Zero-sum game` - sum of all players points is zero (meaning one player gain is another player loss)
+* `Nudge theory` - proposes positive reinforcement and indirect suggestions as ways to influence the behavior of people
+* `JIT learning` (Just-in-time) - learn a new concept only if there is a need to use it. No need? No learning.
+    * It's opposite of school/university, where you learn a lot of stuff, without using it to solve real problems

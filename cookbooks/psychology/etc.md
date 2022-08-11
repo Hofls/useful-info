@@ -61,10 +61,7 @@
         * Sublimation - transformation of unhelpful emotions/feelings into healthy actions, behaviours, or emotions (e.g. fuel aggression into boxing)
         * Suppression - conscious decision to delay paying attention to a thought/emotion/need in order to cope with the present reality
 * `Unconscious mind` - processes in the mind which occur automatically (e.g. feeling, automatic thoughts/skills/reactions)
-* `Nudge theory` - proposes positive reinforcement and indirect suggestions as ways to influence the behavior of people
 * `Mnemonic` - technique that helps information retention (e.g. imagine a scene)
-* `JIT learning` (Just-in-time) - learn a new concept only if there is a need to use it. No need? No learning.
-    * It's opposite of school/university, where you learn a lot of stuff, without using it to solve real problems
 * `High cognitive load` - high required amount of mental effort / mental resources
 * `Coping` - strategies used to reduce unpleasant emotions/stress
     * Emotion-focused strategies:
@@ -109,6 +106,28 @@
     * Ability to remain hopeful, visualizing realistic and positive outcome
 * `Dialectic` - discourse between people holding different points of view, but wishing to establish the truth
 * `Introspection` - examination of one's own conscious thoughts and feelings
-* `Autism` - problems with:     
-    * Communication and emotion recognition/expression, repetitive behaviors, resistance to changes
+* `Autism` - neurodevelopmental conditions, characterize by:     
+    * Problems with Communication and emotion recognition/expression, repetitive behaviors, resistance to changes
     * Restricted interests, unusual reaction to certain sensory inputs
+* `High self-esteem` (healthy):
+    * Hold values and principles, ready to defend them
+    * Trusting their own judgement, not feeling guilty when others do not approve
+    * Learn from the past, plan for the future (without excessive worrying)
+    * Not hesitating in the face of failures/difficulties, ask others for help if needed
+    * Consider themselves equal to others (not superior/inferior), while accepting differences
+    * Understand that they are interesting/valuable person for friends
+    * Resist manipulation, collaborate with others only if appropriate/advantageous
+    * Admit and accept different internal feelings and drives
+    * Sensitive to feelings and needs of others, respect social rules, does not try to prosper at others expense
+    * Can work towards finding solutions and voice discontent without belittling themselves or others
+    * Able to take constructive criticism and improve
+* `Low self-esteem` (unhealthy):
+    * Heavy self-criticism and dissatisfaction
+    * Hypersensitivity to criticism with resentment against critics and feelings of being attacked
+    * Chronic indecision and an exaggerated fear of mistakes
+    * Excessive will to please and unwillingness to displease any petitioner
+    * Perfectionism, which leads to frustration when perfection is not achieved
+    * Neurotic guilt, dwelling on past mistakes
+    * Floating hostility, general defensiveness, irritability
+    * Pessimism, envy, invidiousness, resentment
+    * Sees temporary setbacks as permanent, intolerable conditions
