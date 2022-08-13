@@ -131,3 +131,12 @@
     * Floating hostility, general defensiveness, irritability
     * Pessimism, envy, invidiousness, resentment
     * Sees temporary setbacks as permanent, intolerable conditions
+* `Dark triad` (tetrad):
+    * Narcissism - pride, egoism, lack of empathy
+    * Machivellianism - manipulation/exploitation of others, absence of morality
+    * Psychopathy - antisocial behavior, impulsivity, unemotional, selfishness
+    * Sadism - enjoyment of cruelty and suffering of others
+* `Light triad` - empathy, compassion, altruism
+* `Popularity` - how much a person is liked/valued by other people. Contributing factors:
+    * Being genuine, focusing on positive energy, treating others with respect
+    * Create connections, patience, incorporating others (e.g. asking for help), servant leadership

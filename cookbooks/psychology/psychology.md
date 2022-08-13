@@ -38,8 +38,14 @@
             * `Paranoia` - being excessively suspicious of other people or even situations (linked to human survival traits)
             * `Transference` - e.g. one may be angry at a boss, but take the ange out on family
             * `Schizophrenia` - cognitive modules triggered too often, overwhelming the brain with information
-        * 
-
+* `Positive psychology` - focuses on positive aspects of mind (well-being, happiness, virtues)
+    * `Eudaimonia` - state of happiness/welfare. Consists of:
+        * Self-discovery, development of best potentials, sense of purpose/meaning in life
+        * Investment of significant effort in pursuit of excellence, intense involvement in activities
+    * `Personal development` - activities that develop a person's capabilities, potential, human capital. Consists of:
+        * Improving self-awareness/self-knowledge, learning new skills, building self-esteem, improving a career
+        * Enhancing quality of life, wealth, social status, improving social relations or emotional intelligence
+    * 
 
 #### Psychotherapy types
 * 
