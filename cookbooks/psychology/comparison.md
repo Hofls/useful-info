@@ -5,4 +5,4 @@
 * Low social rank - depression/anxiety helps ot accept low placement in a hierarchy (social rank theory)
 * Social Anxiety disorder (Social Phobia) - overwhelming fear of humiliation, social situations cause high stress
 * Schizoid personality disorder - lack of interest in social relationships, emotional coldness, isolation
-* High Functioning Autism (Asperger) - autism, but without intellectual disability, but with problems in:
+* High Functioning Autism (Asperger) - autism, but without intellectual disability
