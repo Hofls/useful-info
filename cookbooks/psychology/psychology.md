@@ -60,3 +60,11 @@
     * `Positive social relations` - reciprocal empathy, intimacy, and affection
     * `Purpose in Life` - strong goal orientation
     * `Self-Acceptance` - honest and positive attitude about self
+* `PERMA` - well-being theory, consists of Positive emotions, Engagement, Relationships, Meaning, Accomplishments
+* `Character Strengths and Virtues`:
+    * `Wisdom and knowledge` - creativity/innovation, curiosity, open-mindedness, love of learning
+    * `Courage` - bravery, persistence, vitality (capacity to live and grow), zest (enthusiasm about challenging situations/tasks)
+    * `Humanity` - love, kindness, social intelligence
+    * `Justice` - citizenship, fairness, leadership, integrity, excellence
+    * `Temperance` - forgiveness and mercy, humility, self-control
+    * `Transcendence` - appreciation of beauty, gratitude, hope, humor, 
