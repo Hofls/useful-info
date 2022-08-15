@@ -20,6 +20,16 @@
         * `select * from to_tsvector('english', 'specially:*');` -> `'special':1`
         * `select * from to_tsvector('russian', 'аа:*');` -> `'а':1`
         * `select * from to_tsvector('english', 'a:*');` -> ``
+* Expand word delimiters
+    * Examples:
+        * `SELECT to_tsquery('simple', 'ab&cd:*') @@ to_tsvector('simple', 'ab_cdef');` -> `true`
+        * `SELECT to_tsquery('simple', 'ab_cd:*') @@ to_tsvector('simple', 'ab#cdef');` -> `true`
+        * `SELECT to_tsquery('simple', 'ab-cd:*') @@ to_tsvector('simple', 'ab.cdef');` -> `false`
+            * To fix - `SELECT regexp_replace('А/B-C.D./-', '[/\.-]', '&', 'g');`
+            * Fix is necessary, because otherwise parser will think it's just a long word (hyphen, file, host)
+                * `SELECT alias, description, token FROM ts_debug('foo/bar');` -> `file`
+    * User input may throw "Incorrect syntax" error. To fix it:
+        * `SELECT regexp_replace('А<B!C:D|E<!:|F', '[<!:|]', '&', 'g');`
 * Examples
     * Simple examples:
         * `SELECT to_tsquery('big & dog') @@ to_tsvector('dog is pretty big');` -> `true`
