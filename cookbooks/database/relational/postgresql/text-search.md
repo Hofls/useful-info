@@ -1,4 +1,7 @@
 ### Full-text search
+* Warning!
+    * Full-text search ignores some characters (!@#$&%^*)
+    * To use them - `ALTER TEXT SEARCH CONFIGURATION your_config_name ALTER MAPPING FOR blank WITH simple`
 * Find exact match (strict search)
     * Examples:
         * Look for `specially`, find `specially`, not find `special`
@@ -11,7 +14,7 @@
 * Find partial match
     * Examples:
         * Look for `specially`, find `specially` and `special` 
-        * Look for `аа` (rus), find `А123`, not find `АА753`
+        * Look for `аа` (rus), find `А123`, find `АА753`
         * Look for `a`, find nothing (because of stop words)
     * Check it:
         * `select * from to_tsvector('english', 'specially:*');` -> `'special':1`
