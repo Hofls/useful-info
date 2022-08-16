@@ -10,8 +10,10 @@
     ALTER TABLE visit
     ADD COLUMN guest_address text GENERATED ALWAYS AS (city || ' ' ||  street || ' ' || house) STORED;
     ```
-* (Optional) To make search less strict - replace everything except letters and numbers with `_`:
-    * `SELECT regexp_replace('!A1/B2.C3,D4:E5;', '[^\w]+', '_', 'g');`
+* (Optional) To make search less strict - replace everything except letters, numbers and spaces with `-`:
+    * `SELECT regexp_replace('!A1/B2. C3,D4:E5;', '[^\w\s]+', '-', 'g');`
+    * (Optional) also convert to upper/lower case
+    * When searching - apply same changes to query
 
 ### Fuzzy search
 * Example - Look for `GUMBO`, find `DUMBO`
