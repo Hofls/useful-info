@@ -31,6 +31,9 @@
 * Benefits granted by evolutionary selection decrease with age (especially past child bearing age)
 * `Revenge` instincts exist because it was important to be perceived as having a credible reputation for retaliation
 * `Variability hypothesis` - males have greater variability (e.g. way more people with very low/high IQ)
+* `Tend and befriend` - response to threat - protection of offspring (tending), seeking out social group for mutual defense (befriending)
+    * It's a typical female response to stress, based on oxytocin release
+    * In case of competition for resources - males go to direct aggression, while females use gossip/social exclusion
 
 #### Cognitive psychology
 * `Cognitive psychology` - 
@@ -68,3 +71,15 @@
     * `Justice` - citizenship, fairness, leadership, integrity, excellence
     * `Temperance` - forgiveness and mercy, humility, self-control
     * `Transcendence` - appreciation of beauty, gratitude, hope, humor, 
+
+#### Biological psychology (Behavioral neuroscience)
+* `Oxytocin` - 
+* `Hormone` - 
+* `Dopamine` - 
+* `Endorphine` - 
+* `Neurotransmitter` - 
+* `Amygdala` - 
+* `Estrogen` - 
+* `Testosterone` - 
+* `Androgen` - 
+* ``
