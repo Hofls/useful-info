@@ -2,7 +2,7 @@
 * TLDR - fast search anywhere in the string `name like '%enjamin%'`
 * Replace your old index with GIN trigrams:
     ```
-    CREATE EXTENSION IF NOT EXISTS pg_trgm; 
+    CREATE EXTENSION IF NOT EXISTS pg_trgm; -- sometimes its necessary to specify schema, e.g. "WITH SCHEMA PATIENT"
     CREATE INDEX CONCURRENTLY idx_guest_address ON VISIT USING GIN(guest_address gin_trgm_ops);
     ```
 * (Optional) To search multiple columns at once - combine them:
