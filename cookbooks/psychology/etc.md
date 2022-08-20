@@ -64,10 +64,6 @@
 * `Mnemonic` - technique that helps information retention (e.g. imagine a scene)
 * `High cognitive load` - high required amount of mental effort / mental resources
 * `Coping` - strategies used to reduce unpleasant emotions/stress
-    * Emotion-focused strategies:
-        * Releasing emotions, distracting oneself, meditating, anticipating, accepting responsibility/blame, self-control, positive reappraisal
-    * Maladaptive coping (does more harm than good):
-        * Dissociation, sensitization, safety behaviors, denying, anxious avoidance, procrastination, rationalisation, escape/avoidance
 * `Life skills` - enable people to deal with challenges of life:
     * Decision-making and problem-solving
     * Creative and critical thinking

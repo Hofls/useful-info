@@ -1,6 +1,7 @@
 ## Introduction
 * `Psychology` - study of mind and behavior (to explain, predict and change it)
 * `Psychotherapy` - use of psychological methods to help change behavior, increase happiness and overcome problems
+* `Psychiatry` - medical specialty devoted to the diagnosis, prevention, and treatment of mental disorders. Focused on medications.
 * A lot of early psychology ideas turned out to be false (e.g. Freud, Jung, Adler)
 
 ## Psychology types
@@ -34,6 +35,17 @@
 * `Tend and befriend` - response to threat - protection of offspring (tending), seeking out social group for mutual defense (befriending)
     * It's a typical female response to stress, based on oxytocin release
     * In case of competition for resources - males go to direct aggression, while females use gossip/social exclusion
+* `Emotions` -  mental states associated with thoughts, feelings, behavioural responses, pleasure and pain
+    * They provided good solutions to problems that our ancestors faced
+    * `Adaptive emotions` - have beneficial value in the situation 
+        * Sadness at loss - motivates people to reconnect with someone/something that is missing
+        * Anger at violation - motivates people to take assertive action to end the violation
+        * Fear at threat - motivates people to avoid overwhelming threat
+    * `Maladaptive emotions` - have no value in the situation
+        * Examples:
+            * Fear at harmless situations, chronic feelings of insecurity/fear or worthlessness/shame, sadness at the joy of others
+            * Anger at the genuine caring of others, e.g. because in childhood caring followed by violation
+    * `Instrumental emotions` - manipulative and superficial, used for personal gain (e.g. fake sadness to evoke sympathy)
 
 #### Cognitive psychology
 * `Cognitive psychology` - 
