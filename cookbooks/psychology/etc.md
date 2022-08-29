@@ -136,3 +136,18 @@
 * `Popularity` - how much a person is liked/valued by other people. Contributing factors:
     * Being genuine, focusing on positive energy, treating others with respect
     * Create connections, patience, incorporating others (e.g. asking for help), servant leadership
+* `Hierarchy of disagreement` (worst to best)
+    * Name-calling, Ad hominem (attacking the characteristics of writer), Responding to tone
+    * Contradiction - stating the opposing case, with little to no evidence
+    * Counterargument = contradiction + evidence
+    * Finding the mistakes and explain why it's a mistake
+    * Refuting the central point
+* `Conflict` - struggle and clash of interests/opinions
+    * Main Reasons for conflict escalation:
+        * `Сommitment replaces uncertainty` - once choices are made - people seek out information that supports their view, reject everything else
+        * `Misperception` - wrong perception of opponent (e.g. strengths, attitudes, motivation)
+        * `Hard tactics` - ultimatums, threats, attacks (all lead to retaliation)
+        * `Reciprocity` - e.g. if a person is being criticized, that person feels justified in doing the same
+        * `Forming coalitions` - drawing more people into the conflict
+        * `Emotions` - make it hard to think rationally
+        
