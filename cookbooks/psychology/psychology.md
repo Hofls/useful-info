@@ -2,7 +2,8 @@
 * `Psychology` - study of mind and behavior (to explain, predict and change it)
 * `Psychotherapy` - use of psychological methods to help change behavior, increase happiness and overcome problems
 * `Psychiatry` - medical specialty devoted to the diagnosis, prevention, and treatment of mental disorders. Focused on medications.
-* A lot of early psychology ideas turned out to be false (e.g. Freud, Jung, Adler)
+* Warning №1! A lot of early psychology ideas turned out to be false (e.g. Freud, Jung, Adler)
+* Warning №2! Science faces replication crisis (independent researches are unable to replicate study)
 
 ## Psychology types
 #### Evolutionary psychology
@@ -48,7 +49,7 @@
     * `Instrumental emotions` - manipulative and superficial, used for personal gain (e.g. fake sadness to evoke sympathy)
 
 #### Cognitive psychology
-* `Cognitive psychology` - 
+* `Cognitive psychology` - study of mental processes (e.g. creativity, problem solving, reasoning, attention, memory)
 * `Cognitive module` - sub-unit that can be used to resolve cognitive tasks
     * Examples - fight or flight, libido, movement, beauty appreciation, hunger
     * Disorders caused by cognitive modules running amok:
@@ -56,6 +57,7 @@
         * `Paranoia` - being excessively suspicious of other people or even situations (linked to human survival traits)
         * `Transference` - e.g. one may be angry at a boss, but take the ange out on family
         * `Schizophrenia` - cognitive modules triggered too often, overwhelming the brain with information
+* `Perspective-taking` - perceiving a situation from an alternative point of view
 
 #### Positive psychology
 * `Positive psychology` - focuses on positive aspects of mind (well-being, happiness, virtues)
@@ -82,7 +84,21 @@
     * `Humanity` - love, kindness, social intelligence
     * `Justice` - citizenship, fairness, leadership, integrity, excellence
     * `Temperance` - forgiveness and mercy, humility, self-control
-    * `Transcendence` - appreciation of beauty, gratitude, hope, humor, 
+    * `Transcendence` - appreciation of beauty, gratitude, hope, humor
+
+#### Social psychology
+* `Social psychology` - study of how the thoughts/feelings/behaviors of individuals are influenced by the presence of others and internalized social norms
+* `Social hierarchy` - stratified ranking of group members, with some members being superior/subordinate to others
+* `Social status` - level of social value of a person. High status = leadership position, power, access to resources
+* `Dominance hierarchy` - when members of social groups interact, they create a ranking system
+    * System reduces amount of fighting, because most of the time individuals acting according to their rank (higher rank = more resources)
+    * In raw form present mostly among animals, humans have more complex version (social hierarchy)
+* `Dual strategies theory` - humans increase their status in social hierarchies using dominance and prestige
+    * `Dominance` - use of force, threats or other forms of coercion
+    * `Prestige` - demonstrating traits valued by other group members (e.g. high level of skills, generosity, ability to teach others)
+    * Dominance is less table than prestige, because followers can coordinate and fight back
+* `Functional accounts of emotion` - emotions are systems that take environmental input (e.g. a challenge), and produce adaptive output (e.g. behavior)
+* 
 
 #### Biological psychology (Behavioral neuroscience)
 * `Oxytocin` - 

@@ -75,7 +75,7 @@
     * Score voting - members score each option (from 0 to 10), option with the highest score wins
     * Majority vote - requires support of more than 50% of the group
     * Plurality vote - the largest faction of group decides (event if it's just 30%)
-* `Creativity` - is a phenomenon whereby something new and valuable is formed (idea, theory, painting, literary work)
+* `Creativity` - creation of new and valuable idea/theory/painting/literary work etc
 * `Motivation` - reason for which people initiate/terminate behavior
     * Ways to increase motivation:
         * Rewards that scale with results

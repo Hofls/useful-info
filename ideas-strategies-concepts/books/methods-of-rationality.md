@@ -12,7 +12,7 @@ TLDR - alternative Harry Potter story that promotes rationality skills
 * `Lateral thinking` - indirect/creative approach to problem solving
 * `Rationalization` - constructing a seemingly logical reason, as an attempt to justify the act after the fact
     * Used as defence against ridicule from others or from internal feelings of guilt/shame
-* `Empathy` - capacity to understand or feel what another person is experiencing (put yourself on their place)
+* `Empathy` - capacity to understand or feel what another person is experiencing (put yourself in their place)
 * `Egocentric bias` - tendency to rely too heavily on one's own perspective
 * `Sunk cost fallacy` - incurred cost influence peoples decisions 
     * e.g. governments continued to waste money on Concorde instead of cutting losses
