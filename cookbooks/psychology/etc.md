@@ -1,4 +1,4 @@
-### Psychologs
+### Psychology
 * Also, look at `generic-concepts.md`, `books`, `humor.md`
 * `Locus of control`:
 	* `Internal` - belief that one can control one's own life

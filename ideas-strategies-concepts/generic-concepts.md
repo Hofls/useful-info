@@ -74,3 +74,4 @@
 * `Nudge theory` - proposes positive reinforcement and indirect suggestions as ways to influence the behavior of people
 * `JIT learning` (Just-in-time) - learn a new concept only if there is a need to use it. No need? No learning.
     * It's opposite of school/university, where you learn a lot of stuff, without using it to solve real problems
+* `Cost–benefit analysis` - systematic approach to estimating the strengths and weaknesses of alternatives

@@ -90,15 +90,27 @@
 * `Social psychology` - study of how the thoughts/feelings/behaviors of individuals are influenced by the presence of others and internalized social norms
 * `Social hierarchy` - stratified ranking of group members, with some members being superior/subordinate to others
 * `Social status` - level of social value of a person. High status = leadership position, power, access to resources
+* `Social rank theory` - position in a social hierarchy (rank) is the reason for many psychological disorders
+    * Display of submission means hierarchy member accepts his rank (no need to fight)
+    * Low rank = anxiety, depression, dependent personality disorder, masochism
+    * High rank =  hypomania, sadism, abuse, narcissism, psychopathy
 * `Dominance hierarchy` - when members of social groups interact, they create a ranking system
-    * System reduces amount of fighting, because most of the time individuals acting according to their rank (higher rank = more resources)
+    * System reduces amount of fighting, because most of the time individuals act according to their rank (higher rank = more resources)
     * In raw form present mostly among animals, humans have more complex version (social hierarchy)
 * `Dual strategies theory` - humans increase their status in social hierarchies using dominance and prestige
     * `Dominance` - use of force, threats or other forms of coercion
     * `Prestige` - demonstrating traits valued by other group members (e.g. high level of skills, generosity, ability to teach others)
     * Dominance is less table than prestige, because followers can coordinate and fight back
 * `Functional accounts of emotion` - emotions are systems that take environmental input (e.g. a challenge), and produce adaptive output (e.g. behavior)
-* 
+* `Social exchange theory` - social interactions that implement a cost-benefit analysis
+    * These calculations occur in romantic relationships, friendships and professional relationships
+    * If costs of relationship are higher than rewards, then relationship will be abandoned (e.g. when effort/money are not reciprocated)
+* Prerequisites for high quality `stable relationships`:
+    * Openness, honesty, reliability, emotional intelligence, teamwork, confidence
+    * Knowledge of human nature, compassion, communication skills, critical thinking
+* `Social loafing` - person exerting less effort to achieve a goal when they work in a group than when working alone
+    * Reward should be based on performance of each individual contributor (better work = better pay)
+* `Tall poppy syndrome` - people sabotage or criticise those who achieved visible success (out of jealousy)
 
 #### Biological psychology (Behavioral neuroscience)
 * `Oxytocin` - 
