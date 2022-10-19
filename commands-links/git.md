@@ -11,6 +11,10 @@
     * `git cherry-pick`
 * To keep empty folder
     * Create file `.gitkeep`
+* Manually move project from one repository to another
+    * `git clone --bare https://github.com/hofls/old-project.git`
+    * `cd old-project`
+    * `git push --mirror https://github.com/hofls/new-project.git`
 
 ## Info
 * Difference between `merge request` and `pull request`?
