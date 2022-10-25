@@ -58,3 +58,9 @@
         select * from jumps
         where jump.id IN (SELECT * FROM jumps_unnested)
         ```
+* `Most of the values are the same`
+    * Problem:
+        * Index on status, but query is slow - `SELECT * FROM document WHERE status = 'DONE'`
+    * Explanation:
+        * Index won't work, because 80% of rows have status = DONE
+        * Index will work only for rare statuses (e.g. DELETED, PENDING)
