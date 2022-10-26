@@ -79,6 +79,7 @@
 * `Flow` - movement and direction (leading an eye from one part to another)
 * `Harmony` - combination of similar or related elements (adjacent colors, shapes, texture)
 * `Focal point` - point of interest, focus (draws attention)
+* `Function` - consideration of main objective, does design reached the goal? (e.g. make viewer interested in a product)
 
 ##### Design checklist
 * Check balance, proximity, alignment, flow, harmony, font
@@ -87,6 +88,7 @@
     * Highlight using existing color scheme
 * If left with big chunks of nothing - think about filling them with shapes
 * Simplify - remove small and unnecessary details
+* Test - show different designs to target audience, see how they react
 
 ##### Links
 * Shows two designs, [pick good one](https://cantunsee.space/)
