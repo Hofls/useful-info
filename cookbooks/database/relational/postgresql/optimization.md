@@ -64,3 +64,11 @@
     * Explanation:
         * Index won't work, because 80% of rows have status = DONE
         * Index will work only for rare statuses (e.g. DELETED, PENDING)
+* `Count of rows in a table (COUNT)`
+    * Problem:
+        * Table is huge, COUNT is too slow
+    * Fix:
+        * Use approximate count:
+        ```
+        SELECT reltuples AS estimate FROM pg_class where relname = 'user';
+        ```
