@@ -141,6 +141,7 @@
 * `Outsourcing` - hiring a party outside a company to perform services / create goods
 * `Obfuscation` - code that is difficult for humans to understand (e.g. to prevent reverse-engineering)
 * `Observability` - ability to measure a system state (logs, metrics, request tracing, alerts)
+* `OAuth` - way to grant websites/apps access to user information on other websites (e.g. sign in Amazon with Facebook account)
 
 ### Others
 * Pick the right tool for the job
