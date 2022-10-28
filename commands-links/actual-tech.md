@@ -38,7 +38,8 @@
     * https://mvnrepository.com/popular?p=1
 * Look at `connect-web-apps.md` (ifttt, zapier...)
 * Look at `dev-platforms-integration` in `devops` repository
-* Online courses (event table of contents is enough)
+* Online courses (even table of contents is enough)
+* Online conferences
 * [Google trends](https://trends.google.com/trends/explore?q=%2Fm%2F07sbkfb,%2Fm%2F02p97)
 
 #### Java:

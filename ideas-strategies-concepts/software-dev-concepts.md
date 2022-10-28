@@ -140,6 +140,7 @@
 * `Feature creep` - excessive addition of new features (results in software bloat and over-complication)
 * `Outsourcing` - hiring a party outside a company to perform services / create goods
 * `Obfuscation` - code that is difficult for humans to understand (e.g. to prevent reverse-engineering)
+* `Observability` - ability to measure a system state (logs, metrics, request tracing, alerts)
 
 ### Others
 * Pick the right tool for the job
