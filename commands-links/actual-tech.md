@@ -32,7 +32,6 @@
     * [stackoverflow](https://insights.stackoverflow.com/survey/2020)
     * [jetbrains](https://www.jetbrains.com/lp/devecosystem-2021/)
 * Any job listings
-    * ...
 * Look at integrations/images/services at cloud providers (AWS, GCP, Azure)
 * Most used libraries
     * https://mvnrepository.com/popular?p=1
