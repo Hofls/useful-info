@@ -32,6 +32,8 @@
     * `cache:https://github.com/`
 * Look for specific file type
     * `filetype:pdf algorithm design`
+* Use app without installing it
+    * `postgres playground`
 
 ### Specific
 * How to make different libraries work together:
