@@ -142,7 +142,9 @@
 * `Obfuscation` - code that is difficult for humans to understand (e.g. to prevent reverse-engineering)
 * `Observability` - ability to measure a system state (logs, metrics, request tracing, alerts)
 * `OAuth` - way to grant websites/apps access to user information on other websites (e.g. sign in Amazon with Facebook account)
-
+* `LDAP` - stores logins/passwords, which allows different apps to authenticate users (e.g. same credentials for gitlab, grafana and nexus)
+    * Also see - `Active directory`
+    
 ### Others
 * Pick the right tool for the job
 * Embrace the tools, don't fight them
