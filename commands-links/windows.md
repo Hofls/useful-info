@@ -74,7 +74,7 @@
 
 ## Software
 * `Putty`, `WinSCP`, `Anydesk`, `Postman`, `SoapUI`, `IntelliJ IDEA`, `Docker`, 
-* `VLC`, `AIMP`, `Lightshot`, `Google chrome`, `Telegram`, `uTorrent`, `OpenJDK`, `OpenLens`
+* `VLC`, `Lightshot`, `Google chrome`, `Telegram`, `uTorrent`, `OpenJDK`, `OpenLens`
 * `7zip`
     * Password-protected archive:
         * Right click on files -> Add to archive... -> Set password -> Check "Encrypt file names"
@@ -86,7 +86,7 @@
 * `Audacity` to record all the sounds that you hear in your headphones
 * `Battle Encoder Shirase` to limit resources available to the process
 * `CpuStres v2.0` to load CPU to 100%
-    * Useful to see how frontend behaves happens on slow PCs (e.g. to reproduce bugs) 
+    * Useful to see how frontend behaves on slow PCs (to reproduce bugs) 
 * `Sandboxie` - safely run untrusted code
     * Presets -> Block internet access
     * Run -> Boxed tools -> Windows explorer
@@ -98,6 +98,8 @@
 * To check hardware load:
     * `Open Hardware Monitor`
     * `SpeedFan`
+* To run Bash on windows:
+    * `Git Windows` or `Cygwin` or `MinGW`
 
 ## Software. Detailed
 * `SoapUI`:
