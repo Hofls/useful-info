@@ -95,7 +95,7 @@
 * To run virtual machines:
     * `VMware`, `VirtualBox`
     * Got obsolete in new windows versions
-* To check hardware load:
+* To check hardware load/temperature:
     * `Open Hardware Monitor`
     * `SpeedFan`
 * To run Bash on windows:

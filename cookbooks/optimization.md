@@ -40,6 +40,9 @@
 * `Prefetching` (eager)
     * If you can predict that data will be needed soon - fetch it in advance 
 * `Using storage with smaller latency numbers` (e.g. RAM)
+* `Subjective optimization`
+    * Objectively load speed stays the same, but people perceive it as getting faster
+    * E.g. - display interesting animation; Or first load approximation of image, then load original
 * `Decrease computational complexity`
 * `Parallel computing`
     * Divide task into parts, process each part simultaneously
