@@ -83,6 +83,10 @@
 * `DBeaver` to connect to database
     * `Edit connection` => `PostgreSQL` => `Show all databases`
 * `OBS` to record screen + sound
+    * To start recording:
+        * `Sources` -> `+` -> `Display capture` -> `Start recording`
+    * To film only small part of screen:
+        * `Display capture` -> `Filters` -> `+` -> `Crop/pad`
 * `Audacity` to record all the sounds that you hear in your headphones
 * `Battle Encoder Shirase` to limit resources available to the process
 * `CpuStres v2.0` to load CPU to 100%
