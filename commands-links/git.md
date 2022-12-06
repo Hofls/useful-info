@@ -3,6 +3,8 @@
     * `git config --global core.autocrlf false`
 
 ## Commands
+* Find commits that did not make it to `origin/release` branch
+    * `git log origin/release.. --oneline --no-merges`
 * Revert not pushed commit
     * `git reset HEAD~1 --soft`
 * What is `git pull`? 
