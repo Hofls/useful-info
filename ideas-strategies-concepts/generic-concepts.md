@@ -75,3 +75,5 @@
 * `JIT learning` (Just-in-time) - learn a new concept only if there is a need to use it. No need? No learning.
     * It's opposite of school/university, where you learn a lot of stuff, without using it to solve real problems
 * `Cost–benefit analysis` - systematic approach to estimating the strengths and weaknesses of alternatives
+* `Shirky Principle` - Institutions will try to preserve the problem to which they are the solution
+* `Galls law` - A complex system that works is usually have evolved from a simple system that worked

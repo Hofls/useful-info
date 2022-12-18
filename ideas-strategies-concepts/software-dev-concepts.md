@@ -149,5 +149,6 @@
 * Pick the right tool for the job
 * Embrace the tools, don't fight them
     * Use library/framework in a default/standard way
-* 
+* Always look at problems from business POV
+    * E.g. software is bloated and built with outdated tech? Only do something about it, if profits outweigh costs
 * 
