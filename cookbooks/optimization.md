@@ -53,5 +53,6 @@
     * Example - to count words in text, split text into even parts, process them, sum all the results
 * `Metadata`/`Delta` as primary object descriptor (e.g. size, elements sum, count, borders)
 * `Partition data` - divide data into independent parts (e.g. shards, tables) Less data means higher processing speed
+* `Limits` - limit amount of requests (e.g. each user has maximum 3000 requests per hour)
 * Look at hints in [algorithms](computer-science/algorithms.md)
 
