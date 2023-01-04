@@ -24,6 +24,7 @@
         * Asks what user wants to do (analyze open source code)
         * Asks what snyk is allowed to do (with sane defaults)
         * Asks where code is located (github)
+* Make dangerous actions reversible (mark as "deleted" without actually deleting anything)
         
 ##### Great usability examples. Product first
 * Amazon QuickSight:
@@ -108,3 +109,5 @@
     * Airtest/Poco/Gatling - work in app like a normal user would. 1 action = 1 generated line of code.
 * Easy config changes:
     * Gitlab runner check for config.toml modification every 3 seconds, automatically reloads it
+* Make dangerous actions hard to execute:
+    * Github - Type repository name to delete it

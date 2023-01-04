@@ -151,4 +151,10 @@
     * Use library/framework in a default/standard way
 * Always look at problems from business POV
     * E.g. software is bloated and built with outdated tech? Only do something about it, if profits outweigh costs
-* 
+* Take initiative - don't wait to be told, think what needs doing and advocate for it
+* Always learn and improve, keep up with times
+* If object oriented, put API on a thing instead of elsewhere. Java is worst at this.
+    * Bad - two classes Employee (data), EmployeeUtils (behaviour)
+    * Good - one class Employee (data + behaviour)
+* Design for simple/frequent cases with simple API, make complex/rare cases possible with more complex API
+* Bad API creators think in terms of implementation or domain of API, rather than in terms of use of API
