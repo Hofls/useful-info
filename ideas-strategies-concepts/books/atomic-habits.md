@@ -1,4 +1,5 @@
-TLDR - how to build and maintain habits
+### TLDR
+* Atomic habits - how to build and maintain habits
 
 ### Definitions
 * `Habit` - routine of behavior that is repeated regularly and tends to occur subconsciously

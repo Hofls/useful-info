@@ -1,4 +1,5 @@
-TLDR - learn from work of others, remix and reimagine
+### TLDR
+* Steal like an artist - learn from work of others, remix and reimagine
 
 ### Definitions
 * `Steal` - learn and take inspiration from work of other people

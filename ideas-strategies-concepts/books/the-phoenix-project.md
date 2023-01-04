@@ -1,4 +1,5 @@
-TLDR - story about turning around badly managed company 
+### TLDR
+* The phoenix project - story about turning around badly managed company 
 
 ### Ideas
 * The Three Ways - continuous delivery, rapid response to change, and collaboration across teams

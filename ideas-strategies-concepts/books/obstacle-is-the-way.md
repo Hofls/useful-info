@@ -1,4 +1,5 @@
-TLDR - let go of what you can't control, focus on what you can (stoicism)
+### TLDR
+* Obstacle is the way - let go of what you can't control, focus on what you can (stoicism)
 
 ### Definitions
 * `Stoicism` - don't be controlled by emotions, use your mind

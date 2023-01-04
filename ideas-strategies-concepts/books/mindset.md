@@ -1,4 +1,5 @@
-TLDR - fixed vs growth mindset
+### TLDR
+* Mindset - fixed vs growth mindset
 
 ### Ideas
 * Growth mindset:

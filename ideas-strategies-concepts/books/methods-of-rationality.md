@@ -1,4 +1,5 @@
-TLDR - alternative Harry Potter story that promotes rationality skills
+### TLDR
+* Methods of rationality - alternative Harry Potter story that promotes rationality skills
 
 ### Definitions
 * `Rationality` - systematic pursuit of knowledge and understanding through reason and evidence

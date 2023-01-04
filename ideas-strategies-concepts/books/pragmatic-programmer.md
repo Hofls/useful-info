@@ -1,4 +1,5 @@
-TLDR - how to become a better programmer
+### TLDR
+* Pragmatic programmer - how to become a better programmer
 
 ### Ideas
 * Be a catalyst for change (show better ways to do things)

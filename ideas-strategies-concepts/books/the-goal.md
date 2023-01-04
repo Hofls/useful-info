@@ -1,4 +1,5 @@
-TLDR - novel about improving processes in production plant
+### TLDR
+* The goal - novel about improving processes in production plant
 
 ### Definitions
 * `Theory of constraints` - identify the biggest bottlenecks and fix them (iterative process)

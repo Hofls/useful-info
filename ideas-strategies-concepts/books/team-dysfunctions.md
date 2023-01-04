@@ -1,4 +1,5 @@
-TLDR - explores typical team problems
+### TLDR
+* Team dysfunctions - explores typical team problems
 
 ### Ideas
 * `Absence of trust` - unwilling to be vulnerable within the group

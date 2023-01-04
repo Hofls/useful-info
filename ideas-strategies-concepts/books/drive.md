@@ -1,4 +1,5 @@
-TLDR - book explores different kinds of motivation
+### TLDR
+* Drive - book explores different kinds of motivation
 
 ### Definitions
 * `Self-determination theory (SDT)` - humans have an innate drive to be autonomous and self-determined

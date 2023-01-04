@@ -1,4 +1,5 @@
-TLDR - two systems in brain are constantly fighting over control of behavior/actions
+### TLDR
+* Thinking fast and slow - two systems in brain are constantly fighting over control of behavior/actions
 
 ### Definitions
 * Heuristics and biases:

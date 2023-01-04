@@ -1,4 +1,5 @@
-TLDR - find out what your customers actually want, deliver exactly that
+### TLDR
+* The lean startup - find out what your customers actually want, deliver exactly that
 
 ### Definitions
 * `Lean thinking` - reduce and eliminate waste (anything that doesn't add value)

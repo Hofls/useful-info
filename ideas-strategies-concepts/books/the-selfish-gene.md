@@ -1,4 +1,5 @@
-TLDR - about genes and evolution
+### TLDR
+* The selfish gene - about genes and evolution
 
 ### Ideas
 * All started when `first replicator` appeared (out of random chemical reactions in primordial soup)

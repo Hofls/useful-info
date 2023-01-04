@@ -1,4 +1,5 @@
-TLDR - how to build strong team and good culture
+### TLDR
+* Culture code - how to build strong team and good culture
 
 ### Definitions
 * `After-action review (AAR)` - analyze what happened, why it happened, and how it can be done better

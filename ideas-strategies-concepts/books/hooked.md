@@ -1,4 +1,5 @@
-TLDR - to build an addictive product - create a cycle (trigger -> action -> variable reward -> investment)
+### TLDR
+* Hooked - to build an addictive product - create a cycle (trigger -> action -> variable reward -> investment)
 
 ### Ideas
 * Trigger - stimuli that prompt user to take action 

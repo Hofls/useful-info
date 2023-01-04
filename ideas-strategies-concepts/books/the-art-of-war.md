@@ -1,4 +1,5 @@
-TLDR - describes methods to beat competition
+### TLDR
+* The art of war - describes methods to beat competition
 
 ### Ideas
 * Gather information before making any decisions
