@@ -6,6 +6,7 @@
 * Team is `fully functional`, all the competencies should be within the team
 * Everybody `shares responsibility`and collaborates (if somebody stuck, others try to help him)
 * `Initiative, opinions, feedback` are encouraged
+* [Amazon leadership principles](https://www.amazon.jobs/content/en/our-workplace/leadership-principles)
 
 #### Team. Specifics
 * The most important metric - `result` (reaching goals)
