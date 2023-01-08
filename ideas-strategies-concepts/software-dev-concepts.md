@@ -57,7 +57,8 @@
 	* Traditional approach - code explicitly calls constructor of specific implementation (new BoxService())
 	* Inverse approach - code describes type, framework provides implementation (@Autowired)
 * `Worse is better` - Software that is limited (worse), but simple to use, may be more appealing to the users (better)
-	* `Simplicity` - The design must be simple, both in implementation and interface. Simplicity is the most important consideration in a design
+	* `Simplicity` - The design must be simple, both in implementation and UX. Simplicity is the most important consideration in a design
+	    * Simple UX example - TikTok. Just open app and scroll, no other actions are necessary
 	* `Correctness` - The design should be correct
 	* `Consistency` - The design must not be overly inconsistent
 	* `Completeness` - Completeness must be sacrificed whenever implementation simplicity is jeopardized
@@ -144,6 +145,7 @@
 * `OAuth` - way to grant websites/apps access to user information on other websites (e.g. sign in Amazon with Facebook account)
 * `LDAP` - stores logins/passwords, which allows different apps to authenticate users (e.g. same credentials for gitlab, grafana and nexus)
     * Also see - `Active directory`
+* `SPOF` - single point of failure (part of a system that, if it fails, will stop the entire system from working)
     
 ### Others
 * Pick the right tool for the job
