@@ -9,6 +9,7 @@
     * https://news.ycombinator.com/best
 * Github
     * https://github.com/trending?since=weekly&spoken_language_code=en
+    * Demos/clones - [example](https://github.com/gothinkster/realworld)
 * Software from package managers
     * https://chocolatey.org/packages
 * Docker containers
