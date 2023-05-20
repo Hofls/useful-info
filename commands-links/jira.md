@@ -1,3 +1,15 @@
+* Block of code:
+    ```
+    {code:json}
+    {
+      "name": "John Doe",
+      "address": {
+        "street": "123 Main St",
+        "city": "New York"
+      }
+    }
+    {code}
+    ```
 * Find tasks by user
     * Open project issues - `https://jira.com/projects/HOFLSPROJECT/issues/`, click on `View all issues and filters`
     * Switch to Basic Search
