@@ -55,4 +55,3 @@
 * `Timeboxing` - fixed time period for activity (daily, retro, review etc)
 * `User story` - informal, natural language description of a feature (written from user perspective)
 * `Velocity` - metric for work done
- 
