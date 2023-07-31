@@ -22,11 +22,12 @@
 * Search for: 
     * Search settings:
         * Limit by year
+    * `What's your tech stack site:reddit.com`
     * `State of <topic>`, e.g. `State of devops`
     * `<topic> trends`, e.g. `devops trends`
     * `<topic> roadmap`, e.g. `web developer roadmap`
     * `<topic> top` e.g. `javascript top libraries`
-    * `Tranding software technology`
+    * `Trending software technology`
     * `Programming buzzwords`
 * Freelance sites
 * Developer surveys
