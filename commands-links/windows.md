@@ -93,6 +93,7 @@
     * Useful to see how frontend behaves on slow PCs (to reproduce bugs) 
 * `Sandboxie` - safely run untrusted code
     * Presets -> Block internet access
+        * Some software won't run with this option. The only way is to physically turn off internet access.
     * Run -> Boxed tools -> Windows explorer
 * To find and delete folders that take too much space:
     * `TreeSize Free` (run as Admin)
