@@ -41,6 +41,9 @@
 * On exploration problems - makes sense to set depth limit
 * No need to recalculate every value in an array, just move borders around
 * Think about the worst case, best case and average. The worst case is usually easy to optimize
+* Use common unit
+    * E.g. to convert between grams, milligrams, nanograms, kilograms.
+    * Implement only two conversions - from everything to nanograms; from nanograms to everything
 
 
 ### Algorithms essence
