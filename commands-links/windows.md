@@ -58,9 +58,12 @@
 ##### VMware Workstation Player
 * Runs any `.iso` / `.vmdk` images!
 * Highly recommended installing `VMware tools` on guest OS
+    * `Player` -> `Manage` -> `Install VMware tools`
     * Fixes screen resolution, provides ability to share clipboard (text/files)
 * Prerequisites:
     * `Windows search` -> `Turn Windows features on or off` -> `Disable Hyper-v`
+* To move cursor out of guest VM - press `CTRL+ALT`
+* For more info look at `devops` repository
     
 ## Etc
 ###### Problem with the internet on PC?
