@@ -77,8 +77,9 @@
 
 ## Software
 * `Putty`, `WinSCP`, `Anydesk`, `Postman`, `SoapUI`, `IntelliJ IDEA`, `Docker`, 
-* `VLC`, `Lightshot`, `Google chrome`, `Telegram`, `uTorrent`, `OpenJDK`, `OpenLens`
+* `VLC`, `Lightshot`, `Google chrome`, `Telegram`, `qBittorrent`, `OpenJDK`, `OpenLens`
 * `Stremio` with addons
+* `Wireshark`
 * `7zip`
     * Password-protected archive:
         * Right click on files -> Add to archive... -> Set password -> Check "Encrypt file names"
