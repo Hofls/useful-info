@@ -27,6 +27,8 @@
     * `<topic> trends`, e.g. `devops trends`
     * `<topic> roadmap`, e.g. `web developer roadmap`
     * `<topic> top` e.g. `javascript top libraries`
+    * `<topic> exercices` e.g. `devops exercices`
+    * `<job> interview questions` e.g. `sysadmin interview questions`
     * `Trending software technology`
     * `Programming buzzwords`
 * Freelance sites
