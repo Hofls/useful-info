@@ -141,6 +141,7 @@
 * `LDAP` - stores logins/passwords, which allows different apps to authenticate users (e.g. same credentials for gitlab, grafana and nexus)
     * Also see - `Active directory`
 * `SPOF` - single point of failure (part of a system that, if it fails, will stop the entire system from working)
+* `Redundancy/Failover` - multiple copies of service/db (if main fails, switch to standby/replica)
     
 ### Others
 * Pick the right tool for the job
