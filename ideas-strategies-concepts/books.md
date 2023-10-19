@@ -14,5 +14,5 @@ Carl Sagan, Stephen Hawking, Yuval Noah Harari, Richard Dawkins
 ```
 * Books:
 ```
-Basic Economics, The Mythical Man-Month, Cosmos, A Short History of Nearly Everything
+The Mythical Man-Month, Cosmos, A Short History of Nearly Everything
 ```
