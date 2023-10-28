@@ -1,9 +1,8 @@
 ### TLDR
-* TLDR - 
+* TLDR - libertarian perspective on economics
 
 ### Definitions
 * `Economics` - study of the use of scarce resources which have alternative uses
-* `` - 
 
 ### Ideas
 * In Economic decisions - intentions and goals mean nothing, incentives and consequences mean everything
@@ -16,3 +15,7 @@
 * Companies compete with each other, trying to provide the best goods/services for lowest prices. Customers win.
 * Companies are being created and liquidated all the time, but economy only getting stronger. (Antifragile)
 * Losses are very important - they force companies to change and adapt.
+* Minimum wage laws make some jobs unprofitable for buisness, effectively removing them.
+* Unions artificially raise wages, thus reducing labor demanded at that high price.
+* People and businesses should specialize in what they do best to maximize their productivity.
+* Very high taxes can discourage work, saving, and investment
