@@ -1,6 +1,5 @@
 ### TLDR
-* `Elephant in the brain` - important but unacknowledged feature of how our minds work; an introspective taboo.
-    * Reference to `elephant in the room`; a social taboo
+* `Elephant in the brain` - self-deception and hidden motives in human behaviour
 
 ### Definitions
 * `Signaling` - People often engage in behaviors and activities not because they are inherently valuable, 
@@ -15,6 +14,7 @@
     * Religious beliefs and practices may serve as signals of trustworthiness, cooperation, and group membership
     * Education system is a way for individuals to signal their intelligence, work ethic, and conformity
     * Charity and Altruism - ways to signal compassion and moral character
+    * Etc - political beliefs, fashion
 * Human intelligence evolved to compete with other humans (for access to resources and mating)
 * Humans have strong tendency to form groups (teams, parties, companies, gangs etc)
 * Some social tactics are threats, betrayal, deception, violence, misinformation, spying
