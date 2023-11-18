@@ -4,15 +4,4 @@
 * `First Things First` - order of tasks should be based on priorities (e.g. critical -> high -> medium -> low)
 * `The 80/20 Principle` - 20% of efforts produce 80% of results
 * `Everybody lies: Big data` - to find truth - look at the actions, not words
-* `The Unicorn Project` - devops transformation of an entire company
-* `Why people believe weird things` - fallacies, biases, cognitive distortions
-
-##### Honorable mentions
-* Authors:
-```
-Carl Sagan, Stephen Hawking, Yuval Noah Harari, Richard Dawkins
-```
-* Books:
-```
-The Mythical Man-Month, Cosmos, A Short History of Nearly Everything
-```
+* `Why people believe weird things` - list of fallacies, biases, cognitive distortions
