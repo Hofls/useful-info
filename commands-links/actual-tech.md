@@ -44,6 +44,8 @@
 * Online courses (even table of contents is enough)
 * Online conferences
 * [Google trends](https://trends.google.com/trends/explore?q=%2Fm%2F07sbkfb,%2Fm%2F02p97)
+* Multiple alternative solutions, how to figure out which one is more popular?
+    * Check google trends; Activity on youtube/github/reddit; Mentions on job hunting sites
 
 #### Java:
 * https://www.jhipster.tech/

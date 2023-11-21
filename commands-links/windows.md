@@ -93,7 +93,7 @@
     * To film only small part of screen:
         * `Display capture` -> `Filters` -> `+` -> `Crop/pad`
 * `Audacity` to record all the sounds that you hear in your headphones
-* `Battle Encoder Shirase` to limit resources available to the process
+* `Battle Encoder Shirase` to limit resources available to the process (CPU)
 * `CpuStres v2.0` to load CPU to 100%
     * Useful to see how frontend behaves on slow PCs (to reproduce bugs) 
 * `Sandboxie` - safely run untrusted code
