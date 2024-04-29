@@ -37,6 +37,7 @@
 * `Lazy loading` (on-demand, just in time)
     * Make sure all loaded data needed for computations (nothing excessive)
     * Only load data that is visible to the user
+* `Buffer` - if file is bigger than available memory, divide file in small chunks, load and process them one by one
 * `Prefetching` (eager)
     * If you can predict that data will be needed soon - fetch it in advance 
 * `Using storage with smaller latency numbers` (e.g. RAM)
