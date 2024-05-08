@@ -92,6 +92,7 @@
         * `Sources` -> `+` -> `Display capture` -> `Start recording`
     * To film only small part of screen:
         * `Display capture` -> `Filters` -> `+` -> `Crop/pad`
+* `DaVinci Resolve` - to edit videos
 * `Audacity` to record all the sounds that you hear in your headphones
 * `Battle Encoder Shirase` to limit resources available to the process (CPU)
 * `CpuStres v2.0` to load CPU to 100%
