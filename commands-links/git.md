@@ -7,6 +7,8 @@
     * `git log origin/release.. --oneline --no-merges`
 * Revert not pushed commit
     * `git reset HEAD~1 --soft`
+* Revert without any trace in git history (dangerous)
+    * IDEA - `Checkout revision` -> `Git push` -> `Force push`
 * What is `git pull`? 
     * `git fetch` + `git merge`
 * To copy commit from another branch
