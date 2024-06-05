@@ -1,4 +1,4 @@
-## Commands
+## Commands (cmd)
 * Find `java.exe` in environment variables
   * `for %i in (java.exe) do @echo.   %~$PATH:i`
 * Set environment variable
@@ -44,17 +44,27 @@
 * Restart PC, go to BIOS (by spamming `DEL`/`F8`/etc)
 * Choose to boot from flash drive, save and exit
 
+## Windows update (manual):
+* Download `.iso` image of new Windows version
+* Right click, mount, update (by default it will keep all the files, software and settings)
+
 ## Virtual environment / Sandbox
 ##### Windows sandbox
+* Important! There is no way to persist state (better use sandboxie)
 * Installation:
     * `Task Manager` -> `Performance` -> `Virtualization` should be enabled
-    * `Windows Features` -> `Windows Sandbox` -> Restart PC
-##### Docker
+    * `Turn Windows features on or off` -> `Windows Sandbox` -> Restart PC
+    
+##### Docker (Without WSL 2)
 * Prerequisites:
     * `Windows search` -> `Turn Windows features on or off` -> `Enable Hyper-v`
     * Not really necessary - Enable Windows Hypervisor Platform
-##### Windows Subsystem for Linux
-* todo
+    
+##### Windows Subsystem for Linux (WSL2)
+* `Turn windows features on or off` -> Turn on `Virtual Machine Platform` and `Windows Subsystem for Linux`
+* `cmd` -> `wsl --install`
+* In any folder - `shift + right click`
+
 ##### VMware Workstation Player
 * Runs any `.iso` / `.vmdk` images!
 * Highly recommended installing `VMware tools` on guest OS
@@ -66,6 +76,10 @@
 * For more info look at `devops` repository
     
 ## Etc
+###### Settings
+* Turn annoying system sounds off: \
+  `Sound` -> `Sound Control Panel` -> `Sounds` -> `Sound Scheme: No Sounds`
+
 ###### Problem with the internet on PC?
 * No problem! Just use internet from a smartphone
 * Connect Android to PC via USB
@@ -114,17 +128,3 @@
     * `Git Windows` or `Cygwin` or `MinGW`
     * Convert CRLF to LF `sed -i -e 's/\r$//' script.sh`
 
-## Software. Detailed
-* `SoapUI`:
-    * Generate request examples:
-        * New SOAP project -> http://example.com/events?wsdl
-    * To download all service files (necessary to generate connectors)
-        * Right click on service -> Export definition
-    * If service returns "Not authorized":
-        * Request -> Auth -> Basic -> Login/Password
-    * To fix generated queries, replace "?" with ""
-    * To send quotes inside quotes:
-        * `<keys query="IncidentID=&quot;IM92838221&quot;">`
-    * Load test:
-        * Pick any SOAP request -> Add to TestCase -> New Load Test -> Run
-* 
