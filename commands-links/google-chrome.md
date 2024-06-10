@@ -4,8 +4,9 @@
 * `JSON Formatter` - boosts json readability
 * `Google Translate` - helps learning new languages
     * After installation, you have to manually set primary language
-* `Octotree` - github on steroids
-* `Grammarly` - fixes grammar, helps to write texts
+* `VeePN` - free VPN
+* `GoFullPage` - html page to png
+* `Save Page WE` - download html page
 
 ## Sites:
 * `12ft.io` - bypass paywall
