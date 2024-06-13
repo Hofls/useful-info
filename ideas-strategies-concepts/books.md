@@ -9,4 +9,4 @@
 * `Fooled by randomness` - fallibility of human knowledge. People look for explanations even if event was completely random
 * `Skin in the game` - if you have the rewards, you must also be exposed to the risks
 * `The black swan` - very rare events with big impact. Be ready for them
- 
+* `Nonzero: The Logic of Human Destiny` - Biological and cultural evolution are driven by non-zero-sum games
