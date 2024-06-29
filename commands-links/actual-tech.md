@@ -16,6 +16,8 @@
     * https://hub.docker.com/search?image_filter=&type=image
 * Tech stacks
     * https://stackshare.io/stacks
+* Roadmaps
+    * https://roadmap.sh/
 * Technology macro trends
     * https://www.thoughtworks.com/radar
     * https://www.infoq.com/infoq-trends-report/
