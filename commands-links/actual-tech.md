@@ -2,14 +2,16 @@
 
 #### General
 * Reddit
-    * https://www.reddit.com/r/programming/top/?t=week
-    * https://www.reddit.com/r/webdev/top/?t=week
-    * https://www.reddit.com/r/devops/top/?t=week
-* Hacker news
-    * https://news.ycombinator.com/best
+    * https://www.reddit.com/r/programming/top/?t=year
+    * https://www.reddit.com/r/webdev/top/?t=year
+    * https://www.reddit.com/r/devops/top/?t=year
+    * https://www.reddit.com/r/ExperiencedDevs/top/?t=year
 * Github
     * https://github.com/trending?since=weekly&spoken_language_code=en
     * Demos/clones - [example](https://github.com/gothinkster/realworld)
+* Other websites:
+    * https://www.hntoplinks.com/year
+    * https://dev.to/top/year
 * Software from package managers
     * https://chocolatey.org/packages
 * Docker containers
@@ -21,6 +23,9 @@
 * Technology macro trends
     * https://www.thoughtworks.com/radar
     * https://www.infoq.com/infoq-trends-report/
+* Programming language popularity
+    * https://pypl.github.io/PYPL.html
+    * https://www.tiobe.com/tiobe-index/
 * Search for: 
     * Search settings:
         * Limit by year
@@ -37,6 +42,10 @@
 * Developer surveys
     * [stackoverflow](https://insights.stackoverflow.com/survey/2020)
     * [jetbrains](https://www.jetbrains.com/lp/devecosystem-2021/)
+    * [hacker rank](https://www.hackerrank.com/research/developer-skills/2023)
+* State of industry reports
+    * https://github.blog/2023-11-08-the-state-of-open-source-and-ai/
+    * https://www.jetbrains.com/lp/devecosystem-2023/
 * Any job listings
 * Look at integrations/images/services at cloud providers (AWS, GCP, Azure)
 * Most used libraries
