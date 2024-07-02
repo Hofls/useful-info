@@ -2,20 +2,25 @@
 
 #### General
 * Reddit
-    * https://www.reddit.com/r/programming/top/?t=year
-    * https://www.reddit.com/r/webdev/top/?t=year
-    * https://www.reddit.com/r/devops/top/?t=year
-    * https://www.reddit.com/r/ExperiencedDevs/top/?t=year
+    * https://www.reddit.com/r/programming/top/?t=week
+    * https://www.reddit.com/r/webdev/top/?t=week
+    * https://www.reddit.com/r/devops/top/?t=week
+    * https://www.reddit.com/r/ExperiencedDevs/top/?t=week
 * Github
     * https://github.com/trending?since=weekly&spoken_language_code=en
-    * Demos/clones - [example](https://github.com/gothinkster/realworld)
+    * https://github.com/topics
+    * https://github.com/explore
 * Other websites:
     * https://www.hntoplinks.com/year
     * https://dev.to/top/year
-* Software from package managers
-    * https://chocolatey.org/packages
-* Docker containers
+* Software from package managers / stores / repositories
     * https://hub.docker.com/search?image_filter=&type=image
+    * https://chocolatey.org/packages
+    * https://snapcraft.io/store?categories=development%2Cserver-and-cloud
+    * https://apps.microsoft.com/collections/computed/apps/topfree?hl=en-us&gl=RU
+    * https://mvnrepository.com/popular
+* Docker containers
+    * 
 * Tech stacks
     * https://stackshare.io/stacks
 * Roadmaps
@@ -23,9 +28,18 @@
 * Technology macro trends
     * https://www.thoughtworks.com/radar
     * https://www.infoq.com/infoq-trends-report/
-* Programming language popularity
-    * https://pypl.github.io/PYPL.html
-    * https://www.tiobe.com/tiobe-index/
+* Popularity
+    * Programming language:
+        * https://madnight.github.io/githut/#/pull_requests/2024/1
+        * https://pypl.github.io/PYPL.html
+        * https://www.tiobe.com/tiobe-index/
+    * Database:
+        * https://pypl.github.io/DB.html
+        * https://db-engines.com/en/ranking
+    * IDE/Plugins:
+        * https://pypl.github.io/IDE.html
+* Awesome lists:
+    * https://github.com/topics/awesome
 * Search for: 
     * Search settings:
         * Limit by year
