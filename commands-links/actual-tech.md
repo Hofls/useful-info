@@ -19,8 +19,6 @@
     * https://snapcraft.io/store?categories=development%2Cserver-and-cloud
     * https://apps.microsoft.com/collections/computed/apps/topfree?hl=en-us&gl=RU
     * https://mvnrepository.com/popular
-* Docker containers
-    * 
 * Tech stacks
     * https://stackshare.io/stacks
 * Roadmaps
