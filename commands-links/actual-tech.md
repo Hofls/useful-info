@@ -15,10 +15,10 @@
     * https://dev.to/top/year
 * Software from package managers / stores / repositories
     * https://hub.docker.com/search?image_filter=&type=image
-    * https://chocolatey.org/packages
     * https://snapcraft.io/store?categories=development%2Cserver-and-cloud
-    * https://apps.microsoft.com/collections/computed/apps/topfree?hl=en-us&gl=RU
     * https://mvnrepository.com/popular
+    * https://apps.microsoft.com/collections/computed/apps/topfree?hl=en-us&gl=RU (Category -> Developer Tools)
+    * https://chocolatey.org/packages
 * Tech stacks
     * https://stackshare.io/stacks
 * Roadmaps

@@ -75,7 +75,8 @@
   	* `Latency Monkey` - introduces communication delays
 * `A/B testing` - testing a subject's response to variant A against variant B, and determining which of the two variants is more effective
 * `Smoke test` - preliminary testing to reveal obvious failures
-* `Configuration management` - automatically interacting with multiple servers to conduct sysadmin tasks (e.g. Ansible)
+* `Configuration management` - word "configuration" used in very broad sense, that includes \
+    software, hardware, tests, documentation, version control, releases etc
 * `Infrastructure as code (IaC)` - managing IT infrastructure using configuration files (e.g. provisioning VMs in cloud)
 * `Compliance Automation` - auto scan infrastructure to identify security issues
 * `Deep modules` - individual unit of abstraction should do a lot of work, but with simple interface
@@ -142,6 +143,7 @@
     * Also see - `Active directory`
 * `SPOF` - single point of failure (part of a system that, if it fails, will stop the entire system from working)
 * `Redundancy/Failover` - multiple copies of service/db (if main fails, switch to standby/replica)
+* `Secret management` - do not store passwords/tokens in source code, use specialized solution (e.g. github secrets)
     
 ### Others
 * Pick the right tool for the job
