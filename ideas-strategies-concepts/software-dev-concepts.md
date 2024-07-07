@@ -144,6 +144,7 @@
 * `SPOF` - single point of failure (part of a system that, if it fails, will stop the entire system from working)
 * `Redundancy/Failover` - multiple copies of service/db (if main fails, switch to standby/replica)
 * `Secret management` - do not store passwords/tokens in source code, use specialized solution (e.g. github secrets)
+* `Feature toggle` (feature flag, feature switch) - activate new experimental feature at specific time, deactivate if something goes wrong
     
 ### Others
 * Pick the right tool for the job

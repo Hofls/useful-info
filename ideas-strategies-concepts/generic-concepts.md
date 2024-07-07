@@ -76,3 +76,5 @@
 * `Cost–benefit analysis` - systematic approach to estimating the strengths and weaknesses of alternatives
 * `Shirky Principle` - Institutions will try to preserve the problem to which they are the solution
 * `Galls law` - A complex system that works is usually have evolved from a simple system that worked
+* `SCAMPER` - Technique for brainstorming / thinking outside the box
+    * Substitute (analogy), Combine, Adjust, Modify/Magnify/Minify, Put to other uses (generate/connect), Eliminate, Reverse/Rearrange

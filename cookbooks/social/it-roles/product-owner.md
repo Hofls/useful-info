@@ -1,4 +1,5 @@
-#### Responsibilities 
+#### Product owner 
+* Alternative names - Product manager, Project manager
 * Set product goals
     * E.g. Goal - make app faster. Expected results - main page loads in 1 second, new product creates in 2 seconds.
 * Understand product users
