@@ -69,7 +69,12 @@
 * [Google trends](https://trends.google.com/trends/explore?q=%2Fm%2F07sbkfb,%2Fm%2F02p97)
 * Multiple alternative solutions, how to figure out which one is more popular?
     * Check google trends; Activity on youtube/github/reddit; Mentions on job hunting sites
-
+* Similar subreddits:
+    * https://anvaka.github.io/redsim/#!?q=ExperiencedDevs
+    * https://anvaka.github.io/redsim/#!?q=programming
+    * https://anvaka.github.io/redsim/#!?q=webdev
+    * https://anvaka.github.io/redsim/#!?q=devops
+    
 #### Java:
 * https://www.jhipster.tech/
 * https://www.reddit.com/r/java/top/?t=week
