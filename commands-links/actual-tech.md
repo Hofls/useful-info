@@ -48,16 +48,15 @@
     * `<topic> top` e.g. `javascript top libraries`
     * `<topic> exercices` e.g. `devops exercices`
     * `<job> interview questions` e.g. `sysadmin interview questions`
-    * `Trending software technology`
+    * `Trending software tech`
     * `Programming buzzwords`
 * Freelance sites
 * Developer surveys
-    * [stackoverflow](https://insights.stackoverflow.com/survey/2020)
-    * [jetbrains](https://www.jetbrains.com/lp/devecosystem-2021/)
-    * [hacker rank](https://www.hackerrank.com/research/developer-skills/2023)
+    * [stackoverflow](https://survey.stackoverflow.co/2023/)
+    * [jetbrains](https://www.jetbrains.com/lp/devecosystem-2023/)
+    * [hacker rank](https://www.hackerrank.com/research/developer-skills/2024)
 * State of industry reports
-    * https://github.blog/2023-11-08-the-state-of-open-source-and-ai/
-    * https://www.jetbrains.com/lp/devecosystem-2023/
+    * [github](https://github.blog/2023-11-08-the-state-of-open-source-and-ai/)
 * Any job listings
 * Look at integrations/images/services at cloud providers (AWS, GCP, Azure)
 * Most used libraries
