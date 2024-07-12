@@ -58,16 +58,12 @@
 * State of industry reports
     * [github](https://github.blog/2023-11-08-the-state-of-open-source-and-ai/)
 * Any job listings
-* Look at integrations/images/services at cloud providers (AWS, GCP, Azure)
+* Look at integrations/images/managed services at cloud providers (AWS, GCP, Azure)
 * Most used libraries
     * https://mvnrepository.com/popular?p=1
-* Look at `connect-web-apps.md` (ifttt, zapier...)
-* Look at `dev-platforms-integration` in `devops` repository
 * Online courses (even table of contents is enough)
-* Online conferences
-* [Google trends](https://trends.google.com/trends/explore?q=%2Fm%2F07sbkfb,%2Fm%2F02p97)
-* Multiple alternative solutions, how to figure out which one is more popular?
-    * Check google trends; Activity on youtube/github/reddit; Mentions on job hunting sites
+    * Udemy, codeacademy, coursera, edx
+* Online conferences (even schedule is enough)
 * Similar subreddits:
     * https://anvaka.github.io/redsim/#!?q=ExperiencedDevs
     * https://anvaka.github.io/redsim/#!?q=programming
@@ -77,4 +73,12 @@
 #### Java:
 * https://www.jhipster.tech/
 * https://www.reddit.com/r/java/top/?t=week
+* https://jpoint.ru/en/schedule/days/
+* https://www.devoxx.co.uk/schedule/
+* https://www.developerweek.com/conference/
+* https://www.devconf.info/us/schedule/
+
+#### Etc
+* Multiple alternative solutions, how to figure out which one is more popular?
+    * Check google trends; Google search "A VS "; Activity on youtube/github/reddit; Mentions on job hunting sites
 * 
