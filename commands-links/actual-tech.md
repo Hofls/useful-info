@@ -54,7 +54,6 @@
 * Developer surveys
     * [stackoverflow](https://survey.stackoverflow.co/2023/)
     * [jetbrains](https://www.jetbrains.com/lp/devecosystem-2023/)
-    * [hacker rank](https://www.hackerrank.com/research/developer-skills/2024)
 * State of industry reports
     * [github](https://github.blog/2023-11-08-the-state-of-open-source-and-ai/)
 * Any job listings
@@ -72,6 +71,7 @@
     
 #### Java:
 * https://www.jhipster.tech/
+* https://start.spring.io/
 * https://www.reddit.com/r/java/top/?t=week
 * https://jpoint.ru/en/schedule/days/
 * https://www.devoxx.co.uk/schedule/

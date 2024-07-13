@@ -47,7 +47,7 @@
 	* `Liskov substitution` - superclass objects should be replaceable with objects of its subclasses without breaking the application.
 		* (e.g. design by contract - write code on interface level first, add implementations later)
 	* `Interface segregation` - many client-specific interfaces are better than one general-purpose interface
-	* `Dependency inversion` - one should "depend on abstractions, not implementations
+	* `Dependency inversion` - one should depend on abstractions, not implementations
 * `Inversion of control` - inverts traditional control flow. 
 	* Traditional approach - code explicitly calls constructor of specific implementation (new BoxService())
 	* Inverse approach - code describes type, framework provides implementation (@Autowired)
@@ -145,6 +145,8 @@
 * `Redundancy/Failover` - multiple copies of service/db (if main fails, switch to standby/replica)
 * `Secret management` - do not store passwords/tokens in source code, use specialized solution (e.g. github secrets)
 * `Feature toggle` (feature flag, feature switch) - activate new experimental feature at specific time, deactivate if something goes wrong
+* `CUPID` - properties of good software \
+    Composable, Unix philosophy, Predictable, Idiomatic, Domain-based
     
 ### Others
 * Pick the right tool for the job
