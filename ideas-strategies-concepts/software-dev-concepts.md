@@ -47,7 +47,8 @@
 	* `Liskov substitution` - superclass objects should be replaceable with objects of its subclasses without breaking the application.
 		* (e.g. design by contract - write code on interface level first, add implementations later)
 	* `Interface segregation` - many client-specific interfaces are better than one general-purpose interface
-	* `Dependency inversion` - one should depend on abstractions, not implementations
+	* `Dependency inversion` - usually dependencies are created directly, e.g. new UserService(); \
+	    But inverse of that is better, e.g. injection via @Autowired UserService
 * `Inversion of control` - inverts traditional control flow. 
 	* Traditional approach - code explicitly calls constructor of specific implementation (new BoxService())
 	* Inverse approach - code describes type, framework provides implementation (@Autowired)
