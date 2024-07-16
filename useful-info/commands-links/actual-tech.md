@@ -68,6 +68,7 @@
     * https://anvaka.github.io/redsim/#!?q=programming
     * https://anvaka.github.io/redsim/#!?q=webdev
     * https://anvaka.github.io/redsim/#!?q=devops
+* [Testcontainers modules](https://testcontainers.com/modules/)
     
 #### Java:
 * https://www.jhipster.tech/

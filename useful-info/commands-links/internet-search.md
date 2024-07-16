@@ -17,7 +17,7 @@
 * Alternatives
     * `heroku vs`
 * Compare popularity
-    * freelance sites, `vs` (look at the order of results)
+    * google trends, `vs` (look at the order of results)
 * Something is not working, and there is no error message:
     * `debug kubernetes` or `diagnostics` / `introspection` / `tracing` / `troubleshooting`
 * List of useful links

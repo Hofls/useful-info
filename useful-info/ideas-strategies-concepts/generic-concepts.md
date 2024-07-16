@@ -55,7 +55,7 @@
     * Employees should understand their role, responsibilities, measurement for success, repercussions of failing
 * `Servant leadership` - servant leader shares power, puts the needs of the employees first and helps people develop and perform as highly as possible
 * `Learning organization` - facilitates the learning of its members and continuously transforms itself
-* `OKR` - Objectives and key results, it's a goal-setting framework
+* `OKR` - Objectives and key results, a goal-setting framework
 * `Gamification` - add gaming elements to experience in order to motivate/engage users
 * `Randomized controlled trial` - randomly divide people into two groups (trial and control)
     * Give real medicine to trial group, fake medicine to control group. Measure and compare results.
