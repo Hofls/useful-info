@@ -1,0 +1,35 @@
+$font-stack:    Helvetica, sans-serif;
+body {
+  font: 100% $font-stack;
+}
+
+
+nav {
+  ul {
+    list-style: none;
+  }
+  li { display: inline-block; }
+}
+
+
+@mixin transform($property) {
+  -webkit-transform: $property;
+  -ms-transform: $property;
+  transform: $property;
+}
+.box { @include transform(rotate(30deg)); }
+
+
+%message-shared {
+  border: 1px solid #ccc;
+  padding: 10px;
+  color: #333;
+}
+.success {
+  @extend %message-shared;
+  border-color: green;
+}
+.error {
+  @extend %message-shared;
+  border-color: red;
+}

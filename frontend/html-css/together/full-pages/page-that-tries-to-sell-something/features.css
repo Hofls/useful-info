@@ -1,0 +1,29 @@
+
+.feature-box {
+    overflow: auto;
+}
+
+.feature-box h4 {
+    color: rgb(0, 0, 238);
+}
+
+.quick-start-header {
+    text-align: center;
+}
+
+@media screen and (min-width: 750px) {
+
+    .feature-box div {
+        width: 45%;
+    }
+
+    .feature-box div:nth-child(1) {
+        float: left;
+    }
+
+    .feature-box div:nth-child(2) {
+        float: right;
+    }
+
+}
+

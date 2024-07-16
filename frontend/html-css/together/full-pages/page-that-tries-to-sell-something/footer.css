@@ -1,0 +1,98 @@
+.license {
+    clear: both;
+    font-size: 11px;
+    line-height: 18px;
+    color: #aaa;
+}
+
+footer {
+    width: 100%;
+    background-image: url(texture.png);
+    background-color: #303030;
+    padding-top: 50px;
+    padding-bottom: 25px;
+}
+
+footer .social div {
+    text-align: center;
+    margin-bottom: 20px
+}
+
+.social .links a {
+    display: inline-block;
+    background-image: url(social_sprite.png);
+    width: 50px;
+    height: 50px;
+    margin-right: 10px
+}
+
+.social a:hover {
+    background-color: #fff
+}
+
+.social a span {
+    position: absolute;
+    display: block;
+    height: 0;
+    overflow: hidden
+}
+
+a.twitter {
+    background-position: 0 0
+}
+
+a.twitter:hover {
+    background-position: 0 100%
+}
+
+a.stack-overflow {
+    background-position: -50px 0
+}
+
+a.stack-overflow:hover {
+    background-position: -50px 100%
+}
+
+a.slack {
+    background-position: -100px 0
+}
+
+a.slack:hover {
+    background-position: -100px 100%
+}
+
+a.github {
+    background-position: -150px 0
+}
+
+a.github:hover {
+    background-position: -150px 100%
+}
+
+a.mailing-list {
+    background-position: -200px 0
+}
+
+a.mailing-list:hover {
+    background-position: -200px 100%
+}
+
+a.calendar {
+    background-position: -250px 0
+}
+
+a.calendar:hover {
+    background-position: -250px 100%
+}
+
+@media screen and (min-width: 750px) {
+
+    .social .links {
+        float: left;
+    }
+
+    .social .buttons {
+        float: right;
+    }
+
+}

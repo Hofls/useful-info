@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "sass:compile": "node-sass sass-input -o css-output",
+    "sass:watch": "node-sass -w sass-input -o css-output"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "node-sass": "^4.13.1"
+  }
+}

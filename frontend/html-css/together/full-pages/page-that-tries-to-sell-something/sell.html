@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page that tries to sell something</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="navigation.css">
+    <link rel="stylesheet" href="features.css">
+    <link rel="stylesheet" href="gallery.css">
+    <link rel="stylesheet" href="footer.css">
+</head>
+<body>
+    <!-- navigation.css -->
+    <header>
+        <div class="horizontally-center">
+            <a href="#" class="logo"></a>
+            <nav class="navigation-area">
+                <a class="" href="/docs">Documentation</a>
+                <a class="" href="/plugins">Plugins</a>
+                <a class="" href="/secuirty">Security</a>
+                <a class="" href="/blog">Community</a>
+                <a class="" href="/about">About</a>
+            </nav>
+            <button aria-label="navigation-toggle" class="navigation-toggle">
+            </button>
+        </div>
+    </header>
+    <!-- Static header -->
+    <article class="horizontally-center quick-start-header">
+        <h1>Production-Grade Container Orchestration</h1>
+        <h5>Automated container deployment, scaling, and management</h5>
+        <a href="/docs/tutorials/kubernetes-basics/" id="quickstartButton" class="button">Learn Kubernetes Basics</a>
+    </article>
+
+
+    <article class="horizontally-center">
+        <!-- features.css -->
+        <section>
+            <h3 class="text-center">Kubernetes Features</h3>
+            <div class="feature-box">
+                <div>
+                    <h4>Endpoint Slices</h4>
+                    Scalable tracking of network endpoints in a Kubernetes cluster.
+                </div>
+                <div>
+                    <h4>Service discovery and load balancing</h4>
+                    No need to modify your application to use an unfamiliar service discovery mechanism. Kubernetes gives Pods their own IP addresses and a single DNS name for a set of Pods, and can load-balance across them.
+                </div>
+            </div>
+            <div class="feature-box">
+                <div>
+                    <h4>Automatic bin packing</h4>
+                    Automatically places containers based on their resource requirements and other constraints, while not sacrificing availability. Mix critical and best-effort workloads in order to drive up utilization and save even more resources.
+                </div>
+                <div>
+                    <h4>Storage orchestration</h4>
+                    Automatically mount the storage system of your choice, whether from local storage, a public cloud provider such as GCP or AWS, or a network storage system such as NFS, iSCSI, Gluster, Ceph, Cinder, or Flocker.
+                </div>
+            </div>
+        </section>
+        <section>
+            <h3 class="text-center">Websites gallery</h3>
+            <div class="gallery-box">
+                <div class="description">
+                    Snapfish jams a ton of navigation power to help people find where they are going. Their site captures their new 'cutting edge' feel with its stark original contrasts and clean blocky elements.
+                </div>
+                <div class="images">
+                    <div>
+                        <img src="websites-images/snapfish-mobile.png">
+                    </div>
+                    <div>
+                        <img src="websites-images/snapfish-desktop.png">
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-box">
+                <div class="description">
+                    Fresh juice is a fast growing industry, and Pressed Juicery has a gorgeous responsive website to stay at the top of the industry. They have beautiful photography and imagery to create a clean look and feel that compliments their hip modern brand.
+                </div>
+                <div class="images">
+                    <div>
+                        <img src="websites-images/juicery-mobile.png">
+                    </div>
+                    <div>
+                        <img src="websites-images/juicery-desktop.png">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </article>
+
+    <!-- -->
+    <footer>
+        <div class="horizontally-center text-center">
+            <div class="social">
+                <div class="links">
+                    <a href="https://twitter.com/kubernetesio" class="twitter"><span>Twitter</span></a>
+                    <a href="https://github.com/kubernetes/kubernetes" class="github"><span>GitHub</span></a>
+                    <a href="http://slack.k8s.io/" class="slack"><span>Slack</span></a>
+                </div>
+                <div class="links">
+                    <a href="http://stackoverflow.com/questions/tagged/kubernetes" class="stack-overflow"><span>Stack Overflow</span></a>
+                    <a href="https://discuss.kubernetes.io" class="mailing-list"><span>Forum</span></a>
+                    <a href="https://calendar.google.com/calendar/embed?src=nt2tcnbtbied3l6gi2h29slvc0%40group.calendar.google.com" class="calendar"><span>Events Calendar</span></a>
+                </div>
+                <div class="buttons">
+                    <a href="https://git.k8s.io/community/contributors/guide" class="button">Contribute</a>
+                </div>
+            </div>
+
+            <div class="license">
+                © 2019 The Kubernetes Authors | Documentation Distributed under <a href="https://git.k8s.io/website/LICENSE" class="light-text">CC BY 4.0</a>
+            </div>
+            <div class="license">
+                Copyright © 2019 The Linux Foundation ®. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our
+            </div>
+            <div class = "license">
+                <a href="https://www.linuxfoundation.org/trademark-usage" class="light-text">Trademark Usage page</a>
+            </div>
+            <div class="license">
+                ICP license: 京ICP备17074266号-3
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
