@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: long-stick
+  labels:
+    app: long-stick
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: long-stick
+  template:
+    metadata:
+      labels:
+        name: long-stick
+        app: long-stick
+    spec:
+      automountServiceAccountToken: false
+      containers:
+        - name: long-stick
+          image: registry.someit.com/qqe/long-stick:IMAGE_TAG
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: sub-port
+              containerPort: 8999
+            - name: stick-port
+              containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: long-stick-config
+      restartPolicy: Always
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: long-stick
+spec:
+  selector:
+    name: long-stick
+  type: NodePort
+  ports:
+    - name: sub-port
+      port: 8999
+      targetPort: 8999
+    - name: stick-port
+      port: 8080
+      targetPort: 8080
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: long-stick
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+    - host: long-stick.k8s.someit.ru
+      http:
+        paths:
+          - path: /standard-metrics
+            pathType: Prefix
+            backend:
+              service:
+                name: long-stick
+                port:
+                  number: 8999
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: long-stick
+                port:
+                  number: 8080

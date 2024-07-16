@@ -1,0 +1,28 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: transfer-customers
+spec:
+  schedule: "0 7 * * *"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      backoffLimit: 5 # Tries with exponential delay (10s, 20s, 40s, 80s, 160s)
+      template:
+        spec:
+          restartPolicy: "OnFailure"
+          containers:
+            - name: transfer-customers
+              image: curlimages/curl
+              imagePullPolicy: IfNotPresent
+              command: ["/bin/sh", "-c"]
+              args: ["curl --max-time 60 --verbose --fail --location example.com"]
+              resources:
+                limits:
+                  cpu: 0.05
+                  memory: 100Mi
+                requests:
+                  cpu: 0.05
+                  memory: 50Mi
+

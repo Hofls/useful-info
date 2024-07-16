@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kafka-connect-ui
+spec:
+  containers:
+    - name: kafka-connect-ui-container
+      image: landoop/kafka-connect-ui
+      ports:
+        - name: main-port
+          containerPort: 8000
+      resources:
+        requests:
+          cpu: 0.2
+          memory: 200Mi
+          ephemeral-storage: "100Mi"
+        limits:
+          cpu: 0.4
+          memory: 400Mi
+          ephemeral-storage: "500Mi"
+      env:
+        - name: CONNECT_URL
+          value: "http://cp-kafka-connect:8083"
+
+# Based on:
+# docker run --rm -it -p 8000:8000 \
+# -e "CONNECT_URL=http://cp-kafka-connect:8083" \
+# landoop/kafka-connect-ui
