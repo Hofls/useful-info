@@ -1,0 +1,1 @@
+DataStore is a key-value storage

@@ -1,0 +1,1 @@
+Room - relational DB (abstraction over SQLite)

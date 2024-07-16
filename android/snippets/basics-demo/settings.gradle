@@ -1,0 +1,17 @@
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        jcenter() // Warning: this repository is going to shut down soon
+    }
+}
+rootProject.name = "Basics demo"
+include ':ui'
+include ':minimal-template'
+include ':storage:room'
+include ':background-work'
+include ':notification'
+include ':permissions'
+include ':dependency-injection'
+include ':binding:view-binding'
