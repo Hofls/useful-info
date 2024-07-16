@@ -9,7 +9,7 @@
 * `Database`
     * For more info, look at `devops` repo
 * `In-memory data store` (as cache)
-* `Content delivery network (CDN)`
+* `Content delivery network (CDN)` / `Edge` - servers that located geographically close to users
 * `Reverse proxy`
     * Functions: caching, filtering, load balancing, authentication, logging
     * Almost the same thing: `Load balancer`, `API Gateway`
