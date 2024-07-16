@@ -16,6 +16,7 @@
 * `Web Application Firewall`
 * `File storage` - e.g. Minio, S3, NFS, Database
 * `Cache` - Client / CDN / Reverse proxy / Database / Application (e.g. redis)
+* `DDOS protection / Bots protection`- e.g. Cloudflare, ddos-guard
 
 #### Comparison
 * `Managed > Your own`
