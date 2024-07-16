@@ -1,0 +1,23 @@
+before_script:
+  - mkdir -p test-results
+
+stages:
+  - tests
+
+run-tests:
+  image: $DOCKER_REGISTRY/dockerhub/library/docker:20.10
+  stage: tests
+  artifacts:
+    when: always
+    expire_in: 1 hrs
+    paths:
+      - ./test-results
+  script:
+    - docker build --tag e2e-tests:1.0 .
+    - docker run --name $CI_JOB_ID e2e-tests:1.0
+  after_script:
+    - docker cp $CI_JOB_ID:/usr/app/test-results $(pwd)
+  tags:
+    - docker
+
+# We have to use "docker cp", because --volume does not fit - files appear on host (instead of current image docker:20.10)

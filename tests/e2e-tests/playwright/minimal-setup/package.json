@@ -1,0 +1,15 @@
+{
+  "scripts": {
+    "dev-tests": "cross-env NODE_PROFILE='dev' jest",
+    "dev-test": "cross-env NODE_PROFILE='dev' jest -t hello-world-test",
+    "prod-tests": "cross-env NODE_PROFILE='prod' jest",
+    "prod-test": "cross-env NODE_PROFILE='prod' jest -t hello-world-test"
+  },
+  "devDependencies": {
+    "jest": "26.6.3",
+    "playwright": "1.10.0"
+  },
+  "dependencies": {
+    "cross-env": "7.0.2"
+  }
+}

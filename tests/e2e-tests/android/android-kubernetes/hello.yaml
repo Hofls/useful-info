@@ -1,0 +1,88 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world
+  namespace: esiam-dups
+  labels:
+    app: hello-world
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: hello-world
+  template:
+    metadata:
+      labels:
+        name: hello-world
+        app: hello-world
+    spec:
+      automountServiceAccountToken: false
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: "cpu-virtualization"
+                    operator: In
+                    values: ["true"]
+      containers:
+      - name: hello-world
+        image: budtmo/docker-android-x86-11.0
+        securityContext:
+          privileged: true
+        imagePullPolicy: Always
+        env:
+          - name: DEVICE
+            value: "Samsung Galaxy S6"
+        resources:
+          requests:
+            cpu: 0.3
+            memory: 1Gi
+            ephemeral-storage: "1Gi"
+          limits:
+            cpu: 0.7
+            memory: 3Gi
+            ephemeral-storage: "2Gi"
+      restartPolicy: Always
+      imagePullSecrets:
+      - name: regsecret
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: hello-world
+  namespace: esiam-dups
+spec:
+  selector:
+    name: hello-world
+  type: NodePort
+  ports:
+    - protocol: TCP
+      name: name1
+      port: 6080
+      targetPort: 6080
+    - protocol: TCP
+      name: name2
+      port: 5554
+      targetPort: 5554
+    - protocol: TCP
+      name: name3
+      port: 5555
+      targetPort: 5555
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: hello-world
+  namespace: esiam-dups
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+    - host: hello-world.k8s.someit.ru
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: hello-world
+              servicePort: 6080
