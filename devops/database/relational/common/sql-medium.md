@@ -84,6 +84,16 @@
     LEFT JOIN verifications ON verifications.id = specials.ver_id
     LEFT JOIN cadnumbers ON cadnumbers.id = verifications.cad_id
     ```
+* Find last message of each user:
+    ```
+    WITH ranked_messages AS (
+        SELECT 
+            user_id, message, timestamp,
+            ROW_NUMBER() OVER (PARTITION BY user_id ORDER BY timestamp DESC) AS rank
+        FROM messages
+    )
+    SELECT * FROM ranked_messages WHERE rank = 1;
+    ```
 * WINDOW functions:
     * TLDR: same as GROUP BY, but without reducing number of rows
     * Examples:
