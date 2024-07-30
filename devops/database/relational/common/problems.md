@@ -27,7 +27,7 @@
         * Second insert will throw an error
 * Pessimistic lock (good):
     * Start processing by locking a record (`select for update`)
-    * Second instance will wait while first instance is changing status
+    * Second instance will wait while first instance is changing status (1 transaction locks, other transactions wait)
     * After first is done - second will see changed status (`IN_PROCESS`) and will ignore record
 * Optimistic lock (great):
     * Both instances will try to change status at same time
