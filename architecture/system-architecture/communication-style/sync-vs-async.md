@@ -17,3 +17,9 @@
     * The operation cannot fail or need a retry mechanism
         * e.g. even if service is down right now - should process the queue when it gets up
     * The operation takes a lot of time
+* Implementation advices:
+    * When interacting with other systems asynchronously, the client must generate an unique ID \
+        Situation - client sent a request to create, but did not receive a response from server yet (maybe response will never come) \
+        If the server generates an ID - client can't send request again, because the server may create duplicates with different IDs \
+        If the client generates an ID - client can send again, the server will create only 1 document with this ID \
+    * 
