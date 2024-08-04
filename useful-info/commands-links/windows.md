@@ -30,67 +30,63 @@
   * In file `C:\Windows\System32\drivers\etc` insert `231.23.143.25 camel.keras.com`
 
 ## Package managers
-##### Chocolatey
-* Install `Node JS`
+* Chocolatey:
+  * Install `Node JS`
     * `choco install nodejs`
-* Uninstall `Node JS`
+  * Uninstall `Node JS`
     * `choco uninstall nodejs`
-##### WinGet
-* todo
+* WinGet:
+    * todo
 
-## Windows installation:
-* Download `.iso` image
-* Upload it to flash drive, using `rufus`
-* Restart PC, go to BIOS (by spamming `DEL`/`F8`/etc)
-* Choose to boot from flash drive, save and exit
-
-## Windows update (manual):
-* Download `.iso` image of new Windows version
-* Right click, mount, update (by default it will keep all the files, software and settings)
+## OS
+* Windows installation:
+  * Download `.iso` image
+  * Upload it to flash drive, using `rufus`
+  * Restart PC, go to BIOS (by spamming `DEL`/`F8`/etc)
+  * Choose to boot from flash drive, save and exit
+* Windows update (manual):
+  * Download `.iso` image of new Windows version
+  * Right click, mount, update (by default it will keep all the files, software and settings)
 
 ## Virtual environment / Sandbox
-##### Windows sandbox
-* Important! There is no way to persist state (better use sandboxie)
-* Installation:
-    * `Task Manager` -> `Performance` -> `Virtualization` should be enabled
-    * `Turn Windows features on or off` -> `Windows Sandbox` -> Restart PC
-    
-##### Docker (Without WSL 2)
-* Prerequisites:
-    * `Windows search` -> `Turn Windows features on or off` -> `Enable Hyper-v`
-    * Not really necessary - Enable Windows Hypervisor Platform
-    
-##### Windows Subsystem for Linux (WSL2)
-* `Turn windows features on or off` -> Turn on `Virtual Machine Platform` and `Windows Subsystem for Linux`
-* `cmd` -> `wsl --install`
-* In any folder - `shift + right click`
-
-##### VMware Workstation Player
-* Runs any `.iso` / `.vmdk` images!
-* Highly recommended installing `VMware tools` on guest OS
-    * `Player` -> `Manage` -> `Install VMware tools`
-    * Fixes screen resolution, provides ability to share clipboard (text/files)
-* Prerequisites:
-    * `Windows search` -> `Turn Windows features on or off` -> `Disable Hyper-v`
-* To move cursor out of guest VM - press `CTRL+ALT`
-* For more info look at `devops` repository
+* Windows sandbox:
+    * Important! There is no way to persist state (better use sandboxie)
+    * Installation:
+      * `Task Manager` -> `Performance` -> `Virtualization` should be enabled
+      * `Turn Windows features on or off` -> `Windows Sandbox` -> Restart PC 
+* Docker (Without WSL 2)
+    * Prerequisites:
+        * `Windows search` -> `Turn Windows features on or off` -> `Enable Hyper-v`
+        * Not really necessary - Enable Windows Hypervisor Platform
+* Windows Subsystem for Linux (WSL2)
+    * `Turn windows features on or off` -> Turn on `Virtual Machine Platform` and `Windows Subsystem for Linux`
+    * `cmd` -> `wsl --install`
+    * In any folder - `shift + right click`
+* VMware Workstation Player:
+  * Runs any `.iso` / `.vmdk` images!
+  * Highly recommended installing `VMware tools` on guest OS
+      * `Player` -> `Manage` -> `Install VMware tools`
+      * Fixes screen resolution, provides ability to share clipboard (text/files)
+  * Prerequisites:
+      * `Windows search` -> `Turn Windows features on or off` -> `Disable Hyper-v`
+  * To move cursor out of guest VM - press `CTRL+ALT`
+  * For more info look at `devops` repository
     
 ## Etc
-###### Settings
-* Turn annoying system sounds off: \
-  `Sound` -> `Sound Control Panel` -> `Sounds` -> `Sound Scheme: No Sounds`
-
-###### Problem with the internet on PC?
-* No problem! Just use internet from a smartphone
-* Connect Android to PC via USB
-* On Android:
-    * Settings -> Network & Internet -> Access point & Modem -> USB modem (Tethering)
-* On PC:
-    * Deny offer to make PC discoverable on the net
-* Use your internet! But be careful, usually mobile internet is not unlimited
+* Settings:
+  * Turn annoying system sounds off: \
+    `Sound` -> `Sound Control Panel` -> `Sounds` -> `Sound Scheme: No Sounds`
+* Problem with the internet on PC:
+  * No problem! Just use internet from a smartphone
+  * Connect Android to PC via USB
+  * On Android:
+      * Settings -> Network & Internet -> Access point & Modem -> USB modem (Tethering)
+  * On PC:
+      * Deny offer to make PC discoverable on the net
+  * Use your internet! But be careful, usually mobile internet is not unlimited
 
 ## Software
-* `Putty`, `WinSCP`, `Anydesk`, `Postman`, `SoapUI`, `IntelliJ IDEA`, `Docker`, 
+* `Putty`, `WinSCP`, `Anydesk`, `Postman`, `Docker`, 
 * `VLC`, `Lightshot`, `Google chrome`, `Telegram`, `qBittorrent`, `OpenJDK`, `OpenLens`
 * `Stremio` with addons
 * `Wireshark`
@@ -127,4 +123,5 @@
 * To run Bash on windows:
     * `Git Windows` or `Cygwin` or `MinGW`
     * Convert CRLF to LF `sed -i -e 's/\r$//' script.sh`
-
+* `IntelliJ IDEA CE` - Java IDE, more info in [intellij-idea.md](intellij-idea.md)
+* `VSCode` - Universal IDE (install plugin to add a language support)

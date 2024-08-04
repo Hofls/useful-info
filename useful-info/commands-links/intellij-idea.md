@@ -9,10 +9,7 @@
 ## Plugins
 #### Java:
 * Lombok - to teach IDEA about Lombok
-* TestMe - to generate unit tests
 * GenerateAllSetter - to generate calls to all setters of a class
-* SonarLint - static code analysis
-* Convert YAML and Properties File - to convert application.properties / application.yaml
 
 ## Customization
 * Right click on tabs => `Configure editor tabs...` => 
