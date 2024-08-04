@@ -36,6 +36,8 @@
         * https://db-engines.com/en/ranking
     * IDE/Plugins:
         * https://pypl.github.io/IDE.html
+        * [VSCode plugins](https://marketplace.visualstudio.com/search?target=VSCode&category=All%20categories&sortBy=Installs)
+        * IntelliJ Idea plugins - within the application
 * Awesome lists:
     * https://github.com/topics/awesome
 * Search for: 
