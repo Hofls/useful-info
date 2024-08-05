@@ -37,7 +37,8 @@
     * IDE/Plugins:
         * https://pypl.github.io/IDE.html
         * [VSCode plugins](https://marketplace.visualstudio.com/search?target=VSCode&category=All%20categories&sortBy=Installs)
-        * IntelliJ Idea plugins - within the application
+        * IntelliJ Idea plugins - within the application \
+          Search tags - `/sortBy:downloads`, `/sortBy:rating`
 * Awesome lists:
     * https://github.com/topics/awesome
 * Search for: 
