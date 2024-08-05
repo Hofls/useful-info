@@ -127,4 +127,9 @@
 * `VSCode` - Universal IDE (install plugin to add a language support)
   * If you need to change githab/gitlab password: \
     `Windows` -> `Credential Manager` -> `Windows Credentials` -> `Edit`
+  * [Remove yellow rectangles](https://stackoverflow.com/questions/70336593/fix-issue-with-vs-code-yellow-orange-border-box-around-characters) \
+    `File` -> `Preferences` -> `Settings` -> `Highlight Ambiguous Characters` -> `False`
+  * Configure user & email for current project: \
+    `git config --local user.name "hofls"` \
+    `git config --local user.email hofls@someit.com`
 * 

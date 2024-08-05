@@ -4,7 +4,7 @@
 * Community lacks Spring Boot integration:
   * All properties in `application.yaml` marked as `unused`. No autocomplete.
   * All beans and rest endpoints marked as `unused`
-  * Not all languages/frameworks supported (no js, sql, angular, react)
+* Ultimate supports all the languages (js, python, go, etc)
 
 ## Plugins
 #### Java:
