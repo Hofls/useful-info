@@ -132,4 +132,5 @@
   * Configure user & email for current project: \
     `git config --local user.name "hofls"` \
     `git config --local user.email hofls@someit.com`
+  * Turn on auto save: `File` -> `Auto Save`
 * 
