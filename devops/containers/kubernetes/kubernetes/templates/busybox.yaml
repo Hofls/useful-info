@@ -5,7 +5,7 @@ metadata:
 spec:
   containers:
     - name: busybox-sleep
-      image: progrium/busybox
+      image: progrium/busybox # Alternatives: subfuzion/netcat
       resources:
         limits:
           cpu: 0.1
