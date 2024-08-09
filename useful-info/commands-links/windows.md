@@ -49,6 +49,7 @@
   * Right click, mount, update (by default it will keep all the files, software and settings)
 
 ## Virtual environment / Sandbox
+* [Windows Subsystem for Linux (WSL2)](wsl2.md)
 * Windows sandbox:
     * Important! There is no way to persist state (better use sandboxie)
     * Installation:
@@ -58,10 +59,6 @@
     * Prerequisites:
         * `Windows search` -> `Turn Windows features on or off` -> `Enable Hyper-v`
         * Not really necessary - Enable Windows Hypervisor Platform
-* Windows Subsystem for Linux (WSL2)
-    * `Turn windows features on or off` -> Turn on `Virtual Machine Platform` and `Windows Subsystem for Linux`
-    * `cmd` -> `wsl --install`
-    * In any folder - `shift + right click`
 * VMware Workstation Player:
   * Runs any `.iso` / `.vmdk` images!
   * Highly recommended installing `VMware tools` on guest OS
