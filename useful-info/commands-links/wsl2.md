@@ -6,7 +6,8 @@
 * Send requests from WSL2 (Linux) to Host web service (Windows), for local development
   * Disable firewall:
     * Method №1 - `New-NetFirewallRule -DisplayName "WSL" -Direction Inbound  -InterfaceAlias "vEthernet (WSL)"  -Action Allow`
-    * Method №2:
+    * Method №2 - Turn off firewall completely (temporarily)
+    * Method №3 (bad method, windows starts pushing for complete rules reset):
       ```
       Set-NetFirewallProfile -Profile Private -DisabledInterfaceAliases "vEthernet (WSL)"
       Set-NetFirewallProfile -Profile Public -DisabledInterfaceAliases "vEthernet (WSL)"
