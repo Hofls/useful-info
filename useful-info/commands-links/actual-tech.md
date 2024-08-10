@@ -17,6 +17,7 @@
     * https://hub.docker.com/search?image_filter=&type=image
     * https://snapcraft.io/store?categories=development%2Cserver-and-cloud
     * https://mvnrepository.com/popular
+    * https://mvnrepository.com/open-source
     * https://apps.microsoft.com/collections/computed/apps/topfree?hl=en-us&gl=RU (Category -> Developer Tools)
     * https://chocolatey.org/packages
 * Tech stacks
