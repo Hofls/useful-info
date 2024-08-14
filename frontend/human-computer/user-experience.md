@@ -8,7 +8,7 @@
 * `Optimistic UI` - update UI before receiving response from server 
     * e.g.color "like" button in green, if later server returns error - color it back to gray
 
-##### Cookbook
+##### Etc
 * Create `MVP` to start gather feedback, metrics and analytics early
 * Use widespread, standard UI elements (something novel/rare might be hard for users to learn)
 * In-app search - allows searching inside application options, great navigation technique (IntelliJ IDEA => Find Action)
@@ -16,7 +16,9 @@
 * Simple installation process (minimum user involvement)
 * Instant Sign Up / Log In - via OAUTH, using social network account
 * Infinite-scroll - provides seamless experience when looking at endless content
-* Try to predict user actions and make them easier - e.g. "copy" button in an article with code blocks
+* Try to predict user actions and make them easier
+  * "Copy" button in an article with code blocks
+  * If user pressed a button and a new field appeared - automatically focus it
 * Use information visualization (charts/graphs/..) instead of showing a lot of numbers
 * Most used/popular elements should come first (ease of access)
 * Good setting up experience:
