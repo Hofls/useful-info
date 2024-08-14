@@ -1,4 +1,32 @@
 ### Main
+* `Redundancy/Failover` - multiple copies of service/db (if main fails, switch to standby/replica)
+* Thoughtworks `core values`: fast feedback, simplicity, clean code, repeatability (automation)
+* `Canary release` - make new features available to a limited selection of users (to reduce risk, gather metrics)
+* `Expand and contract` - implement breaking change in API by adding new element, wait for clients to migrate from old to new, remove old element
+* `Strangler fig` - bunch of small `Expand and contract`, aimed to replace an entire legacy system
+* `Cargo cult` - development characterized by rituals that serve no real purpose
+* `MVP` - minimum viable product
+* `Blue-green deployment` - two prod environments, release updates only one (if something goes wrong - you can easily rollback to another one)
+* `Opinionated system` - provides one easy way of doing things (way chosen based on opinion of system's authors)
+* `Deep modules` - individual unit of abstraction should do a lot of work, but with simple interface
+* `Infrastructure as code (IaC)` - managing IT infrastructure using configuration files (e.g. provisioning VMs in cloud)
+* `A/B testing` - testing a subject's response to variant A against variant B, and determining which of the two variants is more effective
+* `Chaos engineering` - causing failure of system components in production, in order to build resilient system:
+  * `Chaos Monkey` - shuts down random servers
+  * `Latency Monkey` - introduces communication delays
+* `Twelve factor app` - methodology for building SAAS
+    * `Codebase` - one codebase, many deployments (dev/stage/prod)
+    * `Dependencies` - all dependencies should be explicit
+    * `Config` - store config in the environment
+    * `Backing services` - treat them (e.g. DB, MQ, Cache) as attached resources (URL in config)
+    * `Build, release, run` - "must have" pipeline stages
+    * `Processes` - apps should be stateless, with state stored in backing service
+    * `Port binding` - services should make themselves available to other services by specified ports
+    * `Concurrency` - scale horizontally (by launching multiple instances of an app)
+    * `Disposability` - fast startup and shutdown
+    * `Dev/Prod parity` - keep environments as similar as possible
+    * `Logs` - write all logs to stdout (terminal)
+    * `Admin Processes` - any admin/maintenance tasks should be a part of the application
 * `Abstraction`:
     * Process of removing (hiding) details
     * Creation of abstract objects composed from common features/attributes of non-abstract objects
@@ -34,21 +62,16 @@
 * `Scalability` - ability to handle growing amount of work by adding resources to the system
 	* `Horizontal` - adding more nodes (computers) to the system
 	* `Vertical` - adding more resources (CPU/RAM) to a single node
-* `Extensibility` - ability to add new functionality / change existing functionality
 * `KISS` - simplicity should be a key goal in design, unnecessary complexity should be avoided
-* `Load balancing` - process of distributing a set of tasks over a set of resources (computers)
-* `Cloud computing` - computing resources on demand
 * `Separation of concerns` - separation of a program into distinct sections (1 section = 1 concern)
 * `Convention over configuration` - paradigm that attempts to decrease number of decision that developer is required to make (sane defaults)
 * `SOLID` - principles intended to make software designs more understandable, flexible and maintainable:
-	* `Single-responsibility` - every module should have one responsibility, that is entirely encapsulated by the module
-	* `Open–closed` - modules should be open for extension, but closed for modification 
-		* (e.g. extend code by adding new implementation of interface)
-	* `Liskov substitution` - superclass objects should be replaceable with objects of its subclasses without breaking the application.
-		* (e.g. design by contract - write code on interface level first, add implementations later)
-	* `Interface segregation` - many client-specific interfaces are better than one general-purpose interface
+	* `Single-responsibility` - every module should have one responsibility (e.g. StringUtils, HttpClient, Logger)
+	* `Open–closed` - sometimes makes sense to close code for modification, but open for extension (e.g. plugins, inheritance)
+	* `Liskov substitution` - child objects should be able to substitute parent object (e.g. inheritance, interface)
+	* `Interface segregation` - many small interfaces are better than one general-purpose interface
 	* `Dependency inversion` - usually dependencies are created directly, e.g. new UserService(); \
-	    But inverse of that is better, e.g. injection via @Autowired UserService
+	    But sometimes inverse of that is better, e.g. injection via @Autowired UserService
 * `Inversion of control` - inverts traditional control flow. 
 	* Traditional approach - code explicitly calls constructor of specific implementation (new BoxService())
 	* Inverse approach - code describes type, framework provides implementation (@Autowired)
@@ -63,6 +86,9 @@
 * `Gold plating` - phenomenon of working on a project past the point of diminishing returns
 * `Bus factor` - minimum number of team members that have to suddenly disappear from a project before the project stalls
 * `Bottleneck` - occurs when capacity of an application is limited by a single component
+* `Extensibility` - ability to add new functionality / change existing functionality
+* `Load balancing` - process of distributing a set of tasks over a set of resources (computers)
+* `Cloud computing` - computing resources on demand
 * `Programming paradigm`
     * `Imperative` - programmer instructs the machine how to change its state
         * `Procedural` - groups instructions into procedures (e.g. Pascal)
@@ -71,17 +97,10 @@
         * `Functional` - programs constructed by applying and composing functions (e.g. Haskell)
         * `Dataflow` - models a program as a directed graph of the data flowing between operations (e.g. Tensorflow)
         * `Reactive` - deals with data streams and the propagation of change (sequences of events), e.g. react
-* `Chaos engineering` - causing failure of system components in production, in order to build resilient system:
-  	* `Chaos Monkey` - shuts down random servers
-  	* `Latency Monkey` - introduces communication delays
-* `A/B testing` - testing a subject's response to variant A against variant B, and determining which of the two variants is more effective
 * `Smoke test` - preliminary testing to reveal obvious failures
 * `Configuration management` - word "configuration" used in very broad sense, that includes \
     software, hardware, tests, documentation, version control, releases etc
-* `Infrastructure as code (IaC)` - managing IT infrastructure using configuration files (e.g. provisioning VMs in cloud)
 * `Compliance Automation` - auto scan infrastructure to identify security issues
-* `Deep modules` - individual unit of abstraction should do a lot of work, but with simple interface
-* `Opinionated system` - provides one easy way of doing things (way chosen based on opinion of system's authors)
 * `Vendor lock-in` - dependency on one specific vendor, without ability to switch
 * `UUID` - Universally unique identifier. When systems need to generate unique numbers without coordination
 * `QR code` - Quick Response code. Allows quick transfer of real world information to computer (e.g. link to a web page)
@@ -93,23 +112,7 @@
     * After exchange - everything is encrypted with symmetric key
 * `Data mining` is a process of discovering patterns in large data sets
 * `Vendor lock-in` - dependency on a vendor for products and services, unable to use another vendor without substantial switching costs
-* `Blue-green deployment` - two prod environments, release updates only one (if something goes wrong - you can easily rollback to another one)
 * `Profiling` - runtime analysis of performance and resource usage
-* `Twelve factor app` - methodology for building SAAS
-    * `Codebase` - one codebase, many deployments (dev/stage/prod)
-    * `Dependencies` - all dependencies should be explicit
-    * `Config` - store config in the environment
-    * `Backing services` - treat them (e.g. DB, MQ, Cache) as attached resources (URL in config)
-    * `Build, release, run` - "must have" pipeline stages
-    * `Processes` - apps should be stateless, with state stored in backing service
-    * `Port binding` - services should make themselves available to other services by specified ports
-    * `Concurrency` - scale horizontally (by launching multiple instances of an app)
-    * `Disposability` - fast startup and shutdown
-    * `Dev/Prod parity` - keep environments as similar as possible
-    * `Logs` - write all logs to stdout (terminal)
-    * `Admin Processes` - any admin/maintenance tasks should be a part of the application
-* `MVP` - minimum viable product
-* `Cargo cult` - development characterized by rituals that serve no real purpose
 * `User-agent` - tool that acts on the behalf of the user (e.g. web browser)
 * `TCP/IP` - separate protocols that work together to deliver data over network
     * `IP` - obtains address to send data
@@ -121,13 +124,9 @@
         * `Lead Time For Changes` - time until a commit goes to production (<1 day)
         * `Mean Time to Restore` - time it takes to resolve a service impairment in production (<1 hour)
         * `Change Failure Rate` - how often deployments lead to failure in production (0-15%)
-* `Expand and contract` - implement breaking change in API by adding new element, wait for clients to migrate from old to new, remove old element
-* `Strangler fig` - bunch of small `Expand and contract`, aimed to replace an entire legacy system
 * `BFF` (Backend for frontend) - each frontend has its own backend (one for mobile, one for browser, one for 3rd party apps, etc) 
 * `Templates` - replace placeholders with values
     * Examples - Helm (generates yaml configs for k8s), Reports (pdf), Documents filling (simi)
-* `Canary release` - make new features available to a limited selection of users (to reduce risk, gather metrics)
-* Thoughtworks `core values`: fast feedback, simplicity, clean code, repeatability (automation)
 * `Hook` - inject custom code at specified points (e.g. when app stops - write to logs)
 * `Design sprint` - Idea -> Build prototype -> Launch -> Get feedback
     * Necessary to make sure you build product that market wants
@@ -143,7 +142,6 @@
 * `LDAP` - stores logins/passwords, which allows different apps to authenticate users (e.g. same credentials for gitlab, grafana and nexus)
     * Also see - `Active directory`
 * `SPOF` - single point of failure (part of a system that, if it fails, will stop the entire system from working)
-* `Redundancy/Failover` - multiple copies of service/db (if main fails, switch to standby/replica)
 * `Secret management` - do not store passwords/tokens in source code, use specialized solution (e.g. github secrets)
 * `Feature toggle` (feature flag, feature switch) - activate new experimental feature at specific time, deactivate if something goes wrong
 * `CUPID` - properties of good software \
@@ -161,4 +159,4 @@
     * Bad - two classes Employee (data), EmployeeUtils (behaviour)
     * Good - one class Employee (data + behaviour)
 * Design for simple/frequent cases with simple API, make complex/rare cases possible with more complex API
-* Bad API creators think in terms of implementation or domain of API, rather than in terms of use of API
+* Bad API creators think in terms of implementation or domain of API. Good API creators think in terms of use of API (from perspective of user)
