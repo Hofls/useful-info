@@ -1,1 +1,0 @@
-Look at `java-dependencies` repository

@@ -3,8 +3,6 @@
 * Good approach is mixed: folders by feature => folder by type OR folders by type => folder by feature
     * With single class in package root (as package interface), everything else should be hidden in folders (as implementation details)
 * Bad approach example [(1700 files in one folder)](https://github.com/nodejs/node/tree/master/test/parallel) 
-    
-### Folders structure
 * Folder by feature (great):
     * `diagnosis`
         * `controller`
@@ -27,13 +25,11 @@
         * `call`
 * Package interface examples - @RestController, @Service, @Repository   
     
-### Schemas/Diagrams
+### Etc
 * `Sequence diagram` - sequence of message exchange (e.g. method calls between systems)
-    * Good way to show how method works
-* 
-
-### Error handling
 * Unchecked exceptions in most cases better than checked
     * Look at `java-dependencies` repository, `java-spring` package
-### Architecture levels
-![](images/component-architecture-levels.png)
+* [Architecture levels](images/component-architecture-levels.png)
+* Interface with exactly 1 implementation makes no sense (interfaces are needed only for 2 and more implementations) \
+    [Discussion example](https://www.reddit.com/r/java/comments/1efc9iq/whats_the_deal_with_the_single_interface_single/)
+* 
