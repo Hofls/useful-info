@@ -109,6 +109,9 @@ def runInParallel(*fns):
         p.join()
 runInParallel(functA, functB)
 
+# REPL (Read-eval-print loop)
+# `python` command
+
 #### Package manager
 # Poetry; Files - pyproject.toml, poetry.lock
 # Pipenv; Files - Pipfile, Pipfile.lock

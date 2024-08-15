@@ -85,6 +85,7 @@
 * `Overengineering` - act of designing a product to be more robust or have more features than necessary for its intended use, or for a process to be unnecessarily complex.
 * `Gold plating` - phenomenon of working on a project past the point of diminishing returns
 * `Bus factor` - minimum number of team members that have to suddenly disappear from a project before the project stalls
+* `REPL` - Read-eval-print loop (easy execution of small code snippets)
 * `Bottleneck` - occurs when capacity of an application is limited by a single component
 * `Extensibility` - ability to add new functionality / change existing functionality
 * `Load balancing` - process of distributing a set of tasks over a set of resources (computers)

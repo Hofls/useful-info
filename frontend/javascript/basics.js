@@ -114,6 +114,9 @@ async function write(text, delay) {
 write("World!", 500)
 write("Hello", 400)
 
+// REPL (Read-eval-print loop)
+// `node` command, or console in any browser
+
 // Package manager
 // npm; Files - package.json, package-lock.json
 // yarn; Files - package.json, package-lock.json

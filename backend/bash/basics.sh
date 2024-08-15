@@ -71,4 +71,6 @@ write "World!" 0.5 &
 write "Hello" 0.4 &
 wait
 
+# REPL (Read-eval-print loop)
+# `bash` command, default on most ssh connections
 
