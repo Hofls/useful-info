@@ -104,16 +104,15 @@
 * `Battle Encoder Shirase` to limit resources available to the process (CPU)
 * `CpuStres v2.0` to load CPU to 100%
     * Useful to see how frontend behaves on slow PCs (to reproduce bugs) 
-* `Sandboxie` - safely run untrusted code
+* To find and delete folders that take too much space:
+  * `TreeSize Free` (run as Admin)
+* `Sandboxie` - safely run untrusted code (with persistence)
     * Presets -> Block internet access
         * Some software won't run with this option. 
         * The only way is to physically turn off internet access / block suspicious .exe in firewall
     * Run -> Boxed tools -> Windows explorer
-* To find and delete folders that take too much space:
-    * `TreeSize Free` (run as Admin)
-* To run virtual machines:
-    * `VMware`, `VirtualBox`
-    * Got obsolete in new windows versions
+* `Windows Sandbox` - safely run untrusted code (without persistence)
+* `VMware`, `VirtualBox` - to run virtual machines 
 * To check hardware load/temperature:
     * `Open Hardware Monitor`
     * `SpeedFan`
