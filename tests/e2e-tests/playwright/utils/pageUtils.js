@@ -196,8 +196,15 @@ module.exports = {
 
     // await action.clickRightOf(page, 1200, 'text="Select a slot')
     clickRightOf: async function(page, offset, selector) {
-        await page.locator(selector).scrollIntoViewIfNeeded();
-        let element = await page.$(selector);
+        let element;
+        if (last) {
+            await page.locator(selector).last().scrollIntoViewIfNeeded();
+            let elements = await page.$$(selector);
+            element = elements[elements.length - 1];
+        } else {
+            await page.locator(selector).first().scrollIntoViewIfNeeded();
+            element = await page.$(selector);
+        }
         let box = await element.boundingBox();
         await page.mouse.click(box.x + offset, box.y);
     },
