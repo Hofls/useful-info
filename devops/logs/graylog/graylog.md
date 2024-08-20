@@ -2,6 +2,7 @@
 * Stores logs, provides web UI with search/dashboards/alerting/analytics
 * Graylog uses: Elasticsearch, MongoDB, Java
 * Scaling resources: CPU for Graylog. Ram and Disk for Elasticsearch
+* Has swagger-ui at http://YOUR_SERVER_URL/api/api-browser/global/index.html
 
 #### Search syntax
 * Strict search - `"Hello world"`

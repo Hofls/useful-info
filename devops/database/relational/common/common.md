@@ -4,9 +4,9 @@
     * Replicas dynamically created and destroyed, based on load (usually in k8s)
 * One main DB, one DB replica (on standby), multiple microservice replicas
     * If main DB fails, standby DB takes it place
-* One main DB, multiple DB replicas, multiple microservice replicas
+* One main DB, multiple DB replicas, multiple microservice replicas - [db-replication.png](files/db-replication.png)
     * `CQRS` - Insert into main DB, read from replica DB (via load balancer)
-* `Sharding` - distributes data across different databases (each DB has only subset of data)
+* `Sharding` - distributes data across different databases (each DB has the same schema but only a subset of data)
     * If no space left - just add another shard (server), all new data will be stored there
 * `Federation` - splits database by domain (one db for users, another db for products)
 

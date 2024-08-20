@@ -25,7 +25,7 @@
     * Time to first hello world (TTFHW) is a key metric
     * Great starting experience: swagger-ui, GraphQL
 * Each endpoint should have small amount of parameters
-    * Good examples - get dictionary (no parameters), search by id (1 parameter)
+    * Good examples - get all countries (no parameters), search by id (1 parameter)
 * Expose atomic operations (client can combine them to build complex ones)
 * Create use cases and design API with them in mind
 * Pick API tech and data format

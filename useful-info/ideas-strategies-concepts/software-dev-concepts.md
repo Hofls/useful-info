@@ -147,6 +147,7 @@
 * `Feature toggle` (feature flag, feature switch) - activate new experimental feature at specific time, deactivate if something goes wrong
 * `CUPID` - properties of good software \
     Composable, Unix philosophy, Predictable, Idiomatic, Domain-based
+* `Rate limiter` - drops all requests from client after reaching a certain threshold
     
 ### Others
 * Pick the right tool for the job
