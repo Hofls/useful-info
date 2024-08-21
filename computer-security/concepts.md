@@ -12,6 +12,7 @@
     * `Code reviews and unit testing`
 * `Obfuscation` - conversion of human-readable code to unreadable code (usually used on client-side code)
 * `Authentication` - process of verifying identity (e.g. by asking to provide password that only this person knows)
+* `Authorization` - process of checking access rights/privileges
 * `Backup` - copy of information, to recover it in case of loss.
 * `Cryptography` - secure communication in presence of adversaries (via data encryption)
 * `Fault tolerant system` - is able to operate in case of failure of its components
@@ -22,3 +23,4 @@
 * `Fingerprint (Browser)` - unique id of user (e.g. timezone, screen resolution, OS, browser plugins, fonts, system language)  
     * [Check your fingerprint](https://coveryourtracks.eff.org/)
 * `DevSecOps` - development, security, and operations (e.g. auto scan for vulnerabilities after build)
+* `Encryption` - guarantees that transmitted data can only be read by sender and receiver (to others data is obfuscated)

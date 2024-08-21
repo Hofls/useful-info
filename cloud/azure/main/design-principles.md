@@ -34,9 +34,8 @@
     * Design for scale in (when instances get removed)
 * `Partition around limits`
     * Partition a database (Avoid limits on size, data I/O, sessions)
-        * Horizontal - each DB has same schema, but different data (Sharding, e.g. mmorpg servers)
-        * Functional - each DB has unique schema, unique subdomain
-        * Vertical - some weird stuff
+        * `Horizontal` - each DB has same schema, but different data (Sharding, e.g. mmorpg servers)
+        * `Functional` - each DB has unique schema, unique subdomain
     * Partition a queue (Avoid limits on requests number, connections)
 * `Design for operations`
     * Make all things observable - write logs, traces

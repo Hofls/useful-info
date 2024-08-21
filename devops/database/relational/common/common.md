@@ -38,9 +38,7 @@
     * `shop_purchase_product_index`
 * `Directory table` (id, directory, value, value_description)
     * (1, 'CancelReason', 'TOO_LATE', '7 days passed after purchase')
-* `Distributed DB`:
-    * `Horizontal partitioning` - different rows in different tables (e.g. customers_europe, customers_africa)
-    * `Vertical partitioning` - different columns in different tables (e.g. infrequently used data, very wide columns)
+* `DB partition` - look at folder `azure/design-principles.md`
 * `Connections`
     * 1 connection = 1 operation at the same time
     * Connections are expensive to create. Solution - `connection pool`. Create n connections once, use them forever

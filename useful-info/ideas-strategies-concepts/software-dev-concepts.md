@@ -118,7 +118,11 @@
 * `TCP/IP` - separate protocols that work together to deliver data over network
     * `IP` - obtains address to send data
     * `TCP` - transmits data to the address
-* `TCP/IP vs OSI` - OSI is theoretical (never got implemented), TCP/IP is practical (describes what's actually happening)
+* `OSI` (Open Systems Interconnection) - framework for network layers 
+  * `7. Application Layer` - HTTP/HTTPS (high level protocols)
+  * `4. Transport Layer` - TCP (data transfer)
+  * `3. Network Layer` - IP (address, route)
+  * `1. Physical Layer` - Wi-Fi, Ethernet
 * Metrics
     * `Four key metrics` of DevOps
         * `Deployment Frequency` - how often releases go to production (multiple times a day)
