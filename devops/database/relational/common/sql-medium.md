@@ -2,6 +2,53 @@
 * Explain visualizer
     * https://tatiyants.com/pev/#/plans
 
+## Table structure
+* Article has a list of tags, how to store them in a DB?
+  * Json/Jsonb:
+    ```
+    CREATE TABLE article (
+      id SERIAL PRIMARY KEY,
+      tags JSONB
+    );
+    
+    INSERT INTO article (tags) VALUES
+      ('["ACTUAL", "MAX", "NEW"]'::jsonb),
+      ('["DELETED", "AVG", "OLD"]'::jsonb);
+    
+    SELECT * FROM article WHERE tags @> '["NEW"]';
+    ```
+  * Separate table (old school):
+    * Create separate table "article_tag" with fields (id, article_id, tag)
+    * Each article will have bunch of records in "article_tag" table
+  * Text array:
+    ```
+    CREATE TABLE article (
+      id SERIAL PRIMARY KEY,
+      tags TEXT[]
+    );
+    
+    INSERT INTO article (tags) VALUES
+      ('{"ACTUAL", "MAX", "NEW"}'),
+      ('{"DELETED", "AVG", "OLD"}');
+    
+    SELECT * FROM article WHERE tags @> '{"NEW"}';
+    ```
+  * Hstore:
+    ```
+    CREATE EXTENSION IF NOT EXISTS hstore;
+  
+    CREATE TABLE article (
+      id SERIAL PRIMARY KEY,
+      tags HSTORE
+    );
+    
+    INSERT INTO article (tags) VALUES
+      ('"ACTUAL" => "+", "MAX" => "+", "NEW" => "+"'),
+      ('"DELETED" => "+", "AVG" => "+", "OLD" => "+"');
+    
+    SELECT * FROM article WHERE tags ? 'NEW';
+    ```
+
 ## Queries
 * Get id of record with biggest/smallest value
     ```
