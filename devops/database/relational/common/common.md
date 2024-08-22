@@ -69,3 +69,4 @@
     * CREATE INDEX CONCURRENTLY idx_guest_address_id ON public.guest USING btree (address_id);
 * `Cascade`
     * Delete main row + all related rows from other tables (linked by foreign key)
+* `Schema migration` - changes to DB schema that are version-controlled, incremental, and often reversible

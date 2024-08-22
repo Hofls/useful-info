@@ -151,7 +151,10 @@
 * `Feature toggle` (feature flag, feature switch) - activate new experimental feature at specific time, deactivate if something goes wrong
 * `CUPID` - properties of good software \
     Composable, Unix philosophy, Predictable, Idiomatic, Domain-based
-* `Rate limiter` - drops all requests from client after reaching a certain threshold
+* `Rate limiting` - drop all new requests from client after reaching a certain threshold (e.g. max 1000 requests per hour)
+* `Load shedding` - drop all new requests from all clients if current load is too high (e.g. build max 1000 reports at the same time)
+* `Load leveling` - queue all new requests from all clients if current load is too high (helps to deal with sudden load spikes)
+* `Rollback` - return to previous version/state (e.g. rollback of transaction, rollback of release etc)
     
 ### Others
 * Pick the right tool for the job

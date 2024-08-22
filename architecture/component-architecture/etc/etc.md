@@ -32,4 +32,3 @@
 * [Architecture levels](images/component-architecture-levels.png)
 * Interface with exactly 1 implementation makes no sense (interfaces are needed only for 2 and more implementations) \
     [Discussion example](https://www.reddit.com/r/java/comments/1efc9iq/whats_the_deal_with_the_single_interface_single/)
-* 

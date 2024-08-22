@@ -4,6 +4,7 @@
 * There’s no room for testing religions; do what makes sense.
 
 #### Unit tests
+* `Unit test` - test for a single component of a system (e.g. a method)
 * Good and bad unit tests:
     * When method takes input and produces output, with no side effects - unit tests are great
     * If tests require multiple mocks/spies/stubs - unit tests are bad

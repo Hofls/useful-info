@@ -12,6 +12,10 @@
     * Use cases - microservice communication (internal APIs), when performance is critical
     * Advantages - fast
     * Disadvantages - slow developing time
+* Other:
+  * `Websocket` - real-time, event-driven bidirectional communication between client and server
+  * `SSE` - push updates from server to client (unidirectional)
+  * `Webhook` - event-driven server to server communication (e.g. on push, gitlab sends http request to telegram server)
 
 #### Data formats:
 * Outdated: XML, Binary
