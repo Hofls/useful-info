@@ -3,10 +3,12 @@
 * Outdated: SOAP, RPC, CORBA
 * `REST` - 
     * Write server-side code, generate client stub (swagger)
+    * More - [rest.md](rest.md)
 * `GraphQL` - 
     * Generate GraphQL schema from DB schema, then client/server stubs from GraphQL
     * GraphQL prevents over-fetching/under-fetching (Client can request only fields it needs)
     * Allows quick front-end development (No need to wait for backend guys to implement a new endpoint)
+    * More - [graphql.md](graphql.md)
 * `gRPC` - 
     * Define API in structured documents, generate client/server stubs
     * Use cases - microservice communication (internal APIs), when performance is critical

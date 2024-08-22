@@ -155,7 +155,12 @@
 * `Load shedding` - drop all new requests from all clients if current load is too high (e.g. build max 1000 reports at the same time)
 * `Load leveling` - queue all new requests from all clients if current load is too high (helps to deal with sudden load spikes)
 * `Rollback` - return to previous version/state (e.g. rollback of transaction, rollback of release etc)
-    
+* `URL` - Uniform Resource Locator, for example http://example.com:80/main/loc?product=camera#Greegings
+  * `http` - schema, `example.com` - domain name, `80` - port, `main/loc` - path, `?product=camera` - query, `#Greegings` - anchor
+* `CI/CD` - commit, build, test, deploy
+  * `Continuous Integration` - frequent integration of code changes into a shared repository (commit, build, test)
+  * `Continuous Delivery` - frequent and automatic code deployment (deploy, monitor)
+
 ### Others
 * Pick the right tool for the job
 * Embrace the tools, don't fight them
