@@ -1,13 +1,14 @@
 #### Getting started
 * Server side:
     * `cd /opt`
-    * `apt update && apt install openvpn curl`
     * `curl -O https://raw.githubusercontent.com/Angristan/openvpn-install/master/openvpn-install.sh`
+      * Optional - `apt update && apt install curl`
     * `chmod +x openvpn-install.sh`
     * `./openvpn-install.sh`
-        * Public IP - had to replace it, by default showed internal IP
+        * Public IP - had to replace it, by default showed internal IP (`curl ifconfig.co`)
         * Client name - clint
-    * Download `/home/hofls/clint.ovpn`
+    * Download `/home/hofls/clint.ovpn` (actual path should be visible in console, after script execution)
+    * Check status - `systemctl status openvpn@server`
 * Client side (Local VM / Real PC):
     * Notice: not really working on cloud VM (interrupts ssh connection)
     * `apt update && apt install openvpn network-manager-openvpn`
