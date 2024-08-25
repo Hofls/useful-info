@@ -160,6 +160,8 @@
 * `CI/CD` - commit, build, test, deploy
   * `Continuous Integration` - frequent integration of code changes into a shared repository (commit, build, test)
   * `Continuous Delivery` - frequent and automatic code deployment (deploy, monitor)
+* `Identity Provider` - service for authentication and authorization
+  * `SSO` (Single sign-on) - login with a single ID to a different independent systems (e.g. "Sign in with Google" buttons)
 
 ### Others
 * Pick the right tool for the job
