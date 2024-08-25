@@ -1,8 +1,20 @@
-## Settings
-* Turn off CRLF conversion:
-    * `git config --global core.autocrlf false`
+## Getting started
+* Typical CLI workflow:
+```
+git clone https://github.com/user/repo.git
+git fetch origin
+git pull origin main
 
-## Commands
+git branch new-feature
+git checkout new-feature
+git add file.txt
+git commit -m "Feature description"
+git push origin new-feature
+
+git checkout main
+```
+
+## Info
 * Find commits that did not make it to `origin/release` branch
     * `git log origin/release.. --oneline --no-merges`
 * Revert not pushed commit
@@ -19,10 +31,10 @@
     * `git clone --bare https://github.com/hofls/old-project.git`
     * `cd old-project`
     * `git push --mirror https://github.com/hofls/new-project.git`
-
-## Info
+* Turn off CRLF conversion:
+  * `git config --global core.autocrlf false` 
 * Difference between `merge request` and `pull request`?
-    * They are synonyms
+  * They are synonyms
 
 ## Branching workflows
 * `Github Flow`
