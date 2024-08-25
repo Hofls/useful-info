@@ -88,8 +88,9 @@
     * `find / -type d -name '*fldtofnd*'` 
 * Write last 20k lines from services.log to temp.log
     * `tail -n 20000 services.log > temp.log`
-* Give all permissions to script `reload.sh`
-    * `chmod 777 reload.sh`
+* Give permissions to script `reload.sh`
+    * All permissions - `chmod 777 reload.sh`
+    * Executable permissions - `chmod +x reload.sh`
 * Add a folder to uncompressed archive (.tar):
     * `tar -cvf uncompressed.tar myfolder`
 * Extract everything from .tar archive:
