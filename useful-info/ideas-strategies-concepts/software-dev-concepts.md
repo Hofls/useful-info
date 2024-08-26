@@ -162,6 +162,7 @@
   * `Continuous Delivery` - frequent and automatic code deployment (deploy, monitor)
 * `Identity Provider` - service for authentication and authorization
   * `SSO` (Single sign-on) - login with a single ID to a different independent systems (e.g. "Sign in with Google" buttons)
+* `Salt` - unique random text added to password as part of hashing process (to protect passwords in case of DB leak)
 
 ### Others
 * Pick the right tool for the job
