@@ -1,5 +1,5 @@
 # Microservices architecture
-* Always start project with monolith, spin off a microservice only when necessary (because of high complexity)
+* Always start project as a monolith, spin off a microservice only when necessary (because of high complexity)
 * `Microservices` - collection of small, autonomous services
 * `Advantages`. Each service is:
     * Focused (implements single business capability)

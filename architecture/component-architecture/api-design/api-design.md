@@ -19,10 +19,10 @@
   * `SSE` - push updates from server to client (unidirectional)
   * `Webhook` - event-driven server to server communication (e.g. on push, gitlab sends http request to telegram server)
 
-#### Data formats:
-* Outdated: XML, Binary
-* `Json` - human readable, parsable without a schema, fast developing time
-* `Protobuf` - human unreadable, not parsable without a schema, dense, slow developing time
+#### API data formats:
+* `XML` - outdated
+* `Json` - human readable, parsable without a schema, fast developing time (default data format, used in vast majority of cases)
+* `Protobuf` - human unreadable, not parsable without a schema, dense, slow developing time (but great if performance is critical)
 
 #### Principles
 * Pretend you are API user, what would be simplest and most convenient API?
