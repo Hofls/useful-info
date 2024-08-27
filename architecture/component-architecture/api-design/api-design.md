@@ -12,7 +12,7 @@
 * `gRPC` - 
     * Define API in structured documents, generate client/server stubs
     * Use cases - microservice communication (internal APIs), when performance is critical
-    * Advantages - fast
+    * Advantages - good performance
     * Disadvantages - slow developing time
 * Other:
   * `Websocket` - real-time, event-driven bidirectional communication between client and server

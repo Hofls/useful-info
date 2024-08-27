@@ -6,8 +6,17 @@
     * If main DB fails, standby DB takes it place
 * One main DB, multiple DB replicas, multiple microservice replicas - [db-replication.png](files/db-replication.png)
     * `CQRS` - Insert into main DB, read from replica DB (via load balancer)
-* `Sharding` - distributes data across different databases (each DB has the same schema but only a subset of data)
-    * If no space left - just add another shard (server), all new data will be stored there
+
+### Relational DB scaling
+* `Scaling`
+  * `Vertical scaling` - add more resources to existing DB instance (CPU/RAM/Disk)
+    * Very common, simple and easy (just buy bigger VM instance)
+  * `Horizontal scaling` - add more servers/vms with new DB instances
+    * Rare, complex and hard (vertical scaling is enough for vast majority of cases)
+* `Partitioning`
+    * `Horizontal`/`Sharding` - each DB has same schema, but different data (e.g. mmorpg servers, or 1 db = data for a year)
+    * `Vertical`/`Functional` - each DB has unique schema, unique subdomain
+* `Read replication` - 1 main DB (write only), multiple replicas (read only)
 * `Federation` - splits database by domain (one db for users, another db for products)
 
 ### High level (abstract)
