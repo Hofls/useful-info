@@ -163,6 +163,10 @@
 * `Identity Provider` - service for authentication and authorization
   * `SSO` (Single sign-on) - login with a single ID to a different independent systems (e.g. "Sign in with Google" buttons)
 * `Salt` - unique random text added to password as part of hashing process (to protect passwords in case of DB leak)
+* `Synchronous` - wait for response/timeout
+* `Asynchronous` - do not wait for response (it may come in a second, in a day, or never)
+* `Stateless` - server does not retain any info about client or previous requests (easy to scale, low complexity, no need to synchronize state)
+* `Stateful` - server does retain info about client or previous requests (harder to scale, higher complexity, need to synchronize state between service replicas)
 
 ### Others
 * Pick the right tool for the job

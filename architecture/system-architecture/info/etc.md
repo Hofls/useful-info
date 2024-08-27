@@ -17,9 +17,11 @@ but else (E), even when the system is running normally in the absence of partiti
 * `Latency` - amount of time it takes for a system to respond to a request
 * `Throughput` - number of requests that a system can handle at the same time
 * `Consistency Patterns`:
-    * `Weak Consistency` - read may not see the recent write (high availability, low latency)
-    * `Eventual Consistency` - read will eventually see the recent write (high availability, high integrity)
-    * `Strong Consistency` - read immediately sees recent write (high data integrity)
+    * `Weak Consistency` - read may not see the recent write (high availability)
+    * `Eventual Consistency` - read will eventually see the recent write (compromise) \
+      MongoDB - write changes to main node, then changes will eventually make its way too all secondary nodes
+    * `Strong Consistency` - read immediately sees recent write (high data integrity) \
+      PostgreSQL - write changes to main node, changes will immediately propagate to all secondary nodes (as part of the transaction)
 * `Fail-Over` - system can continue to function in the event of a failure (one pod fails, others go on)
 * `Replication` - copy of data stored in different locations (one db fails, others go on)
 * `Quorum` - number of votes operation has to obtain in order to considered successful
