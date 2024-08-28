@@ -22,7 +22,7 @@ but else (E), even when the system is running normally in the absence of partiti
       MongoDB - write changes to main node, then changes will eventually make its way too all secondary nodes
     * `Strong Consistency` - read immediately sees recent write (high data integrity) \
       PostgreSQL - write changes to main node, changes will immediately propagate to all secondary nodes (as part of the transaction)
-* `Fail-Over` - system can continue to function in the event of a failure (one pod fails, others go on)
+* `Failover` - system can continue to function in the event of a failure (one pod fails, others go on)
 * `Replication` - copy of data stored in different locations (one db fails, others go on)
 * `Quorum` - number of votes operation has to obtain in order to considered successful
   * Example - 2 nodes vote for success, 1 for fail; operation considered successful

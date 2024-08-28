@@ -18,6 +18,8 @@
   * `Websocket` - real-time, event-driven bidirectional communication between client and server
   * `SSE` - push updates from server to client (unidirectional)
   * `Webhook` - event-driven server to server communication (e.g. on push, gitlab sends http request to telegram server)
+  * `Short-polling` - periodically ask server for new events via REST (usable for MVP/Prototype)
+  * `Long-polling` - request events from server, keep connection open until server has new events or timeout occurs (better use sse/websocket)
 
 #### API data formats:
 * `XML` - outdated

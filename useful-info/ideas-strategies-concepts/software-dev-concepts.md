@@ -103,7 +103,7 @@
     software, hardware, tests, documentation, version control, releases etc
 * `Compliance Automation` - auto scan infrastructure to identify security issues
 * `Vendor lock-in` - dependency on one specific vendor, without ability to switch
-* `UUID` - Universally unique identifier. When systems need to generate unique numbers without coordination
+* `UUID` - Universally unique identifier. When systems need to generate unique IDs without coordination
 * `QR code` - Quick Response code. Allows quick transfer of real world information to computer (e.g. link to a web page)
 * `Digital signature` - guarantees that the contents of a message have not been altered in transit
     * Server generates hash using private+public keys, adds it to the message and sends to client
@@ -167,6 +167,9 @@
 * `Asynchronous` - do not wait for response (it may come in a second, in a day, or never)
 * `Stateless` - server does not retain any info about client or previous requests (easy to scale, low complexity, no need to synchronize state)
 * `Stateful` - server does retain info about client or previous requests (harder to scale, higher complexity, need to synchronize state between service replicas)
+* `Heartbeat` - periodic signal that indicates service is alive and well
+* `Idempotency` - performing same operation multiple times has same effect as performing it once
+* `Checksum` - value that used to detect errors or corruption during data storage (compare client checksum and server checksum)
 
 ### Others
 * Pick the right tool for the job

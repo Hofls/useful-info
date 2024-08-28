@@ -1,4 +1,5 @@
 * `Event driven` - event producers + event consumers
+  * Also known as `Pub/Sub`
 * `Use cases`
     * Multiple subsystems must process the same events (as subscribers)
     * Real-time processing

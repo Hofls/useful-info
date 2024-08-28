@@ -1,5 +1,6 @@
 * `n-tier` divides an app into logical layers and physical tiers (e.g. web, business, data)
     * Typically, implemented as IaaS
+    * Also known as `Layered architecture`
 * `Types`
     * `Closed layer architecture` - layer can only call the next layer immediately down
     * `Open layer architecture` - layer can call any of the layers below it
