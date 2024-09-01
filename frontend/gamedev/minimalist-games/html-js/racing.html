@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Racing</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #000;
+        }
+        canvas {
+            display: block;
+            margin: 0 auto;
+            background-color: #444;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = 400;
+        canvas.height = 600;
+		
+		// Road marks
+		let roadMarkingOffset = 0;
+
+        // Car properties
+        const carWidth = 50;
+        const carHeight = 100;
+        const car = {
+            x: canvas.width / 2 - carWidth / 2,
+            y: canvas.height - carHeight - 20,
+            width: carWidth,
+            height: carHeight,
+            color: 'green',
+            speed: 20
+        };
+
+        // Obstacle properties
+        const obstacles = [];
+        const obstacleWidth = 50;
+        const obstacleHeight = 100;
+        let obstacleSpeed = 10;
+        let obstacleFrequency = 0;
+
+        // Control variables
+        let isLeftArrowPressed = false;
+        let isRightArrowPressed = false;
+        let gameOver = false;
+
+        function gameLoop() {
+            if (!gameOver) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+				drawRoadMarkings();
+                drawCar();
+                updateCarPosition();
+                updateObstacles();
+                checkCollision();
+                requestAnimationFrame(gameLoop);
+            } else {
+                displayGameOver();
+            }
+        }
+
+        function drawCar() {
+            ctx.fillStyle = car.color;
+            ctx.fillRect(car.x, car.y, car.width, car.height);
+        }
+
+        function updateCarPosition() {
+            if (isLeftArrowPressed && car.x > 0) {
+                car.x -= car.speed;
+            }
+            if (isRightArrowPressed && car.x + car.width < canvas.width) {
+                car.x += car.speed;
+            }
+        }
+
+        function updateObstacles() {
+			obstacleFrequency++;
+            if (obstacleFrequency % 25 === 0) { // Add a new obstacle every n frames
+                const obstacleX = Math.random() * (canvas.width - obstacleWidth);
+                obstacles.push({ x: obstacleX, y: -obstacleHeight });
+            }
+
+            for (let i = 0; i < obstacles.length; i++) {
+                obstacles[i].y += obstacleSpeed;
+                ctx.fillStyle = 'red';
+                ctx.fillRect(obstacles[i].x, obstacles[i].y, obstacleWidth, obstacleHeight);
+
+                // Remove off-screen obstacles
+                if (obstacles[i].y > canvas.height) {
+                    obstacles.splice(i, 1);
+                    i--;
+                }
+            }
+        }
+
+        function checkCollision() {
+            for (let i = 0; i < obstacles.length; i++) {
+                if (car.x < obstacles[i].x + obstacleWidth &&
+                    car.x + car.width > obstacles[i].x &&
+                    car.y < obstacles[i].y + obstacleHeight &&
+                    car.y + car.height > obstacles[i].y) {
+                    gameOver = true;
+                }
+            }
+        }
+
+        function displayGameOver() {
+            ctx.fillStyle = 'white';
+            ctx.font = '30px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('GAME OVER', canvas.width / 2, canvas.height / 2);
+        }
+		
+		function drawRoadMarkings() {
+			roadMarkingOffset -= 8;
+			if (roadMarkingOffset < -40) { // Reset the offset to keep it within the dash length
+				roadMarkingOffset = 0;
+			}
+
+			ctx.strokeStyle = 'white';
+			ctx.lineWidth = 5;
+			ctx.setLineDash([20, 20]); // Dashes of 20px with a 20px gap
+			ctx.lineDashOffset = roadMarkingOffset;
+			ctx.beginPath();
+			ctx.moveTo(canvas.width / 2, 0);
+			ctx.lineTo(canvas.width / 2, canvas.height);
+			ctx.stroke();
+			ctx.setLineDash([]);
+		}
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                isLeftArrowPressed = true;
+            } else if (e.key === 'ArrowRight') {
+                isRightArrowPressed = true;
+            }
+        });
+
+        window.addEventListener('keyup', (e) => {
+            if (e.key === 'ArrowLeft') {
+                isLeftArrowPressed = false;
+            } else if (e.key === 'ArrowRight') {
+                isRightArrowPressed = false;
+            }
+        });
+
+        gameLoop();
+    </script>
+</body>
+</html>
