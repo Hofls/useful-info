@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplayer Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #game-container {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        #game-state {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<h1>Multiplayer Game</h1>
+
+<div>
+    <button id="create-game-btn">Create Game</button>
+    <input type="text" id="game-id-input" placeholder="Enter Game ID">
+    <button id="join-game-btn">Join Game</button>
+</div>
+
+<div id="game-container">
+    <h2>Game State</h2>
+    <pre id="game-state">No game joined yet.</pre>
+
+    <div id="move-container" style="display: none;">
+        <h3>Make a Move</h3>
+        <input type="text" id="move-input" placeholder="Enter your move">
+        <button id="make-move-btn">Submit Move</button>
+    </div>
+</div>
+
+<script>
+    const serverUrl = 'http://localhost:3000';  // Adjust if necessary
+    let gameId = null;
+    let playerId = null;
+
+    document.getElementById('create-game-btn').addEventListener('click', async () => {
+        const response = await fetch(`${serverUrl}/create_game`, { method: 'POST' });
+        const data = await response.json();
+        gameId = data.game_id;
+        alert(`Game created! Game ID: ${gameId}`);
+        document.getElementById('game-id-input').value = gameId;
+    });
+
+    document.getElementById('join-game-btn').addEventListener('click', async () => {
+        gameId = document.getElementById('game-id-input').value;
+        if (!gameId) {
+            alert('Please enter a Game ID.');
+            return;
+        }
+        const response = await fetch(`${serverUrl}/join_game/${gameId}`, { method: 'POST' });
+        const data = await response.json();
+        if (data.error) {
+            alert(data.error);
+            return;
+        }
+        playerId = data.player_id;
+        alert(`Joined game! Player ID: ${playerId}`);
+        document.getElementById('move-container').style.display = 'block';
+        fetchGameState();
+    });
+
+    document.getElementById('make-move-btn').addEventListener('click', async () => {
+        const move = document.getElementById('move-input').value;
+        if (!move) {
+            alert('Please enter a move.');
+            return;
+        }
+        const response = await fetch(`${serverUrl}/make_move/${gameId}/${playerId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ move: move })
+        });
+        const data = await response.json();
+        if (data.error) {
+            alert(data.error);
+            return;
+        }
+        fetchGameState();
+    });
+
+    async function fetchGameState() {
+        const response = await fetch(`${serverUrl}/game_state/${gameId}`);
+        const data = await response.json();
+        document.getElementById('game-state').innerText = JSON.stringify(data, null, 2);
+    }
+
+    setInterval(fetchGameState, 2000);
+</script>
+</body>
+</html>
