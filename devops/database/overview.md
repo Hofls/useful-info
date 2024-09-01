@@ -17,4 +17,5 @@
   * `Document` - stores data as documents (JSON)
   * `NoSQL` - stores data without tables & relationships, in CAP chooses AP
     * Consists of following DB types - `Key-Value`, `Document`, `Wide-column`, `Graph`
-    * Advantages - easy horizontal scaling, does not require a schema  
+    * Advantages - easy horizontal scaling, does not require a schema
+    * Disadvantages - Transactions and joins are missing (or very limited)

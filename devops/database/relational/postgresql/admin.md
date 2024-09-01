@@ -3,9 +3,28 @@
 * Persistence: `--volume /opt/postgressql:/var/lib/postgresql/data`
 * Set max_connections to 100: `docker run postgres -N 100`
 
-#### Getting started. GUI
-* Run PostgreSQL on server:
+#### Getting started. Server
+* Using docker:
     * `docker run -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d postgres`
+* Using apt:
+    ```
+    # Install:
+    sudo su
+    apt update && apt install postgresql postgresql-contrib
+    # Allow remote connections:
+    nano /etc/postgresql/16/main/postgresql.conf
+        listen_addresses = '*'
+    nano /etc/postgresql/16/main/pg_hba.conf
+        host    all             all             0.0.0.0/0            md5
+    # Set password:
+    sudo -u postgres psql
+        \password postgres
+    # Apply changes
+    systemctl restart postgresql
+    ```
+
+#### Getting started. GUI client
+* Launch postgres on server
 * Run DBeaver on client:
     * New Database Connection -> PostgreSQL
         * Host: YOUR_SERVER_IP
@@ -13,8 +32,8 @@
         * Password: postgres
     * Test Connection -> Finish
 
-#### Getting started. CLI
-* TODO - run PosgreSQL on server
+#### Getting started. CLI client
+* Connect to a server with running PosgreSQL
 * Launch psql console - `psql` or `sudo -u postgres psql`
     * Move to `/opt` if error appears - `could not change directory to "/home/hofls": Permission denied` 
 * List databases - `SELECT datname FROM pg_database;`
@@ -43,3 +62,8 @@
         * Pick 1:
             * Via console - `psql -U postgres customers_db < dump.sql`
             * Via DBeaver - `customers_db` -> right click -> `Tools` -> `Execute script` -> set path to `customers_dump.sql`
+
+
+#### Failover
+* TLDR - Run two identical databases (main & replica), if main fails - replica becomes main
+* 
