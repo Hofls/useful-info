@@ -4,7 +4,8 @@
     * With single class in package root (as package interface), everything else should be hidden in folders (as implementation details)
 * Bad approach example [(1700 files in one folder)](https://github.com/nodejs/node/tree/master/test/parallel) 
 * Folder by feature (great):
-    * `diagnosis`
+    * `features`
+      * `diagnosis`
         * `controller`
         * `dto`
         * `entity`
@@ -13,16 +14,23 @@
         * `service`
         * `specification`
         * `validator`
-* Folder by type (horrible):
+      * `call`
+        * ...
+    * `shared`
+      * `exception`
+      * `postgresql`
+      * `redis`
+      * `utils`
+* Folder by type (mid):
     * `dto`
-        * `diagnosis`
-        * `call`
+      * `diagnosis`
+      * `call`
     * `entity`
-        * `diagnosis`
-        * `call`
+      * `diagnosis`
+      * `call`
     * `mapper`
-        * `diagnosis`
-        * `call`
+      * `diagnosis`
+      * `call`
 * Package interface examples - @RestController, @Service, @Repository   
     
 ### Etc
