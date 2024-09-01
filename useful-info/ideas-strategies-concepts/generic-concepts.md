@@ -78,3 +78,5 @@
 * `Galls law` - A complex system that works is usually have evolved from a simple system that worked
 * `SCAMPER` - Technique for brainstorming / thinking outside the box
     * Substitute (analogy), Combine, Adjust, Modify/Magnify/Minify, Put to other uses (generate/connect), Eliminate, Reverse/Rearrange
+* `Bikeshedding` or `Law of triviality` - tendency to give disproportionate weight to trivial issues
+* `Yak Shaving` - getting sidetracked by multiple different tasks

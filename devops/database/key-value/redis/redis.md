@@ -1,7 +1,6 @@
 #### Info
-* Redis - in-memory key value store
-* Use cases: caching, session store, messaging (pub/sub)
-* [Redis as message broker](/message-broker/redis/redis.md)
+* Redis - in-memory key value store (e.g. cache, sessions)
+* Other use cases: [messaging (pub/sub)](../../../message-broker/redis/redis.md)
 
 #### Getting started. CLI
 * `docker run --name some-redis -p 6379:6379 --detach redis:6.2.6`
@@ -9,6 +8,7 @@
     * `redis-cli`
     * `SET greeting "hello"`
     * `GET greeting`
+    * `KEYS *`
     * `EXPIRE greeting 5` (wait for 5 seconds, try GET again)
 
 #### Getting started. GUI
@@ -18,8 +18,3 @@
 * Features:
     * Key/Value - CRUD
     * CLI, Profiler, Command helper, Performance metrics
-
-#### Pubsub
-* Launch CLI - `redis-cli`
-* List all channels - `PUBSUB CHANNELS *`
-* Subscribe to channel - `SUBSCRIBE sales`

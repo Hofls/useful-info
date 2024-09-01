@@ -92,6 +92,8 @@
     * Automatically renews certificate
 * Docker:
     * `docker run` automatically pulls image (if not found locally)
+* Steam:
+  * Download speed limit is visible on UI. To change it - click on number, options will appear
 * TiDB: 
     * After launching - shows all important urls (dashboard, prometheus, grafana, client endpoints)
 * Alibaba Cloud:
