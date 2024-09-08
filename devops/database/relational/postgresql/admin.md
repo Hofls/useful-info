@@ -104,3 +104,31 @@
   * Promote replica to primary - `sudo -u postgres pg_ctlcluster 16 main promote`
   * Repeat steps from `Test replication:`, to make sure replica became primary
   * Now switch your app to new primary DB, then create new replica
+
+#### Partition (within same DB)
+* `Partition` slows down search in an entire table (by id), but speeds up search within part of table (by date), for example:
+  * Search by id, cost without partitions (0.29 - 2.50)
+  * Search by id, cost with 15 partitions (0.14 - 38.15)
+  * Because each partitions adds its own cost
+* Getting started:
+  ```
+  CREATE TABLE sales (
+    id SERIAL,
+    sale_date DATE NOT NULL,
+    amount NUMERIC,
+    PRIMARY KEY (id, sale_date)
+  ) PARTITION BY RANGE (sale_date);
+  
+  CREATE TABLE sales_2023 PARTITION OF sales
+  FOR VALUES FROM ('2023-01-01') TO ('2024-01-01');
+  CREATE TABLE sales_2024 PARTITION OF sales
+  FOR VALUES FROM ('2024-01-01') TO ('2025-01-01');
+
+  INSERT INTO sales (sale_date, amount)
+  VALUES ('2023-03-15', 500.00),
+  ('2024-07-10', 700.00);
+
+  -- Now check query plan:
+  select * from sales;
+  select * from sales where sale_date = '2023-03-15';
+  ```

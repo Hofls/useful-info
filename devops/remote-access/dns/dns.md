@@ -5,7 +5,7 @@
     * Add line to hosts file - `123.154.77.183 example.com`
     * Open `http://example.com/` in browser
 
-### Subdomain (3rd level domain)
+### Subdomain (3rd level domain name, real DNS)
 * On server:
     * Run http server - `nohup python3 -m http.server 80 &`
 * Add subdomain
