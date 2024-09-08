@@ -128,7 +128,7 @@
   VALUES ('2023-03-15', 500.00),
   ('2024-07-10', 700.00);
 
-  -- Now check query plan:
+  -- Now check execution plan:
   select * from sales;
   select * from sales where sale_date = '2023-03-15';
   ```
