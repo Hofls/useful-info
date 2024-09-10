@@ -2,6 +2,7 @@
 * PostgreSQL - relational database
 * Persistence: `--volume /opt/postgressql:/var/lib/postgresql/data`
 * Set max_connections to 100: `docker run postgres -N 100`
+* `Autovacuum` - automatically removes dead rows and reclaims space, enabled by default
 
 #### Getting started. Server
 * Using docker:
@@ -52,7 +53,7 @@
 * Logs:
   * `tail -n 50 /var/log/syslog`
   * `tail -n 50 /var/log/postgresql/postgresql-16-main.log`
-* Dump:
+* Dump and Restore:
     * Create [db for tests](test_db.sql)
     * In source PostgreSQL, pick 1:
         * A:
