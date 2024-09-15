@@ -52,6 +52,7 @@
 * Windows:
     * Automatically downloads and installs drivers
     * You can configure elements by right-clicking on them (date widget, taskbar, audio, etc)
+    * Win+V shows clipboard history, by default it is disabled. But if you still hit Win+V - windows asks if you want to enable it 
 * AWS:
     * Each disabled option has a hint that explains why it is disabled
     * To delete something - you have to type its name (for confirmation)
