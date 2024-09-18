@@ -78,6 +78,7 @@
     * If no runners available - shows how to configure them (link to guide)
     * If project moves to another namespace - sends email with git commands to update remote url
     * Each project setting has a `?` with link to detailed explanation of an option
+    * If text is too big - replaces it with "This diff is collapsed. Click to expand it."
 * InfluxDB:
     * 1 command to install & run: `docker run...`
     * Great onboarding via web UI:
