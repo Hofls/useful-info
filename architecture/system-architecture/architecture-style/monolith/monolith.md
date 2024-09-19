@@ -6,6 +6,7 @@
     * All of those located in same backend service
 * This approach works great for small applications, because of its simplicity
     * It is simple to develop/test/deploy/scale (run multiple copies behind load balancer)
+* As a rule of thumb - always start with monolith, if problems arise - move some features into new service
 * Once the application becomes large and the team grows in size, number of drawbacks show their face:
     * It is difficult to work with huge code base, IDE is overloaded
     * App start time is becoming too slow, same as linters/prettifiers/tests/IDE
@@ -13,3 +14,8 @@
     * Impossible scale each component independently (e.g. if one component got hit with a lot of requests)
     * It is hard to assign different components to different teams
     * Requires sticking to one technology stack
+* `Distributed Monolith` - Anti pattern, botched combination of monolith and microservices
+  * If one service breaks - entire system stops working
+  * All services must be deployed/scaled together
+  * Different services use same database schema
+  * Only synchronous communication (even when async makes sense, e.g. guarantee delivery with kafka/rabbit)
