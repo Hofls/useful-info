@@ -82,7 +82,7 @@
 	* `Consistency` - The design must not be overly inconsistent
 	* `Completeness` - Completeness must be sacrificed whenever implementation simplicity is jeopardized
 * `YAGNI` - implement things when you actually need them, not when you just foresee that you need them
-* `Overengineering` - act of designing a product to be more robust or have more features than necessary for its intended use, or for a process to be unnecessarily complex.
+* `Overengineering` - creating a product that is more robust than necessary, has more features than necessary, more complexity etc
 * `Gold plating` - phenomenon of working on a project past the point of diminishing returns
 * `Bus factor` - minimum number of team members that have to suddenly disappear from a project before the project stalls
 * `REPL` - Read-eval-print loop (easy execution of small code snippets)

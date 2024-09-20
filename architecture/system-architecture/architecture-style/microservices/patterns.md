@@ -6,12 +6,14 @@
     * Each service can pick DB that suits its needs (e.g. PostgreSQL, Elasticseach, MongoDB)
     * If 1 DB dies, other services won't even notice it (Loose coupling)
 * `Saga` - sequence of local transactions that span multiple services
-    * `Choreography` based - local transaction publishes domain events that trigger next local transaction
+    * `Choreography` based - local transaction publishes domain events that trigger next local transaction (e.g. ballet)
         * Example:
             * Clients service receives "order event", produces "not enough money" event
             * Inventory service receives "order event", produces "out of stock" event
-    * `Orchestration` based - orchestrator tells the participants what local transactions to execute
+        * Characteristics - complex, async
+    * `Orchestration` based - orchestrator tells the participants what local transactions to execute (e.g. orchestra)
         * Example - Orchestrator checks is item in inventory, is a client has enough money, then approves/rejects order
+        * Characteristics - simple, sync
     * High complexity, any local transaction can be undone
 * `API Composition` - invokes services and joins their results
     * Example - send request to organization service, user service and event service. Then combine responses into one JSON.

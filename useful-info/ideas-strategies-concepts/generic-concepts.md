@@ -80,3 +80,4 @@
     * Substitute (analogy), Combine, Adjust, Modify/Magnify/Minify, Put to other uses (generate/connect), Eliminate, Reverse/Rearrange
 * `Bikeshedding` or `Law of triviality` - tendency to give disproportionate weight to trivial issues
 * `Yak Shaving` - getting sidetracked by multiple different tasks
+* `Cognitive load` - how much a person needs to think in order to complete a task

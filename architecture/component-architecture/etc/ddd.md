@@ -35,7 +35,7 @@
         * e.g. API client (GraphQL/REST/SOAP), Database (+schema), MQ, Metrics, Hibernate config
         * @Repository, @Entity, @Table
 * Disadvantages:
-    * Cost, complexity, time (suitable only for complex domains)
+    * Cost, complexity, time, a lot of unnecessary abstractions, suitable only for complex domains
 * Advantages:
     * Communication, flexibility, maintainability
 * Examples
