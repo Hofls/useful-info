@@ -8,6 +8,7 @@
     * `Ubiquitous Language` - shared by all team members
     * `Bounded context` - boundary within a domain where a particular domain model applies
     * `Context map`
+    * `Anemic model` (Anti pattern) - object has data (fields) but no behavior (methods)
 * Steps
     * Analyze domain
         * Organize business knowledge, create business model, provide common language
