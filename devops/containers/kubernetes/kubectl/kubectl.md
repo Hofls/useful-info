@@ -48,6 +48,8 @@
     * `kubectl top pods`
 * Copy file logs.txt from pod to your local system (file appears in current kubectl directory)
     * `kubectl cp spec-7664ff995c:logs.txt copied_logs.txt`
+* Copy file example.json from local system to pod
+    * `kubectl cp "C:\files\example.json" spec-7664ff995c:/opt/json/example.json`
 * Remove all failed pods:
     * `kubectl delete pods --field-selector status.phase=Failed`
     

@@ -38,6 +38,7 @@
 * `Composition over inheritance` - classes should achieve polymorphic behavior and code reuse by their composition
     * (by containing instances of other classes that implement the desired functionality) rather than inheritance 
 * `Coupling` - degree of interdependence between software modules; a measure of how closely connected they are
+  * Usually direct sync communication is considered high coupling (e.g. rest), indirect async is low coupling (e.g. rabbitmq)
 * `Defensive programming` - anticipate failures in your code, then add supporting code to detect, isolate, and in some cases, recover from the anticipated failure.
 * `Discoverability` - degree of ease with which the user can find all the elements and features of a new system when they first encounter it
 * `DRY` - Don't repeat yourself (Every piece of knowledge must have a single representation in the system)
@@ -170,6 +171,7 @@
 * `Heartbeat` - periodic signal that indicates service is alive and well
 * `Idempotency` - performing same operation multiple times has same effect as performing it once
 * `Checksum` - value that used to detect errors or corruption during data storage (compare client checksum and server checksum)
+* `Big ball of mud` - software without architecture, with spaghetti code and duplicated data
 
 ### Others
 * Pick the right tool for the job
