@@ -15,8 +15,11 @@
 * It is a desirable goal to align `Subdomains` one-to-one with `Bounded Contexts`
 * `Bounded Context` often means a system, an application, or a business service
 * Database table names and column names, should directly reflect names used in the `Model`
+* Only a single team should work in a single Bounded Context
 
 ### Other examples
+* Domain schema - [click](images/ddd-red-book/domain-schema.png)
+  * 1 domain = 3 subdomain = 3 bounded contexts (also implied 3 ubiquitous languages, 3 models, 3 teams, 3 projects)
 
 ### Code examples
 * Nurses administer flu vaccines to patients in standard doses:

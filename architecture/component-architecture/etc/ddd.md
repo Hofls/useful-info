@@ -11,9 +11,9 @@
       * `Generic subdomain` - less important subdomain, but with existing off-the-shelf solutions (e.g. grafana, salesforce, chatgpt)
     * `Bounded context` - boundary within a domain where a particular domain model applies
     * `Ubiquitous Language` - domain terminology, shared by all team members
-    * One-to-one is a desirable goal. 1 subdomain = 1 bounded context = 1 ubiquitous language = 1 model = 1 service (e.g. product_catalog.jar)
+    * One-to-one is a desirable goal. 1 subdomain = 1 bounded context = 1 ubiquitous language = 1 model = 1 team = 1 project/executable (e.g. product_catalog.jar)
     * `Model` - abstract description of part of the domain (e.g. diagram with entities, attributes and relationships) 
-    * `Context map` - multiple bounded contexts
+    * `Context map` - visual representation (e.g. diagram) of relationships between bounded contexts
     * `Anemic model` (Anti pattern) - object has data (fields) but no behavior/business logic (methods)
 * Steps
     * Analyze domain
@@ -25,14 +25,14 @@
     * `Strategic` - define large-scale structure of the system
     * `Tactical` - design patterns that help to create domain model
 * Building blocks
+    * `Module` - high level group of objects (e.g. java package)
+    * `Aggregate` - low level group of objects (e.g. java class)
     * `Entity` - object with ID, persists over time (e.g. customer, account)
     * `Value object` - no ID, only attributes, immutable
     * `Domain Event` - notify parts of system when something happens (e.g. delivery cancelled)
     * `Service` - implements logic, doesn't have state
     * `Repository` - contains methods for retrieving/saving domain objects (abstracts storage away)
     * `Factory` - creates domain objects
-    * `Aggregate` - low level group of objects (e.g. java class)
-    * `Module` - high level group of objects (e.g. java package)
 * Project structure example:
     * `domain` - business logic, domain models/exceptions/validation/events
         * Domain expert should be able to understand what's happening here (Ubiquitous language)

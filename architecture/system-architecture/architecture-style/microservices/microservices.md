@@ -1,6 +1,7 @@
 # Microservices architecture
 * Always start project as a monolith, spin off a microservice only when necessary (because of high complexity)
-* `Microservices` - collection of small, autonomous services
+* Warning! "Micro" is a misnomer. Rule of thumb: 1 "micro" service = 1 team of developers
+* `Microservices` - collection of autonomous services
 * `Advantages`. Each service is:
     * Focused (implements single business capability)
 	* Self-contained, independent, Loosely coupled with other services (enables independent work, scope of problem is small and simple)
@@ -8,7 +9,7 @@
 	* Highly maintainable and testable (fast development and deployment)
 	* Scalable - if one service experience high load - automatically deploy more instances
 	* Durable (fault isolation) - if one service fails and unable to start - others continue working (without features of fallen service)
-	* Communicates with others via API (implementation details hidden)
+	* Communicates with others via API (implementation details are hidden)
 * `Drawbacks`:
 	* Each service is simple, but overall app is complex (inter-service communication, testing, infrastructure, transactions)
 	    * Want transaction in a monolith? Just add @Transactional. Want same across microservices? Good luck.
