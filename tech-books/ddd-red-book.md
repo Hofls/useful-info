@@ -18,6 +18,9 @@
 * Only a single team should work in a single Bounded Context
 * `Subdomain` is problem space, `Bounded Context` is solution space
 * Documentation should avoid ceremony and remain both simple and agile
+* Big advantage of DDD is that it doesn’t require the use of any specific architecture
+* The real demands for specific software qualities should drive the use of architectural styles and patterns
+* Avoiding architectural style and pattern overuse is just as important as using the right ones
 
 ### Other examples
 * Domain schema - [click](images/ddd-red-book/domain-schema.png)

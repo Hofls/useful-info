@@ -1,7 +1,7 @@
 # Microservices architecture
 * Always start project as a monolith, spin off a microservice only when necessary (because of high complexity)
 * Warning! "Micro" is a misnomer. Rule of thumb: 1 "micro" service = 1 team of developers
-* `Microservices` - collection of autonomous services
+* `Microservices` - one system/app as a collection of autonomous services
 * `Advantages`. Each service is:
     * Focused (implements single business capability)
 	* Self-contained, independent, Loosely coupled with other services (enables independent work, scope of problem is small and simple)
