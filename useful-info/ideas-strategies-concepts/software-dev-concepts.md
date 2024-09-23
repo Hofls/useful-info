@@ -172,6 +172,7 @@
 * `Idempotency` - performing same operation multiple times has same effect as performing it once
 * `Checksum` - value that used to detect errors or corruption during data storage (compare client checksum and server checksum)
 * `Big ball of mud` - software without architecture, with spaghetti code and duplicated data
+* `Silo` - lack of integration and communication (e.g. all data is hidden in 1 system that is very hard to access)
 
 ### Others
 * Pick the right tool for the job

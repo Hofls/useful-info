@@ -16,10 +16,13 @@
 * `Bounded Context` often means a system, an application, or a business service
 * Database table names and column names, should directly reflect names used in the `Model`
 * Only a single team should work in a single Bounded Context
+* `Subdomain` is problem space, `Bounded Context` is solution space
+* Documentation should avoid ceremony and remain both simple and agile
 
 ### Other examples
 * Domain schema - [click](images/ddd-red-book/domain-schema.png)
-  * 1 domain = 3 subdomain = 3 bounded contexts (also implied 3 ubiquitous languages, 3 models, 3 teams, 3 projects)
+  * 1 domain = 3 subdomains = 3 bounded contexts (also implied 3 ubiquitous languages, 3 models, 3 teams, 3 projects)
+* High level model of "Identity and Access" bounded context - [click](images/ddd-red-book/bounded-context-model.png)
 
 ### Code examples
 * Nurses administer flu vaccines to patients in standard doses:

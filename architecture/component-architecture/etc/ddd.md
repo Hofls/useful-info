@@ -13,8 +13,13 @@
     * `Ubiquitous Language` - domain terminology, shared by all team members
     * One-to-one is a desirable goal. 1 subdomain = 1 bounded context = 1 ubiquitous language = 1 model = 1 team = 1 project/executable (e.g. product_catalog.jar)
     * `Model` - abstract description of part of the domain (e.g. diagram with entities, attributes and relationships) 
-    * `Context map` - visual representation (e.g. diagram) of relationships between bounded contexts
+    * `Context map` - visual representation (e.g. diagram) of relationships between bounded contexts (used for communication between teams)
     * `Anemic model` (Anti pattern) - object has data (fields) but no behavior/business logic (methods)
+    * `Cross-Cutting Concerns` - aspects of a system that affect multiple parts of the app (e.g. logging, security, error handling)
+    * `Translation layer` - bridge/adapter that translates requests and responses between the two parties
+    * Types of relationships between projects/teams:
+      * `Partnership`, `Shared Kernel`, `Customer-Supplier`, `Conformist`, `Anticorruption Layer`
+      * `Open Host Service`, `Published Language`, `Separate Ways`, `Big Ball of Mud`
 * Steps
     * Analyze domain
         * Organize business knowledge, create business model, provide common language
