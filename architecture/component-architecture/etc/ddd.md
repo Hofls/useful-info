@@ -2,6 +2,9 @@
     * Structure and language of software should match business domain
     * Iterative, ongoing process (e.g. if service grows too much - break it apart)
     * For more info, look at `tech-books/ddd-red-book.md`
+* Q&A
+  * What to do if devs write code in english, but team speaks in different language?
+    * Define a table that defines how the Ubiquitous Language translates to English
 * Concepts
     * `Context` - setting in which a statement appears that determines its meaning
     * `Domain` - area of business relevant to the project (e.g. retail/medicine/delivery)
