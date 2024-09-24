@@ -15,6 +15,7 @@
         * Example - Orchestrator checks is item in inventory, is a client has enough money, then approves/rejects order
         * Characteristics - simple, sync
     * High complexity, any local transaction can be undone
+    * Example - book 4 connecting flights, each in different arline system
 * `API Composition` - invokes services and joins their results
     * Example - send request to organization service, user service and event service. Then combine responses into one JSON.
 * `CQRS` - write operations go to one DB, read operations to another

@@ -1,5 +1,5 @@
 * `Event driven` - event producers + event consumers
-  * Also known as `Pub/Sub`
+  * Also known as `Pub/Sub`, usually implemented with message queues (e.g. kafka) 
 * `Use cases`
     * Multiple subsystems must process the same events (as subscribers)
     * Real-time processing

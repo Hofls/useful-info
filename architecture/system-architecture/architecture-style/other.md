@@ -7,6 +7,7 @@
 * `Pipes and Filters` - 
   * Filters process input and produce output
   * Pipes responsible for data flow between filters
+  * Simplest example - `cat phone_numbers.txt | grep 808 | wc -l`
 * `Zero trust architecture` - every request is authenticated, authorized, and validated
 * `Data Fabric` - single point of access to all the different data sources
   * Fabric means "connective tissue" that connects and harmonizes data across the enterprise

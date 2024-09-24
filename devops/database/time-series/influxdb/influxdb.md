@@ -1,5 +1,7 @@
 #### Info
 * InfluxDB - time series database
+* `Continuous queries` / `CQ` - queries that run automatically and periodically on realtime data and store results
+  * Example - send alert if stock price changes too much
 
 #### Getting started
 * Prerequisites: linux with installed docker
