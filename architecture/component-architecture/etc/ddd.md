@@ -14,6 +14,7 @@
       * `Generic subdomain` - less important subdomain, but with existing off-the-shelf solutions (e.g. grafana, salesforce, chatgpt)
     * `Bounded context` - boundary within a domain where a particular domain model applies
     * `Ubiquitous Language` - domain terminology, shared by all team members
+      * Nouns that name things, adjectives that describe them, and verbs that indicate what the things do (e.g. VIP user registration)
     * One-to-one is a desirable goal. 1 subdomain = 1 bounded context = 1 ubiquitous language = 1 model = 1 team = 1 project/executable (e.g. product_catalog.jar)
     * `Model` - abstract description of part of the domain (e.g. diagram with entities, attributes and relationships) 
     * `Context map` - visual representation (e.g. diagram) of relationships between bounded contexts (used for communication between teams)
@@ -23,6 +24,7 @@
     * Types of relationships between projects/teams:
       * `Partnership`, `Shared Kernel`, `Customer-Supplier`, `Conformist`, `Anticorruption Layer`
       * `Open Host Service`, `Published Language`, `Separate Ways`, `Big Ball of Mud`
+    * `Surrogate identity` - id of an entity (e.g. user.id), which has no meaning from domain POV
 * Steps
     * Analyze domain
         * Organize business knowledge, create business model, provide common language
@@ -35,6 +37,7 @@
 * Building blocks
     * `Module` - high level group of objects (e.g. java package)
     * `Aggregate` - low level group of objects (e.g. java class)
+      * `Aggregate Root` - top level class of an aggregate (e.g. class University (root) contains List<Student> and List<Teacher>)
     * `Entity` - object with ID, persists over time (e.g. customer, account)
     * `Value object` - no ID, only attributes, immutable
     * `Domain Event` - notify parts of system when something happens (e.g. delivery cancelled)

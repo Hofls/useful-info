@@ -174,6 +174,7 @@
 * `Big ball of mud` - software without architecture, with spaghetti code and duplicated data
 * `Silo` - lack of integration and communication (e.g. all data is hidden in 1 system that is very hard to access)
 * `Federated identity` - authorized users able to access multiple apps/domains using a single set of credentials
+* `Guard clause` - parameters validation at the beginning of the method (throw an error or return from method), alternative to nested logic
 
 ### Others
 * Pick the right tool for the job
