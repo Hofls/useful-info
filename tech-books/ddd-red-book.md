@@ -7,6 +7,10 @@
 * DDD provides value in projects with very complex domain
 * The way you talk about domain using `Ubiquitous Language`, should translate to code almost 1 to 1 \
     So even non-technical people could read high level code (see "Code examples")
+* Conditions under which an operation would belong to `Service` instead of `Entity` or `Value Object`
+  * Calculate a Value requiring input from more than one domain object
+  * Perform a significant business process
+  * Transform a domain object from one composition to another
 
 ### Quotes
 * Use DDD to model a complex domain in the simplest possible way. Never use DDD to make your solution more complex.
@@ -67,7 +71,19 @@
     ```
     backlogItem.commitTo(sprint); // also validates action, publishes domain event etc
     ```
-  
+* Authenticate user:
+  * Bad:
+    ```
+    // Bad, because authentication doesn't really fit "User" entity
+    User user = userRepository.userWithUsername(aTenantId, aUsername);
+    boolean authentic = user.isAuthentic(aPassword);
+    ```
+  * Good:
+    ```
+    // Good, because all the behavior that doesn't fit "Entity"/"Value" should go to "Service"
+    UserDescriptor userDescriptor = authenticationService.authenticate(tenantId, username, password);
+    ```
+
 * TODO:
   * Bad:
     ```

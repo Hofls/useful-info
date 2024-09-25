@@ -36,21 +36,21 @@
     * `Tactical` - design patterns that help to create domain model
 * Building blocks
     * `Module` - high level group of objects (e.g. java package)
-    * `Aggregate` - low level group of objects (e.g. java class)
+    * `Aggregate` - low level group of objects (e.g. java class, contains entities and value objects)
       * `Aggregate Root` - top level class of an aggregate (e.g. class University (root) contains List<Student> and List<Teacher>)
     * `Entity` - object with ID, persists over time (e.g. customer, account)
-    * `Value object` - no ID, only attributes, immutable
+    * `Value object` - no ID, only attributes, immutable, usually implemented as @Embeddable (e.g. address)
     * `Domain Event` - notify parts of system when something happens (e.g. delivery cancelled)
-    * `Domain Service` - implements logic, doesn't have state
+    * `Domain Service` - implements logic, doesn't have state (methods that won't fit in Entity/Value object)
     * `Repository` - contains methods for retrieving/saving domain objects (abstracts storage away)
     * `Factory` - creates domain objects
 * Project structure example:
-    * `domain` - business logic, domain models/exceptions/validation/events
+    * `domain layer` - business logic, domain models/exceptions/validation/events
         * Domain expert should be able to understand what's happening here (Ubiquitous language)
-    * `application` - drives workflow of an application, thin (work should be delegated to other layers)
+    * `application layer` - drives workflow of an application, thin (work should be delegated to other layers)
         * Calls methods from other modules (e.g. `domain`, `infra`), error handling, data conversion/format, events
         * @Service, @Transactional, @RestController, @EventListener
-    * `infrastructure` - communication with external systems
+    * `infrastructure layer` - communication with external systems
         * e.g. API client (GraphQL/REST/SOAP), Database (+schema), MQ, Metrics, Hibernate config
         * @Repository, @Entity, @Table
 * Disadvantages:
