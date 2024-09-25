@@ -21,6 +21,7 @@
 * Big advantage of DDD is that it doesn’t require the use of any specific architecture
 * The real demands for specific software qualities should drive the use of architectural styles and patterns
 * Avoiding architectural style and pattern overuse is just as important as using the right ones
+* Model tests should have meaning to domain experts
 
 ### Other examples
 * Domain schema - [click](images/ddd-red-book/domain-schema.png)

@@ -41,7 +41,7 @@
     * `Entity` - object with ID, persists over time (e.g. customer, account)
     * `Value object` - no ID, only attributes, immutable
     * `Domain Event` - notify parts of system when something happens (e.g. delivery cancelled)
-    * `Service` - implements logic, doesn't have state
+    * `Domain Service` - implements logic, doesn't have state
     * `Repository` - contains methods for retrieving/saving domain objects (abstracts storage away)
     * `Factory` - creates domain objects
 * Project structure example:
