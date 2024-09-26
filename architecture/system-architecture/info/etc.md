@@ -1,3 +1,4 @@
+* Design It! [book summary](../../../tech-books/design-it.md)
 * `Distributed system` - separate computation nodes that work towards a common goal
   * `Advantages` - scalability (just add more nodes), resiliency (couple of nodes fail, system still works)
   * `Disadvantages` - complexity, cost, network latency
