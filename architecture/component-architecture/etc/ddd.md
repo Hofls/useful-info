@@ -44,6 +44,7 @@
     * `Domain Service` - implements logic, doesn't have state (methods that won't fit in Entity/Value object)
     * `Repository` - contains methods for retrieving/saving domain objects (abstracts storage away)
     * `Factory` - creates domain objects
+    * `Specification` - defines complex business logic in a reusable and composable way
 * Project structure example:
     * `domain layer` - business logic, domain models/exceptions/validation/events
         * Domain expert should be able to understand what's happening here (Ubiquitous language)

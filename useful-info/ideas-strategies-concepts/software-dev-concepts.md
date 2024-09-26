@@ -181,6 +181,9 @@
   * Used in dynamic languages with dynamic typing (e.g. python, js)
 * `Side effect` - state change outside of function (e.g. modifying object variable, performing I/O operations)
 * `Pure function` - function that produces same output for same input, with no side effects
+* `Technical debt` - cost of future system rework (often accumulated during crunch periods)
+  * `Interest` - makes it harder to implement changes
+* `Human-centered design` - Observe behaviour, Generate ideas, Create prototypes, Gather feedback, Improve prototypes, Implement
 
 
 ### Others

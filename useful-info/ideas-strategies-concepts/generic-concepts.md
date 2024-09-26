@@ -81,3 +81,4 @@
 * `Bikeshedding` or `Law of triviality` - tendency to give disproportionate weight to trivial issues
 * `Yak Shaving` - getting sidetracked by multiple different tasks
 * `Cognitive load` - how much a person needs to think in order to complete a task
+* `Diagram` - visual (symbolic) representation of information
