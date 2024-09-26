@@ -184,6 +184,8 @@
 * `Technical debt` - cost of future system rework (often accumulated during crunch periods)
   * `Interest` - makes it harder to implement changes
 * `Human-centered design` - Observe behaviour, Generate ideas, Create prototypes, Gather feedback, Improve prototypes, Implement
+* `Conway's Law` - organization tends to produce design which is a copy of the communication structure of the org
+  * If 3 different teams work on a project, they will produce 3 services
 
 
 ### Others

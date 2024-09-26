@@ -22,7 +22,7 @@
 * `Antifragile system` - System that gets better when exposed to shocks, disorder, stressors and uncertainty. 
     *  E.g. evolution - system that consists of fragile components, gets better over time because only the most adaptive species survive.
     *  Other examples - poison tolerance, muscle growth, free market, learning from mistakes.
-* `Data-driven` - progress in an activity compelled by data, rather than by intuition or by personal experience
+* `Data-driven` - decisions based on hard data (rather than on intuition or personal experience)
     * Also `Metrics driven`, `Facts based`
 * `Red team` - group which plays as opposition in simulated situation
 * `Reverse engineering` - process of object deconstruction, used to reveal its designs, architecture, code
@@ -82,3 +82,4 @@
 * `Yak Shaving` - getting sidetracked by multiple different tasks
 * `Cognitive load` - how much a person needs to think in order to complete a task
 * `Diagram` - visual (symbolic) representation of information
+* `Hard data` - measurable and verifiable information

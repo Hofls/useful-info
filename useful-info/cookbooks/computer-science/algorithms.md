@@ -23,6 +23,7 @@
     * Example: Use approximation algorithm to find imprecise solution. Then use it as starting point for precise algorithm
 * `Heuristic algorithm` - provides approximate solution
     * `Greedy algorithm` - makes locally optimal choice at each step
+    * `Evolutionary algorithm` / `Genetic algorithm` - use "natural selection" to evolve solution
 * `Local search` - starts from an imperfect solution and moves away from it, by determining the viability of nearby solutions 
 * `Evolutionary algorithm` - generates a bunch of solution candidates, picks good ones, inflicts random changes on them, repeats the process
 * `Linear programming` - finds the best outcome in a math model (its requirements should be represented as linear relationships)
