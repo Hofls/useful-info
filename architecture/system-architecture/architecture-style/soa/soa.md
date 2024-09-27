@@ -4,5 +4,4 @@
 * Principles:
   * Each service should have a public contract (e.g. swagger), Loose Coupling, Abstraction (hide implementation details) \
     Reusability, Autonomy, Statelessness, Discoverability, Composability
-* l
-* 
+*

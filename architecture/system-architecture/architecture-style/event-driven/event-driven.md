@@ -1,5 +1,6 @@
 * `Event driven` - event producers + event consumers
-  * Also known as `Pub/Sub`, usually implemented with message queues (e.g. kafka) 
+  * Also known as `Pub/Sub`, usually implemented with message queues (e.g. kafka)
+  * Publishers and subscribers exist independently and unaware of each other
 * `Use cases`
     * Multiple subsystems must process the same events (as subscribers)
     * Real-time processing
@@ -17,4 +18,5 @@
     * `Pub/sub` - messaging service which decouples producers from subscribers
     * `Event streaming` - client can read from any part of the stream
 * Architecture
-> ![](event-driven.svg)
+  * > ![pub-sub.png](pub-sub.png)
+  * > ![](event-driven.svg)

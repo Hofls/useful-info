@@ -83,3 +83,4 @@
 * `Cognitive load` - how much a person needs to think in order to complete a task
 * `Diagram` - visual (symbolic) representation of information
 * `Hard data` - measurable and verifiable information
+* `Pattern` - typical solution to a specific problem

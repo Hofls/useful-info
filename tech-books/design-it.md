@@ -1,5 +1,6 @@
 ### TLDR
 * `Design It!` - Upgrade from programmer to architect
+* For more info [click here](../architecture)
 * Architect responsibilities:
   * Work with stakeholders (e.g. product managers) to define business goals and requirements for the software
   * Design architecture, select technologies

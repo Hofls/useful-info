@@ -8,4 +8,6 @@
   * Port "Notification" with "SMS adapater" and "Email adapter"
   * So hexagonal architecture never interacts with implementations directly e.g. `smsNotificationService.send()` \
     But instead interacts with interfaces e.g. `abstractNotificationService.send()`
-> ![](hexagonal.png)
+* Diagrams:
+  * > ![](ports-and-adapters.png)
+  * > ![](hexagonal.png)
