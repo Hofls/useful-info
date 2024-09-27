@@ -9,5 +9,7 @@
 * Main disadvantage - Each layer introduces abstractions that increase complexity
 * Examples:
   * > ![](n-tier-simple.png)
+  * > ![](n-tier-java.png)
   * > ![](multi-tier.png)
   * > ![](n-tier.png)
+  
