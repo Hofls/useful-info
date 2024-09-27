@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life Simulation</title>
+    <style>
+        canvas {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+<canvas id="lifeCanvas"></canvas>
+
+<script>
+// Conway's Game of Life (Cellular automaton)
+const canvas = document.getElementById('lifeCanvas');
+const ctx = canvas.getContext('2d');
+
+// Configuration
+const resolution = 5;
+canvas.width = 500;
+canvas.height = 500;
+const COLS = canvas.width / resolution;
+const ROWS = canvas.height / resolution;
+
+// Create the grid
+function createGrid() {
+    return new Array(COLS).fill(null)
+        .map(() => new Array(ROWS).fill(null)
+        .map(() => Math.floor(Math.random() * 2))); // Random 0 or 1 (dead or alive)
+}
+
+// Draw the grid on the canvas
+function drawGrid(grid) {
+    for (let col = 0; col < grid.length; col++) {
+        for (let row = 0; row < grid[col].length; row++) {
+            const cell = grid[col][row];
+            ctx.beginPath();
+            ctx.rect(col * resolution, row * resolution, resolution, resolution);
+            ctx.fillStyle = cell ? 'black' : 'white';
+            ctx.fill();
+            ctx.stroke();
+        }
+    }
+}
+
+// Count the number of live neighbors
+function countNeighbors(grid, x, y) {
+    let sum = 0;
+    const directions = [
+        [-1, -1], [-1, 0], [-1, 1],
+        [0, -1],         [0, 1],
+        [1, -1], [1, 0], [1, 1]
+    ];
+
+    for (let i = 0; i < directions.length; i++) {
+        const [dx, dy] = directions[i];
+        const newX = x + dx;
+        const newY = y + dy;
+
+        if (newX >= 0 && newX < COLS && newY >= 0 && newY < ROWS) {
+            sum += grid[newX][newY];
+        }
+    }
+    return sum;
+}
+
+// Update grid based on the rules of life
+function updateGrid(grid) {
+    const nextGen = grid.map(arr => [...arr]);
+
+    for (let col = 0; col < grid.length; col++) {
+        for (let row = 0; row < grid[col].length; row++) {
+            const cell = grid[col][row];
+            const neighbors = countNeighbors(grid, col, row);
+
+            // Apply Conway's rules
+            if (cell === 1 && (neighbors < 2 || neighbors > 3)) {
+                nextGen[col][row] = 0; // Cell dies
+            } else if (cell === 0 && neighbors === 3) {
+                nextGen[col][row] = 1; // Cell becomes alive
+            }
+        }
+    }
+    return nextGen;
+}
+
+// Main simulation loop
+let grid = createGrid();
+function update() {
+    grid = updateGrid(grid);
+    drawGrid(grid);
+    requestAnimationFrame(update);
+}
+
+update();
+
+</script>
+
+</body>
+</html>
