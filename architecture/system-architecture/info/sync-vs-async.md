@@ -1,3 +1,5 @@
+# Sync vs Async
+
 #### Synchronous communication
 * Synchronous - blocking communication (waits for response)
     * E.g. Rest, GraphQL

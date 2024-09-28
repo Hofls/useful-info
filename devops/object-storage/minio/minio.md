@@ -1,5 +1,6 @@
 #### Info
-* MinIO - Object storage (API compatible with Amazon S3)
+* `MinIO` - Object storage, works with unstructured data (photos, videos, backups etc)
+* API compatible with Amazon S3
 
 #### Getting started
 * Install & run:

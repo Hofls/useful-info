@@ -20,7 +20,7 @@
   * Evaluate (e.g. walk through a piece of the architecture with different scenarios)
 * Design everything upfront or let design emerge during implementation? Usually best approach is in the middle
   * Big systems require a lot of upfront design. Small systems can cruise on emergent architecture
-* To make a good design - experiment, reduce risks, simplify, quickly iterate
+* To make a good design - experiment, quickly iterate, identify and reduce risks, simplify
 * Ways to deal with risk - Reduce probability / Reduce impact / Accept and do nothing
 * `ARS` / `Architecturally significant requirement` - requirement that has big influence on architecture \
   Architect should discover them and adapt architecture
@@ -39,7 +39,7 @@
 * `Viewpoint` shows architecture from different POV
   * E.g. to show performance bottlenecks - draw information flow, color-code components based on execution time
 * Good diagrams always have legend and text hints
-* `SAD` / `Software Architecture Descrption` - contains all the information about architecture (views, quality attributes, requirements etc)
+* `SAD` / `Software Architecture Description` - contains all the information about architecture (views, quality attributes, requirements etc)
 * `ADR` / `Architecture Decision Record` - explanation of every important architectural decision
 * `ATAM` / `Architecture Trade-off Analysis Method` - architecture evaluation and risk mitigation process (usable for very complex systems)
 * "Mid architect" vs "Great architect":

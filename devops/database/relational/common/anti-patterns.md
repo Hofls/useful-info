@@ -29,6 +29,6 @@
 * `UUID as primary key`
 * `Unnecessary cache`
     * If most queries are unique - cache makes no sense.
-    * In this case cache ignored, but still takes time to maintain
+    * In this case cache is ignored, but still takes time to maintain
 * `No foreign key`
     * Hard to discover relations, no guarantee that id actually exists
