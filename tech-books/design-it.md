@@ -33,7 +33,14 @@
   * Fix №2 - create new, abstract concepts to represent chunks of knowledge (hide details)
 * Names are important, everybody should use the same vocabulary when discussing the project / creating architecture / writing code
 * `Functionality-oriented modules` - all classes required to complete a functional area are contained within a single package
+* `Sketch` - fast-to-create, imprecise model that favors communication over analysis
+* `Viewpoint` shows architecture from different POV
+  * E.g. to show performance bottlenecks - draw information flow, color-code components based on execution time
+* Good diagrams always have legend and text hints
+* `SAD` / `Software Architecture Descrption` - contains all the information about architecture (views, quality attributes, requirements etc)
+* `ADR` / `Architecture Decision Record` - explanation of every important architectural decision
 
 ### Examples
 * Arrow labels can improve diagram clarity - [click](images/design-it/arrows-with-labels.png)
 * Document all the data relevant to architecture development - [click](images/design-it/architecture-workbook.png)
+* Good diagram example - [click](images/design-it/good-diagram.png)
