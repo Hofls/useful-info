@@ -4,6 +4,7 @@
 * Architect responsibilities:
   * Work with stakeholders (e.g. product managers) to define business goals and requirements for the software
   * Design architecture, select technologies
+* Usually architect is not a separate role, but rather a part of developer responsibilities
 * `Quality attributes` - used to evaluate quality of a system (e.g. accessibility, scalability, simplicity)
 * Every decision is a trade-off (e.g. increase complexity to improve performance)
 * `Design thinking principles`:
@@ -25,6 +26,7 @@
   Architect should discover them and adapt architecture
 * `Functional requirement` - describes desired behavior of the system (everything else is non-functional requirement) \
   Often captured as use cases / user stories
+* `Constraints` - unchangeable limitations
 * Quantify system characteristics (e.g. 99.9% uptime, handle up to 50k concurrent users, build reports in less than 5 seconds)
 * If 1 small feature significantly increases complexity and requires drastic changes to architecture \
   Make sure that stakeholders know about it, good chance they could live without the feature
@@ -39,6 +41,15 @@
 * Good diagrams always have legend and text hints
 * `SAD` / `Software Architecture Descrption` - contains all the information about architecture (views, quality attributes, requirements etc)
 * `ADR` / `Architecture Decision Record` - explanation of every important architectural decision
+* `ATAM` / `Architecture Trade-off Analysis Method` - architecture evaluation and risk mitigation process (usable for very complex systems)
+* "Mid architect" vs "Great architect":
+  * "Select patterns and technology without input" vs "Collaboratively select with input from the team"
+  * "Write documents by yourself, release on completion" vs "Incrementally build and review documents with the team"
+  * "Make or approve all design decisions" vs "Delegate decision making, provide guidance, reviews and feedback"
+  * "Dictate who builds specific elements" vs "Help the group self-organize and choose work"
+  * "Avoid changes to the architecture" vs "Embrace the inevitability of change and make the architecture easy to change"
+  * "Mandate technology decisions" vs "Build consensus for technology decisions"
+* Constructive feedback is important for growth, always welcome it and be kind
 
 ### Examples
 * Arrow labels can improve diagram clarity - [click](images/design-it/arrows-with-labels.png)

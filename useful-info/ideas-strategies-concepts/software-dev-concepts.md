@@ -6,6 +6,7 @@
 * `Strangler fig` - bunch of small `Expand and contract`, aimed to replace an entire legacy system
 * `Cargo cult` - development characterized by rituals that serve no real purpose
 * `MVP` - minimum viable product
+* `Template` / `Scaffolding` / `Skeleton` / - basic/minimal project structure
 * `Blue-green deployment` - two prod environments, release updates only one (if something goes wrong - you can easily rollback to another one)
 * `Opinionated system` - provides one easy way of doing things (way chosen based on opinion of system's authors)
 * `Deep modules` - individual unit of abstraction should do a lot of work, but with simple interface

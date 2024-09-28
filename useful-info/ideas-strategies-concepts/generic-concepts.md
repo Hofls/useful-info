@@ -84,3 +84,5 @@
 * `Diagram` - visual (symbolic) representation of information
 * `Hard data` - measurable and verifiable information
 * `Pattern` - typical solution to a specific problem
+* `Force multiplier` - anything that dramatically improves the productivity of a team
+  * E.g. good tech lead, right incentives, automation
