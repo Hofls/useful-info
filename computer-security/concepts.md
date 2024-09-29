@@ -24,3 +24,9 @@
     * [Check your fingerprint](https://coveryourtracks.eff.org/)
 * `DevSecOps` - development, security, and operations (e.g. auto scan for vulnerabilities after build)
 * `Encryption` - guarantees that transmitted data can only be read by sender and receiver (to others data is obfuscated)
+* `0-day` / `Zero-day` - vulnerability with no available fix from the vendor yet
+* `Social Engineering` - psychological attack on a user
+* `Supply Chain Attack` - compromising a third-party vendor
+* `Patch Management` - Regular updating of software to fix known vulnerabilities
+* `Security Audit` - review/test of security measures, to ensure adequate protection
+* `Least Privilege` - Giving users/systems  minimum level of access necessary to perform their job
