@@ -1,8 +1,9 @@
 # Microservices architecture
 * Always start project as a monolith, spin off a microservice only when necessary (because of high complexity)
 * Warning! "Micro" is a misnomer. Rule of thumb: 1 "micro" service = 1 team of developers \
-  * E.g. 3 teams (java, go, nodejs) each create microservice in their favorite language
+  * E.g. 3 teams (java, go, nodejs) each create microservice in their favorite language [more info](https://microservices.io/patterns/decomposition/service-per-team.html)
 * `Microservices` - one system/app as a collection of autonomous services
+* Use microservices only if multiple teams work on the same project OR system consists of different very complex domains
 * `Advantages`. Each service is:
     * Focused (implements single business capability)
 	* Self-contained, independent, Loosely coupled with other services (enables independent work, scope of problem is small and simple)

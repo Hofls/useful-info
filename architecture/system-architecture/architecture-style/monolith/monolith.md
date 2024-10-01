@@ -1,6 +1,6 @@
 # Monolithic architecture
 
-* `Monolith` - all the application code is in one project.
+* `Monolith` - all the application code is in one project, which produces single executable (e.g. shop.jar)
 * Example:
     * News site page with weather broadcast, exchange rates, most popular news articles, feedback form
     * All of those located in same backend service

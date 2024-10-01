@@ -189,6 +189,7 @@
   * If 3 different teams work on a project, they will produce 3 services
 * `Backward compatibility` - interoperability with older version of the system (e.g. do not delete field/method, mark it as @Deprecated)
 * `Semantic Versioning` - 1. Major version (breaking changes), 2. minor version (backward compatible feature), 3. patch version (backward compatible bug fixes), e.g. 2.7.3
+* `Resume Driven Developement` - developers ignore real project needs, focus on technologies that will look good on their resume (anti pattern)
 
 
 ### Others
