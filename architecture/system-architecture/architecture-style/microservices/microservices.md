@@ -26,8 +26,8 @@
 * `Archtecture`
     * Frontend -> Facade -> All other microservices
         * Microservices don't know about each other. If you need to send requests to multiple services - use facade.
-    * ![](img/microservices.png)
-    * ![](img/microservices-logical.png)
+    * [microservices](img/microservices.png)
+    * [microservices-logical](img/microservices-logical.png)
 * `Components`
     * `Management/orchestration` - placing services on nodes, identifying failures, rebalancing (e.g. Kubernetes)
     * `API Gateway` - entry point for clients (auth, load balancing, logging, caching etc)
