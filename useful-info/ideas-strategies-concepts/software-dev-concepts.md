@@ -190,7 +190,9 @@
 * `Backward compatibility` - interoperability with older version of the system (e.g. do not delete field/method, mark it as @Deprecated)
 * `Semantic Versioning` - 1. Major version (breaking changes), 2. minor version (backward compatible feature), 3. patch version (backward compatible bug fixes), e.g. 2.7.3
 * `Resume Driven Developement` - developers ignore real project needs, focus on technologies that will look good on their resume (anti pattern)
-
+* `SLA` - Service Level Agreement (e.g. service should have high availability)
+* `SLO` - Service Level Objective (e.g. service should be available 99.9% of the time)
+* `SLI` - Service Level Indicator (e.g. actual service uptime is 99.7%)
 
 ### Others
 * Pick the right tool for the job
