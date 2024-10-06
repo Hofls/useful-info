@@ -205,5 +205,6 @@
 * If object oriented, put API on a thing instead of elsewhere. Java is worst at this.
     * Bad - two classes Employee (data), EmployeeUtils (behaviour)
     * Good - one class Employee (data + behaviour)
-* Design for simple/frequent cases with simple API, make complex/rare cases possible with more complex API
+* Design for simple/frequent cases with simple API, make complex/rare cases possible with separate, more complex API
 * Bad API creators think in terms of implementation or domain of API. Good API creators think in terms of use of API (from perspective of user)
+* Boy scout rule - always try to leave code a bit cleaner than you found it
