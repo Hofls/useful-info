@@ -1,4 +1,9 @@
 * Load test - check how system behaves under high load
+* Other load test tools:
+  * `JMeter` - Outdated
+  * `Playwright` - if you already have playwright e2e tests, its easy to use them as load tests: \
+    `npx playwright test --config=config/local.config.js --workers=50 --repeat-each=50`
+  * `SoapUI` - Very outdated, but has its use cases (SOAP)
 * What to test:
     * Suspicious methods
         * Suspicious example 1 - report with custom date range

@@ -193,6 +193,8 @@
 * `SLA` - Service Level Agreement (e.g. service should have high availability)
 * `SLO` - Service Level Objective (e.g. service should be available 99.9% of the time)
 * `SLI` - Service Level Indicator (e.g. actual service uptime is 99.7%)
+* `Essential Complexity` - unavoidable complexity, that is essential part of the problem (e.g. complex domain)
+* `Accidental Complexity` - unnecessary complexity that can be eliminated (e.g. spaghetti code)
 
 ### Others
 * Pick the right tool for the job

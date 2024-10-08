@@ -2,7 +2,8 @@
 * `Site Reliability Engineering` - How Google runs production systems
 
 ### Ideas
-* "Site" in "SRE" is a misnomer, actually it's not limited to websites, applies to any software/service 
+* "Site" in "SRE" is a misnomer, actually it's not limited to websites, applies to any software/service/system
+* Reliability - ability of a system to consistently perform its function without failure
 * Software engineering focuses only on a part of software lifecycle (designing and building)
 * SRE focuses on the whole lifecycle - inception, deployment and operation, refinement and eventual decommissioning
 * Always aim to `just enough`, do not waste resources chasing diminishing returns
@@ -30,4 +31,24 @@
 * `Toil` - work related to running a production service that tends to be manual, repetitive, automatable, tactical, devoid of enduring value. Minimize toil
 * `Engineering` - novel/creative work, requires human judgement, produces a permanent improvement to service. Maximize engineering
 * If a human operator needs to touch your system during normal operations, you have a bug (better automate it)
-* 
+* Reasons for `Monitoring` - Analyzing long-term trends, Comparing different groups in A/B testing, Alerting, Building dashboards, Looking for root cause
+* `Golden signals` - Latency, Traffic (requests per second), Errors, Saturation (usage % of CPU, memory, disk, network)
+* Monitoring should be as simple as possible, but not simpler
+
+* Release
+  * `Lifecycle` - Build -> Test -> Package -> Deploy
+  * `Self-Service` Model - teams must be self-sufficient, individual teams are responsible for (automated) release of their products
+  * `High Velocity` - aim for small, frequent releases (e.g. daily)
+* Constantly strive to eliminate complexity in systems
+* `Perfection` is finally attained not when there is no longer more to add, but when there is no longer anything to take away
+* APIs should be clear and minimal
+* Use `API versioning` (e.g. mark "v1" method as deprecated, create new "v2" method)
+
+* Elements that make service reliable (hierarchy, from basic to advanced):
+  * `Monitoring` - without it you can't even tell if service is working or not
+  * `Incident Response` - make failures go away temporarily
+  * `Postmortem` and `Root-Cause Analysis` - make failures go away permanently
+  * `Testing` - automatically find errors (before release)
+  * `Capacity Planning` - provide enough resources for a system
+  * `Development` - implement best practices, write reliable code
+  * `Product` - align service with user expectations and business goals
