@@ -54,7 +54,7 @@
     * To update without any downtime - move all the traffic to the new environment
 * `Service mesh` - smart proxy (all traffic flows through it), that implements cross-cutting concerns:
     * Service discovery, circuit-breaking, retries on request failures, load-balancing, logging, rate-limiting...
-* `Emulator` / `Simulator`
+* `Emulator` / `Simulator` / `Fake Backend`
     * Problem - you need to integrate with external system, but that systems has only production environment
     * Solution - create simulator that implements same API (with minimal behavior), use it for dev/test purposes
 * Run in containers

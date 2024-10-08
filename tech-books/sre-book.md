@@ -45,10 +45,14 @@
 * Use `API versioning` (e.g. mark "v1" method as deprecated, create new "v2" method)
 
 * Elements that make service reliable (hierarchy, from basic to advanced):
-  * `Monitoring` - without it you can't even tell if service is working or not
-  * `Incident Response` - make failures go away temporarily
+  * `Monitoring` - without it you can't even tell if service is working or not (fundament)
+  * `Incident Response` and `On-Call` - make failures go away temporarily
   * `Postmortem` and `Root-Cause Analysis` - make failures go away permanently
   * `Testing` - automatically find errors (before release)
   * `Capacity Planning` - provide enough resources for a system
   * `Development` - implement best practices, write reliable code
-  * `Product` - align service with user expectations and business goals
+  * `Product` - align service with user expectations and business goals (apex)
+
+* Collaborate, Share knowledge, Avoid toxicity, Be a team player, Adapt, Learn
+* System should have all the automatic tests - unit tests, integration tests, e2e/system tests, performance/load tests, stress tests
+* Rollout changes to a small group of users first (`canary release`)
