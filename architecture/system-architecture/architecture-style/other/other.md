@@ -1,4 +1,5 @@
 ### Other architecture styles
+* `Microfrontends` - same idea as microservices but for frontend (1 team = 1 microfrontend) [diagram](microfrontends.png)
 * `Peer-to-peer` / `P2P` - peers communicate and share resources directly with one another
   * Decentralized, each peer acts as a client and server at the same time
   * Examples - BitTorrent, Bitcoin
