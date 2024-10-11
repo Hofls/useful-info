@@ -58,4 +58,17 @@
 * Rollout changes to a small group of users first (`canary release`)
 * `Approximation` -  don’t focus on perfection and purity of solution, better launch fast and iterate
 * Team members should have a diverse area of expertise, to make sure there is no blind spots
-* `SKepticism` - question everything (will it actually improve performance? won't this solution create a lot of overhead? etc)
+* `Skepticism` - question everything (will it actually improve performance? won't this solution create a lot of overhead? etc)
+
+* `Cascading failure` - fail of 1 replica leads to higher load to other replicas, which also makes them fail
+* `Graceful degradation` - to handle high load, temporarily reduce amount of work (e.g. temporarily turn off generation fo CPU-hungry reports)
+* Scaling, limits and load shedding also help with high load
+* In test/dev environment break a component, make system recovers automatically and damage is limited (repeat it for all the components)
+  * E.g. - kill report-generating service, make sure that besides reports system continues to function, and service should launch automatically
+
+* `Non-Deterministic Failures` – occur under specific, hard-to-reproduce conditions. Plan for randomness and chaos
+* `Redundancy` – Incorporating backup components or processes to mitigate single points of failure
+* `Chaos Engineering` – Introduce failures in a controlled way to ensure systems can self-heal and operate even when components fail (e.g., Netflix’s Chaos Monkey).
+* `Failover Mechanisms` – Systems should automatically switch to a backup if the primary system fails
+* `Progressive Delivery` – Use feature flags to enable controlled rollout of new features, reducing risk of full-scale failure
+* `Runbooks` – Detailed instructions for dealing with known issues
