@@ -56,3 +56,6 @@
 * Collaborate, Share knowledge, Avoid toxicity, Be a team player, Adapt, Learn
 * System should have all the automatic tests - unit tests, integration tests, e2e/system tests, performance/load tests, stress tests
 * Rollout changes to a small group of users first (`canary release`)
+* `Approximation` -  don’t focus on perfection and purity of solution, better launch fast and iterate
+* Team members should have a diverse area of expertise, to make sure there is no blind spots
+* `SKepticism` - question everything (will it actually improve performance? won't this solution create a lot of overhead? etc)

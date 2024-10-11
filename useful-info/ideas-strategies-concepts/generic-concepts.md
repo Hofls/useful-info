@@ -86,3 +86,5 @@
 * `Pattern` - typical solution to a specific problem
 * `Force multiplier` - anything that dramatically improves the productivity of a team
   * E.g. good tech lead, right incentives, automation
+* `Individual contributor` - employee without management responsibilities (e.g. researcher, analyst, developer)
+* `Personal networking` / `Business networking` - practice of building/maintaining mutually beneficial connections

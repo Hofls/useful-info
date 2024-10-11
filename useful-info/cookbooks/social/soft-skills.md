@@ -22,6 +22,8 @@
     * Manage priorities
 * Work ethic
 * Conflict management
+    * Do not accuse/blame (puts people in defensive mode, makes rational discussion very hard)
+    * Be empathetic, try to understand interests, motivations and emotions of both sides
     * Move conflict away from emotions, in the constructive direction (facts and data matter the most)
     * If both sides have good arguments - try to reach compromise
     * If unable to resolve conflict - involve 3rd party, for independent opinion
