@@ -16,3 +16,7 @@
   * Replaced by `HTML5`, `WebGL`
 * `J2EE`
   * Replaced by `Spring Framework`
+* `Eclipse IDE`, `NetBeans`
+  * Replaced by `IntelliJ IDEA` and `VSCode`
+* `On-premise` servers
+  * Replaced by `Cloud` infrastructure
