@@ -24,8 +24,17 @@
         <addUniqueConstraint
                 columnNames="user_name, phone"
                 constraintName="customer_name_phone_constraint"
-                schemaName="public"
-                tableName="CUSTOMER"/>
+                tableName="customer"/>
+    </changeSet>
+
+    <changeSet id="log_author_id_fk" author="hofls">
+        <!-- Throws error if you try to insert author_id that is not from user.id -->
+        <addForeignKeyConstraint constraintName="log_author_id_fk"
+                                 baseTableName="advanced_log"
+                                 baseColumnNames="author_id"
+                                 referencedTableName="user"
+                                 referencedColumnNames="id"/>
+
     </changeSet>
 
 </databaseChangeLog>
