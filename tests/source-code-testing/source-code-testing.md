@@ -5,6 +5,10 @@
 
 #### Unit tests
 * `Unit test` - test for a single component of a system (e.g. a method)
+* What to test?
+  * Request with values in each field (to make sure each of them works)
+  * Request with minimum amount of data (to catch all the npe)
+  * Couple of complex exceptions (to make sure that validation is working)
 * Good and bad unit tests:
     * When method takes input and produces output, with no side effects - unit tests are great
     * If tests require multiple mocks/spies/stubs - unit tests are bad

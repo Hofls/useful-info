@@ -73,6 +73,8 @@
 * Settings:
   * Turn annoying system sounds off: \
     `Sound` -> `Sound Control Panel` -> `Sounds` -> `Sound Scheme: No Sounds`
+  * Show file extension (with ability to edit it): \
+    `File explorer` -> `View` -> `File name extensions`
 * Problem with the internet on PC:
   * No problem! Just use internet from a smartphone
   * Connect Android to PC via USB

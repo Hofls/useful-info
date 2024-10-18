@@ -41,6 +41,8 @@
 * To avoid problems with the cache, don't change code while background task is running (e.g. indexing)
     
 ## Hotkeys
+* Hot reload (change class and load it, without restarting service)
+  * `ctrl + shift + f9`
 * Go to class/method implementation
     * `ctrl + click`
 * Code completion
