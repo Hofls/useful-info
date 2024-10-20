@@ -14,9 +14,10 @@
 	* Communicates with others via API (implementation details are hidden)
 * `Drawbacks`:
 	* Each service is simple, but overall app is complex (inter-service communication, testing, infrastructure, transactions)
-	    * Want transaction in a monolith? Just add @Transactional. Want same across microservices? Good luck.
-	    * Want to gather data from different tables, with filtering and pagination? In a monolith - simple SQL query. Want same across microservices? Good luck.
-        * Want foreign key in a monolith? Just add DB constraint. Want same across microservices? Good luck.
+    * Features that are very easy to add in monolith but very hard in microservices:
+	    * Want transaction in a monolith? Just add @Transactional. 
+	    * Want to gather data from different tables, with filtering and pagination? In a monolith - simple SQL query. 
+        * Want foreign key in a monolith? Just add DB constraint.
 	* Hard to make global changes (e.g. bumping library version or changing logging format in each microservice takes a long time)
 	* Network congestion and latency (all communications done via network)
 	* Data integrity (each service is responsible for its own data persistence). Embrace eventual consistency

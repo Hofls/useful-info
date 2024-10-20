@@ -17,7 +17,7 @@
 * `Defense in depth` - application of multiple different defense mechanisms
 * `Canary reelase` / `Slow rollout` - deploy new version to small subset of users
 * Maintain checklists, playbooks, and protocols to be prepared for failure/crisis
-* `Red Team` / `Penetration testser` - attack system to find and report security problems
+* `Red Team` / `Penetration tester` - attack system to find and report security problems
 * `Bug bounty` program - provides incentives for white hat hackers outside the org to take a look at the system
 
 * `Least privilege` - employees should have just enough privileges to do their job (e.g. to limit damage if employee goes rogue)
