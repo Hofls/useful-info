@@ -20,3 +20,5 @@
   * Replaced by `IntelliJ IDEA` and `VSCode`
 * `On-premise` servers
   * Replaced by `Cloud` infrastructure
+* `Robert C. Martin` / `Uncle Bob` books - https://qntm.org/clean
+  * Replaced by `Code Complete` / `Philosophy of Software Design`
