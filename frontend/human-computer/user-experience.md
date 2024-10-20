@@ -118,3 +118,7 @@
     * Gitlab runner check for config.toml modification every 3 seconds, automatically reloads it
 * Make dangerous actions hard to execute:
     * Github - Type repository name to delete it
+
+##### Antipatterns
+* When copying a cell value from excel to text editor - excel adds linefeed to copied text, so user have to manually delete it
+* After adding bold header in jira task - user tries to write normal text, but jira copies style of the header, user has to manually apply the correct style
