@@ -138,3 +138,6 @@
     * `kubectl --kubeconfig=test-3.conf get pods | awk '$4>5'`
 * List failed jobs (useful for monitoring)
     * `kubectl --kubeconfig=test-3.conf get jobs -o custom-columns=NAMESPACE:.metadata.namespace,NAME:.metadata.name,FAILED:.status.failed | awk '$3 ~ /^[0-9]+$/ && $3 > 0 {print $1, $2, $3}'`
+* Api versions supported by k8s:
+  * `kubectl api-versions`
+  * For example, old k8s - "networking.k8s.io/v1beta1", new k8s - "networking.k8s.io/v1"
