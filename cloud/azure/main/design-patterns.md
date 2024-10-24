@@ -21,6 +21,7 @@
 * `Leader Election` - elect one instance as leader (to manage other instances)
 * `Pipes and Filters` - break complex processing to simple parts
 * `Sidecar` - move part of app to different container (for isolation and encapsulation)
+  * E.g. agent that collects logs from main app and sends them to graylog
 * `Strangler Fig` - incrementally modernize legacy system by replacing its parts with new services
 
 ### Messaging

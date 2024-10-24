@@ -26,3 +26,5 @@
 * `Business justifications` - employees should provide reason for accessing sensitive data/systems
 * `Auditing and detection` - review all activity in the system (e.g. via logs)
 * `Recoverability` - ability to recover systems after a destructive action (e.g. recover DB from backup)
+* Provide just enough security (not more) - because it comes with the cost of time, money, complexity and productivity 
+* If problem was already solved before - do not roll your own solution, better use existing one (e.g. for auth - AWS IAM, GCP IAM)
