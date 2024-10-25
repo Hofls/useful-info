@@ -28,3 +28,10 @@
 * `Recoverability` - ability to recover systems after a destructive action (e.g. recover DB from backup)
 * Provide just enough security (not more) - because it comes with the cost of time, money, complexity and productivity 
 * If problem was already solved before - do not roll your own solution, better use existing one (e.g. for auth - AWS IAM, GCP IAM)
+
+* `Understandability` - ease with which person can understand system and its behavior
+  * Lowers likelihood of vulnerabilities, allows quick incident response, speeds up development
+* Have understandable identifiers (e.g. "status=DELETED" is better than "status=45")
+* Construct system with components that have clear and constrained purposes
+* Interfaces should be typed, narrow and consisted
+* 

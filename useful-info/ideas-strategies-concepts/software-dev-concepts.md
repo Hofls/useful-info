@@ -195,6 +195,7 @@
 * `SLI` - Service Level Indicator (e.g. actual service uptime is 99.7%)
 * `Essential Complexity` - unavoidable complexity, that is essential part of the problem (e.g. complex domain)
 * `Accidental Complexity` - unnecessary complexity that can be eliminated (e.g. spaghetti code)
+* `Invariant` - property of the system that is always true (e.g. account balance is never less than 0)
 
 ### Others
 * Pick the right tool for the job
