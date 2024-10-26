@@ -122,6 +122,9 @@
     * `Git Windows` or `Cygwin` or `MinGW`
     * Convert CRLF to LF `sed -i -e 's/\r$//' script.sh`
 * `IntelliJ IDEA CE` - Java IDE, more info in [intellij-idea.md](intellij-idea.md)
+* `WebStorm` - JavaScript & TypeScript IDE
+* `PyCharm CE` - Python IDE
+* `Rider` - C# (.NET) IDE
 * `VSCode` - Universal IDE (install plugin to add a language support)
   * If you need to change githab/gitlab password: \
     `Windows` -> `Credential Manager` -> `Windows Credentials` -> `Edit`
