@@ -235,6 +235,18 @@ module.exports = {
         return new Promise((resolve) => {
             setTimeout(resolve, 1000 * seconds);
         });
-    }
+    },
+
+     screenshot: async function(page) {
+         let screenshotName = Math.random().toString(36).substring(2, 15);
+         await page.screenshot({path: `test-results/${screenshotName}.png`, fullPage: true});
+     },
+
+     screenshots: async function(page, count) {
+         for (let i = 0; i < count; i++) {
+             await this.screenshot(page);
+             await this.sleep(1);
+         }
+     }
 
 };
