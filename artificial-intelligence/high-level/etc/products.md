@@ -31,8 +31,16 @@
 * `Suno AI`
 
 ### Video generation
-* `Luma AI. Dream machine`
+* `Luma AI`
+* `KLING AI`
+* `Runway ML`
 * `Sora AI`
+
+### Code assistant
+* `GitHub Copilot`
+* `Codeium` / `Qodo`
+* `Cody`
+* `Yandex Code Assistant` ?
 
 ### Games
 * `AI Dungeon` - text based rpg
