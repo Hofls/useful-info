@@ -19,3 +19,4 @@
   * All services must be deployed/scaled together
   * Different services use same database schema
   * Only synchronous communication (even when async makes sense, e.g. guarantee delivery with kafka/rabbit)
+  * Services are heavily coupled and dependent (to implement a new feature you need to edit multiple microservices)

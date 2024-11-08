@@ -1,5 +1,5 @@
 # Microservices architecture
-* Always start project as a monolith, spin off a microservice only when necessary (because of high complexity)
+* Always start project as a monolith, spin off a microservice only when necessary
 * Warning! "Micro" is a misnomer. Rule of thumb: 1 "micro" service = 1 team of developers \
   * E.g. 3 teams (java, go, nodejs) each create microservice in their favorite language [more info](https://microservices.io/patterns/decomposition/service-per-team.html)
 * `Microservices` - one system/app as a collection of autonomous services
@@ -24,7 +24,7 @@
 	* Versioning. Changes in one service shouldn't break others
 * `Example`:
     * News site page with weather broadcast, exchange rates, most popular news articles, feedback form. 
-    * Each of those is independent backend service
+    * Each of those is independent backend service, each has different team and programming language
 * `Archtecture`
     * Frontend -> Facade -> All other microservices
         * Microservices don't know about each other. If you need to send requests to multiple services - use facade.
