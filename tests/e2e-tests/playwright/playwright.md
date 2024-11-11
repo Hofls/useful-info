@@ -151,3 +151,18 @@
         ignoreHTTPSErrors: true
     });
 ```
+* Error - `page.goto: net::ERR_CERT_AUTHORITY_INVALID at https://example.com`. Fix №2:
+```
+    const https = require('https');
+    const agent = new https.Agent({
+        rejectUnauthorized: false // This will ignore HTTPS errors
+    });
+    let response = await fetch("https://example.com", {
+        "headers": {
+            "content-type": "application/json"
+        },
+        "method": "POST",
+        agent: agent
+    });
+    utils.assertTrue(response.ok);
+```
