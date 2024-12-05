@@ -4,6 +4,9 @@
 * Mistral - (France)
 
 ### Model sizes:
+* Rules:
+  * Bigger size = better model
+  * Newer date = better model (7B model from yesterday is way better than 7B model from a year ago)
 * 7B - good
 * 1B - mid
 * 0.5B - bad
@@ -30,7 +33,7 @@
 * Q&A
     ```
     Question:
-What did Wachowski siblings gave to Keanue Reeves
+    What did Wachowski siblings gave to Keanue Reeves
   
     Answer:
     Three books. One of them is "The Moral Animal: Evolutionary Psychology and Everyday Life"
