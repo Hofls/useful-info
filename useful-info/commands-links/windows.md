@@ -118,6 +118,8 @@
 * To check hardware load/temperature:
     * `Open Hardware Monitor`
     * `SpeedFan`
+* `GeForce Experience` - to update Nvidia drivers
+  * `General` -> `Ingame overlay` -> `Turn off` (it breaks some games)
 * To run Bash on windows:
     * `Git Windows` or `Cygwin` or `MinGW`
     * Convert CRLF to LF `sed -i -e 's/\r$//' script.sh`

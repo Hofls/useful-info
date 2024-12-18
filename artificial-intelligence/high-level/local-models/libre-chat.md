@@ -12,4 +12,4 @@
 * Open in a browser - http://localhost:3080/
 * Sign up -> Fill all fields with `libre`
 * Set up API key (ChatGPT / Gemini / BingAI / Claude)
-* Chat
+* Upload you docs and chat with them

@@ -42,6 +42,13 @@
               </div>
             </div>
             ```
+    * `await page.locator('css=div[description*="hello world"]').nth(2).click();`
+        ```
+        <div description="Oh hello worlds!"/>
+        <div description="Oh hello worlds!"/>
+        <div description="Oh hello worlds!"/>
+        <div description="Oh hello worlds!"/>
+       ```
 * [Xpath](https://devhints.io/xpath)
     * `'xpath=//div[text()="Password"]/ancestor::foo'`
         * ```
