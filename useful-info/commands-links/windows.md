@@ -83,6 +83,9 @@
   * On PC:
       * Deny offer to make PC discoverable on the net
   * Use your internet! But be careful, usually mobile internet is not unlimited
+* Game has no borderless window setting?
+  * Add -popupwindow to exe properties, something like this - `"C:\Programs\Example.exe" -popupwindow`
+  * In game settings - turn off full screen mode / turn on windowed mode
 
 ## Software
 * `Putty`, `WinSCP`, `Anydesk`, `Postman`, `Docker`, 
