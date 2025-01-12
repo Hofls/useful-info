@@ -42,7 +42,7 @@
     * If you can predict that data will be needed soon - fetch it in advance 
 * `Using storage with smaller latency numbers` (e.g. RAM)
 * `Subjective optimization`
-    * Objectively load speed stays the same, but people perceive it as getting faster
+    * Objectively load speed stays the same, but people perceive it as being faster
     * E.g. - display interesting animation; Or first load approximation of image, then load original
 * `Decrease computational complexity`
 * `Parallel computing`
@@ -57,3 +57,37 @@
 * `Limits` - limit amount of requests (e.g. each user has maximum 3000 requests per hour)
 * Look at hints in [algorithms](computer-science/algorithms.md)
 
+
+# Ways to optimize (Java specific)
+* TreeMap:
+  ```
+  // Quickly find indicators that fit between "start" and "end"
+  var indicatorMap = new TreeMap<LocalDateTime, List<Indicator>>();
+  var indicatorsInRange = indicatorMap.subMap(start, true, end, false).values(); // O(log n)
+  ```
+* Binary search:
+  ```
+  List<Integer> sortedList = List.of(1, 3, 5, 7, 9);
+  int index = Collections.binarySearch(sortedList, 5); // O(log n)
+  ```
+
+* Data bucketing:
+  ```
+  Map<Integer, List<Integer>> buckets = new HashMap<>();
+  for (int num : nums) {
+    int bucketKey = num / 10; // Group by range 0-9, 10-19, etc.
+    buckets.computeIfAbsent(bucketKey, k -> new ArrayList<>()).add(num);
+  }
+  List<Integer> rangeBucket = buckets.get(1); // Numbers 10-19; complexity - O(1)
+  ```
+* NavigableSet
+  ```
+  NavigableSet<Integer> treeSet = new TreeSet<>(List.of(10, 20, 30));
+  int floor = treeSet.floor(25);  // 20; closest element that is less than 25
+  int ceiling = treeSet.ceiling(15); // 20; closest element that is bigger than 15
+  ```
+* HashMap:
+  ```
+  Map<String, User> userIndex = new HashMap<>();
+  User user = userIndex.get("userId123"); // O(1) lookup
+  ```
