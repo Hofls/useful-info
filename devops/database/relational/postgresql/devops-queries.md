@@ -60,6 +60,7 @@ ORDER BY pg_relation_size(indexrelname::regclass) DESC;
 ```
 * Missing indexes:
 ```
+-- Important! Change "schemaname" to your schema + open SQL editor in this exact schema
 SELECT
   relname,
   seq_scan - idx_scan AS too_much_seq,
