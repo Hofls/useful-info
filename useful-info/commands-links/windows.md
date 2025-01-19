@@ -126,6 +126,8 @@
 * To run Bash on windows:
     * `Git Windows` or `Cygwin` or `MinGW`
     * Convert CRLF to LF `sed -i -e 's/\r$//' script.sh`
+* `Sumatra portable` - Read PDF/Epub/DjVu
+* `Firefox` - Edit PDF
 * `Window Spy` - get detailed window info (comes with AHK)
 * `IntelliJ IDEA CE` - Java IDE, more info in [intellij-idea.md](intellij-idea.md)
 * `WebStorm` - JavaScript & TypeScript IDE
