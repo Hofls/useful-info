@@ -1,19 +1,25 @@
-### LLM (Chatbots)
-* `ChatGPT` - OpenAI LLM, custom GPTs (trained on a specific dataset), GPT + integration (e.g. with wolfram alpha)
-* `Gemini` - Google LLM
+### LLM
+* `DeepSeek` - Chinese LLM
 * `DuckDuckGo AI Chat` - online access to Claude/ChatGPT/Llama/Mixtral
-* `llama2.ai` - Meta LLM
 * `perplexity.ai` - LLM with access to the internet
-* `Bing` - ChatGPT with access to the internet
 * `you.com`- GPT-4/Claude/Gemini with access to the internet
+* `llama2.ai` - Meta LLM
 * `monica.im` - GPT, Gemini, Llama, Claude
 * `phind.com` - Phind LLM
-* `hix.ai` - online access to Claude/ChatGPT
+* `hix.ai` - Online access to Claude/ChatGPT
+* `openroute` - Multiple LLms
+* `claude.ai` - Pretty good, but requires phone number for registration
+
+### LLM (Unavailable in some regions)
+* `ChatGPT` - OpenAI LLM, custom GPTs (trained on a specific dataset), GPT + integration (e.g. with wolfram alpha)
+* `Bing` - ChatGPT with access to the internet
+* `Grok / X` - Ex Twitter LLM
 * `poe.com` - GPT, Gemini, LLama, Claude, DALLE, Gemini, Stable Diffusion, Mistral, Qwen
-* `claude.ai` - requires phone number for registration
+* `Gemini` - Google LLM
 
 ### AI voice chat (conversation)
 * `pi.ai`
+* `aistudio.google.com/live`
 * `character.ai` - smartphone app
 
 ### Image generation
@@ -46,6 +52,8 @@
 * `AI Dungeon` - text based rpg
 
 ## Other products
+* `lmarena.ai` - top models list
+* `openroute` - top models list
 * `Huggingface` - pre-trained models hub
 * `Kaggle` - pre-trained models hub
 * `TensorFlow` - platform for machine learning 
