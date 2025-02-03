@@ -1,3 +1,7 @@
+### Apps to run models
+* LM Studio
+* gpt4all
+
 ### Best models
 * Qwen - Alibaba AI (China)
 * Llama - Meta AI (USA)
