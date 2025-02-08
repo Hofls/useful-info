@@ -1,5 +1,4 @@
 ### AI Music
-* AI list - Suno, Riffusion, Udio
 * Genres:
   * Leave "Genre" empty, let AI decide the one that fits best
   * 1950s, Doo-Wop, Rockabilly, Motown, Blues, Swing, Soul, Jazz, Rock and roll

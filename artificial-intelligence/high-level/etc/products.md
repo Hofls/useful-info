@@ -7,15 +7,15 @@
 * `monica.im` - GPT, Gemini, Llama, Claude
 * `phind.com` - Phind LLM
 * `hix.ai` - Online access to Claude/ChatGPT
-* `openroute` - Multiple LLms
-* `claude.ai` - Pretty good, but requires phone number for registration
+* `openrouter` - Multiple LLms
 
 ### LLM (Unavailable in some regions)
 * `ChatGPT` - OpenAI LLM, custom GPTs (trained on a specific dataset), GPT + integration (e.g. with wolfram alpha)
 * `Bing` - ChatGPT with access to the internet
 * `Grok / X` - Ex Twitter LLM
 * `poe.com` - GPT, Gemini, LLama, Claude, DALLE, Gemini, Stable Diffusion, Mistral, Qwen
-* `Gemini` - Google LLM
+* `Gemini` - Google LLM, youtube video tldr
+* `claude.ai` - Pretty good, but requires phone number for registration
 
 ### AI voice chat (conversation)
 * `pi.ai`
@@ -23,24 +23,33 @@
 * `character.ai` - smartphone app
 
 ### Image generation
-* `zmo.ai` - image to image
+* `Bing`
+* `Grok`
+* `ImageFX`
+* `Flux`
 * `DALL-E`
 * `Stable Diffusion`
     * `Lexica.art` - art gallery
     * `Stable horde` - crowdsourced distributed cluster
 * `Midjourney`
-* `Bing`
 * `monica.im`
+* `zmo.ai` - image to image
 
 ### Music generation
-* `Udio AI`
+* `Riffusion AI`
 * `Suno AI`
+* `Udio AI`
 
 ### Video generation
+* `Hailuo Minimax`
 * `Luma AI`
 * `KLING AI`
 * `Runway ML`
 * `Sora AI`
+* `Hunyuan`
+* `Vidu`
+* `Hapier`
+* `Pika`
 
 ### Code assistant
 * `GitHub Copilot`
