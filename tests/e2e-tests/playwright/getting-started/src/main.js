@@ -1,5 +1,5 @@
 // npm run start
-const { chromium } = require('playwright');
+const { chromium } = require('playwright'); // or replace "chromium" with webkit, if you need Safari (Apple/iOS/Mac)
 
 // Kill process on unhandled promise rejection:
 process.on('unhandledRejection', error => {
