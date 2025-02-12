@@ -1,6 +1,7 @@
 ### 1. Run http server
-* Run default http server `nohup python3 -m http.server 8000 &`
-    * Or `nohup python -m SimpleHTTPServer 8000 &`
+* Run default http server `nohup python3 -m http.server 80 >/dev/null 2>&1 &` (without nohup.out)
+    * Or simple new python `nohup python3 -m http.server 8000 &` (with nohup.out)
+    * Or simple old python `nohup python -m SimpleHTTPServer 8000 &` (with nohup.out)
 * Check if it is running `curl localhost:8000`
 
 ### 2. Port-forwarding (redirect-traffic)
