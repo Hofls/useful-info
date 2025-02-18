@@ -18,9 +18,8 @@
 * `claude.ai` - Pretty good, but requires phone number for registration
 
 ### AI voice chat (conversation)
-* `pi.ai`
 * `aistudio.google.com/live`
-* `character.ai` - smartphone app
+* `character.ai`
 
 ### Image generation
 * `Bing`
