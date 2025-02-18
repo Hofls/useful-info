@@ -40,20 +40,6 @@
     * `position: sticky` - scrolls then sticks (e.g. article name)
 * If elements overlap - use `z-index` to define who will be on top
 
-##### Data types
-* Integer - `1024`
-* Number - `0.255`
-* Percentage - `25%`
-* Color - `#02798b`
-* Image - `url(star.png)`
-* String - `"hello"`
-* Function - `rotate()`, `rgb()`, `opacity()`, `var()` etc
-* Dimension - number + unit (`45deg, 10px`)
-    * Length - `px` (pixels), `em` (parent font size), `rem` (root font size)
-    * Angle - `deg` (degrees), `turn`
-    * Time - `s` (seconds), `ms` (milliseconds)
-    * Resolution - `dpi` (dots per inch), `dpcm`, `dppx`
-
 ##### Etc
 * At rule - starts with `@`, instructs CSS how to behave
     * Media Query - `@media screen and (min-width: 750px) {}`
@@ -77,7 +63,19 @@
 * Weird stuff (don't use it):
     * `!important`
 
-
 ##### Best practices
 * Mobile first. Build mobile version first, then expand it for desktop.
-* 
+
+##### Data types
+* Integer - `1024`
+* Number - `0.255`
+* Percentage - `25%`
+* Color - `#02798b`
+* Image - `url(star.png)`
+* String - `"hello"`
+* Function - `rotate()`, `rgb()`, `opacity()`, `var()` etc
+* Dimension - number + unit (`45deg, 10px`)
+  * Length - `px` (pixels), `em` (parent font size), `rem` (root font size)
+  * Angle - `deg` (degrees), `turn`
+  * Time - `s` (seconds), `ms` (milliseconds)
+  * Resolution - `dpi` (dots per inch), `dpcm`, `dppx`

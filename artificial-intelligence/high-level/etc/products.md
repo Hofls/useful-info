@@ -66,3 +66,5 @@
 * `Huggingface` - pre-trained models hub
 * `Kaggle` - pre-trained models hub
 * `TensorFlow` - platform for machine learning 
+* `civitai` - ai gallery (images/video), models hub
+* 
