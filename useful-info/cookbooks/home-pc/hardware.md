@@ -16,8 +16,3 @@
     * Display adapters (NVIDIA GeForce RTX 4060)
     * Monitors (Generic PnP Monitor)
     * Processors (Intel Core i7)
-* `Local network`:
-  * Open router control panel (e.g. http://192.168.0.1)
-  * Find all connected devices
-  * Check availability via ping
-  * Pick one device to use as a server, install software and connect (more info at devops -> remote-access)
