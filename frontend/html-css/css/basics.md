@@ -1,4 +1,4 @@
-##### CSS
+### CSS
 * CSS - describes the presentation of a document
 * Specificity - applies rule with highest specifity selector (e.g. id selector - high, element selector - low)
 * Cascade - if two rules have equal specifity - order matters (will be applied last one)
@@ -6,20 +6,20 @@
 * Viewport - area in computer graphics that is currently being viewed
 * CSS Rule - `selector {property: value;}`
 
-##### Selectors
+### Selectors
 * Element selector - `article`
 * Id selector - `#my-id`
 * Class selector - `.my-class`
 * Attribute selector - `img[src]`
 * Pseudo-class selector - `a:hover`
     
-##### CSS Combinators
+### CSS Combinators
 * Descendant combinator - `div p`
 * Child combinator - `article > p`
 * Adjacent sibling combinator - `h1 + p`
 * General sibling combinator - `p ~ img`
     
-##### Box model
+### Box model
 * Outer display types:
     * `display: block` - adds line-break at the end, fills all available horizontal space (e.g. `<div>, <p>, <article>`)
     * `display: inline` - stays in the same line, ignores width/height and some margins (e.g. `<a>, <span>, <strong>`)
@@ -31,7 +31,7 @@
     * `display: table` - table
 * Box parts - `content, padding, border, margin`
 
-##### Positioning
+### Positioning
 * Types:
     * `position: static` - default
     * `position: relative` - same as static but with extra properties (top, bottom, left, right)
@@ -40,7 +40,25 @@
     * `position: sticky` - scrolls then sticks (e.g. article name)
 * If elements overlap - use `z-index` to define who will be on top
 
-##### Etc
+### Flex
+* Horizontal & vertical center:
+  ```
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  ```
+* Each item should go to the next line:
+  ```
+  display: flex;
+  flex-wrap: wrap;
+  ```
+* Each item should take at least 10% of the available space (make it 100 for mobile using @media):
+  ```
+  display: flex;
+  flex: 1 1 10%;
+  ```
+
+### Etc
 * At rule - starts with `@`, instructs CSS how to behave
     * Media Query - `@media screen and (min-width: 750px) {}`
     * Animation:
@@ -62,11 +80,12 @@
 * Move element below preceding siblings - `clear: both;`
 * Weird stuff (don't use it):
     * `!important`
+* Do not ignore LF (break text into multiple lines) - `white-space: pre-wrap;`
 
-##### Best practices
+### Best practices
 * Mobile first. Build mobile version first, then expand it for desktop.
 
-##### Data types
+### Data types
 * Integer - `1024`
 * Number - `0.255`
 * Percentage - `25%`

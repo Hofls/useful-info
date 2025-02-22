@@ -164,5 +164,18 @@ let promisedSum = sum(40, 2);
 promisedSum.then(function (result) {
     console.log("Resolved - ", result);
 }).catch(function (err) {
-    console.error("Catched - ", err);
+    console.error("Caught - ", err);
 });
+
+// JS + HTML:
+let tableText = document.getElementById("summary-table").innerText;
+document.getElementById("greeting").innerText = 'Hello world'
+
+document.getElementById("container").classList.add("active");
+
+document.getElementById("blocks").addEventListener("input", calculateResults); // calculateResults is a function
+
+let blockDiv = document.createElement("div");
+document.getElementById("blocks").appendChild(blockDiv);
+
+
