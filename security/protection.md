@@ -6,3 +6,5 @@
     * npm - `npm audit`
 * Cloudflare - great protection from DDOS and bots
     * Traffic goes through cloudflare services, all suspicious requests are being blocked
+* Always update to the new version, old versions have known vulnerabilities
+* 
