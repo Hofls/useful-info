@@ -87,9 +87,9 @@ Want to figure out what to improve in the project? Here is checklist. Technologi
 * Software on the server should be updated regularly (to patch all known vulnerabilities)
 
 ### Etc:
-* [Team](social/team.md)
+* [Team](../social/team.md)
 * [Optimization](optimization.md)
 * [UX](human-computer/user-experience.md)
-* [Wiki](wiki.md)
+* [Wiki](../etc/wiki.md)
 * [SEO](seo.md)
 * [Accessibility](human-computer/accessibility.md)

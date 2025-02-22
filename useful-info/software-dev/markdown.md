@@ -10,7 +10,7 @@ List:
 
 [Link](https://google.com)
 
-[Relative link](../cookbooks/wiki.md)
+[Relative link](../etc/wiki.md)
 
 `quote`
 
