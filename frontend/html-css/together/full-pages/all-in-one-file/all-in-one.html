@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Boxes</title>
+    <style>
+        /* General styles */
+        body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        .container {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          padding: 20px;
+        }
+
+        .box {
+          background-color: #3498db;
+          color: white;
+          text-align: center;
+          padding: 20px;
+          flex: 1 1 calc(33.333% - 20px); /* Three boxes per row on desktop */
+          box-sizing: border-box;
+          transition: background-color 0.3s ease;
+        }
+
+        .box:hover {
+          background-color: #2980b9;
+        }
+
+        /* Mobile styles */
+        @media (max-width: 768px) {
+          .box {
+            flex: 1 1 100%; /* One box per row on mobile */
+          }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="box">Box 1</div>
+    <div class="box">Box 2</div>
+    <div class="box">Box 3</div>
+</div>
+
+<script>
+    // Optional: Add JavaScript for interactivity
+    const boxes = document.querySelectorAll('.box');
+
+    boxes.forEach(box => {
+      box.addEventListener('click', () => {
+        alert(`You clicked ${box.textContent}`);
+      });
+    });
+</script>
+</body>
+</html>
