@@ -8,6 +8,7 @@
 * `phind.com` - Phind LLM
 * `hix.ai` - Online access to Claude/ChatGPT
 * `openrouter` - Multiple LLms
+* `kimi.moonshot.cn` - AI + internet
 
 ### LLM (Unavailable in some regions)
 * `ChatGPT` - OpenAI LLM, custom GPTs (trained on a specific dataset), GPT + integration (e.g. with wolfram alpha)
