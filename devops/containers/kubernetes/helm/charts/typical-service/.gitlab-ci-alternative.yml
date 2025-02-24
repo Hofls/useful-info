@@ -1,0 +1,31 @@
+# Complex .gitlab-ci.yml (deploy to different namespaces)
+stages:
+  - k8s-deploy
+
+.deploy-helm:
+  image:
+    name: $DOCKER_REGISTRY/library/helm-full:3.3.4
+    entrypoint: [""]
+  stage: k8s-deploy
+  when: manual
+  tags:
+    - docker-deployer
+  script:
+    - chmod 600 $KUBE_CONFIG
+    - export KUBECONFIG=$KUBE_CONFIG
+    - cd helm
+    - helm upgrade kafka . --install --namespace $NAMESPACE -f $VALUES_FILE
+
+deploy.dev:
+  extends: .deploy-helm
+  before_script:
+    - export KUBE_CONFIG=$KUBE_CONFIG_DEV
+    - export NAMESPACE=$NAMESPACE_DEV
+    - export VALUES_FILE=values/values-dev.yaml
+
+deploy.test:
+  extends: .deploy-helm
+  before_script:
+    - export KUBE_CONFIG=$KUBE_CONFIG_TEST
+    - export NAMESPACE=$NAMESPACE_TEST
+    - export VALUES_FILE=values-test.yaml
