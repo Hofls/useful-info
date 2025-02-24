@@ -30,7 +30,7 @@
 
 #### Kafka GUI clients comparison
 * [kafka-ui](https://github.com/provectus/kafka-ui)
-    * Notice: simply the best
+    * Notice: the best if you need to work with ecosystem (KSQL, Kafka Connect, Schema registry etc)
     * Topics list, Add a topic, Topic messages/consumers/stats/settings, Send message, Recreate Topic, Remove Topic, Copy topic, Purge messages
     * Consumer group list, Reset offset, Delete consumer group
     * Brokers/Clusters info, metrics (production/consumption)

@@ -1,7 +1,15 @@
 #### Info
 * Kafka - event streaming platform (publish/subscribe)
 
-#### Getting started. CLI
+#### Install on kubernetes
+* Install kafka & zookeeper:
+  * `OpenLens` -> `Pods` -> `Create resource` -> [insert text](yaml/kafka-k8s.yaml)
+* Install redpanda:
+  * `OpenLens` -> `Pods` -> `Create resource` -> [insert text](yaml/kafka-ui-full.yaml)
+* Test:
+  * Create topic, produce message, look at messages list
+
+#### Install directly on a server
 * Install Java:
     * `apt update && apt install default-jre`
     * `java --version` (should be 8+)
