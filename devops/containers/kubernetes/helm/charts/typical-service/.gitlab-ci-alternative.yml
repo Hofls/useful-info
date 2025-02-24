@@ -16,7 +16,7 @@ stages:
     - chmod 600 $KUBE_CONFIG
     - export KUBECONFIG=$KUBE_CONFIG
     - cd helm
-    - helm upgrade kafka . --install --namespace $NAMESPACE -f $VALUES_FILE
+    - helm upgrade kafka-ui . --install --namespace $NAMESPACE -f $VALUES_FILE
 
 deploy.dev:
   extends: .deploy-helm
