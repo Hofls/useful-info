@@ -1,7 +1,6 @@
 # Simple .gitlab-ci.yml:
 # $NAMESPACE_TEST - standard gitlab variable
 # $KUBE_CONFIG_FEATURE - gitlab variable with type 'file'
-# echo is for convenience (to see executed command in logs)
 stages:
   - k8s-deploy
 

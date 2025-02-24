@@ -1,4 +1,6 @@
 # Complex .gitlab-ci.yml (deploy to different namespaces)
+# $NAMESPACE - standard gitlab variable
+# $KUBE_CONFIG - gitlab variable with type 'file'
 stages:
   - k8s-deploy
 
@@ -28,4 +30,4 @@ deploy.test:
   before_script:
     - export KUBE_CONFIG=$KUBE_CONFIG_TEST
     - export NAMESPACE=$NAMESPACE_TEST
-    - export VALUES_FILE=values-test.yaml
+    - export VALUES_FILE=values/values-test.yaml
