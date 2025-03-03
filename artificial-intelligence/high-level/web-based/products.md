@@ -19,6 +19,7 @@
 * `claude.ai` - Pretty good, but requires phone number for registration
 
 ### AI voice chat (conversation)
+* `sesame.com` - [demo](https://www.sesame.com/research/crossing_the_uncanny_valley_of_voice#demo)
 * `aistudio.google.com/live`
 * `character.ai`
 
