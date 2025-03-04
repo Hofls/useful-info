@@ -61,6 +61,7 @@
 * State of industry reports
     * [github](https://github.blog/2023-11-08-the-state-of-open-source-and-ai/)
 * Any job listings
+* Imageboards (ai/tech sections)
 * Look at integrations/images/managed services at cloud providers (AWS, GCP, Azure)
 * Most used libraries
     * https://mvnrepository.com/popular?p=1
