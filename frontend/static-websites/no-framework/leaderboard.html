@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+        #title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        #blocks {
+            width: 100%;
+            max-width: 900px;
+        }
+        .block {
+            background: white;
+            margin: 10px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: background 0.2s ease-in-out;
+        }
+        .block:hover {
+            background: #f0f8ff;
+        }
+        .block-content {
+            flex-grow: 1;
+        }
+        .block-header {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .block-body {
+            margin: 10px 0;
+        }
+        .block-image {
+            width: 200px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<div id="title">Leaderboard</div>
+<div id="blocks"></div>
+
+<script>
+    const blocks = [
+        {
+            header: "Alice Johnson",
+            website: "https://alice.com",
+            lines: [
+                "Loves hiking and nature.",
+                "Software engineer at XYZ.",
+                "Enjoys playing chess in free time."
+            ],
+            image: "https://via.placeholder.com/200x100"
+        },
+        {
+            header: "Bob Smith",
+            website: "https://bobsmith.dev",
+            lines: [
+                "Passionate about AI and ML.",
+                "Writes tech blogs regularly.",
+                "Has a cat named Whiskers."
+            ],
+            image: "https://via.placeholder.com/200x100"
+        }
+    ];
+
+    blocks.forEach(createBlock);
+
+    function createBlock(block) {
+        let blockDiv = document.createElement("div");
+        blockDiv.className = "block";
+        blockDiv.onclick = () => window.location.href = block.website;
+
+        let contentDiv = document.createElement("div");
+        contentDiv.className = "block-content";
+
+        let header = document.createElement("div");
+        header.className = "block-header";
+        header.textContent = block.header;
+        contentDiv.appendChild(header);
+
+        let body = document.createElement("div");
+        body.className = "block-body";
+        block.lines.forEach(fact => {
+            let factLine = document.createElement("div");
+            factLine.textContent = fact;
+            body.appendChild(factLine);
+        });
+        contentDiv.appendChild(body);
+
+        let image = document.createElement("img");
+        image.className = "block-image";
+        image.src = block.image;
+
+        blockDiv.appendChild(contentDiv);
+        blockDiv.appendChild(image);
+
+        document.getElementById("blocks").appendChild(blockDiv);
+    }
+</script>
+</body>
+</html>
