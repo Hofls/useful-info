@@ -32,7 +32,8 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
             transition: background 0.2s ease-in-out;
         }
         .block:hover {
@@ -51,7 +52,7 @@
         .block-image {
             width: 200px;
             height: 100px;
-            object-fit: cover;
+            object-fit: fill;
             border-radius: 5px;
         }
     </style>
@@ -87,9 +88,10 @@
     blocks.forEach(createBlock);
 
     function createBlock(block) {
-        let blockDiv = document.createElement("div");
-        blockDiv.className = "block";
-        blockDiv.onclick = () => window.location.href = block.website;
+        let blockLink = document.createElement("a");
+        blockLink.className = "block";
+        blockLink.href = block.website;
+        blockLink.target = "_blank";
 
         let contentDiv = document.createElement("div");
         contentDiv.className = "block-content";
@@ -112,10 +114,10 @@
         image.className = "block-image";
         image.src = block.image;
 
-        blockDiv.appendChild(contentDiv);
-        blockDiv.appendChild(image);
+        blockLink.appendChild(contentDiv);
+        blockLink.appendChild(image);
 
-        document.getElementById("blocks").appendChild(blockDiv);
+        document.getElementById("blocks").appendChild(blockLink);
     }
 </script>
 </body>
