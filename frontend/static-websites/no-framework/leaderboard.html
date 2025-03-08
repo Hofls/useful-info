@@ -46,7 +46,10 @@
             font-weight: bold;
         }
         .block-body {
-            margin: 10px 0;
+            margin-top: 10px;
+        }
+        .block-body li {
+            margin-left: -20px;
         }
         .block-image {
             width: 200px;
@@ -101,10 +104,10 @@
         header.textContent = block.header;
         contentDiv.appendChild(header);
 
-        let body = document.createElement("div");
+        let body = document.createElement("ul");
         body.className = "block-body";
         block.lines.forEach(fact => {
-            let factLine = document.createElement("div");
+            let factLine = document.createElement("li");
             factLine.textContent = fact;
             body.appendChild(factLine);
         });
