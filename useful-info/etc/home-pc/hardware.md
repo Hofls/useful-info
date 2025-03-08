@@ -2,7 +2,7 @@
 * `Misc`:
   * Make sure that new hardware component is compatible with motherboard
   * `BIOS` - During PC launch spam Del, F2, F10, F12, or Esc
-* `List hardware components`:
+* `How to list hardware components of your PC`:
   * Windows search -> System Information -> System Summary
     * OS Name & OS Version (Windows 11)
     * Processor (Intel Core i7)
@@ -16,3 +16,10 @@
     * Display adapters (NVIDIA GeForce RTX 4060)
     * Monitors (Generic PnP Monitor)
     * Processors (Intel Core i7)
+* `Monitor ports`:
+  * If PC ports are different from monitor ports - use adapters
+  * VGA - ancient (big, blue)
+  * DVI - very old (big, white)
+  * HDMI - mid (small, black)
+  * DataPort (DP) - modern (small, black)
+* 
