@@ -47,6 +47,7 @@
 * Windows update (manual):
   * Download `.iso` image of new Windows version
   * Right click, mount, update (by default it will keep all the files, software and settings)
+* [Windows activation](https://github.com/massgravel/Microsoft-Activation-Scripts)
 
 ## Virtual environment / Sandbox
 * [Windows Subsystem for Linux (WSL2)](wsl2.md)
