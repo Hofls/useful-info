@@ -85,6 +85,7 @@
 * https://www.devconf.info/us/schedule/
 
 #### Etc
+* Update all software versions at least once a year
 * Multiple alternative solutions, how to figure out which one is more popular?
     * Check google trends; Google search "A VS "; Activity on youtube/github/reddit; Mentions on job hunting sites
 * 

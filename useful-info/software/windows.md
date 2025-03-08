@@ -62,6 +62,7 @@
         * Not really necessary - Enable Windows Hypervisor Platform
 * VMware Workstation Player:
   * Runs any `.iso` / `.vmdk` images!
+  * [Download & install](https://softwareupdate.vmware.com/cds/vmw-desktop/ws/)
   * Highly recommended installing `VMware tools` on guest OS
       * `Player` -> `Manage` -> `Install VMware tools`
       * Fixes screen resolution, provides ability to share clipboard (text/files)
