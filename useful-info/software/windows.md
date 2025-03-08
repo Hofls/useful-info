@@ -40,9 +40,9 @@
 
 ## OS
 * Windows installation:
-  * Download `.iso` image
+  * Download `.iso` image from [massgrave](https://massgrave.dev/genuine-installation-media)
   * Upload it to flash drive, using `rufus`
-  * Restart PC, go to BIOS (by spamming `DEL`/`F8`/etc)
+  * Restart PC, go to BIOS (by spamming `DEL`/`F2`/etc)
   * Choose to boot from flash drive, save and exit
 * Windows update (manual):
   * Download `.iso` image of new Windows version
