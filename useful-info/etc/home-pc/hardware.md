@@ -22,4 +22,7 @@
   * DVI - very old (big, white)
   * HDMI - mid (small, black)
   * DataPort (DP) - modern (small, black)
+* `Cable for mobile divces`
+  * Old: USB Type-A on PC -> USB Micro on mobile 
+  * Modern: USB Type-A on PC -> USB Type-C on mobile
 * 
