@@ -42,8 +42,15 @@
 * Windows installation:
   * Download `.iso` image from [massgrave](https://massgrave.dev/genuine-installation-media)
   * Upload it to flash drive, using `rufus`
+  * Turn off the internet (very important step)
   * Restart PC, go to BIOS (by spamming `DEL`/`F2`/etc)
   * Choose to boot from flash drive, save and exit
+  * If installer asks for key - skip it (activate later with massgrave)
+  * On version selection (home/education/pro) pick pro, because it supports virtualization
+  * At the end of installation, if you have an internet - Windows will try to run a very long update
+  * If you turned off the internet:
+    * Skip mandatory connection screen - `Shift+F10`, enter `oobe\BypassNRO`
+    * On second attempt at the screen, press `I don't have internet`
 * Windows update (manual):
   * Download `.iso` image of new Windows version
   * Right click, mount, update (by default it will keep all the files, software and settings)
@@ -62,11 +69,13 @@
         * Not really necessary - Enable Windows Hypervisor Platform
 * VMware Workstation Player:
   * Runs any `.iso` / `.vmdk` images!
+    * `.iso` - you have to install it from 0 (spam keyboard during VM launch)
+    * `.vmdk` - already installed
   * [Download & install](https://softwareupdate.vmware.com/cds/vmw-desktop/ws/)
   * Highly recommended installing `VMware tools` on guest OS
       * `Player` -> `Manage` -> `Install VMware tools`
       * Fixes screen resolution, provides ability to share clipboard (text/files)
-  * Prerequisites:
+  * Prerequisites (deprecated?):
       * `Windows search` -> `Turn Windows features on or off` -> `Disable Hyper-v`
   * To move cursor out of guest VM - press `CTRL+ALT`
   * For more info look at `devops` repository
