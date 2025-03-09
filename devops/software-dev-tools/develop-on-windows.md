@@ -32,7 +32,7 @@
 ##### Develop locally. Host-Guest
 * Notice: this method has limitations (e.g. no symlinks)
     * Usable to run infrastructure (e.g. redis + kafka on docker), while main app runs on host
-* `VMware Player`:
+* `VMware Workstation Player`:
     * Install `VMware Player`
     * Download & install `Ubuntu` server image 
         * .iso - install yourself [(slow)](https://ubuntu.com/server)
