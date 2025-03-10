@@ -4,7 +4,7 @@
 #### Install on kubernetes
 * Install kafka & zookeeper:
   * `OpenLens` -> `Pods` -> `Create resource` -> [insert text](yaml/kafka-k8s.yaml)
-* Install redpanda:
+* Install kafka-ui:
   * `OpenLens` -> `Pods` -> `Create resource` -> [insert text](yaml/kafka-ui-full.yaml)
 * Test:
   * Create topic, produce message, look at messages list
