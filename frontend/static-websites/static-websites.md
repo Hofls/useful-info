@@ -10,6 +10,7 @@
     * Open "URL Inspection Tool", insert url
 
 ### Free hosting
+* Warning! Some social networks can remove posts with links to free webpages (e.g. reddit removes links to netlify.app)
 * `Github pages`
   * Domain - username.github.io
 * `Netlify`
