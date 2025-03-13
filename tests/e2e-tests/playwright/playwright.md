@@ -131,6 +131,12 @@
     let saveButton = await page.waitForSelector('text="Save button"');
     await saveButton.dispatchEvent('click');
     ```
+* Mouse click:
+    ```
+    let saveButton = await page.locator('text="Save button"');
+    const boundingBox = await saveButton.boundingBox();
+    await page.mouse.click(boundingBox.x + boundingBox.width / 2, boundingBox.y + boundingBox.height / 2);
+    ```
 
 ##### iFrames
 * Click on button inside iFrame:
