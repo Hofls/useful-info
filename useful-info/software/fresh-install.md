@@ -11,6 +11,9 @@
   * Windows search -> Taskbar -> Turn off "Widgets" and "Task view"
   * Windows search -> Sleep -> Make device sleep after 30 minutes
   * Windows search -> Search permissions -> Turn off "Show search highlights"
+  * Windows search -> Settings -> Personalization -> Colors
+    * Default Windows mode - Dark
+    * Default app mode - Light
 * Install Telegram (or whatever else to transfer files between PCs)
 * Install Google Chrome, login (for tabs synchronization)
   * Main profile wil sync automatically
