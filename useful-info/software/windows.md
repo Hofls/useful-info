@@ -102,14 +102,14 @@
 
 ## Software
 * `Putty`, `WinSCP`, `Anydesk`, `Postman`, `Docker`, 
-* `VLC`, `Lightshot`, `Google chrome`, `Telegram`, `qBittorrent`, `OpenJDK`, `OpenLens`
-* `Stremio` with addons
+* `VLC`, `Lightshot`, `Google chrome`, `Telegram`, `qBittorrent`, `OpenJDK`, 
+* `OpenLens` any version before 6.3.0 (they removed ability to look at pod logs)
 * `Wireshark`
 * `7zip`
     * Password-protected archive:
         * Right click on files -> Add to archive... -> Set password -> Check "Encrypt file names"
 * `Notepad++` 
-    * To create second view - right click on tab -> `move to other view`
+    * To create second view - right click on tab -> `Move document` -> `Move to other view`
 * `DBeaver` to connect to database
     * `Edit connection` => `PostgreSQL` => `Show all databases`
 * `OBS` to record screen + sound

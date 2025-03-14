@@ -14,6 +14,7 @@
   * Windows search -> Settings -> Personalization -> Colors
     * Default Windows mode - Dark
     * Default app mode - Light
+  * Windows search -> Settings -> Accessibility -> Keyboard -> Turn off "Use Print Screen to open screen capture"
 * Install Telegram (or whatever else to transfer files between PCs)
 * Install Google Chrome, login (for tabs synchronization)
   * Main profile wil sync automatically
@@ -27,4 +28,5 @@
   * [GPU test online](https://www.matthew-x83.com/online/gpu-test.php)
     * Pick 500 spheres, GPU load should be wa
 * Install VPns & Proxies
-* 
+* Install rest of the software
+* Launch everything, make sure there is no difference between two PCs
