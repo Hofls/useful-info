@@ -38,7 +38,10 @@
 * Make sure that new hardware component is compatible with motherboard
 * `BIOS` - During PC launch spam Del, F2, F10, F12, or Esc
 * `How to list hardware components of your PC`:
+  * Possible problems:
+    * Don't see your GPU? Update drivers
   * Everything is in BIOS
+  * Task Manager -> Performance
   * Windows search -> System Information -> System Summary
     * OS Name & OS Version (Windows 11)
     * Processor (Intel Core i7)

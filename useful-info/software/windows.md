@@ -43,14 +43,16 @@
   * Download `.iso` image from [massgrave](https://massgrave.dev/genuine-installation-media)
   * Upload it to flash drive, using `rufus`
   * Turn off the internet (very important step)
-  * Restart PC, go to BIOS (by spamming `DEL`/`F2`/etc)
-  * Choose to boot from flash drive, save and exit
+  * Unnecessary on new systems:
+    * Restart PC, go to BIOS (by spamming `DEL`/`F2`/etc)
+    * Choose to boot from flash drive, save and exit
   * If installer asks for key - skip it (activate later with massgrave)
-  * On version selection (home/education/pro) pick pro, because it supports virtualization
+  * On version selection (home/education/pro) pick Pro, because it supports virtualization
   * At the end of installation, if you have an internet - Windows will try to run a very long update
   * If you turned off the internet:
     * Skip mandatory connection screen - `Shift+F10`, enter `oobe\BypassNRO`
     * On second attempt at the screen, press `I don't have internet`
+  * Next steps - [fresh-install.md](fresh-install.md)
 * Windows update (manual):
   * Download `.iso` image of new Windows version
   * Right click, mount, update (by default it will keep all the files, software and settings)
