@@ -125,10 +125,14 @@
 * To find and delete folders that take too much space:
   * `TreeSize Free` (run as Admin)
 * `Sandboxie` - safely run untrusted code (with persistence)
+  * Old version: 
     * Presets -> Block internet access
         * Some software won't run with this option. 
         * The only way is to physically turn off internet access / block suspicious .exe in firewall
     * Run -> Boxed tools -> Windows explorer
+  * New version:
+    * Right click on a box -> Sandbox settings -> Restrictions -> Internet Access -> Block All Programs
+      * Disable "Issue message SBIE1307 when access is denied"
 * `Windows Sandbox` - safely run untrusted code (without persistence)
 * `VMware`, `VirtualBox` - to run virtual machines 
 * To check hardware load/temperature:
@@ -143,7 +147,9 @@
 * `Firefox` - Edit PDF
 * `Window Spy` - get detailed window info (comes with AHK)
 * `IntelliJ IDEA CE` - Java IDE, more info in [intellij-idea.md](intellij-idea.md)
+  * Also install JDK, Maven and Gradle
 * `WebStorm` - JavaScript & TypeScript IDE
+  * Also installs Git, Node.js and Npm
 * `PyCharm CE` - Python IDE
 * `Rider` - C# (.NET) IDE
 * `VSCode` - Universal IDE (install plugin to add a language support)

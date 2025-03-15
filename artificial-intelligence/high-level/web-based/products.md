@@ -14,7 +14,6 @@
 * `ChatGPT` - OpenAI LLM, custom GPTs (trained on a specific dataset), GPT + integration (e.g. with wolfram alpha)
 * `Bing` - ChatGPT with access to the internet
 * `Grok / X` - Ex Twitter LLM
-* `poe.com` - GPT, Gemini, LLama, Claude, DALLE, Gemini, Stable Diffusion, Mistral, Qwen
 * `Gemini` - Google LLM, youtube video tldr
 * `claude.ai` - Pretty good, but requires phone number for registration
 
