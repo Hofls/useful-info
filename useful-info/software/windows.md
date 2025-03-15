@@ -110,6 +110,7 @@
         * Right click on files -> Add to archive... -> Set password -> Check "Encrypt file names"
 * `Notepad++` 
     * To create second view - right click on tab -> `Move document` -> `Move to other view`
+    * To reduce tabs size - Settings -> Preferences -> General -> Enable pin tab feature (disable it)
 * `DBeaver` to connect to database
     * `Edit connection` => `PostgreSQL` => `Show all databases`
 * `OBS` to record screen + sound
