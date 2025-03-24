@@ -40,6 +40,7 @@
         * [VSCode plugins](https://marketplace.visualstudio.com/search?target=VSCode&category=All%20categories&sortBy=Installs)
         * IntelliJ Idea plugins - within the application \
           Search tags - `/sortBy:downloads`, `/sortBy:rating`
+* Ask any LLM with internet access 
 * Awesome lists:
     * https://github.com/topics/awesome
 * Search for: 
