@@ -61,6 +61,7 @@
 * `AI Dungeon` - text based rpg
 
 ## Other products
+* `livebench.ai` - llm performance comparison
 * `lmarena.ai` - top models list
 * `openroute` - top models list
 * `Huggingface` - pre-trained models hub
