@@ -7,45 +7,41 @@
     <style>
         body { font-family: Arial, sans-serif; display: flex; }
         .sidebar { width: 250px; height: 100vh; overflow-y: auto; border-right: 1px solid #ccc; padding: 10px; }
-        .main { flex-grow: 1; padding: 20px; }
-        textarea { width: 100%; height: 150px; margin-bottom: 10px; }
-        button { padding: 10px; margin-bottom: 10px; display: block; width: 100%; }
-        .response { border: 1px solid #ccc; padding: 10px; height: 150px; overflow-y: auto; white-space: pre-wrap; }
-        select { width: 100%; margin-bottom: 10px; }
+        .main { flex-grow: 1; padding: 20px; display: flex; flex-direction: column; height: 100vh; }
+        .controls { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+        select, button { flex: 1; padding: 8px; }
+        textarea { width: 100%; height: 20%; margin-bottom: 10px; flex-grow: 1; }
+        .response { border: 1px solid #ccc; padding: 10px; flex-grow: 1; overflow-y: auto; white-space: pre-wrap; }
     </style>
 </head>
 <body>
 <div class="sidebar" id="requestList"></div>
 <div class="main">
-    <h2>WebSocket Client</h2>
-    <select id="wsEndpoint">
-        <option value="wss://echo.websocket.org">wss://echo.websocket.org</option>
-        <option value="wss://echo.websocket2.org">wss://echo.websocket2.org</option>
-    </select>
+    <div class="controls">
+        <button onclick="sendRequest()">Send to</button>
+        <select id="wsEndpoint">
+            <option value="wss://echo.websocket.org">wss://echo.websocket.org</option>
+        </select>
+
+    </div>
     <textarea id="requestArea" placeholder="Enter your request JSON..."></textarea>
-    <button onclick="sendRequest()">Send It</button>
     <h3>Response:</h3>
     <div class="response" id="responseArea"></div>
 </div>
 
 <script>
     let sockets = {};
-    const endpoints = ["wss://echo.websocket.org", "wss://echo.websocket2.org"];
-    const tokenData = {
-        "requestNameSocketReconnect": 0,
-        "oldSessionId": "65df618c",
-        "token": "cZN5hna5ln4RYrAUv1lCNV9423Wlcv9ukyd4LO9L15T2xvA0AMMw",
-        "requestId": "db44d8e035e1769b603196e2f4e37e78ceb",
-        "sync": true,
-        "stated": true
-    };
-
-    endpoints.forEach(endpoint => {
+    const endpoint = "wss://echo.websocket.org";
+    const tokens = [
+        "cZN5hna5ln4RYrAUv1lCNV9423Wlcv9ukyd4LO9L15T2xvA0AMMw",
+        "dK92ahXb5YpC7JQTm2DFoN873KZmruYwsVgx1PL8F0NBvaL6EGoM"
+    ];
+    tokens.forEach(token => {
         const socket = new WebSocket(endpoint);
-        sockets[endpoint] = socket;
+        sockets[token] = socket;
         socket.addEventListener('open', () => {
-            console.log(`WebSocket connection opened to ${endpoint}`);
-            socket.send(JSON.stringify(tokenData));
+            console.log(`WebSocket connection opened with token: ${token}`);
+            socket.send(JSON.stringify({ token }));
         });
         socket.addEventListener('message', (event) => {
             document.getElementById('responseArea').innerText = JSON.stringify(JSON.parse(event.data), null, 4);
@@ -53,12 +49,12 @@
     });
 
     function sendRequest() {
-        const endpoint = document.getElementById('wsEndpoint').value;
+        document.getElementById('responseArea').innerText = "";
         const requestText = document.getElementById('requestArea').value;
         try {
             const requestJson = JSON.parse(requestText);
-            sockets[endpoint].send(JSON.stringify(requestJson));
-            console.log(`Sent to ${endpoint}:`, requestJson);
+            Object.values(sockets).forEach(socket => socket.send(JSON.stringify(requestJson)));
+            console.log("Sent:", requestJson);
         } catch (error) {
             alert('Invalid JSON format');
         }
@@ -68,11 +64,25 @@
         document.getElementById('requestArea').value = JSON.stringify(request, null, 4);
     }
 
-    const requests = Array.from({ length: 100 }, (_, i) => ({ requestName: `request_${i}` }));
+    const requests = [
+        { type: "ping" }, { type: "status" }, { type: "list" },
+        { type: "get_user", id: 1 }, { type: "get_user", id: 2 },
+        { type: "create_user", name: "Alice" }, { type: "create_user", name: "Bob" },
+        { type: "update_user", id: 1, name: "Charlie" }, { type: "delete_user", id: 2 },
+        { type: "get_task", id: 101 }, { type: "get_task", id: 102 },
+        { type: "create_task", title: "Task A" }, { type: "create_task", title: "Task B" },
+        { type: "update_task", id: 101, title: "Task A Updated" },
+        { type: "delete_task", id: 102 }, { type: "fetch_logs" },
+        { type: "get_settings" }, { type: "update_settings", theme: "dark" },
+        { type: "restart_service" }
+    ];
+
     const requestList = document.getElementById('requestList');
-    requests.forEach((req, index) => {
+    requests.forEach(req => {
         const btn = document.createElement('button');
-        btn.innerText = req.requestName;
+        btn.innerText = JSON.stringify(req);
+        btn.style.display = "block";
+        btn.style.marginBottom = "5px";
         btn.onclick = () => fillRequest(req);
         requestList.appendChild(btn);
     });
