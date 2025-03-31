@@ -5,13 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WebSocket Client</title>
     <style>
-        body { font-family: Arial, sans-serif; display: flex; }
-        .sidebar { width: 250px; height: 100vh; overflow-y: auto; border-right: 1px solid #ccc; padding: 10px; }
-        .main { flex-grow: 1; padding: 20px; display: flex; flex-direction: column; height: 100vh; }
-        .controls { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-        select, button { flex: 1; padding: 8px; }
-        textarea { width: 100%; height: 40vh; margin-bottom: 10px; }
-        .response { border: 1px solid #ccc; padding: 10px; height: 50vh; overflow-y: auto; white-space: pre-wrap; }
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+            overflow: hidden; /* Prevent main page scrolling */
+            margin: 0;
+        }
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            overflow-y: auto;
+            border-right: 1px solid #ccc;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .main {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+            padding-top: 10px; /* Adds space above the button */
+        }
+        .controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            flex-shrink: 0; /* Prevents shrinking */
+            padding: 0 20px; /* Consistent spacing */
+        }
+        select, button {
+            flex: 1;
+            padding: 8px;
+            width: 100%;
+        }
+        textarea {
+            width: calc(100% - 40px); /* Keep padding in check */
+            height: 350px; /* Fixed height */
+            overflow-y: auto;
+            margin: 0 20px 10px;
+            resize: none; /* Prevent resizing */
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .response {
+            border: 1px solid #ccc;
+            padding: 10px;
+            height: calc(100vh - 450px); /* Remaining space but fixed */
+            overflow-y: auto;
+            white-space: pre-wrap;
+            margin: 0 20px;
+        }
+
+
     </style>
 </head>
 <body>
