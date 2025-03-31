@@ -1,4 +1,6 @@
 ### Neutralino js. Getting started
+* Advantage - Very lightweight compared to electron
+* Disadvantage - Windows users might get blank white screen
 * Install neutralino globally - `npm install -g @neutralinojs/neu`
 * Generate hello-world - `neu create hello-world`
 * Run app: 
