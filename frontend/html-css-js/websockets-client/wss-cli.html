@@ -28,6 +28,7 @@
     <div class="response" id="responseArea"></div>
 </div>
 
+<script src="requests.js"></script>
 <script>
     let sockets = {};
     const endpoints = ["wss://echo.websocket.org/", "wss://echo.websocket.in/"];
@@ -45,7 +46,9 @@
             socket.send(JSON.stringify({ token }));
         });
         socket.addEventListener('message', (event) => {
-            document.getElementById('responseArea').innerText = JSON.stringify(JSON.parse(event.data), null, 4);
+            const responseData = JSON.parse(event.data);
+            if (Array.isArray(responseData) && responseData.length === 0) return;
+            document.getElementById('responseArea').innerText = JSON.stringify(responseData, null, 4);
         });
     });
 
@@ -68,24 +71,16 @@
     }
 
     function fillRequest(request) {
-        document.getElementById('requestArea').value = JSON.stringify(request, null, 4);
+        document.getElementById('requestArea').value = JSON.stringify(request.body, null, 4);
     }
-
-    const requests = [
-        "ping", "status", "list", "get_user", "create_user", "update_user", "delete_user",
-        "get_task", "create_task", "update_task", "delete_task", "fetch_logs", "get_settings", "update_settings",
-        "restart_service", "start_job", "stop_job", "pause_job", "resume_job", "get_logs", "clear_logs",
-        "export_data", "import_data", "get_notifications", "clear_notifications", "subscribe_event", "unsubscribe_event",
-        "generate_report", "upload_file", "download_file"
-    ];
 
     const requestList = document.getElementById('requestList');
     requests.forEach(req => {
         const btn = document.createElement('button');
-        btn.innerText = req;
+        btn.innerText = req.name;
         btn.style.display = "block";
         btn.style.marginBottom = "5px";
-        btn.onclick = () => fillRequest({ type: req });
+        btn.onclick = () => fillRequest(req);
         requestList.appendChild(btn);
     });
 </script>
