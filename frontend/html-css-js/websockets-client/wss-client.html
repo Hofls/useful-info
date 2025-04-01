@@ -71,7 +71,7 @@
         </select>
     </div>
     <textarea id="requestArea" placeholder="Enter your request JSON..."></textarea>
-    <div class="response" id="responseArea"></div>
+    <textarea id="responseArea" class="response" placeholder="Response will appear here..." readonly></textarea>
 </div>
 
 <script src="requests.js"></script>
@@ -94,12 +94,12 @@
         socket.addEventListener('message', (event) => {
             const responseData = JSON.parse(event.data);
             if (Array.isArray(responseData) && responseData.length === 0) return;
-            document.getElementById('responseArea').innerText = JSON.stringify(responseData, null, 4);
+            document.getElementById('responseArea').value = JSON.stringify(responseData, null, 4);
         });
     });
 
     function sendRequest() {
-        document.getElementById('responseArea').innerText = "";
+        document.getElementById('responseArea').value = "";
         const requestText = document.getElementById('requestArea').value;
         const selectedEndpoint = document.getElementById('wsEndpoint').value;
 
@@ -131,4 +131,5 @@
     });
 </script>
 </body>
+
 </html>
