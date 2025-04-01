@@ -4,42 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f9f9f9;
+        }
         .tooltip {
-             position: absolute;
-             right: 15px;
-             cursor: pointer;
-             font-weight: bold;
-             z-index: 5;
-             width: 32px;
-             height: 32px;
-         }
-         .tooltip svg {
-             width: 100%;
-             height: 100%;
-         }
-         .tooltip.top {
-             top: 27px;
-             right: -2px;
-         }
-         .tooltip.bottom {
-             bottom: -2px;
-             right: -2px;
-         }
-         .tooltip:hover::after {
-             content: attr(data-tooltip);
-             position: absolute;
-             top: 25px;
-             left: -270px;
-             width: 270px;
-             background: #f6f6f6;
-             font-weight: normal;
-             padding: 5px;
-             border-radius: 5px;
-             white-space: pre-wrap;
-             border: 1px solid #ccc;
-         }
+            position: relative;
+            cursor: pointer;
+            font-weight: bold;
+            width: 32px;
+            height: 32px;
+            margin: 10px 0;
+        }
+        .tooltip svg {
+            width: 100%;
+            height: 100%;
+        }
+        .tooltip:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: max-content;
+            max-width: 270px;
+            background: #f6f6f6;
+            font-weight: normal;
+            padding: 5px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            border: 1px solid #ccc;
+        }
     </style>
-
 </head>
 <body>
 
@@ -51,16 +52,17 @@
     </symbol>
 </svg>
 
-<div>
-<span class='tooltip top' data-tooltip='A little tip here №1'>
-  <svg fill="#958f8f"><use href="#info-icon"></use></svg>
-</span>
+<div class='tooltip' data-tooltip='A little tip here №1'>
+    <svg fill="#958f8f"><use href="#info-icon"></use></svg>
 </div>
 
-<div>
-<span class='tooltip top' data-tooltip='A little tip here №2'>
-  <svg fill="#958f8f"><use href="#info-icon"></use></svg>
-</span>
+<div class='tooltip' data-tooltip='A little tip here №2'>
+    <svg fill="#958f8f"><use href="#info-icon"></use></svg>
+</div>
+
+<div class='tooltip' data-tooltip='A little tip here №3'>
+    <svg fill="#958f8f"><use href="#info-icon"></use></svg>
 </div>
 
 </body>
+</html>
