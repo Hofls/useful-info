@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum Blocks Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .block {
+            display: inline-block;
+            padding: 10px;
+            margin: 5px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 60px;
+            text-align: center;
+        }
+        input.block-input {
+            width: 60px;
+            font-size: 18px;
+            text-align: center;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 15px;
+            font-size: 18px;
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #005f73;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="block" contenteditable="true" data-value="10">10</div>
+    <div class="block" contenteditable="true" data-value="20">20</div>
+    <div class="block" contenteditable="true" data-value="30">30</div>
+
+    <button onclick="calculateSum()">Calculate Sum</button>
+    <div id="result">Sum: </div>
+</div>
+
+<script>
+    function calculateSum() {
+        let sum = 0;
+        document.querySelectorAll(".block").forEach(block => {
+            let value = parseInt(block.textContent.trim());
+            if (!isNaN(value)) {
+                sum += value;
+                block.dataset.value = value;
+            }
+        });
+        document.getElementById("result").textContent = "Sum: " + sum;
+    }
+</script>
+</body>
+</html>
