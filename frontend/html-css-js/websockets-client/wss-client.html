@@ -94,7 +94,7 @@
         socket.addEventListener('message', (event) => {
             const responseData = JSON.parse(event.data);
             if (Array.isArray(responseData) && responseData.length === 0) return;
-            document.getElementById('responseArea').value = JSON.stringify(responseData, null, 4);
+            document.getElementById('responseArea').value = JSON.stringify(responseData, null, 2);
         });
     });
 
@@ -117,7 +117,7 @@
     }
 
     function fillRequest(request) {
-        document.getElementById('requestArea').value = JSON.stringify(request.body, null, 4);
+        document.getElementById('requestArea').value = JSON.stringify(request.body, null, 2);
     }
 
     const requestList = document.getElementById('requestList');
