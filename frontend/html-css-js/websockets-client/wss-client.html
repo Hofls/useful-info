@@ -9,11 +9,11 @@
             font-family: Arial, sans-serif;
             display: flex;
             height: 100vh;
-            overflow: hidden; /* Prevent main page scrolling */
+            overflow: hidden;
             margin: 0;
         }
         .sidebar {
-            width: 250px;
+            min-width: 250px;
             height: 100vh;
             overflow-y: auto;
             border-right: 1px solid #ccc;
@@ -26,15 +26,15 @@
             flex-direction: column;
             height: 100vh;
             overflow: hidden;
-            padding-top: 10px; /* Adds space above the button */
+            padding-top: 10px;
         }
         .controls {
             display: flex;
             align-items: center;
             gap: 10px;
             margin-bottom: 10px;
-            flex-shrink: 0; /* Prevents shrinking */
-            padding: 0 20px; /* Consistent spacing */
+            flex-shrink: 0;
+            padding: 0 20px;
         }
         select, button {
             flex: 1;
@@ -42,18 +42,18 @@
             width: 100%;
         }
         textarea {
-            width: calc(100% - 40px); /* Keep padding in check */
-            height: 350px; /* Fixed height */
+            width: calc(100% - 40px);
+            height: 350px;
             overflow-y: auto;
             margin: 0 20px 10px;
-            resize: none; /* Prevent resizing */
+            resize: none;
             padding: 10px;
             box-sizing: border-box;
         }
         .response {
             border: 1px solid #ccc;
             padding: 10px;
-            height: calc(100vh - 450px); /* Remaining space but fixed */
+            height: calc(100vh - 450px);
             overflow-y: auto;
             white-space: pre-wrap;
             margin: 0 20px;
