@@ -90,6 +90,13 @@
         socket.addEventListener('open', () => {
             console.log(`WebSocket connection opened with token: ${token} at ${endpoint}`);
             socket.send(JSON.stringify({ token }));
+
+            // Websocket connection automatically closes without activity:
+            setInterval(() => {
+                if (socket.readyState === WebSocket.OPEN) {
+                    socket.send(JSON.stringify({ ping: true }));
+                }
+            }, 10000);
         });
         socket.addEventListener('message', (event) => {
             const responseData = JSON.parse(event.data);
