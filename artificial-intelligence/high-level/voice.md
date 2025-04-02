@@ -5,6 +5,7 @@
   * https://speechnotes.co/dictate/
   * https://www.speechtexter.com/
   * https://dictanote.co/voicein/
+  * https://translate.google.com/
   * https://docs.google.com/document/u/0/ \
     Tools -> Voice Typing (ctrl+shift+s)
   * https://voicetyper.io/
