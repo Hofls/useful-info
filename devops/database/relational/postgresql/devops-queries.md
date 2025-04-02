@@ -81,6 +81,23 @@ WHERE
 ORDER BY
   too_much_seq DESC;
 ```
+* List table columns that have no indexes:
+```
+SELECT
+    c.table_name,
+    c.column_name
+FROM
+    information_schema.columns c
+WHERE
+    c.table_name = 'INSERT_TABLE_NAME_HERE'
+    AND NOT EXISTS (
+        SELECT 1
+        FROM pg_index i
+        JOIN pg_attribute a ON a.attrelid = i.indrelid AND a.attnum = ANY(i.indkey)
+        WHERE i.indrelid = (SELECT oid FROM pg_class WHERE relname = c.table_name)
+        AND a.attname = c.column_name
+    );
+```
 
 #### Etc
 * Show everything that references table:
