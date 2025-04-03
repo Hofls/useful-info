@@ -29,6 +29,14 @@
 * Local DNS
   * In file `C:\Windows\System32\drivers\etc` insert `231.23.143.25 camel.keras.com`
 
+## PowerShell
+* Convert line endings of all files in all subfolders (from LF to CRLF):
+  ```
+  Get-ChildItem -Recurse -File | ForEach-Object {
+      (Get-Content $_.FullName -Raw) -replace "`n", "`r`n" | Set-Content $_.FullName -NoNewline
+  }
+  ```
+
 ## Package managers
 * Chocolatey:
   * Install `Node JS`
