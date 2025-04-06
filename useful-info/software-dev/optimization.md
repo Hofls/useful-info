@@ -55,6 +55,9 @@
 * `Metadata`/`Delta` as primary object descriptor (e.g. size, elements sum, count, borders)
 * `Partition data` - divide data into independent parts (e.g. shards, tables) Less data means higher processing speed
 * `Limits` - limit amount of requests (e.g. each user has maximum 3000 requests per hour)
+* Game optimization:
+  * Load low res textures first, to quickly be done with loading screen (load high res during gameplay)
+  * Dynamically monitor PC performance - if scene is very resource intensive and PC is weak, temporarily reduce graphic settings
 * Look at hints in [algorithms](computer-science/algorithms.md)
 
 
