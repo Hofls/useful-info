@@ -1,0 +1,26 @@
+1 select finds duplicate data, then based on this single select - delete both visits and boxes
+Unique index is necessary to prevent duplicates in the future (SQL - CREATE UNIQUE INDEX)
+
+<changeSet id="delete_duplicates" author="hofls">
+    <sql>
+        WITH duplicates AS (
+            SELECT * FROM (
+                SELECT
+                    id as visit_id,
+                    box_id,
+                    ROW_NUMBER () OVER (PARTITION BY ris_visit_id ORDER BY id ASC) rownum
+                FROM spu2_visit
+                WHERE ris_visit_id IS NOT NULL
+            ) d where d.rownum > 1
+        ),
+        delete_visits AS (
+            DELETE FROM spu2_visit
+            WHERE id IN (SELECT visit_id FROM duplicates)
+        )
+        DELETE FROM spu2_box
+        WHERE id IN (SELECT box_id FROM duplicates);
+    </sql>
+    <createIndex tableName="spu2_visit" indexName="spu2_visit_ris_unique_idx" unique="true">
+        <column name="ris_visit_id" />
+    </createIndex>
+</changeSet>

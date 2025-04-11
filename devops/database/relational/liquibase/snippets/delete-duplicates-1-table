@@ -1,0 +1,20 @@
+Finds actions with duplicate event_id, leaves only 1 of each, deletes everything else
+Unique index is necessary to prevent duplicates in the future (SQL - CREATE UNIQUE INDEX)
+
+<changeSet id="delete_duplicates" author="hofls">
+    <sql>
+        DELETE FROM user_action
+        WHERE user_action_id IN (
+            SELECT user_action_id FROM (
+                SELECT
+                    user_action_id,
+                    ROW_NUMBER () OVER (PARTITION BY event_id ORDER BY user_action_id ASC) rownum
+                FROM user_action
+                WHERE event_id IS NOT NULL
+            ) d WHERE d.rownum > 1
+        );
+    </sql>
+    <createIndex tableName="user_action" indexName="user_action_event_id_idx" unique="true">
+        <column name="event_id" />
+    </createIndex>
+</changeSet>
