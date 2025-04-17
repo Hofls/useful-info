@@ -30,7 +30,7 @@
         * Unpick `Set up this disk as an LVM group`
             * With default LVM group only small amount of space will be available 
     * Install OpenSSH server
-    * If security update takes too long - its OK to cancel and reboot
+    * If security update takes too long - its OK to cancel and manually reboot server
 
 ### Install, configure Windows
 * Create VM (same as Linux, only difference is image - pick Microsoft Windows Server)

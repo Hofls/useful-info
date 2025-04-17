@@ -309,6 +309,10 @@
     * `crontab -e`
     * Add line `@reboot cd /opt/highload && docker-compose up -d`
     * Logs - `grep CRON /var/log/syslog`
+* Cron with logs
+  * `* * * * * /opt/scripts/hello-world.sh > /opt/scripts/hello-world.logs 2>&1`
+  * Thanks to `2>&1`, errors also will appear in `hello-world.logs`
+  * Replace `>` with `>>` to append logs (instead of rewrite)
 * Boot up file manager
     * `mc`
     * `ranger`
