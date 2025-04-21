@@ -6,6 +6,5 @@
   [runners.docker]
   cpus = "1"
   memory = "3g"
-  memory_swap = "3g"
   ```
   Make sure that limits are working, via `docker stats`
