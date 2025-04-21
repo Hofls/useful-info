@@ -1,1 +1,0 @@
-Look at `software-dev-tools` -> `gitlab` -> `kubernetes`
