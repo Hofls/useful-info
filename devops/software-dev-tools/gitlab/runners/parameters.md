@@ -7,4 +7,4 @@
   cpus = "1"
   memory = "3g"
   ```
-  Make sure that limits are working, via `docker stats`
+  Make sure that limits are working, via `docker stats` or `top`
