@@ -126,6 +126,9 @@
         * `Sources` -> `+` -> `Display capture` -> `Start recording`
     * To film only small part of screen:
         * `Display capture` -> `Filters` -> `+` -> `Crop/pad`
+    * To simulate webcam:
+      * Run as admin `\Programs\OBS\data\obs-plugins\win-dshow\virtualcam-install.bat`
+      * Restart PC -> Open OBS -> Start Virtual Camera 
 * `DaVinci Resolve` - to edit videos
 * `Audacity` to record all the sounds that you hear in your headphones
 * `Battle Encoder Shirase` to limit resources available to the process (CPU)
