@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Live SRT Generator</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2rem;
+      background: #f9f9f9;
+      font-size: 1rem; /* Medium size for general text */
+    }
+    textarea, pre {
+      width: 100%;
+      box-sizing: border-box;
+      font-family: monospace;
+      margin-bottom: 1rem;
+      font-size: 1rem; /* Medium size for textarea and output */
+    }
+    button {
+      padding: 0.5rem 1rem;
+      font-size: 1rem; /* Medium size for button */
+      margin-right: 0.5rem;
+    }
+    #currentLineDisplay, #nextLineDisplay {
+      font-size: 1.8rem; /* Large size for current and next lines */
+      font-weight: bold;
+      margin: 0.5rem 0;
+      color: #333;
+    }
+    #nextLineDisplay {
+      color: #666; /* Slightly lighter for next line to differentiate */
+    }
+    .label {
+      font-size: 1rem; /* Medium size for labels */
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+<div class="label">1. Paste lyrics (one sentence per line)</div>
+<textarea id="lyrics" rows="10" placeholder="Paste lyrics here..."></textarea>
+<br>
+<button onclick="startTiming()">Start Timing</button>
+
+<div class="label">2. Listen to music, hit Enter when each line finishes</div>
+<p id="currentLineDisplay"></p>
+<p id="nextLineDisplay"></p>
+
+<div class="label">Live SRT Output</div>
+<pre id="srtOutput"></pre>
+
+<script>
+  let lines = [];
+  let timestamps = [];
+  let index = 0;
+  let startTime;
+  const output = document.getElementById("srtOutput");
+  const currentLineDisplay = document.getElementById("currentLineDisplay");
+  const nextLineDisplay = document.getElementById("nextLineDisplay");
+
+  function startTiming() {
+    lines = document.getElementById("lyrics").value.trim().split("\n");
+    if (lines.length === 0) return;
+
+    timestamps = [performance.now()];
+    index = 0;
+    output.textContent = "";
+    currentLineDisplay.textContent = lines[0] || "";
+    nextLineDisplay.textContent = lines[1] || "";
+    startTime = timestamps[0];
+  }
+
+  function recordLine() {
+    if (index >= lines.length) return;
+
+    const now = performance.now();
+    timestamps.push(now);
+
+    if (index < lines.length) {
+      const start = timestamps[index] - startTime;
+      const end = timestamps[index + 1] - startTime;
+      const srtEntry = formatSRT(index + 1, start, end, lines[index]);
+      output.textContent += srtEntry + "\n";
+    }
+
+    index++;
+
+    if (index < lines.length) {
+      currentLineDisplay.textContent = lines[index] || "";
+      nextLineDisplay.textContent = lines[index + 1] || "";
+    } else {
+      currentLineDisplay.textContent = "✅ Done!";
+      nextLineDisplay.textContent = "";
+    }
+  }
+
+  function formatSRT(i, startMs, endMs, text) {
+    return `${i}\n${formatTime(startMs)} --> ${formatTime(endMs)}\n${text}\n`;
+  }
+
+  function formatTime(ms) {
+    const date = new Date(ms);
+    return [
+      String(date.getUTCHours()).padStart(2, '0'),
+      String(date.getUTCMinutes()).padStart(2, '0'),
+      String(date.getUTCSeconds()).padStart(2, '0')
+    ].join(":") + "," + String(date.getUTCMilliseconds()).padStart(3, '0');
+  }
+
+  document.addEventListener("keydown", e => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      recordLine();
+    }
+  });
+</script>
+
+</body>
+</html>
