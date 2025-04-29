@@ -10,8 +10,9 @@
 * Usually makes sense to remove text in parenthesis:
   * https://www.thebiomics.com/tool/text-cleaner.html
 
-### Related tools
-* Black and white image:
-  * https://blackandwhite.imageonline.co/
-* Video editor:
-  * https://www.blackmagicdesign.com/products/davinciresolve
+### Davinci resolve
+* https://www.blackmagicdesign.com/products/davinciresolve
+* Subtitiles:
+  * File -> Project settings -> Subtitles and transcription -> Max characters per line -> 40
+  * Edit -> Subtitle -> Track -> Background
+  * Render -> Custom export -> Export subtitle -> Burn into video
