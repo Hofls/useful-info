@@ -9,6 +9,7 @@
 * Better if structure of song and bars is uniform (e.g. bad if some lines are long while other are short)
 * Usually makes sense to remove text in parenthesis:
   * https://www.thebiomics.com/tool/text-cleaner.html
+* `censorship-bypass.js` in invis repo 
 
 ### Davinci resolve
 * https://www.blackmagicdesign.com/products/davinciresolve
