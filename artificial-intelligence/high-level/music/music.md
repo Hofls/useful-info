@@ -14,6 +14,9 @@
 ### Davinci resolve
 * https://www.blackmagicdesign.com/products/davinciresolve
 * Subtitiles:
-  * File -> Project settings -> Subtitles and transcription -> Max characters per line -> 40
+  * File -> Project settings -> Subtitles and transcription Max characters per line -> 40
   * Edit -> Subtitle -> Track -> Background
+  * Edit -> Subtitle -> Track -> Font face -> Light
   * Render -> Custom export -> Export subtitle -> Burn into video
+* You delete 1 thing, but something completely unrelated also gets deleted?
+  * Make sure "Auto track selector" is turned off (on timeline)
