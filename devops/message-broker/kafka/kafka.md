@@ -18,7 +18,6 @@
     confluentinc/cp-kafka:7.3.0
   ```
 
-
 #### Install on kubernetes
 * Install kafka & zookeeper:
   * `OpenLens` -> `Pods` -> `Create resource` -> [insert text](yaml/kafka-k8s.yaml)
