@@ -17,6 +17,9 @@
     -e KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1 \
     confluentinc/cp-kafka:7.3.0
   ```
+* To check if its working correctly:
+  * [kafka-gui.md](kafka-gui.md) 
+  * `kafka/hello-world` project in `java-dependencies` repo
 
 #### Install on kubernetes
 * Install kafka & zookeeper:
