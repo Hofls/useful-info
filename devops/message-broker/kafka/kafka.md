@@ -1,6 +1,24 @@
 #### Info
 * Kafka - event streaming platform (publish/subscribe)
 
+#### Install locally (Docker)
+* Run ZooKeeper:
+  ```
+  docker run --name some-zookeeper -p 2181:2181 --detach \
+    -e ZOOKEEPER_CLIENT_PORT=2181 \
+    -e ZOOKEEPER_TICK_TIME=2000 \
+    confluentinc/cp-zookeeper:7.3.0
+  ```
+* Run Kafka:
+  ```
+  docker run --name some-kafka -p 9092:9092 --detach \
+    -e KAFKA_ZOOKEEPER_CONNECT=host.docker.internal:2181 \
+    -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092 \
+    -e KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1 \
+    confluentinc/cp-kafka:7.3.0
+  ```
+
+
 #### Install on kubernetes
 * Install kafka & zookeeper:
   * `OpenLens` -> `Pods` -> `Create resource` -> [insert text](yaml/kafka-k8s.yaml)
