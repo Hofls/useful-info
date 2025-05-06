@@ -1,5 +1,14 @@
 #### Info
 * Kafka - event streaming platform (publish/subscribe)
+* Topics - Data is organized into topics (like categories or channels). Producers send messages to topics, and consumers read from them
+* Partitions - Topics are split into partitions for scalability and parallelism. Each partition is an ordered log of messages
+* Brokers - Kafka runs as a cluster of servers (brokers) that store and manage data
+* Producers - Applications that send messages to Kafka topics
+* Consumers - Applications that read messages from Kafka topics
+* Consumer Groups - Consumers can group together to share work. Each partition is consumed by one consumer in the group
+* Replication - Partitions are replicated across brokers for fault tolerance
+* Offsets - Each message in a partition has a unique offset (like an index) to track consumer progress
+* Retention - Kafka retains messages for a configurable time (or size limit), allowing consumers to replay or catch up
 
 #### Install locally (Docker)
 * Run ZooKeeper:
