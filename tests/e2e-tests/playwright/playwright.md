@@ -177,3 +177,4 @@
     });
     utils.assertTrue(response.ok);
 ```
+* Find svg by part of its content - `await page.locator('path[d*="6.215 14.562 3.0845 8.7326"]').click();`
