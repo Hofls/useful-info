@@ -114,8 +114,12 @@
 * `OpenLens` any version before 6.3.0 (they removed ability to look at pod logs)
 * `Wireshark`
 * `7zip`
-    * Password-protected archive:
-        * Right click on files -> Add to archive... -> Set password -> Check "Encrypt file names"
+    * Password-protected (encrypted) archive:
+        * Right click on files -> Add to archive... 
+        * Archive format -> 7z
+        * Encryption method -> AES-256
+        * Check "Encrypt file names"
+        * Set password
 * `Notepad++` 
     * To create second view - right click on tab -> `Move document` -> `Move to other view`
     * To reduce tabs size - Settings -> Preferences -> General -> Enable pin tab feature (disable it)
