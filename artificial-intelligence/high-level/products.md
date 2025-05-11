@@ -30,7 +30,6 @@
 * `Flux`
 * `DALL-E`
 * `Stable Diffusion`
-    * `Lexica.art` - art gallery
     * `Stable horde` - crowdsourced distributed cluster
 * `Midjourney`
 * `monica.im`
@@ -61,7 +60,25 @@
 ### Games
 * `AI Dungeon` - text based rpg
 
-## Other products
+### Galleries
+* Images:
+  * https://civitai.com/images			
+  * https://lexica.art/
+  * https://www.enterpix.app/
+  * https://pixai.art/
+  * https://tensor.art/posts
+* Video:
+  * https://hailuoai.video/
+  * https://www.vidu.com/explore/inspiration
+  * https://prompthero.com/video?sort=hot
+* Music:
+  * https://www.riffusion.com/?songsFilter=week
+  * https://suno.com/search?type=public_song
+  * https://www.udio.com/home
+* 3D models:
+  * https://www.meshy.ai/discover?tab=total_emoji_count
+
+### Other products
 * `livebench.ai` - llm performance comparison
 * `lmarena.ai` - top models list
 * `openroute` - top models list
