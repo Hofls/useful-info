@@ -66,3 +66,16 @@
 #### Problems
 * Unable to connect to `kafka:9092` (docker)
     * Fix - set parameter `KAFKA_CFG_ADVERTISED_LISTENERS: CLIENT://kafka:9092,EXTERNAL://localhost:9094`
+* After Zookeeper restarts - Kafka is unable to automatically reconnect
+  * Zookeeper error:
+  ```
+  INFO Refusing session request for client /10.214.6.84:43942 as it has seen zxid 0xbe our last zxid is 0x0 client must try another server (org.apache.zookeeper.server.ZooKeeperServer)
+  ```
+  * Kafka error:
+  ```
+  WARN Session 0x10052cfc3180001 for server zookeeper/10.45.76.98:2181, Closing socket connection. Attempting reconnect except it is a SessionExpiredException. (org.apache.zookeeper.ClientCnxn)
+  EndOfStreamException: Unable to read additional data from server sessionid 0x10052cfc3180001, likely server has closed socket
+      at org.apache.zookeeper.ClientCnxnSocketNIO.doIO(ClientCnxnSocketNIO.java:77)
+      at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:350)
+      at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1289)
+  ```
