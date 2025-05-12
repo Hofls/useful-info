@@ -26,13 +26,20 @@ FROM pg_stat_activity
 group by application_name
 order by application_name;
 ```
-* Slow queries:
+* Slow queries (old PostgreSQL):
 ```
--- In new version, use column mean_exec_time instead of calculating avg_time_ms
-select query, calls, (total_time/calls)::integer as avg_time_ms 
+select (total_time/calls)::integer as avg_time_ms, calls, query 
 from pg_stat_statements
 where calls > 20 and query <> '<insufficient privilege>'
 order by avg_time_ms desc
+limit 400;
+```
+* Slow queries (new PostgreSQL):
+```
+select mean_exec_time, calls, query 
+from pg_stat_statements
+where calls > 20 and query <> '<insufficient privilege>'
+order by mean_exec_time desc
 limit 400;
 ```
 * Approximate count (if standard count is too slow)
