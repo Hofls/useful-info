@@ -75,6 +75,7 @@
     * https://anvaka.github.io/redsim/#!?q=webdev
     * https://anvaka.github.io/redsim/#!?q=devops
 * [Testcontainers modules](https://testcontainers.com/modules/)
+* [List of popular websites](https://en.wikipedia.org/wiki/List_of_most-visited_websites)
     
 #### Java:
 * https://www.jhipster.tech/
