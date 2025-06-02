@@ -1,4 +1,9 @@
-Typical information to store in wiki:
+### Confluence (wiki):
+* To add drop down list:
+  * Edit -> Other macros -> Expand
+  * All text within "Expand" block will be hidden until user clicks on "Expand" header
+
+### Typical information to store in wiki:
 * Instructions (how to)
     * Release new product version
     * Install tools
