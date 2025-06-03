@@ -141,3 +141,7 @@
 * Api versions supported by k8s:
   * `kubectl api-versions`
   * For example, old k8s - "networking.k8s.io/v1beta1", new k8s - "networking.k8s.io/v1"
+* Create secret to pull from docker-registry:
+  * `kubectl create secret docker-registry SECRET_NAME_HERE --docker-server=OPTIONAL_REGISTRY_URL --docker-username=USER_NAME_HERE --docker-password=PASSWORD_HERE`
+  * `kubectl create secret docker-registry regsecret --docker-server=docker.somas.com --docker-username=hofls --docker-password=qwerty`
+  * Secret name is used in `imagePullSecrets:` part of `.yaml` file
