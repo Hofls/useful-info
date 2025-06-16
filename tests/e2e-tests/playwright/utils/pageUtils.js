@@ -206,7 +206,7 @@ module.exports = {
             element = await page.$(selector);
         }
         let box = await element.boundingBox();
-        await page.mouse.click(box.x + offset, box.y);
+        await page.mouse.click(box.x + offset, box.y + 10);
     },
 
     // await action.clickBelowOf(page, 50, 'text="Pick a date"');
