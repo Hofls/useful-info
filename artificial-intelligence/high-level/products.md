@@ -67,14 +67,19 @@
   * https://www.enterpix.app/
   * https://pixai.art/
   * https://tensor.art/posts
+  * https://www.seaart.ai/
+  * https://prompthero.com/hot
 * Video:
   * https://hailuoai.video/
   * https://www.vidu.com/explore/inspiration
   * https://prompthero.com/video?sort=hot
+  * https://www.seaart.ai/ai-video
 * Music:
   * https://www.riffusion.com/?songsFilter=week
   * https://suno.com/search?type=public_song
   * https://www.udio.com/home
+* Voice:
+  * https://www.seaart.ai/ai-audio
 * 3D models:
   * https://www.meshy.ai/discover?tab=total_emoji_count
 
