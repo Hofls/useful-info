@@ -1,5 +1,6 @@
 ### LLM
 * `DeepSeek` - Chinese LLM
+* `alice.yandex.ru` - Yandex LLM
 * `DuckDuckGo AI Chat` - online access to Claude/ChatGPT/Llama/Mixtral
 * `perplexity.ai` - LLM with access to the internet
 * `you.com`- GPT-4/Claude/Gemini with access to the internet
@@ -16,12 +17,6 @@
 * `Grok / X` - Ex Twitter LLM
 * `Gemini` - Google LLM, youtube video tldr
 * `claude.ai` - Pretty good, but requires phone number for registration
-
-### AI voice chat (conversation)
-* `sesame.com` - [demo](https://www.sesame.com/research/crossing_the_uncanny_valley_of_voice#demo)
-* `deepai.org/voice`
-* `aistudio.google.com/live`
-* `character.ai`
 
 ### Image generation
 * `Bing`
