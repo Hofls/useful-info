@@ -1,9 +1,9 @@
 ### AI voice chat (conversation)
-* `chatgpt.com`
 * `sesame.com` - [demo](https://www.sesame.com/research/crossing_the_uncanny_valley_of_voice#demo)
 * `deepai.org/voice`
 * `aistudio.google.com/live`
 * `character.ai`
+* `chatgpt.com` - very time-limited without subscription
 
 ### Voice typing / Dictation / Speech to text
 * The best:
