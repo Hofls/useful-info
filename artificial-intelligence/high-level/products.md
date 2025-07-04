@@ -1,5 +1,5 @@
 ### LLM
-* `DeepSeek` - Chinese LLM
+* `chat.deepseek.com` - Chinese LLM
 * `alice.yandex.ru` - Yandex LLM
 * `DuckDuckGo AI Chat` - online access to Claude/ChatGPT/Llama/Mixtral
 * `perplexity.ai` - LLM with access to the internet
