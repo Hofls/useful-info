@@ -77,6 +77,9 @@
     * Prerequisites:
         * `Windows search` -> `Turn Windows features on or off` -> `Enable Hyper-v`
         * Not really necessary - Enable Windows Hypervisor Platform
+    * If Vmmem causes high load, even tho docker is not running
+      * It means docker was running on previous session, but is not running now
+      * To fix - manually turn off docker each time (before turning off PC)
 * VMware Workstation Player:
   * Runs any `.iso` / `.vmdk` images!
     * `.iso` - you have to install it from 0 (spam keyboard during VM launch)
@@ -96,6 +99,8 @@
     `Sound` -> `Sound Control Panel` -> `Sounds` -> `Sound Scheme: No Sounds`
   * Show file extension (with ability to edit it): \
     `File explorer` -> `View` -> `File name extensions`
+* "Microsoft compatibility telemetry" can cause high CPU load. To turn it off:
+  * MS search -> Services -> Connected User Experiences and Telemetry -> Properties -> Startup Type -> Disabled
 * Problem with the internet on PC:
   * No problem! Just use internet from a smartphone
   * Connect Android to PC via USB
