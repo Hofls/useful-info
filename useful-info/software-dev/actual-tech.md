@@ -11,7 +11,7 @@
     * https://github.com/topics
     * https://github.com/explore
 * Other websites:
-    * https://www.hntoplinks.com/year
+    * https://www.hntoplinks.com/year (or check each month - archives at the bottom of the page)
     * https://dev.to/top/year
 * Software from package managers / stores / repositories
     * https://hub.docker.com/search?image_filter=&type=image
