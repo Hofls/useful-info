@@ -13,17 +13,10 @@
 * Other websites:
     * https://www.hntoplinks.com/year (or check each month - archives at the bottom of the page)
     * https://dev.to/top/year
-* Software from package managers / stores / repositories
-    * https://hub.docker.com/search?image_filter=&type=image
-    * https://snapcraft.io/store?categories=development%2Cserver-and-cloud
-    * https://mvnrepository.com/popular
-    * https://mvnrepository.com/open-source
-    * https://apps.microsoft.com/collections/computed/apps/topfree?hl=en-us&gl=RU (Category -> Developer Tools)
-    * https://chocolatey.org/packages
-* Tech stacks
-    * https://stackshare.io/stacks
 * Roadmaps
     * https://roadmap.sh/
+* Tech stacks
+    * https://stackshare.io/stacks
 * Technology macro trends
     * https://www.thoughtworks.com/radar
     * https://www.infoq.com/infoq-trends-report/
@@ -61,11 +54,11 @@
     * [jetbrains](https://www.jetbrains.com/lp/devecosystem-2023/)
 * State of industry reports
     * [github](https://github.blog/2023-11-08-the-state-of-open-source-and-ai/)
+* [Testcontainers modules](https://testcontainers.com/modules/)
+* [List of popular websites](https://en.wikipedia.org/wiki/List_of_most-visited_websites)
 * Any job listings
 * Imageboards (ai/tech sections)
 * Look at integrations/images/managed services at cloud providers (AWS, GCP, Azure)
-* Most used libraries
-    * https://mvnrepository.com/popular?p=1
 * Online courses (even table of contents is enough)
     * Udemy, codeacademy, coursera, edx
 * Online conferences (even schedule is enough)
@@ -74,8 +67,13 @@
     * https://anvaka.github.io/redsim/#!?q=programming
     * https://anvaka.github.io/redsim/#!?q=webdev
     * https://anvaka.github.io/redsim/#!?q=devops
-* [Testcontainers modules](https://testcontainers.com/modules/)
-* [List of popular websites](https://en.wikipedia.org/wiki/List_of_most-visited_websites)
+* Software from package managers / stores / repositories
+  * https://hub.docker.com/search?image_filter=&type=image
+  * https://snapcraft.io/store?categories=development%2Cserver-and-cloud
+  * https://mvnrepository.com/popular
+  * https://mvnrepository.com/open-source
+  * https://apps.microsoft.com/collections/computed/apps/topfree?hl=en-us&gl=RU (Category -> Developer Tools)
+  * https://chocolatey.org/packages
     
 #### Java:
 * https://www.jhipster.tech/
