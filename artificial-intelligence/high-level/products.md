@@ -1,6 +1,8 @@
 ### LLM
 * `chat.deepseek.com` - Chinese LLM
+* `chat.qwen.ai` - Chinese LLM, great at coding/programming (claude alternative)
 * `alice.yandex.ru` - Yandex LLM
+* `kimi.com` - Chinese LLM
 * `DuckDuckGo AI Chat` - online access to Claude/ChatGPT/Llama/Mixtral
 * `perplexity.ai` - LLM with access to the internet
 * `you.com`- GPT-4/Claude/Gemini with access to the internet
@@ -8,7 +10,7 @@
 * `monica.im` - GPT, Gemini, Llama, Claude
 * `phind.com` - Phind LLM
 * `hix.ai` - Online access to Claude/ChatGPT
-* `openrouter` - Multiple LLms
+* `openrouter.ai` - Multiple LLms
 * `kimi.moonshot.cn` - AI + internet
 
 ### LLM (Unavailable in some regions)
@@ -16,7 +18,7 @@
 * `Bing` - ChatGPT with access to the internet
 * `Grok / X` - Ex Twitter LLM
 * `Gemini` - Google LLM, youtube video tldr
-* `claude.ai` - Pretty good, but requires phone number for registration
+* `claude.ai` - Pretty good for coding/programming, but requires phone number for registration
 
 ### Image generation
 * `Bing`
