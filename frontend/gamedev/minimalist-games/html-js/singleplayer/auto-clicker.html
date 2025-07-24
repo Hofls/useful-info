@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click Frenzy - Addictive Clicker Game</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: white;
+        }
+        
+        .game-container {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 800px;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+            color: #fff;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #ddd;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-box {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #4dff4d;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: #aaa;
+        }
+        
+        .click-area {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 40px 20px;
+            margin-bottom: 30px;
+            cursor: pointer;
+            transition: all 0.1s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .click-area:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.02);
+        }
+        
+        .click-area:active {
+            transform: scale(0.98);
+        }
+        
+        .click-button {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(145deg, #ff00cc, #3333ff);
+            border-radius: 50%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            font-weight: bold;
+            box-shadow: 0 0 30px rgba(255, 0, 204, 0.5);
+            transition: all 0.1s ease;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        
+        .click-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(255, 0, 204, 0.7);
+        }
+        
+        .click-button:active {
+            transform: scale(0.95);
+        }
+        
+        .upgrades {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .upgrade {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .upgrade:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+        
+        .upgrade h3 {
+            margin-bottom: 10px;
+            color: #4dff4d;
+        }
+        
+        .upgrade p {
+            margin-bottom: 15px;
+            color: #ddd;
+            font-size: 0.9rem;
+        }
+        
+        .upgrade button {
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
+            border: none;
+            border-radius: 30px;
+            color: white;
+            padding: 10px 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .upgrade button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 75, 43, 0.7);
+        }
+        
+        .upgrade button:disabled {
+            background: #555;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .achievements {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .achievements h2 {
+            margin-bottom: 15px;
+            color: #ffcc00;
+        }
+        
+        .achievement {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            margin: 10px 0;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+        
+        .achievement.locked {
+            opacity: 0.5;
+        }
+        
+        .achievement-icon {
+            width: 40px;
+            height: 40px;
+            background: #ffcc00;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+        
+        .achievement.locked .achievement-icon {
+            background: #555;
+        }
+        
+        .achievement-info h4 {
+            text-align: left;
+        }
+        
+        .achievement-info p {
+            font-size: 0.8rem;
+            color: #aaa;
+            text-align: left;
+        }
+        
+        .click-effect {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: clickAnimation 0.6s ease-out;
+        }
+        
+        @keyframes clickAnimation {
+            0% {
+                transform: scale(0.5);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(3);
+                opacity: 0;
+            }
+        }
+        
+        .floating-text {
+            position: absolute;
+            color: #4dff4d;
+            font-weight: bold;
+            font-size: 1.5rem;
+            pointer-events: none;
+            animation: floatUp 1s ease-out forwards;
+        }
+        
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .stats {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .click-button {
+                width: 150px;
+                height: 150px;
+                font-size: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>CLICK FRENZY</h1>
+        <p class="subtitle">Click the button to earn points. Buy upgrades to earn more!</p>
+        
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-value" id="points">0</div>
+                <div class="stat-label">POINTS</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="points-per-click">1</div>
+                <div class="stat-label">PER CLICK</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="points-per-second">0</div>
+                <div class="stat-label">PER SECOND</div>
+            </div>
+        </div>
+        
+        <div class="click-area" id="clickArea">
+            <button class="click-button" id="clickButton">CLICK ME!</button>
+        </div>
+        
+        <div class="upgrades">
+            <div class="upgrade">
+                <h3>Auto-Clicker</h3>
+                <p>Automatically clicks for you</p>
+                <p>+1 point every 10 seconds</p>
+                <p>Cost: <span id="auto-clicker-cost">10</span> points</p>
+                <button id="buy-auto-clicker">Buy (0)</button>
+            </div>
+            
+            <div class="upgrade">
+                <h3>Better Clicks</h3>
+                <p>Increase points per click</p>
+                <p>+1 point per click</p>
+                <p>Cost: <span id="better-clicks-cost">50</span> points</p>
+                <button id="buy-better-clicks">Buy (0)</button>
+            </div>
+            
+            <div class="upgrade">
+                <h3>Super Clicker</h3>
+                <p>Massive point boost</p>
+                <p>+10 points per click</p>
+                <p>Cost: <span id="super-clicker-cost">500</span> points</p>
+                <button id="buy-super-clicker">Buy (0)</button>
+            </div>
+        </div>
+        
+        <div class="achievements">
+            <h2>Achievements</h2>
+            <div class="achievement" id="achievement-100">
+                <div class="achievement-icon">1</div>
+                <div class="achievement-info">
+                    <h4>First Hundred</h4>
+                    <p>Earn 100 points</p>
+                </div>
+            </div>
+            <div class="achievement locked" id="achievement-1000">
+                <div class="achievement-icon">2</div>
+                <div class="achievement-info">
+                    <h4>Thousand Master</h4>
+                    <p>Earn 1,000 points</p>
+                </div>
+            </div>
+            <div class="achievement locked" id="achievement-10000">
+                <div class="achievement-icon">3</div>
+                <div class="achievement-info">
+                    <h4>Click Tycoon</h4>
+                    <p>Earn 10,000 points</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Game state
+        const gameState = {
+            points: 0,
+            pointsPerClick: 1,
+            pointsPerSecond: 0,
+            upgrades: {
+                autoClicker: { count: 0, cost: 10, increment: 1 },
+                betterClicks: { count: 0, cost: 50, increment: 1 },
+                superClicker: { count: 0, cost: 500, increment: 10 }
+            },
+            achievements: {
+                '100': false,
+                '1000': false,
+                '10000': false
+            }
+        };
+
+        // DOM elements
+        const pointsElement = document.getElementById('points');
+        const pointsPerClickElement = document.getElementById('points-per-click');
+        const pointsPerSecondElement = document.getElementById('points-per-second');
+        const clickButton = document.getElementById('clickButton');
+        const clickArea = document.getElementById('clickArea');
+        
+        // Upgrade buttons
+        const buyAutoClicker = document.getElementById('buy-auto-clicker');
+        const buyBetterClicks = document.getElementById('buy-better-clicks');
+        const buySuperClicker = document.getElementById('buy-super-clicker');
+        
+        // Cost elements
+        const autoClickerCost = document.getElementById('auto-clicker-cost');
+        const betterClicksCost = document.getElementById('better-clicks-cost');
+        const superClickerCost = document.getElementById('super-clicker-cost');
+        
+        // Achievement elements
+        const achievement100 = document.getElementById('achievement-100');
+        const achievement1000 = document.getElementById('achievement-1000');
+        const achievement10000 = document.getElementById('achievement-10000');
+
+        // Initialize the game
+        function initGame() {
+            updateUI();
+            
+            // Set up click event
+            clickButton.addEventListener('click', handleClick);
+            
+            // Set up upgrade buttons
+            buyAutoClicker.addEventListener('click', () => buyUpgrade('autoClicker'));
+            buyBetterClicks.addEventListener('click', () => buyUpgrade('betterClicks'));
+            buySuperClicker.addEventListener('click', () => buyUpgrade('superClicker'));
+            
+            // Set up auto-clicker
+            setInterval(autoClick, 1000);
+            
+            // Update points per second display
+            setInterval(updatePointsPerSecondDisplay, 1000);
+        }
+
+        // Handle click event
+        function handleClick(e) {
+            // Add points
+            gameState.points += gameState.pointsPerClick;
+            
+            // Create visual feedback
+            createClickEffect(e);
+            createFloatingText(e, `+${gameState.pointsPerClick}`);
+            
+            // Check achievements
+            checkAchievements();
+            
+            // Update UI
+            updateUI();
+        }
+
+        // Create click effect
+        function createClickEffect(e) {
+            const effect = document.createElement('div');
+            effect.className = 'click-effect';
+            effect.style.left = `${e.clientX - clickArea.getBoundingClientRect().left - 15}px`;
+            effect.style.top = `${e.clientY - clickArea.getBoundingClientRect().top - 15}px`;
+            clickArea.appendChild(effect);
+            
+            // Remove effect after animation
+            setTimeout(() => {
+                effect.remove();
+            }, 600);
+        }
+
+        // Create floating text
+        function createFloatingText(e, text) {
+            const floatingText = document.createElement('div');
+            floatingText.className = 'floating-text';
+            floatingText.textContent = text;
+            floatingText.style.left = `${e.clientX - clickArea.getBoundingClientRect().left}px`;
+            floatingText.style.top = `${e.clientY - clickArea.getBoundingClientRect().top}px`;
+            clickArea.appendChild(floatingText);
+            
+            // Remove text after animation
+            setTimeout(() => {
+                floatingText.remove();
+            }, 1000);
+        }
+
+        // Auto-clicker function
+        function autoClick() {
+            if (gameState.upgrades.autoClicker.count > 0) {
+                gameState.points += gameState.upgrades.autoClicker.count;
+                updateUI();
+                
+                // Visual feedback for auto-click
+                const rect = clickButton.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                
+                createFloatingText({
+                    clientX: centerX,
+                    clientY: centerY
+                }, `+${gameState.upgrades.autoClicker.count}`);
+            }
+        }
+
+        // Buy upgrade
+        function buyUpgrade(upgradeName) {
+            const upgrade = gameState.upgrades[upgradeName];
+            
+            if (gameState.points >= upgrade.cost) {
+                gameState.points -= upgrade.cost;
+                upgrade.count++;
+                
+                // Increase cost for next purchase (10% more)
+                upgrade.cost = Math.floor(upgrade.cost * 1.1);
+                
+                // Apply upgrade effect
+                if (upgradeName === 'autoClicker') {
+                    gameState.pointsPerSecond += upgrade.increment;
+                } else if (upgradeName === 'betterClicks') {
+                    gameState.pointsPerClick += upgrade.increment;
+                } else if (upgradeName === 'superClicker') {
+                    gameState.pointsPerClick += upgrade.increment;
+                }
+                
+                updateUI();
+            }
+        }
+
+        // Update points per second display
+        function updatePointsPerSecondDisplay() {
+            pointsPerSecondElement.textContent = gameState.pointsPerSecond;
+        }
+
+        // Check achievements
+        function checkAchievements() {
+            if (!gameState.achievements['100'] && gameState.points >= 100) {
+                gameState.achievements['100'] = true;
+                achievement100.classList.remove('locked');
+                showNotification("Achievement Unlocked: First Hundred!");
+            }
+            
+            if (!gameState.achievements['1000'] && gameState.points >= 1000) {
+                gameState.achievements['1000'] = true;
+                achievement1000.classList.remove('locked');
+                showNotification("Achievement Unlocked: Thousand Master!");
+            }
+            
+            if (!gameState.achievements['10000'] && gameState.points >= 10000) {
+                gameState.achievements['10000'] = true;
+                achievement10000.classList.remove('locked');
+                showNotification("Achievement Unlocked: Click Tycoon!");
+            }
+        }
+
+        // Show notification
+        function showNotification(message) {
+            // In a real implementation, you might use a more sophisticated notification system
+            console.log(message);
+        }
+
+        // Update UI
+        function updateUI() {
+            // Update points display
+            pointsElement.textContent = formatNumber(gameState.points);
+            pointsPerClickElement.textContent = gameState.pointsPerClick;
+            
+            // Update upgrade costs
+            autoClickerCost.textContent = formatNumber(gameState.upgrades.autoClicker.cost);
+            betterClicksCost.textContent = formatNumber(gameState.upgrades.betterClicks.cost);
+            superClickerCost.textContent = formatNumber(gameState.upgrades.superClicker.cost);
+            
+            // Update upgrade buttons
+            buyAutoClicker.textContent = `Buy (${gameState.upgrades.autoClicker.count})`;
+            buyBetterClicks.textContent = `Buy (${gameState.upgrades.betterClicks.count})`;
+            buySuperClicker.textContent = `Buy (${gameState.upgrades.superClicker.count})`;
+            
+            // Disable buttons if not enough points
+            buyAutoClicker.disabled = gameState.points < gameState.upgrades.autoClicker.cost;
+            buyBetterClicks.disabled = gameState.points < gameState.upgrades.betterClicks.cost;
+            buySuperClicker.disabled = gameState.points < gameState.upgrades.superClicker.cost;
+        }
+
+        // Format large numbers
+        function formatNumber(num) {
+            if (num >= 1000000) {
+                return (num / 1000000).toFixed(1) + 'M';
+            }
+            if (num >= 1000) {
+                return (num / 1000).toFixed(1) + 'K';
+            }
+            return num;
+        }
+
+        // Initialize the game when the page loads
+        window.onload = initGame;
+    </script>
+</body>
+</html>
