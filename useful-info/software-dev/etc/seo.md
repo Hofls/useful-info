@@ -8,7 +8,7 @@
 * Mobile-first (Most internet traffic is mobile)
     * [Google check](https://search.google.com/test/mobile-friendly)
 * Good metrics (e.g. lighthouse)
-    * [Optimization](optimization.md)
+    * [Optimization](../optimization.md)
         * [PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/)
     * [Accessibility](human-computer/accessibility.md)
 * High quality content
