@@ -198,6 +198,7 @@
 * `Invariant` - property of the system that is always true (e.g. account balance is never less than 0)
 * `Vibe coding` - LLM generates code, while programmer guides, tests, reviews and refines
 * `Architecture decision record` - log reasons behind each architectural decision (periodically check if they still make sense)
+* `Model Context Protocol` - protocol that standardizes how apps provide context to LLM (e.g. previous messages and data from relevant websites)
 
 ### Others
 * Pick the right tool for the job
