@@ -20,4 +20,8 @@
 * `AI Response configuration`:
   * `Max Response Length (tokens)` - 4000
   * `Context Size` - 10000
-  * `Temperature` - 0.5
+  * `Streaming` - Disabled (with streaming you won't see error messages)
+  * `Temperature` - 1.0
+  * `Web search` - Disabled
+  * `Chat history` - Enabled
+  * `Main prompt` - Paste your prompt there
