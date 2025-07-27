@@ -23,6 +23,7 @@
 * Server side:
     * `nano /etc/tinyproxy/tinyproxy.conf`
         * Uncomment `BasicAuth`, set user/password
+        * 1 BasicAuth line = 1 account
     * `service tinyproxy restart`
     * Check that its working - `curl -iv --proxy-user "username:password" -x http://127.0.0.1:8888 --location http://www.google.com`
 * Client side:
