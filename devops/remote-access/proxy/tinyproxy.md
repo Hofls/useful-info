@@ -29,3 +29,4 @@
     * `Proxy Helper` -> Right click -> `Options` -> `Authentication` -> Set user/password
     * Restart browser
     * [Check your IP](https://api.ipify.org/?format=json)
+    * PS - in other software you have to put it all in 1 line, e.g. `http://hofls:qwerty@84.26.222.43:8888` in `SillyTavern`
