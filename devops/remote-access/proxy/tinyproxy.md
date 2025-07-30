@@ -25,7 +25,7 @@
         * Uncomment `BasicAuth`, set user/password
         * 1 BasicAuth line = 1 account
     * `service tinyproxy restart`
-    * Check that its working - `curl -iv --proxy-user "username:password" -x http://127.0.0.1:8888 --location http://www.google.com`
+    * Check that its working - `curl -iv --proxy-user "username:password" -x http://127.0.0.1:8888 --location http://www.example.com`
 * Client side:
     * `Proxy Helper` -> Right click -> `Options` -> `Authentication` -> Set user/password
     * Restart browser
