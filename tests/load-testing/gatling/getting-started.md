@@ -4,7 +4,7 @@
 ##### Installation
 * Install `Java`
     * Add `/bin` to `PATH`
-* Install `Proxy Helper` extension for `Google Chrome`
+* Install proxy extension for `Google Chrome` (for more info - `proxy.md`)
     * Configure HTTP proxy `localhost:8000`
 * Install `Gatling`
 
@@ -13,7 +13,7 @@
     * `Blacklist -> No static resources`
     * `Start!`
 * Run `Google Chrome` 
-    * `Proxy Helper` -> Activate `HTTP PROXY` 
+    * Activate http proxy
     * Go to http://computer-database.gatling.io/computers
     * Browse around, click buttons
 * `Gatling recorder` -> `Stop & Save`

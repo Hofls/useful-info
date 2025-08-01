@@ -9,7 +9,7 @@
         * Add `http_access allow all` after `http_access allow localnet`
     * `systemctl restart squid`
 * Client side:
-    * Install `Proxy Helper` (extension for `Google chrome`)
+    * Install proxy extension for Google Chrome (look at `proxy.md`)
     * Set server IP, port 3128, activate `http proxy`
     * [check your IP](https://api.ipify.org/?format=json)
     
