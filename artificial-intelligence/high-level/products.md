@@ -32,11 +32,6 @@
 * `monica.im`
 * `zmo.ai` - image to image
 
-### Music generation
-* `Riffusion AI`
-* `Suno AI`
-* `Udio AI`
-
 ### Video generation
 * `Hailuo Minimax`
 * `Luma AI`
@@ -72,7 +67,7 @@
   * https://prompthero.com/video?sort=hot
   * https://www.seaart.ai/ai-video
 * Music:
-  * https://www.riffusion.com/?songsFilter=week
+  * https://www.producer.ai/ (ex Riffusion)
   * https://suno.com/search?type=public_song
   * https://www.udio.com/home
 * Voice:
