@@ -29,6 +29,13 @@ Use case - you got tired of entering password each time / want to improve level 
     * Open connection
 
 ## Convert .ppk file (Putty, Windows) to OpenSSH format (Linux)
-* `apt install putty-tools`
-* Move to folder with `private.ppk` key
-* `puttygen private.ppk -O private-openssh -o private.key`
+* Convert on Windows:
+  * `PuTTYgen.exe` -> Load .ppk key -> Conversions -> Export OpenSSH key
+  * In powershell reduce permissions:
+    * (to avoid error `It is required that your private key files are NOT accessible by others`)
+    * `icacls "D:\Software\Keys\openssh-private-key" /inheritance:r`
+    * `icacls "D:\Software\Keys\openssh-private-key" /grant:r "$($env:USERNAME):(R)"`
+* Convert on Linux:
+  * `apt install putty-tools`
+  * Move to folder with `private.ppk` key
+  * `puttygen private.ppk -O private-openssh -o private.key`

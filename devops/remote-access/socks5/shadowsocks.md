@@ -32,6 +32,4 @@
     * Tray icon -> Help -> Show journal
   * Make sure client is available - `telnet localhost 1080`
 * Configure Google Chrome proxy extension (e.g. Foxy Proxy):
-    * Type - `SOCKS5`
-    * IP - `localhost`
-    * Port - `1080`
+  * Check `SOCKS5` at `proxy.md`
