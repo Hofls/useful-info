@@ -1,4 +1,8 @@
 Some website banned your entire country? No problem, you can still access it:
+* Etc:
+  * ISP can block access to Proxy/VPN:
+    * You have to check their availability using other servers/tools
+    * Often they won't block everything, just try different solutions, until something works
 * VPN
     * ProtonVPN
         * Has its own client and OpenVPN configs
