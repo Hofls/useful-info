@@ -94,6 +94,8 @@
   * For more info look at `devops` repository
     
 ## Etc
+* Run on startup:
+  *  `Win+R` -> `shell:startup` -> Paste shortcut there
 * Settings:
   * Turn annoying system sounds off: \
     `Sound` -> `Sound Control Panel` -> `Sounds` -> `Sound Scheme: No Sounds`
