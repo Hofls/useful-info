@@ -144,7 +144,12 @@
 * `Feature creep` - excessive addition of new features (results in software bloat and over-complication)
 * `Outsourcing` - hiring a party outside a company to perform services / create goods
 * `Obfuscation` - code that is difficult for humans to understand (e.g. to prevent reverse-engineering)
-* `Observability` - ability to measure a system state (logs, metrics, request tracing, alerts)
+* `Observability` - ability to measure a system state (via telemetry data - logs, metrics, request tracing, alerts)
+* `Instrumentation` - ability to produce telemetry data
+* `OpenTelemetry` (OTel) - industry standard for observability (generate, collect, export telemetry data )
+* `SLA` - Service Level Agreement (e.g. service should have high availability)
+* `SLO` - Service Level Objective (e.g. service should be available 99.9% of the time)
+* `SLI` - Service Level Indicator (e.g. actual service uptime is 99.7%)
 * `OAuth` - way to grant websites/apps access to user information on other websites (e.g. sign in Amazon with Facebook account)
 * `LDAP` - stores logins/passwords, which allows different apps to authenticate users (e.g. same credentials for gitlab, grafana and nexus)
     * Also see - `Active directory`
@@ -190,9 +195,6 @@
 * `Backward compatibility` - interoperability with older version of the system (e.g. do not delete field/method, mark it as @Deprecated)
 * `Semantic Versioning` - 1. Major version (breaking changes), 2. minor version (backward compatible feature), 3. patch version (backward compatible bug fixes), e.g. 2.7.3
 * `Resume Driven Developement` - developers ignore real project needs, focus on technologies that will look good on their resume (anti pattern)
-* `SLA` - Service Level Agreement (e.g. service should have high availability)
-* `SLO` - Service Level Objective (e.g. service should be available 99.9% of the time)
-* `SLI` - Service Level Indicator (e.g. actual service uptime is 99.7%)
 * `Essential Complexity` - unavoidable complexity, that is essential part of the problem (e.g. complex domain)
 * `Accidental Complexity` - unnecessary complexity that can be eliminated (e.g. spaghetti code)
 * `Invariant` - property of the system that is always true (e.g. account balance is never less than 0)
