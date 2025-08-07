@@ -114,6 +114,9 @@
 * Game has no borderless window setting?
   * Add -popupwindow to exe properties, something like this - `"C:\Programs\Example.exe" -popupwindow`
   * In game settings - turn off full screen mode / turn on windowed mode
+* Check resources consumption (system load - CPU, RAM, GPU, DISK):
+  * Bad - `Task manager` (hides processes for reason)
+  * Good - `Resource monitor` (shows full list)
 
 ## Software
 * `Putty`, `WinSCP`, `Anydesk`, `Postman`, `Docker`, 
