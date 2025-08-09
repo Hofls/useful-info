@@ -198,9 +198,10 @@
 * `Essential Complexity` - unavoidable complexity, that is essential part of the problem (e.g. complex domain)
 * `Accidental Complexity` - unnecessary complexity that can be eliminated (e.g. spaghetti code)
 * `Invariant` - property of the system that is always true (e.g. account balance is never less than 0)
-* `Vibe coding` - LLM generates code, while programmer guides, tests, reviews and refines
-* `Architecture decision record` - log reasons behind each architectural decision (periodically check if they still make sense)
-* `Model Context Protocol` - protocol that standardizes how apps provide context to LLM (e.g. previous messages and data from relevant websites)
+* `ADR` (Architecture decision record) - log reasons behind each architectural decision (periodically check if they still make sense)
+* `Shadow IT` - unsanctioned use of software within an org (usage without IT department knowledge)
+* `ETL` - Extract (data from sources), Transform (clean, change format), Load (into database)
+
 
 ### Others
 * Pick the right tool for the job
@@ -216,3 +217,4 @@
 * Design for simple/frequent cases with simple API, make complex/rare cases possible with separate, more complex API
 * Bad API creators think in terms of implementation or domain of API. Good API creators think in terms of use of API (from perspective of user)
 * Boy scout rule - always try to leave code a bit cleaner than you found it
+* Each API should have request examples (or even frontend prototype) for discoverability & easy onboarding

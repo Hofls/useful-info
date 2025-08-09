@@ -27,4 +27,10 @@
 #### Visual tests
 * Only work for visual things (e.g. frontend, pdf, images)
 * Test makes screenshot, compares with an accepted (old) screenshot. If there is difference - asks developer to check it out
-* 
+
+#### Fuzzing / Fuzz testing
+* Provide random data as an input to software (e.g. call rest endpoint with random request values, it should always return 4xx error)
+
+#### Other
+* [load-testing](load-testing/load-testing.md)
+* [e2e-tests](e2e-tests/e2e-tests.md)

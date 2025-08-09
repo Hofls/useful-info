@@ -30,5 +30,6 @@
 * `Patch Management` - Regular updating of software to fix known vulnerabilities
 * `Security Audit` - review/test of security measures, to ensure adequate protection
 * `Least Privilege` - Giving users/systems  minimum level of access necessary to perform their job
+* `Just-in-time access` - give temporary privileged access (just enough time to do the job), to reduce attack surface
 * `MFA`/`2FA` - Multi-factor authentication. Requires user to provide 2+ pieces of evidence (e.g. password + sms code)
 * `MPA` - Multi-party authorization, requires approval of 2+ people to commit action (protects from malicious insiders and honest mistakes)
