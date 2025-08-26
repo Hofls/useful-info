@@ -11,7 +11,7 @@
     * https://github.com/topics
     * https://github.com/explore
 * Other websites:
-    * https://www.hntoplinks.com/year (or check each month - archives at the bottom of the page)
+    * https://www.hntoplinks.com/year (or check archives at the bottom of the page)
     * https://dev.to/top/year
 * Roadmaps
     * https://roadmap.sh/
