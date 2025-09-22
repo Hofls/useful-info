@@ -6,8 +6,5 @@
 * https://github.com/ahmedkhaleel2004/gitdiagram - draws diagram for any git repo, using AI
 
 ### Important articles
-* [The Grug Brained Developer](https://grugbrain.dev/)
-* [Twelve factor app](https://12factor.net/)
-* [Boring technology](https://boringtechnology.club/)
-* [12 factor for LLM aps](https://github.com/humanlayer/12-factor-agents)
+
 * 

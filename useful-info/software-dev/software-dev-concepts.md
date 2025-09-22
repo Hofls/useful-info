@@ -218,3 +218,10 @@
 * Bad API creators think in terms of implementation or domain of API. Good API creators think in terms of use of API (from perspective of user)
 * Boy scout rule - always try to leave code a bit cleaner than you found it
 * Each API should have request examples (or even frontend prototype) for discoverability & easy onboarding
+
+### Important articles
+* [The Grug Brained Developer](https://grugbrain.dev/)
+* [Twelve factor app](https://12factor.net/)
+* [Boring technology](https://boringtechnology.club/)
+* [Cognitive load](https://github.com/zakirullin/cognitive-load)
+* [12 factor for LLM aps](https://github.com/humanlayer/12-factor-agents)
