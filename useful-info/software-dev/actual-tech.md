@@ -1,6 +1,8 @@
 # Resources to keep up with ever-changing technologies:
 
 #### General
+* Ask LLM:
+  * List top 50 software development terms/ideas/tools/techniques that appeared or became popular in 2025
 * Reddit
     * https://www.reddit.com/r/programming/top/?t=week
     * https://www.reddit.com/r/webdev/top/?t=week
@@ -74,6 +76,7 @@
   * https://mvnrepository.com/open-source
   * https://apps.microsoft.com/collections/computed/apps/topfree?hl=en-us&gl=RU (Category -> Developer Tools)
   * https://chocolatey.org/packages
+* Last full completion - 
     
 #### Java:
 * https://www.jhipster.tech/

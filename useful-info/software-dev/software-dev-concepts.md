@@ -11,10 +11,11 @@
 * `Opinionated system` - provides one easy way of doing things (way chosen based on opinion of system's authors)
 * `Deep modules` - individual unit of abstraction should do a lot of work, but with simple interface
 * `Infrastructure as code (IaC)` - managing IT infrastructure using configuration files (e.g. provisioning VMs in cloud)
+* `Descaling` - simplifying, reducing complexity, or scaling down system (to improve efficiency, agility and maintainability)
 * `A/B testing` - testing a subject's response to variant A against variant B, and determining which of the two variants is more effective
 * `Chaos engineering` - causing failure of system components in production, in order to build resilient system:
-  * `Chaos Monkey` - shuts down random servers
-  * `Latency Monkey` - introduces communication delays
+    * `Chaos Monkey` - shuts down random servers
+    * `Latency Monkey` - introduces communication delays
 * `Twelve factor app` - methodology for building SAAS
     * `Codebase` - one codebase, many deployments (dev/stage/prod)
     * `Dependencies` - all dependencies should be explicit
@@ -121,10 +122,10 @@
     * `IP` - obtains address to send data
     * `TCP` - transmits data to the address
 * `OSI` (Open Systems Interconnection) - framework for network layers 
-  * `7. Application Layer` - HTTP/HTTPS (high level protocols)
-  * `4. Transport Layer` - TCP (data transfer)
-  * `3. Network Layer` - IP (address, route)
-  * `1. Physical Layer` - Wi-Fi, Ethernet
+    * `7. Application Layer` - HTTP/HTTPS (high level protocols)
+    * `4. Transport Layer` - TCP (data transfer)
+    * `3. Network Layer` - IP (address, route)
+    * `1. Physical Layer` - Wi-Fi, Ethernet
 * Metrics
     * `Four key metrics` of DevOps
         * `Deployment Frequency` - how often releases go to production (multiple times a day)
@@ -163,12 +164,12 @@
 * `Load leveling` - queue all new requests from all clients if current load is too high (helps to deal with sudden load spikes)
 * `Rollback` - return to previous version/state (e.g. rollback of transaction, rollback of release etc)
 * `URL` - Uniform Resource Locator, for example http://example.com:80/main/loc?product=camera#Greegings
-  * `http` - schema, `example.com` - domain name, `80` - port, `main/loc` - path, `?product=camera` - query, `#Greegings` - anchor
+    * `http` - schema, `example.com` - domain name, `80` - port, `main/loc` - path, `?product=camera` - query, `#Greegings` - anchor
 * `CI/CD` - commit, build, test, deploy
-  * `Continuous Integration` - frequent integration of code changes into a shared repository (commit, build, test)
-  * `Continuous Delivery` - frequent and automatic code deployment (deploy, monitor)
+    * `Continuous Integration` - frequent integration of code changes into a shared repository (commit, build, test)
+    * `Continuous Delivery` - frequent and automatic code deployment (deploy, monitor)
 * `Identity Provider` - service for authentication and authorization
-  * `SSO` (Single sign-on) - login with a single ID to a different independent systems (e.g. "Sign in with Google" buttons)
+    * `SSO` (Single sign-on) - login with a single ID to a different independent systems (e.g. "Sign in with Google" buttons)
 * `Salt` - unique random text added to password as part of hashing process (to protect passwords in case of DB leak)
 * `Synchronous` - wait for response/timeout
 * `Asynchronous` - do not wait for response (it may come in a second, in a day, or never)
@@ -184,14 +185,14 @@
 * `Static typing` - variable type is constant and known at compile time (Java, C#)
 * `Dynamic typing` - variable type can change and determined at runtime (python, js)
 * `Duck typing` - If it walks like a duck and quacks like a duck, it's a duck 
-  * Used in dynamic languages with dynamic typing (e.g. python, js)
+    * Used in dynamic languages with dynamic typing (e.g. python, js)
 * `Side effect` - state change outside of function (e.g. modifying object variable, performing I/O operations)
 * `Pure function` - function that produces same output for same input, with no side effects
 * `Technical debt` - cost of future system rework (often accumulated during crunch periods)
-  * `Interest` - makes it harder to implement changes
+    * `Interest` - makes it harder to implement changes
 * `Human-centered design` - Observe behaviour, Generate ideas, Create prototypes, Gather feedback, Improve prototypes, Implement
 * `Conway's Law` - organization tends to produce design which is a copy of the communication structure of the org
-  * If 3 different teams work on a project, they will produce 3 services
+    * If 3 different teams work on a project, they will produce 3 services
 * `Backward compatibility` - interoperability with older version of the system (e.g. do not delete field/method, mark it as @Deprecated)
 * `Semantic Versioning` - 1. Major version (breaking changes), 2. minor version (backward compatible feature), 3. patch version (backward compatible bug fixes), e.g. 2.7.3
 * `Resume Driven Developement` - developers ignore real project needs, focus on technologies that will look good on their resume (anti pattern)
@@ -201,6 +202,14 @@
 * `ADR` (Architecture decision record) - log reasons behind each architectural decision (periodically check if they still make sense)
 * `Shadow IT` - unsanctioned use of software within an org (usage without IT department knowledge)
 * `ETL` - Extract (data from sources), Transform (clean, change format), Load (into database)
+* `SBOM` - Software Bill of Materials - inventory of components used to build a software (e.g. libraries, database, message queue)
+* `Continuous compliance` - automatically monitor security, vulnerabilities, regulations compliance etc
+* `Champions` - team members that advocate for specific initiatives (security champion, accessibility champion etc)
+* `Event Sourcing` - storing the state of a system as a sequence of events (allows time travel)
+* `BDD` (Behavior-driven development) - name tests using domain language (e.g. should_create_user)
+* `DevEx` (Developer Experience) - UX for devs (fast builds, easy onboarding, good documentation & code etc)
+* `Value mindset` - deliver maximum value to user/stakeholders while minimizing waste and complexity
+    * Meet user needs instead of chasing perfection and over-engineering
 
 
 ### Others

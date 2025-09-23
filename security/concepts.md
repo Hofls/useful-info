@@ -33,3 +33,4 @@
 * `Just-in-time access` - give temporary privileged access (just enough time to do the job), to reduce attack surface
 * `MFA`/`2FA` - Multi-factor authentication. Requires user to provide 2+ pieces of evidence (e.g. password + sms code)
 * `MPA` - Multi-party authorization, requires approval of 2+ people to commit action (protects from malicious insiders and honest mistakes)
+* `Shift Left` - invest time in security from the very beginning of development process
