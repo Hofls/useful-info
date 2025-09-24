@@ -205,11 +205,13 @@
 * `SBOM` - Software Bill of Materials - inventory of components used to build a software (e.g. libraries, database, message queue)
 * `Continuous compliance` - automatically monitor security, vulnerabilities, regulations compliance etc
 * `Champions` - team members that advocate for specific initiatives (security champion, accessibility champion etc)
-* `Event Sourcing` - storing the state of a system as a sequence of events (allows time travel)
 * `BDD` (Behavior-driven development) - name tests using domain language (e.g. should_create_user)
 * `DevEx` (Developer Experience) - UX for devs (fast builds, easy onboarding, good documentation & code etc)
 * `Value mindset` - deliver maximum value to user/stakeholders while minimizing waste and complexity
     * Meet user needs instead of chasing perfection and over-engineering
+* `AsyncAPI` - like OpenAPI/Swagger but for async systems (Kafka, RabbitMQ)
+* `dApp` - app on blockchain that uses smart contracts
+* `wasm` (WebAssembly) - write code in any language, compile to wasm, run it in browser
 
 
 ### Others

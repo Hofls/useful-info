@@ -54,9 +54,13 @@
     * To update without any downtime - move all the traffic to the new environment
 * `Service mesh` - smart proxy (all traffic flows through it), that implements cross-cutting concerns:
     * Service discovery, circuit-breaking, retries on request failures, load-balancing, logging, rate-limiting...
+    * Products - Istio, Linkerd, Consul, Kuma, Traefik Mesh
 * `Emulator` / `Simulator` / `Fake Backend`
     * Problem - you need to integrate with external system, but that systems has only production environment
     * Solution - create simulator that implements same API (with minimal behavior), use it for dev/test purposes
+* `DAPR` (Distributed Application Runtime) - middleman between your app and infrastructure (redis, kafka, postgresql etc)
+  * Without DAPR each external system has unique API. With DAPR you can interact with everything using the same HTTP API (e.g. app -> DAPR -> redis)
+  * Provides retries, security, reliability, observability, rate limiting
 * Run in containers
     * To take advantage of fixed and isolated environment, autoscaling, portability.
 * Externalized configuration

@@ -1,6 +1,7 @@
 # Monolithic architecture
 
 * `Monolith` - all the application code is in one project, which produces single executable (e.g. shop.jar)
+* `Modular monolith` - code is organized into modules (e.g. instead of creating 20 microservices, create 20 modules/folders within monolith)
 * Example:
     * News site page with weather broadcast, exchange rates, most popular news articles, feedback form
     * All of those located in same backend service

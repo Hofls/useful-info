@@ -2,7 +2,7 @@
 * `Cache-Aside` - load data on demand into a cache from a data store
     * Reading form cache is fast, but it may expire
 * `CQRS` - separate read and update operations 
-* `Event Sourcing` - store history of changes
+* `Event Sourcing` - store state of a system as a sequence of events (allows time travel)
 * `Index Table` - create indexes for frequently accessed fields
 * `Materialized View` - generate prepopulated views
 * `Sharding` - each shard has same schema but different data
