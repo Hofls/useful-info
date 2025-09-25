@@ -30,3 +30,7 @@
 #### Etc
 * Each team member should have good [soft-skills](soft-skills.md)
 * For detailed info about each role look at [it-roles](it-roles)
+* Top 3 factors that influence job satisfaction [source](https://survey.stackoverflow.co/2025/work/)
+  * Autonomy and trust to manage your own tasks
+  * Competitive pay and benefits
+  * Solving real-world problems

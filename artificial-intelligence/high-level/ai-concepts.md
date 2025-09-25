@@ -4,5 +4,6 @@
 * `RAG` (Retrieval-augmented generation) - allows LLMs to incorporate new info in context
     * E.g. read relevant books/web pages before answering user request
 * `Model distillation` - knowledge transfer from large & expensive model (teacher) to a small & cheap one (student)
+* `AI Agent` - AI that acts autonomously
 * Structured output - instruct model to provide responses in very specific JSON format (so it can function as a typical backend service)
 * Smarter AI system = more model parameters + more data + more compute resources

@@ -3,13 +3,14 @@
 #### General
 * Ask LLM:
   * List top 50 software development terms/ideas/tools/techniques that appeared or became popular in 2025
+  * Give modern 2025 tech stack example for web app (backend = java, everything else is up to you)
 * Reddit
     * https://www.reddit.com/r/programming/top/?t=week
     * https://www.reddit.com/r/webdev/top/?t=week
     * https://www.reddit.com/r/devops/top/?t=week
     * https://www.reddit.com/r/ExperiencedDevs/top/?t=week
 * Github
-    * https://github.com/trending?since=weekly&spoken_language_code=en
+    * https://github.com/trending?since=monthly
     * https://github.com/topics
     * https://github.com/explore
 * Other websites:
@@ -24,36 +25,22 @@
     * https://www.infoq.com/infoq-trends-report/
 * Popularity
     * Programming language:
-        * https://madnight.github.io/githut/#/pull_requests/2024/1
+        * https://innovationgraph.github.com/global-metrics/programming-languages
         * https://pypl.github.io/PYPL.html
-        * https://www.tiobe.com/tiobe-index/
     * Database:
         * https://pypl.github.io/DB.html
         * https://db-engines.com/en/ranking
     * IDE/Plugins:
         * https://pypl.github.io/IDE.html
         * [VSCode plugins](https://marketplace.visualstudio.com/search?target=VSCode&category=All%20categories&sortBy=Installs)
+        * [IDEA plugins](https://plugins.jetbrains.com/search?excludeTags=internal&orderBy=downloads&products=androidstudio&products=aqua&products=clion&products=dataspell&products=dbe&products=fleet&products=go&products=idea&products=idea_ce&products=mps&products=phpstorm&products=pycharm&products=rider&products=ruby&products=rust&products=webstorm&products=writerside)
         * IntelliJ Idea plugins - within the application \
           Search tags - `/sortBy:downloads`, `/sortBy:rating`
-* Ask any LLM with internet access 
 * Awesome lists:
     * https://github.com/topics/awesome
-* Search for: 
-    * Search settings:
-        * Limit by year
-    * `What's your tech stack site:reddit.com`
-    * `State of <topic>`, e.g. `State of devops`
-    * `<topic> trends`, e.g. `devops trends`
-    * `<topic> roadmap`, e.g. `web developer roadmap`
-    * `<topic> top` e.g. `javascript top libraries`
-    * `<topic> exercices` e.g. `devops exercices`
-    * `<job> interview questions` e.g. `sysadmin interview questions`
-    * `Trending software tech`
-    * `Programming buzzwords`
-* Freelance sites
 * Developer surveys
-    * [stackoverflow](https://survey.stackoverflow.co/2023/)
-    * [jetbrains](https://www.jetbrains.com/lp/devecosystem-2023/)
+    * [stackoverflow](https://survey.stackoverflow.co/2025/)
+    * [jetbrains](https://www.jetbrains.com/lp/devecosystem-2024/)
 * State of industry reports
     * [github](https://github.blog/2023-11-08-the-state-of-open-source-and-ai/)
 * [Testcontainers modules](https://testcontainers.com/modules/)
