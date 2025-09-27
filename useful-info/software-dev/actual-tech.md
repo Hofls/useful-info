@@ -5,10 +5,10 @@
   * List top 50 software development terms/ideas/tools/techniques that appeared or became popular in 2025
   * Give modern 2025 tech stack example for web app (backend = java, everything else is up to you)
 * Reddit
-    * https://www.reddit.com/r/programming/top/?t=week
-    * https://www.reddit.com/r/webdev/top/?t=week
-    * https://www.reddit.com/r/devops/top/?t=week
-    * https://www.reddit.com/r/ExperiencedDevs/top/?t=week
+    * https://www.reddit.com/r/programming/top/?t=year
+    * https://www.reddit.com/r/webdev/top/?t=year
+    * https://www.reddit.com/r/devops/top/?t=year
+    * https://www.reddit.com/r/ExperiencedDevs/top/?t=year
 * Github
     * https://github.com/trending?since=monthly
     * https://github.com/topics
@@ -41,34 +41,33 @@
 * Developer surveys
     * [stackoverflow](https://survey.stackoverflow.co/2025/)
     * [jetbrains](https://www.jetbrains.com/lp/devecosystem-2024/)
-* State of industry reports
-    * [github](https://github.blog/2023-11-08-the-state-of-open-source-and-ai/)
 * [Testcontainers modules](https://testcontainers.com/modules/)
 * [List of popular websites](https://en.wikipedia.org/wiki/List_of_most-visited_websites)
 * Any job listings
 * Imageboards (ai/tech sections)
-* Look at integrations/images/managed services at cloud providers (AWS, GCP, Azure)
-* Online courses (even table of contents is enough)
-    * Udemy, codeacademy, coursera, edx
-* Online conferences (even schedule is enough)
-* Similar subreddits:
-    * https://anvaka.github.io/redsim/#!?q=ExperiencedDevs
-    * https://anvaka.github.io/redsim/#!?q=programming
-    * https://anvaka.github.io/redsim/#!?q=webdev
-    * https://anvaka.github.io/redsim/#!?q=devops
-* Software from package managers / stores / repositories
-  * https://hub.docker.com/search?image_filter=&type=image
-  * https://snapcraft.io/store?categories=development%2Cserver-and-cloud
-  * https://mvnrepository.com/popular
-  * https://mvnrepository.com/open-source
-  * https://apps.microsoft.com/collections/computed/apps/topfree?hl=en-us&gl=RU (Category -> Developer Tools)
-  * https://chocolatey.org/packages
-* Last full completion - 
-    
+* Low priority (skippable)
+  * Online conferences (even schedule is enough)
+  * Similar subreddits:
+      * https://anvaka.github.io/redsim/#!?q=ExperiencedDevs
+      * https://anvaka.github.io/redsim/#!?q=programming
+      * https://anvaka.github.io/redsim/#!?q=webdev
+      * https://anvaka.github.io/redsim/#!?q=devops
+  * Software from package managers / stores / repositories
+    * https://hub.docker.com/search?image_filter=&type=image
+    * https://snapcraft.io/store?categories=development%2Cserver-and-cloud
+    * https://mvnrepository.com/popular
+    * https://mvnrepository.com/open-source
+    * https://apps.microsoft.com/collections/computed/apps/topfree?hl=en-us&gl=RU (Category -> Developer Tools)
+    * https://chocolatey.org/packages
+  * Look at integrations/images/managed services at cloud providers (AWS, GCP, Azure)
+  * Online courses (even table of contents is enough)
+      * Udemy, codeacademy, coursera, edx
+* Last completion - 28.09.2025
+
 #### Java:
 * https://www.jhipster.tech/
 * https://start.spring.io/
-* https://www.reddit.com/r/java/top/?t=week
+* https://www.reddit.com/r/java/top/?t=year
 * https://jpoint.ru/en/schedule/days/
 * https://www.devoxx.co.uk/schedule/
 * https://www.developerweek.com/conference/
