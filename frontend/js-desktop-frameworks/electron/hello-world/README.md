@@ -1,6 +1,8 @@
 ### Electron
-* Install - `npm install`
-* Run - `npm run start`
+* Getting started:
+  * Install - `npm install`
+  * Run - `npm run start`
+  * Build .exe - `npm run package`
 * Structure:
   * `index.html` - UI
   * `main.js` - entry point
