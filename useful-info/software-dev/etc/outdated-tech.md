@@ -6,7 +6,9 @@
   * Replaced by `Agile Development`
 * `XML` based configs
   * Replaced by `YAML` and `JSON`
-* `SOAP`, `CORBA`
+* `XLST`
+  * Replaced by `JSON` transformations
+* `SOAP`, `CORBA`, `WSDL`
   * Replaced by `REST`
 * `Siloed Teams` (Dev team, QA team, Ops team)
   * Replaced by `Cross-functional team`, that can develop, test and deploy
@@ -18,7 +20,10 @@
   * Replaced by `Spring Framework`
 * `Eclipse IDE`, `NetBeans`
   * Replaced by `IntelliJ IDEA` and `VSCode`
+* `Perl`
+  * Replaced by `Python` and `JavaScript`
 * `On-premise` servers
   * Replaced by `Cloud` infrastructure
 * `Robert C. Martin` / `Uncle Bob` books - https://qntm.org/clean
   * Replaced by `Code Complete` / `Philosophy of Software Design`
+* Other - `OLAP`
