@@ -3,6 +3,7 @@
   * `Repository` => `Settings` => `Packages and registries settings` => `Set cleanup rules`
   * `Keep the most recent` => `5 tags per image`
   * `Remove tags older than` => `7 days`
+  * `Remove tags matching` => `.*`
 * Delete source after merge
   * `Repository` => `Settings` => `General` => `Merge requests` => `Enable 'Delete source branch' option by default`
 * Merge only commits that didnt break anything
