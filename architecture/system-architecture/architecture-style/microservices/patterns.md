@@ -61,6 +61,7 @@
 * `DAPR` (Distributed Application Runtime) - middleman between your app and infrastructure (redis, kafka, postgresql etc)
   * Without DAPR each external system has unique API. With DAPR you can interact with everything using the same HTTP API (e.g. app -> DAPR -> redis)
   * Provides retries, security, reliability, observability, rate limiting
+  * [List of all integrations - kafka, redis, postgresql etc](https://docs.dapr.io/reference/components-reference/)
 * Run in containers
     * To take advantage of fixed and isolated environment, autoscaling, portability.
 * Externalized configuration

@@ -209,9 +209,10 @@
 * `DevEx` (Developer Experience) - UX for devs (fast builds, easy onboarding, good documentation & code etc)
 * `Value mindset` - deliver maximum value to user/stakeholders while minimizing waste and complexity
     * Meet user needs instead of chasing perfection and over-engineering
-* `AsyncAPI` - like OpenAPI/Swagger but for async systems (Kafka, RabbitMQ)
+* `AsyncAPI` - like OpenAPI/Swagger but for async systems (Kafka, RabbitMQ), generates documentation & client
 * `dApp` - app on blockchain that uses smart contracts
 * `wasm` (WebAssembly) - write code in any language, compile to wasm, run it in browser
+  * Use cases - native performance (for computationally intensive tasks), run legacy code in browser 
 * `Type-driven design` - write classes that have data + behavior + validation (all in one place)
   * E.g. rectangle, that has width and height, method calculateArea() and min-max validation in constructor
 
