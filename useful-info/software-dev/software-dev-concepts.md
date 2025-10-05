@@ -212,6 +212,8 @@
 * `AsyncAPI` - like OpenAPI/Swagger but for async systems (Kafka, RabbitMQ)
 * `dApp` - app on blockchain that uses smart contracts
 * `wasm` (WebAssembly) - write code in any language, compile to wasm, run it in browser
+* `Type-driven design` - write classes that have data + behavior + validation (all in one place)
+  * E.g. rectangle, that has width and height, method calculateArea() and min-max validation in constructor
 
 
 ### Others
@@ -236,3 +238,4 @@
 * [Boring technology](https://boringtechnology.club/)
 * [Cognitive load](https://github.com/zakirullin/cognitive-load)
 * [12 factor for LLM aps](https://github.com/humanlayer/12-factor-agents)
+* [The Wrong Abstraction](https://sandimetz.com/blog/2016/1/20/the-wrong-abstraction)

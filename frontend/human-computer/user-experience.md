@@ -7,6 +7,8 @@
 * `Signal–to–Noise Ratio` - Relevant information is “signal” irrelevant information is “noise”. A high signal–to–noise ratio is a key target of good UI
 * `Optimistic UI` - update UI before receiving response from server 
     * e.g.color "like" button in green, if later server returns error - color it back to gray
+* `Usability testing` - check how easy and intuitive design is for users
+* `Hallway testing` - ask random people passing in hallway to use your software
 
 ##### Etc
 * Create `MVP` to start gather feedback, metrics and analytics early
