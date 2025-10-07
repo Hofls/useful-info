@@ -1,0 +1,10 @@
+{
+    "values": [
+        "/v1/api/user/document/find-extra",
+        "/v1/api/user/assignment-template/find",
+        "/v1/api/user/assignment-template",
+        "/v1/api/user/document/{id}",
+        "/v1/api/user/document/{patientId}/signed-kits",
+        "/v1/api/user/assignment-template/validate-v3"
+    ]
+}
