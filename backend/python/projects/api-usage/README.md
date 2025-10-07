@@ -1,4 +1,6 @@
 ### Find unused methods in java http api
+* Make sure actuator is configured correctly (by default shows only 100 endpoints)
+  * https://stackoverflow.com/questions/54930449/how-do-i-solve-reached-the-maximum-number-of-uri-tags-for-http-client-requests
 * Run e2e tests (use API to the fullest)
 * Save list of URLs from actuator to `api-urls-actuator.json`
   * Example actuator URL - http://someit.com/ms-service/actuator/metrics/http.server.requests
