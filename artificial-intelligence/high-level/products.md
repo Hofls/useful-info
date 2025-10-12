@@ -43,11 +43,20 @@
 * `Hapier`
 * `Pika`
 
-### Code assistant
-* `GitHub Copilot`
-* `Codeium` / `Qodo`
-* `Cody`
-* `Yandex Code Assistant` ?
+### Code assistant / Coding agents / Vibe coding
+* `Cline` - BYOM
+* `Qodo Gen` - ?
+* `Roo Code` - ?
+* `Koda` - BYOM + MCP
+* `Yandex Code Assistant` - ?
+* `GitHub Copilot` - ?
+* `Continue` - bad, no true BYOM
+
+### LLM Aggregators (Paid APIs, to access LLMs unavailable in some regions)
+* https://polza.ai/
+  * API URL - https://api.polza.ai/api/v1
+  * Models - https://polza.ai/models
+  * Token - https://polza.ai/dashboard
 
 ### Games
 * `AI Dungeon` - text based rpg
@@ -76,6 +85,7 @@
   * https://www.meshy.ai/discover?tab=total_emoji_count
 
 ### Other products
+* `chatbox` - desktop/web client (BYOM)
 * `livebench.ai` - llm performance comparison
 * `lmarena.ai` - top models list
 * `openroute` - top models list
@@ -83,4 +93,3 @@
 * `Kaggle` - pre-trained models hub
 * `TensorFlow` - platform for machine learning 
 * `civitai` - ai gallery (images/video), models hub
-* 
