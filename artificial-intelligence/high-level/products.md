@@ -45,11 +45,14 @@
 
 ### Code assistant / Coding agents / Vibe coding
 * `Cline` - BYOM
+* `Koda` - BYOM + MCP
+* `Yandex Code Assistant`
+  * Has built-in MCP marketplace
+  * Installation process is unusual - https://sourcecraft.dev/portal/docs/en/code-assistant/
+  * Usage statistics - https://sourcecraft.dev/me/codeassistant/settings
+* `GitHub Copilot` - ?
 * `Qodo Gen` - ?
 * `Roo Code` - ?
-* `Koda` - BYOM + MCP
-* `Yandex Code Assistant` - ?
-* `GitHub Copilot` - ?
 * `Continue` - bad, no true BYOM
 
 ### LLM Aggregators (Paid APIs, to access LLMs unavailable in some regions)
