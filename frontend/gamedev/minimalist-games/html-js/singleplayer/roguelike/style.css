@@ -1,52 +1,100 @@
 body {
-    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
     background-color: #222;
     color: #eee;
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-}
-
-h1 {
-    color: #0f0;
-}
-
-#game-container {
-    border: 1px solid #0f0;
-    margin-top: 20px;
-}
-
-table {
-    border-collapse: collapse;
-}
-
-td {
-    width: 20px;
-    height: 20px;
-    text-align: center;
-    vertical-align: middle;
-    font-size: 16px;
-    border: 1px solid #333;
-}
-
-td:empty {
-    background-color: #444; /* Style for empty cells if any */
-}
-
-/* Specific cell types */
-td[textContent="#"] { /* Walls */
-    background-color: #555;
-    color: #555;
-}
-
-td[textContent="."] { /* Floor */
+    width: 90%;
+    max-width: 1200px;
     background-color: #333;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    overflow: hidden; /* Ensures children respect border-radius */
 }
 
-td[textContent="@"] { /* Player */
-    background-color: #0f0;
-    color: #000;
+.game-container {
+    flex: 3; /* Takes up 3 parts of the available space */
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #444;
+    border-right: 1px solid #555;
+}
+
+#gameCanvas {
+    border: 2px solid #00ff00; /* Example border for game screen */
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
+}
+
+.logs-container {
+    flex: 1; /* Takes up 1 part of the available space */
+    padding: 20px;
+    background-color: #2a2a2a;
+    overflow-y: auto; /* Allows scrolling if logs are long */
+    max-height: 80vh; /* Limit height to viewport height */
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.logs-container h2 {
+    margin-top: 0;
+    color: #ffcc00; /* Yellow for log header */
+    border-bottom: 1px solid #555;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.log-entry {
+    margin-bottom: 10px;
+    font-size: 0.9em;
+    line-height: 1.4;
+    word-wrap: break-word; /* Ensure long words break */
+}
+
+.log-entry.info {
+    color: #00ccff; /* Blue for info */
+}
+
+.log-entry.warning {
+    color: #ffcc00; /* Yellow for warning */
+}
+
+.log-entry.error {
+    color: #ff3333; /* Red for error */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        width: 95%;
+    }
+
+    .game-container {
+        flex: none; /* Reset flex for column layout */
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #555;
+        max-height: 60vh; /* Give game some height */
+    }
+
+    .logs-container {
+        flex: none; /* Reset flex for column layout */
+        width: 100%;
+        max-height: 40vh; /* Remaining height for logs */
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 8px;
+    }
+
+    .logs-container h2 {
+        margin-top: 15px; /* Add some space when logs are below game */
+    }
 }

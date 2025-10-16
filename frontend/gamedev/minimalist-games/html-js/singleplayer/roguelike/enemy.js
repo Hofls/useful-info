@@ -4,23 +4,24 @@ import {
     ENEMY_DAMAGE_BASE,
     ENEMY_DAMAGE_RANDOM
 } from './constants.js';
-import { game } from './game.js';
+// Removed direct import of 'game' as it will be passed via constructor
 
 export class Enemy {
-    constructor(x, y, char, color, health) {
+    constructor(x, y, char, color, health, gameInstance) { // Accept game instance
         this.x = x;
         this.y = y;
         this.char = char;
         this.color = color;
         this.maxHealth = health;
         this.health = health;
+        this.game = gameInstance; // Store game instance
     }
 
     act() {
-        if (game.isGameOver || game.enemies.length === 0) return;
+        if (this.game.isGameOver || this.game.enemies.length === 0) return;
 
-        const dx = game.player.x - this.x;
-        const dy = game.player.y - this.y;
+        const dx = this.game.player.x - this.x;
+        const dy = this.game.player.y - this.y;
         let moved = false;
 
         // Check if player is adjacent and attack
@@ -51,7 +52,7 @@ export class Enemy {
         const newX = this.x + dx;
         const newY = this.y + dy;
 
-        if (game.map.isPassable(newX, newY) && !game.hasEnemyAt(newX, newY) && !(game.player.x === newX && game.player.y === newY)) {
+        if (this.game.map.isPassable(newX, newY) && !this.game.hasEnemyAt(newX, newY) && !(this.game.player.x === newX && this.game.player.y === newY)) {
             this.x = newX;
             this.y = newY;
             return true;
@@ -61,8 +62,8 @@ export class Enemy {
 
     attackPlayer() {
         const damage = Math.floor(Math.random() * ENEMY_DAMAGE_RANDOM) + ENEMY_DAMAGE_BASE;
-        game.logMessage(`The ${this.char} attacks you for ${damage} damage.`);
-        game.player.takeDamage(damage);
+        this.game.logMessage(`The ${this.char} attacks you for ${damage} damage.`);
+        this.game.player.takeDamage(damage);
     }
 
     takeDamage(damage) {

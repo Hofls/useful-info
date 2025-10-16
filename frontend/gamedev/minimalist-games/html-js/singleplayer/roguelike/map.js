@@ -96,7 +96,7 @@ export class Map {
     }
 
     render(ctx, player, enemies, items) {
-        const gameContainer = document.getElementById('game-container');
+        const gameContainer = document.getElementById('gameCanvas');
         gameContainer.innerHTML = ''; // Clear previous content
 
         const table = document.createElement('table');

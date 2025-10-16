@@ -50,7 +50,8 @@ export class Game {
                 y = Math.floor(Math.random() * this.map.height);
             } while (!this.map.isPassable(x, y) || (this.player.x === x && this.player.y === y) || this.hasEnemyAt(x, y));
             const enemyHealth = ENEMY_MAX_HEALTH_BASE + (this.level - 1) * ENEMY_HEALTH_INCREASE_PER_LEVEL;
-            this.enemies.push(new Enemy(x, y, 'G', '#f00', enemyHealth)); // Goblin, Red
+            // Pass the game instance to the Enemy constructor
+            this.enemies.push(new Enemy(x, y, 'G', '#f00', enemyHealth, this)); // Goblin, Red
         }
     }
 
@@ -143,12 +144,36 @@ export class Game {
     }
 
     renderGameOver() {
-        const gameContainer = document.getElementById('game-container');
+        const gameContainer = document.getElementById('gameCanvas');
         gameContainer.innerHTML = '<div style="color: red; font-size: 30px; text-align: center; margin-top: 50px;">GAME OVER</div>';
         this.renderUI(); // Show UI elements even on game over
     }
 
     renderUI() {
+        // Render message log
+        // Find the logs container element defined in CSS
+        let logsContainer = document.querySelector('.logs-container');
+        // If it doesn't exist, create it and append to body (fallback)
+        if (!logsContainer) {
+            logsContainer = document.createElement('div');
+            logsContainer.className = 'logs-container'; // Use the CSS class
+            logsContainer.style.maxHeight = '80vh'; // Apply max-height from CSS
+            logsContainer.style.overflowY = 'auto'; // Apply overflow from CSS
+            logsContainer.style.padding = '20px';
+            logsContainer.style.backgroundColor = '#2a2a2a';
+            logsContainer.style.width = '60%'; // Make logs wider
+            document.body.appendChild(logsContainer);
+
+            // Add a header if creating the container
+            const logHeader = document.createElement('h2');
+            logHeader.textContent = 'Game Log';
+            logHeader.style.color = '#ffcc00';
+            logHeader.style.borderBottom = '1px solid #555';
+            logHeader.style.paddingBottom = '10px';
+            logHeader.style.marginBottom = '15px';
+            logsContainer.appendChild(logHeader);
+        }
+
         // Render player health
         const healthBar = document.getElementById('health-bar');
         if (!healthBar) {
@@ -156,22 +181,33 @@ export class Game {
             newHealthBar.id = 'health-bar';
             newHealthBar.style.marginTop = '10px';
             newHealthBar.style.color = '#eee';
-            document.body.appendChild(newHealthBar);
+            logsContainer.appendChild(newHealthBar);
         }
         const healthContainer = document.getElementById('health-bar');
         healthContainer.innerHTML = `Health: ${this.player.health}/${this.player.maxHealth}`;
 
-        // Render message log
-        const logElement = document.getElementById('message-log');
-        if (!logElement) {
-            const newLogElement = document.createElement('div');
-            newLogElement.id = 'message-log';
-            newLogElement.style.marginTop = '20px';
-            newLogElement.style.color = '#ccc';
-            document.body.appendChild(newLogElement);
+        // Render player experience
+        let experienceBar = document.getElementById('experience-bar');
+        if (!experienceBar) {
+            experienceBar = document.createElement('div');
+            experienceBar.id = 'experience-bar';
+            experienceBar.style.marginTop = '10px';
+            experienceBar.style.color = '#eee';
+            logsContainer.appendChild(experienceBar); // Append to logsContainer
         }
-        const logContainer = document.getElementById('message-log');
-        logContainer.innerHTML = this.messageLog.slice(-5).join('<br>'); // Show last 5 messages
+        const experienceContainer = document.getElementById('experience-bar');
+        experienceContainer.innerHTML = `Exp: ${this.player.experience}`;
+
+
+        // Find or create the message log element within the logs container
+        let logElement = logsContainer.querySelector('#message-log');
+        if (!logElement) {
+            logElement = document.createElement('div');
+            logElement.id = 'message-log';
+            logElement.style.color = '#ccc';
+            logsContainer.appendChild(logElement);
+        }
+        logElement.innerHTML = this.messageLog.slice(-10).join('<br>'); // Show last 10 messages
     }
 
     logMessage(message) {

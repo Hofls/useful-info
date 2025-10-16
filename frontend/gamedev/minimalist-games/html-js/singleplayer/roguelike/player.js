@@ -8,10 +8,11 @@ export class Player {
     constructor(x, y, gameInstance) { // Accept game instance
         this.x = x;
         this.y = y;
-        this.char = '@';
+        this.char = 'P';
         this.color = '#0f0'; // Green
         this.maxHealth = PLAYER_MAX_HEALTH;
         this.health = this.maxHealth;
+        this.experience = 0; // Add experience property
         this.game = gameInstance; // Store game instance
     }
 
@@ -29,6 +30,9 @@ export class Player {
         const enemy = this.game.getEnemyAt(newX, newY);
         if (enemy) {
             this.attack(enemy);
+            // Ensure game updates and renders after an attack, even if player didn't move
+            this.game.update();
+            this.game.render();
             return false; // Did not move, but attacked
         }
 
@@ -50,6 +54,7 @@ export class Player {
         if (enemy.takeDamage(damage)) {
             this.game.logMessage(`You defeated the ${enemy.char}!`);
             this.game.enemies = this.game.enemies.filter(e => e !== enemy);
+            this.gainExperience(10); // Award 10 experience points for defeating an enemy
             // Check if all enemies are defeated to advance level
             if (this.game.enemies.length === 0) {
                 this.game.nextLevel();
@@ -73,5 +78,11 @@ export class Player {
 
     heal(amount) {
         this.health = Math.min(this.maxHealth, this.health + amount);
+    }
+
+    gainExperience(amount) {
+        this.experience += amount;
+        // Potentially add level-up logic here in the future
+        this.game.logMessage(`You gained ${amount} experience!`);
     }
 }
