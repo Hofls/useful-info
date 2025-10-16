@@ -44,16 +44,15 @@
 * `Pika`
 
 ### Code assistant / Coding agents / Vibe coding
-* `Cline` - BYOM
-* `Koda` - BYOM + MCP
-* `Yandex Code Assistant`
+* `Cline` - (BYOM/MCP) + (VSCODE/IDEA)
+* `Koda` - (BYOM/MCP) + (VSCODE)
+* `Yandex Code Assistant` - (BYOM/MCP) + (VSCODE/IDEA)
   * Has built-in MCP marketplace
   * Installation process is unusual - https://sourcecraft.dev/portal/docs/en/code-assistant/
   * Usage statistics - https://sourcecraft.dev/me/codeassistant/settings
-* `GitHub Copilot` - ?
-* `Qodo Gen` - ?
-* `Roo Code` - ?
+* `Roo Code` - bad, no true BYOM
 * `Continue` - bad, no true BYOM
+* `Qodo Gen` - bad, no true BYOM, requires registration
 
 ### LLM Aggregators (Paid APIs, to access LLMs unavailable in some regions)
 * https://polza.ai/
