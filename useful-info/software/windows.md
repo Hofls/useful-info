@@ -118,6 +118,9 @@
   * Bad - `Task manager` (hides processes for reason)
   * Good - `Resource monitor` (shows full list)
 
+## Internet access (socks5 proxy / vpn / tunnel)
+* Look at `devops/remote-access/socks5/ssh.md`
+
 ## Software
 * `Putty`, `WinSCP`, `Anydesk`, `Postman`, `Docker`, 
 * `VLC`, `Lightshot`, `Google chrome`, `Telegram`, `qBittorrent`, `OpenJDK`, 
