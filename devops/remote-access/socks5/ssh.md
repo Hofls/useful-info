@@ -9,4 +9,4 @@
 * Forward http traffic from browser to port 1080:
   * Check `SOCKS5` at `proxy.md`
 * Optional:
-  * Turn proxy into VPN - `devops/remote-access/vpn/nekobox-socks5[nekobox-nekoray-socks5](..%2Fvpn%2Fnekobox-nekoray-socks5)`
+  * Turn proxy into VPN - `devops/remote-access/vpn/nekobox-nekoray-socks5`

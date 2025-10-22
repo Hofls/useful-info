@@ -119,7 +119,7 @@
   * Good - `Resource monitor` (shows full list)
 
 ## Internet access (socks5 proxy / vpn / tunnel)
-* Look at `devops/remote-access/socks5/ssh.md`
+* Look at `devops/remote-access/socks5/ssh.md` and `devops/remote-access/vpn/nekobox-nekoray-socks5`
 
 ## Software
 * `Putty`, `WinSCP`, `Anydesk`, `Postman`, `Docker`, 
