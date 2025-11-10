@@ -10,6 +10,7 @@
 #### Java:
 * Lombok - to teach IDEA about Lombok
 * GenerateAllSetter - to generate calls to all setters of a class
+* context-extractor - extract method info for coding LLM (custom plugin in java-dependencies repo)
 
 ## Customization
 * Right click on tabs => `Configure editor tabs...` => 
