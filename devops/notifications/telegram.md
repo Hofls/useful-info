@@ -19,7 +19,9 @@
     * `30 10 * * MON-FRI /opt/reminder/daily.sh`
 
 #### Etc
-* To get group id / chat id, add bot `@getmyid_bot`
+* To get group id / chat id:
+  * Open https://web.telegram.org
+  * Open group, inspect element on group name, look for something like `data-peer-id="-43514565432" aria-label="test group"`
 * To manually send message via bot:
     * curl "https://api.telegram.org/bot238482123:SK82kjSklxcjz92SKSKSJDzcLSD/sendMessage?chat_id=-238478721&text=Hello world!";
     * curl "https://api.telegram.org/bot238482123:SK82kjSklxcjz92SKSKSJDzcLSD/sendMessage?chat_id=-238478721&parse_mode=html&text=Hello <b>world</b>!";
