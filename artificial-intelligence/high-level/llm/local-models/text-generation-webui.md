@@ -32,7 +32,7 @@
 * openai - OpenAI rest API, [wiki](https://github.com/oobabooga/text-generation-webui/wiki/12-%E2%80%90-OpenAI-API)
     * Request example:
     ```
-    fetch('http://localhost:5000/v1/completions', {
+    const response = await fetch('http://localhost:5000/v1/completions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -44,6 +44,8 @@
           top_p: 0.9
         })
     });
+    const data = await response.json();
+    console.log(data);
     ```
   
 ### Models
