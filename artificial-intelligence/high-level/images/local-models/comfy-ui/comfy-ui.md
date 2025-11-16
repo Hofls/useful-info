@@ -30,10 +30,14 @@
     * Not found `idol LeeSungKyung.safetensors`
     * Not found `Model weight_slider_v2.safetensors`
   * Find them on the internet, download and copy into their respective folders
+  * Or use your own Models/LoRA instead
 * Getting started (custom nodes/extensions)
   * Download simple workflow - https://github.com/pwillia7/Basic_ComfyUI_Workflows/blob/main/Basic/WorkflowJsons/controlnet.json
   * ComfyUI -> New / + -> Drag & drop .json file
   * ComfyUI -> Manager -> Custom Nodes in Workflow -> Select all -> Install -> Restart
+  * Sometimes it doesn't work (e.g. KSampler - Inspire), so you have to find package manually via manager (ComfyUI Inspire Pack)
 * Examples:
-  * `controlnet.json` - generate new variation of image (converts image to black&white edges, gives it to model as input)
-  * `upscale-highres.json` - generate low resolution image, then upscale it to high resolution
+  * https://github.com/pwillia7/Basic_ComfyUI_Workflows/tree/main/Basic/WorkflowJsons
+  * `examples/controlnet.json` - generate new variation of image (converts image to black&white edges, gives it to model as input)
+  * `examples/upscale-highres.json` - generate low resolution image, then upscale it to high resolution
+  * `examples/img2img-noise.json` - generate new variation of image (applies noise to the image, then model restores it)
