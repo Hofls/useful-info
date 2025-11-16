@@ -36,3 +36,4 @@
   * ComfyUI -> Manager -> Custom Nodes in Workflow -> Select all -> Install -> Restart
 * Examples:
   * `controlnet.json` - generate new variation of image (converts image to black&white edges, gives it to model as input)
+  * `upscale-highres.json` - generate low resolution image, then upscale it to high resolution
