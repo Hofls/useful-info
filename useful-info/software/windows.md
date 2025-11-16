@@ -147,6 +147,8 @@
       * Run as admin `\Programs\OBS\data\obs-plugins\win-dshow\virtualcam-install.bat`
       * Restart PC -> Open OBS -> Start Virtual Camera 
 * `DaVinci Resolve` - to edit videos
+* `Krita` - to edit images
+  * Useful tools - clone brush (bottom right, its an alternative to clone stamp)
 * `Audacity` to record all the sounds that you hear in your headphones
 * `Battle Encoder Shirase` to limit resources available to the process (CPU)
 * `CpuStres v2.0` to load CPU to 100%
