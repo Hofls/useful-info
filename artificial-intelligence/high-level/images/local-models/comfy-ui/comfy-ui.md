@@ -34,7 +34,7 @@
 * Getting started (custom nodes/extensions)
   * Download simple workflow - https://github.com/pwillia7/Basic_ComfyUI_Workflows/blob/main/Basic/WorkflowJsons/controlnet.json
   * ComfyUI -> New / + -> Drag & drop .json file
-  * ComfyUI -> Manager -> Custom Nodes in Workflow -> Select all -> Install -> Restart
+  * ComfyUI -> Manager -> Install missing custom nodes -> Select all -> Install -> Restart
   * Sometimes it doesn't work (e.g. KSampler - Inspire), so you have to find package manually via manager (ComfyUI Inspire Pack)
 * Examples:
   * https://github.com/pwillia7/Basic_ComfyUI_Workflows/tree/main/Basic/WorkflowJsons
@@ -42,4 +42,4 @@
   * `examples/upscale-highres.json` - generate low resolution image, then upscale it to high resolution
   * `examples/img2img-noise.json` - generate new variation of image (applies noise to the image, then model restores it)
     * Hint - remove useless EZLoadImgFromUrlNode
-  * 
+  * `examples/text2img.json` - generate image based on text prompt
