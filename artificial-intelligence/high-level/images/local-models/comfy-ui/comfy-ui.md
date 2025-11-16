@@ -41,3 +41,5 @@
   * `examples/controlnet.json` - generate new variation of image (converts image to black&white edges, gives it to model as input)
   * `examples/upscale-highres.json` - generate low resolution image, then upscale it to high resolution
   * `examples/img2img-noise.json` - generate new variation of image (applies noise to the image, then model restores it)
+    * Hint - remove useless EZLoadImgFromUrlNode
+  * 
