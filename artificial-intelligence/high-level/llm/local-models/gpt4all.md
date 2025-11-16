@@ -13,6 +13,7 @@
 	* Chat with any LLM
 	* Chat with your local files/docs
     * OpenAI compatible local API server
+    * Add remote provider (bring API KEY, API URL and MODEL NAME)
 	
 ### Tests (from _local-models.md)
 * Task - Chat with book "Why buddhism is true"

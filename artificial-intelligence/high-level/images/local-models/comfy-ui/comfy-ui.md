@@ -10,13 +10,13 @@
   * LoRA greatly improves image quality or can be used to consistently generate same character (model fine-tuning)
   * Use fixed seeds to see effects of different options/LoRAs
   * To understand what node (e.g. lora) does - use fixed seed in KSampler, generate with and without node (deactivate/bypass it)
-  * Accidentally closed a tab? Look at C:\Users\Hofls\Documents\ComfyUI\user\default\workflows
+  * Accidentally closed a tab? Look at C:\Users\%USERNAME%\Documents\ComfyUI\user\default\workflows
 * Where to find LoRA:
   * https://civitai.com/tag/lora
-  * Put them in C:\Users\Hofls\Documents\ComfyUI\models\loras
+  * Put them in C:\Users\%USERNAME%\Documents\ComfyUI\models\loras
 * Where to find Checkpoints:
   * https://civitai.com/tag/checkpoint
-  * Put them in C:\Users\Hofls\Documents\ComfyUI\models\checkpoints
+  * Put them in C:\Users\%USERNAME%\Documents\ComfyUI\models\checkpoints
 * Where to find Workflows:
   * https://civitai.com/search/models?modelType=Workflows&sortBy=models_v9&query=workflow
   * Drag & drop them into ComfyUI
