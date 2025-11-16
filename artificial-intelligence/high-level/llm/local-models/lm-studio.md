@@ -1,5 +1,6 @@
 ### Other
 * To write code, better use model with `Capabilities: Reasoning`, to allow thinking before answer
+* Models are stored at `C:\Users\%USERNAME%\.lmstudio\models`
 
 ### MCP
 * Allow model to run js code:

@@ -56,9 +56,7 @@
 
 ### LLM Aggregators (Paid APIs, to access LLMs unavailable in some regions)
 * https://polza.ai/
-  * API URL - https://api.polza.ai/api/v1
-  * Models - https://polza.ai/models
-  * Token - https://polza.ai/dashboard
+* 
 
 ### Games
 * `AI Dungeon` - text based rpg

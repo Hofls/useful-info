@@ -1,6 +1,7 @@
 ### Apps to run models
-* LM Studio
-* gpt4all
+* Best - LM Studio, gpt4all
+* Mid - Libre chat, Open WebUI, Text Generation Webui (by oobabooga)
+* Bad - AnythingLLM
 
 ### Best models
 * Qwen - Alibaba AI (China)
