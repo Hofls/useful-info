@@ -3,7 +3,7 @@
 * gpt4all
 
 ### Best models
-* Qwen - Alibaba AI (China)
+* Qwen/DeepSeek - Alibaba AI (China)
 * Llama - Meta AI (USA)
 * Mistral - (France)
 
