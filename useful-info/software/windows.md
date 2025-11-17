@@ -149,7 +149,16 @@
 * `DaVinci Resolve` - to edit videos
 * `Krita` - to edit images
   * Useful tools - clone brush (bottom right, its an alternative to clone stamp)
-* `Audacity` to record all the sounds that you hear in your headphones
+* `Audacity` - to record/edit audio 
+  * To record all the sounds that you hear in your headphones:
+    * Audio Setup -> Host -> Windows WASAPI
+    * Audio Setup -> Rescan audio devices
+    * Audio Setup -> Recording device -> Loopback
+    * Audio Setup -> Recording channels -> Stereo
+    * Red circle -> Black square
+  * To record sounds from microphone:
+    * Audio Setup -> Recording device -> Microphone
+    * Red circle -> Black square
 * `Battle Encoder Shirase` to limit resources available to the process (CPU)
 * `CpuStres v2.0` to load CPU to 100%
     * Useful to see how frontend behaves on slow PCs (to reproduce bugs) 

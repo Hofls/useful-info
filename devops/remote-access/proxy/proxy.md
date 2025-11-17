@@ -14,7 +14,7 @@
         * `Proxy Helper` -> Right click -> `Options` -> `Authentication` -> Set user/password
         * Restart browser
         * `Proxy Helper` -> Left click -> `HTTP PROXY`
-    * Extension `Foxy proxy`. HTTP:
+    * Extension `FoxyProxy`. HTTP:
       * `Proxies` -> `Add` -> Fill fields:
         * Type - HTTP
         * Hostname - 125.44.214.78
@@ -22,7 +22,7 @@
         * Username - hofls
         * Password - qwerty
       * `Save` -> Extension icon -> Activate profile
-    * Extension `Foxy proxy`. SOCKS5:
+    * Extension `FoxyProxy`. SOCKS5:
       * Type - `SOCKS5`
       * IP - `127.0.0.1`
       * Port - `1080`
