@@ -31,9 +31,9 @@ git checkout main
     * `git clone --bare https://github.com/hofls/old-project.git`
     * `cd old-project`
     * `git push --mirror https://github.com/hofls/new-project.git`
-* Download project from 1 gitlab, push it to another (e.g. if gitlab mirroring not working, everything is behind VPNs)
-  * [1-download-gitlab.sh](scripts/1-download-gitlab.sh)
-  * [1-upload-gitlab.sh](scripts/1-upload-gitlab.sh)
+* Download project from 1 gitlab, upload it to another (e.g. if gitlab mirroring not working, everything is behind VPNs)
+  * Use vpn №1, run [1-download-gitlab.sh](scripts/1-download-gitlab.sh)
+  * Use vpn №2, run [1-upload-gitlab.sh](scripts/1-upload-gitlab.sh)
 * Turn off CRLF conversion:
   * `git config --global core.autocrlf false` 
 * Difference between `merge request` and `pull request`?
