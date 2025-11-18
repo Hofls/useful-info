@@ -1,7 +1,7 @@
 #!/bin/bash
 
 GIT_USER="admin"
-GIT_PASS="admin"
+GIT_PASS="qwerty"
 
 upload_repo() {
 	path="$1"
