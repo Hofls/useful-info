@@ -1,6 +1,6 @@
 ## Main
 #### Info
-* `Nexus` - Artifacts storage/proxy (e.g. for java dependencies, npm packages)
+* `Nexus` - Universal artifacts storage/proxy (e.g. for java dependencies, npm packages and docker images)
 * Persistence - `--volume /opt/nexus-data:/nexus-data`
 
 #### Getting started
