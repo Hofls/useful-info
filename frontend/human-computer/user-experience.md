@@ -120,6 +120,8 @@
     * Gitlab runner check for config.toml modification every 3 seconds, automatically reloads it
 * Make dangerous actions hard to execute:
     * Github - Type repository name to delete it
+* Generate CLI commands:
+  * Jfrog artifactory - generates commands with all parameters filled in, for easy pull/push (just copy/paste it, no need to waste time on reading docs)
 
 ##### Antipatterns
 * When copying a cell value from excel to text editor - excel adds linefeed to copied text, so user have to manually delete it
