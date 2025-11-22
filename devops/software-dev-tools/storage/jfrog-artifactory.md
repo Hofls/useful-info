@@ -9,9 +9,9 @@
     * Open in browser `http://YOUR_SERVER_IP:8082/ui/login/`
     * Credentials - `admin/password`
 
-#### Publish/Pull npm package (node.js)
+#### Publish/Pull npm package (Node.js)
 * Log into artifactory -> Set me up -> npm -> Repository -> Insert password -> Copy commands
-* Important! Password should be in weird form (looks like md5 hash), you have to copy it from "Set me up" form
+* Important! Password should be in encrypted form (looks like md5 hash), you have to copy it from "Set me up" form
 * Example №1, configuration via console (password in base64):
 ```
 npm config set registry https://artifactory.someit.com/artifactory/api/npm/libs-npm/
@@ -37,3 +37,24 @@ npm publish --registry https://artifactory.someit.com/artifactory/api/npm/libs-n
   * npm config set @company:registry https://artifactory.someit.com/artifactory/api/npm/libs-npm/
   * @company:registry=https://artifactory.someit.com/artifactory/api/npm/libs-npm/
   * "@company/hofls-package": "2.4.0"
+
+#### Publish/Pull maven library (Java)
+* Important! Password should be in encrypted form (looks like md5 hash), you have to copy it from "Set me up" form
+* Log into artifactory -> Set me up -> Maven -> Repository -> Configure -> Insert password -> Generate Settings
+  * Save `settings.xml` into `%USERPROFILE%\.m2\`
+* Log into artifactory -> Set me up -> Maven -> Repository -> Deploy -> save into `pom.xml` in your java project
+```
+<distributionManagement>
+    <repository>
+        <id>central</id>
+        <name>EMIAS Artifactory-releases</name>
+        <url>https://artifactory.someit.com/artifactory/mvn-release</url>
+    </repository>
+    <snapshotRepository>
+        <id>snapshots</id>
+        <name>EMIAS Artifactory-snapshots</name>
+        <url>https://artifactory.someit.com/artifactory/mvn-snapshot</url>
+    </snapshotRepository>
+</distributionManagement>
+```
+
