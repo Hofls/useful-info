@@ -12,6 +12,7 @@
     * `docker exec a04s28sd cat /nexus-data/admin.password`
 * Open `http://YOUR_SERVER_IP:8081/` -> Sign in
 * Test repository using `docker login`, `docker tag`, `docker push`, `docker pull`
+  * Look at specific examples at harbor.md or docker-registry.md
 
 #### Install a plugin
 * Put `.kar` file on a server, in the `/opt/nexus-plugins` folder

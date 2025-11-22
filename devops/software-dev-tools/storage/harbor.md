@@ -38,8 +38,8 @@
 * Harbor -> Projects -> Pick any -> PUSH COMMAND -> Should show example commands
 * Something like
 ```
-docker login -u hofls -p qwerty harbor.someit.com
 docker pull hello-world
+docker login -u hofls -p qwerty harbor.someit.com
 docker tag hello-world harbor.someit.com/chartrepo/hello-world:latest
 docker push harbor.someit.com/chartrepo/hello-world:latest
 docker pull harbor.someit.com/chartrepo/hello-world:latest
