@@ -7,6 +7,8 @@
 
 ### Voice typing / Dictation / Speech to text
 * The best:
+  * https://handy.computer/
+    * Works via local models (500 mb is enough for great results - Parakeet V3 / Whisper Small)
   * https://lilyspeech.com/download/
 * Browser based:
   * https://speechnotes.co/dictate/
