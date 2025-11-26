@@ -22,10 +22,10 @@ Is implementation details up to standard?
     * No manual toString/Equals/Hashcode/Getters/Setters. Better use `lombok` or alternatives
 * Do not reinvent the wheel. Use existing solutions
 * A variable name should be equal to class name
-    * `private EArea location;` looks like bug
+    * `private EArea location;` looks like a bug
     * `private EArea area;` OK
 * One thing - one name (no synonyms):
-    * `branch.setAreaId(locationId)` looks like bug
+    * `branch.setAreaId(locationId)` looks like a bug
     * `branch.setAreaId(areaId)` OK
 * Do not check for nulls directly, use utils if possible:
     * `StringUtils.isEmpty()`, `CollectionUtils.isEmpty()`
