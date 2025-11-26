@@ -34,6 +34,7 @@ npm publish --registry https://artifactory.someit.com/artifactory/api/npm/libs-n
 ```
 
 #### Pull 1 custom npm package from 1 custom registry, all other packages from default registry (Node.js)
+* Doesnt fully work, heavily depends on package-lock.json
 * .npmrc
 ```
 ng-zorro-antd:registry=https://artifactory.someit.com/artifactory/api/npm/libs-npm-local/
@@ -53,8 +54,8 @@ ng-zorro-antd:registry=https://artifactory.someit.com/artifactory/api/npm/libs-n
 ```
 * To experiment & force download dependency without local cache:
   * Remove dependency from node_modules
-  * For test, try to set wrong password in .npmrc
-  * `npm install --prefer-online --no-cache`
+  * Run `npm install --prefer-online --no-cache`
+  * To make sure it actually goes online each time - try to set wrong username in npmrc
 
 #### Publish/Pull maven library (Java)
 * Important! Password should be in encrypted form (looks like md5 hash), you have to copy it from "Set me up" form
