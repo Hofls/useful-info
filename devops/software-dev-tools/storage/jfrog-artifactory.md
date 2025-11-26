@@ -9,7 +9,7 @@
     * Open in browser `http://YOUR_SERVER_IP:8082/ui/login/`
     * Credentials - `admin/password`
 
-#### Publish/Pull npm package (Node.js)
+#### Publish npm package (Node.js)
 * Log into artifactory -> Set me up -> npm -> Repository -> Insert password -> Copy commands
 * Important! Password should be in encrypted form (looks like md5 hash), you have to copy it from "Set me up" form
 * Example №1, configuration via console (password in base64):
@@ -32,11 +32,25 @@ registry=https://artifactory.someit.com/artifactory/api/npm/libs-npm/
 gulp build:someit
 npm publish --registry https://artifactory.someit.com/artifactory/api/npm/libs-npm/
 ```
-* Pull npm package - add `"hofls-package": "2.4.0"` to `dependencies` in `package.json`, run `npm install`
-* If you need multiple registries - modify commands to use scope `@company:`
-  * npm config set @company:registry https://artifactory.someit.com/artifactory/api/npm/libs-npm/
-  * @company:registry=https://artifactory.someit.com/artifactory/api/npm/libs-npm/
-  * "@company/hofls-package": "2.4.0"
+
+#### Pull 1 specific npm package from 1 specific registry (Node.js)
+* .npmrc
+```
+ng-zorro-antd:registry=https://artifactory.someit.com/artifactory/api/npm/libs-npm-local/
+//artifactory.someit.com/artifactory/api/npm/libs-npm-local/:_password=QlS7sOPZJNSN2lkSD7fkDixXozSbDOF24dDk
+//artifactory.someit.com/artifactory/api/npm/libs-npm-local/:username=hofls
+//artifactory.someit.com/artifactory/api/npm/libs-npm-local/:always-auth=true
+```
+* .package.json
+```
+{
+  "name": "hell-world",
+  "version": "0.0.1",
+  "dependencies": {
+	"ng-zorro-antd": "https://artifactory.someit.com/artifactory/libs-npm-local/ng-zorro-antd/-/ng-zorro-antd-13.4.62.tgz"
+  }
+}
+```
 
 #### Publish/Pull maven library (Java)
 * Important! Password should be in encrypted form (looks like md5 hash), you have to copy it from "Set me up" form
