@@ -34,13 +34,12 @@ npm publish --registry https://artifactory.someit.com/artifactory/api/npm/libs-n
 ```
 
 #### Pull 1 custom npm package from 1 custom registry, all other packages from default registry (Node.js)
-* Doesnt fully work, heavily depends on package-lock.json
 * .npmrc
 ```
 ng-zorro-antd:registry=https://artifactory.someit.com/artifactory/api/npm/libs-npm-local/
-//artifactory.someit.com/artifactory/api/npm/libs-npm-local/:_password=QlS7sOPZJNSN2lkSD7fkDixXozSbDOF24dDk
-//artifactory.someit.com/artifactory/api/npm/libs-npm-local/:username=hofls
-//artifactory.someit.com/artifactory/api/npm/libs-npm-local/:always-auth=true
+//artifactory.someit.com/:_password=QlS7sOPZJNSN2lkSD7fkDixXozSbDOF24dDk
+//artifactory.someit.com/:username=hofls
+//artifactory.someit.com/:always-auth=true
 ```
 * .package.json
 ```
@@ -48,7 +47,7 @@ ng-zorro-antd:registry=https://artifactory.someit.com/artifactory/api/npm/libs-n
   "name": "hell-world",
   "version": "0.0.1",
   "dependencies": {
-	"ng-zorro-antd": "13.4.62"
+	"ng-zorro-antd": "https://artifactory.someit.com/artifactory/libs-npm-local/ng-zorro-antd/-/ng-zorro-antd-13.4.62.tgz"
   }
 }
 ```
