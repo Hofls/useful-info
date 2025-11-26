@@ -10,7 +10,32 @@
 * Offsets - Each message in a partition has a unique offset (like an index) to track consumer progress
 * Retention - Kafka retains messages for a configurable time (or size limit), allowing consumers to replay or catch up
 
-#### Install locally (Docker)
+#### Install locally (Kafka via Docker)
+* Run Kafka:
+  ```
+  docker run -d --name kafka ^
+    --hostname kafka ^
+    -p 9092:29092 ^
+    -p 29092:29092 ^
+    -p 9091:9091 ^
+    -p 9093:9093 ^
+    -e CLUSTER_ID="ZETVJENWRjaECDUEExP_eg" ^
+    -e KAFKA_NODE_ID="0" ^
+    -e KAFKA_PROCESS_ROLES="broker,controller" ^
+    -e KAFKA_LISTENERS="INTERNAL://:9091,EXTERNAL://:29092,CONTROLLER://:9093" ^
+    -e KAFKA_ADVERTISED_LISTENERS="INTERNAL://kafka:9091,EXTERNAL://localhost:29092" ^
+    -e KAFKA_CONTROLLER_QUORUM_VOTERS="0@kafka:9093" ^
+    -e KAFKA_CONTROLLER_LISTENER_NAMES="CONTROLLER" ^
+    -e KAFKA_LISTENER_SECURITY_PROTOCOL_MAP="INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT,CONTROLLER:PLAINTEXT" ^
+    -e KAFKA_INTER_BROKER_LISTENER_NAME="INTERNAL" ^
+    -e KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR="1" ^
+    confluentinc/cp-kafka:8.1.0
+  ```
+* SSH into container to test:
+  * `kafka-topics --bootstrap-server localhost:29092 --create --topic test-topic --partitions 1 --replication-factor 1`
+  * `kafka-topics --bootstrap-server localhost:29092 --list`
+
+#### Install locally (Zookeeper + Kafka via Docker)
 * Run ZooKeeper:
   ```
   docker run --name some-zookeeper -p 2181:2181 --detach \
