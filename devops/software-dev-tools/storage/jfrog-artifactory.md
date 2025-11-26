@@ -33,7 +33,7 @@ gulp build:someit
 npm publish --registry https://artifactory.someit.com/artifactory/api/npm/libs-npm/
 ```
 
-#### Pull 1 specific npm package from 1 specific registry (Node.js)
+#### Pull 1 custom npm package from 1 custom registry, all other packages from default registry (Node.js)
 * .npmrc
 ```
 ng-zorro-antd:registry=https://artifactory.someit.com/artifactory/api/npm/libs-npm-local/
@@ -47,10 +47,14 @@ ng-zorro-antd:registry=https://artifactory.someit.com/artifactory/api/npm/libs-n
   "name": "hell-world",
   "version": "0.0.1",
   "dependencies": {
-	"ng-zorro-antd": "https://artifactory.someit.com/artifactory/libs-npm-local/ng-zorro-antd/-/ng-zorro-antd-13.4.62.tgz"
+	"ng-zorro-antd": "13.4.62"
   }
 }
 ```
+* To experiment & force download dependency without local cache:
+  * Remove dependency from node_modules
+  * For test, try to set wrong password in .npmrc
+  * `npm install --prefer-online --no-cache`
 
 #### Publish/Pull maven library (Java)
 * Important! Password should be in encrypted form (looks like md5 hash), you have to copy it from "Set me up" form
