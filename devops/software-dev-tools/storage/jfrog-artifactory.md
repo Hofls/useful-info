@@ -39,8 +39,8 @@ gulp build:someit
 npm publish --registry https://artifactory.someit.com/artifactory/api/npm/libs-npm/
 ```
 
-#### Publish/Pull 1 custom npm package from 1 custom registry, all other packages pulled from default registry (Node.js)
-* Warning! There is no good way to do it without using scope
+#### Via scope - Publish/Pull 1 custom npm package from 1 custom registry, all other packages pulled from default registry (Node.js)
+* Warning! Wrong registry in package-lock.json will break everything
 * Publish:
   * Get .tgz file (result of building package), extract it
   * In package.json add scope to the name
@@ -69,6 +69,26 @@ npm publish --registry https://artifactory.someit.com/artifactory/api/npm/libs-n
   }
   ```
   * Test - look at "force download" in "Experiments" section above
+
+#### Withou scope - Publish/Pull 1 custom npm package from 1 custom registry, all other packages pulled from default registry (Node.js)
+* Warning! Wrong registry in package-lock.json will break everything
+* .npmrc
+```
+ng-zorro-antd:registry=https://artifactory.someit.com/artifactory/api/npm/libs-npm-local/
+//artifactory.someit.com/:_password=QlS7sOPZJNSN2lkSD7fkDixXozSbDOF24dDk
+//artifactory.someit.com/:username=hofls
+//artifactory.someit.com/:always-auth=true
+```
+* .package.json
+```
+{
+  "name": "hell-world",
+  "version": "0.0.1",
+  "dependencies": {
+	"ng-zorro-antd": "https://artifactory.someit.com/artifactory/libs-npm-local/ng-zorro-antd/-/ng-zorro-antd-13.4.62.tgz"
+  }
+}
+* Test - look at "force download" in "Experiments" section above
 
 #### Publish/Pull maven library (Java)
 * Important! Password should be in encrypted form (looks like md5 hash), you have to copy it from "Set me up" form
