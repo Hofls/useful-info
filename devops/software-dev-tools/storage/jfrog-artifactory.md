@@ -69,6 +69,9 @@ npm publish --registry https://artifactory.someit.com/artifactory/api/npm/libs-n
   }
   ```
   * Test - look at "force download" in "Experiments" section above
+* Also you gotta modify usage:
+  * Before - `import { NzMessageModule } from 'ng-zorro-antd/message';`
+  * After - `import { NzMessageModule } from '@custom-libs/ng-zorro-antd/message';`
 
 #### Withou scope - Publish/Pull 1 custom npm package from 1 custom registry, all other packages pulled from default registry (Node.js)
 * Warning! Wrong registry in package-lock.json will break everything
@@ -88,6 +91,7 @@ ng-zorro-antd:registry=https://artifactory.someit.com/artifactory/api/npm/libs-n
 	"ng-zorro-antd": "https://artifactory.someit.com/artifactory/libs-npm-local/ng-zorro-antd/-/ng-zorro-antd-13.4.62.tgz"
   }
 }
+```
 * Test - look at "force download" in "Experiments" section above
 
 #### Publish/Pull maven library (Java)
