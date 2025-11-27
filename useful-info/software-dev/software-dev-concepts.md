@@ -232,6 +232,7 @@
 * Bad API creators think in terms of implementation or domain of API. Good API creators think in terms of use of API (from perspective of user)
 * Boy scout rule - always try to leave code a bit cleaner than you found it
 * Each API should have request examples (or even frontend prototype) for discoverability & easy onboarding
+* Write everything down, human brain can forget even the most important information (e.g. use personal git repo)
 
 ### Important articles
 * [The Grug Brained Developer](https://grugbrain.dev/)
