@@ -1,5 +1,5 @@
 ### Server side
-* All that is needed - open SSH port
+* All that is needed - open SSH port & public key in `nano ~/.ssh/authorized_keys`
 
 ### Client side
 * Forward traffic from client port 1080 to remote server via SSH:
