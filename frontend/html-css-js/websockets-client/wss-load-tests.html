@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WSS Load Test</title>
+
+    <style>
+        body {
+            font-family: system-ui, Arial, sans-serif;
+            background: #f6f7f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: 1fr 140px 180px 180px;
+            gap: 10px;
+            align-items: end;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            font-size: 13px;
+        }
+
+        select, input, button {
+            padding: 8px;
+            font-size: 14px;
+        }
+
+        button {
+            cursor: pointer;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background: #1e4fd6;
+        }
+
+        .stats {
+            display: flex;
+            gap: 20px;
+            font-size: 14px;
+        }
+
+        .stat {
+            background: #f1f5f9;
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 360px;
+            resize: none;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>WebSocket Load Test</h1>
+
+    <div class="controls">
+        <div class="field">
+            <label>WebSocket Endpoint</label>
+            <select id="wsEndpoint">
+                <option value="wss://echo.websocket.org/">wss://echo.websocket.org/</option>
+                <option value="wss://echo.websocket.in/">wss://echo.websocket.in/</option>
+            </select>
+        </div>
+
+        <div class="field">
+            <label>Threads</label>
+            <input id="threadCount" type="number" value="20" min="1">
+        </div>
+
+        <div class="field">
+            <label>Duration (seconds)</label>
+            <input id="secondsToRun" type="number" value="60" min="1">
+        </div>
+
+        <button onclick="runLoadTest()">Run</button>
+    </div>
+
+    <div class="stats">
+        <div class="stat">Requests sent: <b id="reqCount">0</b></div>
+        <div class="stat">Responses received: <b id="respCount">0</b></div>
+    </div>
+
+    <textarea id="responseArea" placeholder="Request log..." readonly></textarea>
+</div>
+
+<script src="requests.js"></script>
+<script>
+    let requestsSent = 0;
+    let responsesReceived = 0;
+    let stopAt = 0;
+
+    function runLoadTest() {
+        const endpoint = wsEndpoint.value;
+        const threads = Number(threadCount.value) || 1;
+        const seconds = Number(secondsToRun.value) || 1;
+
+        requestsSent = 0;
+        responsesReceived = 0;
+        updateStats();
+
+        responseArea.value = "";
+        stopAt = Date.now() + seconds * 1000;
+
+        for (let i = 0; i < threads; i++) {
+            startWorker(i, endpoint);
+        }
+    }
+
+    function startWorker(workerId, endpoint) {
+        const socket = new WebSocket(endpoint);
+
+        socket.onopen = async () => {
+            while (Date.now() < stopAt && socket.readyState === WebSocket.OPEN) {
+                for (const req of requests) {
+                    if (Date.now() >= stopAt) break;
+
+                    socket.send(JSON.stringify(req.body));
+                    requestsSent++;
+                    log(`[${workerId}] ${req.name}`);
+                    updateStats();
+
+                    await sleep(500);
+                }
+            }
+            socket.close();
+        };
+
+        socket.onmessage = () => {
+            responsesReceived++;
+            updateStats();
+        };
+    }
+
+    function log(text) {
+        responseArea.value += text + "\n";
+        responseArea.scrollTop = responseArea.scrollHeight;
+    }
+
+    function updateStats() {
+        reqCount.textContent = requestsSent;
+        respCount.textContent = responsesReceived;
+    }
+
+    function sleep(ms) {
+        return new Promise(r => setTimeout(r, ms));
+    }
+</script>
+
+</body>
+</html>
