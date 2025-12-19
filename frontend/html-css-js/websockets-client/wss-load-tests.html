@@ -114,6 +114,9 @@
     <div class="stats">
         <div class="stat">Requests sent: <b id="reqCount">0</b></div>
         <div class="stat">Responses received: <b id="respCount">0</b></div>
+        <div class="stat" id="errorStat" >
+            Errors: <b id="errorCount">0</b>
+        </div>
     </div>
 
     <textarea id="responseArea" placeholder="Request log..." readonly></textarea>
@@ -123,6 +126,7 @@
 <script>
     let requestsSent = 0;
     let responsesReceived = 0;
+    let errorsCount = 0;
     let stopAt = 0;
 
     function runLoadTest() {
@@ -132,10 +136,12 @@
 
         requestsSent = 0;
         responsesReceived = 0;
-        updateStats();
+        errorsCount = 0;
 
         responseArea.value = "";
+
         stopAt = Date.now() + seconds * 1000;
+        updateStats();
 
         for (let i = 0; i < threads; i++) {
             startWorker(i, endpoint);
@@ -144,13 +150,16 @@
 
     function startWorker(workerId, endpoint) {
         const socket = new WebSocket(endpoint);
+        let currentRequestName = "";
 
         socket.onopen = async () => {
             while (Date.now() < stopAt && socket.readyState === WebSocket.OPEN) {
                 for (const req of requests) {
                     if (Date.now() >= stopAt) break;
 
+                    currentRequestName = req.name;
                     socket.send(JSON.stringify(req.body));
+
                     requestsSent++;
                     log(`[${workerId}] ${req.name}`);
                     updateStats();
@@ -161,10 +170,25 @@
             socket.close();
         };
 
-        socket.onmessage = () => {
+        socket.onmessage = (event) => {
             responsesReceived++;
+
+            const text = String(event.data || "");
+            if (text.includes("ERROR")) {
+                registerError(currentRequestName);
+            }
+
             updateStats();
         };
+
+        socket.onerror = () => {
+            registerError(currentRequestName || "Unknown request");
+        };
+    }
+
+    function registerError(requestName) {
+        errorsCount++;
+        log(`ERROR in request - ${requestName} `);
     }
 
     function log(text) {
@@ -175,6 +199,7 @@
     function updateStats() {
         reqCount.textContent = requestsSent;
         respCount.textContent = responsesReceived;
+        errorCount.textContent = errorsCount;
     }
 
     function sleep(ms) {
