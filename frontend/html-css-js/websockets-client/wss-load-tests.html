@@ -129,10 +129,8 @@
     let errorsCount = 0;
     let stopAt = 0;
 
-    // response time tracking
-    let pendingRequestStartTime = null;
-    let totalResponseTime = 0;
-    let responseTimeSamples = 0;
+    // per-thread timing stats
+    const threadStats = new Map();
 
     function runLoadTest() {
         const endpoint = wsEndpoint.value;
@@ -142,10 +140,7 @@
         requestsSent = 0;
         responsesReceived = 0;
         errorsCount = 0;
-
-        pendingRequestStartTime = null;
-        totalResponseTime = 0;
-        responseTimeSamples = 0;
+        threadStats.clear();
 
         responseArea.value = "";
 
@@ -153,6 +148,7 @@
         updateStats();
 
         for (let i = 0; i < threads; i++) {
+            threadStats.set(i, {pendingStartTime: null, totalTime: 0, samples: 0} );
             startWorker(i, endpoint);
         }
     }
@@ -160,6 +156,7 @@
     function startWorker(workerId, endpoint) {
         const socket = new WebSocket(endpoint);
         let currentRequestName = "";
+        const stats = threadStats.get(workerId);
 
         socket.onopen = async () => {
             while (Date.now() < stopAt && socket.readyState === WebSocket.OPEN) {
@@ -168,9 +165,8 @@
 
                     currentRequestName = req.name;
 
-                    // mark start time if this is the first unanswered request
-                    if (pendingRequestStartTime === null) {
-                        pendingRequestStartTime = Date.now();
+                    if (stats.pendingStartTime === null) {
+                        stats.pendingStartTime = Date.now();
                     }
 
                     socket.send(JSON.stringify(req.body));
@@ -185,15 +181,13 @@
             socket.close();
         };
 
-        socket.onmessage = (event) => {
+        socket.onmessage = () => {
             responsesReceived++;
 
-            // assume all previous requests are answered now
-            if (pendingRequestStartTime !== null) {
-                const elapsed = Date.now() - pendingRequestStartTime;
-                totalResponseTime += elapsed;
-                responseTimeSamples++;
-                pendingRequestStartTime = null;
+            if (stats.pendingStartTime !== null) {
+                stats.totalTime += Date.now() - stats.pendingStartTime;
+                stats.samples++;
+                stats.pendingStartTime = null;
             }
 
             const text = String(event.data || "");
@@ -225,12 +219,16 @@
         respCount.textContent = responsesReceived;
         errorCount.textContent = errorsCount;
 
-        const avg =
-            responseTimeSamples === 0
-                ? 0
-                : Math.round(totalResponseTime / responseTimeSamples);
-
-        avgRespTime.textContent = avg;
+        let avgSum = 0;
+        let threadsWithSamples = 0;
+        for (const stats of threadStats.values()) {
+            if (stats.samples > 0) {
+                avgSum += stats.totalTime / stats.samples;
+                threadsWithSamples++;
+            }
+        }
+        const globalAvg = threadsWithSamples === 0 ? 0 : Math.round(avgSum / threadsWithSamples);
+        avgRespTime.textContent = globalAvg;
     }
 
     function sleep(ms) {
@@ -239,12 +237,8 @@
 
     function enforceMinMax(el) {
         if (el.value !== "") {
-            if (parseInt(el.value) < parseInt(el.min)) {
-                el.value = el.min;
-            }
-            if (parseInt(el.value) > parseInt(el.max)) {
-                el.value = el.max;
-            }
+            if (parseInt(el.value) < parseInt(el.min)) el.value = el.min;
+            if (parseInt(el.value) > parseInt(el.max)) el.value = el.max;
         }
     }
 </script>
