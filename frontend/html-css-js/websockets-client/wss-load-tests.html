@@ -185,7 +185,7 @@
             socket.close();
         };
 
-        socket.onmessage = () => {
+        socket.onmessage = (event) => {
             responsesReceived++;
 
             // assume all previous requests are answered now
@@ -194,6 +194,11 @@
                 totalResponseTime += elapsed;
                 responseTimeSamples++;
                 pendingRequestStartTime = null;
+            }
+
+            const text = String(event.data || "");
+            if (text.includes("ERROR")) {
+                registerError(currentRequestName);
             }
 
             updateStats();
