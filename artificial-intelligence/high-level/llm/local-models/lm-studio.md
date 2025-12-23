@@ -9,7 +9,7 @@
 * Allow model to analyze images:
   * Download any model with `Capabilities: Vision`, for example `Qwen3 Vl 4B`
   * Plug icon -> Activate `rag v1` -> drag & drop any image
-* [Custom MCPs](../../mcp)
+* [Custom MCPs](../../vibe-coding/mcp)
 
 ### OpenAI-like API
 * In console, execute - `lms server start`

@@ -43,18 +43,6 @@
 * `Hapier`
 * `Pika`
 
-### Code assistant / Coding agents / Vibe coding
-* `Kilo code` - (BYOM/MCP marketplace) + (VSCODE/IDEA)
-* `Cline` - (BYOM/MCP) + (VSCODE/IDEA)
-* `Koda` - (BYOM/MCP) + (VSCODE)
-* `Yandex Code Assistant` - (BYOM/MCP marketplace) + (VSCODE/IDEA)
-  * Installation process is unusual - https://sourcecraft.dev/portal/docs/en/code-assistant/
-  * Usage statistics - https://sourcecraft.dev/me/codeassistant/settings
-* `Roo Code` - bad, no true BYOM
-* `Continue` - bad, no true BYOM
-* `OpenCode` - bad, no true BYOM
-* `Qodo Gen` - bad, no true BYOM, requires registration
-
 ### LLM Aggregators (Paid APIs, to access LLMs unavailable in some regions)
 * https://polza.ai/
 * 
