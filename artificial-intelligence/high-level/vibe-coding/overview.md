@@ -10,6 +10,7 @@
     * Usage statistics - https://sourcecraft.dev/me/codeassistant/settings
 * `Continue` - (BYOM/MCP) + (VSCODE/IDEA)
     * Adding custom provider is scuffed (look at `tools/continue.md`)
-* `OpenCode` - bad, no true BYOM
-    * Super scuffed (gotta manually edit `C:\Users\%USERPROFILE%\.config\opencode\opencode.json`)
+* `OpenCode` - bad
+    * BYOM is super scuffed (gotta manually edit `C:\Users\%USERPROFILE%\.config\opencode\opencode.json`)
 * `Qodo Gen` - bad, no true BYOM, requires registration
+* `Cursor IDE` - bad, requires registration + sms verification
