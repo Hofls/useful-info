@@ -52,6 +52,7 @@
   * Usage statistics - https://sourcecraft.dev/me/codeassistant/settings
 * `Roo Code` - bad, no true BYOM
 * `Continue` - bad, no true BYOM
+* `OpenCode` - bad, no true BYOM
 * `Qodo Gen` - bad, no true BYOM, requires registration
 
 ### LLM Aggregators (Paid APIs, to access LLMs unavailable in some regions)
