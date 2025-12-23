@@ -44,10 +44,10 @@
 * `Pika`
 
 ### Code assistant / Coding agents / Vibe coding
+* `Kilo code` - (BYOM/MCP marketplace) + (VSCODE/IDEA)
 * `Cline` - (BYOM/MCP) + (VSCODE/IDEA)
 * `Koda` - (BYOM/MCP) + (VSCODE)
-* `Yandex Code Assistant` - (BYOM/MCP) + (VSCODE/IDEA)
-  * Has built-in MCP marketplace
+* `Yandex Code Assistant` - (BYOM/MCP marketplace) + (VSCODE/IDEA)
   * Installation process is unusual - https://sourcecraft.dev/portal/docs/en/code-assistant/
   * Usage statistics - https://sourcecraft.dev/me/codeassistant/settings
 * `Roo Code` - bad, no true BYOM
