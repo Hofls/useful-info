@@ -90,3 +90,4 @@
 * `Personal networking` / `Business networking` - practice of building/maintaining mutually beneficial connections
 * `Audit` - systematic evaluation, often done by 3rd party (e.g. adherence to laws, operational efficiency, security assessment)
 * `Dogfooding` - using one's own products or services (allows to look at system from user's perspective)
+* `Incentive` - reward/punishment that motivates specific actions and leads to a desired outcome
