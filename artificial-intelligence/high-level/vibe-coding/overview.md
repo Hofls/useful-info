@@ -1,3 +1,7 @@
+### Main
+* [mcp.md](mcp/mcp.md)
+* [skills.md](skills/skills.md)
+
 ### Coding agents / Vibe coding
 * `BlackBox AI` - (BYOM/MCP marketplace/Skills) + (VSCODE/IDEA)
   * Settings -> Tools -> Disable command execution 
@@ -18,6 +22,7 @@
 * `Cursor IDE` - bad, requires registration + sms verification
 
 ### AI assistant / AI autocomplete
+* `Tabby` - bad, requires running an entire server
 * `Windsurf` - bad, requires auth, no true BYOM
 * `CodeGPT` - bad, requires auth, no true BYOM
 * `Tabnine` - bad, paywalled
