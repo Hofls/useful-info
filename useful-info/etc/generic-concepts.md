@@ -91,3 +91,8 @@
 * `Audit` - systematic evaluation, often done by 3rd party (e.g. adherence to laws, operational efficiency, security assessment)
 * `Dogfooding` - using one's own products or services (allows to look at system from user's perspective)
 * `Incentive` - reward/punishment that motivates specific actions and leads to a desired outcome
+* `Second order effect` - not obvious consequences of an action
+  * E.g. Patient takes antibiotics, 1st order kills off weak bacteria, 2nd order breeds resistant bacteria
+* `Conflict resolution` methods - Cooperation (Win-Win), Compromise (No winners/losers), Competition (Win-Lose), Accommodation(Win-Lose), Avoidance(No resolution)
+* `BATNA` - Best Alternative To a Negotiated Agreement (plan B, if deal fails)
+  * Only accept a deal if it's better than your BATNA (don't reveal it directly)
