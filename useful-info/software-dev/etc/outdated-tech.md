@@ -26,4 +26,6 @@
   * Replaced by `Cloud` infrastructure
 * `Robert C. Martin` / `Uncle Bob` books - https://qntm.org/clean
   * Replaced by `Code Complete` / `Philosophy of Software Design`
+* `The Mythical Man-Month` book - outdated, productivity of software developer have increased greatly
+  * Nowadays person jumps on a new project, reads wiki, reads code, takes jira task and completes it all in 1 day (with help from AI)
 * Other - `OLAP`
