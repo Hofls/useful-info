@@ -103,8 +103,10 @@
 * Alibaba Cloud:
     * Documentation (Help center) -> Overview of all products
     * Each product has learning path (Introduction -> Quick Start -> Practice -> Develop)
+* AmneziaVPN:
+    * Do not waste time implementing 2 different UIs (mobile & desktop), just use mobile UI on desktop
 * Nexus:
-    * Great web UI, all the features are easily accessible, has Swagger API
+    * Great web UI, all the features are easily accessible (nothing is hidden), has Swagger API
     
 ##### Great usability examples. Feature first
 * Most useful/important things come first:
