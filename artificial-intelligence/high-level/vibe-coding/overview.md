@@ -3,11 +3,15 @@
 * [skills.md](skills/skills.md)
 
 ### Coding agents / Vibe coding
-* `BlackBox AI` - (BYOM/MCP marketplace/Skills) + (VSCODE/IDEA)
-  * Settings -> Tools -> Disable command execution 
 * `Kilo code` - (BYOM/MCP marketplace) + (VSCODE/IDEA)
-    * Pick `OpenAI Compatible` to add custom url/key/model
+  * Settings -> Providers -> Pick `OpenAI Compatible` to add custom url/key/model
+  * Settings -> Auto-Approve -> Disable command execution
+  * Settings -> Context -> Workspace file context limit -> 50
 * `Cline` - (BYOM/MCP) + (VSCODE/IDEA)
+* `BlackBox AI` - (BYOM/MCP marketplace/Skills) + (VSCODE/IDEA)
+  * Settings -> Auto-Approve -> Disable command execution
+  * Settings -> Context -> Workspace file context limit -> 50
+  * Settings -> Providers -> Pick `OpenAI Compatible` to add custom url/key/model
 * `Koda` - (BYOM/MCP) + (VSCODE)
 * `Roo Code` - (BYOM/MCP marketplace) + (VSCODE)
     * Pick `OpenAI Compatible` to add custom url/key/model
