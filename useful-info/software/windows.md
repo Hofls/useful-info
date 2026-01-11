@@ -60,7 +60,7 @@
   * If you turned off the internet:
     * Skip mandatory connection screen - `Shift+F10`, enter `oobe\BypassNRO`
     * On second attempt at the screen, press `I don't have internet`
-  * Next steps - [fresh-install.md](fresh-install.md)
+  * Next steps - [fresh-install.md](fresh-os-install)
 * Windows update (manual):
   * Download `.iso` image of new Windows version
   * Right click, mount, update (by default it will keep all the files, software and settings)
