@@ -241,3 +241,4 @@
 * [Cognitive load](https://github.com/zakirullin/cognitive-load)
 * [12 factor for LLM aps](https://github.com/humanlayer/12-factor-agents)
 * [The Wrong Abstraction](https://sandimetz.com/blog/2016/1/20/the-wrong-abstraction)
+* [Lessons From 14 Years at Google](https://addyosmani.com/blog/21-lessons/)
