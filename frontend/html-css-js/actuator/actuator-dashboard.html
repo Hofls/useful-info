@@ -1,7 +1,7 @@
 <!--
+Replace "someit.com" URLS with real ones
 If you try to run it locally and get CORS error, gotta install "CORS Unblock" chrome extension
 -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,79 +71,92 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
     <h1>Actuator Metrics Dashboard</h1>
 
     <div class="tab-container">
-        <button class="tab-button active" onclick="openTab(event, 'project1')">Project 1</button>
-        <button class="tab-button" onclick="openTab(event, 'project2')">Project 2</button>
-        <button class="tab-button" onclick="openTab(event, 'project3')">Project 3</button>
-        <button class="tab-button" onclick="openTab(event, 'project4')">Project 4</button>
-        <button class="tab-button" onclick="openTab(event, 'project5')">Project 5</button>
+        <button class="tab-button active" onclick="openTab(event, 'ms-actor')">ms-actor</button>
+        <button class="tab-button" onclick="openTab(event, 'ms-warehouse')">ms-warehouse</button>
+        <button class="tab-button" onclick="openTab(event, 'ms-external')">ms-external</button>
+        <button class="tab-button" onclick="openTab(event, 'ms-equipment')">ms-equipment</button>
+        <button class="tab-button" onclick="openTab(event, 'ms-user')">ms-user</button>
     </div>
 
-    <!-- Project 1 Tab -->
-    <div id="project1" class="tab-content active">
-        <input type="text" id="url-project1" placeholder="Enter Actuator URL for Project 1" style="width: 100%; padding: 8px; margin-bottom: 10px;">
-        <button onclick="runAllScriptsForProject('project1')">Run All Scripts</button>
-        <button onclick="runPrometheusScript('project1')">Run Prometheus Script</button>
-        <button onclick="runSlowEndpointsScript('project1')">Run Slow Endpoints Script</button>
-        <button onclick="runEndpointErrorsScript('project1')">Run Endpoint Errors Script</button>
+    <!-- ms-actor Tab -->
+    <div id="ms-actor" class="tab-content active">
+        <input type="text" id="url-ms-actor" placeholder="Enter Actuator URL for ms-actor" style="width: 100%; padding: 8px; margin-bottom: 10px;" value="http://someit.com/ms-actor">
+        <button onclick="runAllScriptsForProject('ms-actor')">Run All Scripts</button>
+        <button onclick="runPrometheusScript('ms-actor')">Run Prometheus Script</button>
+        <button onclick="runSlowEndpointsScript('ms-actor')">Run Slow Endpoints Script</button>
+        <button onclick="runEndpointErrorsScript('ms-actor')">Run Endpoint Errors Script</button>
 
-        <div id="prometheus-output-project1" class="section"></div>
-        <div id="slow-endpoints-output-project1" class="section"></div>
-        <div id="endpoint-errors-output-project1" class="section"></div>
+        <div id="prometheus-output-ms-actor" class="section"></div>
+        <div id="slow-endpoints-output-ms-actor" class="section"></div>
+        <div id="endpoint-errors-output-ms-actor" class="section"></div>
     </div>
 
-    <!-- Project 2 Tab -->
-    <div id="project2" class="tab-content">
-        <input type="text" id="url-project2" placeholder="Enter Actuator URL for Project 2" style="width: 100%; padding: 8px; margin-bottom: 10px;">
-        <button onclick="runAllScriptsForProject('project2')">Run All Scripts</button>
-        <button onclick="runPrometheusScript('project2')">Run Prometheus Script</button>
-        <button onclick="runSlowEndpointsScript('project2')">Run Slow Endpoints Script</button>
-        <button onclick="runEndpointErrorsScript('project2')">Run Endpoint Errors Script</button>
+    <!-- ms-warehouse Tab -->
+    <div id="ms-warehouse" class="tab-content">
+        <input type="text" id="url-ms-warehouse" placeholder="Enter Actuator URL for ms-warehouse" style="width: 100%; padding: 8px; margin-bottom: 10px;" value="http://someit.com/ms-warehouse">
+        <button onclick="runAllScriptsForProject('ms-warehouse')">Run All Scripts</button>
+        <button onclick="runPrometheusScript('ms-warehouse')">Run Prometheus Script</button>
+        <button onclick="runSlowEndpointsScript('ms-warehouse')">Run Slow Endpoints Script</button>
+        <button onclick="runEndpointErrorsScript('ms-warehouse')">Run Endpoint Errors Script</button>
 
-        <div id="prometheus-output-project2" class="section"></div>
-        <div id="slow-endpoints-output-project2" class="section"></div>
-        <div id="endpoint-errors-output-project2" class="section"></div>
+        <div id="prometheus-output-ms-warehouse" class="section"></div>
+        <div id="slow-endpoints-output-ms-warehouse" class="section"></div>
+        <div id="endpoint-errors-output-ms-warehouse" class="section"></div>
     </div>
 
-    <!-- Project 3 Tab -->
-    <div id="project3" class="tab-content">
-        <input type="text" id="url-project3" placeholder="Enter Actuator URL for Project 3" style="width: 100%; padding: 8px; margin-bottom: 10px;">
-        <button onclick="runAllScriptsForProject('project3')">Run All Scripts</button>
-        <button onclick="runPrometheusScript('project3')">Run Prometheus Script</button>
-        <button onclick="runSlowEndpointsScript('project3')">Run Slow Endpoints Script</button>
-        <button onclick="runEndpointErrorsScript('project3')">Run Endpoint Errors Script</button>
+    <!-- ms-external Tab -->
+    <div id="ms-external" class="tab-content">
+        <input type="text" id="url-ms-external" placeholder="Enter Actuator URL for ms-external" style="width: 100%; padding: 8px; margin-bottom: 10px;" value="http://someit.com/ms-external">
+        <button onclick="runAllScriptsForProject('ms-external')">Run All Scripts</button>
+        <button onclick="runPrometheusScript('ms-external')">Run Prometheus Script</button>
+        <button onclick="runSlowEndpointsScript('ms-external')">Run Slow Endpoints Script</button>
+        <button onclick="runEndpointErrorsScript('ms-external')">Run Endpoint Errors Script</button>
 
-        <div id="prometheus-output-project3" class="section"></div>
-        <div id="slow-endpoints-output-project3" class="section"></div>
-        <div id="endpoint-errors-output-project3" class="section"></div>
+        <div id="prometheus-output-ms-external" class="section"></div>
+        <div id="slow-endpoints-output-ms-external" class="section"></div>
+        <div id="endpoint-errors-output-ms-external" class="section"></div>
     </div>
 
-    <!-- Project 4 Tab -->
-    <div id="project4" class="tab-content">
-        <input type="text" id="url-project4" placeholder="Enter Actuator URL for Project 4" style="width: 100%; padding: 8px; margin-bottom: 10px;">
-        <button onclick="runAllScriptsForProject('project4')">Run All Scripts</button>
-        <button onclick="runPrometheusScript('project4')">Run Prometheus Script</button>
-        <button onclick="runSlowEndpointsScript('project4')">Run Slow Endpoints Script</button>
-        <button onclick="runEndpointErrorsScript('project4')">Run Endpoint Errors Script</button>
+    <!-- ms-equipment Tab -->
+    <div id="ms-equipment" class="tab-content">
+        <input type="text" id="url-ms-equipment" placeholder="Enter Actuator URL for ms-equipment" style="width: 100%; padding: 8px; margin-bottom: 10px;" value="http://someit.com/ms-equipment">
+        <button onclick="runAllScriptsForProject('ms-equipment')">Run All Scripts</button>
+        <button onclick="runPrometheusScript('ms-equipment')">Run Prometheus Script</button>
+        <button onclick="runSlowEndpointsScript('ms-equipment')">Run Slow Endpoints Script</button>
+        <button onclick="runEndpointErrorsScript('ms-equipment')">Run Endpoint Errors Script</button>
 
-        <div id="prometheus-output-project4" class="section"></div>
-        <div id="slow-endpoints-output-project4" class="section"></div>
-        <div id="endpoint-errors-output-project4" class="section"></div>
+        <div id="prometheus-output-ms-equipment" class="section"></div>
+        <div id="slow-endpoints-output-ms-equipment" class="section"></div>
+        <div id="endpoint-errors-output-ms-equipment" class="section"></div>
     </div>
 
-    <!-- Project 5 Tab -->
-    <div id="project5" class="tab-content">
-        <input type="text" id="url-project5" placeholder="Enter Actuator URL for Project 5" style="width: 100%; padding: 8px; margin-bottom: 10px;">
-        <button onclick="runAllScriptsForProject('project5')">Run All Scripts</button>
-        <button onclick="runPrometheusScript('project5')">Run Prometheus Script</button>
-        <button onclick="runSlowEndpointsScript('project5')">Run Slow Endpoints Script</button>
-        <button onclick="runEndpointErrorsScript('project5')">Run Endpoint Errors Script</button>
+    <!-- ms-user Tab -->
+    <div id="ms-user" class="tab-content">
+        <input type="text" id="url-ms-user" placeholder="Enter Actuator URL for ms-user" style="width: 100%; padding: 8px; margin-bottom: 10px;" value="http://someit.com/ms-user">
+        <button onclick="runAllScriptsForProject('ms-user')">Run All Scripts</button>
+        <button onclick="runPrometheusScript('ms-user')">Run Prometheus Script</button>
+        <button onclick="runSlowEndpointsScript('ms-user')">Run Slow Endpoints Script</button>
+        <button onclick="runEndpointErrorsScript('ms-user')">Run Endpoint Errors Script</button>
 
-        <div id="prometheus-output-project5" class="section"></div>
-        <div id="slow-endpoints-output-project5" class="section"></div>
-        <div id="endpoint-errors-output-project5" class="section"></div>
+        <div id="prometheus-output-ms-user" class="section"></div>
+        <div id="slow-endpoints-output-ms-user" class="section"></div>
+        <div id="endpoint-errors-output-ms-user" class="section"></div>
     </div>
 
     <script>
+        // Track which tabs have been initialized
+        const initializedTabs = new Set([]);
+
+        // Add initialization for the first tab since it's active by default
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                if (!initializedTabs.has('ms-actor')) {
+                    runAllScriptsForProject('ms-actor');
+                    initializedTabs.add('ms-actor');
+                }
+            }, 100); // Small delay to ensure DOM is ready
+        });
+
         // Tab functionality
         function openTab(evt, tabName) {
             var i, tabcontent, tabbuttons;
@@ -157,6 +170,12 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
             }
             document.getElementById(tabName).style.display = "block";
             evt.currentTarget.className += " active";
+
+            // Run scripts for the tab if it hasn't been initialized yet
+            if (!initializedTabs.has(tabName)) {
+                runAllScriptsForProject(tabName);
+                initializedTabs.add(tabName);
+            }
         }
 
         // --- Prometheus Script Logic ---
@@ -231,10 +250,10 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
                 <table>
                     <tr><th>CPU</th><td colspan="2">-</td></tr>
             `;
-            
+
             const cpu = data['process_cpu_usage'] ?? data['system_cpu_usage'];
             html += `<tr><td>CPU usage</td><td>${(cpu * 100).toFixed(1)}%</td><td>(JVM / system load)</td></tr>`;
-            
+
             html += `
                     <tr><th>JVM Memory — USED</th><td colspan="2">-</td></tr>
                     <tr><td>Heap Tenured used</td><td>${(data['jvm_memory_used_bytes_tenured_gen'] / 1024 / 1024).toFixed(1)} MB</td><td>-</td></tr>
@@ -242,27 +261,27 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
                     <tr><td>Heap Survivor used</td><td>${(data['jvm_memory_used_bytes_survivor_space'] / 1024 / 1024).toFixed(1)} MB</td><td>-</td></tr>
                     <tr><td>MetaSpace used</td><td>${(data['jvm_memory_used_bytes_metaspace'] / 1024 / 1024).toFixed(1)} MB</td><td>-</td></tr>
                     <tr><td>Compressed Class Space used</td><td>${(data['jvm_memory_used_bytes_compressed_class_space'] / 1024 / 1024).toFixed(1)} MB</td><td>-</td></tr>
-                    
+
                     <tr><th>JVM Memory — COMMITTED</th><td colspan="2">-</td></tr>
                     <tr><td>Heap Tenured committed</td><td>${(data['jvm_memory_committed_bytes_tenured_gen'] / 1024 / 1024).toFixed(1)} MB</td><td>-</td></tr>
                     <tr><td>Heap Eden committed</td><td>${(data['jvm_memory_committed_bytes_eden_space'] / 1024 / 1024).toFixed(1)} MB</td><td>-</td></tr>
                     <tr><td>Heap Survivor committed</td><td>${(data['jvm_memory_committed_bytes_survivor_space'] / 1024 / 1024).toFixed(1)} MB</td><td>-</td></tr>
                     <tr><td>MetaSpace committed</td><td>${(data['jvm_memory_committed_bytes_metaspace'] / 1024 / 1024).toFixed(1)} MB</td><td>-</td></tr>
                     <tr><td>Compressed Class Space committed</td><td>${(data['jvm_memory_committed_bytes_compressed_class_space'] / 1024 / 1024).toFixed(1)} MB</td><td>-</td></tr>
-                    
+
                     <tr><th>JVM Memory — MAX</th><td colspan="2">-</td></tr>
                     <tr><td>Heap Tenured max</td><td>${(data['jvm_memory_max_bytes_tenured_gen'] / 1024 / 1024).toFixed(1)} MB</td><td>-</td></tr>
                     <tr><td>Heap Eden max</td><td>${(data['jvm_memory_max_bytes_eden_space'] / 1024 / 1024).toFixed(1)} MB</td><td>-</td></tr>
                     <tr><td>Heap Survivor max</td><td>${(data['jvm_memory_max_bytes_survivor_space'] / 1024 / 1024).toFixed(1)} MB</td><td>-</td></tr>
                     <tr><td>MetaSpace max</td><td>${(data['jvm_memory_max_bytes_metaspace'] / 1024 / 1024).toFixed(1)} MB</td><td>-</td></tr>
                     <tr><td>Compressed Class Space max</td><td>${(data['jvm_memory_max_bytes_compressed_class_space'] / 1024 / 1024).toFixed(1)} MB</td><td>-</td></tr>
-                    
+
                     <tr><th>Memory</th><td colspan="2">-</td></tr>
                     <tr><td>Live heap post-GC</td><td>${(data['jvm_gc_live_data_size_bytes'] / 1024 / 1024).toFixed(1)} MB</td><td>-</td></tr>
                     <tr><td>Heap used after GC</td><td>${(data['jvm_memory_usage_after_gc_percent'] * 100).toFixed(1)}%</td><td>-</td></tr>
                     <tr><td>Promoted to old-gen</td><td>${(data['jvm_gc_memory_promoted_bytes_total'] / 1024 / 1024).toFixed(1)} MB</td><td>-</td></tr>
                     <tr><td>Classes loaded</td><td>${data['jvm_classes_loaded_classes']}</td><td>-</td></tr>
-                    
+
                     <tr><th>Threads</th><td colspan="2">-</td></tr>
                     <tr><td>Peak threads</td><td>${data['jvm_threads_peak_threads'] | 0}</td><td>-</td></tr>
                     <tr><td>Runnable threads</td><td>${data['jvm_threads_states_threads_runnable'] | 0}</td><td>-</td></tr>
@@ -270,7 +289,7 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
                     <tr><td>Timed waiting threads</td><td>${data['jvm_threads_states_threads_timed'] | 0}</td><td>-</td></tr>
                     <tr><td>Blocked threads</td><td>${data['jvm_threads_states_threads_blocked'] | 0}</td><td>-</td></tr>
                     <tr><td>Daemon threads</td><td>${data['jvm_threads_daemon_threads'] | 0}</td><td>-</td></tr>
-                    
+
                     <tr><th>Other</th><td colspan="2">-</td></tr>
                     <tr><td>Uptime</td><td>${Math.floor((Date.now()/1000 - data['process_start_time_seconds']) / 60)} min</td><td>(JVM running time)</td></tr>
                     <tr><td>Open files</td><td>${data['process_files_open_files']}</td><td>-</td></tr>
@@ -279,12 +298,12 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
                     <tr><td>Errors logged</td><td>${data['logback_events_total_error']}</td><td>-</td></tr>
                     <tr><td>Disk free</td><td>${(data['disk_free_bytes'] / 1024 / 1024 / 1024).toFixed(1)} GB</td><td>-</td></tr>
                     <tr><td>JDBC connections min–max</td><td>${data['jdbc_connections_min_dataSource'] | 0}–${data['jdbc_connections_max_dataSource'] | 0}</td><td>-</td></tr>
-                    
+
                     <tr><th>Executor</th><td colspan="2">-</td></tr>
                     <tr><td>Tasks queued</td><td>${data['executor_queued_tasks_threadPoolTaskScheduler']}</td><td>-</td></tr>
                     <tr><td>Tasks completed</td><td>${data['executor_completed_tasks_total_threadPoolTaskScheduler']}</td><td>-</td></tr>
                     <tr><td>Executor threads</td><td>${data['executor_pool_size_threads_threadPoolTaskScheduler']}</td><td>-</td></tr>
-                    
+
                     <tr><th>Database</th><td colspan="2">-</td></tr>
                     <tr><td>DB connections active</td><td>${data['hikaricp_connections_active']}</td><td>-</td></tr>
                     <tr><td>DB pool size</td><td>${data['hikaricp_connections']}</td><td>-</td></tr>
