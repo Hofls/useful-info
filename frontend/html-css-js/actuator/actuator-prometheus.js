@@ -133,6 +133,9 @@ function printHealthSummary(data) {
   console.log(`DB connections active: ${data.hikaricp_connections_active}`);
   console.log(`DB pool size: ${data.hikaricp_connections}`);
   console.log(`DB max usage: ${(data.hikaricp_connections_usage_seconds_max * 1000).toFixed(1)} ms`);
+  console.log(`DB connections pending: ${data.hikaricp_connections_pending}`);
+  console.log(`DB connections acquire max: ${data.hikaricp_connections_acquire_seconds_max} s`);
+  console.log(`DB connections timeout: ${data.hikaricp_connections_timeout_total}`);
   console.log('');
 }
 
