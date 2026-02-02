@@ -1,0 +1,534 @@
+<!--
+If you try to run it locally and get CORS error, gotta install "CORS Unblock" chrome extension
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actuator Metrics Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .tab-container {
+            display: flex;
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 20px;
+        }
+        .tab-button {
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #f1f1f1;
+            border: 1px solid #ccc;
+            border-bottom: none;
+            margin-right: 5px;
+            border-radius: 5px 5px 0 0;
+        }
+        .tab-button.active {
+            background-color: #ddd;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section h2 {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Actuator Metrics Dashboard</h1>
+
+    <div class="tab-container">
+        <button class="tab-button active" onclick="openTab(event, 'project1')">Project 1</button>
+        <button class="tab-button" onclick="openTab(event, 'project2')">Project 2</button>
+        <button class="tab-button" onclick="openTab(event, 'project3')">Project 3</button>
+        <button class="tab-button" onclick="openTab(event, 'project4')">Project 4</button>
+        <button class="tab-button" onclick="openTab(event, 'project5')">Project 5</button>
+    </div>
+
+    <!-- Project 1 Tab -->
+    <div id="project1" class="tab-content active">
+        <input type="text" id="url-project1" placeholder="Enter Actuator URL for Project 1" style="width: 100%; padding: 8px; margin-bottom: 10px;">
+        <button onclick="runAllScriptsForProject('project1')">Run All Scripts</button>
+        <button onclick="runPrometheusScript('project1')">Run Prometheus Script</button>
+        <button onclick="runSlowEndpointsScript('project1')">Run Slow Endpoints Script</button>
+        <button onclick="runEndpointErrorsScript('project1')">Run Endpoint Errors Script</button>
+
+        <div id="prometheus-output-project1" class="section"></div>
+        <div id="slow-endpoints-output-project1" class="section"></div>
+        <div id="endpoint-errors-output-project1" class="section"></div>
+    </div>
+
+    <!-- Project 2 Tab -->
+    <div id="project2" class="tab-content">
+        <input type="text" id="url-project2" placeholder="Enter Actuator URL for Project 2" style="width: 100%; padding: 8px; margin-bottom: 10px;">
+        <button onclick="runAllScriptsForProject('project2')">Run All Scripts</button>
+        <button onclick="runPrometheusScript('project2')">Run Prometheus Script</button>
+        <button onclick="runSlowEndpointsScript('project2')">Run Slow Endpoints Script</button>
+        <button onclick="runEndpointErrorsScript('project2')">Run Endpoint Errors Script</button>
+
+        <div id="prometheus-output-project2" class="section"></div>
+        <div id="slow-endpoints-output-project2" class="section"></div>
+        <div id="endpoint-errors-output-project2" class="section"></div>
+    </div>
+
+    <!-- Project 3 Tab -->
+    <div id="project3" class="tab-content">
+        <input type="text" id="url-project3" placeholder="Enter Actuator URL for Project 3" style="width: 100%; padding: 8px; margin-bottom: 10px;">
+        <button onclick="runAllScriptsForProject('project3')">Run All Scripts</button>
+        <button onclick="runPrometheusScript('project3')">Run Prometheus Script</button>
+        <button onclick="runSlowEndpointsScript('project3')">Run Slow Endpoints Script</button>
+        <button onclick="runEndpointErrorsScript('project3')">Run Endpoint Errors Script</button>
+
+        <div id="prometheus-output-project3" class="section"></div>
+        <div id="slow-endpoints-output-project3" class="section"></div>
+        <div id="endpoint-errors-output-project3" class="section"></div>
+    </div>
+
+    <!-- Project 4 Tab -->
+    <div id="project4" class="tab-content">
+        <input type="text" id="url-project4" placeholder="Enter Actuator URL for Project 4" style="width: 100%; padding: 8px; margin-bottom: 10px;">
+        <button onclick="runAllScriptsForProject('project4')">Run All Scripts</button>
+        <button onclick="runPrometheusScript('project4')">Run Prometheus Script</button>
+        <button onclick="runSlowEndpointsScript('project4')">Run Slow Endpoints Script</button>
+        <button onclick="runEndpointErrorsScript('project4')">Run Endpoint Errors Script</button>
+
+        <div id="prometheus-output-project4" class="section"></div>
+        <div id="slow-endpoints-output-project4" class="section"></div>
+        <div id="endpoint-errors-output-project4" class="section"></div>
+    </div>
+
+    <!-- Project 5 Tab -->
+    <div id="project5" class="tab-content">
+        <input type="text" id="url-project5" placeholder="Enter Actuator URL for Project 5" style="width: 100%; padding: 8px; margin-bottom: 10px;">
+        <button onclick="runAllScriptsForProject('project5')">Run All Scripts</button>
+        <button onclick="runPrometheusScript('project5')">Run Prometheus Script</button>
+        <button onclick="runSlowEndpointsScript('project5')">Run Slow Endpoints Script</button>
+        <button onclick="runEndpointErrorsScript('project5')">Run Endpoint Errors Script</button>
+
+        <div id="prometheus-output-project5" class="section"></div>
+        <div id="slow-endpoints-output-project5" class="section"></div>
+        <div id="endpoint-errors-output-project5" class="section"></div>
+    </div>
+
+    <script>
+        // Tab functionality
+        function openTab(evt, tabName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tabbuttons = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // --- Prometheus Script Logic ---
+        async function runPrometheusScript(projectId) {
+            const urlInput = document.getElementById(`url-${projectId}`);
+            const url = urlInput.value.trim();
+            if (!url) {
+                alert(`Please enter a URL for ${projectId}`);
+                return;
+            }
+
+            try {
+                const fullUrl = url.endsWith('/actuator/prometheus') ? url : `${url}/actuator/prometheus`;
+                const response = await fetch(fullUrl);
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                const text = await response.text();
+                const data = parsePrometheusMetrics(text);
+                printHealthSummaryHTML(data, projectId);
+            } catch (err) {
+                const outputDiv = document.getElementById(`prometheus-output-${projectId}`);
+                outputDiv.innerHTML = `<pre>Failed to fetch or parse metrics: ${err.message}</pre>`;
+            }
+        }
+
+        function parsePrometheusMetrics(text) {
+            const lines = text.split('\n');
+            const data = {};
+            for (const line of lines) {
+                if (!line || line.startsWith('#')) continue;
+                const lastSpaceIndex = line.lastIndexOf(' ');
+                const keyPart = line.slice(0, lastSpaceIndex).trim();
+                const value = Number(line.slice(lastSpaceIndex + 1));
+                const num = parseFloat(value);
+                if (!keyPart || isNaN(num)) continue;
+
+                const m = keyPart.match(/^([^{]+)(?:{(.*)})?$/);
+                if (!m) continue;
+
+                const metric = m[1];
+                const labelsStr = m[2] || '';
+
+                if (!labelsStr) {
+                    data[metric] = num;
+                    continue;
+                }
+
+                const name = labelsStr.match(/name="([^"]+)"/)?.[1];
+                const state = labelsStr.match(/state="([^"]+)"/)?.[1];
+                const id = labelsStr.match(/id="([^"]+)"/)?.[1];
+                const level = labelsStr.match(/level="([^"]+)"/)?.[1];
+
+                if (name) {
+                    data[`${metric}_${name}`] = num;
+                } else if (state) {
+                    data[`${metric}_${state}`] = num;
+                } else if (id) {
+                    const safeId = id.replace(/[^a-zA-Z0-9_]/g, '_');
+                    data[`${metric}_${safeId.toLowerCase()}`] = num;
+                } else if (level) {
+                    data[`${metric}_${level}`] = num;
+                } else {
+                    data[`${metric}`] = num;
+                }
+            }
+            return data;
+        }
+
+        function printHealthSummaryHTML(data, projectId) {
+            let html = `
+            <div class="section">
+                <h2>Spring Boot Quick Health (${projectId})</h2>
+                <table>
+                    <tr><th>CPU</th><td colspan="2">-</td></tr>
+            `;
+            
+            const cpu = data['process_cpu_usage'] ?? data['system_cpu_usage'];
+            html += `<tr><td>CPU usage</td><td>${(cpu * 100).toFixed(1)}%</td><td>(JVM / system load)</td></tr>`;
+            
+            html += `
+                    <tr><th>JVM Memory — USED</th><td colspan="2">-</td></tr>
+                    <tr><td>Heap Tenured used</td><td>${(data['jvm_memory_used_bytes_tenured_gen'] / 1024 / 1024).toFixed(1)} MB</td><td>-</td></tr>
+                    <tr><td>Heap Eden used</td><td>${(data['jvm_memory_used_bytes_eden_space'] / 1024 / 1024).toFixed(1)} MB</td><td>-</td></tr>
+                    <tr><td>Heap Survivor used</td><td>${(data['jvm_memory_used_bytes_survivor_space'] / 1024 / 1024).toFixed(1)} MB</td><td>-</td></tr>
+                    <tr><td>MetaSpace used</td><td>${(data['jvm_memory_used_bytes_metaspace'] / 1024 / 1024).toFixed(1)} MB</td><td>-</td></tr>
+                    <tr><td>Compressed Class Space used</td><td>${(data['jvm_memory_used_bytes_compressed_class_space'] / 1024 / 1024).toFixed(1)} MB</td><td>-</td></tr>
+                    
+                    <tr><th>JVM Memory — COMMITTED</th><td colspan="2">-</td></tr>
+                    <tr><td>Heap Tenured committed</td><td>${(data['jvm_memory_committed_bytes_tenured_gen'] / 1024 / 1024).toFixed(1)} MB</td><td>-</td></tr>
+                    <tr><td>Heap Eden committed</td><td>${(data['jvm_memory_committed_bytes_eden_space'] / 1024 / 1024).toFixed(1)} MB</td><td>-</td></tr>
+                    <tr><td>Heap Survivor committed</td><td>${(data['jvm_memory_committed_bytes_survivor_space'] / 1024 / 1024).toFixed(1)} MB</td><td>-</td></tr>
+                    <tr><td>MetaSpace committed</td><td>${(data['jvm_memory_committed_bytes_metaspace'] / 1024 / 1024).toFixed(1)} MB</td><td>-</td></tr>
+                    <tr><td>Compressed Class Space committed</td><td>${(data['jvm_memory_committed_bytes_compressed_class_space'] / 1024 / 1024).toFixed(1)} MB</td><td>-</td></tr>
+                    
+                    <tr><th>JVM Memory — MAX</th><td colspan="2">-</td></tr>
+                    <tr><td>Heap Tenured max</td><td>${(data['jvm_memory_max_bytes_tenured_gen'] / 1024 / 1024).toFixed(1)} MB</td><td>-</td></tr>
+                    <tr><td>Heap Eden max</td><td>${(data['jvm_memory_max_bytes_eden_space'] / 1024 / 1024).toFixed(1)} MB</td><td>-</td></tr>
+                    <tr><td>Heap Survivor max</td><td>${(data['jvm_memory_max_bytes_survivor_space'] / 1024 / 1024).toFixed(1)} MB</td><td>-</td></tr>
+                    <tr><td>MetaSpace max</td><td>${(data['jvm_memory_max_bytes_metaspace'] / 1024 / 1024).toFixed(1)} MB</td><td>-</td></tr>
+                    <tr><td>Compressed Class Space max</td><td>${(data['jvm_memory_max_bytes_compressed_class_space'] / 1024 / 1024).toFixed(1)} MB</td><td>-</td></tr>
+                    
+                    <tr><th>Memory</th><td colspan="2">-</td></tr>
+                    <tr><td>Live heap post-GC</td><td>${(data['jvm_gc_live_data_size_bytes'] / 1024 / 1024).toFixed(1)} MB</td><td>-</td></tr>
+                    <tr><td>Heap used after GC</td><td>${(data['jvm_memory_usage_after_gc_percent'] * 100).toFixed(1)}%</td><td>-</td></tr>
+                    <tr><td>Promoted to old-gen</td><td>${(data['jvm_gc_memory_promoted_bytes_total'] / 1024 / 1024).toFixed(1)} MB</td><td>-</td></tr>
+                    <tr><td>Classes loaded</td><td>${data['jvm_classes_loaded_classes']}</td><td>-</td></tr>
+                    
+                    <tr><th>Threads</th><td colspan="2">-</td></tr>
+                    <tr><td>Peak threads</td><td>${data['jvm_threads_peak_threads'] | 0}</td><td>-</td></tr>
+                    <tr><td>Runnable threads</td><td>${data['jvm_threads_states_threads_runnable'] | 0}</td><td>-</td></tr>
+                    <tr><td>Waiting threads</td><td>${data['jvm_threads_states_threads_waiting'] | 0}</td><td>-</td></tr>
+                    <tr><td>Timed waiting threads</td><td>${data['jvm_threads_states_threads_timed'] | 0}</td><td>-</td></tr>
+                    <tr><td>Blocked threads</td><td>${data['jvm_threads_states_threads_blocked'] | 0}</td><td>-</td></tr>
+                    <tr><td>Daemon threads</td><td>${data['jvm_threads_daemon_threads'] | 0}</td><td>-</td></tr>
+                    
+                    <tr><th>Other</th><td colspan="2">-</td></tr>
+                    <tr><td>Uptime</td><td>${Math.floor((Date.now()/1000 - data['process_start_time_seconds']) / 60)} min</td><td>(JVM running time)</td></tr>
+                    <tr><td>Open files</td><td>${data['process_files_open_files']}</td><td>-</td></tr>
+                    <tr><td>Startup time</td><td>${data['application_started_time_seconds']} s</td><td>-</td></tr>
+                    <tr><td>Ready time</td><td>${data['application_ready_time_seconds']} s</td><td>-</td></tr>
+                    <tr><td>Errors logged</td><td>${data['logback_events_total_error']}</td><td>-</td></tr>
+                    <tr><td>Disk free</td><td>${(data['disk_free_bytes'] / 1024 / 1024 / 1024).toFixed(1)} GB</td><td>-</td></tr>
+                    <tr><td>JDBC connections min–max</td><td>${data['jdbc_connections_min_dataSource'] | 0}–${data['jdbc_connections_max_dataSource'] | 0}</td><td>-</td></tr>
+                    
+                    <tr><th>Executor</th><td colspan="2">-</td></tr>
+                    <tr><td>Tasks queued</td><td>${data['executor_queued_tasks_threadPoolTaskScheduler']}</td><td>-</td></tr>
+                    <tr><td>Tasks completed</td><td>${data['executor_completed_tasks_total_threadPoolTaskScheduler']}</td><td>-</td></tr>
+                    <tr><td>Executor threads</td><td>${data['executor_pool_size_threads_threadPoolTaskScheduler']}</td><td>-</td></tr>
+                    
+                    <tr><th>Database</th><td colspan="2">-</td></tr>
+                    <tr><td>DB connections active</td><td>${data['hikaricp_connections_active']}</td><td>-</td></tr>
+                    <tr><td>DB pool size</td><td>${data['hikaricp_connections']}</td><td>-</td></tr>
+                    <tr><td>DB max usage</td><td>${(data['hikaricp_connections_usage_seconds_max'] * 1000).toFixed(1)} ms</td><td>-</td></tr>
+                    <tr><td>DB connections pending</td><td>${data['hikaricp_connections_pending']}</td><td>-</td></tr>
+                    <tr><td>DB connections acquire max</td><td>${data['hikaricp_connections_acquire_seconds_max']} s</td><td>-</td></tr>
+                    <tr><td>DB connections timeout</td><td>${data['hikaricp_connections_timeout_total']}</td><td>-</td></tr>
+                </table>
+            </div>
+            `;
+
+            document.getElementById(`prometheus-output-${projectId}`).innerHTML = html;
+        }
+
+
+        // --- Slow Endpoints Script Logic ---
+        async function runSlowEndpointsScript(projectId) {
+            const urlInput = document.getElementById(`url-${projectId}`);
+            const baseUrl = urlInput.value.trim();
+            if (!baseUrl) {
+                alert(`Please enter a URL for ${projectId}`);
+                return;
+            }
+
+            try {
+                const metricsBaseUrl = baseUrl.endsWith('/actuator/metrics/http.server.requests') ? baseUrl : `${baseUrl}/actuator/metrics/http.server.requests`;
+                const endpointData = [];
+
+                async function getAverageTime(endpointUrl) {
+                    try {
+                        const response = await fetch(endpointUrl);
+                        const data = await response.json();
+                        const totalTime = data.measurements.find((metric) => metric.statistic === 'TOTAL_TIME').value;
+                        const count = data.measurements.find((metric) => metric.statistic === 'COUNT').value;
+                        const averageTime = totalTime / count;
+                        endpointData.push({ endpointUrl, averageTime });
+                    } catch (e) {
+                        // Silently ignore errors as per original script
+                    }
+                }
+
+                async function getEndpointPaths() {
+                    const response = await fetch(metricsBaseUrl);
+                    const data = await response.json();
+                    return data.availableTags.find(tag => tag.tag === 'uri').values;
+                }
+
+                const endpointPaths = await getEndpointPaths();
+                for (const endpointPath of endpointPaths) {
+                    const encodedPath = encodeURI(endpointPath);
+                    const endpointMetricsUrl = `${metricsBaseUrl}?tag=uri:${encodedPath}`;
+                    await getAverageTime(endpointMetricsUrl);
+                }
+
+                printSlowEndpointsHTML(endpointData, projectId);
+
+            } catch (err) {
+                const outputDiv = document.getElementById(`slow-endpoints-output-${projectId}`);
+                outputDiv.innerHTML = `<pre>Failed to fetch slow endpoints: ${err.message}</pre>`;
+            }
+        }
+
+        function printSlowEndpointsHTML(endpointData, projectId) {
+            endpointData.sort((a, b) => b.averageTime - a.averageTime);
+            const top20 = endpointData.slice(0, 20);
+
+            let html = `
+            <div class="section">
+                <h2>TOP 20 SLOWEST ENDPOINTS (${projectId})</h2>
+                <table>
+                    <thead>
+                        <tr><th>Average Time (seconds)</th><th>Endpoint</th></tr>
+                    </thead>
+                    <tbody>
+            `;
+            top20.forEach(item => {
+                html += `<tr><td>${item.averageTime.toFixed(2)}</td><td>${item.endpointUrl}</td></tr>`;
+            });
+            html += `
+                    </tbody>
+                </table>
+            </div>
+            `;
+
+            document.getElementById(`slow-endpoints-output-${projectId}`).innerHTML = html;
+        }
+
+
+        // --- Endpoint Errors Script Logic ---
+        async function runEndpointErrorsScript(projectId) {
+            const urlInput = document.getElementById(`url-${projectId}`);
+            const baseUrl = urlInput.value.trim();
+            if (!baseUrl) {
+                alert(`Please enter a URL for ${projectId}`);
+                return;
+            }
+
+            try {
+                const metricsBaseUrl = baseUrl.endsWith('/actuator/metrics/http.server.requests') ? baseUrl : `${baseUrl}/actuator/metrics/http.server.requests`;
+                const endpointStats = new Map();
+
+                async function fetchMetric(url) {
+                    try {
+                        const res = await fetch(url);
+                        return await res.json();
+                    } catch {
+                        return null;
+                    }
+                }
+
+                function getCount(metric) {
+                    return metric?.measurements?.find(m => m.statistic === 'COUNT')?.value ?? 0;
+                }
+
+                function getUris(metric) {
+                    return metric?.availableTags?.find(t => t.tag === 'uri')?.values ?? [];
+                }
+
+                async function collectServerErrors() {
+                    const metric = await fetchMetric(`${metricsBaseUrl}?tag=outcome:SERVER_ERROR`);
+                    const uris = getUris(metric);
+                    for (const uri of uris) {
+                        const m = await fetchMetric(
+                            `${metricsBaseUrl}?tag=uri:${encodeURI(uri)}&tag=outcome:SERVER_ERROR`
+                        );
+                        endpointStats.set(uri, {
+                            uri,
+                            serverErrors: getCount(m),
+                            clientErrors: 0,
+                            totalCount: 0
+                        });
+                    }
+                }
+
+                async function collectClientErrors() {
+                    const metric = await fetchMetric(`${metricsBaseUrl}?tag=outcome:CLIENT_ERROR`);
+                    const uris = getUris(metric);
+                    for (const uri of uris) {
+                        const m = await fetchMetric(
+                            `${metricsBaseUrl}?tag=uri:${encodeURI(uri)}&tag=outcome:CLIENT_ERROR`
+                        );
+                        const existing = endpointStats.get(uri) ?? {
+                            uri,
+                            serverErrors: 0,
+                            clientErrors: 0,
+                            totalCount: 0
+                        };
+                        existing.clientErrors = getCount(m);
+                        endpointStats.set(uri, existing);
+                    }
+                }
+
+                async function collectTotals() {
+                    for (const entry of endpointStats.values()) {
+                        const m = await fetchMetric(
+                            `${metricsBaseUrl}?tag=uri:${encodeURI(entry.uri)}`
+                        );
+                        entry.totalCount = getCount(m);
+                    }
+                }
+
+                await collectServerErrors();
+                await collectClientErrors();
+                await collectTotals();
+
+                printTopByErrorCountHTML(endpointStats, projectId);
+                printTopByErrorPercentHTML(endpointStats, projectId);
+
+            } catch (err) {
+                const outputDiv = document.getElementById(`endpoint-errors-output-${projectId}`);
+                outputDiv.innerHTML = `<pre>Failed to fetch endpoint errors: ${err.message}</pre>`;
+            }
+        }
+
+        function printTopByErrorCountHTML(endpointStats, projectId) {
+            const results = [...endpointStats.values()]
+                .map(e => ({
+                    ...e,
+                    errorCount: e.clientErrors + e.serverErrors,
+                    errorPercent: e.totalCount > 0 ? ((e.clientErrors + e.serverErrors) / e.totalCount) * 100 : 0
+                }))
+                .sort((a, b) => b.errorCount - a.errorCount)
+                .slice(0, 10);
+
+            let html = `
+            <div class="section">
+                <h2>TOP 10 ENDPOINTS BY ERROR COUNT (${projectId})</h2>
+                <table>
+                    <thead>
+                        <tr><th>Errors</th><th>Error %</th><th>Calls</th><th>URI</th></tr>
+                    </thead>
+                    <tbody>
+            `;
+            results.forEach(e => {
+                html += `<tr><td>${e.errorCount}</td><td>${e.errorPercent.toFixed(1)}%</td><td>${e.totalCount}</td><td>${e.uri}</td></tr>`;
+            });
+            html += `
+                    </tbody>
+                </table>
+            </div>
+            `;
+
+            document.getElementById(`endpoint-errors-output-${projectId}`).innerHTML += html;
+        }
+
+        function printTopByErrorPercentHTML(endpointStats, projectId) {
+            const results = [...endpointStats.values()]
+                .filter(e => e.totalCount > 0)
+                .map(e => ({
+                    ...e,
+                    errorCount: e.clientErrors + e.serverErrors,
+                    errorPercent: ((e.clientErrors + e.serverErrors) / e.totalCount) * 100
+                }))
+                .sort((a, b) => b.errorPercent - a.errorPercent)
+                .slice(0, 10);
+
+            let html = `
+            <div class="section">
+                <h2>TOP 10 ENDPOINTS BY ERROR % (${projectId})</h2>
+                <table>
+                    <thead>
+                        <tr><th>Errors</th><th>Error %</th><th>Calls</th><th>URI</th></tr>
+                    </thead>
+                    <tbody>
+            `;
+            results.forEach(e => {
+                html += `<tr><td>${e.errorCount}</td><td>${e.errorPercent.toFixed(1)}%</td><td>${e.totalCount}</td><td>${e.uri}</td></tr>`;
+            });
+            html += `
+                    </tbody>
+                </table>
+            </div>
+            `;
+
+            document.getElementById(`endpoint-errors-output-${projectId}`).innerHTML += html;
+        }
+
+        // --- General Run All Function ---
+        async function runAllScriptsForProject(projectId) {
+            await runPrometheusScript(projectId);
+            await runSlowEndpointsScript(projectId);
+            await runEndpointErrorsScript(projectId);
+        }
+
+    </script>
+</body>
+</html>
