@@ -367,41 +367,41 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
             <div class="section">
                 <h2>Spring Boot Quick Health (${projectId})</h2>
                 <table>
-                    <tr><th>CPU</th><td>-</td></tr>
+                    <tr><th>CPU</th><th></th></tr>
             `;
 
             const cpu = data['process_cpu_usage'] ?? data['system_cpu_usage'];
             html += `<tr><td>CPU usage</td><td>${(cpu * 100).toFixed(1)}%</td></tr>`;
 
             html += `
-                    <tr><th>JVM Memory — USED</th><td>-</td></tr>
+                    <tr><th>JVM Memory — USED</th><th></th></tr>
                     <tr><td>Heap Tenured used</td><td>${(data['jvm_memory_used_bytes_tenured_gen'] / 1024 / 1024).toFixed(1)} MB</td></tr>
                     <tr><td>Heap Eden used</td><td>${(data['jvm_memory_used_bytes_eden_space'] / 1024 / 1024).toFixed(1)} MB</td></tr>
                     <tr><td>Heap Survivor used</td><td>${(data['jvm_memory_used_bytes_survivor_space'] / 1024 / 1024).toFixed(1)} MB</td></tr>
                     <tr><td>MetaSpace used</td><td>${(data['jvm_memory_used_bytes_metaspace'] / 1024 / 1024).toFixed(1)} MB</td></tr>
                     <tr><td>Compressed Class Space used</td><td>${(data['jvm_memory_used_bytes_compressed_class_space'] / 1024 / 1024).toFixed(1)} MB</td></tr>
 
-                    <tr><th>JVM Memory — COMMITTED</th><td>-</td></tr>
+                    <tr><th>JVM Memory — COMMITTED</th><th></th></tr>
                     <tr><td>Heap Tenured committed</td><td>${(data['jvm_memory_committed_bytes_tenured_gen'] / 1024 / 1024).toFixed(1)} MB</td></tr>
                     <tr><td>Heap Eden committed</td><td>${(data['jvm_memory_committed_bytes_eden_space'] / 1024 / 1024).toFixed(1)} MB</td></tr>
                     <tr><td>Heap Survivor committed</td><td>${(data['jvm_memory_committed_bytes_survivor_space'] / 1024 / 1024).toFixed(1)} MB</td></tr>
                     <tr><td>MetaSpace committed</td><td>${(data['jvm_memory_committed_bytes_metaspace'] / 1024 / 1024).toFixed(1)} MB</td></tr>
                     <tr><td>Compressed Class Space committed</td><td>${(data['jvm_memory_committed_bytes_compressed_class_space'] / 1024 / 1024).toFixed(1)} MB</td></tr>
 
-                    <tr><th>JVM Memory — MAX</th><td>-</td></tr>
+                    <tr><th>JVM Memory — MAX</th><th></th></tr>
                     <tr><td>Heap Tenured max</td><td>${(data['jvm_memory_max_bytes_tenured_gen'] / 1024 / 1024).toFixed(1)} MB</td></tr>
                     <tr><td>Heap Eden max</td><td>${(data['jvm_memory_max_bytes_eden_space'] / 1024 / 1024).toFixed(1)} MB</td></tr>
                     <tr><td>Heap Survivor max</td><td>${(data['jvm_memory_max_bytes_survivor_space'] / 1024 / 1024).toFixed(1)} MB</td></tr>
                     <tr><td>MetaSpace max</td><td>${(data['jvm_memory_max_bytes_metaspace'] / 1024 / 1024).toFixed(1)} MB</td></tr>
                     <tr><td>Compressed Class Space max</td><td>${(data['jvm_memory_max_bytes_compressed_class_space'] / 1024 / 1024).toFixed(1)} MB</td></tr>
 
-                    <tr><th>Memory</th><td>-</td></tr>
+                    <tr><th>Memory</th><th></th></tr>
                     <tr><td>Live heap post-GC</td><td>${(data['jvm_gc_live_data_size_bytes'] / 1024 / 1024).toFixed(1)} MB</td></tr>
                     <tr><td>Heap used after GC</td><td>${(data['jvm_memory_usage_after_gc_percent'] * 100).toFixed(1)}%</td></tr>
                     <tr><td>Promoted to old-gen</td><td>${(data['jvm_gc_memory_promoted_bytes_total'] / 1024 / 1024).toFixed(1)} MB</td></tr>
                     <tr><td>Classes loaded</td><td>${data['jvm_classes_loaded_classes']}</td></tr>
 
-                    <tr><th>Threads</th><td>-</td></tr>
+                    <tr><th>Threads</th><th></th></tr>
                     <tr><td>Peak threads</td><td>${data['jvm_threads_peak_threads'] | 0}</td></tr>
                     <tr><td>Runnable threads</td><td>${data['jvm_threads_states_threads_runnable'] | 0}</td></tr>
                     <tr><td>Waiting threads</td><td>${data['jvm_threads_states_threads_waiting'] | 0}</td></tr>
@@ -409,7 +409,7 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
                     <tr><td>Blocked threads</td><td>${data['jvm_threads_states_threads_blocked'] | 0}</td></tr>
                     <tr><td>Daemon threads</td><td>${data['jvm_threads_daemon_threads'] | 0}</td></tr>
 
-                    <tr><th>Other</th><td>-</td></tr>
+                    <tr><th>Other</th><th></th></tr>
                     <tr><td>Uptime</td><td>${Math.floor((Date.now()/1000 - data['process_start_time_seconds']) / 60)} min</td></tr>
                     <tr><td>Open files</td><td>${data['process_files_open_files']}</td></tr>
                     <tr><td>Startup time</td><td>${data['application_started_time_seconds']} s</td></tr>
@@ -418,12 +418,12 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
                     <tr><td>Disk free</td><td>${(data['disk_free_bytes'] / 1024 / 1024 / 1024).toFixed(1)} GB</td></tr>
                     <tr><td>JDBC connections min–max</td><td>${data['jdbc_connections_min_dataSource'] | 0}–${data['jdbc_connections_max_dataSource'] | 0}</td></tr>
 
-                    <tr><th>Executor</th><td>-</td></tr>
+                    <tr><th>Executor</th><th></th></tr>
                     <tr><td>Tasks queued</td><td>${data['executor_queued_tasks_threadPoolTaskScheduler']}</td></tr>
                     <tr><td>Tasks completed</td><td>${data['executor_completed_tasks_total_threadPoolTaskScheduler']}</td></tr>
                     <tr><td>Executor threads</td><td>${data['executor_pool_size_threads_threadPoolTaskScheduler']}</td></tr>
 
-                    <tr><th>Database</th><td>-</td></tr>
+                    <tr><th>Database</th><th></th></tr>
                     <tr><td>DB connections active</td><td>${data['hikaricp_connections_active']}</td></tr>
                     <tr><td>DB pool size</td><td>${data['hikaricp_connections']}</td></tr>
                     <tr><td>DB max usage</td><td>${(data['hikaricp_connections_usage_seconds_max'] * 1000).toFixed(1)} ms</td></tr>
