@@ -42,6 +42,10 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
             letter-spacing: -0.5px;
         }
 
+        .header {
+            display: flex;
+        }
+
         /* Tab Container */
         .tab-container {
             display: flex;
@@ -159,6 +163,35 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
             white-space: pre-wrap;
         }
 
+        .qmark {
+            margin: 30px 0px 0px 15px;
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: #a0beff;
+            color: black;
+            font: 16px Arial;
+            text-align: center;
+            line-height: 24px;
+            border-radius: 15px;
+            position: relative;
+            cursor: help;
+        }
+
+        .qmark:hover::after {
+            content: "Don't forget to bring number of service replicas down to 1 (all data should come from the same actuator)";
+            position: absolute;
+            left: 100%;
+            top: 50%;
+            transform: translate(10px, -50%);
+            background: white;
+            border: 1px solid black;
+            padding: 4px 8px;
+            font-size: 13px;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
         /* Utility */
         @media (max-width: 768px) {
             body {
@@ -177,7 +210,10 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
     </style>
 </head>
 <body>
-    <h1>Actuator Metrics Dashboard</h1>
+    <div class="header">
+        <h1>Actuator Metrics Dashboard</h1>
+        <span class="qmark">?</span>
+    </div>
 
     <div class="tab-container">
         <button class="tab-button active" onclick="openTab(event, 'ms-actor')">ms-actor</button>
