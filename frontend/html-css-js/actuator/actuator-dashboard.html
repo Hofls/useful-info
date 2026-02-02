@@ -98,19 +98,6 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
             border-color: var(--accent);
         }
 
-        button {
-            padding: 10px 20px;
-            background: var(--surface);
-            color: var(--text);
-            border: 1px solid var(--border);
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 400;
-            margin-right: 10px;
-            margin-bottom: 10px;
-            transition: all 0.15s ease;
-        }
-
         button:hover {
             background: var(--accent-light);
             border-color: var(--accent);
@@ -200,11 +187,6 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
     <!-- ms-actor Tab -->
     <div id="ms-actor" class="tab-content active">
         <input type="text" id="url-ms-actor" placeholder="Enter Actuator URL for ms-actor" value="http://someit.com/ms-actor">
-        <button onclick="runAllScriptsForProject('ms-actor')">Run All Scripts</button>
-        <button onclick="runPrometheusScript('ms-actor')">Run Prometheus Script</button>
-        <button onclick="runSlowEndpointsScript('ms-actor')">Run Slow Endpoints Script</button>
-        <button onclick="runEndpointErrorsScript('ms-actor')">Run Endpoint Errors Script</button>
-
         <div id="prometheus-output-ms-actor" class="section"></div>
         <div id="slow-endpoints-output-ms-actor" class="section"></div>
         <div id="endpoint-errors-output-ms-actor" class="section"></div>
@@ -213,11 +195,6 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
     <!-- ms-warehouse Tab -->
     <div id="ms-warehouse" class="tab-content">
         <input type="text" id="url-ms-warehouse" placeholder="Enter Actuator URL for ms-warehouse" value="http://someit.com/ms-warehouse">
-        <button onclick="runAllScriptsForProject('ms-warehouse')">Run All Scripts</button>
-        <button onclick="runPrometheusScript('ms-warehouse')">Run Prometheus Script</button>
-        <button onclick="runSlowEndpointsScript('ms-warehouse')">Run Slow Endpoints Script</button>
-        <button onclick="runEndpointErrorsScript('ms-warehouse')">Run Endpoint Errors Script</button>
-
         <div id="prometheus-output-ms-warehouse" class="section"></div>
         <div id="slow-endpoints-output-ms-warehouse" class="section"></div>
         <div id="endpoint-errors-output-ms-warehouse" class="section"></div>
@@ -226,11 +203,6 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
     <!-- ms-external Tab -->
     <div id="ms-external" class="tab-content">
         <input type="text" id="url-ms-external" placeholder="Enter Actuator URL for ms-external" value="http://someit.com/ms-external">
-        <button onclick="runAllScriptsForProject('ms-external')">Run All Scripts</button>
-        <button onclick="runPrometheusScript('ms-external')">Run Prometheus Script</button>
-        <button onclick="runSlowEndpointsScript('ms-external')">Run Slow Endpoints Script</button>
-        <button onclick="runEndpointErrorsScript('ms-external')">Run Endpoint Errors Script</button>
-
         <div id="prometheus-output-ms-external" class="section"></div>
         <div id="slow-endpoints-output-ms-external" class="section"></div>
         <div id="endpoint-errors-output-ms-external" class="section"></div>
@@ -239,11 +211,6 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
     <!-- ms-equipment Tab -->
     <div id="ms-equipment" class="tab-content">
         <input type="text" id="url-ms-equipment" placeholder="Enter Actuator URL for ms-equipment" value="http://someit.com/ms-equipment">
-        <button onclick="runAllScriptsForProject('ms-equipment')">Run All Scripts</button>
-        <button onclick="runPrometheusScript('ms-equipment')">Run Prometheus Script</button>
-        <button onclick="runSlowEndpointsScript('ms-equipment')">Run Slow Endpoints Script</button>
-        <button onclick="runEndpointErrorsScript('ms-equipment')">Run Endpoint Errors Script</button>
-
         <div id="prometheus-output-ms-equipment" class="section"></div>
         <div id="slow-endpoints-output-ms-equipment" class="section"></div>
         <div id="endpoint-errors-output-ms-equipment" class="section"></div>
@@ -252,11 +219,6 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
     <!-- ms-user Tab -->
     <div id="ms-user" class="tab-content">
         <input type="text" id="url-ms-user" placeholder="Enter Actuator URL for ms-user" value="http://someit.com/ms-user">
-        <button onclick="runAllScriptsForProject('ms-user')">Run All Scripts</button>
-        <button onclick="runPrometheusScript('ms-user')">Run Prometheus Script</button>
-        <button onclick="runSlowEndpointsScript('ms-user')">Run Slow Endpoints Script</button>
-        <button onclick="runEndpointErrorsScript('ms-user')">Run Endpoint Errors Script</button>
-
         <div id="prometheus-output-ms-user" class="section"></div>
         <div id="slow-endpoints-output-ms-user" class="section"></div>
         <div id="endpoint-errors-output-ms-user" class="section"></div>
