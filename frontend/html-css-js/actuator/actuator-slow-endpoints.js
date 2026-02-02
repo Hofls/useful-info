@@ -1,11 +1,7 @@
-// Open actuator/metrics/http.server.requests page, insert this script into browser console
-let endpointData = [];
-let currentUrl = getCurrentUrl();
-
-function getCurrentUrl() {
-    const urlObject = window.location.href;
-    return urlObject.match(/^(https?:\/\/[^/]+\/[^/]+)/)[1];
-}
+// 1. Replace INSERT_YOUR_URL_HERE with your URL
+// 2. Execute script in browser console
+let url = 'http://INSERT_YOUR_URL_HERE/actuator/metrics/http.server.requests'
+let endpointData = []
 
 async function getAverageTime(endpointUrl) {
     try {
@@ -37,7 +33,7 @@ function printSlowEndpoints() {
 let endpointPaths = await getEndpointPaths();
 for (let endpointPath of endpointPaths) {
     let encodedPath = encodeURI(endpointPath);
-    let endpointMetricsUrl = `${currentUrl}/actuator/metrics/http.server.requests?tag=uri:${encodedPath}`;
+    let endpointMetricsUrl = `${url}?tag=uri:${encodedPath}`;
     await getAverageTime(endpointMetricsUrl)
 }
 printSlowEndpoints();
