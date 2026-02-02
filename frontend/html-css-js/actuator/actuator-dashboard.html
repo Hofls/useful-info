@@ -41,7 +41,6 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
         /* Tab Container */
         .tab-container {
             display: flex;
-            border-bottom: 1px solid var(--border);
             margin-bottom: 30px;
             gap: 4px;
         }
@@ -448,18 +447,18 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
 
         function printSlowEndpointsHTML(endpointData, projectId) {
             endpointData.sort((a, b) => b.averageTime - a.averageTime);
-            const top20 = endpointData.slice(0, 20);
+            const top15 = endpointData.slice(0, 15);
 
             let html = `
             <div class="section">
-                <h2>TOP 20 SLOWEST ENDPOINTS (${projectId})</h2>
+                <h2>TOP 15 SLOWEST ENDPOINTS (${projectId})</h2>
                 <table>
                     <thead>
                         <tr><th>Average Time (seconds)</th><th>Endpoint</th></tr>
                     </thead>
                     <tbody>
             `;
-            top20.forEach(item => {
+            top15.forEach(item => {
                 html += `<tr><td>${item.averageTime.toFixed(2)}</td><td>${item.endpointUrl}</td></tr>`;
             });
             html += `
@@ -623,9 +622,9 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
 
         // --- General Run All Function ---
         async function runAllScriptsForProject(projectId) {
-            await runPrometheusScript(projectId);
-            await runSlowEndpointsScript(projectId);
-            await runEndpointErrorsScript(projectId);
+            runPrometheusScript(projectId);
+            runSlowEndpointsScript(projectId);
+            runEndpointErrorsScript(projectId);
         }
 
     </script>
