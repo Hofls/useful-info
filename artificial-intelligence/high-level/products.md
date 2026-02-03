@@ -76,7 +76,7 @@
 ### Other products
 * `chatbox` - desktop/web client (BYOM)
 * `livebench.ai` - llm performance comparison
-* `lmarena.ai` - top models list
+* `arena.ai` - top models list, use any model for free (text/video/image)
 * `openroute` - top models list
 * `Huggingface` - pre-trained models hub
 * `Kaggle` - pre-trained models hub

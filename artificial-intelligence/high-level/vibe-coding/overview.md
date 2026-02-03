@@ -45,3 +45,4 @@
   * Upgrade 3 - Use multiple agents at the same time
 * Others:
   * https://www.reddit.com/r/ExperiencedDevs/comments/1qq8y8u/ai_is_working_great_for_my_team_and_yall_are/
+  * https://www.reddit.com/r/ClaudeAI/comments/1qb90zq/9_tips_from_a_developer_gone_vibecoder/
