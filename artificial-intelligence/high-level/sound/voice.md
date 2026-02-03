@@ -23,3 +23,6 @@
     First launch - run as admin with VPN (do download OpenAI model) \
     Download model through VPN
   * Windows built in tool (Win+H)
+
+### Text to speech
+* Qwen3 TTS

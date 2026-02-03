@@ -19,7 +19,7 @@
     * Installation process is unusual - https://sourcecraft.dev/portal/docs/en/code-assistant/
     * Usage statistics - https://sourcecraft.dev/me/codeassistant/settings
 * `Continue` - (BYOM/MCP) + (VSCODE/IDEA)
-    * Adding custom provider is scuffed (look at `tools/continue.md`)
+    * Adding custom provider is scuffed (edit local config, add new model with `apiBase`, `apiKey`, `model`, `provider: openai` fields)
 * `OpenCode` - bad
     * BYOM is super scuffed (gotta manually edit `C:\Users\%USERPROFILE%\.config\opencode\opencode.json`)
 * `Qodo Gen` - bad, no true BYOM, requires registration
@@ -43,3 +43,5 @@
   * Upgrade 1 - Prepare .md file with detailed project description (architecture description, how to build/test, code examples etc)
   * Upgrade 2 - Ask AI to maintain it's own .md file, with most important info
   * Upgrade 3 - Use multiple agents at the same time
+* Others:
+  * https://www.reddit.com/r/ExperiencedDevs/comments/1qq8y8u/ai_is_working_great_for_my_team_and_yall_are/
