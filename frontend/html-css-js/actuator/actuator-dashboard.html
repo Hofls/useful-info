@@ -628,8 +628,8 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
                 await collectClientErrors();
                 await collectTotals();
 
-                printTopByErrorCountHTML(endpointStats, projectId);
                 printTopByErrorPercentHTML(endpointStats, projectId);
+                printTopByErrorCountHTML(endpointStats, projectId);
 
             } catch (err) {
                 const outputDiv = document.getElementById(`endpoint-errors-output-${projectId}`);
