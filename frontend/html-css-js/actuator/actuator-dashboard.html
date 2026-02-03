@@ -386,7 +386,7 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
             const edenUsedStyle = data['jvm_memory_used_bytes_eden_space'] / data['jvm_memory_max_bytes_eden_space'] > 0.9 ? ERROR_STYLE : '';
             const survivorUsedStyle = data['jvm_memory_used_bytes_survivor_space'] / data['jvm_memory_max_bytes_survivor_space'] > 0.9 ? ERROR_STYLE : '';
             const metaspaceUsedStyle = data['jvm_memory_used_bytes_metaspace'] > 512 * 1024 * 1024 ? ERROR_STYLE : '';
-            const ccsUsedStyle = data['jvm_memory_used_bytes_compressed_class_space'] > 128 * 1024 * 1024 ? ERROR_STYLE : '';
+            const ccsUsedStyle = data['jvm_memory_used_bytes_compressed_class_space'] > (data['jvm_memory_max_bytes_compressed_class_space'] * 0.75) ? ERROR_STYLE : '';
 
             html += `
                     <tr><th>JVM Memory — USED</th><th></th></tr>
@@ -395,6 +395,16 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
                     <tr><td>Heap Survivor used<br><small>(young gen – objects that survived GC cycles)</small></td><td${survivorUsedStyle}>${(data['jvm_memory_used_bytes_survivor_space'] / 1024 / 1024).toFixed(1)} MB</td></tr>
                     <tr><td>MetaSpace used<br><small>(class metadata, method bytecode, interned strings...)</small></td><td${metaspaceUsedStyle}>${(data['jvm_memory_used_bytes_metaspace'] / 1024 / 1024).toFixed(1)} MB</td></tr>
                     <tr><td>Compressed Class Space used<br><small>(compressed pointers – class metadata subset, 32-bit JVMs)</small></td><td${ccsUsedStyle}>${(data['jvm_memory_used_bytes_compressed_class_space'] / 1024 / 1024).toFixed(1)} MB</td></tr>
+            `;
+
+            const metaSpaceMax = data['jvm_memory_max_bytes_metaspace'] === -1 ? 'Unlimited' : (data['jvm_memory_max_bytes_metaspace'] / 1024 / 1024).toFixed(1) + ' MB';
+            html += `
+                    <tr><th>JVM Memory — MAX</th><th></th></tr>
+                    <tr><td>Heap Tenured max<br><small>(maximum size old generation can grow to)</small></td><td>${(data['jvm_memory_max_bytes_tenured_gen'] / 1024 / 1024).toFixed(1)} MB</td></tr>
+                    <tr><td>Heap Eden max<br><small>(max size of Eden – usually -Xmn / young gen config)</small></td><td>${(data['jvm_memory_max_bytes_eden_space'] / 1024 / 1024).toFixed(1)} MB</td></tr>
+                    <tr><td>Heap Survivor max<br><small>(max size of each survivor space)</small></td><td>${(data['jvm_memory_max_bytes_survivor_space'] / 1024 / 1024).toFixed(1)} MB</td></tr>
+                    <tr><td>MetaSpace max<br><small>(-XX:MaxMetaspaceSize limit, often unlimited)</small></td><td>${metaSpaceMax}</td></tr>
+                    <tr><td>Compressed Class Space max<br><small>(usually fixed ~1 GB on 64-bit JVMs)</small></td><td>${(data['jvm_memory_max_bytes_compressed_class_space'] / 1024 / 1024).toFixed(1)} MB</td></tr>
             `;
 
             const heapAfterGcStyle = data['jvm_memory_usage_after_gc_percent'] > 0.75 ? ERROR_STYLE : '';
