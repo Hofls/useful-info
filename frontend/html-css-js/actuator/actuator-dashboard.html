@@ -673,7 +673,15 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
                     <tbody>
             `;
             results.forEach(e => {
-                html += `<tr><td>${e.errorCount}</td><td>${e.errorPercent.toFixed(1)}%</td><td>${e.totalCount}</td><td>${e.uri}</td></tr>`;
+                const isBad = e.errorPercent > 15;
+                html += `
+                    <tr>
+                        <td>${e.errorCount}</td>
+                        <td${isBad ? ERROR_STYLE : ''}>${e.errorPercent.toFixed(1)}%</td>
+                        <td>${e.totalCount}</td>
+                        <td>${e.uri}</td>
+                    </tr>
+                `;
             });
             html += `
                     </tbody>
@@ -706,7 +714,7 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
             `;
 
             results.forEach(e => {
-                const isBad = e.totalCount > 10 && e.errorPercent > 10;
+                const isBad = e.errorPercent > 15;
                 html += `
                     <tr>
                         <td>${e.errorCount}</td>
