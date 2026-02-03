@@ -364,6 +364,8 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
         }
 
         function printHealthSummaryHTML(data, projectId) {
+            const ERROR_STYLE = ' style="color:red; font-weight:bold;"';
+
             let html = `
             <div class="section">
                 <h2>Spring Boot Quick Health (${projectId})</h2>
@@ -372,65 +374,89 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
             `;
 
             const cpu = data['process_cpu_usage'] ?? data['system_cpu_usage'];
-            html += `<tr><td>CPU usage</td><td>${(cpu * 100).toFixed(1)}%</td></tr>`;
+            const cpuStyle = cpu > 0.85 ? ERROR_STYLE : '';
+            html += `<tr><td>CPU usage</td><td${cpuStyle}>${(cpu * 100).toFixed(1)}%</td></tr>`;
+
+            const tenuredUsedStyle = data['jvm_memory_used_bytes_tenured_gen'] / data['jvm_memory_max_bytes_tenured_gen'] > 0.8 ? ERROR_STYLE : '';
+            const edenUsedStyle = data['jvm_memory_used_bytes_eden_space'] / data['jvm_memory_max_bytes_eden_space'] > 0.9 ? ERROR_STYLE : '';
+            const survivorUsedStyle = data['jvm_memory_used_bytes_survivor_space'] / data['jvm_memory_max_bytes_survivor_space'] > 0.9 ? ERROR_STYLE : '';
+            const metaspaceUsedStyle = data['jvm_memory_used_bytes_metaspace'] > 512 * 1024 * 1024 ? ERROR_STYLE : '';
+            const ccsUsedStyle = data['jvm_memory_used_bytes_compressed_class_space'] > 512 * 1024 * 1024 ? ERROR_STYLE : '';
 
             html += `
                     <tr><th>JVM Memory — USED</th><th></th></tr>
-                    <tr><td>Heap Tenured used<br><small>(old generation – long-lived objects)</small></td><td>${(data['jvm_memory_used_bytes_tenured_gen'] / 1024 / 1024).toFixed(1)} MB</td></tr>
-                    <tr><td>Heap Eden used<br><small>(young generation – where new objects are allocated)</small></td><td>${(data['jvm_memory_used_bytes_eden_space'] / 1024 / 1024).toFixed(1)} MB</td></tr>
-                    <tr><td>Heap Survivor used<br><small>(young gen – objects that survived GC cycles)</small></td><td>${(data['jvm_memory_used_bytes_survivor_space'] / 1024 / 1024).toFixed(1)} MB</td></tr>
-                    <tr><td>MetaSpace used<br><small>(class metadata, method bytecode, interned strings...)</small></td><td>${(data['jvm_memory_used_bytes_metaspace'] / 1024 / 1024).toFixed(1)} MB</td></tr>
-                    <tr><td>Compressed Class Space used<br><small>(compressed pointers – class metadata subset, 32-bit JVMs)</small></td><td>${(data['jvm_memory_used_bytes_compressed_class_space'] / 1024 / 1024).toFixed(1)} MB</td></tr>
+                    <tr><td>Heap Tenured used<br><small>(old generation – long-lived objects)</small></td><td${tenuredUsedStyle}>${(data['jvm_memory_used_bytes_tenured_gen'] / 1024 / 1024).toFixed(1)} MB</td></tr>
+                    <tr><td>Heap Eden used<br><small>(young generation – where new objects are allocated)</small></td><td${edenUsedStyle}>${(data['jvm_memory_used_bytes_eden_space'] / 1024 / 1024).toFixed(1)} MB</td></tr>
+                    <tr><td>Heap Survivor used<br><small>(young gen – objects that survived GC cycles)</small></td><td${survivorUsedStyle}>${(data['jvm_memory_used_bytes_survivor_space'] / 1024 / 1024).toFixed(1)} MB</td></tr>
+                    <tr><td>MetaSpace used<br><small>(class metadata, method bytecode, interned strings...)</small></td><td${metaspaceUsedStyle}>${(data['jvm_memory_used_bytes_metaspace'] / 1024 / 1024).toFixed(1)} MB</td></tr>
+                    <tr><td>Compressed Class Space used<br><small>(compressed pointers – class metadata subset, 32-bit JVMs)</small></td><td${ccsUsedStyle}>${(data['jvm_memory_used_bytes_compressed_class_space'] / 1024 / 1024).toFixed(1)} MB</td></tr>
+            `;
 
-                    <tr><th>JVM Memory — COMMITTED</th><th></th></tr>
-                    <tr><td>Heap Tenured committed<br><small>(old gen memory OS has reserved for this area)</small></td><td>${(data['jvm_memory_committed_bytes_tenured_gen'] / 1024 / 1024).toFixed(1)} MB</td></tr>
-                    <tr><td>Heap Eden committed<br><small>(young gen Eden – reserved by OS)</small></td><td>${(data['jvm_memory_committed_bytes_eden_space'] / 1024 / 1024).toFixed(1)} MB</td></tr>
-                    <tr><td>Heap Survivor committed<br><small>(young gen survivor spaces – reserved)</small></td><td>${(data['jvm_memory_committed_bytes_survivor_space'] / 1024 / 1024).toFixed(1)} MB</td></tr>
-                    <tr><td>MetaSpace committed<br><small>(committed memory for class metadata)</small></td><td>${(data['jvm_memory_committed_bytes_metaspace'] / 1024 / 1024).toFixed(1)} MB</td></tr>
-                    <tr><td>Compressed Class Space committed<br><small>(committed portion of compressed class area)</small></td><td>${(data['jvm_memory_committed_bytes_compressed_class_space'] / 1024 / 1024).toFixed(1)} MB</td></tr>
+            const heapAfterGcStyle = data['jvm_memory_usage_after_gc_percent'] > 0.75 ? ERROR_STYLE : '';
+            const promotedStyle = data['jvm_gc_memory_promoted_bytes_total'] > 1024 * 1024 * 1024 ? ERROR_STYLE : '';
+            const classesLoadedStyle = data['jvm_classes_loaded_classes'] > 50000 ? ERROR_STYLE : '';
 
-                    <tr><th>JVM Memory — MAX</th><th></th></tr>
-                    <tr><td>Heap Tenured max<br><small>(maximum size old generation can grow to)</small></td><td>${(data['jvm_memory_max_bytes_tenured_gen'] / 1024 / 1024).toFixed(1)} MB</td></tr>
-                    <tr><td>Heap Eden max<br><small>(max size of Eden – usually -Xmn / young gen config)</small></td><td>${(data['jvm_memory_max_bytes_eden_space'] / 1024 / 1024).toFixed(1)} MB</td></tr>
-                    <tr><td>Heap Survivor max<br><small>(max size of each survivor space)</small></td><td>${(data['jvm_memory_max_bytes_survivor_space'] / 1024 / 1024).toFixed(1)} MB</td></tr>
-                    <tr><td>MetaSpace max<br><small>(-XX:MaxMetaspaceSize limit, often unlimited)</small></td><td>${(data['jvm_memory_max_bytes_metaspace'] / 1024 / 1024).toFixed(1)} MB</td></tr>
-                    <tr><td>Compressed Class Space max<br><small>(usually fixed ~1 GB on 64-bit JVMs)</small></td><td>${(data['jvm_memory_max_bytes_compressed_class_space'] / 1024 / 1024).toFixed(1)} MB</td></tr>
-
+            html += `
                     <tr><th>Memory</th><th></th></tr>
                     <tr><td>Live heap post-GC<br><small>(old generation size after last major GC)</small></td><td>${(data['jvm_gc_live_data_size_bytes'] / 1024 / 1024).toFixed(1)} MB</td></tr>
-                    <tr><td>Heap used after GC<br><small>(% of max heap used right after GC)</small></td><td>${(data['jvm_memory_usage_after_gc_percent'] * 100).toFixed(1)}%</td></tr>
-                    <tr><td>Promoted to old-gen<br><small>(total bytes promoted from young→old since start)</small></td><td>${(data['jvm_gc_memory_promoted_bytes_total'] / 1024 / 1024).toFixed(1)} MB</td></tr>
-                    <tr><td>Classes loaded<br><small>(current number of loaded classes)</small></td><td>${data['jvm_classes_loaded_classes']}</td></tr>
+                    <tr><td>Heap used after GC<br><small>(% of max heap used right after GC)</small></td><td${heapAfterGcStyle}>${(data['jvm_memory_usage_after_gc_percent'] * 100).toFixed(1)}%</td></tr>
+                    <tr><td>Promoted to old-gen<br><small>(total bytes promoted from young→old since start)</small></td><td${promotedStyle}>${(data['jvm_gc_memory_promoted_bytes_total'] / 1024 / 1024).toFixed(1)} MB</td></tr>
+                    <tr><td>Classes loaded<br><small>(current number of loaded classes)</small></td><td${classesLoadedStyle}>${data['jvm_classes_loaded_classes']}</td></tr>
+            `;
 
+            const runnableThreadsStyle = data['jvm_threads_states_threads_runnable'] > 200 ? ERROR_STYLE : '';
+            const blockedThreadsStyle = data['jvm_threads_states_threads_blocked'] > 0 ? ERROR_STYLE : '';
+
+            html += `
                     <tr><th>Threads</th><th></th></tr>
                     <tr><td>Peak threads<br><small>(highest number of live threads ever)</small></td><td>${data['jvm_threads_peak_threads'] | 0}</td></tr>
-                    <tr><td>Runnable threads<br><small>(threads ready to run or running)</small></td><td>${data['jvm_threads_states_threads_runnable'] | 0}</td></tr>
+                    <tr><td>Runnable threads<br><small>(threads ready to run or running)</small></td><td${runnableThreadsStyle}>${data['jvm_threads_states_threads_runnable'] | 0}</td></tr>
                     <tr><td>Waiting threads<br><small>(threads in WAITING state – Object.wait())</small></td><td>${data['jvm_threads_states_threads_waiting'] | 0}</td></tr>
                     <tr><td>Timed waiting threads<br><small>(threads in TIMED_WAITING – sleep, wait(timeout), parkNanos...)</small></td><td>${data['jvm_threads_states_threads_timed'] | 0}</td></tr>
-                    <tr><td>Blocked threads<br><small>(threads waiting for monitor – synchronized block)</small></td><td>${data['jvm_threads_states_threads_blocked'] | 0}</td></tr>
+                    <tr><td>Blocked threads<br><small>(threads waiting for monitor – synchronized block)</small></td><td${blockedThreadsStyle}>${data['jvm_threads_states_threads_blocked'] | 0}</td></tr>
                     <tr><td>Daemon threads<br><small>(background threads – don't prevent JVM exit)</small></td><td>${data['jvm_threads_daemon_threads'] | 0}</td></tr>
+            `;
 
+            const openFilesStyle = data['process_files_open_files'] > 500 ? ERROR_STYLE : '';
+            const startupStyle = data['application_started_time_seconds'] > 180 ? ERROR_STYLE : '';
+            const readyStyle = data['application_ready_time_seconds'] > 240 ? ERROR_STYLE : '';
+            const errorLogsStyle =data['logback_events_total_error'] > 0 ? ERROR_STYLE : '';
+            const diskFreeGb = data['disk_free_bytes'] / 1024 / 1024 / 1024;
+            const diskFreeStyle = diskFreeGb < 6 ? ERROR_STYLE : '';
+
+            html += `
                     <tr><th>Other</th><th></th></tr>
                     <tr><td>Uptime<br><small>(how long the JVM process has been running)</small></td><td>${Math.floor((Date.now()/1000 - data['process_start_time_seconds']) / 60)} min</td></tr>
-                    <tr><td>Open files<br><small>(number of open file descriptors)</small></td><td>${data['process_files_open_files']}</td></tr>
-                    <tr><td>Startup time<br><small>(time from process start to Spring Boot started event)</small></td><td>${data['application_started_time_seconds']} s</td></tr>
-                    <tr><td>Ready time<br><small>(time from start to application fully ready – readiness probe)</small></td><td>${data['application_ready_time_seconds']} s</td></tr>
-                    <tr><td>Errors logged<br><small>(total ERROR level log events via Logback)</small></td><td>${data['logback_events_total_error']}</td></tr>
-                    <tr><td>Disk free<br><small>(free space on the filesystem where JVM runs)</small></td><td>${(data['disk_free_bytes'] / 1024 / 1024 / 1024).toFixed(1)} GB</td></tr>
+                    <tr><td>Open files<br><small>(number of open file descriptors)</small></td><td${openFilesStyle}>${data['process_files_open_files']}</td></tr>
+                    <tr><td>Startup time<br><small>(time from process start to Spring Boot started event)</small></td><td${startupStyle}>${data['application_started_time_seconds']} s</td></tr>
+                    <tr><td>Ready time<br><small>(time from start to application fully ready – readiness probe)</small></td><td${readyStyle}>${data['application_ready_time_seconds']} s</td></tr>
+                    <tr><td>Errors logged<br><small>(total ERROR level log events via Logback)</small></td><td${errorLogsStyle}>${data['logback_events_total_error']}</td></tr>
+                    <tr><td>Disk free<br><small>(free space on the filesystem where JVM runs)</small></td><td${diskFreeStyle}>${diskFreeGb.toFixed(1)} GB</td></tr>
                     <tr><td>JDBC connections min–max<br><small>(configured min/max pool size)</small></td><td>${data['jdbc_connections_min_dataSource'] | 0}–${data['jdbc_connections_max_dataSource'] | 0}</td></tr>
+            `;
 
+            const tasksQueuedStyle = data['executor_queued_tasks_threadPoolTaskScheduler'] > 0 ? ERROR_STYLE : '';
+
+            html += `
                     <tr><th>Executor</th><th></th></tr>
-                    <tr><td>Tasks queued<br><small>(currently waiting in the task queue)</small></td><td>${data['executor_queued_tasks_threadPoolTaskScheduler']}</td></tr>
+                    <tr><td>Tasks queued<br><small>(currently waiting in the task queue)</small></td><td${tasksQueuedStyle}>${data['executor_queued_tasks_threadPoolTaskScheduler']}</td></tr>
                     <tr><td>Tasks completed<br><small>(total tasks finished since start)</small></td><td>${data['executor_completed_tasks_total_threadPoolTaskScheduler']}</td></tr>
                     <tr><td>Executor threads<br><small>(current number of threads in pool)</small></td><td>${data['executor_pool_size_threads_threadPoolTaskScheduler']}</td></tr>
+            `;
 
+            const dbActiveStyle = data['hikaricp_connections_active'] > data['hikaricp_connections'] * 0.8 ? ERROR_STYLE : '';
+            const dbPendingStyle = data['hikaricp_connections_pending'] > 0 ? ERROR_STYLE : '';
+            const dbAcquireStyle = data['hikaricp_connections_acquire_seconds_max'] > 1 ? ERROR_STYLE : '';
+            const dbTimeoutStyle = data['hikaricp_connections_timeout_total'] > 0 ? ERROR_STYLE : '';
+
+            html += `
                     <tr><th>Database</th><th></th></tr>
-                    <tr><td>DB connections active<br><small>(currently in use by application)</small></td><td>${data['hikaricp_connections_active']}</td></tr>
+                    <tr><td>DB connections active<br><small>(currently in use by application)</small></td><td${dbActiveStyle}>${data['hikaricp_connections_active']}</td></tr>
                     <tr><td>DB pool size<br><small>(total connections in Hikari pool right now)</small></td><td>${data['hikaricp_connections']}</td></tr>
                     <tr><td>DB max usage<br><small>(longest time any connection was borrowed)</small></td><td>${(data['hikaricp_connections_usage_seconds_max'] * 1000).toFixed(1)} ms</td></tr>
-                    <tr><td>DB connections pending<br><small>(threads waiting for a connection)</small></td><td>${data['hikaricp_connections_pending']}</td></tr>
-                    <tr><td>DB connections acquire max<br><small>(worst-case time to get connection from pool)</small></td><td>${data['hikaricp_connections_acquire_seconds_max']} s</td></tr>
-                    <tr><td>DB connections timeout<br><small>(total times getConnection() timed out)</small></td><td>${data['hikaricp_connections_timeout_total']}</td></tr>
+                    <tr><td>DB connections pending<br><small>(threads waiting for a connection)</small></td><td${dbPendingStyle}>${data['hikaricp_connections_pending']}</td></tr>
+                    <tr><td>DB connections acquire max<br><small>(worst-case time to get connection from pool)</small></td><td${dbAcquireStyle}>${data['hikaricp_connections_acquire_seconds_max']} s</td></tr>
+                    <tr><td>DB connections timeout<br><small>(total times getConnection() timed out)</small></td><td${dbTimeoutStyle}>${data['hikaricp_connections_timeout_total']}</td></tr>
                 </table>
             `;
 
