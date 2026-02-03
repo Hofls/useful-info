@@ -436,25 +436,28 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
                     <tr><td>Ready time<br><small>(time from start to application fully ready – readiness probe)</small></td><td${readyStyle}>${data['application_ready_time_seconds']} s</td></tr>
                     <tr><td>Errors logged<br><small>(total ERROR level log events via Logback)</small></td><td${errorLogsStyle}>${data['logback_events_total_error']}</td></tr>
                     <tr><td>Disk free<br><small>(free space on the filesystem where JVM runs)</small></td><td${diskFreeStyle}>${diskFreeGb.toFixed(1)} GB</td></tr>
-                    <tr><td>JDBC connections min–max<br><small>(configured min/max pool size)</small></td><td>${data['jdbc_connections_min_dataSource'] | 0}–${data['jdbc_connections_max_dataSource'] | 0}</td></tr>
             `;
 
+            const tasksQueued = data['executor_queued_tasks_threadPoolTaskScheduler'] ? data['executor_queued_tasks_threadPoolTaskScheduler'] : data['executor_queued_tasks_taskScheduler'];
+            const tasksCompleted = data['executor_completed_tasks_total_threadPoolTaskScheduler'] ? data['executor_completed_tasks_total_threadPoolTaskScheduler'] : data['executor_completed_tasks_total_taskScheduler'];
+            const executorThreads = data['executor_pool_size_threads_threadPoolTaskScheduler'] ? data['executor_pool_size_threads_threadPoolTaskScheduler'] : data['executor_pool_size_threads_taskScheduler'];
             const tasksQueuedStyle = data['executor_queued_tasks_threadPoolTaskScheduler'] > 0 ? ERROR_STYLE : '';
 
             html += `
                     <tr><th>Executor</th><th></th></tr>
-                    <tr><td>Tasks queued<br><small>(currently waiting in the task queue)</small></td><td${tasksQueuedStyle}>${data['executor_queued_tasks_threadPoolTaskScheduler']}</td></tr>
-                    <tr><td>Tasks completed<br><small>(total tasks finished since start)</small></td><td>${data['executor_completed_tasks_total_threadPoolTaskScheduler']}</td></tr>
-                    <tr><td>Executor threads<br><small>(current number of threads in pool)</small></td><td>${data['executor_pool_size_threads_threadPoolTaskScheduler']}</td></tr>
+                    <tr><td>Tasks queued<br><small>(currently waiting in the task queue)</small></td><td${tasksQueuedStyle}>${tasksQueued}</td></tr>
+                    <tr><td>Tasks completed<br><small>(total tasks finished since start)</small></td><td>${tasksCompleted}</td></tr>
+                    <tr><td>Executor threads<br><small>(current number of threads in pool)</small></td><td>${executorThreads}</td></tr>
             `;
 
-            const dbActiveStyle = data['hikaricp_connections_active'] > data['hikaricp_connections'] * 0.8 ? ERROR_STYLE : '';
+            const dbActiveStyle = data['hikaricp_connections_active'] > data['jdbc_connections_max_dataSource'] * 0.7 ? ERROR_STYLE : '';
             const dbPendingStyle = data['hikaricp_connections_pending'] > 0 ? ERROR_STYLE : '';
-            const dbAcquireStyle = data['hikaricp_connections_acquire_seconds_max'] > 1 ? ERROR_STYLE : '';
+            const dbAcquireStyle = data['hikaricp_connections_acquire_seconds_max'] > 3 ? ERROR_STYLE : '';
             const dbTimeoutStyle = data['hikaricp_connections_timeout_total'] > 0 ? ERROR_STYLE : '';
 
             html += `
                     <tr><th>Database</th><th></th></tr>
+                    <tr><td>DB connections min–max<br><small>(configured min/max pool size)</small></td><td>${data['jdbc_connections_min_dataSource'] | 0}–${data['jdbc_connections_max_dataSource'] | 0}</td></tr>
                     <tr><td>DB connections active<br><small>(currently in use by application)</small></td><td${dbActiveStyle}>${data['hikaricp_connections_active']}</td></tr>
                     <tr><td>DB pool size<br><small>(total connections in Hikari pool right now)</small></td><td>${data['hikaricp_connections']}</td></tr>
                     <tr><td>DB max usage<br><small>(longest time any connection was borrowed)</small></td><td>${(data['hikaricp_connections_usage_seconds_max'] * 1000).toFixed(1)} ms</td></tr>
