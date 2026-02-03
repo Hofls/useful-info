@@ -216,57 +216,59 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>Actuator Metrics Dashboard</h1>
-        <span class="qmark">?</span>
-    </div>
+    <div>
+        <div class="header">
+            <h1>Actuator Metrics Dashboard</h1>
+            <span class="qmark">?</span>
+        </div>
 
-    <div class="tab-container">
-        <button class="tab-button active" onclick="openTab(event, 'ms-actor')">ms-actor</button>
-        <button class="tab-button" onclick="openTab(event, 'ms-warehouse')">ms-warehouse</button>
-        <button class="tab-button" onclick="openTab(event, 'ms-external')">ms-external</button>
-        <button class="tab-button" onclick="openTab(event, 'ms-equipment')">ms-equipment</button>
-        <button class="tab-button" onclick="openTab(event, 'ms-user')">ms-user</button>
-    </div>
+        <div class="tab-container">
+            <button class="tab-button active" onclick="openTab(event, 'ms-actor')">ms-actor</button>
+            <button class="tab-button" onclick="openTab(event, 'ms-warehouse')">ms-warehouse</button>
+            <button class="tab-button" onclick="openTab(event, 'ms-external')">ms-external</button>
+            <button class="tab-button" onclick="openTab(event, 'ms-equipment')">ms-equipment</button>
+            <button class="tab-button" onclick="openTab(event, 'ms-user')">ms-user</button>
+        </div>
 
-    <!-- ms-actor Tab -->
-    <div id="ms-actor" class="tab-content active">
-        <input type="text" disabled id="url-ms-actor" placeholder="Enter Actuator URL for ms-actor" value="http://someit.com/ms-actor">
-        <div id="prometheus-output-ms-actor" class="section"></div>
-        <div id="slow-endpoints-output-ms-actor" class="section"></div>
-        <div id="endpoint-errors-output-ms-actor" class="section"></div>
-    </div>
+        <!-- ms-actor Tab -->
+        <div id="ms-actor" class="tab-content active">
+            <input type="text" disabled id="url-ms-actor" placeholder="Enter Actuator URL for ms-actor" value="http://someit.com/ms-actor">
+            <div id="prometheus-output-ms-actor" class="section"></div>
+            <div id="slow-endpoints-output-ms-actor" class="section"></div>
+            <div id="endpoint-errors-output-ms-actor" class="section"></div>
+        </div>
 
-    <!-- ms-warehouse Tab -->
-    <div id="ms-warehouse" class="tab-content">
-        <input type="text" disabled id="url-ms-warehouse" placeholder="Enter Actuator URL for ms-warehouse" value="http://someit.com/ms-warehouse">
-        <div id="prometheus-output-ms-warehouse" class="section"></div>
-        <div id="slow-endpoints-output-ms-warehouse" class="section"></div>
-        <div id="endpoint-errors-output-ms-warehouse" class="section"></div>
-    </div>
+        <!-- ms-warehouse Tab -->
+        <div id="ms-warehouse" class="tab-content">
+            <input type="text" disabled id="url-ms-warehouse" placeholder="Enter Actuator URL for ms-warehouse" value="http://someit.com/ms-warehouse">
+            <div id="prometheus-output-ms-warehouse" class="section"></div>
+            <div id="slow-endpoints-output-ms-warehouse" class="section"></div>
+            <div id="endpoint-errors-output-ms-warehouse" class="section"></div>
+        </div>
 
-    <!-- ms-external Tab -->
-    <div id="ms-external" class="tab-content">
-        <input type="text" disabled id="url-ms-external" placeholder="Enter Actuator URL for ms-external" value="http://someit.com/ms-external">
-        <div id="prometheus-output-ms-external" class="section"></div>
-        <div id="slow-endpoints-output-ms-external" class="section"></div>
-        <div id="endpoint-errors-output-ms-external" class="section"></div>
-    </div>
+        <!-- ms-external Tab -->
+        <div id="ms-external" class="tab-content">
+            <input type="text" disabled id="url-ms-external" placeholder="Enter Actuator URL for ms-external" value="http://someit.com/ms-external">
+            <div id="prometheus-output-ms-external" class="section"></div>
+            <div id="slow-endpoints-output-ms-external" class="section"></div>
+            <div id="endpoint-errors-output-ms-external" class="section"></div>
+        </div>
 
-    <!-- ms-equipment Tab -->
-    <div id="ms-equipment" class="tab-content">
-        <input type="text" disabled id="url-ms-equipment" placeholder="Enter Actuator URL for ms-equipment" value="http://someit.com/ms-equipment">
-        <div id="prometheus-output-ms-equipment" class="section"></div>
-        <div id="slow-endpoints-output-ms-equipment" class="section"></div>
-        <div id="endpoint-errors-output-ms-equipment" class="section"></div>
-    </div>
+        <!-- ms-equipment Tab -->
+        <div id="ms-equipment" class="tab-content">
+            <input type="text" disabled id="url-ms-equipment" placeholder="Enter Actuator URL for ms-equipment" value="http://someit.com/ms-equipment">
+            <div id="prometheus-output-ms-equipment" class="section"></div>
+            <div id="slow-endpoints-output-ms-equipment" class="section"></div>
+            <div id="endpoint-errors-output-ms-equipment" class="section"></div>
+        </div>
 
-    <!-- ms-user Tab -->
-    <div id="ms-user" class="tab-content">
-        <input type="text" disabled id="url-ms-user" placeholder="Enter Actuator URL for ms-user" value="http://someit.com/ms-user">
-        <div id="prometheus-output-ms-user" class="section"></div>
-        <div id="slow-endpoints-output-ms-user" class="section"></div>
-        <div id="endpoint-errors-output-ms-user" class="section"></div>
+        <!-- ms-user Tab -->
+        <div id="ms-user" class="tab-content">
+            <input type="text" disabled id="url-ms-user" placeholder="Enter Actuator URL for ms-user" value="http://someit.com/ms-user">
+            <div id="prometheus-output-ms-user" class="section"></div>
+            <div id="slow-endpoints-output-ms-user" class="section"></div>
+            <div id="endpoint-errors-output-ms-user" class="section"></div>
+        </div>
     </div>
 
     <script>
