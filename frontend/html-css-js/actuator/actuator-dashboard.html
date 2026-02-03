@@ -44,6 +44,7 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
 
         .header {
             display: flex;
+            justify-content: center;
         }
 
         /* Tab Container */
@@ -385,7 +386,7 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
             const edenUsedStyle = data['jvm_memory_used_bytes_eden_space'] / data['jvm_memory_max_bytes_eden_space'] > 0.9 ? ERROR_STYLE : '';
             const survivorUsedStyle = data['jvm_memory_used_bytes_survivor_space'] / data['jvm_memory_max_bytes_survivor_space'] > 0.9 ? ERROR_STYLE : '';
             const metaspaceUsedStyle = data['jvm_memory_used_bytes_metaspace'] > 512 * 1024 * 1024 ? ERROR_STYLE : '';
-            const ccsUsedStyle = data['jvm_memory_used_bytes_compressed_class_space'] > 512 * 1024 * 1024 ? ERROR_STYLE : '';
+            const ccsUsedStyle = data['jvm_memory_used_bytes_compressed_class_space'] > 128 * 1024 * 1024 ? ERROR_STYLE : '';
 
             html += `
                     <tr><th>JVM Memory — USED</th><th></th></tr>
@@ -397,18 +398,17 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
             `;
 
             const heapAfterGcStyle = data['jvm_memory_usage_after_gc_percent'] > 0.75 ? ERROR_STYLE : '';
-            const promotedStyle = data['jvm_gc_memory_promoted_bytes_total'] > 1024 * 1024 * 1024 ? ERROR_STYLE : '';
-            const classesLoadedStyle = data['jvm_classes_loaded_classes'] > 50000 ? ERROR_STYLE : '';
+            const classesLoadedStyle = data['jvm_classes_loaded_classes'] > 75000 ? ERROR_STYLE : '';
 
             html += `
                     <tr><th>Memory</th><th></th></tr>
                     <tr><td>Live heap post-GC<br><small>(old generation size after last major GC)</small></td><td>${(data['jvm_gc_live_data_size_bytes'] / 1024 / 1024).toFixed(1)} MB</td></tr>
                     <tr><td>Heap used after GC<br><small>(% of max heap used right after GC)</small></td><td${heapAfterGcStyle}>${(data['jvm_memory_usage_after_gc_percent'] * 100).toFixed(1)}%</td></tr>
-                    <tr><td>Promoted to old-gen<br><small>(total bytes promoted from young→old since start)</small></td><td${promotedStyle}>${(data['jvm_gc_memory_promoted_bytes_total'] / 1024 / 1024).toFixed(1)} MB</td></tr>
+                    <tr><td>Promoted to old-gen<br><small>(total bytes promoted from young→old since start)</small></td><td>${(data['jvm_gc_memory_promoted_bytes_total'] / 1024 / 1024).toFixed(1)} MB</td></tr>
                     <tr><td>Classes loaded<br><small>(current number of loaded classes)</small></td><td${classesLoadedStyle}>${data['jvm_classes_loaded_classes']}</td></tr>
             `;
 
-            const runnableThreadsStyle = data['jvm_threads_states_threads_runnable'] > 200 ? ERROR_STYLE : '';
+            const runnableThreadsStyle = data['jvm_threads_states_threads_runnable'] < 1 ? ERROR_STYLE : '';
             const blockedThreadsStyle = data['jvm_threads_states_threads_blocked'] > 0 ? ERROR_STYLE : '';
 
             html += `
@@ -421,16 +421,17 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
                     <tr><td>Daemon threads<br><small>(background threads – don't prevent JVM exit)</small></td><td>${data['jvm_threads_daemon_threads'] | 0}</td></tr>
             `;
 
-            const openFilesStyle = data['process_files_open_files'] > 500 ? ERROR_STYLE : '';
+            const uptimeMinutes = Math.floor((Date.now()/1000 - data['process_start_time_seconds']) / 60);
+            const openFilesStyle = data['process_files_open_files'] > 400 ? ERROR_STYLE : '';
             const startupStyle = data['application_started_time_seconds'] > 180 ? ERROR_STYLE : '';
-            const readyStyle = data['application_ready_time_seconds'] > 240 ? ERROR_STYLE : '';
-            const errorLogsStyle =data['logback_events_total_error'] > 0 ? ERROR_STYLE : '';
+            const readyStyle = data['application_ready_time_seconds'] > 180 ? ERROR_STYLE : '';
+            const errorLogsStyle = (data['logback_events_total_error'] / uptimeMinutes) > 1 ? ERROR_STYLE : '';
             const diskFreeGb = data['disk_free_bytes'] / 1024 / 1024 / 1024;
             const diskFreeStyle = diskFreeGb < 6 ? ERROR_STYLE : '';
 
             html += `
                     <tr><th>Other</th><th></th></tr>
-                    <tr><td>Uptime<br><small>(how long the JVM process has been running)</small></td><td>${Math.floor((Date.now()/1000 - data['process_start_time_seconds']) / 60)} min</td></tr>
+                    <tr><td>Uptime<br><small>(how long the JVM process has been running)</small></td><td>${uptimeMinutes} min</td></tr>
                     <tr><td>Open files<br><small>(number of open file descriptors)</small></td><td${openFilesStyle}>${data['process_files_open_files']}</td></tr>
                     <tr><td>Startup time<br><small>(time from process start to Spring Boot started event)</small></td><td${startupStyle}>${data['application_started_time_seconds']} s</td></tr>
                     <tr><td>Ready time<br><small>(time from start to application fully ready – readiness probe)</small></td><td${readyStyle}>${data['application_ready_time_seconds']} s</td></tr>
@@ -441,26 +442,29 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
             const tasksQueued = data['executor_queued_tasks_threadPoolTaskScheduler'] ? data['executor_queued_tasks_threadPoolTaskScheduler'] : data['executor_queued_tasks_taskScheduler'];
             const tasksCompleted = data['executor_completed_tasks_total_threadPoolTaskScheduler'] ? data['executor_completed_tasks_total_threadPoolTaskScheduler'] : data['executor_completed_tasks_total_taskScheduler'];
             const executorThreads = data['executor_pool_size_threads_threadPoolTaskScheduler'] ? data['executor_pool_size_threads_threadPoolTaskScheduler'] : data['executor_pool_size_threads_taskScheduler'];
-            const tasksQueuedStyle = data['executor_queued_tasks_threadPoolTaskScheduler'] > 0 ? ERROR_STYLE : '';
+            const executorThreadsStyle = executorThreads < 1 ? ERROR_STYLE : '';
 
             html += `
                     <tr><th>Executor</th><th></th></tr>
-                    <tr><td>Tasks queued<br><small>(currently waiting in the task queue)</small></td><td${tasksQueuedStyle}>${tasksQueued}</td></tr>
+                    <tr><td>Tasks queued<br><small>(currently waiting in the task queue)</small></td><td>${tasksQueued}</td></tr>
                     <tr><td>Tasks completed<br><small>(total tasks finished since start)</small></td><td>${tasksCompleted}</td></tr>
-                    <tr><td>Executor threads<br><small>(current number of threads in pool)</small></td><td>${executorThreads}</td></tr>
+                    <tr><td>Executor threads<br><small>(current number of threads in pool)</small></td><td${executorThreadsStyle}>${executorThreads}</td></tr>
             `;
 
+            const dbMinMaxStyle = (data['jdbc_connections_min_dataSource'] < 1 || data['jdbc_connections_max_dataSource'] < 1) ? ERROR_STYLE : '';
             const dbActiveStyle = data['hikaricp_connections_active'] > data['jdbc_connections_max_dataSource'] * 0.7 ? ERROR_STYLE : '';
+            const dbPoolSizeStyle = data['hikaricp_connections'] < 1 ? ERROR_STYLE : '';
+            const dbMaxUsageStyle = data['hikaricp_connections_usage_seconds_max'] > 2 ? ERROR_STYLE : '';
             const dbPendingStyle = data['hikaricp_connections_pending'] > 0 ? ERROR_STYLE : '';
             const dbAcquireStyle = data['hikaricp_connections_acquire_seconds_max'] > 3 ? ERROR_STYLE : '';
             const dbTimeoutStyle = data['hikaricp_connections_timeout_total'] > 0 ? ERROR_STYLE : '';
 
             html += `
                     <tr><th>Database</th><th></th></tr>
-                    <tr><td>DB connections min–max<br><small>(configured min/max pool size)</small></td><td>${data['jdbc_connections_min_dataSource'] | 0}–${data['jdbc_connections_max_dataSource'] | 0}</td></tr>
+                    <tr><td>DB connections min–max<br><small>(configured min/max pool size)</small></td><td${dbMinMaxStyle}>${data['jdbc_connections_min_dataSource'] | 0}–${data['jdbc_connections_max_dataSource'] | 0}</td></tr>
                     <tr><td>DB connections active<br><small>(currently in use by application)</small></td><td${dbActiveStyle}>${data['hikaricp_connections_active']}</td></tr>
-                    <tr><td>DB pool size<br><small>(total connections in Hikari pool right now)</small></td><td>${data['hikaricp_connections']}</td></tr>
-                    <tr><td>DB max usage<br><small>(longest time any connection was borrowed)</small></td><td>${(data['hikaricp_connections_usage_seconds_max'] * 1000).toFixed(1)} ms</td></tr>
+                    <tr><td>DB pool size<br><small>(total connections in Hikari pool right now)</small></td><td${dbPoolSizeStyle}>${data['hikaricp_connections']}</td></tr>
+                    <tr><td>DB max usage<br><small>(longest time any connection was borrowed)</small></td><td${dbMaxUsageStyle}>${(data['hikaricp_connections_usage_seconds_max'] * 1000).toFixed(1)} ms</td></tr>
                     <tr><td>DB connections pending<br><small>(threads waiting for a connection)</small></td><td${dbPendingStyle}>${data['hikaricp_connections_pending']}</td></tr>
                     <tr><td>DB connections acquire max<br><small>(worst-case time to get connection from pool)</small></td><td${dbAcquireStyle}>${data['hikaricp_connections_acquire_seconds_max']} s</td></tr>
                     <tr><td>DB connections timeout<br><small>(total times getConnection() timed out)</small></td><td${dbTimeoutStyle}>${data['hikaricp_connections_timeout_total']}</td></tr>
