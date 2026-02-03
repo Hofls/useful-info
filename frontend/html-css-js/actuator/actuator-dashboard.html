@@ -271,6 +271,7 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
     <script>
         // Track which tabs have been initialized
         const initializedTabs = new Set([]);
+        const ERROR_STYLE = ' class="suspicious-value"';
 
         // Add initialization for the first tab since it's active by default
         window.addEventListener('load', () => {
@@ -369,8 +370,6 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
         }
 
         function printHealthSummaryHTML(data, projectId) {
-            const ERROR_STYLE = ' class="suspicious-value"';
-
             let html = `
             <div class="section">
                 <h2>Spring Boot Quick Health (${projectId})</h2>
@@ -529,9 +528,19 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
                     </thead>
                     <tbody>
             `;
+
             top15.forEach(item => {
-                html += `<tr><td>${item.averageTime.toFixed(2)}</td><td>${item.endpointUrl}</td></tr>`;
+                const time = item.averageTime;
+                const isSuspicious = time >= 2;
+
+                html += `
+                    <tr>
+                        <td${isSuspicious ? ERROR_STYLE : ''}>${time.toFixed(2)}</td>
+                        <td>${item.endpointUrl}</td>
+                    </tr>
+                `;
             });
+
             html += `
                     </tbody>
                 </table>
