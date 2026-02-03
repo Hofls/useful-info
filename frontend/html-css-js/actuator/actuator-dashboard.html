@@ -230,7 +230,6 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
             <button class="tab-button" onclick="openTab(event, 'ms-user')">ms-user</button>
         </div>
 
-        <!-- ms-actor Tab -->
         <div id="ms-actor" class="tab-content active">
             <input type="text" disabled id="url-ms-actor" placeholder="Enter Actuator URL for ms-actor" value="http://someit.com/ms-actor">
             <div id="prometheus-output-ms-actor" class="section"></div>
@@ -238,7 +237,6 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
             <div id="endpoint-errors-output-ms-actor" class="section"></div>
         </div>
 
-        <!-- ms-warehouse Tab -->
         <div id="ms-warehouse" class="tab-content">
             <input type="text" disabled id="url-ms-warehouse" placeholder="Enter Actuator URL for ms-warehouse" value="http://someit.com/ms-warehouse">
             <div id="prometheus-output-ms-warehouse" class="section"></div>
@@ -246,7 +244,6 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
             <div id="endpoint-errors-output-ms-warehouse" class="section"></div>
         </div>
 
-        <!-- ms-external Tab -->
         <div id="ms-external" class="tab-content">
             <input type="text" disabled id="url-ms-external" placeholder="Enter Actuator URL for ms-external" value="http://someit.com/ms-external">
             <div id="prometheus-output-ms-external" class="section"></div>
@@ -254,7 +251,6 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
             <div id="endpoint-errors-output-ms-external" class="section"></div>
         </div>
 
-        <!-- ms-equipment Tab -->
         <div id="ms-equipment" class="tab-content">
             <input type="text" disabled id="url-ms-equipment" placeholder="Enter Actuator URL for ms-equipment" value="http://someit.com/ms-equipment">
             <div id="prometheus-output-ms-equipment" class="section"></div>
@@ -262,7 +258,6 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
             <div id="endpoint-errors-output-ms-equipment" class="section"></div>
         </div>
 
-        <!-- ms-user Tab -->
         <div id="ms-user" class="tab-content">
             <input type="text" disabled id="url-ms-user" placeholder="Enter Actuator URL for ms-user" value="http://someit.com/ms-user">
             <div id="prometheus-output-ms-user" class="section"></div>
@@ -272,21 +267,24 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
     </div>
 
     <script>
-        // Track which tabs have been initialized
         const initializedTabs = new Set([]);
         const ERROR_STYLE = ' class="suspicious-value"';
 
-        // Add initialization for the first tab since it's active by default
         window.addEventListener('load', () => {
             setTimeout(() => {
                 if (!initializedTabs.has('ms-actor')) {
                     runAllScriptsForProject('ms-actor');
                     initializedTabs.add('ms-actor');
                 }
-            }, 100); // Small delay to ensure DOM is ready
+            }, 100);
         });
 
-        // Tab functionality
+        async function runAllScriptsForProject(projectId) {
+            runPrometheusScript(projectId);
+            runSlowEndpointsScript(projectId);
+            runEndpointErrorsScript(projectId);
+        }
+
         function openTab(evt, tabName) {
             var i, tabcontent, tabbuttons;
             tabcontent = document.getElementsByClassName("tab-content");
@@ -475,7 +473,6 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
 
             document.getElementById(`prometheus-output-${projectId}`).innerHTML = html;
         }
-
 
         // --- Slow Endpoints Script Logic ---
         async function runSlowEndpointsScript(projectId) {
@@ -717,13 +714,6 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
             `;
 
             document.getElementById(`endpoint-errors-output-${projectId}`).innerHTML += html;
-        }
-
-        // --- General Run All Function ---
-        async function runAllScriptsForProject(projectId) {
-            runPrometheusScript(projectId);
-            runSlowEndpointsScript(projectId);
-            runEndpointErrorsScript(projectId);
         }
 
     </script>
