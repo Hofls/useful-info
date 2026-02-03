@@ -163,6 +163,11 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
             white-space: pre-wrap;
         }
 
+        .suspicious-value {
+            color:red;
+            font-weight:bold;
+        }
+
         .qmark {
             margin: 30px 0px 0px 15px;
             display: inline-block;
@@ -364,7 +369,7 @@ If you try to run it locally and get CORS error, gotta install "CORS Unblock" ch
         }
 
         function printHealthSummaryHTML(data, projectId) {
-            const ERROR_STYLE = ' style="color:red; font-weight:bold;"';
+            const ERROR_STYLE = ' class="suspicious-value"';
 
             let html = `
             <div class="section">
