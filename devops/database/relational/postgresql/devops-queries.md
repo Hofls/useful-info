@@ -55,16 +55,6 @@ inner join pg_class cl on cl.relname = stat.relname
 WHERE (seq_scan + idx_scan) <> 0
 ORDER BY approximate_count DESC;
 ```
-* Unused indexes:
-```
-SELECT relname AS table_name, indexrelname AS index_name, idx_scan, idx_tup_read, idx_tup_fetch, pg_size_pretty(pg_relation_size(indexrelname::regclass))
-FROM pg_stat_all_indexes
-WHERE schemaname = 'public'
-AND idx_scan = 0
-AND idx_tup_read = 0
-AND idx_tup_fetch = 0
-ORDER BY pg_relation_size(indexrelname::regclass) DESC;
-```
 * Missing indexes:
 ```
 -- Important! Change "schemaname" to your schema + open SQL editor in this exact schema
@@ -104,6 +94,16 @@ WHERE
         WHERE i.indrelid = (SELECT oid FROM pg_class WHERE relname = c.table_name)
         AND a.attname = c.column_name
     );
+```
+* Unused indexes:
+```
+SELECT relname AS table_name, indexrelname AS index_name, idx_scan, idx_tup_read, idx_tup_fetch, pg_size_pretty(pg_relation_size(indexrelname::regclass))
+FROM pg_stat_all_indexes
+WHERE schemaname = 'public'
+AND idx_scan = 0
+AND idx_tup_read = 0
+AND idx_tup_fetch = 0
+ORDER BY pg_relation_size(indexrelname::regclass) DESC;
 ```
 
 #### Etc
