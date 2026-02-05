@@ -215,6 +215,7 @@
   * Use cases - native performance (for computationally intensive tasks), run legacy code in browser 
 * `Type-driven design` - write classes that have data + behavior + validation (all in one place)
   * E.g. rectangle, that has width and height, method calculateArea() and min-max validation in constructor
+* `UEBA` (User and Entity Behavior Analytics) - Automatically analyze user behavior in a system, once something looks off - pull the plug
 
 
 ### Others
