@@ -2,7 +2,6 @@
 * Every action (except POST) should be idempotent
     * No matter how many times you send same request - it should result in the same state
 * Return correct HTTP status code
-* Think about implementing HATEOAS
 * Don't return exception stack trace to client. Return only error message
 * Handle exceptions consistently (Global error handling on backend)
 * Log information about errors

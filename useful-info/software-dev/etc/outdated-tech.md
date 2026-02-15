@@ -1,5 +1,7 @@
 * `UML` - Unified Modeling Language
   * Replaced by Lightweight Modeling and Whiteboard Sketches
+* `HATEOAS` - Hypermedia as the Engine of Application State (REST level 3)
+  * Replaced by REST level 2
 * `Jenkins`, `Teamcity`
   * Replaced by CI/CD integrated in version control providers (github, gitlab) or cloud (AWS pipelines)
 * `Waterfall development` - requirements → design → implementation → testing → deployment

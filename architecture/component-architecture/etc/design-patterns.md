@@ -21,7 +21,7 @@
     * Example - manager.addListener(sub); manager.notify("New video is out!");
 * `State` - alters object behavior when its state changes
     * Example - press "space" while video is playing - it stops. press again, video starts playing
-* `Strategy` - defines family of algorithms, puts each of them into a separate class, and make their objects interchangeable
+* `Strategy` - defines family of algorithms, puts each of them into a separate class, and makes their objects interchangeable
     * new Classes.QuickSorting(), new Classes.SlowSorting()
 * `Template method`
     * Defines the skeleton of an algorithm in the superclass 

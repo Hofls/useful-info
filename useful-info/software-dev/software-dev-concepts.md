@@ -46,6 +46,7 @@
 * `DRY` - Don't repeat yourself (Every piece of knowledge must have a single representation in the system)
 * `Fail-fast` - system which immediately reports at its interface any condition that is likely to indicate a failure
 * `Gall's law` - good complex systems start as good simple systems and gradually evolve 
+* `TTFHW` (Time To First Hello World) - how easy is it to start using product with 0 prior knowledge
 * `GRASP` - guidelines for assigning responsibility to classes in object-oriented design
     * `Controller` - first object beyond the UI layer that receives and coordinates ("controls") a system operation
         * The controller should delegate the work to other objects
@@ -104,7 +105,7 @@
 * `Smoke test` - preliminary testing to reveal obvious failures
 * `Configuration management` - word "configuration" used in very broad sense, that includes \
     software, hardware, tests, documentation, version control, releases etc
-* `Compliance Automation` - auto scan infrastructure to identify security issues
+* `IT compliance` - process of ensuring that an organization's IT align with applicable laws, regulations, industry standards, and internal policies
 * `Vendor lock-in` - dependency on one specific vendor, without ability to switch
 * `UUID` - Universally unique identifier. When systems need to generate unique IDs without coordination
 * `QR code` - Quick Response code. Allows quick transfer of real world information to computer (e.g. link to a web page)
