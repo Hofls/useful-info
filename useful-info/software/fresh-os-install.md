@@ -21,7 +21,11 @@
   * Extra profiles you have to sync via telegram (manually export-import benchmarks)
   * Manually configure extensions
 * Nvidia
-  * Install `NVidia control panel` from MS store -> Set 3D Settings (Performance/Quality)
+  * Install `NVidia control panel` from MS store
+    * Set 3D Settings (Performance/Quality)
+  * Some games will use 100% of GPU to reach 1600 FPS, to avoid it:
+    * Manage 3D Settings -> Global Settings -> Max Frame Rate -> 60
+    * Manage 3D Settings -> Global Settings -> Vertical sync -> On
   * Install `NVidia app` -> Update drivers
 * Optional - run stress tests:
   * [CPU test online](https://silver.urih.com/)
