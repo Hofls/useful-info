@@ -6,6 +6,5 @@ dependencies = [
     "cowsay==6.1",
 ]
 
-
 [project.scripts]
 greet = "app:main"  # "Create a command 'greet' that runs main() in app.py"
