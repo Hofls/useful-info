@@ -7,4 +7,4 @@ dependencies = [
 ]
 
 [project.scripts]
-greet = "app:main"  # "Create a command 'greet' that runs main() in app.py"
+gogo = "app:main"  # "Create a command 'gogo' that runs main() in app.py"

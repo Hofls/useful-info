@@ -1,3 +1,3 @@
 * Install - `pip install -e .`
-* Run - `greet`
+* Run - `gogo`
 * Uninstall - `pip uninstall hello-world`
