@@ -1,0 +1,10 @@
+[project]
+name = "kitten-tts-gui"
+version = "0.1"
+requires-python = ">=3.12, <3.13"
+
+dependencies = [
+    "kittentts @ https://github.com/KittenML/KittenTTS/releases/download/0.8/kittentts-0.8.0-py3-none-any.whl",
+    "sounddevice",
+    "pyinstaller"
+]
