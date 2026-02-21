@@ -74,11 +74,11 @@
   * https://www.meshy.ai/discover?tab=total_emoji_count
 
 ### Other products
-* `chatbox` - desktop/web client (BYOM)
-* `livebench.ai` - llm performance comparison
 * `arena.ai` - top models list, use any model for free (text/video/image)
 * `openroute` - top models list
 * `Huggingface` - pre-trained models hub
 * `Kaggle` - pre-trained models hub
 * `TensorFlow` - platform for machine learning 
 * `civitai` - ai gallery (images/video), models hub
+* `chatbox` - desktop/web client (BYOM)
+* `livebench.ai` - llm performance comparison

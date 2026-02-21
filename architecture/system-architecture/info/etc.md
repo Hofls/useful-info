@@ -29,4 +29,9 @@ but else (E), even when the system is running normally in the absence of partiti
   * Example - 2 nodes vote for success, 1 for fail; operation considered successful
 * `Distributed transaction` - transaction performed across different systems (databases)
   * Best to avoid them altogether (because complexity level is too high)
-* 
+* Using load balancers when deploying:
+  * Swap instances in the load balancer after spinning up a new stack with your latest version
+  * Keep old stack running for one or two hours
+    * If problems occur - flip back to old stack
+    * If everything is ok - tear down old stack
+    

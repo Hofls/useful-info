@@ -62,7 +62,7 @@
   * Look at integrations/images/managed services at cloud providers (AWS, GCP, Azure)
   * Online courses (even table of contents is enough)
       * Udemy, codeacademy, coursera, edx
-* Last completion - 28.09.2025
+* Last completion - 21.02.2026
 
 #### Java:
 * https://www.jhipster.tech/

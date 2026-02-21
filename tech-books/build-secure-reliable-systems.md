@@ -12,14 +12,12 @@
   * `Availability` - system is accessible (e.g. high system uptime)
 * `Assessment` - use risk-based approaches to estimate costs of negative events and costs of preventing them (if prevention is cheaper - do it)
   * `Adversarial testing` - simulated attacks to evaluate system's security
-
 * `Simplicity` - reduces attack surface, decreases amount of bugs, makes it easy to comprehend and reason about the system
 * `Defense in depth` - application of multiple different defense mechanisms
 * `Canary reelase` / `Slow rollout` - deploy new version to small subset of users
 * Maintain checklists, playbooks, and protocols to be prepared for failure/crisis
 * `Red Team` / `Penetration tester` - attack system to find and report security problems
 * `Bug bounty` program - provides incentives for white hat hackers outside the org to take a look at the system
-
 * `Least privilege` - employees should have just enough privileges to do their job (e.g. to limit damage if employee goes rogue)
 * `Zero trust` - don't trust requests coming from inside, always verify/authorize
 * `Multi-party authorization` - require input from multiple people to commit serious actions (now 1 compromised account can't do anything)
@@ -28,10 +26,8 @@
 * `Recoverability` - ability to recover systems after a destructive action (e.g. recover DB from backup)
 * Provide just enough security (not more) - because it comes with the cost of time, money, complexity and productivity 
 * If problem was already solved before - do not roll your own solution, better use existing one (e.g. for auth - AWS IAM, GCP IAM)
-
 * `Understandability` - ease with which person can understand system and its behavior
   * Lowers likelihood of vulnerabilities, allows quick incident response, speeds up development
 * Have understandable identifiers (e.g. "status=DELETED" is better than "status=45")
 * Construct system with components that have clear and constrained purposes
 * Interfaces should be typed, narrow and consisted
-* 
