@@ -1,0 +1,13 @@
+[project]
+name = "tiny-video-gen"
+version = "0.1.0"
+description = "Smallest possible video generation setup"
+requires-python = ">=3.12"
+dependencies = [
+    "torch",
+    "diffusers",
+    "transformers",
+    "accelerate",
+    "opencv-python",
+    "numpy",
+]
