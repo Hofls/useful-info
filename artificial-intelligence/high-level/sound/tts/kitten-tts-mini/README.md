@@ -1,4 +1,4 @@
 * Based on https://github.com/KittenML/KittenTTS
 * Install - `pip install -e .`
 * Run - `python main.py`
-* Uninstall - `pip uninstall kitten-tts-mini`
+* Uninstall - `pip uninstall kitten-tts-mini -y`
