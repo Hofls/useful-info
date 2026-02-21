@@ -1,0 +1,11 @@
+[project]
+name = "small-3d-ai"
+version = "0.1.1"
+requires-python = ">=3.12"
+dependencies = [
+    "torch",
+    "torchvision",
+    "tqdm",
+    "scikit-image",
+    "point-e @ git+https://github.com/openai/point-e.git",
+]
