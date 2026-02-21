@@ -24,6 +24,12 @@
   * Replaced by `IntelliJ IDEA` and `VSCode`
 * `Perl`
   * Replaced by `Python` and `JavaScript`
+* `Service-Oriented Architecture`/`SOA`
+  * Replaced by `Microservices`
+* `Enterprise Service Bus`/`ESB`
+  * Replaced by `Message Queue` / `API Gateway`
+* `Shared data` architecture
+  * Replaced by `Database-per-Service` 
 * `On-premise` servers
   * Replaced by `Cloud` infrastructure
 * `Robert C. Martin` / `Uncle Bob` books - https://qntm.org/clean

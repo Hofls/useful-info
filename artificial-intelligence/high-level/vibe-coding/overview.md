@@ -1,4 +1,4 @@
-### Main
+### Vibe coding - main
 * [mcp.md](mcp/mcp.md)
 * [skills.md](skills/skills.md)
 
@@ -44,6 +44,10 @@
   * Upgrade 2 - Ask AI to maintain it's own .md file, with most important info
   * Upgrade 3 - Use multiple agents at the same time
 * Others:
+  * https://addyo.substack.com/p/how-to-write-a-good-spec-for-ai-agents
+  * https://addyo.substack.com/p/the-80-problem-in-agentic-coding
+  * https://mitchellh.com/writing/my-ai-adoption-journey
   * https://www.reddit.com/r/ExperiencedDevs/comments/1qq8y8u/ai_is_working_great_for_my_team_and_yall_are/
   * https://www.reddit.com/r/ClaudeAI/comments/1qb90zq/9_tips_from_a_developer_gone_vibecoder/
   * https://www.reddit.com/r/ClaudeAI/comments/1r5d576/small_company_leader_here_ai_agents_are_moving/
+  * https://www.reddit.com/r/ClaudeAI/comments/1r0dxob/ive_used_ai_to_write_100_of_my_code_for_1_year_as/

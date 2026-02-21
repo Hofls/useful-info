@@ -16,9 +16,7 @@
     * Data analysts to run complex queries across multiple systems
     * Developers to build applications that leverage unified data
     * Data governance teams to enforce compliance and security policies across the entire data landscape
-* `Shared data` - [diagram](shared-data.png)
-  * Multiple different services directly use the same DB 
-  * Disadvantages - DB is a single point of failure
 * `Big ball of mud` - no rules, everything goes
   * Advantages - short-term boost to development speed
   * Disadvantages - everything related to long-term
+* `Web-queue` - Simple domain, long running jobs, batch operations ![diagram](web-queue.png)
