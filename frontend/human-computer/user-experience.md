@@ -105,6 +105,7 @@
     * Each product has learning path (Introduction -> Quick Start -> Practice -> Develop)
 * AmneziaVPN:
     * Do not waste time implementing 2 different UIs (mobile & desktop), just use mobile UI on desktop
+    * When installing new service - no need to fill in bunch of parameters like port, username, password (they generate automatically)
 * Nexus:
     * Great web UI, all the features are easily accessible (nothing is hidden), has Swagger API
     
