@@ -1,0 +1,10 @@
+[project]
+name = "tiny-text-gen"
+version = "0.1.0"
+description = "A lightweight text generation script using GPT-2"
+requires-python = ">=3.12"
+dependencies = [
+    "transformers",
+    "torch",
+    "accelerate",
+]
