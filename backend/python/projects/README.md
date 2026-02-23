@@ -1,3 +1,3 @@
 * Other projects:
-  * kitten-tts-mini
-  * kitten-tts-mini-gui
+  * artificial-intelligence/high-level
+  * artificial-intelligence/low-level
