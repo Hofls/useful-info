@@ -141,7 +141,9 @@
       * Language -> User Defined Language -> Define your language... -> Create New -> main
       * Folding in code -> Open -> {
       * Folding in code -> Close -> }
-      * Language -> main -> Done! Now you have ability to hide swaths of text (by using parentheses)
+      * Language -> main -> Done! 
+        * Now you have ability to hide swaths of text (by using parentheses)
+        * alt+0 to hide all
 * `DBeaver` to connect to database
     * `Edit connection` => `PostgreSQL` => `Show all databases`
 * `OBS` to record screen + sound
