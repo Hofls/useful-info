@@ -1,3 +1,5 @@
+# Gpt4all
+
 ### Getting started
 * Download & install using [Windows Installer](https://github.com/nomic-ai/gpt4all)
 * Launch `gpt4all/bin/chat.exe`
