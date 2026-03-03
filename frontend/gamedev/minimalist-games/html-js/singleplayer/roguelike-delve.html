@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DELVE</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Cinzel:wght@400;700&display=swap');
+
+  :root {
+    --bg: #0a0a0f;
+    --panel: #0f0f18;
+    --border: #1e1e30;
+    --dim: #2a2a40;
+    --muted: #4a4a6a;
+    --text: #c8c8e8;
+    --bright: #e8e8ff;
+    --accent: #7070ff;
+    --gold: #c8a84b;
+    --red: #ff4444;
+    --green: #44cc88;
+    --blue: #44aaff;
+    --purple: #aa44ff;
+    --orange: #ff8844;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Share Tech Mono', monospace;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+  }
+
+  #game-container {
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    grid-template-rows: auto 1fr auto;
+    gap: 1px;
+    width: min(900px, 100vw);
+    height: min(600px, 100vh);
+    background: var(--border);
+    border: 1px solid var(--border);
+    box-shadow: 0 0 60px rgba(70,70,200,0.1), 0 0 0 1px var(--dim);
+  }
+
+  #header {
+    grid-column: 1 / -1;
+    background: var(--panel);
+    padding: 8px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+  }
+
+  #title {
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+    letter-spacing: 6px;
+    color: var(--accent);
+    text-shadow: 0 0 20px rgba(100,100,255,0.5);
+  }
+
+  #depth-display {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 2px;
+  }
+
+  #depth-display span {
+    color: var(--gold);
+    font-size: 14px;
+  }
+
+  #map-area {
+    background: var(--bg);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #map {
+    display: grid;
+    gap: 0;
+    font-size: 14px;
+    line-height: 1;
+    letter-spacing: 0;
+  }
+
+  .row { display: flex; }
+
+  .cell {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    transition: color 0.1s;
+  }
+
+  .wall    { color: var(--dim); }
+  .floor   { color: #1a1a28; }
+  .player  { color: var(--bright); text-shadow: 0 0 8px rgba(255,255,255,0.8); }
+  .enemy   { color: var(--red); }
+  .item    { color: var(--gold); }
+  .stairs  { color: var(--green); }
+  .door    { color: var(--orange); }
+  .visited { color: #1e1e2e; }
+  .fog     { color: transparent; background: var(--bg); }
+  .lit-floor { color: #2a2a3e; }
+
+  .enemy-cell { animation: pulse-red 1.5s ease-in-out infinite; }
+  @keyframes pulse-red {
+    0%, 100% { text-shadow: 0 0 4px rgba(255,68,68,0.4); }
+    50% { text-shadow: 0 0 10px rgba(255,68,68,0.9); }
+  }
+
+  .player-cell { animation: pulse-white 2s ease-in-out infinite; }
+  @keyframes pulse-white {
+    0%, 100% { text-shadow: 0 0 6px rgba(255,255,255,0.6); }
+    50% { text-shadow: 0 0 14px rgba(255,255,255,1); }
+  }
+
+  #sidebar {
+    background: var(--panel);
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    border-left: 1px solid var(--border);
+  }
+
+  .sidebar-section {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .sidebar-section h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--muted);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  .stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+    font-size: 11px;
+  }
+
+  .stat-label { color: var(--muted); }
+  .stat-val   { color: var(--bright); }
+
+  .bar {
+    height: 4px;
+    background: var(--dim);
+    border-radius: 2px;
+    margin-top: 4px;
+    overflow: hidden;
+  }
+
+  .bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 0.3s ease;
+  }
+
+  .hp-bar  { background: var(--red); }
+  .xp-bar  { background: var(--accent); }
+  .mp-bar  { background: var(--purple); }
+
+  #inventory {
+    flex: 1;
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+
+  .inv-item {
+    font-size: 10px;
+    color: var(--text);
+    padding: 2px 0;
+    display: flex;
+    gap: 6px;
+  }
+
+  .inv-item .inv-icon { color: var(--gold); }
+  .inv-item .inv-name { color: var(--muted); }
+  .inv-item.equipped .inv-name { color: var(--green); }
+
+  #log-area {
+    grid-column: 1 / -1;
+    background: var(--panel);
+    border-top: 1px solid var(--border);
+    padding: 6px 16px;
+    height: 80px;
+    overflow-y: auto;
+    scrollbar-width: none;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .log-line {
+    font-size: 11px;
+    line-height: 1.6;
+    color: var(--muted);
+    animation: fadeIn 0.3s ease;
+  }
+
+  .log-line.recent { color: var(--text); }
+  .log-line.combat { color: var(--red); }
+  .log-line.loot   { color: var(--gold); }
+  .log-line.level  { color: var(--accent); font-size: 12px; }
+  .log-line.system { color: var(--green); }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+  #splash {
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    z-index: 100;
+  }
+
+  #splash h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 48px;
+    letter-spacing: 12px;
+    color: var(--accent);
+    text-shadow: 0 0 40px rgba(100,100,255,0.6);
+  }
+
+  #splash p {
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-align: center;
+    line-height: 2;
+  }
+
+  #splash button {
+    margin-top: 20px;
+    background: none;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 4px;
+    padding: 12px 32px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  #splash button:hover {
+    background: var(--accent);
+    color: var(--bg);
+    box-shadow: 0 0 20px rgba(100,100,255,0.4);
+  }
+
+  #death-screen {
+    position: fixed;
+    inset: 0;
+    background: rgba(10,5,5,0.95);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    z-index: 100;
+  }
+
+  #death-screen h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 36px;
+    letter-spacing: 8px;
+    color: var(--red);
+    text-shadow: 0 0 30px rgba(255,0,0,0.5);
+  }
+
+  #death-screen p { color: var(--muted); font-size: 12px; letter-spacing: 2px; }
+  #death-screen .stat { color: var(--text); font-size: 13px; }
+
+  #death-screen button {
+    margin-top: 16px;
+    background: none;
+    border: 1px solid var(--red);
+    color: var(--red);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 4px;
+    padding: 10px 28px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  #death-screen button:hover { background: var(--red); color: var(--bg); }
+
+  .dmg-float {
+    position: absolute;
+    font-size: 12px;
+    font-weight: bold;
+    pointer-events: none;
+    animation: floatUp 0.8s ease forwards;
+    z-index: 10;
+  }
+
+  @keyframes floatUp {
+    0%   { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-30px); }
+  }
+
+  #controls-hint {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    font-size: 9px;
+    color: var(--dim);
+    letter-spacing: 1px;
+    line-height: 1.8;
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+
+<div id="splash">
+  <h1>DELVE</h1>
+  <p>WASD / ARROW KEYS — MOVE<br>G — PICK UP ITEM<br>E — USE ITEM<br>> — DESCEND STAIRS</p>
+  <button onclick="startGame()">ENTER THE DEPTHS</button>
+</div>
+
+<div id="death-screen">
+  <h1>YOU DIED</h1>
+  <p>CONSUMED BY THE DARK</p>
+  <div class="stat" id="death-stats"></div>
+  <button onclick="startGame()">DESCEND AGAIN</button>
+</div>
+
+<div id="game-container">
+  <div id="header">
+    <div id="title">DELVE</div>
+    <div id="depth-display">DEPTH &nbsp;<span id="floor-num">1</span></div>
+  </div>
+
+  <div id="map-area">
+    <div id="map"></div>
+    <div id="controls-hint">WASD/ARROWS move<br>G pickup &nbsp;E use<br>> descend</div>
+  </div>
+
+  <div id="sidebar">
+    <div class="sidebar-section">
+      <h3>Status</h3>
+      <div class="stat-row"><span class="stat-label">HP</span><span class="stat-val" id="hp-val">10/10</span></div>
+      <div class="bar"><div class="bar-fill hp-bar" id="hp-bar" style="width:100%"></div></div>
+      <div class="stat-row" style="margin-top:6px"><span class="stat-label">MP</span><span class="stat-val" id="mp-val">5/5</span></div>
+      <div class="bar"><div class="bar-fill mp-bar" id="mp-bar" style="width:100%"></div></div>
+      <div class="stat-row" style="margin-top:6px"><span class="stat-label">XP</span><span class="stat-val" id="xp-val">0</span></div>
+      <div class="bar"><div class="bar-fill xp-bar" id="xp-bar" style="width:0%"></div></div>
+    </div>
+    <div class="sidebar-section">
+      <h3>Character</h3>
+      <div class="stat-row"><span class="stat-label">LVL</span><span class="stat-val" id="lv-val">1</span></div>
+      <div class="stat-row"><span class="stat-label">ATK</span><span class="stat-val" id="atk-val">3</span></div>
+      <div class="stat-row"><span class="stat-label">DEF</span><span class="stat-val" id="def-val">0</span></div>
+      <div class="stat-row"><span class="stat-label">GOLD</span><span class="stat-val" id="gold-val" style="color:var(--gold)">0</span></div>
+    </div>
+    <div class="sidebar-section" style="flex:1">
+      <h3>Inventory</h3>
+      <div id="inventory"></div>
+    </div>
+  </div>
+
+  <div id="log-area" id="log"></div>
+</div>
+
+<script>
+// ═══════════════════════════════════
+// CONSTANTS & CONFIG
+// ═══════════════════════════════════
+const W = 33, H = 23;
+const VIEW_R = 6;
+
+const TILES = { WALL:'#', FLOOR:'.', PLAYER:'@', STAIRS:'>', DOOR:'+' };
+
+const ENEMY_TYPES = [
+  { name:'rat',      sym:'r', hp:4,  atk:2,  def:0,  xp:3,  gold:1,  color:'#aa6644' },
+  { name:'goblin',   sym:'g', hp:8,  atk:3,  def:1,  xp:6,  gold:3,  color:'#44aa44' },
+  { name:'skeleton', sym:'s', hp:12, atk:4,  def:1,  xp:10, gold:5,  color:'#aaaacc' },
+  { name:'orc',      sym:'o', hp:18, atk:6,  def:2,  xp:16, gold:8,  color:'#664422' },
+  { name:'troll',    sym:'T', hp:30, atk:8,  def:3,  xp:25, gold:12, color:'#228844' },
+  { name:'vampire',  sym:'V', hp:40, atk:10, def:4,  xp:40, gold:20, color:'#aa2266' },
+  { name:'lich',     sym:'L', hp:55, atk:14, def:5,  xp:60, gold:30, color:'#8844cc' },
+  { name:'dragon',   sym:'D', hp:80, atk:18, def:7,  xp:100,gold:50, color:'#cc4422' },
+];
+
+const ITEM_TYPES = [
+  { name:'health potion',   sym:'!', type:'heal',  value:15, color:'#ff4444', desc:'Restores 15 HP' },
+  { name:'mana potion',     sym:'!', type:'mana',  value:10, color:'#4444ff', desc:'Restores 10 MP' },
+  { name:'bread',           sym:'%', type:'heal',  value:5,  color:'#cc8844', desc:'Restores 5 HP' },
+  { name:'short sword',     sym:'/', type:'weapon', value:3,  color:'#aaaacc', desc:'+3 ATK' },
+  { name:'long sword',      sym:'/', type:'weapon', value:6,  color:'#ccccff', desc:'+6 ATK' },
+  { name:'leather armor',   sym:'[', type:'armor',  value:2,  color:'#aa8844', desc:'+2 DEF' },
+  { name:'chain mail',      sym:'[', type:'armor',  value:4,  color:'#aaaacc', desc:'+4 DEF' },
+  { name:'plate armor',     sym:'[', type:'armor',  value:7,  color:'#ccddff', desc:'+7 DEF' },
+  { name:'fire scroll',     sym:'?', type:'spell',  value:20, color:'#ff6622', desc:'Deals 20 fire dmg' },
+  { name:'lightning bolt',  sym:'?', type:'spell',  value:15, color:'#ffff44', desc:'Deals 15 lightning' },
+  { name:'gold coin',       sym:'$', type:'gold',   value:10, color:'#c8a84b', desc:'Worth 10 gold' },
+  { name:'silver ring',     sym:'=', type:'weapon', value:2,  color:'#ddddff', desc:'+2 ATK' },
+  { name:'amulet of life',  sym:'"', type:'heal',   value:25, color:'#ff88aa', desc:'Restores 25 HP' },
+];
+
+// ═══════════════════════════════════
+// GAME STATE
+// ═══════════════════════════════════
+let G = {};
+
+function initState() {
+  G = {
+    floor: 1,
+    map: [],
+    rooms: [],
+    player: { x:1, y:1, hp:20, maxHp:20, mp:10, maxMp:10, atk:3, def:0, xp:0, xpNext:20, level:1, gold:0, weapon:null, armor:null },
+    enemies: [],
+    items: [],
+    log: [],
+    turn: 0,
+    revealed: new Set(),
+    visible: new Set(),
+  };
+}
+
+// ═══════════════════════════════════
+// MAP GENERATION
+// ═══════════════════════════════════
+function generateMap() {
+  const map = Array.from({length:H}, () => Array(W).fill(TILES.WALL));
+  const rooms = [];
+
+  const maxRooms = 8 + Math.floor(G.floor * 0.5);
+  for(let i=0; i<maxRooms*4 && rooms.length < maxRooms; i++) {
+    const rw = 4 + Math.floor(Math.random()*6);
+    const rh = 3 + Math.floor(Math.random()*5);
+    const rx = 1 + Math.floor(Math.random()*(W - rw - 2));
+    const ry = 1 + Math.floor(Math.random()*(H - rh - 2));
+
+    const room = {x:rx, y:ry, w:rw, h:rh};
+    if(rooms.some(r => rectsOverlap(r, room, 1))) continue;
+
+    rooms.push(room);
+    for(let y=ry; y<ry+rh; y++)
+      for(let x=rx; x<rx+rw; x++)
+        map[y][x] = TILES.FLOOR;
+  }
+
+  // Connect rooms with corridors
+  for(let i=1; i<rooms.length; i++) {
+    const a = rooms[i-1], b = rooms[i];
+    const ax = Math.floor(a.x + a.w/2), ay = Math.floor(a.y + a.h/2);
+    const bx = Math.floor(b.x + b.w/2), by = Math.floor(b.y + b.h/2);
+    if(Math.random() < 0.5) {
+      carveH(map, ax, bx, ay);
+      carveV(map, ay, by, bx);
+    } else {
+      carveV(map, ay, by, ax);
+      carveH(map, ax, bx, by);
+    }
+  }
+
+  return { map, rooms };
+}
+
+function rectsOverlap(a, b, pad=0) {
+  return a.x - pad < b.x+b.w && a.x+a.w > b.x - pad &&
+         a.y - pad < b.y+b.h && a.y+a.h > b.y - pad;
+}
+
+function carveH(map, x1, x2, y) {
+  for(let x=Math.min(x1,x2); x<=Math.max(x1,x2); x++) map[y][x] = TILES.FLOOR;
+}
+
+function carveV(map, y1, y2, x) {
+  for(let y=Math.min(y1,y2); y<=Math.max(y1,y2); y++) map[y][x] = TILES.FLOOR;
+}
+
+function roomCenter(r) { return { x: Math.floor(r.x+r.w/2), y: Math.floor(r.y+r.h/2) }; }
+
+function populateLevel() {
+  const { map, rooms } = generateMap();
+  G.map = map;
+  G.rooms = rooms;
+  G.enemies = [];
+  G.items = [];
+
+  const startRoom = rooms[0];
+  const c = roomCenter(startRoom);
+  G.player.x = c.x;
+  G.player.y = c.y;
+
+  // Stairs in last room
+  const lastRoom = rooms[rooms.length-1];
+  const lc = roomCenter(lastRoom);
+  G.map[lc.y][lc.x] = TILES.STAIRS;
+
+  // Enemies: scale with floor
+  const numEnemies = 3 + G.floor + Math.floor(G.floor * 0.5);
+  const maxEnemyIdx = Math.min(Math.floor(G.floor / 2), ENEMY_TYPES.length - 1);
+
+  for(let i=0; i<numEnemies; i++) {
+    const room = rooms[1 + Math.floor(Math.random()*(rooms.length-1))];
+    const ex = room.x + 1 + Math.floor(Math.random()*(room.w-2));
+    const ey = room.y + 1 + Math.floor(Math.random()*(room.h-2));
+    if(G.enemies.some(e=>e.x===ex&&e.y===ey)) continue;
+    const typeIdx = Math.floor(Math.random()*(maxEnemyIdx+1));
+    const t = ENEMY_TYPES[typeIdx];
+    const hpBonus = G.floor * 2;
+    G.enemies.push({...t, hp: t.hp + hpBonus, maxHp: t.hp + hpBonus, x:ex, y:ey, id:Math.random()});
+  }
+
+  // Items
+  const numItems = 4 + Math.floor(G.floor * 0.3);
+  for(let i=0; i<numItems; i++) {
+    const room = rooms[Math.floor(Math.random()*rooms.length)];
+    const ix = room.x + Math.floor(Math.random()*room.w);
+    const iy = room.y + Math.floor(Math.random()*room.h);
+    if(G.items.some(it=>it.x===ix&&it.y===iy)) continue;
+    const type = ITEM_TYPES[Math.floor(Math.random()*ITEM_TYPES.length)];
+    G.items.push({...type, x:ix, y:iy, id:Math.random()});
+  }
+}
+
+// ═══════════════════════════════════
+// FOG OF WAR
+// ═══════════════════════════════════
+function computeVisibility() {
+  G.visible = new Set();
+  const {x, y} = G.player;
+
+  for(let angle=0; angle<360; angle+=2) {
+    const rad = angle * Math.PI / 180;
+    let rx = x, ry = y;
+    for(let d=0; d<=VIEW_R; d++) {
+      const tx = Math.round(rx), ty = Math.round(ry);
+      if(tx<0||ty<0||tx>=W||ty>=H) break;
+      const key = `${tx},${ty}`;
+      G.visible.add(key);
+      G.revealed.add(key);
+      if(G.map[ty][tx] === TILES.WALL) break;
+      rx += Math.cos(rad);
+      ry += Math.sin(rad);
+    }
+  }
+}
+
+// ═══════════════════════════════════
+// RENDERING
+// ═══════════════════════════════════
+function render() {
+  const mapEl = document.getElementById('map');
+  const rows = [];
+
+  for(let y=0; y<H; y++) {
+    let rowHTML = '<div class="row">';
+    for(let x=0; x<W; x++) {
+      const key = `${x},${y}`;
+      const isVisible = G.visible.has(key);
+      const isRevealed = G.revealed.has(key);
+      let sym='', cls='cell', style='';
+
+      if(!isVisible && !isRevealed) {
+        sym = ' '; cls += ' fog';
+      } else {
+        const tile = G.map[y][x];
+        const enemy = isVisible && G.enemies.find(e=>e.x===x&&e.y===y);
+        const item  = isVisible && G.items.find(i=>i.x===x&&i.y===y);
+        const isPlayer = G.player.x===x && G.player.y===y;
+
+        if(isPlayer) {
+          sym='@'; cls+=' player player-cell';
+        } else if(enemy) {
+          sym=enemy.sym; cls+=' enemy enemy-cell'; style=`color:${enemy.color}`;
+        } else if(item && isVisible) {
+          sym=item.sym; cls+=' item'; style=`color:${item.color}`;
+        } else if(tile===TILES.STAIRS) {
+          sym='>'; cls+=' stairs';
+        } else if(tile===TILES.WALL) {
+          sym=isVisible?'█':'▓'; cls+=isVisible?' wall':' visited';
+        } else {
+          sym=isVisible?'·':' '; cls+=isVisible?' lit-floor':' visited';
+        }
+      }
+      rowHTML += `<div class="${cls}"${style?` style="${style}"`:''}>${sym}</div>`;
+    }
+    rowHTML += '</div>';
+    rows.push(rowHTML);
+  }
+
+  mapEl.innerHTML = rows.join('');
+  updateSidebar();
+}
+
+function updateSidebar() {
+  const p = G.player;
+  document.getElementById('hp-val').textContent = `${p.hp}/${p.maxHp}`;
+  document.getElementById('hp-bar').style.width = `${(p.hp/p.maxHp)*100}%`;
+  document.getElementById('mp-val').textContent = `${p.mp}/${p.maxMp}`;
+  document.getElementById('mp-bar').style.width = `${(p.mp/p.maxMp)*100}%`;
+  document.getElementById('xp-val').textContent = `${p.xp}/${p.xpNext}`;
+  document.getElementById('xp-bar').style.width = `${(p.xp/p.xpNext)*100}%`;
+  document.getElementById('lv-val').textContent = p.level;
+  document.getElementById('atk-val').textContent = p.atk + (p.weapon?`+${p.weapon.value}`:'');
+  document.getElementById('def-val').textContent = p.def + (p.armor?`+${p.armor.value}`:'');
+  document.getElementById('gold-val').textContent = p.gold;
+  document.getElementById('floor-num').textContent = G.floor;
+
+  // Inventory
+  const inv = document.getElementById('inventory');
+  const items = [];
+  if(p.weapon) items.push({...p.weapon, equipped:true});
+  if(p.armor)  items.push({...p.armor, equipped:true});
+  if(G._inventory) {
+    G._inventory.forEach(it => items.push(it));
+  }
+  inv.innerHTML = items.map(it =>
+    `<div class="inv-item${it.equipped?' equipped':''}">
+      <span class="inv-icon" style="color:${it.color}">${it.sym}</span>
+      <span class="inv-name">${it.name}</span>
+    </div>`
+  ).join('') || '<div style="font-size:10px;color:var(--dim)">empty</div>';
+}
+
+// ═══════════════════════════════════
+// LOGGING
+// ═══════════════════════════════════
+function log(msg, cls='recent') {
+  G.log.unshift({msg, cls});
+  if(G.log.length>40) G.log.pop();
+  const logEl = document.getElementById('log-area');
+  logEl.innerHTML = G.log.map((l,i) =>
+    `<div class="log-line ${i===0?l.cls:''}">${l.msg}</div>`
+  ).join('');
+}
+
+// ═══════════════════════════════════
+// COMBAT
+// ═══════════════════════════════════
+function getPlayerAtk() {
+  return G.player.atk + (G.player.weapon ? G.player.weapon.value : 0);
+}
+function getPlayerDef() {
+  return G.player.def + (G.player.armor ? G.player.armor.value : 0);
+}
+
+function attackEnemy(enemy) {
+  const dmg = Math.max(1, getPlayerAtk() - enemy.def + Math.floor(Math.random()*3) - 1);
+  enemy.hp -= dmg;
+  showFloater(enemy.x, enemy.y, `-${dmg}`, '#ff4444');
+
+  if(enemy.hp <= 0) {
+    G.enemies = G.enemies.filter(e=>e.id!==enemy.id);
+    G.player.xp += enemy.xp;
+    G.player.gold += enemy.gold;
+    log(`The ${enemy.name} dies. +${enemy.xp} XP, +${enemy.gold} gold`, 'combat');
+    checkLevelUp();
+  } else {
+    log(`You hit the ${enemy.name} for ${dmg} dmg. (${enemy.hp}/${enemy.maxHp} HP)`, 'combat');
+    enemyCounterAttack(enemy);
+  }
+}
+
+function enemyCounterAttack(enemy) {
+  const dmg = Math.max(0, enemy.atk - getPlayerDef() + Math.floor(Math.random()*3) - 1);
+  G.player.hp -= dmg;
+  showFloater(G.player.x, G.player.y, dmg > 0 ? `-${dmg}` : 'BLOCK', dmg > 0 ? '#ff8888' : '#44cc88');
+  if(dmg > 0) log(`The ${enemy.name} hits you for ${dmg}!`, 'combat');
+  else log(`You block the ${enemy.name}'s attack!`);
+  if(G.player.hp <= 0) die();
+}
+
+function enemyTurns() {
+  G.enemies.forEach(enemy => {
+    if(!G.visible.has(`${enemy.x},${enemy.y}`)) return;
+    const dx = G.player.x - enemy.x, dy = G.player.y - enemy.y;
+    const dist = Math.abs(dx)+Math.abs(dy);
+    if(dist <= 1) {
+      // Adjacent — attack
+      const dmg = Math.max(0, enemy.atk - getPlayerDef() + Math.floor(Math.random()*3) - 1);
+      G.player.hp -= dmg;
+      if(dmg > 0) {
+        showFloater(G.player.x, G.player.y, `-${dmg}`, '#ff4444');
+        log(`${enemy.name} attacks! -${dmg} HP`, 'combat');
+      }
+      if(G.player.hp <= 0) { die(); return; }
+    } else if(dist < 8) {
+      // Move toward player
+      const mx = Math.sign(dx), my = Math.sign(dy);
+      const opts = [];
+      if(mx!==0) opts.push({x:enemy.x+mx, y:enemy.y});
+      if(my!==0) opts.push({x:enemy.x, y:enemy.y+my});
+      for(const o of opts.sort(()=>Math.random()-0.5)) {
+        if(canMove(o.x, o.y) && !G.enemies.some(e=>e.x===o.x&&e.y===o.y&&e.id!==enemy.id)) {
+          enemy.x=o.x; enemy.y=o.y; break;
+        }
+      }
+    }
+  });
+}
+
+// ═══════════════════════════════════
+// LEVEL UP
+// ═══════════════════════════════════
+function checkLevelUp() {
+  while(G.player.xp >= G.player.xpNext) {
+    G.player.xp -= G.player.xpNext;
+    G.player.level++;
+    G.player.xpNext = Math.floor(G.player.xpNext * 1.5);
+    G.player.maxHp += 5;
+    G.player.hp = Math.min(G.player.hp+5, G.player.maxHp);
+    G.player.maxMp += 3;
+    G.player.atk += 1;
+    log(`⬆ LEVEL UP! Now level ${G.player.level}. +5 HP, +3 MP, +1 ATK`, 'level');
+  }
+}
+
+// ═══════════════════════════════════
+// MOVEMENT
+// ═══════════════════════════════════
+function canMove(x, y) {
+  return x>=0&&y>=0&&x<W&&y<H && G.map[y][x]!==TILES.WALL;
+}
+
+function tryMove(dx, dy) {
+  const nx = G.player.x+dx, ny = G.player.y+dy;
+  if(nx<0||ny<0||nx>=W||ny>=H) return;
+
+  const enemy = G.enemies.find(e=>e.x===nx&&e.y===ny);
+  if(enemy) {
+    attackEnemy(enemy);
+    enemyTurns();
+    tick();
+    return;
+  }
+
+  if(!canMove(nx, ny)) return;
+
+  G.player.x=nx; G.player.y=ny;
+
+  const tile = G.map[ny][nx];
+  if(tile === TILES.STAIRS) log('You see stairs going down. Press > to descend.', 'system');
+
+  // Item pickup prompt
+  const item = G.items.find(i=>i.x===nx&&i.y===ny);
+  if(item) log(`You see ${item.name} here. Press G to pick up.`);
+
+  enemyTurns();
+  tick();
+}
+
+function tick() {
+  G.turn++;
+  // Regen
+  if(G.turn % 15 === 0 && G.player.hp < G.player.maxHp) {
+    G.player.hp = Math.min(G.player.maxHp, G.player.hp+1);
+  }
+  if(G.turn % 20 === 0 && G.player.mp < G.player.maxMp) {
+    G.player.mp = Math.min(G.player.maxMp, G.player.mp+1);
+  }
+  computeVisibility();
+  render();
+}
+
+// ═══════════════════════════════════
+// ITEMS
+// ═══════════════════════════════════
+if(!window.G) window.G = {};
+
+function pickupItem() {
+  const idx = G.items.findIndex(i=>i.x===G.player.x&&i.y===G.player.y);
+  if(idx===-1) { log('Nothing here to pick up.'); return; }
+  const item = G.items.splice(idx,1)[0];
+
+  if(!G._inventory) G._inventory = [];
+
+  if(item.type==='gold') {
+    G.player.gold += item.value;
+    log(`You pick up ${item.name}. +${item.value} gold`, 'loot');
+  } else if(item.type==='weapon') {
+    if(G.player.weapon) G._inventory.push(G.player.weapon);
+    G.player.weapon = item;
+    log(`You equip ${item.name}.`, 'loot');
+  } else if(item.type==='armor') {
+    if(G.player.armor) G._inventory.push(G.player.armor);
+    G.player.armor = item;
+    log(`You equip ${item.name}.`, 'loot');
+  } else {
+    G._inventory.push(item);
+    log(`You pick up ${item.name}.`, 'loot');
+  }
+  tick();
+}
+
+function useItem() {
+  if(!G._inventory || G._inventory.length===0) { log('No items to use.'); return; }
+  // Use first usable item
+  const idx = G._inventory.findIndex(i=>['heal','mana','spell'].includes(i.type));
+  if(idx===-1) { log('No usable items.'); return; }
+  const item = G._inventory.splice(idx,1)[0];
+
+  if(item.type==='heal') {
+    const healed = Math.min(item.value, G.player.maxHp-G.player.hp);
+    G.player.hp += healed;
+    log(`You use ${item.name}. +${healed} HP`, 'loot');
+  } else if(item.type==='mana') {
+    const gained = Math.min(item.value, G.player.maxMp-G.player.mp);
+    G.player.mp += gained;
+    log(`You use ${item.name}. +${gained} MP`, 'loot');
+  } else if(item.type==='spell') {
+    const targets = G.enemies.filter(e=>G.visible.has(`${e.x},${e.y}`));
+    if(targets.length===0) { log('No visible enemies!'); G._inventory.unshift(item); return; }
+    if(G.player.mp < 3) { log('Not enough mana!'); G._inventory.unshift(item); return; }
+    G.player.mp -= 3;
+    targets.forEach(e=>{
+      e.hp -= item.value;
+      showFloater(e.x, e.y, `-${item.value}`, '#ff8844');
+      if(e.hp<=0) {
+        G.enemies = G.enemies.filter(x=>x.id!==e.id);
+        G.player.xp += e.xp;
+        log(`${e.name} is destroyed! +${e.xp} XP`, 'combat');
+        checkLevelUp();
+      }
+    });
+    log(`You cast ${item.name} for ${item.value} damage!`, 'combat');
+  }
+  tick();
+}
+
+function descend() {
+  const tile = G.map[G.player.y][G.player.x];
+  if(tile!==TILES.STAIRS) { log('No stairs here.'); return; }
+  G.floor++;
+  G._inventory = G._inventory || [];
+  const savedPlayer = {...G.player};
+  const savedInv = [...G._inventory];
+  const savedLog = [...G.log];
+  initState();
+  G.player = savedPlayer;
+  G._inventory = savedInv;
+  G.log = savedLog;
+  G.floor = savedPlayer.floor !== undefined ? savedPlayer.floor + 1 : G.floor;
+  populateLevel();
+  computeVisibility();
+  log(`You descend to depth ${G.floor}.`, 'system');
+  render();
+}
+
+// ═══════════════════════════════════
+// FLOATERS
+// ═══════════════════════════════════
+function showFloater(gx, gy, text, color) {
+  const mapEl = document.getElementById('map-area');
+  const mapRect = mapEl.getBoundingClientRect();
+  const cellSize = 20;
+  const cols = W, rows = H;
+  const offsetX = (mapRect.width - cols*cellSize)/2;
+  const offsetY = (mapRect.height - rows*cellSize)/2;
+
+  const el = document.createElement('div');
+  el.className='dmg-float';
+  el.style.color=color;
+  el.style.left=`${offsetX + gx*cellSize + 6}px`;
+  el.style.top=`${offsetY + gy*cellSize}px`;
+  el.textContent=text;
+  mapEl.appendChild(el);
+  setTimeout(()=>el.remove(), 850);
+}
+
+// ═══════════════════════════════════
+// DEATH
+// ═══════════════════════════════════
+function die() {
+  const ds = document.getElementById('death-screen');
+  ds.style.display='flex';
+  document.getElementById('death-stats').textContent =
+    `Depth ${G.floor}  ·  Level ${G.player.level}  ·  ${G.player.gold} gold`;
+  log(`You were slain on depth ${G.floor}...`, 'combat');
+}
+
+// ═══════════════════════════════════
+// INPUT
+// ═══════════════════════════════════
+document.addEventListener('keydown', e => {
+  if(!G.map || !G.map.length) return;
+  const key = e.key;
+  if(['ArrowUp','w','W'].includes(key))    { e.preventDefault(); tryMove(0,-1); }
+  else if(['ArrowDown','s','S'].includes(key))  { e.preventDefault(); tryMove(0,1); }
+  else if(['ArrowLeft','a','A'].includes(key))  { e.preventDefault(); tryMove(-1,0); }
+  else if(['ArrowRight','d','D'].includes(key)) { e.preventDefault(); tryMove(1,0); }
+  else if(key==='g'||key==='G') pickupItem();
+  else if(key==='e'||key==='E') useItem();
+  else if(key==='>') descend();
+});
+
+// ═══════════════════════════════════
+// START
+// ═══════════════════════════════════
+function startGame() {
+  document.getElementById('splash').style.display='none';
+  document.getElementById('death-screen').style.display='none';
+  initState();
+  G._inventory = [];
+  G.floor = 1;
+  populateLevel();
+  computeVisibility();
+  log('You enter the dungeon. Good luck.', 'system');
+  log('WASD/Arrows=move  G=pickup  E=use  >=descend', 'system');
+  render();
+}
+</script>
+</body>
+</html>
