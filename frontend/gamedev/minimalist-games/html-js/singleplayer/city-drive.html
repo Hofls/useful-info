@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CITY DRIVE</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; overflow:hidden; }
+canvas { display:block; }
+#spd {
+  position:fixed; bottom:28px; right:36px;
+  text-align:right; color:#eee; font-size:10px; letter-spacing:.25em;
+  font-family:'Courier New',monospace;
+}
+#spd span { display:block; font-size:56px; font-weight:100; letter-spacing:-.02em; color:#fff; line-height:1; }
+#info {
+  position:fixed; bottom:28px; left:36px;
+  color:#555; font-size:10px; letter-spacing:.15em; line-height:2.2;
+  font-family:'Courier New',monospace;
+}
+#title {
+  position:fixed; top:28px; left:36px;
+  color:#fff; font-size:10px; letter-spacing:.45em; opacity:.35;
+  font-family:'Courier New',monospace;
+}
+#crash {
+  position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);
+  color:#ff2020; font-size:48px; font-weight:100; letter-spacing:.3em;
+  opacity:0; pointer-events:none;
+  font-family:'Courier New',monospace; text-transform:uppercase;
+}
+#minimap {
+  position:fixed; top:28px; right:36px;
+  width:130px; height:130px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(0,0,0,.65);
+}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="title">CITY DRIVE</div>
+<div id="spd"><span id="sv">0</span>km/h</div>
+<div id="info">W/UP &nbsp;GAS<br>S/DOWN BRAKE<br>A/LEFT &nbsp;D/RIGHT</div>
+<div id="crash">CRASH!</div>
+<canvas id="minimap" width="130" height="130"></canvas>
+
+<script>
+const canvas = document.getElementById('c');
+const ctx    = canvas.getContext('2d');
+const mm     = document.getElementById('minimap');
+const mctx   = mm.getContext('2d');
+const crashEl= document.getElementById('crash');
+
+let W, H;
+function resize() { W = canvas.width = innerWidth; H = canvas.height = innerHeight; }
+resize(); window.addEventListener('resize', resize);
+
+// ── Road Network ─────────────────────────────────────────────────
+const ROAD_W   = 24;
+const MAP_R    = 2400;
+const NODE_CNT = 100;
+
+const nodes = [{ x: 0, y: 0 }];
+for (let i = 1; i < NODE_CNT; i++) {
+  const a = Math.random() * Math.PI * 2;
+  const r = 150 + Math.random() * (MAP_R - 150);
+  nodes.push({ x: Math.cos(a) * r, y: Math.sin(a) * r });
+}
+
+const edgeSet = new Set();
+const edgeList = [];
+
+function edgeKey(i, j) { return i < j ? i+'_'+j : j+'_'+i; }
+
+for (let i = 0; i < nodes.length; i++) {
+  const dists = nodes
+    .map((n, j) => ({ j, d: Math.hypot(n.x-nodes[i].x, n.y-nodes[i].y) }))
+    .filter(e => e.j !== i)
+    .sort((a,b) => a.d - b.d)
+    .slice(0, 3 + Math.floor(Math.random()*2));
+  for (const { j } of dists) {
+    const k = edgeKey(i, j);
+    if (!edgeSet.has(k)) {
+      edgeSet.add(k);
+      edgeList.push({ ax: nodes[i].x, ay: nodes[i].y, bx: nodes[j].x, by: nodes[j].y });
+    }
+  }
+}
+
+// ── Buildings ─────────────────────────────────────────────────────
+function distPointSeg(px, py, ax, ay, bx, by) {
+  const dx = bx-ax, dy = by-ay;
+  const t  = Math.max(0, Math.min(1, ((px-ax)*dx+(py-ay)*dy)/(dx*dx+dy*dy||1)));
+  return Math.hypot(px-(ax+t*dx), py-(ay+t*dy));
+}
+
+function tooClose(rx, ry, rw, rh) {
+  const cx = rx+rw/2, cy = ry+rh/2;
+  const half = Math.max(rw, rh)*0.7;
+  for (const e of edgeList) {
+    if (distPointSeg(cx, cy, e.ax, e.ay, e.bx, e.by) < ROAD_W + 16 + half) return true;
+  }
+  return false;
+}
+
+const buildings = [];
+const rng = (a, b) => a + Math.random()*(b-a);
+
+for (let attempt = 0; attempt < 2200; attempt++) {
+  const a  = Math.random()*Math.PI*2;
+  const r  = 80 + Math.random()*(MAP_R*0.9);
+  const bw = rng(26, 100);
+  const bh = rng(26, 100);
+  const x  = Math.cos(a)*r - bw/2;
+  const y  = Math.sin(a)*r - bh/2;
+  if (tooClose(x, y, bw, bh)) continue;
+  let overlap = false;
+  for (const b of buildings) {
+    if (x < b.x+b.w+8 && x+bw > b.x-8 && y < b.y+b.h+8 && y+bh > b.y-8) { overlap=true; break; }
+  }
+  if (overlap) continue;
+  buildings.push({ x, y, w:bw, h:bh, floors:Math.floor(rng(1,18)), hue:rng(195,240) });
+}
+
+// ── Car ───────────────────────────────────────────────────────────
+const CAR = { x:0, y:0, angle:0, speed:0 };
+const CAR_W=12, CAR_L=24;
+let crashTimer=0;
+
+const keys={};
+addEventListener('keydown', e=>{ keys[e.key]=true; if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight',' '].includes(e.key)) e.preventDefault(); });
+addEventListener('keyup',   e=>{ keys[e.key]=false; });
+
+// ── Physics ───────────────────────────────────────────────────────
+function carCorners(x, y, a) {
+  const cos=Math.cos(a), sin=Math.sin(a);
+  return [[-CAR_W,-CAR_L*.5],[CAR_W,-CAR_L*.5],[CAR_W,CAR_L*.5],[-CAR_W,CAR_L*.5]]
+    .map(([lx,ly])=>({ x: x+lx*cos-ly*sin, y: y+lx*sin+ly*cos }));
+}
+
+function collides(bx, by, bw, bh) {
+  const m=5, corners=carCorners(CAR.x, CAR.y, CAR.angle);
+  for (const p of corners) {
+    if (p.x>bx-m && p.x<bx+bw+m && p.y>by-m && p.y<by+bh+m) return true;
+  }
+  return CAR.x>bx-m && CAR.x<bx+bw+m && CAR.y>by-m && CAR.y<by+bh+m;
+}
+
+function resolve(bx, by, bw, bh) {
+  const cx=CAR.x, cy=CAR.y;
+  const dists=[
+    { axis:'x', delta: (bx+bw) - cx, push: 1  },
+    { axis:'x', delta: bx - cx,       push: -1 },
+    { axis:'y', delta: (by+bh) - cy,  push: 1  },
+    { axis:'y', delta: by - cy,        push: -1 },
+  ];
+  dists.sort((a,b)=>Math.abs(a.delta)-Math.abs(b.delta));
+  const best=dists[0];
+  if (best.axis==='x') { CAR.x += best.delta * best.push; }
+  else                 { CAR.y += best.delta * best.push; }
+  CAR.speed *= -0.28;
+  crashTimer = 35;
+}
+
+function update() {
+  const fwd   = keys['w']||keys['ArrowUp'];
+  const back  = keys['s']||keys['ArrowDown'];
+  const left  = keys['a']||keys['ArrowLeft'];
+  const right = keys['d']||keys['ArrowRight'];
+
+  if (fwd)  CAR.speed = Math.min(CAR.speed+0.15, 8);
+  if (back) CAR.speed = Math.max(CAR.speed-0.20, -3.5);
+  if (!fwd&&!back) CAR.speed *= 0.91;
+  if (back&&CAR.speed>0) CAR.speed *= 0.78;
+
+  const sa = 0.047*(Math.abs(CAR.speed)/8);
+  if (left)  CAR.angle -= sa;
+  if (right) CAR.angle += sa;
+
+  CAR.x += Math.sin(CAR.angle)*CAR.speed;
+  CAR.y -= Math.cos(CAR.angle)*CAR.speed;
+
+  for (const b of buildings) {
+    if (Math.abs(CAR.x-(b.x+b.w/2)) < b.w/2+50 && Math.abs(CAR.y-(b.y+b.h/2)) < b.h/2+50) {
+      if (collides(b.x, b.y, b.w, b.h)) resolve(b.x, b.y, b.w, b.h);
+    }
+  }
+
+  if (crashTimer>0) { crashTimer--; crashEl.style.opacity=Math.min(1, crashTimer/12); }
+  else crashEl.style.opacity=0;
+
+  document.getElementById('sv').textContent = Math.abs(Math.round(CAR.speed*14));
+}
+
+// ── Camera ────────────────────────────────────────────────────────
+const cam={x:0,y:0,angle:0};
+const TILT=0.70, CAM_BEHIND=88;
+
+function updateCam() {
+  const tx=CAR.x-Math.sin(CAR.angle)*CAM_BEHIND;
+  const ty=CAR.y+Math.cos(CAR.angle)*CAM_BEHIND;
+  cam.x+=(tx-cam.x)*0.09; cam.y+=(ty-cam.y)*0.09;
+  cam.angle+=(CAR.angle-cam.angle)*0.09;
+}
+
+function w2s(wx,wy) {
+  const dx=wx-cam.x, dy=wy-cam.y;
+  const cos=Math.cos(-cam.angle), sin=Math.sin(-cam.angle);
+  return { sx: W/2+dx*cos-dy*sin, sy: H/2+(dx*sin+dy*cos)*TILT };
+}
+
+// ── Draw helpers ──────────────────────────────────────────────────
+function poly(pts, fill, stroke, lw) {
+  ctx.beginPath();
+  pts.forEach((p,i)=> i ? ctx.lineTo(p.sx,p.sy) : ctx.moveTo(p.sx,p.sy));
+  ctx.closePath();
+  if (fill)   { ctx.fillStyle=fill; ctx.fill(); }
+  if (stroke) { ctx.strokeStyle=stroke; ctx.lineWidth=lw||1; ctx.stroke(); }
+}
+
+function rPts(x,y,w,h) {
+  return [w2s(x,y),w2s(x+w,y),w2s(x+w,y+h),w2s(x,y+h)];
+}
+
+// ── Render Roads ──────────────────────────────────────────────────
+function drawRoads() {
+  for (const e of edgeList) {
+    const dx=e.bx-e.ax, dy=e.by-e.ay;
+    const len=Math.hypot(dx,dy); if(len<1) continue;
+    const nx=-dy/len*ROAD_W, ny=dx/len*ROAD_W;
+    poly([w2s(e.ax+nx,e.ay+ny),w2s(e.bx+nx,e.by+ny),w2s(e.bx-nx,e.by-ny),w2s(e.ax-nx,e.ay-ny)],'#1c1c1f');
+    // dashes
+    const segs=Math.floor(len/44);
+    for (let s=0;s<segs;s++) {
+      const t0=(s+0.25)/segs, t1=(s+0.75)/segs;
+      poly([
+        w2s(e.ax+dx*t0-nx*.06, e.ay+dy*t0-ny*.06),
+        w2s(e.ax+dx*t1-nx*.06, e.ay+dy*t1-ny*.06),
+        w2s(e.ax+dx*t1+nx*.06, e.ay+dy*t1+ny*.06),
+        w2s(e.ax+dx*t0+nx*.06, e.ay+dy*t0+ny*.06),
+      ],'#2b2b30');
+    }
+  }
+  // Intersections
+  for (const n of nodes) {
+    const c=w2s(n.x,n.y);
+    ctx.beginPath();
+    ctx.ellipse(c.sx,c.sy,ROAD_W*1.05,ROAD_W*TILT*1.05,-cam.angle,0,Math.PI*2);
+    ctx.fillStyle='#1c1c1f'; ctx.fill();
+  }
+}
+
+// ── Render Buildings ──────────────────────────────────────────────
+const PREROLL = [];
+// Pre-roll window indices for stable random windows
+for(let i=0;i<2000;i++) PREROLL.push(Math.random());
+
+function drawBuildings() {
+  const vis=buildings.map(b=>{ const s=w2s(b.x+b.w/2,b.y+b.h/2); return {b,sy:s.sy}; })
+    .sort((a,z)=>a.sy-z.sy);
+
+  for (const {b} of vis) {
+    const sc=w2s(b.x+b.w/2,b.y+b.h/2);
+    if(sc.sx<-400||sc.sx>W+400||sc.sy<-400||sc.sy>H+500) continue;
+
+    const lift=b.floors*7*TILT;
+    const pts=rPts(b.x,b.y,b.w,b.h);
+    const top=pts.map(p=>({sx:p.sx,sy:p.sy-lift}));
+
+    // South wall
+    ctx.beginPath();
+    ctx.moveTo(pts[2].sx,pts[2].sy); ctx.lineTo(pts[3].sx,pts[3].sy);
+    ctx.lineTo(top[3].sx,top[3].sy); ctx.lineTo(top[2].sx,top[2].sy);
+    ctx.closePath();
+    ctx.fillStyle=`hsl(${b.hue},10%,${6+b.floors*.45}%)`; ctx.fill();
+
+    // East wall
+    ctx.beginPath();
+    ctx.moveTo(pts[1].sx,pts[1].sy); ctx.lineTo(pts[2].sx,pts[2].sy);
+    ctx.lineTo(top[2].sx,top[2].sy); ctx.lineTo(top[1].sx,top[1].sy);
+    ctx.closePath();
+    ctx.fillStyle=`hsl(${b.hue},10%,${10+b.floors*.7}%)`; ctx.fill();
+
+    // Roof
+    poly(top,`hsl(${b.hue},8%,${20+b.floors*.6}%)`,`hsl(${b.hue},8%,32%)`,0.5);
+
+    // Windows on east face
+    if (b.floors>2) {
+      const rows=Math.min(b.floors,8), cols=Math.max(1,Math.floor(b.w/20));
+      let wi=Math.floor((b.x*17+b.y*31)%PREROLL.length);
+      for(let r=0;r<rows;r++) {
+        for(let c=0;c<cols;c++) {
+          wi=(wi+1)%PREROLL.length;
+          if(PREROLL[wi]>0.4) {
+            const wx=b.x+b.w+1, wy=b.y+4+(b.h-8)*(c/cols);
+            const wp=w2s(wx,wy);
+            const wsh=lift*(r+1)/(rows+1);
+            ctx.fillStyle=PREROLL[(wi+7)%PREROLL.length]>0.45?'rgba(255,228,130,.8)':'rgba(80,130,210,.15)';
+            ctx.fillRect(wp.sx,wp.sy-wsh,3,4);
+          }
+        }
+      }
+    }
+  }
+}
+
+// ── Render Car ────────────────────────────────────────────────────
+function drawCar() {
+  const {x,y,angle}=CAR;
+  const cos=Math.cos(angle), sin=Math.sin(angle);
+  const lc=(lx,ly)=>w2s(x+lx*cos-ly*sin, y+lx*sin+ly*cos);
+
+  const body=[lc(-CAR_W,-CAR_L*.5),lc(CAR_W,-CAR_L*.5),lc(CAR_W,CAR_L*.5),lc(-CAR_W,CAR_L*.5)];
+  ctx.save(); ctx.globalAlpha=.25;
+  poly(body.map(p=>({sx:p.sx+4,sy:p.sy+7})),'#000');
+  ctx.restore();
+
+  const col=crashTimer>0?'#ff3a1a':'#c0392b';
+  poly(body, col, '#7b241c', 1);
+
+  const roofPts=[lc(-CAR_W*.62,-CAR_L*.35),lc(CAR_W*.62,-CAR_L*.35),lc(CAR_W*.62,CAR_L*.12),lc(-CAR_W*.62,CAR_L*.12)];
+  poly(roofPts.map(p=>({sx:p.sx,sy:p.sy-10*TILT})),'#922b21');
+
+  [lc(-CAR_W*.6,-CAR_L*.5),lc(CAR_W*.6,-CAR_L*.5)].forEach(p=>{ ctx.fillStyle='#ffe890'; ctx.fillRect(p.sx-3,p.sy-3,6,4); });
+  [lc(-CAR_W*.6,CAR_L*.5), lc(CAR_W*.6,CAR_L*.5)].forEach(p=>{ ctx.fillStyle='#ff1a1a'; ctx.fillRect(p.sx-3,p.sy-2,5,4); });
+}
+
+// ── Minimap ───────────────────────────────────────────────────────
+function drawMinimap() {
+  mctx.clearRect(0,0,130,130);
+  mctx.fillStyle='rgba(0,0,0,.8)'; mctx.fillRect(0,0,130,130);
+  const S=0.026, ox=65-CAR.x*S, oy=65-CAR.y*S;
+
+  mctx.strokeStyle='#282830'; mctx.lineWidth=ROAD_W*S*2;
+  for (const e of edgeList) {
+    mctx.beginPath(); mctx.moveTo(e.ax*S+ox,e.ay*S+oy); mctx.lineTo(e.bx*S+ox,e.by*S+oy); mctx.stroke();
+  }
+  mctx.fillStyle='#1a1c28';
+  for (const b of buildings) mctx.fillRect(b.x*S+ox,b.y*S+oy,b.w*S,b.h*S);
+
+  mctx.save(); mctx.translate(65,65); mctx.rotate(CAR.angle);
+  mctx.fillStyle='#e74c3c'; mctx.fillRect(-3,-5,6,10);
+  mctx.fillStyle='#fff'; mctx.fillRect(-1,-6,2,3);
+  mctx.restore();
+}
+
+// ── Loop ──────────────────────────────────────────────────────────
+function loop() {
+  update(); updateCam();
+  ctx.fillStyle='#111113'; ctx.fillRect(0,0,W,H);
+  const g=ctx.createLinearGradient(0,0,0,H*.5);
+  g.addColorStop(0,'rgba(12,14,22,.98)'); g.addColorStop(1,'rgba(12,14,22,0)');
+  ctx.fillStyle=g; ctx.fillRect(0,0,W,H*.5);
+  drawRoads(); drawBuildings(); drawCar(); drawMinimap();
+  requestAnimationFrame(loop);
+}
+loop();
+</script>
+</body>
+</html>
