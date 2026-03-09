@@ -31,19 +31,34 @@ canvas { display:block; }
 }
 #minimap {
   position:fixed; top:28px; right:36px;
-  width:130px; height:130px;
+  width:160px; height:160px;
   border:1px solid rgba(255,255,255,.12);
   background:rgba(0,0,0,.65);
 }
+#loading {
+  position:fixed; top:0; left:0; width:100%; height:100%;
+  background:#000; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; z-index:999;
+  font-family:'Courier New',monospace; color:#fff;
+}
+#loading-bar-wrap { width:280px; height:2px; background:#222; margin-top:18px; }
+#loading-bar { height:2px; background:#fff; width:0%; transition:width .1s; }
+#loading-label { font-size:10px; letter-spacing:.45em; opacity:.35; margin-bottom:6px; }
+#loading-pct { font-size:32px; font-weight:100; letter-spacing:-.02em; }
 </style>
 </head>
 <body>
+<div id="loading">
+  <div id="loading-label">CITY DRIVE</div>
+  <div id="loading-pct">0%</div>
+  <div id="loading-bar-wrap"><div id="loading-bar"></div></div>
+</div>
 <canvas id="c"></canvas>
 <div id="title">CITY DRIVE</div>
 <div id="spd"><span id="sv">0</span>km/h</div>
 <div id="info">W/UP &nbsp;GAS<br>S/DOWN BRAKE<br>A/LEFT &nbsp;D/RIGHT</div>
 <div id="crash">CRASH!</div>
-<canvas id="minimap" width="130" height="130"></canvas>
+<canvas id="minimap" width="160" height="160"></canvas>
 
 <script>
 const canvas = document.getElementById('c');
@@ -51,15 +66,18 @@ const ctx    = canvas.getContext('2d');
 const mm     = document.getElementById('minimap');
 const mctx   = mm.getContext('2d');
 const crashEl= document.getElementById('crash');
+const loadEl = document.getElementById('loading');
+const loadBar= document.getElementById('loading-bar');
+const loadPct= document.getElementById('loading-pct');
 
 let W, H;
 function resize() { W = canvas.width = innerWidth; H = canvas.height = innerHeight; }
 resize(); window.addEventListener('resize', resize);
 
 // ── Road Network ─────────────────────────────────────────────────
-const ROAD_W   = 24;
-const MAP_R    = 2400;
-const NODE_CNT = 100;
+const ROAD_W   = 28;
+const MAP_R    = 24000;   // 10× original 2400
+const NODE_CNT = 600;     // 6× original 100 (performance-aware)
 
 const nodes = [{ x: 0, y: 0 }];
 for (let i = 1; i < NODE_CNT; i++) {
@@ -107,20 +125,37 @@ function tooClose(rx, ry, rw, rh) {
 const buildings = [];
 const rng = (a, b) => a + Math.random()*(b-a);
 
-for (let attempt = 0; attempt < 2200; attempt++) {
-  const a  = Math.random()*Math.PI*2;
-  const r  = 80 + Math.random()*(MAP_R*0.9);
-  const bw = rng(26, 100);
-  const bh = rng(26, 100);
-  const x  = Math.cos(a)*r - bw/2;
-  const y  = Math.sin(a)*r - bh/2;
-  if (tooClose(x, y, bw, bh)) continue;
-  let overlap = false;
-  for (const b of buildings) {
-    if (x < b.x+b.w+8 && x+bw > b.x-8 && y < b.y+b.h+8 && y+bh > b.y-8) { overlap=true; break; }
+// Build async with loading bar
+async function buildCity() {
+  const TOTAL_ATTEMPTS = 20000;
+  const CHUNK = 500;
+  let attempt = 0;
+
+  while (attempt < TOTAL_ATTEMPTS) {
+    const end = Math.min(attempt + CHUNK, TOTAL_ATTEMPTS);
+    for (; attempt < end; attempt++) {
+      const a  = Math.random()*Math.PI*2;
+      const r  = 80 + Math.random()*(MAP_R*0.92);
+      const bw = rng(26, 110);
+      const bh = rng(26, 110);
+      const x  = Math.cos(a)*r - bw/2;
+      const y  = Math.sin(a)*r - bh/2;
+      if (tooClose(x, y, bw, bh)) continue;
+      let overlap = false;
+      for (const b of buildings) {
+        if (x < b.x+b.w+8 && x+bw > b.x-8 && y < b.y+b.h+8 && y+bh > b.y-8) { overlap=true; break; }
+      }
+      if (overlap) continue;
+      buildings.push({ x, y, w:bw, h:bh, floors:Math.floor(rng(1,22)), hue:rng(195,240) });
+    }
+    const pct = Math.round(attempt / TOTAL_ATTEMPTS * 100);
+    loadBar.style.width = pct + '%';
+    loadPct.textContent = pct + '%';
+    await new Promise(r => setTimeout(r, 0)); // yield to browser
   }
-  if (overlap) continue;
-  buildings.push({ x, y, w:bw, h:bh, floors:Math.floor(rng(1,18)), hue:rng(195,240) });
+
+  loadEl.style.display = 'none';
+  loop();
 }
 
 // ── Car ───────────────────────────────────────────────────────────
@@ -163,26 +198,63 @@ function resolve(bx, by, bw, bh) {
   crashTimer = 35;
 }
 
+// Spatial hash for broad-phase collision
+const CELL = 200;
+let buildingGrid = null;
+
+function buildGrid() {
+  buildingGrid = new Map();
+  for (let i = 0; i < buildings.length; i++) {
+    const b = buildings[i];
+    const x0 = Math.floor(b.x / CELL), x1 = Math.floor((b.x+b.w) / CELL);
+    const y0 = Math.floor(b.y / CELL), y1 = Math.floor((b.y+b.h) / CELL);
+    for (let cx = x0; cx <= x1; cx++) {
+      for (let cy = y0; cy <= y1; cy++) {
+        const key = cx+'|'+cy;
+        if (!buildingGrid.has(key)) buildingGrid.set(key, []);
+        buildingGrid.get(key).push(i);
+      }
+    }
+  }
+}
+
+function nearbyBuildings() {
+  const cx = Math.floor(CAR.x / CELL), cy = Math.floor(CAR.y / CELL);
+  const seen = new Set();
+  const result = [];
+  for (let dx = -2; dx <= 2; dx++) {
+    for (let dy = -2; dy <= 2; dy++) {
+      const key = (cx+dx)+'|'+(cy+dy);
+      const cell = buildingGrid.get(key);
+      if (!cell) continue;
+      for (const idx of cell) {
+        if (!seen.has(idx)) { seen.add(idx); result.push(buildings[idx]); }
+      }
+    }
+  }
+  return result;
+}
+
 function update() {
   const fwd   = keys['w']||keys['ArrowUp'];
   const back  = keys['s']||keys['ArrowDown'];
   const left  = keys['a']||keys['ArrowLeft'];
   const right = keys['d']||keys['ArrowRight'];
 
-  if (fwd)  CAR.speed = Math.min(CAR.speed+0.15, 8);
-  if (back) CAR.speed = Math.max(CAR.speed-0.20, -3.5);
+  if (fwd)  CAR.speed = Math.min(CAR.speed+0.18, 12);
+  if (back) CAR.speed = Math.max(CAR.speed-0.22, -4);
   if (!fwd&&!back) CAR.speed *= 0.91;
   if (back&&CAR.speed>0) CAR.speed *= 0.78;
 
-  const sa = 0.047*(Math.abs(CAR.speed)/8);
+  const sa = 0.047*(Math.abs(CAR.speed)/12);
   if (left)  CAR.angle -= sa;
   if (right) CAR.angle += sa;
 
   CAR.x += Math.sin(CAR.angle)*CAR.speed;
   CAR.y -= Math.cos(CAR.angle)*CAR.speed;
 
-  for (const b of buildings) {
-    if (Math.abs(CAR.x-(b.x+b.w/2)) < b.w/2+50 && Math.abs(CAR.y-(b.y+b.h/2)) < b.h/2+50) {
+  if (buildingGrid) {
+    for (const b of nearbyBuildings()) {
       if (collides(b.x, b.y, b.w, b.h)) resolve(b.x, b.y, b.w, b.h);
     }
   }
@@ -225,7 +297,12 @@ function rPts(x,y,w,h) {
 
 // ── Render Roads ──────────────────────────────────────────────────
 function drawRoads() {
+  // Cull roads far from camera
+  const cullD = 1800;
   for (const e of edgeList) {
+    const mx=(e.ax+e.bx)/2, my=(e.ay+e.by)/2;
+    if (Math.abs(mx-cam.x)>cullD+500 || Math.abs(my-cam.y)>cullD+500) continue;
+
     const dx=e.bx-e.ax, dy=e.by-e.ay;
     const len=Math.hypot(dx,dy); if(len<1) continue;
     const nx=-dy/len*ROAD_W, ny=dx/len*ROAD_W;
@@ -244,6 +321,7 @@ function drawRoads() {
   }
   // Intersections
   for (const n of nodes) {
+    if (Math.abs(n.x-cam.x)>cullD || Math.abs(n.y-cam.y)>cullD) continue;
     const c=w2s(n.x,n.y);
     ctx.beginPath();
     ctx.ellipse(c.sx,c.sy,ROAD_W*1.05,ROAD_W*TILT*1.05,-cam.angle,0,Math.PI*2);
@@ -253,7 +331,6 @@ function drawRoads() {
 
 // ── Render Buildings ──────────────────────────────────────────────
 const PREROLL = [];
-// Pre-roll window indices for stable random windows
 for(let i=0;i<2000;i++) PREROLL.push(Math.random());
 
 function drawBuildings() {
@@ -328,18 +405,19 @@ function drawCar() {
 
 // ── Minimap ───────────────────────────────────────────────────────
 function drawMinimap() {
-  mctx.clearRect(0,0,130,130);
-  mctx.fillStyle='rgba(0,0,0,.8)'; mctx.fillRect(0,0,130,130);
-  const S=0.026, ox=65-CAR.x*S, oy=65-CAR.y*S;
+  mctx.clearRect(0,0,160,160);
+  mctx.fillStyle='rgba(0,0,0,.8)'; mctx.fillRect(0,0,160,160);
+  // Scale adjusted for 10× map: 0.026 * 160/130 / 10 ≈ 0.0032
+  const S=0.0032, ox=80-CAR.x*S, oy=80-CAR.y*S;
 
   mctx.strokeStyle='#282830'; mctx.lineWidth=ROAD_W*S*2;
   for (const e of edgeList) {
     mctx.beginPath(); mctx.moveTo(e.ax*S+ox,e.ay*S+oy); mctx.lineTo(e.bx*S+ox,e.by*S+oy); mctx.stroke();
   }
   mctx.fillStyle='#1a1c28';
-  for (const b of buildings) mctx.fillRect(b.x*S+ox,b.y*S+oy,b.w*S,b.h*S);
+  for (const b of buildings) mctx.fillRect(b.x*S+ox,b.y*S+oy,Math.max(1,b.w*S),Math.max(1,b.h*S));
 
-  mctx.save(); mctx.translate(65,65); mctx.rotate(CAR.angle);
+  mctx.save(); mctx.translate(80,80); mctx.rotate(CAR.angle);
   mctx.fillStyle='#e74c3c'; mctx.fillRect(-3,-5,6,10);
   mctx.fillStyle='#fff'; mctx.fillRect(-1,-6,2,3);
   mctx.restore();
@@ -355,7 +433,9 @@ function loop() {
   drawRoads(); drawBuildings(); drawCar(); drawMinimap();
   requestAnimationFrame(loop);
 }
-loop();
+
+// ── Start ─────────────────────────────────────────────────────────
+buildCity().then(() => buildGrid());
 </script>
 </body>
 </html>
