@@ -33,16 +33,17 @@
 
 ### Workflows
 * Web chat:
-  * Description - Manually gather relevant code, paste into chat, tell AI what to do
+  * Description - Manually gather relevant code/files/screenshots, paste into chat, tell AI what to do
   * Upgrade 1 - Have templates with typical code examples ready
   * Upgrade 2 - Gather relevant code automatically (e.g. context-extractor plugin for IntelliJ IDEA)
-* Smart autocomplete:
-  * Description - Install AI assistant/AI autocomplete into IDE, write code manually, accept/reject suggestions
 * Agents:
   * Description - Pay for AI API, install plugin (e.g. Kilo code), tell AI what to do
   * Upgrade 1 - Prepare .md file with detailed project description (architecture description, how to build/test, code examples etc)
   * Upgrade 2 - Ask AI to maintain it's own .md file, with most important info
-  * Upgrade 3 - Use multiple agents at the same time
+  * Upgrade 3 - Skills (.md file with step-by-step description on how to implement+test a type of task)
+  * Upgrade 4 - Hooks (automatically run tests after every change)
+  * Upgrade 5 - Use multiple agents at the same time
+  
 * Others:
   * https://addyo.substack.com/p/how-to-write-a-good-spec-for-ai-agents
   * https://addyo.substack.com/p/the-80-problem-in-agentic-coding
@@ -51,3 +52,4 @@
   * https://www.reddit.com/r/ClaudeAI/comments/1qb90zq/9_tips_from_a_developer_gone_vibecoder/
   * https://www.reddit.com/r/ClaudeAI/comments/1r5d576/small_company_leader_here_ai_agents_are_moving/
   * https://www.reddit.com/r/ClaudeAI/comments/1r0dxob/ive_used_ai_to_write_100_of_my_code_for_1_year_as/
+  * https://www.reddit.com/r/ClaudeAI/comments/1s1ipep/the_5_levels_of_claude_code_and_how_to_know_when/
