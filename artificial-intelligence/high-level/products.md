@@ -31,6 +31,8 @@
 * `Midjourney`
 * `monica.im`
 * `zmo.ai` - image to image
+* `Comfy UI` - local image generation
+* `Invoke AI` - same as Comfy UI, but doesn't work on low-end PCs
 
 ### Video generation
 * `Hailuo Minimax`
