@@ -35,6 +35,7 @@
 * `Invoke AI` - same as Comfy UI, but doesn't work on low-end PCs
 
 ### Video generation
+* `remotion` - local, make videos 
 * `Hailuo Minimax`
 * `Luma AI`
 * `KLING AI`
