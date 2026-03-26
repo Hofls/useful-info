@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>p5.js Static Mandala</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.js"></script>
+    <style>
+        body { margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #1a1a1a; }
+        canvas { border: 2px solid #333; }
+    </style>
+</head>
+<body>
+<script>
+    function setup() {
+        createCanvas(600, 600);
+        background(20);
+        noLoop(); // Ensures the draw loop only runs once
+
+        translate(width / 2, height / 2); // Move origin to center
+        strokeWeight(1.5);
+        noFill();
+
+        let totalShapes = 120;
+        let hueStep = 360 / totalShapes;
+
+        colorMode(HSB, 360, 100, 100, 1);
+
+        for (let i = 0; i < totalShapes; i++) {
+            push();
+            rotate(degrees(i * 0.1)); // Rotate each layer slightly
+            stroke(i * hueStep, 70, 100, 0.6);
+
+            // Draw a simple geometric petal
+            ellipse(0, 100, 50, 250);
+            pop();
+        }
+    }
+</script>
+</body>
+</html>

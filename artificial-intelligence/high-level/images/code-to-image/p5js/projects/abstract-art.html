@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometric Abstract Art</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+    </style>
+</head>
+<body>
+<script>
+    function setup() {
+        createCanvas(800, 1000);
+        noLoop();
+        noStroke();
+    }
+
+    function draw() {
+        // Background - warm cream
+        background(250, 245, 235);
+
+        // Color palette
+        const colors = {
+            terracotta: color(200, 90, 70),
+            ochre: color(220, 160, 60),
+            teal: color(60, 130, 130),
+            navy: color(40, 50, 80),
+            coral: color(230, 120, 100),
+            gold: color(240, 190, 80),
+            sage: color(140, 160, 130),
+            charcoal: color(50, 50, 55)
+        };
+
+        push();
+
+        // Layer 1: Large geometric base shapes with transparency
+        // Large circle - top right
+        fill(colors.terracotta);
+        ellipse(600, 250, 400, 400);
+
+        // Large arc - bottom left
+        fill(colors.teal);
+        arc(0, 800, 600, 600, PI + HALF_PI, TWO_PI);
+
+        // Quarter circle - top left
+        fill(colors.ochre);
+        arc(0, 0, 500, 500, 0, HALF_PI);
+
+        // Layer 2: Overlapping rectangles with blend modes
+        fill(40, 50, 80, 180);
+        rect(100, 400, 300, 500, 10);
+
+        fill(200, 90, 70, 200);
+        rect(450, 200, 280, 400, 10);
+
+        // Layer 3: Diagonal stripes pattern
+        push();
+        clip(() => {
+            rect(100, 400, 300, 500, 10);
+        });
+        stroke(250, 245, 235);
+        strokeWeight(3);
+        for (let i = -200; i < 600; i += 20) {
+            line(i, 400, i + 200, 1000);
+        }
+        noStroke();
+        pop();
+
+        // Layer 4: Concentric circles
+        push();
+        translate(600, 250);
+        for (let i = 3; i > 0; i--) {
+            fill(i % 2 === 0 ? colors.gold : colors.coral);
+            ellipse(0, 0, i * 80, i * 80);
+        }
+        // Center dot
+        fill(colors.charcoal);
+        ellipse(0, 0, 30, 30);
+        pop();
+
+        // Layer 5: Triangle composition
+        fill(colors.sage);
+        triangle(400, 900, 200, 600, 600, 600);
+
+        fill(colors.navy);
+        triangle(400, 750, 280, 600, 520, 600);
+
+        // Layer 6: Small geometric accents
+        // Grid of small circles
+        fill(colors.ochre);
+        for (let x = 480; x < 700; x += 40) {
+            for (let y = 250; y < 550; y += 40) {
+                if ((x + y) % 80 === 0) {
+                    ellipse(x, y, 15, 15);
+                }
+            }
+        }
+
+        // Floating rectangles
+        fill(colors.teal);
+        rect(50, 700, 80, 120, 5);
+
+        fill(colors.terracotta);
+        rect(700, 100, 60, 100, 5);
+
+        // Layer 7: Thin line work
+        stroke(colors.charcoal);
+        strokeWeight(2);
+        noFill();
+
+        // Curved lines
+        bezier(100, 100, 300, 50, 500, 150, 700, 100);
+        bezier(50, 900, 250, 850, 450, 950, 750, 900);
+
+        // Vertical lines
+        line(200, 0, 200, 300);
+        line(600, 700, 600, 1000);
+
+        // Layer 8: Semi-transparent overlay shapes
+        noStroke();
+        fill(240, 190, 80, 100);
+        ellipse(300, 600, 200, 200);
+
+        fill(60, 130, 130, 120);
+        rect(500, 650, 200, 200, 100);
+
+        // Layer 9: Small detail elements
+        // Cross shape
+        stroke(colors.charcoal);
+        strokeWeight(4);
+        line(150, 150, 190, 150);
+        line(170, 130, 170, 170);
+
+        // Dots pattern
+        noStroke();
+        fill(colors.navy);
+        for (let i = 0; i < 5; i++) {
+            ellipse(650 + i * 25, 800, 8, 8);
+        }
+
+        // Layer 10: Final accent shapes
+        fill(colors.coral);
+        beginShape();
+        vertex(400, 300);
+        vertex(450, 380);
+        vertex(400, 460);
+        vertex(350, 380);
+        endShape(CLOSE);
+
+        // Border frame
+        noFill();
+        stroke(colors.charcoal);
+        strokeWeight(8);
+        rect(20, 20, 760, 960);
+
+        stroke(250, 245, 235);
+        strokeWeight(4);
+        rect(24, 24, 752, 952);
+
+        pop();
+    }
+</script>
+</body>
+</html>

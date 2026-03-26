@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>p5.js - Generative Landscape Sketch</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(145deg, #1a2a3a 0%, #0f1a24 100%);
+            font-family: 'Segoe UI', 'Roboto', 'Courier New', monospace;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            padding: 20px;
+            border-radius: 32px;
+            background: rgba(0,0,0,0.25);
+            backdrop-filter: blur(4px);
+            box-shadow: 0 20px 35px rgba(0,0,0,0.3);
+        }
+        canvas {
+            display: block;
+            border-radius: 28px;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.5);
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .info {
+            text-align: center;
+            background: rgba(20,30,35,0.8);
+            padding: 8px 20px;
+            border-radius: 60px;
+            backdrop-filter: blur(8px);
+            color: #eef4ff;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+            border: 1px solid rgba(255,255,200,0.25);
+        }
+        .info span {
+            color: #ffd966;
+            font-weight: bold;
+        }
+        button {
+            background: #3a6b5c;
+            border: none;
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 6px 18px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-family: inherit;
+            backdrop-filter: blur(4px);
+            transition: 0.2s;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,210,0.4);
+        }
+        button:hover {
+            background: #528f7a;
+            transform: scale(0.97);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+        }
+        .footer {
+            font-size: 0.7rem;
+            opacity: 0.7;
+            margin-top: 4px;
+        }
+        @media (max-width: 700px) {
+            .info { font-size: 0.75rem; }
+            canvas { border-radius: 20px; }
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+</head>
+<body>
+<div>
+    <div class="container">
+        <div id="p5canvas"></div>
+        <button id="refreshBtn">⟳ Refresh</button>
+    </div>
+</div>
+
+<script>
+    
+    let mountains = [];
+    let stars = [];
+    let trees = [];
+    let auroraBands = [];
+
+    let palette = {
+        skyTop: [10, 20, 40],
+        skyMid: [25, 35, 65],
+        skyBottom: [55, 70, 100],
+        mountainDark: [35, 45, 65],
+        mountainLight: [70, 85, 115],
+        treeBase: [25, 55, 40],
+        treeTip: [45, 80, 55],
+        lakeReflect: [40, 65, 85, 180],
+        aurora1: [120, 210, 180],
+        aurora2: [210, 140, 210],
+        aurora3: [80, 200, 230]
+    };
+    
+    function randomRange(min, max) {
+        return min + Math.random() * (max - min);
+    }
+    
+    function regeneratePalette() {
+        let hueShift1 = Math.floor(Math.random() * 30) - 15;   // -15..15
+        let hueShift2 = Math.floor(Math.random() * 25) - 10;
+
+        let skyR = 12 + Math.floor(Math.random() * 12);
+        let skyG = 20 + Math.floor(Math.random() * 18);
+        let skyB = 42 + Math.floor(Math.random() * 24);
+        palette.skyTop = [skyR, skyG, skyB];
+        palette.skyMid = [skyR + 12, skyG + 15, skyB + 22];
+        palette.skyBottom = [skyR + 28, skyG + 30, skyB + 48];
+
+        let mR = 35 + Math.floor(Math.random() * 20);
+        let mG = 45 + Math.floor(Math.random() * 20);
+        let mB = 65 + Math.floor(Math.random() * 25);
+        palette.mountainDark = [mR, mG, mB];
+        palette.mountainLight = [mR + 28, mG + 30, mB + 32];
+
+        let tR = 28 + Math.floor(Math.random() * 28);
+        let tG = 55 + Math.floor(Math.random() * 32);
+        let tB = 38 + Math.floor(Math.random() * 24);
+        palette.treeBase = [tR, tG, tB];
+        palette.treeTip = [tR + 25, tG + 25, tB + 18];
+
+        palette.lakeReflect = [45 + Math.floor(Math.random() * 30), 60 + Math.floor(Math.random() * 25), 85 + Math.floor(Math.random() * 35), 160 + Math.floor(Math.random() * 70)];
+
+        palette.aurora1 = [100 + Math.floor(Math.random() * 80), 180 + Math.floor(Math.random() * 60), 150 + Math.floor(Math.random() * 70)];
+        palette.aurora2 = [190 + Math.floor(Math.random() * 65), 110 + Math.floor(Math.random() * 70), 190 + Math.floor(Math.random() * 65)];
+        palette.aurora3 = [70 + Math.floor(Math.random() * 90), 170 + Math.floor(Math.random() * 80), 200 + Math.floor(Math.random() * 55)];
+    }
+    
+    function generateMountains(widthVal, heightVal) {
+        let peaks = [];
+        let peakCount = 6 + Math.floor(Math.random() * 5); // 6-10座山峰
+        let baseY = heightVal * 0.65;
+        let stepX = widthVal / (peakCount + 1);
+        for (let i = 0; i < peakCount; i++) {
+            let x = stepX * (i + 0.5) + (Math.random() * stepX * 0.4 - stepX * 0.2);
+            let hFactor = 0.5 + Math.random() * 0.4;
+            let peakY = baseY - (heightVal * 0.22 * hFactor);
+            let leftSlope = stepX * (0.6 + Math.random() * 0.5);
+            let rightSlope = stepX * (0.6 + Math.random() * 0.5);
+            peaks.push({
+                x: x,
+                y: peakY,
+                leftWidth: leftSlope,
+                rightWidth: rightSlope,
+                heightOffset: hFactor
+            });
+        }
+        return peaks;
+    }
+    
+    function generateStars(widthVal, heightVal) {
+        let starList = [];
+        let starCount = 180 + Math.floor(Math.random() * 120);
+        for (let i = 0; i < starCount; i++) {
+            let x = Math.random() * widthVal;
+            let y = Math.random() * (heightVal * 0.55);
+            let size = Math.random() * 2.2 + 0.8;
+            let brightness = 150 + Math.random() * 105;
+            let twinkle = Math.random() > 0.7;
+            starList.push({ x, y, size, brightness, twinkle });
+        }
+        for (let i = 0; i < 12; i++) {
+            let x = Math.random() * widthVal;
+            let y = Math.random() * (heightVal * 0.5);
+            starList.push({ x, y, size: Math.random() * 3.5 + 1.8, brightness: 220 + Math.random() * 35, twinkle: true });
+        }
+        return starList;
+    }
+    
+    function generateTrees(widthVal, heightVal, mountainPeaks) {
+        let treeGroup = [];
+        let groundBase = heightVal * 0.68;
+        let leftBound = 20;
+        let rightBound = widthVal - 20;
+        let treeCount = 55 + Math.floor(Math.random() * 45);
+        for (let i = 0; i < treeCount; i++) {
+            let x = randomRange(leftBound, rightBound);
+            let distToPeaks = 999;
+            for (let p of mountainPeaks) {
+                let d = Math.abs(x - p.x);
+                if (d < distToPeaks) distToPeaks = d;
+            }
+            let scaleH = 0.8 + Math.random() * 0.7;
+            let heightTree = randomRange(18, 44) * scaleH;
+            let yBase = groundBase - (Math.random() * 8) + (Math.sin(x * 0.02) * 4);
+            treeGroup.push({
+                x: x,
+                yBase: yBase,
+                height: heightTree,
+                width: heightTree * 0.42,
+                tilt: (Math.random() - 0.5) * 0.12,
+                dark: Math.random() > 0.6
+            });
+        }
+        return treeGroup;
+    }
+    
+    function generateAurora(widthVal, heightVal) {
+        let bands = [];
+        let numBands = 3 + Math.floor(Math.random() * 3);
+        for (let i = 0; i < numBands; i++) {
+            let yCenter = randomRange(heightVal * 0.12, heightVal * 0.38);
+            let amp = randomRange(18, 50);
+            let freq = randomRange(0.008, 0.025);
+            let alphaBase = randomRange(60, 130);
+            let colorChoice = i % 3;
+            let bandColor;
+            if (colorChoice === 0) bandColor = [...palette.aurora1];
+            else if (colorChoice === 1) bandColor = [...palette.aurora2];
+            else bandColor = [...palette.aurora3];
+            bands.push({
+                yCenter, amp, freq, alphaBase, bandColor, 
+                phaseOffset: Math.random() * Math.PI * 2,
+                widthFactor: 0.7 + Math.random() * 0.6
+            });
+        }
+        return bands;
+    }
+    
+    function drawSkyGradient(p, w, h) {
+        for (let i = 0; i <= h * 0.7; i++) {
+            let inter = i / (h * 0.7);
+            let r = p.lerp(palette.skyTop[0], palette.skyMid[0], inter);
+            let g = p.lerp(palette.skyTop[1], palette.skyMid[1], inter);
+            let b = p.lerp(palette.skyTop[2], palette.skyMid[2], inter);
+            p.stroke(r, g, b);
+            p.line(0, i, w, i);
+        }
+        for (let i = h * 0.7; i <= h * 0.88; i++) {
+            let inter = (i - h * 0.7) / (h * 0.18);
+            let r = p.lerp(palette.skyMid[0], palette.skyBottom[0], inter);
+            let g = p.lerp(palette.skyMid[1], palette.skyBottom[1], inter);
+            let b = p.lerp(palette.skyMid[2], palette.skyBottom[2], inter);
+            p.stroke(r, g, b);
+            p.line(0, i, w, i);
+        }
+        let horizonStart = h * 0.88;
+        for (let i = horizonStart; i <= h; i++) {
+            let inter = (i - horizonStart) / (h - horizonStart);
+            let r = p.lerp(palette.skyBottom[0], palette.mountainDark[0], inter * 0.7);
+            let g = p.lerp(palette.skyBottom[1], palette.mountainDark[1], inter * 0.7);
+            let b = p.lerp(palette.skyBottom[2], palette.mountainDark[2], inter * 0.8);
+            p.stroke(r, g, b);
+            p.line(0, i, w, i);
+        }
+    }
+    
+    function drawStars(p, starsList) {
+        for (let s of starsList) {
+            let twinkleVal = 1;
+            if (s.twinkle && p.frameCount % 97 < 48) {
+                twinkleVal = 0.65 + Math.sin(p.frameCount * 0.03 + s.x) * 0.25;
+            }
+            let bright = s.brightness * twinkleVal;
+            p.fill(bright, bright, bright * 0.9, 210);
+            p.noStroke();
+            p.circle(s.x, s.y, s.size);
+            if (s.size > 2.2) {
+                p.fill(bright, bright, bright * 0.7, 120);
+                p.circle(s.x, s.y, s.size * 0.45);
+            }
+        }
+    }
+    
+    function drawAurora(p, bands, w, h) {
+        for (let band of bands) {
+            p.noFill();
+            let steps = 70;
+            let alphaBand = band.alphaBase;
+            for (let offset = -band.amp * 0.6; offset <= band.amp * 0.6; offset += band.amp * 0.2) {
+                let alphaMul = 1 - Math.abs(offset) / (band.amp * 1.2);
+                let strokeAlpha = Math.min(alphaBand * alphaMul * 0.7, 110);
+                p.beginShape();
+                for (let i = 0; i <= steps; i++) {
+                    let x = (i / steps) * w;
+                    let yOffset = Math.sin(x * band.freq + band.phaseOffset + p.frameCount * 0.008) * band.amp;
+                    let y = band.yCenter + yOffset + offset * 0.5;
+                    if (y > h * 0.55) y = h * 0.55;
+                    if (y < 5) y = 5;
+                    let interColor = (offset / band.amp + 1) / 2;
+                    let rCol = p.lerp(band.bandColor[0], band.bandColor[0] + 35, interColor);
+                    let gCol = p.lerp(band.bandColor[1], band.bandColor[1] + 20, interColor);
+                    let bCol = p.lerp(band.bandColor[2], band.bandColor[2] + 45, interColor);
+                    p.stroke(rCol, gCol, bCol, strokeAlpha);
+                    p.vertex(x, y);
+                }
+                p.endShape();
+            }
+        }
+    }
+    
+    function drawMountains(p, peaks, w, h) {
+        let baseY = h * 0.68;
+        p.noStroke();
+        for (let i = 0; i < peaks.length; i++) {
+            let m = peaks[i];
+            p.fill(palette.mountainDark[0], palette.mountainDark[1], palette.mountainDark[2]);
+            p.beginShape();
+            p.vertex(m.x - m.leftWidth, baseY);
+            p.vertex(m.x, m.y);
+            p.vertex(m.x + m.rightWidth, baseY);
+            p.endShape(p.CLOSE);
+            
+            p.fill(palette.mountainLight[0], palette.mountainLight[1], palette.mountainLight[2], 190);
+            p.beginShape();
+            let snowY = m.y + (baseY - m.y) * 0.23;
+            let leftSnow = m.x - m.leftWidth * 0.45;
+            let rightSnow = m.x + m.rightWidth * 0.45;
+            p.vertex(leftSnow, baseY - 6);
+            p.vertex(m.x, snowY);
+            p.vertex(rightSnow, baseY - 6);
+            p.endShape(p.CLOSE);
+        }
+        p.fill(25, 30, 45, 55);
+        p.rect(0, baseY - 12, w, 28);
+    }
+    
+    function drawTrees(p, treeList) {
+        for (let t of treeList) {
+            let treeColor = t.dark ? palette.treeBase : palette.treeTip;
+            let darkAdd = t.dark ? -12 : 8;
+            p.fill(treeColor[0] + darkAdd, treeColor[1] + (t.dark ? -5 : 12), treeColor[2] + (t.dark ? -3 : 10));
+            p.noStroke();
+            let tipX = t.x + t.tilt * t.height;
+            p.triangle(t.x - t.width * 0.7, t.yBase, t.x + t.width * 0.7, t.yBase, tipX, t.yBase - t.height);
+            p.fill(treeColor[0] - 8, treeColor[1] + 5, treeColor[2] - 2, 210);
+            p.rect(t.x - t.width * 0.2, t.yBase - 5, t.width * 0.4, 10, 2);
+        }
+    }
+    
+    function drawLakeAndReflections(p, w, h, mountainsPeaks, treeGroup) {
+        let waterY = h * 0.72;
+        let waterHeight = h - waterY;
+        for (let i = 0; i < waterHeight; i++) {
+            let yPos = waterY + i;
+            let ratio = i / waterHeight;
+            let r = p.lerp(palette.lakeReflect[0], palette.mountainDark[0] + 10, ratio);
+            let g = p.lerp(palette.lakeReflect[1], palette.mountainDark[1] + 5, ratio);
+            let b = p.lerp(palette.lakeReflect[2], palette.mountainDark[2] + 15, ratio);
+            let a = p.lerp(palette.lakeReflect[3], 200, ratio);
+            p.stroke(r, g, b, a);
+            p.line(0, yPos, w, yPos);
+        }
+        p.push();
+        p.translate(0, waterY * 2 - (waterY * 0.98));
+        p.scale(1, -0.48);
+        p.translate(0, -waterY * 0.92);
+        p.noStroke();
+        for (let m of mountainsPeaks) {
+            p.fill(palette.mountainDark[0], palette.mountainDark[1], palette.mountainDark[2], 100);
+            p.beginShape();
+            p.vertex(m.x - m.leftWidth, waterY - 8);
+            p.vertex(m.x, m.y + 10);
+            p.vertex(m.x + m.rightWidth, waterY - 8);
+            p.endShape(p.CLOSE);
+        }
+        for (let t of treeGroup) {
+            p.fill(palette.treeBase[0], palette.treeBase[1], palette.treeBase[2], 70);
+            p.triangle(t.x - t.width * 0.5, waterY - 5, t.x + t.width * 0.5, waterY - 5, t.x, t.yBase - t.height * 0.5);
+        }
+        p.pop();
+
+        p.blendMode(p.ADD);
+        for (let i = 0; i < 110; i++) {
+            let fx = Math.random() * w;
+            let fy = waterY + Math.random() * waterHeight;
+            let flicker = 60 + Math.random() * 80;
+            p.fill(240, 230, 170, flicker * 0.4);
+            p.noStroke();
+            p.circle(fx, fy, Math.random() * 2.2);
+        }
+        p.blendMode(p.BLEND);
+    }
+    
+    let sketchWidth = 1000;
+    let sketchHeight = 700;
+    let mountainData = [];
+    let starData = [];
+    let treeData = [];
+    let auroraData = [];
+    
+    function resetSketch(p) {
+        regeneratePalette();
+        mountainData = generateMountains(sketchWidth, sketchHeight);
+        starData = generateStars(sketchWidth, sketchHeight);
+        treeData = generateTrees(sketchWidth, sketchHeight, mountainData);
+        auroraData = generateAurora(sketchWidth, sketchHeight);
+    }
+    
+    function setup() {
+        let canvas = createCanvas(sketchWidth, sketchHeight);
+        canvas.parent('p5canvas');
+        pixelDensity(1);
+        frameRate(30);
+        colorMode(RGB, 255);
+        resetSketch(this);
+    }
+    
+    function draw() {
+        drawSkyGradient(this, width, height);
+        drawAurora(this, auroraData, width, height);
+        drawStars(this, starData);
+        drawMountains(this, mountainData, width, height);
+        drawTrees(this, treeData);
+        drawLakeAndReflections(this, width, height, mountainData, treeData);
+
+        this.fill(255, 220, 180, 18);
+        this.noStroke();
+        for (let i = 0; i < 25; i++) {
+            let xOff = (this.frameCount * 0.6 + i * 231) % width;
+            let yOff = (this.frameCount * 0.4 + i * 73) % (height * 0.55);
+            this.circle(xOff, yOff, 1.2);
+        }
+
+        this.fill(180, 200, 230, 12);
+        this.rect(0, height * 0.6, width, height * 0.3);
+    }
+    
+    function windowResized() {
+        resizeCanvas(sketchWidth, sketchHeight);
+    }
+    
+    function keyPressed() {
+        if (key === 'r' || key === 'R') {
+            resetSketch(this);
+        }
+    }
+
+    window.setup = setup;
+    window.draw = draw;
+    window.windowResized = windowResized;
+    window.keyPressed = keyPressed;
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const btn = document.getElementById('refreshBtn');
+        if (btn) {
+            btn.addEventListener('click', () => {
+                if (window.resetSketch && typeof window.resetSketch === 'function') {
+                    window.resetSketch(window);
+                } else {
+                    if (window._p5Instance) {
+                        resetSketch(window._p5Instance);
+                    } else {
+                        location.reload(); // 稳妥方案
+                    }
+                }
+            });
+        }
+    });
+
+    window.resetSketch = (p5scope) => {
+        if (!p5scope) p5scope = window;
+        regeneratePalette();
+        mountainData = generateMountains(sketchWidth, sketchHeight);
+        starData = generateStars(sketchWidth, sketchHeight);
+        treeData = generateTrees(sketchWidth, sketchHeight, mountainData);
+        auroraData = generateAurora(sketchWidth, sketchHeight);
+    };
+
+    window._p5Mountains = null;
+    let originalDraw = draw;
+    window.draw = function() {
+        originalDraw();
+    };
+
+    const superReset = () => {
+        regeneratePalette();
+        mountainData = generateMountains(sketchWidth, sketchHeight);
+        starData = generateStars(sketchWidth, sketchHeight);
+        treeData = generateTrees(sketchWidth, sketchHeight, mountainData);
+        auroraData = generateAurora(sketchWidth, sketchHeight);
+    };
+    window.resetSketch = superReset;
+</script>
+</body>
+</html>

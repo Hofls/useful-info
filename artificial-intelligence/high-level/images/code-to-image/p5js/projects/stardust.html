@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generative Stardust - p5.js</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <style>
+        body { margin: 0; padding: 0; overflow: hidden; background-color: #050505; }
+        canvas { display: block; }
+    </style>
+</head>
+<body>
+<script>
+    let particles = [];
+    const numParticles = 2000;
+    const noiseScale = 0.01;
+
+    function setup() {
+        createCanvas(windowWidth, windowHeight);
+        background(5, 5, 10);
+        noFill();
+
+        // Initialize particles at random positions
+        for (let i = 0; i < numParticles; i++) {
+            particles.push(createVector(random(width), random(height)));
+        }
+
+        // We draw the "static" image by iterating the movement
+        // many times in a single frame to create the final art.
+        drawArt();
+    }
+
+    function drawArt() {
+        strokeWeight(0.5);
+
+        for (let step = 0; step < 150; step++) {
+            for (let i = 0; i < numParticles; i++) {
+                let p = particles[i];
+
+                // Create organic flow using Perlin Noise
+                let n = noise(p.x * noiseScale, p.y * noiseScale);
+                let angle = TAU * n;
+
+                // Vary color based on position and noise
+                let r = map(p.x, 0, width, 100, 255);
+                let g = map(p.y, 0, height, 50, 200);
+                let b = map(n, 0, 1, 150, 255);
+                stroke(r, g, b, 20); // Low alpha for a "veiled" look
+
+                // Draw a point and move
+                point(p.x, p.y);
+                p.x += cos(angle);
+                p.y += sin(angle);
+
+                // Keep particles on screen
+                if (p.x < 0) p.x = width;
+                if (p.x > width) p.x = 0;
+                if (p.y < 0) p.y = height;
+                if (p.y > height) p.y = 0;
+            }
+        }
+    }
+
+    function windowResized() {
+        resizeCanvas(windowWidth, windowHeight);
+        background(5, 5, 10);
+        drawArt();
+    }
+</script>
+</body>
+</html>

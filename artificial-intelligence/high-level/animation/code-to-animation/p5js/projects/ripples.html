@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive p5.js Art</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: #000;
+            font-family: Arial, sans-serif;
+        }
+        #info {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: #fff;
+            font-size: 14px;
+            background: rgba(0,0,0,0.5);
+            padding: 15px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div id="info">
+        <p>🎨 Move your mouse • Click to create ripples</p>
+        <p>Press R to reset</p>
+    </div>
+    <script>
+        let particles = [];
+        let bg;
+        let time = 0;
+
+        class Particle {
+            constructor(x, y, vx, vy, color, size) {
+                this.x = x;
+                this.y = y;
+                this.vx = vx;
+                this.vy = vy;
+                this.color = color;
+                this.size = size;
+                this.life = 255;
+                this.decay = random(2, 5);
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                this.vy += 0.1; // gravity
+                this.life -= this.decay;
+            }
+
+            display() {
+                push();
+                noStroke();
+                fill(this.color[0], this.color[1], this.color[2], this.life);
+                circle(this.x, this.y, this.size);
+                pop();
+            }
+
+            isDead() {
+                return this.life <= 0;
+            }
+        }
+
+        function setup() {
+            createCanvas(windowWidth, windowHeight);
+            bg = color(15, 15, 35);
+        }
+
+        function draw() {
+            background(bg);
+            time += 0.01;
+
+            // Draw animated background gradient
+            for (let i = 0; i < height; i += 20) {
+                let hue = (time * 50 + i * 0.5) % 360;
+                stroke(hue, 100, 50, 20);
+                line(0, i, width, i);
+            }
+
+            // Draw floating circles
+            push();
+            noFill();
+            for (let i = 1; i <= 3; i++) {
+                let angle = time * (0.2 / i);
+                let radius = 100 * i;
+                let x = width / 2 + cos(angle) * radius;
+                let y = height / 2 + sin(angle) * radius;
+                let hue = (time * 100 + i * 120) % 360;
+                stroke(hue, 80, 70, 100);
+                strokeWeight(2);
+                circle(x, y, 20);
+            }
+            pop();
+
+            // Update and display particles
+            for (let i = particles.length - 1; i >= 0; i--) {
+                particles[i].update();
+                particles[i].display();
+                if (particles[i].isDead()) {
+                    particles.splice(i, 1);
+                }
+            }
+
+            // Create particles at mouse position
+            if (mouseIsPressed) {
+                for (let i = 0; i < 3; i++) {
+                    let angle = random(TWO_PI);
+                    let speed = random(1, 4);
+                    let vx = cos(angle) * speed;
+                    let vy = sin(angle) * speed;
+                    let hue = (time * 100 + random(360)) % 360;
+                    let color = [hue, 100, 60];
+                    particles.push(new Particle(mouseX, mouseY, vx, vy, color, random(3, 8)));
+                }
+            }
+
+            // Create ambient particles
+            if (random() < 0.3) {
+                let x = random(width);
+                let y = random(height);
+                let hue = (time * 50 + x * 0.1) % 360;
+                let color = [hue, 70, 50];
+                particles.push(new Particle(x, y, random(-1, 1), random(-1, 1), color, random(2, 5)));
+            }
+
+            // Draw crosshair at mouse
+            push();
+            stroke(255, 100);
+            strokeWeight(1);
+            line(mouseX - 20, mouseY, mouseX + 20, mouseY);
+            line(mouseX, mouseY - 20, mouseX, mouseY + 20);
+            noFill();
+            stroke(255, 50);
+            circle(mouseX, mouseY, 40);
+            pop();
+
+            // Display info
+            fill(255);
+            textSize(12);
+            text('Particles: ' + particles.length, 10, height - 10);
+        }
+
+        function mouseDragged() {
+            // Create burst of particles
+            for (let i = 0; i < 5; i++) {
+                let angle = random(TWO_PI);
+                let speed = random(2, 6);
+                let vx = cos(angle) * speed;
+                let vy = sin(angle) * speed;
+                let hue = (time * 100 + random(360)) % 360;
+                let color = [hue, 100, 70];
+                particles.push(new Particle(mouseX, mouseY, vx, vy, color, random(4, 10)));
+            }
+        }
+
+        function keyPressed() {
+            if (key === 'r' || key === 'R') {
+                particles = [];
+                time = 0;
+            }
+        }
+
+        function windowResized() {
+            resizeCanvas(windowWidth, windowHeight);
+        }
+    </script>
+</body>
+</html>

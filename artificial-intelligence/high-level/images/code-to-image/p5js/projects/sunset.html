@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Generative Art</title>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+</head>
+<body style="margin:0; background:black;">
+<script>
+let seed = 1337;
+
+function setup() {
+  createCanvas(window.innerWidth, window.innerHeight);
+  pixelDensity(2);
+  noLoop();
+  randomSeed(seed);
+  noiseSeed(seed);
+}
+
+function draw() {
+  drawBackground();
+  drawTexture();
+  drawSun();
+  drawMountains();
+  drawForeground();
+}
+
+function drawBackground() {
+  for (let y = 0; y < height; y++) {
+    let t = y / height;
+    let c = lerpColor(
+      color(10, 10, 30),
+      color(120, 20, 80),
+      pow(t, 1.5)
+    );
+    stroke(c);
+    line(0, y, width, y);
+  }
+}
+
+function drawTexture() {
+  noStroke();
+  for (let i = 0; i < 150000; i++) {
+    let x = random(width);
+    let y = random(height);
+    let alpha = random(5, 20);
+    fill(255, alpha);
+    rect(x, y, 1, 1);
+  }
+}
+
+function drawSun() {
+  let cx = width * 0.5;
+  let cy = height * 0.35;
+  let r = min(width, height) * 0.18;
+
+  noStroke();
+
+  for (let i = r; i > 0; i--) {
+    let t = i / r;
+    let c = lerpColor(
+      color(255, 200, 50),
+      color(255, 50, 100),
+      t
+    );
+    fill(c);
+    ellipse(cx, cy, i * 2);
+  }
+
+  // glitch stripes
+  stroke(0, 80);
+  for (let y = cy - r; y < cy + r; y += 6) {
+    line(cx - r, y, cx + r, y);
+  }
+}
+
+function drawMountains() {
+  drawMountainLayer(height * 0.65, 0.003, color(20, 20, 40), 200);
+  drawMountainLayer(height * 0.75, 0.005, color(30, 10, 50), 220);
+  drawMountainLayer(height * 0.85, 0.008, color(10, 10, 20), 255);
+}
+
+function drawMountainLayer(baseY, scale, col, alpha) {
+  noStroke();
+  fill(red(col), green(col), blue(col), alpha);
+
+  beginShape();
+  for (let x = 0; x <= width; x++) {
+    let n = noise(x * scale);
+    let y = baseY - n * height * 0.25;
+    vertex(x, y);
+  }
+  vertex(width, height);
+  vertex(0, height);
+  endShape(CLOSE);
+}
+
+function drawForeground() {
+  stroke(255, 40);
+  noFill();
+
+  for (let i = 0; i < 40; i++) {
+    let offset = random(1000);
+    beginShape();
+    for (let x = 0; x < width; x += 10) {
+      let y = height * 0.9 + sin(x * 0.01 + offset) * 20;
+      vertex(x, y);
+    }
+    endShape();
+  }
+}
+</script>
+</body>
+</html>
