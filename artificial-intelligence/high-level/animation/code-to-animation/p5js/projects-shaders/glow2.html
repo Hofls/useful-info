@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shader Art • p5.js</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
+    <style>
+        body {
+          margin: 0;
+          overflow: hidden;
+          background: #000;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+        }
+        canvas {
+          display: block;
+        }
+    </style>
+</head>
+<body>
+
+<script>
+    // Vertex Shader
+    const vs = `
+    precision highp float;
+    attribute vec3 aPosition;
+    void main() {
+      gl_Position = vec4(aPosition, 1.0);
+    }
+    `;
+
+    // Beautiful Fragment Shader (Fractal + Flow + Color Magic)
+    const fs = `
+    precision highp float;
+
+    uniform vec2 u_resolution;
+    uniform float u_time;
+
+    vec3 palette(float t) {
+      vec3 a = vec3(0.5, 0.5, 0.5);
+      vec3 b = vec3(0.5, 0.5, 0.5);
+      vec3 c = vec3(1.0, 1.0, 1.0);
+      vec3 d = vec3(0.263, 0.416, 0.557);
+      return a + b * cos(6.28318 * (c * t + d));
+    }
+
+    void main() {
+      vec2 uv = (gl_FragCoord.xy - 0.5 * u_resolution.xy) / min(u_resolution.x, u_resolution.y);
+      vec2 uv0 = uv;
+
+      float time = u_time * 0.2;
+
+      vec3 finalColor = vec3(0.0);
+
+      for(float i = 0.0; i < 4.0; i++) {
+        uv = fract(uv * 1.5) - 0.5;
+
+        float d = length(uv) * exp(-length(uv0));
+
+        float angle = time + i * 0.8 + length(uv0) * 2.0;
+        uv = mat2(cos(angle), -sin(angle), sin(angle), cos(angle)) * uv;
+
+        d = sin(d * 8.0 + time * 2.0 + i * 1.5) / 8.0;
+        d = abs(d);
+        d = pow(0.01 / d, 1.2);
+
+        vec3 col = palette(length(uv0) * 0.8 + time * 0.3 + i * 0.4);
+
+        finalColor += col * d;
+      }
+
+      // Add subtle glow and contrast
+      finalColor = pow(finalColor, vec3(0.8));
+      finalColor *= 1.2;
+
+      gl_FragColor = vec4(finalColor, 1.0);
+    }
+    `;
+
+    let theShader;
+
+    function preload() {
+      theShader = createShader(vs, fs);
+    }
+
+    function setup() {
+      createCanvas(windowWidth, windowHeight, WEBGL);
+      noStroke();
+    }
+
+    function draw() {
+      shader(theShader);
+
+      theShader.setUniform("u_resolution", [width, height]);
+      theShader.setUniform("u_time", millis() / 1000.0);
+
+      // Fullscreen quad
+      beginShape();
+      vertex(-1, -1, 0);
+      vertex( 1, -1, 0);
+      vertex( 1,  1, 0);
+      vertex(-1,  1, 0);
+      endShape(CLOSE);
+    }
+
+    function windowResized() {
+      resizeCanvas(windowWidth, windowHeight);
+    }
+
+    // Optional: Click to change color palette slightly
+    function mousePressed() {
+      // You can add more shader variations here if desired
+    }
+</script>
+
+</body>
+</html>
