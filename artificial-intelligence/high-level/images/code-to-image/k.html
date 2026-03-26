@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stylized Artwork</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.js"></script>
+    <style>
+        body {
+          margin: 0;
+          padding: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          background: #0a0a0a;
+        }
+        canvas {
+          border: 2px solid #222;
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+<script>
+    function setup() {
+      const canvas = createCanvas(800, 600);
+      canvas.parent('sketch-holder');
+      noLoop(); // рисуем один раз
+      drawArtwork();
+    }
+
+    function drawArtwork() {
+      // Фон с градиентом
+      setGradient(0, 0, width, height, color('#1a1a2e'), color('#16213e'));
+
+      // Центральный круг с полупрозрачностью
+      fill(255, 255, 255, 80);
+      noStroke();
+      ellipse(width / 2, height / 2, 400, 400);
+
+      // Геометрические линии
+      stroke(255, 105, 180, 150);
+      strokeWeight(3);
+      for (let i = 0; i < 15; i++) {
+        const angle = map(i, 0, 14, 0, TWO_PI);
+        const x1 = width / 2 + cos(angle) * 150;
+        const y1 = height / 2 + sin(angle) * 150;
+        const x2 = width / 2 + cos(angle + PI) * 250;
+        const y2 = height / 2 + sin(angle + PI) * 250;
+        line(x1, y1, x2, y2);
+      }
+
+      // Точки по кругу
+      fill('#ff9e00');
+      noStroke();
+      for (let i = 0; i < 20; i++) {
+        const angle = map(i, 0, 19, 0, TWO_PI);
+        const x = width / 2 + cos(angle) * 300;
+        const y = height / 2 + sin(angle) * 300;
+        ellipse(x, y, 12, 12);
+      }
+
+      // Полупрозрачные дуги
+      noFill();
+      stroke('#4ecdc4');
+      strokeWeight(8);
+      arc(width / 2, height / 2, 500, 500, PI + QUARTER_PI, TWO_PI - QUARTER_PI);
+      stroke('#ffe66d');
+      arc(width / 2, height / 2, 450, 450, QUARTER_PI, PI - QUARTER_PI);
+
+      // Текстура из мелких точек
+      stroke(255, 255, 255, 30);
+      strokeWeight(1);
+      for (let x = 50; x < width - 50; x += 20) {
+        for (let y = 50; y < height - 50; y += 20) {
+          if (dist(x, y, width / 2, height / 2) > 100 && dist(x, y, width / 2, height / 2) < 350) {
+            point(x, y);
+          }
+        }
+      }
+    }
+
+    // Функция для градиента
+    function setGradient(x, y, w, h, c1, c2) {
+      noFill();
+      for (let i = y; i <= y + h; i++) {
+        let inter = map(i, y, y + h, 0, 1);
+        let c = lerpColor(c1, c2, inter);
+        stroke(c);
+        line(x, i, x + w, i);
+      }
+    }
+</script>
+<div id="sketch-holder"></div>
+</body>
+</html>

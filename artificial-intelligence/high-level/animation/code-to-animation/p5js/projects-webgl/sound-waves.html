@@ -1,0 +1,139 @@
+Here is a complete, single-file HTML solution. It uses p5.js in WEBGL mode to create a procedural, animated "Digital Landscape" of oscillating cubes that respond to Perlin noise.
+
+I have included logic for dynamic lighting, HSB color cycling, and mouse interaction (orbit control) so you can rotate the view.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generative WebGL Art</title>
+    <!-- Load p5.js from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000; /* Dark background for better contrast */
+            overflow: hidden; /* Prevent scrollbars */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: sans-serif;
+        }
+        #canvas-container {
+            width: 100%;
+            height: 100%;
+        }
+        /* Overlay text for instruction */
+        #ui-layer {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            pointer-events: none;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="ui-layer">
+    <p>Interactive WebGL Art</p>
+    <p>Click & Drag to Rotate • Scroll to Zoom</p>
+</div>
+
+<div id="canvas-container"></div>
+
+<script>
+    // Global variables for configuration
+    let dim = 25; // Grid dimension (25x25 cubes)
+    let boxSize = 30; // Size of individual cubes
+    let spacing = 40; // Distance between cubes
+    let timeSpeed = 0.02; // Speed of animation
+
+    function setup() {
+        // Create a canvas that fills the window using WEBGL mode
+        let canvas = createCanvas(windowWidth, windowHeight, WEBGL);
+        canvas.parent('canvas-container');
+
+        // Use HSB for easier rainbow gradients
+        colorMode(HSB, 360, 100, 100, 1);
+
+        // Hide the stroke for a cleaner look
+        noStroke();
+
+        // Set initial perspective
+        camera(0, -500, 800, 0, 0, 0, 0, 1, 0);
+    }
+
+    function draw() {
+        // Dark background to make colors pop
+        background(230, 80, 5); // Very dark blue/purple in HSB
+
+        // Enable mouse interaction to rotate the view
+        orbitControl();
+
+        // Add lights for 3D depth
+        ambientLight(60);
+        pointLight(0, 0, 100, 0, -500, 500); // White point light above
+        directionalLight(0, 0, 100, 1, 1, -1);
+
+        // Rotate the entire scene slowly over time
+        rotateX(frameCount * 0.002);
+        rotateZ(frameCount * 0.001);
+
+        // Calculate center offset to keep grid centered at (0,0,0)
+        let offset = (dim * spacing) / 2;
+
+        // Nested loops to create the grid
+        for (let x = 0; x < dim; x++) {
+            for (let z = 0; z < dim; z++) {
+
+                // Calculate position relative to center
+                let xPos = x * spacing - offset;
+                let zPos = z * spacing - offset;
+
+                // Use Perlin noise to determine height and characteristics
+                // We use frameCount to animate the noise over time
+                let noiseVal = noise(x * 0.1, z * 0.1, frameCount * timeSpeed);
+
+                // Map noise value to height (y-axis)
+                let h = map(noiseVal, 0, 1, 20, 300);
+
+                // Map noise value to color (Hue)
+                // Creates a flowing color effect across the grid
+                let hueVal = map(noiseVal, 0, 1, 180, 320); // Cyan to Pink range
+                let satVal = map(noiseVal, 0, 1, 60, 90);
+                let briVal = map(h, 20, 300, 40, 100);
+
+                push(); // Save current coordinate system
+
+                // Move to the grid position
+                translate(xPos, 0, zPos);
+
+                // Move up by half height so boxes grow from the "floor"
+                translate(0, -h / 2, 0);
+
+                // Apply dynamic color and material
+                fill(hueVal, satVal, briVal);
+
+                // Draw the box
+                // Width/Depth are boxSize, Height is calculated 'h'
+                box(boxSize, h, boxSize);
+
+                pop(); // Restore coordinate system
+            }
+        }
+    }
+
+    // Handle window resizing
+    function windowResized() {
+        resizeCanvas(windowWidth, windowHeight);
+    }
+</script>
+</body>
+</html>
+```

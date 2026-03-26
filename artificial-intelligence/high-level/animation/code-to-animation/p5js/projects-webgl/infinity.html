@@ -1,0 +1,116 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>WebGL Generative Art</title>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.3/lib/p5.min.js"></script>
+    <style>
+        body { margin: 0; overflow: hidden; background: black; }
+    </style>
+</head>
+<body>
+<script>
+    let t = 0;
+
+    function setup() {
+      createCanvas(window.innerWidth, window.innerHeight, WEBGL);
+      angleMode(RADIANS);
+      noiseDetail(4, 0.5);
+    }
+
+    function draw() {
+      background(0, 10); // subtle trail effect
+      orbitControl();
+
+      t += 0.01;
+
+      rotateX(t * 0.3);
+      rotateY(t * 0.2);
+
+      drawCore();
+      drawOrbitingRings();
+      drawField();
+    }
+
+    function drawCore() {
+      push();
+      let layers = 25;
+      for (let i = 0; i < layers; i++) {
+        let s = i * 8 + 20;
+        let alpha = map(i, 0, layers, 200, 20);
+
+        push();
+        rotateX(t + i * 0.1);
+        rotateY(t * 0.7 + i * 0.2);
+
+        stroke(150 + i * 4, 100 + i * 3, 255, alpha);
+        noFill();
+
+        beginShape();
+        for (let a = 0; a < TWO_PI; a += 0.1) {
+          let n = noise(cos(a) + i, sin(a) + t);
+          let r = s + n * 20;
+
+          let x = r * cos(a);
+          let y = r * sin(a);
+          let z = sin(a * 3 + t + i) * 20;
+
+          vertex(x, y, z);
+        }
+        endShape(CLOSE);
+
+        pop();
+      }
+      pop();
+    }
+
+    function drawOrbitingRings() {
+      let count = 6;
+
+      for (let i = 0; i < count; i++) {
+        push();
+
+        let angle = t + i * TWO_PI / count;
+        let dist = 150 + sin(t + i) * 50;
+
+        rotateY(angle);
+        translate(dist, 0, 0);
+
+        rotateX(t * 2 + i);
+
+        stroke(255, 180, 100);
+        noFill();
+
+        torus(30 + sin(t + i) * 10, 3, 16, 100);
+
+        pop();
+      }
+    }
+
+    function drawField() {
+      push();
+      strokeWeight(2);
+
+      for (let i = 0; i < 200; i++) {
+        let angle = i * 0.1 + t;
+        let radius = 300 + noise(i, t) * 200;
+
+        let x = cos(angle) * radius;
+        let y = sin(angle) * radius;
+        let z = sin(angle * 2 + t) * 200;
+
+        stroke(100, 200, 255, 120);
+        point(x, y, z);
+      }
+
+      pop();
+    }
+
+    function windowResized() {
+      resizeCanvas(window.innerWidth, window.innerHeight);
+    }
+</script>
+</body>
+</html>
+```

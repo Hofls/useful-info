@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generative WebGL Art</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.js"></script>
+    <style>
+        body { margin: 0; overflow: hidden; background: #050505; }
+        canvas { display: block; }
+    </style>
+</head>
+<body>
+<script>
+    let angle = 0;
+
+    function setup() {
+      createCanvas(windowWidth, windowHeight, WEBGL);
+      setAttributes('antialias', true);
+    }
+
+    function draw() {
+      background(5);
+
+      // Dynamic lighting
+      let locX = mouseX - width / 2;
+      let locY = mouseY - height / 2;
+      pointLight(255, 255, 255, locX, locY, 250);
+      ambientLight(60);
+
+      rotateX(angle * 0.2);
+      rotateY(angle * 0.3);
+
+      noFill();
+      strokeWeight(1.5);
+
+      // Generate the "Digital Silk" geometry
+      for (let i = 0; i < 40; i++) {
+        beginShape();
+
+        // Map stroke color based on position and time for a shifting gradient
+        let r = map(sin(angle + i * 0.1), -1, 1, 100, 255);
+        let g = map(cos(angle + i * 0.05), -1, 1, 50, 200);
+        let b = map(sin(angle * 0.5), -1, 1, 150, 255);
+        stroke(r, g, b, 180);
+
+        for (let j = 0; j < 60; j++) {
+          let rad = i * 6;
+          let x = rad * cos(j * 0.2 + angle);
+          let y = rad * sin(j * 0.2 + angle);
+
+          // The Z-axis displacement creates the waving fabric effect
+          let z = sin(angle + i * 0.5 + j * 0.1) * 200;
+
+          // Use vertex with a slight noise-like offset
+          vertex(x, y, z);
+        }
+        endShape();
+      }
+
+      angle += 0.01;
+    }
+
+    function windowResized() {
+      resizeCanvas(windowWidth, windowHeight);
+    }
+</script>
+</body>
+</html>
