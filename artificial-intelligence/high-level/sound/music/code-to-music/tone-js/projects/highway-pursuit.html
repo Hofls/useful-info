@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>32-Bit Racer - Tone.js</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #00ffcc;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        h1 {
+            text-shadow: 2px 2px #ff0055;
+            margin-bottom: 10px;
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        #controls {
+            text-align: center;
+            border: 2px solid #00ffcc;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.2);
+            background: #000;
+        }
+
+        button {
+            background: #ff0055;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-family: inherit;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: transform 0.1s;
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        button:disabled {
+            background: #555;
+            cursor: not-allowed;
+        }
+
+        #visualizer {
+            margin-top: 20px;
+            height: 50px;
+            display: flex;
+            gap: 5px;
+            align-items: flex-end;
+        }
+
+        .bar {
+            width: 10px;
+            background: #ff0055;
+            height: 5px;
+            transition: height 0.05s;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Highway Pursuit</h1>
+
+<div id="controls">
+    <p style="font-size: 0.8rem; margin-bottom: 20px; opacity: 0.8;">HEADPHONES RECOMMENDED</p>
+    <button id="playBtn">START ENGINE</button>
+    <div id="visualizer">
+        <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+    </div>
+</div>
+
+<script>
+    // --- AUDIO ENGINE SETUP ---
+
+    let isPlaying = false;
+    let mainPart;
+
+    // Effects Chain for that "Arena" sound
+    const distortion = new Tone.Distortion(0.4).toDestination();
+    const reverb = new Tone.Reverb({ decay: 2, wet: 0.3 }).connect(distortion);
+    const limiter = new Tone.Limiter(-1).toDestination(); // Prevent clipping
+
+    // 1. THE LEAD (FM Synth for that metallic Sega/SNES sound)
+    const leadSynth = new Tone.FMSynth({
+        harmonicity: 3,
+        modulationIndex: 10,
+        oscillator: { type: "square" },
+        envelope: { attack: 0.01, decay: 0.2, sustain: 0.5, release: 0.2 },
+        modulation: { type: "square" },
+        modulationEnvelope: { attack: 0.01, decay: 0.2, sustain: 0, release: 0.2 }
+    }).connect(reverb);
+
+    // 2. THE BASS (Punchy Sawtooth)
+    const bassSynth = new Tone.MonoSynth({
+        oscillator: { type: "sawtooth" },
+        filter: { Q: 6, type: "lowpass", rolloff: -24 },
+        envelope: { attack: 0.01, decay: 0.3, sustain: 0.6, release: 0.1 },
+        filterEnvelope: { attack: 0.01, decay: 0.1, sustain: 0.5, release: 0.1, baseFrequency: 200, octaves: 3 }
+    }).connect(limiter); // Bass goes straight to limiter for punch
+
+    // 3. DRUMS
+    // Kick
+    const kick = new Tone.MembraneSynth({
+        pitchDecay: 0.05,
+        octaves: 10,
+        oscillator: { type: "sine" },
+        envelope: { attack: 0.001, decay: 0.4, sustain: 0.01, release: 1.4 }
+    }).connect(limiter);
+
+    // Snare (Noise + Tone)
+    const snare = new Tone.NoiseSynth({
+        noise: { type: "white" },
+        envelope: { attack: 0.001, decay: 0.2, sustain: 0 }
+    }).connect(reverb);
+
+    // Hi-Hat (Metal Synth)
+    const hat = new Tone.MetalSynth({
+        frequency: 200, envelope: { attack: 0.001, decay: 0.05, release: 0.01 },
+        harmonicity: 5.1, modulationIndex: 32, resonance: 4000, octaves: 1.5
+    }).connect(limiter);
+    hat.volume.value = -15;
+
+    // --- THE SONG DATA ---
+
+    // Tempo: Fast, like a racing game
+    Tone.Transport.bpm.value = 160;
+
+    // Melody Notes (E Minor Pentatonic Rock Riff)
+    const melody = [
+        { time: "0:0:0", note: "E4", dur: "8n" }, { time: "0:0:1", note: "G4", dur: "8n" },
+        { time: "0:0:2", note: "A4", dur: "8n" }, { time: "0:0:3", note: "B4", dur: "8n" },
+        { time: "0:1:0", note: "C5", dur: "8n" }, { time: "0:1:1", note: "B4", dur: "8n" },
+        { time: "0:1:2", note: "A4", dur: "8n" }, { time: "0:1:3", note: "G4", dur: "8n" },
+
+        { time: "0:2:0", note: "E4", dur: "8n" }, { time: "0:2:1", note: "G4", dur: "8n" },
+        { time: "0:2:2", note: "A4", dur: "8n" }, { time: "0:2:3", note: "B4", dur: "8n" },
+        { time: "0:3:0", note: "D5", dur: "4n" }, { time: "0:3:2", note: "E5", dur: "4n" },
+
+        // Solo section variation
+        { time: "1:0:0", note: "E5", dur: "16n" }, { time: "1:0:0.5", note: "D5", dur: "16n" },
+        { time: "1:0:1", note: "B4", dur: "16n" }, { time: "1:0:1.5", note: "A4", dur: "16n" },
+        { time: "1:0:2", note: "G4", dur: "16n" }, { time: "1:0:2.5", note: "E4", dur: "16n" },
+        { time: "1:0:3", note: "D4", dur: "8n" }, { time: "1:0:3.5", note: "E4", dur: "8n" },
+
+        { time: "1:1:0", note: "E4", dur: "8n" }, { time: "1:1:1", note: "G4", dur: "8n" },
+        { time: "1:1:2", note: "A4", dur: "8n" }, { time: "1:1:3", note: "B4", dur: "8n" },
+        { time: "1:2:0", note: "C5", dur: "8n" }, { time: "1:2:1", note: "B4", dur: "8n" },
+        { time: "1:2:2", note: "A4", dur: "8n" }, { time: "1:2:3", note: "G4", dur: "8n" },
+        { time: "1:3:0", note: "E4", dur: "2n" }
+    ];
+
+    // Bass Line (Root notes)
+    const bassLine = [
+        { time: "0:0:0", note: "E2", dur: "8n" }, { time: "0:0:2", note: "E2", dur: "8n" },
+        { time: "0:1:0", note: "C2", dur: "8n" }, { time: "0:1:2", note: "C2", dur: "8n" },
+        { time: "0:2:0", note: "E2", dur: "8n" }, { time: "0:2:2", note: "E2", dur: "8n" },
+        { time: "0:3:0", note: "D2", dur: "4n" }, { time: "0:3:2", note: "E2", dur: "4n" },
+
+        { time: "1:0:0", note: "E2", dur: "8n" }, { time: "1:0:2", note: "E2", dur: "8n" },
+        { time: "1:1:0", note: "E2", dur: "8n" }, { time: "1:1:2", note: "E2", dur: "8n" },
+        { time: "1:2:0", note: "C2", dur: "8n" }, { time: "1:2:2", note: "C2", dur: "8n" },
+        { time: "1:3:0", note: "E2", dur: "2n" }
+    ];
+
+    // Drum Pattern
+    const drums = [
+        { time: "0:0:0", inst: "kick" }, { time: "0:0:2", inst: "snare" },
+        { time: "0:0:1", inst: "hat" }, { time: "0:0:3", inst: "hat" },
+
+        { time: "0:1:0", inst: "kick" }, { time: "0:1:2", inst: "snare" },
+        { time: "0:1:1", inst: "hat" }, { time: "0:1:3", inst: "hat" },
+
+        { time: "0:2:0", inst: "kick" }, { time: "0:2:2", inst: "snare" },
+        { time: "0:2:1", inst: "hat" }, { time: "0:2:3", inst: "hat" },
+
+        { time: "0:3:0", inst: "kick" }, { time: "0:3:2", inst: "kick" }, // Fill
+        { time: "0:3:1", inst: "hat" }, { time: "0:3:3", inst: "hat" },
+
+        // Loop repeat for second bar
+        { time: "1:0:0", inst: "kick" }, { time: "1:0:2", inst: "snare" },
+        { time: "1:0:1", inst: "hat" }, { time: "1:0:3", inst: "hat" },
+        { time: "1:1:0", inst: "kick" }, { time: "1:1:2", inst: "snare" },
+        { time: "1:1:1", inst: "hat" }, { time: "1:1:3", inst: "hat" },
+        { time: "1:2:0", inst: "kick" }, { time: "1:2:2", inst: "snare" },
+        { time: "1:2:1", inst: "hat" }, { time: "1:2:3", inst: "hat" },
+        { time: "1:3:0", inst: "kick" }, { time: "1:3:2", inst: "snare" },
+        { time: "1:3:1", inst: "hat" }, { time: "1:3:3", inst: "hat" },
+    ];
+
+    // --- SEQUENCER LOGIC ---
+
+    function createSequence() {
+        // Clear existing if any
+        if(mainPart) mainPart.dispose();
+
+        mainPart = new Tone.Part((time, event) => {
+            // Play Melody
+            if(event.melody) {
+                leadSynth.triggerAttackRelease(event.melody.note, event.melody.dur, time);
+            }
+            // Play Bass
+            if(event.bass) {
+                bassSynth.triggerAttackRelease(event.bass.note, event.bass.dur, time);
+            }
+            // Play Drums
+            if(event.drum) {
+                if(event.drum === 'kick') kick.triggerAttackRelease("C1", "8n", time);
+                if(event.drum === 'snare') snare.triggerAttackRelease("8n", time);
+                if(event.drum === 'hat') hat.triggerAttackRelease("32n", time);
+            }
+        }, [
+            // Map data to sequence events
+            ...melody.map(m => ({ time: m.time, melody: m })),
+            ...bassLine.map(b => ({ time: b.time, bass: b })),
+            ...drums.map(d => ({ time: d.time, drum: d.inst }))
+        ]).start(0);
+
+        mainPart.loop = true;
+        mainPart.loopEnd = "2:0:0"; // Loop every 2 bars
+    }
+
+    // --- UI INTERACTION ---
+
+    const btn = document.getElementById('playBtn');
+    const bars = document.querySelectorAll('.bar');
+
+    btn.addEventListener('click', async () => {
+        if (isPlaying) {
+            Tone.Transport.stop();
+            btn.innerText = "START ENGINE";
+            btn.style.background = "#ff0055";
+            isPlaying = false;
+            // Reset visualizer
+            bars.forEach(b => b.style.height = '5px');
+            return;
+        }
+
+        // Audio Context must be resumed on user gesture
+        await Tone.start();
+
+        createSequence();
+        Tone.Transport.start();
+
+        btn.innerText = "STOP ENGINE";
+        btn.style.background = "#00ffcc";
+        btn.style.color = "#000";
+        isPlaying = true;
+
+        // Simple Visualizer Loop
+        setInterval(() => {
+            if(!isPlaying) return;
+            bars.forEach(b => {
+                const h = Math.random() * 40 + 5;
+                b.style.height = `${h}px`;
+            });
+        }, 100);
+    });
+
+</script>
+</body>
+</html>

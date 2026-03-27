@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neural Resonance - Original Composition</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #0a0a0f;
+            color: #e0e0ff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Animated background particles */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(100, 200, 255, 0.5);
+            border-radius: 50%;
+            animation: float 15s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) translateX(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-10vh) translateX(100px); opacity: 0; }
+        }
+
+        .container {
+            z-index: 10;
+            text-align: center;
+            padding: 2rem;
+            background: rgba(10, 10, 20, 0.7);
+            border: 1px solid rgba(100, 200, 255, 0.2);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 60px rgba(100, 200, 255, 0.1);
+            max-width: 600px;
+            width: 90%;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #00d4ff, #7b2cbf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 5px rgba(0, 212, 255, 0.5)); }
+            to { filter: drop-shadow(0 0 20px rgba(123, 44, 191, 0.8)); }
+        }
+
+        .subtitle {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 1rem 2rem;
+            font-family: inherit;
+            font-size: 1rem;
+            border: 2px solid rgba(100, 200, 255, 0.3);
+            background: transparent;
+            color: #00d4ff;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        button:hover:not(:disabled) {
+            background: rgba(0, 212, 255, 0.1);
+            border-color: #00d4ff;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        button.active {
+            background: linear-gradient(135deg, #00d4ff, #7b2cbf);
+            color: #0a0a0f;
+            border-color: transparent;
+            box-shadow: 0 0 40px rgba(0, 212, 255, 0.6);
+        }
+
+        .visualizer {
+            width: 100%;
+            height: 150px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(100, 200, 255, 0.1);
+        }
+
+        canvas {
+            width: 100%;
+            height: 100%;
+        }
+
+        .info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .info-box {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid rgba(100, 200, 255, 0.1);
+        }
+
+        .info-label {
+            font-size: 0.7rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-value {
+            font-size: 1.2rem;
+            color: #00d4ff;
+            font-weight: bold;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: rgba(100, 200, 255, 0.1);
+            border-radius: 2px;
+            margin-top: 1rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00d4ff, #7b2cbf);
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+
+        .status {
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: #6b7280;
+            min-height: 1.5rem;
+        }
+
+        .waveform-display {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 100px;
+            height: 40px;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+<div class="particles" id="particles"></div>
+
+<div class="container">
+    <h1>Neural Resonance</h1>
+    <div class="subtitle">An AI-Composed Generative Experience</div>
+
+    <div class="visualizer">
+        <canvas id="visualizer"></canvas>
+    </div>
+
+    <div class="controls">
+        <button id="startBtn" onclick="startComposition()">Initialize</button>
+        <button id="stopBtn" onclick="stopComposition()" disabled>Terminate</button>
+    </div>
+
+    <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <div class="info">
+        <div class="info-box">
+            <div class="info-label">BPM</div>
+            <div class="info-value" id="bpmDisplay">72</div>
+        </div>
+        <div class="info-box">
+            <div class="info-label">Key</div>
+            <div class="info-value">D Minor</div>
+        </div>
+        <div class="info-box">
+            <div class="info-label">Duration</div>
+            <div class="info-value">∞</div>
+        </div>
+    </div>
+
+    <div class="status" id="status">System standby... awaiting initialization</div>
+</div>
+
+<script>
+    // Create floating particles
+    const particlesContainer = document.getElementById('particles');
+    for (let i = 0; i < 50; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 15 + 's';
+        particle.style.animationDuration = (10 + Math.random() * 10) + 's';
+        particlesContainer.appendChild(particle);
+    }
+
+    // Audio context and components
+    let isPlaying = false;
+    let animationId;
+    let currentSection = 0;
+    let startTime;
+
+    // Tone.js instruments
+    let padSynth, arpSynth, bassSynth, pluckSynth, noiseSynth;
+    let arpLoop, bassLoop, padLoop, pluckLoop;
+    let reverb, delay, chorus, filter;
+
+    // Musical data
+    const scale = ['D3', 'F3', 'G3', 'A3', 'C4', 'D4', 'F4', 'G4', 'A4', 'C5', 'D5'];
+    const chordProgression = [
+        ['D3', 'F3', 'A3', 'C4'],    // Dm7
+        ['G2', 'B2', 'D3', 'F3'],    // Gm7
+        ['A2', 'C3', 'E3', 'G3'],    // Am7
+        ['F2', 'A2', 'C3', 'E3']     // Fmaj7
+    ];
+
+    const arpPatterns = [
+        ['D4', 'F4', 'A4', 'C5', 'A4', 'F4'],
+        ['G3', 'B3', 'D4', 'F4', 'D4', 'B3'],
+        ['A3', 'C4', 'E4', 'G4', 'E4', 'C4'],
+        ['F3', 'A3', 'C4', 'E4', 'C4', 'A3']
+    ];
+
+    // Canvas setup
+    const canvas = document.getElementById('visualizer');
+    const ctx = canvas.getContext('2d');
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+
+    function resizeCanvas() {
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+
+    // Initialize audio
+    async function initAudio() {
+        await Tone.start();
+
+        // Effects chain
+        reverb = new Tone.Reverb({
+            decay: 8,
+            wet: 0.4
+        }).toDestination();
+
+        delay = new Tone.FeedbackDelay({
+            delayTime: '8n',
+            feedback: 0.3,
+            wet: 0.2
+        }).connect(reverb);
+
+        chorus = new Tone.Chorus({
+            frequency: 2,
+            delayTime: 3.5,
+            depth: 0.7,
+            wet: 0.3
+        }).connect(delay);
+
+        filter = new Tone.Filter(800, 'lowpass').connect(chorus);
+
+        // Pad synth - ambient texture
+        padSynth = new Tone.PolySynth(Tone.Synth, {
+            oscillator: {
+                type: 'fatsawtooth',
+                count: 3,
+                spread: 30
+            },
+            envelope: {
+                attack: 2,
+                decay: 1,
+                sustain: 0.8,
+                release: 4
+            }
+        }).connect(filter);
+        padSynth.volume.value = -12;
+
+        // Arpeggiator synth
+        arpSynth = new Tone.Synth({
+            oscillator: {
+                type: 'triangle'
+            },
+            envelope: {
+                attack: 0.02,
+                decay: 0.1,
+                sustain: 0.1,
+                release: 1
+            }
+        }).connect(chorus);
+        arpSynth.volume.value = -8;
+
+        // Bass synth
+        bassSynth = new Tone.MonoSynth({
+            oscillator: {
+                type: 'square'
+            },
+            envelope: {
+                attack: 0.1,
+                decay: 0.3,
+                sustain: 0.4,
+                release: 0.8
+            },
+            filterEnvelope: {
+                attack: 0.001,
+                decay: 0.1,
+                sustain: 0.5,
+                baseFrequency: 200,
+                octaves: 2.6
+            }
+        }).connect(filter);
+        bassSynth.volume.value = -6;
+
+        // Pluck synth for accents
+        pluckSynth = new Tone.PolySynth(Tone.Synth, {
+            oscillator: {
+                type: 'sine'
+            },
+            envelope: {
+                attack: 0.001,
+                decay: 0.3,
+                sustain: 0,
+                release: 0.3
+            }
+        }).connect(reverb);
+        pluckSynth.volume.value = -10;
+
+        // Noise for texture
+        noiseSynth = new Tone.NoiseSynth({
+            noise: {
+                type: 'pink'
+            },
+            envelope: {
+                attack: 2,
+                decay: 1,
+                sustain: 1,
+                release: 2
+            }
+        }).connect(reverb);
+        noiseSynth.volume.value = -20;
+
+        // Transport settings
+        Tone.Transport.bpm.value = 72;
+    }
+
+    // Composition structure
+    function createLoops() {
+        // Pad loop - chord progression
+        let chordIndex = 0;
+        padLoop = new Tone.Loop((time) => {
+            const chord = chordProgression[chordIndex];
+            padSynth.triggerAttackRelease(chord, '2m', time);
+            chordIndex = (chordIndex + 1) % chordProgression.length;
+
+            // Occasionally add noise texture
+            if (Math.random() > 0.7) {
+                noiseSynth.triggerAttackRelease('1m', time);
+            }
+        }, '2m');
+
+        // Arpeggiator loop
+        let arpIndex = 0;
+        let patternIndex = 0;
+        arpLoop = new Tone.Loop((time) => {
+            const pattern = arpPatterns[patternIndex];
+            const note = pattern[arpIndex];
+
+            // Add some randomization to rhythm
+            const delay = Math.random() * 0.05;
+            arpSynth.triggerAttackRelease(note, '16n', time + delay);
+
+            arpIndex = (arpIndex + 1) % pattern.length;
+            if (arpIndex === 0) {
+                patternIndex = (patternIndex + 1) % arpPatterns.length;
+            }
+        }, '8n');
+
+        // Bass loop
+        let bassIndex = 0;
+        const bassLine = ['D2', 'D2', 'G2', 'A2', 'F2', 'F2', 'A2', 'G2'];
+        bassLoop = new Tone.Loop((time) => {
+            const note = bassLine[bassIndex];
+            const duration = Math.random() > 0.8 ? '4n' : '8n';
+            bassSynth.triggerAttackRelease(note, duration, time);
+
+            bassIndex = (bassIndex + 1) % bassLine.length;
+        }, '4n');
+
+        // Random pluck accents
+        pluckLoop = new Tone.Loop((time) => {
+            if (Math.random() > 0.6) {
+                const note = scale[Math.floor(Math.random() * scale.length)];
+                pluckSynth.triggerAttackRelease(note, '8n', time);
+            }
+        }, '4n');
+    }
+
+    // Visualization
+    function visualize() {
+        if (!isPlaying) return;
+
+        ctx.fillStyle = 'rgba(10, 10, 20, 0.2)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        const time = Date.now() * 0.001;
+        const centerY = canvas.height / 2;
+
+        // Draw waveform
+        ctx.beginPath();
+        ctx.strokeStyle = '#00d4ff';
+        ctx.lineWidth = 2;
+
+        for (let x = 0; x < canvas.width; x++) {
+            const normalizedX = x / canvas.width;
+
+            // Combine multiple sine waves for organic look
+            let y = centerY;
+            y += Math.sin(normalizedX * 10 + time * 2) * 20;
+            y += Math.sin(normalizedX * 20 - time * 3) * 10;
+            y += Math.sin(normalizedX * 5 + time) * 30;
+
+            // Add some noise based on "intensity"
+            y += (Math.random() - 0.5) * 10;
+
+            if (x === 0) {
+                ctx.moveTo(x, y);
+            } else {
+                ctx.lineTo(x, y);
+            }
+        }
+        ctx.stroke();
+
+        // Draw frequency bars (simulated)
+        const barCount = 30;
+        const barWidth = canvas.width / barCount;
+
+        for (let i = 0; i < barCount; i++) {
+            const height = Math.abs(Math.sin(time * 2 + i * 0.5)) * 50 +
+                          Math.abs(Math.sin(time * 3 + i * 0.3)) * 30;
+
+            const gradient = ctx.createLinearGradient(0, centerY - height, 0, centerY + height);
+            gradient.addColorStop(0, 'rgba(0, 212, 255, 0)');
+            gradient.addColorStop(0.5, `rgba(123, 44, 191, ${0.3 + Math.sin(time + i) * 0.2})`);
+            gradient.addColorStop(1, 'rgba(0, 212, 255, 0)');
+
+            ctx.fillStyle = gradient;
+            ctx.fillRect(i * barWidth + 2, centerY - height/2, barWidth - 4, height);
+        }
+
+        // Update progress bar based on Transport position
+        const progress = (Tone.Transport.seconds % 32) / 32 * 100;
+        document.getElementById('progressFill').style.width = progress + '%';
+
+        animationId = requestAnimationFrame(visualize);
+    }
+
+    async function startComposition() {
+        if (isPlaying) return;
+
+        document.getElementById('status').textContent = 'Initializing neural pathways...';
+
+        await initAudio();
+        createLoops();
+
+        // Start all loops
+        padLoop.start(0);
+        arpLoop.start('1m');
+        bassLoop.start('2m');
+        pluckLoop.start('4n');
+
+        Tone.Transport.start();
+
+        isPlaying = true;
+        startTime = Date.now();
+
+        document.getElementById('startBtn').disabled = true;
+        document.getElementById('startBtn').classList.add('active');
+        document.getElementById('stopBtn').disabled = false;
+        document.getElementById('status').textContent = 'Composition active • Generative mode engaged';
+
+        visualize();
+
+        // Evolution - gradually change parameters
+        setInterval(() => {
+            if (!isPlaying) return;
+
+            // Modulate filter
+            const freq = 400 + Math.sin(Date.now() * 0.0001) * 300 + 200;
+            filter.frequency.rampTo(freq, 2);
+
+            // Modulate BPM slightly
+            const bpm = 72 + Math.sin(Date.now() * 0.00005) * 4;
+            Tone.Transport.bpm.rampTo(bpm, 4);
+            document.getElementById('bpmDisplay').textContent = Math.round(bpm);
+
+        }, 4000);
+    }
+
+    function stopComposition() {
+        if (!isPlaying) return;
+
+        // Smooth fade out
+        Tone.Transport.stop();
+
+        padLoop.stop();
+        arpLoop.stop();
+        bassLoop.stop();
+        pluckLoop.stop();
+
+        // Release all notes
+        padSynth.releaseAll();
+
+        isPlaying = false;
+        cancelAnimationFrame(animationId);
+
+        document.getElementById('startBtn').disabled = false;
+        document.getElementById('startBtn').classList.remove('active');
+        document.getElementById('stopBtn').disabled = true;
+        document.getElementById('status').textContent = 'System standby... awaiting initialization';
+        document.getElementById('progressFill').style.width = '0%';
+
+        // Clear canvas
+        ctx.fillStyle = '#0a0a0f';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+
+    // Initial canvas clear
+    ctx.fillStyle = '#0a0a0f';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+</script>
+</body>
+</html>

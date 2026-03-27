@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8-Bit Punk AI</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        body { background: #111; color: #0f0; display: flex; align-items: center; justify-content: center; height: 100vh; font-family: 'Courier New', monospace; margin: 0; }
+        button { padding: 20px 40px; font-size: 1.5rem; background: #0f0; color: #111; border: none; cursor: pointer; font-weight: bold; box-shadow: 5px 5px 0px #555; }
+        button:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0px #555; }
+    </style>
+</head>
+<body>
+
+<button id="playBtn">START MOSH PIT</button>
+
+<script>
+    const playBtn = document.getElementById('playBtn');
+
+    // Composition: "Silicon Shove" by Gemini
+    const setupSong = () => {
+        // 1. INSTRUMENTS
+        // Crunchy Square Lead
+        const lead = new Tone.Synth({
+            oscillator: { type: "square" },
+            envelope: { attack: 0.01, decay: 0.1, sustain: 0.3, release: 0.1 }
+        }).toDestination();
+
+        // Heavy Bass Synth
+        const bass = new Tone.MonoSynth({
+            oscillator: { type: "square" },
+            envelope: { attack: 0.05, decay: 0.2, sustain: 0.4, release: 0.1 },
+            filter: { Q: 2, type: "lowpass", rolloff: -12 }
+        }).toDestination();
+
+        // 8-bit Drums
+        const kick = new Tone.MembraneSynth().toDestination();
+        const snare = new Tone.NoiseSynth({
+            noise: { type: "white" },
+            envelope: { attack: 0.005, decay: 0.1, sustain: 0 }
+        }).toDestination();
+
+        // 2. SEQUENCES
+        const tempo = 165; // Fast punk tempo
+        Tone.Transport.bpm.value = tempo;
+
+        // Bassline (A - F - C - G) - The classic punk progression
+        const bassLoop = new Tone.Sequence((time, note) => {
+            bass.triggerAttackRelease(note, "8n", time);
+        }, ["A1", "A1", "F1", "F1", "C2", "C2", "G1", "G1"], "4n").start(0);
+
+        // Drums (Simple driving punk beat)
+        const drumLoop = new Tone.Loop((time) => {
+            kick.triggerAttackRelease("A1", "8n", time);
+            snare.triggerAttackRelease("16n", time + Tone.Time("4n"));
+        }, "2n").start(0);
+
+        // Lead Melody (Aggressive and simple)
+        const melody = [
+            "A3", "A3", "C4", "B3", "G3", "A3", null, "A3",
+            "F3", "F3", "A3", "G3", "E3", "F3", null, null
+        ];
+        const leadLoop = new Tone.Sequence((time, note) => {
+            if (note) lead.triggerAttackRelease(note, "16n", time);
+        }, melody, "8n").start(0);
+    };
+
+    playBtn.addEventListener('click', async () => {
+        await Tone.start();
+        setupSong();
+        Tone.Transport.start();
+        playBtn.innerText = "PLAYING...";
+        playBtn.disabled = true;
+    });
+</script>
+</body>
+</html>

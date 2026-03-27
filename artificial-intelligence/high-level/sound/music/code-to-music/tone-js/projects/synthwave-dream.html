@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grok's Synthwave Dream 🌌</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0a0a2e, #1a0033);
+            color: #00ffcc;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px #00ffcc;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        button {
+            padding: 15px 40px;
+            font-size: 1.5rem;
+            background: #00ffcc;
+            color: #0a0a2e;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 0 30px #00ffcc;
+            transition: all 0.3s;
+            margin: 20px;
+        }
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 50px #00ffcc;
+        }
+        .info {
+            margin-top: 30px;
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+        .visualizer {
+            width: 300px;
+            height: 80px;
+            background: rgba(0, 255, 204, 0.1);
+            border: 2px solid #00ffcc;
+            margin: 20px auto;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        .bar {
+            position: absolute;
+            bottom: 0;
+            width: 20px;
+            background: linear-gradient(to top, #00ffcc, #ff00cc);
+            animation: pulse 0.5s infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #00ffcc; }
+            to { text-shadow: 0 0 40px #00ffcc, 0 0 60px #ff00cc; }
+        }
+        @keyframes pulse {
+            from { height: 10px; }
+            to { height: 70px; }
+        }
+    </style>
+</head>
+<body>
+<h1>Grok's Synthwave Dream</h1>
+<p>AI-composed original track • Press Play</p>
+
+<button id="playBtn">▶️ Play Song</button>
+<button id="stopBtn" style="display:none; background:#ff3366;">⏹️ Stop</button>
+
+<div class="visualizer" id="visualizer"></div>
+
+<div class="info">
+    Made with ❤️ by Grok using Tone.js<br>
+    Original composition: "Neon Horizon"
+</div>
+
+<script>
+    // Create synths and effects
+    const reverb = new Tone.Reverb({
+        decay: 4,
+        wet: 0.4
+    }).toDestination();
+
+    const delay = new Tone.FeedbackDelay("8n", 0.35).connect(reverb);
+
+    const leadSynth = new Tone.Synth({
+        oscillator: { type: "sawtooth" },
+        envelope: {
+            attack: 0.02,
+            decay: 0.3,
+            sustain: 0.6,
+            release: 1.2
+        }
+    }).connect(delay);
+
+    const bassSynth = new Tone.Synth({
+        oscillator: { type: "square" },
+        envelope: {
+            attack: 0.01,
+            decay: 0.2,
+            sustain: 0.8,
+            release: 0.8
+        }
+    }).toDestination();
+
+    const chordSynth = new Tone.PolySynth(Tone.Synth, {
+        oscillator: { type: "triangle" },
+        envelope: {
+            attack: 0.8,
+            decay: 1.5,
+            sustain: 0.7,
+            release: 3
+        }
+    }).connect(reverb);
+
+    const kick = new Tone.MembraneSynth({
+        octaves: 6,
+        pitchDecay: 0.05,
+        envelope: { attack: 0.001, decay: 0.4, sustain: 0 }
+    }).toDestination();
+
+    const snare = new Tone.NoiseSynth({
+        noise: { type: "white" },
+        envelope: { attack: 0.001, decay: 0.3, sustain: 0 }
+    }).connect(new Tone.Filter(800, "lowpass").toDestination());
+
+    // Simple arpeggiator for sparkle
+    const arpSynth = new Tone.Synth({
+        oscillator: { type: "sine" },
+        envelope: { attack: 0.01, decay: 0.4, sustain: 0, release: 0.1 }
+    }).connect(reverb);
+
+    // Sequence data - Grok's original composition: "Neon Horizon"
+    const chordProgression = ["C4", "Eb4", "F4", "G4"];
+    let chordIndex = 0;
+
+    // Melody (lead)
+    const melody = [
+        "C5", "Eb5", "G5", "Bb5", "G5", "Eb5", "C5", null,
+        "D5", "F5", "A5", "C6", "A5", "F5", "D5", null,
+        "Eb5", "G5", "Bb5", "D6", "Bb5", "G5", "Eb5", null,
+        "F5", "Ab5", "C6", "Eb6", "C6", "Ab5", "F5", null
+    ];
+
+    // Bass line
+    const bassLine = [
+        "C2", "C2", "Eb2", "Eb2", "F2", "F2", "G2", "G2",
+        "C2", "C2", "Eb2", "Eb2", "F2", "F2", "G2", "G2"
+    ];
+
+    // Drum pattern
+    const kickPattern = [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1];
+    const snarePattern = [0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0];
+
+    // Transport setup
+    let isPlaying = false;
+    let melodyPart, bassPart, chordPart, kickPart, snarePart, arpPart;
+
+    function startSong() {
+        if (isPlaying) return;
+        isPlaying = true;
+
+        // Start Transport
+        Tone.Transport.bpm.value = 128;
+        Tone.Transport.start();
+
+        // Chords (every 2 bars)
+        chordPart = new Tone.Loop((time) => {
+            const chord = chordProgression[chordIndex % chordProgression.length];
+            chordSynth.triggerAttackRelease([chord, chord + "3", chord + "5"], "2m", time);
+            chordIndex++;
+        }, "2m").start(0);
+
+        // Melody
+        melodyPart = new Tone.Sequence((time, note) => {
+            if (note) {
+                leadSynth.triggerAttackRelease(note, "8n", time);
+            }
+        }, melody, "8n").start(0);
+
+        // Bass
+        bassPart = new Tone.Sequence((time, note) => {
+            bassSynth.triggerAttackRelease(note, "8n", time);
+        }, bassLine, "8n").start(0);
+
+        // Kick
+        kickPart = new Tone.Sequence((time, hit) => {
+            if (hit) kick.triggerAttackRelease("C2", "8n", time);
+        }, kickPattern, "16n").start(0);
+
+        // Snare
+        snarePart = new Tone.Sequence((time, hit) => {
+            if (hit) snare.triggerAttackRelease("16n", time);
+        }, snarePattern, "16n").start(0);
+
+        // Arpeggio sparkle
+        arpPart = new Tone.Sequence((time, note) => {
+            if (note) {
+                arpSynth.triggerAttackRelease(note, "32n", time, 0.6);
+            }
+        }, ["C6", "Eb6", "G6", "Bb6", null, "G6", "Eb6", "C6"], "32n").start(0);
+
+        document.getElementById("playBtn").style.display = "none";
+        document.getElementById("stopBtn").style.display = "inline-block";
+    }
+
+    function stopSong() {
+        if (!isPlaying) return;
+        isPlaying = false;
+
+        Tone.Transport.stop();
+        Tone.Transport.cancel();
+
+        if (melodyPart) melodyPart.dispose();
+        if (bassPart) bassPart.dispose();
+        if (chordPart) chordPart.dispose();
+        if (kickPart) kickPart.dispose();
+        if (snarePart) snarePart.dispose();
+        if (arpPart) arpPart.dispose();
+
+        document.getElementById("playBtn").style.display = "inline-block";
+        document.getElementById("stopBtn").style.display = "none";
+    }
+
+    // Button handlers
+    document.getElementById("playBtn").addEventListener("click", async () => {
+        await Tone.start();
+        startSong();
+    });
+
+    document.getElementById("stopBtn").addEventListener("click", stopSong);
+
+    // Simple visualizer animation
+    function createVisualizer() {
+        const viz = document.getElementById("visualizer");
+        viz.innerHTML = "";
+        for (let i = 0; i < 12; i++) {
+            const bar = document.createElement("div");
+            bar.className = "bar";
+            bar.style.left = (i * 25) + "px";
+            bar.style.animationDelay = (i * 0.08) + "s";
+            viz.appendChild(bar);
+        }
+    }
+
+    // Initialize
+    window.onload = () => {
+        createVisualizer();
+
+        // Add a little glow to the visualizer when playing
+        const observer = new MutationObserver(() => {
+            const viz = document.getElementById("visualizer");
+            if (isPlaying) {
+                viz.style.boxShadow = "0 0 40px #00ffcc";
+            } else {
+                viz.style.boxShadow = "none";
+            }
+        });
+    };
+</script>
+</body>
+</html>

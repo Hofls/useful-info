@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chiptune Player</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0f;
+            color: #ff0040;
+            font-family: 'Courier New', monospace;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.15),
+                rgba(0, 0, 0, 0.15) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        #playBtn {
+            background: transparent;
+            border: 3px solid #ff0040;
+            color: #ff0040;
+            padding: 20px 40px;
+            font-size: 24px;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.1s;
+            box-shadow: 0 0 20px rgba(255, 0, 64, 0.3);
+            letter-spacing: 4px;
+        }
+
+        #playBtn:hover {
+            background: #ff0040;
+            color: #0a0a0f;
+            box-shadow: 0 0 40px rgba(255, 0, 64, 0.6);
+        }
+
+        #playBtn:active {
+            transform: scale(0.95);
+        }
+
+        .status {
+            margin-top: 30px;
+            font-size: 14px;
+            opacity: 0.7;
+            letter-spacing: 2px;
+        }
+
+        .visualizer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 4px;
+            padding: 0 20px;
+            opacity: 0.3;
+        }
+
+        .bar {
+            width: 8px;
+            background: linear-gradient(to top, #ff0040, #ff4080);
+            transition: height 0.05s ease;
+            border-radius: 2px 2px 0 0;
+        }
+    </style>
+</head>
+<body>
+<div class="scanlines"></div>
+
+<button id="playBtn">START ENGINE</button>
+<div class="status" id="status">CLICK TO PLAY</div>
+
+<div class="visualizer" id="visualizer"></div>
+
+<script>
+    let isPlaying = false;
+    let loop;
+
+    // Create visualizer bars
+    const visualizer = document.getElementById('visualizer');
+    const bars = [];
+    for (let i = 0; i < 40; i++) {
+        const bar = document.createElement('div');
+        bar.className = 'bar';
+        bar.style.height = '5px';
+        visualizer.appendChild(bar);
+        bars.push(bar);
+    }
+
+    // Update visualizer
+    function updateVisualizer() {
+        if (!isPlaying) {
+            bars.forEach(bar => bar.style.height = '5px');
+            return;
+        }
+        bars.forEach((bar, i) => {
+            const height = Math.random() * 100 + 5;
+            bar.style.height = height + 'px';
+        });
+        requestAnimationFrame(() => setTimeout(updateVisualizer, 50));
+    }
+
+    // Song composition - inspired by Rock n' Roll Racing's energetic metal style
+    const song = {
+        bpm: 160,
+        notes: {
+            // Main riff (inspired by Highway Star / Paranoid style)
+            main: [
+                {n: 'E3', d: '8n'}, {n: 'E3', d: '8n'}, {n: 'G3', d: '8n'}, {n: 'E3', d: '8n'},
+                {n: 'D3', d: '8n'}, {n: 'D3', d: '8n'}, {n: 'F3', d: '8n'}, {n: 'D3', d: '8n'},
+                {n: 'C3', d: '8n'}, {n: 'C3', d: '8n'}, {n: 'E3', d: '8n'}, {n: 'C3', d: '8n'},
+                {n: 'B2', d: '4n'}, {n: 'B2', d: '4n'},
+
+                {n: 'E3', d: '8n'}, {n: 'E3', d: '8n'}, {n: 'G3', d: '8n'}, {n: 'A3', d: '8n'},
+                {n: 'G3', d: '8n'}, {n: 'E3', d: '8n'}, {n: 'D3', d: '4n'},
+                {n: 'C3', d: '8n'}, {n: 'D3', d: '8n'}, {n: 'E3', d: '8n'}, {n: 'G3', d: '8n'},
+                {n: 'E3', d: '2n'},
+            ],
+            // Harmony line
+            harmony: [
+                {n: 'B2', d: '2n'}, {n: 'A2', d: '2n'},
+                {n: 'G2', d: '2n'}, {n: 'F2', d: '2n'},
+                {n: 'E2', d: '1n'},
+                {n: 'B2', d: '2n'}, {n: 'G2', d: '2n'},
+                {n: 'A2', d: '2n'}, {n: 'B2', d: '2n'},
+            ],
+            // Bass line (driving 16th notes feel)
+            bass: [
+                {n: 'E2', d: '8n'}, {n: 'E2', d: '8n'}, {n: 'E2', d: '8n'}, {n: 'E2', d: '8n'},
+                {n: 'D2', d: '8n'}, {n: 'D2', d: '8n'}, {n: 'D2', d: '8n'}, {n: 'D2', d: '8n'},
+                {n: 'C2', d: '8n'}, {n: 'C2', d: '8n'}, {n: 'C2', d: '8n'}, {n: 'C2', d: '8n'},
+                {n: 'B1', d: '8n'}, {n: 'B1', d: '8n'}, {n: 'B1', d: '8n'}, {n: 'B1', d: '8n'},
+
+                {n: 'E2', d: '8n'}, {n: 'E2', d: '8n'}, {n: 'E2', d: '8n'}, {n: 'E2', d: '8n'},
+                {n: 'G2', d: '8n'}, {n: 'G2', d: '8n'}, {n: 'F2', d: '8n'}, {n: 'D2', d: '8n'},
+                {n: 'C2', d: '8n'}, {n: 'C2', d: '8n'}, {n: 'D2', d: '8n'}, {n: 'E2', d: '8n'},
+                {n: 'E2', d: '2n'}, {n: null, d: '2n'},
+            ],
+            // Lead melody (synth solo style)
+            lead: [
+                {n: null, d: '1n'}, {n: null, d: '1n'},
+                {n: 'E4', d: '16n'}, {n: 'G4', d: '16n'}, {n: 'A4', d: '8n'},
+                {n: 'G4', d: '8n'}, {n: 'E4', d: '8n'}, {n: 'D4', d: '4n'},
+                {n: null, d: '2n'},
+                {n: 'B3', d: '8n'}, {n: 'E4', d: '8n'}, {n: 'G4', d: '8n'},
+                {n: 'E4', d: '4n'}, {n: 'D4', d: '8n'}, {n: 'E4', d: '2n'},
+            ]
+        }
+    };
+
+    document.getElementById('playBtn').addEventListener('click', async () => {
+        if (isPlaying) return;
+
+        await Tone.start();
+        isPlaying = true;
+
+        const btn = document.getElementById('playBtn');
+        const status = document.getElementById('status');
+        btn.textContent = 'PLAYING';
+        btn.style.opacity = '0.5';
+        status.textContent = 'NOW PLAYING: HIGHWAY CHIP';
+
+        updateVisualizer();
+
+        // Sega Genesis-style FM synthesis setup
+        Tone.Transport.bpm.value = song.bpm;
+
+        // Lead synth - FM style (like Genesis YM2612)
+        const leadSynth = new Tone.PolySynth(Tone.Synth, {
+            oscillator: { type: "square" },
+            envelope: { attack: 0.01, decay: 0.1, sustain: 0.3, release: 0.1 },
+            volume: -8
+        }).toDestination();
+
+        // Add some chorus for that wide Genesis sound
+        const chorus = new Tone.Chorus(4, 2.5, 0.5).toDestination().start();
+        leadSynth.connect(chorus);
+
+        // Bass - sawtooth for gritty metal bass
+        const bassSynth = new Tone.MonoSynth({
+            oscillator: { type: "sawtooth" },
+            envelope: { attack: 0.01, decay: 0.1, sustain: 0.8, release: 0.1 },
+            filterEnvelope: { attack: 0.01, decay: 0.2, sustain: 0.5, release: 0.2, baseFrequency: 100, octaves: 2 },
+            volume: -5
+        }).toDestination();
+
+        // Harmony/Strings - triangle wave with vibrato
+        const harmonySynth = new Tone.PolySynth(Tone.Synth, {
+            oscillator: { type: "triangle" },
+            envelope: { attack: 0.05, decay: 0.2, sustain: 0.4, release: 0.5 },
+            volume: -12
+        }).toDestination();
+
+        const vibrato = new Tone.Vibrato(5, 0.1).toDestination();
+        harmonySynth.connect(vibrato);
+
+        // Drums - noise for snare, membrane for kick
+        const kick = new Tone.MembraneSynth({
+            pitchDecay: 0.05,
+            octaves: 10,
+            oscillator: { type: "sine" },
+            envelope: { attack: 0.001, decay: 0.2, sustain: 0, release: 0.5 },
+            volume: -2
+        }).toDestination();
+
+        const snare = new Tone.NoiseSynth({
+            noise: { type: "white" },
+            envelope: { attack: 0.001, decay: 0.1, sustain: 0, release: 0.1 },
+            volume: -8
+        }).toDestination();
+
+        const hihat = new Tone.MetalSynth({
+            frequency: 200,
+            envelope: { attack: 0.001, decay: 0.05, sustain: 0, release: 0.05 },
+            harmonicity: 5.1,
+            modulationIndex: 32,
+            resonance: 4000,
+            octaves: 1.5,
+            volume: -15
+        }).toDestination();
+
+        // Create sequences
+        let mainIdx = 0, harmonyIdx = 0, bassIdx = 0, leadIdx = 0;
+
+        loop = new Tone.Loop((time) => {
+            // Main guitar riff
+            const mainNote = song.notes.main[mainIdx % song.notes.main.length];
+            if (mainNote.n) {
+                leadSynth.triggerAttackRelease(mainNote.n, mainNote.d, time);
+            }
+            mainIdx++;
+
+            // Harmony (half speed)
+            if (mainIdx % 2 === 0) {
+                const harmNote = song.notes.harmony[harmonyIdx % song.notes.harmony.length];
+                if (harmNote.n) {
+                    harmonySynth.triggerAttackRelease(harmNote.n, harmNote.d, time);
+                }
+                harmonyIdx++;
+            }
+
+            // Bass
+            const bassNote = song.notes.bass[bassIdx % song.notes.bass.length];
+            if (bassNote.n) {
+                bassSynth.triggerAttackRelease(bassNote.n, bassNote.d, time);
+            }
+            bassIdx++;
+
+            // Lead melody (every 4th bar)
+            if (Math.floor(mainIdx / 16) % 4 === 3) {
+                const leadNote = song.notes.lead[leadIdx % song.notes.lead.length];
+                if (leadNote.n) {
+                    leadSynth.triggerAttackRelease(leadNote.n, leadNote.d, time, 0.7);
+                }
+                leadIdx++;
+            }
+
+            // Drums - simple rock beat
+            if (mainIdx % 4 === 0) kick.triggerAttackRelease("C1", "8n", time);
+            if (mainIdx % 4 === 2) kick.triggerAttackRelease("C1", "8n", time);
+            if (mainIdx % 4 === 2) snare.triggerAttackRelease("8n", time);
+            if (mainIdx % 2 === 1) hihat.triggerAttackRelease("32n", time, 0.3);
+
+        }, "8n").start(0);
+
+        Tone.Transport.start();
+
+        // Auto-stop after loop completes for cleaner experience
+        setTimeout(() => {
+            if (isPlaying) {
+                Tone.Transport.stop();
+                loop.stop();
+                isPlaying = false;
+                btn.textContent = 'START ENGINE';
+                btn.style.opacity = '1';
+                status.textContent = 'CLICK TO PLAY AGAIN';
+            }
+        }, 16000); // Play for ~16 seconds (2 loops)
+    });
+</script>
+</body>
+</html>

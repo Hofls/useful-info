@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalist Tone.js Song</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.min.js"></script>
+    <style>
+        body {
+          font-family: system-ui, sans-serif;
+          text-align: center;
+          background: #0a0a0a;
+          color: #0f0;
+          margin: 0;
+          padding: 40px;
+        }
+        h1 { margin-bottom: 10px; }
+        p { color: #666; margin-bottom: 30px; }
+        button {
+          font-size: 18px;
+          padding: 15px 40px;
+          background: #0f0;
+          color: black;
+          border: none;
+          border-radius: 50px;
+          cursor: pointer;
+          margin: 10px;
+        }
+        button:hover { background: #0c0; }
+        .playing { animation: pulse 1s infinite alternate; }
+        @keyframes pulse {
+          from { transform: scale(1); }
+          to { transform: scale(1.05); }
+        }
+    </style>
+</head>
+<body>
+<h1>Minimal Pulse</h1>
+<p>Simplest minimalist electronic piece</p>
+
+<button id="playBtn">Play</button>
+<button id="stopBtn" style="display:none;">Stop</button>
+
+<script>
+    let isPlaying = false;
+    let sequence;
+
+    // Create synthesizers
+    const synth = new Tone.PolySynth(Tone.Synth, {
+      oscillator: { type: "sine" },
+      envelope: { attack: 0.02, decay: 0.3, sustain: 0.6, release: 1.2 }
+    }).toDestination();
+
+    const bass = new Tone.Synth({
+      oscillator: { type: "triangle" },
+      envelope: { attack: 0.01, decay: 0.4, sustain: 0.1, release: 0.8 }
+    }).toDestination();
+
+    // Very simple minimalist pattern (inspired by Steve Reich / Philip Glass style)
+    const melodyNotes = ["C4", "E4", "G4", "A4", "G4", "E4"];
+    const bassNotes = ["C2", "C2", "G2", "C2"];
+
+    function startMusic() {
+      if (isPlaying) return;
+
+      Tone.Transport.bpm.value = 72; // Slow, meditative tempo
+
+      // Main minimalist melody sequence
+      sequence = new Tone.Sequence((time, note) => {
+        synth.triggerAttackRelease(note, "8n", time);
+      }, melodyNotes, "4n");
+
+      // Bass line (every 2 beats)
+      const bassSequence = new Tone.Sequence((time, note) => {
+        bass.triggerAttackRelease(note, "2n", time);
+      }, bassNotes, "2n");
+
+      // Add a very subtle high bell every 8 beats
+      const bell = new Tone.MetalSynth({
+        frequency: 800,
+        envelope: { decay: 1.5 },
+        volume: -18
+      }).toDestination();
+
+      const bellSequence = new Tone.Sequence((time) => {
+        bell.triggerAttackRelease("32n", time);
+      }, [null, null, null, null, null, null, null, "C6"], "4n");
+
+      sequence.start(0);
+      bassSequence.start(0);
+      bellSequence.start(0);
+
+      Tone.Transport.start();
+      isPlaying = true;
+
+      document.getElementById("playBtn").style.display = "none";
+      document.getElementById("stopBtn").style.display = "inline-block";
+      document.getElementById("playBtn").classList.add("playing");
+    }
+
+    function stopMusic() {
+      Tone.Transport.stop();
+      Tone.Transport.cancel();
+      if (sequence) sequence.stop();
+      isPlaying = false;
+
+      document.getElementById("playBtn").style.display = "inline-block";
+      document.getElementById("stopBtn").style.display = "none";
+      document.getElementById("playBtn").classList.remove("playing");
+    }
+
+    // Button events
+    document.getElementById("playBtn").addEventListener("click", async () => {
+      await Tone.start(); // Required for audio context
+      startMusic();
+    });
+
+    document.getElementById("stopBtn").addEventListener("click", stopMusic);
+
+    // Allow stopping with Escape key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && isPlaying) {
+        stopMusic();
+      }
+    });
+</script>
+</body>
+</html>

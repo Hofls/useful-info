@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drift Phonk - Tone.js</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #ff0040;
+            font-family: 'Courier New', monospace;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        #playBtn {
+            background: transparent;
+            border: 2px solid #ff0040;
+            color: #ff0040;
+            padding: 20px 40px;
+            font-size: 24px;
+            font-family: inherit;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            transition: all 0.3s;
+            box-shadow: 0 0 20px rgba(255, 0, 64, 0.3);
+        }
+
+        #playBtn:hover {
+            background: #ff0040;
+            color: #0a0a0a;
+            box-shadow: 0 0 40px rgba(255, 0, 64, 0.6);
+        }
+
+        #status {
+            margin-top: 20px;
+            font-size: 12px;
+            opacity: 0.7;
+            letter-spacing: 2px;
+        }
+
+        .drift-text {
+            position: absolute;
+            bottom: 40px;
+            font-size: 10px;
+            opacity: 0.3;
+            letter-spacing: 8px;
+        }
+    </style>
+</head>
+<body>
+<button id="playBtn">INITIALIZE DRIFT</button>
+<div id="status">STANDBY</div>
+<div class="drift-text">PHONK // 140 BPM // TONE.JS</div>
+
+<script>
+    let isPlaying = false;
+    let transportId = null;
+
+    // Drift Phonk characteristics:
+    // - 140 BPM
+    // - Heavy distorted 808 bass with slides
+    // - Repetitive cowbell melodies
+    // - Punchy drums
+    // - Dark atmosphere
+
+    const initAudio = async () => {
+        await Tone.start();
+
+        // Master effects for that gritty phonk sound
+        const dist = new Tone.Distortion(0.15).toDestination();
+        const compressor = new Tone.Compressor(-30, 3).connect(dist);
+        const limiter = new Tone.Limiter(-1).connect(compressor);
+
+        // Reverb for atmosphere
+        const reverb = new Tone.Reverb({
+            decay: 4,
+            wet: 0.2
+        }).connect(limiter);
+
+        // 808 BASS with distortion
+        const bassSynth = new Tone.MembraneSynth({
+            pitchDecay: 0.05,
+            octaves: 4,
+            oscillator: { type: "sine" },
+            envelope: {
+                attack: 0.001,
+                decay: 0.4,
+                sustain: 0.01,
+                release: 1.4,
+                attackCurve: "exponential"
+            }
+        }).connect(limiter);
+
+        // Add distortion to bass
+        const bassDist = new Tone.Distortion(0.4).connect(limiter);
+        bassSynth.connect(bassDist);
+
+        // COWBELL - the signature drift phonk sound
+        const cowbell = new Tone.MetalSynth({
+            frequency: 800,
+            envelope: {
+                attack: 0.001,
+                decay: 0.1,
+                release: 0.01
+            },
+            harmonicity: 5.1,
+            modulationIndex: 32,
+            resonance: 4000,
+            octaves: 1.5
+        }).connect(reverb);
+        cowbell.volume.value = -6;
+
+        // Secondary cowbell (pitched up)
+        const cowbellHigh = new Tone.MetalSynth({
+            frequency: 1600,
+            envelope: {
+                attack: 0.001,
+                decay: 0.08,
+                release: 0.01
+            },
+            harmonicity: 5.1,
+            modulationIndex: 32,
+            resonance: 4000,
+            octaves: 1.5
+        }).connect(reverb);
+        cowbellHigh.volume.value = -12;
+
+        // Dark pad for atmosphere
+        const pad = new Tone.PolySynth(Tone.Synth, {
+            oscillator: { type: "sawtooth" },
+            envelope: {
+                attack: 0.5,
+                decay: 0.5,
+                sustain: 0.5,
+                release: 2
+            }
+        }).connect(reverb);
+        pad.volume.value = -20;
+
+        // Filter the pad for darkness
+        const filter = new Tone.Filter(800, "lowpass").connect(reverb);
+        pad.connect(filter);
+
+        // DRUMS
+        // Kick
+        const kick = new Tone.MembraneSynth({
+            pitchDecay: 0.05,
+            octaves: 10,
+            oscillator: { type: "sine" },
+            envelope: {
+                attack: 0.001,
+                decay: 0.4,
+                sustain: 0.01,
+                release: 1.4
+            }
+        }).connect(limiter);
+
+        // Snare
+        const snare = new Tone.NoiseSynth({
+            noise: { type: "white" },
+            envelope: {
+                attack: 0.005,
+                decay: 0.1,
+                sustain: 0
+            }
+        }).connect(limiter);
+        snare.volume.value = -5;
+
+        // Hi-hats
+        const hihat = new Tone.MetalSynth({
+            frequency: 200,
+            envelope: {
+                attack: 0.001,
+                decay: 0.05,
+                release: 0.01
+            },
+            harmonicity: 5.1,
+            modulationIndex: 32,
+            resonance: 3000,
+            octaves: 1.5
+        }).connect(limiter);
+        hihat.volume.value = -15;
+
+        const openHat = new Tone.MetalSynth({
+            frequency: 200,
+            envelope: {
+                attack: 0.001,
+                decay: 0.3,
+                release: 0.01
+            },
+            harmonicity: 5.1,
+            modulationIndex: 32,
+            resonance: 3000,
+            octaves: 1.5
+        }).connect(reverb);
+        openHat.volume.value = -18;
+
+        // Set BPM
+        Tone.Transport.bpm.value = 140;
+
+        // BASS PATTERN - F# minor with slides
+        const bassLoop = new Tone.Sequence((time, note) => {
+            if (note) {
+                bassSynth.triggerAttackRelease(note, "8n", time);
+            }
+        }, ["F#2", "F#2", null, "F#2", "E2", "F#2", null, "G2", "F#2", null, "F#2", "C#2", "F#2", null, "E2", "F#2"], "8n");
+
+        // COWBELL MELODY - repetitive drift phonk style
+        const cowbellLoop = new Tone.Sequence((time, note) => {
+            if (note) {
+                cowbell.triggerAttackRelease(note, "16n", time);
+                // Layer with high cowbell occasionally
+                if (Math.random() > 0.7) {
+                    cowbellHigh.triggerAttackRelease(note, "32n", time + 0.05);
+                }
+            }
+        }, ["C#6", null, "C#6", "C#6", null, "C#6", null, "C#6", "C#6", null, "D6", "C#6", null, "C#6", null, null], "16n");
+
+        // DRUM PATTERNS
+        const kickLoop = new Tone.Loop((time) => {
+            kick.triggerAttackRelease("C1", "8n", time);
+        }, "4n");
+
+        const snareLoop = new Tone.Loop((time) => {
+            snare.triggerAttackRelease("8n", time);
+        }, "2n");
+
+        const hihatLoop = new Tone.Sequence((time, hit) => {
+            if (hit) {
+                hihat.triggerAttackRelease("32n", time);
+            }
+        }, [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0], "16n");
+
+        const openHatLoop = new Tone.Sequence((time, hit) => {
+            if (hit) {
+                openHat.triggerAttackRelease("8n", time);
+            }
+        }, [0, 0, 0, 0, 1, 0, 0, 0], "4n");
+
+        // Dark pad chords
+        const padLoop = new Tone.Sequence((time, chord) => {
+            if (chord) {
+                pad.triggerAttackRelease(chord, "2n", time);
+            }
+        }, [["F#3", "C#4", "E4"], null, ["E3", "C#4", "G3"], null], "1n");
+
+        // Start everything
+        bassLoop.start(0);
+        cowbellLoop.start(0);
+        kickLoop.start(0);
+        snareLoop.start("4n"); // Offset snare
+        hihatLoop.start(0);
+        openHatLoop.start(0);
+        padLoop.start(0);
+
+        Tone.Transport.start();
+        isPlaying = true;
+        document.getElementById('status').textContent = 'DRIFTING...';
+        document.getElementById('playBtn').textContent = 'STOP';
+    };
+
+    const stopAudio = () => {
+        Tone.Transport.stop();
+        Tone.Transport.cancel();
+        isPlaying = false;
+        document.getElementById('status').textContent = 'STANDBY';
+        document.getElementById('playBtn').textContent = 'INITIALIZE DRIFT';
+    };
+
+    document.getElementById('playBtn').addEventListener('click', () => {
+        if (!isPlaying) {
+            initAudio();
+        } else {
+            stopAudio();
+        }
+    });
+</script>
+</body>
+</html>

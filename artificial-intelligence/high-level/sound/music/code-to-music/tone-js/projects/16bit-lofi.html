@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>16-Bit Lofi AI Composer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        body {
+            background: #1a1a2e;
+            color: #e94560;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            background: transparent;
+            border: 2px solid #e94560;
+            color: #e94560;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #e94560;
+            color: #1a1a2e;
+        }
+        .status { margin-top: 20px; font-size: 0.8rem; opacity: 0.7; }
+    </style>
+</head>
+<body>
+
+<h1>LOFI_GEN_v1.0</h1>
+<button id="playBtn">INITIALIZE BOOT_SEQ</button>
+<div class="status" id="status">Audio Engine: Idle</div>
+
+<script>
+    const playBtn = document.getElementById('playBtn');
+    const statusText = document.getElementById('status');
+    let isPlaying = false;
+
+    // 1. INSTRUMENT SETUP (The 16-bit "Console" Sound)
+
+    // Bitcrushed Piano (Rhodes-ish)
+    const piano = new Tone.PolySynth(Tone.Synth, {
+        oscillator: { type: "triangle" },
+        envelope: { attack: 0.1, decay: 0.3, sustain: 0.4, release: 1 }
+    }).toDestination();
+
+    const crusher = new Tone.BitCrusher(4).toDestination(); // 4-bit crunch
+    piano.connect(crusher);
+
+    // Sub Bass
+    const bass = new Tone.MonoSynth({
+        oscillator: { type: "sine" },
+        envelope: { attack: 0.1, release: 1 }
+    }).toDestination();
+
+    // 808-style Percussion
+    const kick = new Tone.MembraneSynth().toDestination();
+    const hat = new Tone.MetalSynth({
+        envelope: { attack: 0.01, decay: 0.1, release: 0.1 },
+        frequency: 200
+    }).toDestination();
+
+    // 2. THE COMPOSITION (AI Generated Logic)
+    // Progression: Am7 - Dm7 - G7 - Cmaj7 (Classic II-V-I vibes)
+    const chords = [
+        ["A3", "C4", "E4", "G4"],
+        ["D3", "F3", "A3", "C4"],
+        ["G2", "B3", "D4", "F4"],
+        ["C3", "E3", "G3", "B3"]
+    ];
+    const bassNotes = ["A1", "D2", "G1", "C2"];
+
+    let step = 0;
+
+    // 3. SEQUENCE LOGIC
+    Tone.Transport.scheduleRepeat((time) => {
+        let chordIdx = Math.floor(step / 4) % chords.length;
+
+        // Play Chords every 4 beats
+        if (step % 4 === 0) {
+            piano.triggerAttackRelease(chords[chordIdx], "2n", time);
+            bass.triggerAttackRelease(bassNotes[chordIdx], "2n", time);
+        }
+
+        // Simple Lofi Beat (Kick on 1, Hat on every beat)
+        if (step % 4 === 0) kick.triggerAttackRelease("C1", "8n", time);
+        hat.triggerAttackRelease("C4", "32n", time, 0.3);
+
+        // Occasional "Glitch" melody (Random 16-bit lead)
+        if (Math.random() > 0.7) {
+            piano.triggerAttackRelease(chords[chordIdx][Math.floor(Math.random() * 4)], "8n", time + 0.5);
+        }
+
+        step++;
+    }, "4n");
+
+    Tone.Transport.bpm.value = 85; // Classic Chill Lofi BPM
+
+    // 4. USER INTERACTION
+    playBtn.addEventListener('click', async () => {
+        if (!isPlaying) {
+            await Tone.start();
+            Tone.Transport.start();
+            playBtn.innerText = "STOP_SYSTEM";
+            statusText.innerText = "Audio Engine: Running (85 BPM)";
+            isPlaying = true;
+        } else {
+            Tone.Transport.stop();
+            playBtn.innerText = "RESUME_SEQ";
+            statusText.innerText = "Audio Engine: Paused";
+            isPlaying = false;
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tone.js AI Composition</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #1a1a1a;
+            color: #00ffcc;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        button {
+            padding: 20px 40px;
+            font-size: 1.2rem;
+            background: transparent;
+            border: 2px solid #00ffcc;
+            color: #00ffcc;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #00ffcc;
+            color: #1a1a1a;
+        }
+        .status { margin-top: 20px; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+<h1>AI Composition: "The Silicon Dream"</h1>
+<button id="play-button">INITIALIZE AUDIO</button>
+<p class="status" id="status">Audio engine standby...</p>
+
+<script>
+    const button = document.getElementById('play-button');
+    const statusText = document.getElementById('status');
+    let started = false;
+
+    // 1. Setup Instruments
+    const synth = new Tone.PolySynth(Tone.Synth).toDestination();
+    const bass = new Tone.MonoSynth({
+        oscillator: { type: "square" },
+        envelope: { attack: 0.1, release: 1 }
+    }).toDestination();
+
+    // Add some reverb for atmosphere
+    const reverb = new Tone.Reverb(2).toDestination();
+    synth.connect(reverb);
+
+    // 2. The Composition (AI Generated)
+    // A minor progression: Am - F - C - G
+    const melody = [
+        { time: "0:0", note: "A4", duration: "8n" },
+        { time: "0:0:2", note: "C5", duration: "8n" },
+        { time: "0:1", note: "E5", duration: "4n" },
+        { time: "0:2", note: "A5", duration: "8n" },
+        { time: "0:3", note: "G5", duration: "8n" },
+
+        { time: "1:0", note: "F4", duration: "8n" },
+        { time: "1:1", note: "A4", duration: "8n" },
+        { time: "1:2", note: "C5", duration: "4n" },
+
+        { time: "2:0", note: "C4", duration: "8n" },
+        { time: "2:1", note: "E4", duration: "8n" },
+        { time: "2:2", note: "G4", duration: "4n" },
+
+        { time: "3:0", note: "G4", duration: "8n" },
+        { time: "3:1", note: "B4", duration: "8n" },
+        { time: "3:2", note: "D5", duration: "4n" },
+        { time: "3:3", note: "B4", duration: "8n" },
+    ];
+
+    const bassLine = [
+        ["0:0", "A2"], ["0:2", "A2"],
+        ["1:0", "F2"], ["1:2", "F2"],
+        ["2:0", "C2"], ["2:2", "C2"],
+        ["3:0", "G2"], ["3:2", "E2"]
+    ];
+
+    // 3. Create Sequences
+    const melodyPart = new Tone.Part((time, value) => {
+        synth.triggerAttackRelease(value.note, value.duration, time);
+    }, melody).start(0);
+    melodyPart.loop = true;
+    melodyPart.loopEnd = "4m";
+
+    const bassPart = new Tone.Part((time, value) => {
+        bass.triggerAttackRelease(value, "8n", time);
+    }, bassLine).start(0);
+    bassPart.loop = true;
+    bassPart.loopEnd = "4m";
+
+    Tone.Transport.bpm.value = 110;
+
+    // 4. Interaction Logic
+    button.addEventListener('click', async () => {
+        if (!started) {
+            await Tone.start();
+            Tone.Transport.start();
+            button.innerText = "STOP AUDIO";
+            statusText.innerText = "Playing: The Silicon Dream...";
+            started = true;
+        } else {
+            Tone.Transport.stop();
+            button.innerText = "RESUME AUDIO";
+            statusText.innerText = "Audio paused.";
+            started = false;
+        }
+    });
+</script>
+</body>
+</html>

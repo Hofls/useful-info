@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>DRIFT PHONK | ambient decay</title>
+    <!-- Tone.js core library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        body {
+            background: radial-gradient(circle at 30% 10%, #0a0c12, #020304);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', system-ui, 'Segoe UI', 'Courier New', monospace;
+            padding: 1.5rem;
+        }
+
+        /* ultra minimal card — focus on vibe */
+        .phonk-core {
+            background: rgba(5, 7, 12, 0.65);
+            backdrop-filter: blur(12px);
+            border-radius: 3rem;
+            border: 1px solid rgba(255, 70, 120, 0.25);
+            box-shadow: 0 25px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 100, 150, 0.1) inset;
+            padding: 2rem 2.5rem;
+            transition: all 0.2s ease;
+            text-align: center;
+            max-width: 560px;
+            width: 100%;
+        }
+
+        .title {
+            font-weight: 500;
+            letter-spacing: -0.5px;
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, #f0a6c0, #ff6080);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            margin-bottom: 0.25rem;
+        }
+
+        .sub {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #b67b8f;
+            margin-bottom: 2rem;
+            font-weight: 400;
+            word-break: keep-all;
+        }
+
+        /* main play button — minimal but expressive */
+        .drift-btn {
+            background: rgba(20, 22, 32, 0.9);
+            border: 1.5px solid #ff3b6f;
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            margin: 1rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), 0 0 12px rgba(255, 59, 111, 0.3);
+        }
+
+        .drift-btn:hover {
+            transform: scale(1.02);
+            border-color: #ff759b;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6), 0 0 18px #ff3b6f66;
+        }
+
+        .drift-btn:active {
+            transform: scale(0.97);
+        }
+
+        .play-icon {
+            font-size: 3.2rem;
+            font-weight: 400;
+            transition: 0.1s;
+            color: #ff6080;
+            text-shadow: 0 0 6px #ff1e4d;
+            letter-spacing: 4px;
+        }
+
+        .status {
+            margin-top: 1.8rem;
+            font-family: monospace;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            background: rgba(0, 0, 0, 0.5);
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            backdrop-filter: blur(4px);
+            color: #ceb0bb;
+            border: 0.5px solid #ff3b6f40;
+        }
+
+        .visual-hint {
+            margin-top: 1.8rem;
+            width: 100%;
+            height: 2px;
+            background: #2a1e24;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .visual-active {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #ff6080, #ff2e5c);
+            transition: width 0.08s linear;
+        }
+
+        footer {
+            margin-top: 1.8rem;
+            font-size: 0.65rem;
+            color: #5c4a52;
+        }
+
+        @media (max-width: 480px) {
+            .phonk-core {
+                padding: 1.5rem;
+            }
+            .drift-btn {
+                width: 110px;
+                height: 110px;
+            }
+            .play-icon {
+                font-size: 2.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="phonk-core">
+    <div class="title">◢ DRIFT PHONK</div>
+    <div class="sub">//  ／／  P H A S E  ／／  </div>
+
+    <div id="playButton" class="drift-btn">
+        <span id="playSymbol" class="play-icon">▶</span>
+    </div>
+
+    <div class="status" id="transportStatus">⛁ system ready · click to drift</div>
+    <div class="visual-hint">
+        <div id="bassMeter" class="visual-active"></div>
+    </div>
+    <footer>⚡ lofi distortion · heavy 808s · phonk melody</footer>
+</div>
+
+<script>
+    (function(){
+        // ------------------------------
+        // DRIFT PHONK COMPOSITION by AI
+        // ------------------------------
+        // Authentic drift-phonk elements:
+        // - heavy 808 bass with pitch slides & distortion
+        // - pitched vocal-like lead (sawtooth / square wave with heavy vibrato)
+        // - Memphis-style bell/chime melody with reverb
+        // - chopped snare, rimshot patterns, cowbell accents
+        // - lo-fi filtered drums, phaser effects, deep sub bass
+        // - slow tempo: 130 bpm (drift phonk sweet spot)
+        // - swing feel & sidechain compression emulation
+
+        let isPlaying = false;
+        let currentTransport = null;     // Tone.Transport instance callback reference
+        let partSequence = null;          // sequence part for melody
+        let bassPatternLoop = null;
+        let drumLoop = null;
+        let accentLoop = null;
+
+        // audio nodes & fx
+        let reverbBus, distortionBus, filterBus, masterComp, limiter;
+        let bassSynth, leadSynth, bellSynth, subKick;
+        let drumNoise, rimshotSynth, cowbellSynth, snareSynth;
+
+        // visual meter update interval
+        let meterInterval = null;
+
+        // ---- init Tone.js safely after user interaction ----
+        async function initAudio() {
+            await Tone.start();
+            console.log("Tone.js context started");
+            // setup main routing & FX
+            setupEffects();
+            // create all instruments
+            createInstruments();
+            // build the drift-phonk patterns (16th note based)
+            buildSequences();
+        }
+
+        function setupEffects() {
+            // high-quality reverb (large, dark room for phonk atmosphere)
+            reverbBus = new Tone.Reverb({
+                decay: 3.2,
+                preDelay: 0.12,
+                wet: 0.35
+            }).toDestination();
+
+            // distortion unit for grit (on bass and lead blend)
+            distortionBus = new Tone.Distortion({
+                distortion: 0.22,
+                wet: 0.4
+            });
+
+            // filter for lo-fi movement (automated later)
+            filterBus = new Tone.Filter(1200, "lowpass").connect(reverbBus);
+
+            // master compression to glue heavy bass and drums
+            masterComp = new Tone.Compressor({
+                threshold: -12,
+                ratio: 3.5,
+                attack: 0.015,
+                release: 0.25,
+                knee: 5
+            }).connect(filterBus);
+
+            // soft limiter for safety
+            limiter = new Tone.Limiter(-1.5).connect(masterComp);
+
+            // route everything through limiter -> comp -> filter -> reverb
+            Tone.Destination = limiter;
+        }
+
+        function createInstruments() {
+            // ----- BASS (808-style with pitch envelope & distortion) -----
+            bassSynth = new Tone.MonoSynth({
+                oscillator: { type: "sine" },
+                envelope: {
+                    attack: 0.008,
+                    decay: 0.28,
+                    sustain: 0.35,
+                    release: 0.45
+                },
+                filterEnvelope: {
+                    attack: 0.02,
+                    decay: 0.2,
+                    sustain: 0.2,
+                    release: 0.4,
+                    baseFrequency: 50,
+                    octaves: 3.5
+                },
+                filter: { type: "lowpass", frequency: 380, rolloff: -12 }
+            }).connect(distortionBus);
+            distortionBus.connect(masterComp);
+
+            // extra sub layer for punch
+            subKick = new Tone.MembraneSynth({
+                pitchDecay: 0.025,
+                octaves: 4,
+                envelope: { attack: 0.001, decay: 0.35, sustain: 0 }
+            }).connect(masterComp);
+
+            // ----- LEAD (drift phonk vocal-like, distorted and wide) -----
+            leadSynth = new Tone.PolySynth(Tone.Synth, {
+                oscillator: { type: "sawtooth" },
+                envelope: {
+                    attack: 0.02,
+                    decay: 0.2,
+                    sustain: 0.5,
+                    release: 0.7
+                },
+                volume: -4
+            }).connect(new Tone.Chorus({ frequency: 2.8, depth: 0.5, wet: 0.35 }).connect(distortionBus));
+
+            // ----- BELL / CHIME (phonk melodic accents) -----
+            bellSynth = new Tone.FMSynth({
+                harmonicity: 2.4,
+                modulationIndex: 3.2,
+                oscillator: { type: "sine" },
+                envelope: { attack: 0.008, decay: 0.45, sustain: 0.2, release: 0.9 },
+                modulation: { type: "triangle" },
+                modulationEnvelope: { attack: 0.02, decay: 0.2, sustain: 0.1, release: 0.5 }
+            }).connect(reverbBus);
+
+            // ----- DRUMS (phonk signature: rim, snare, cowbell, hats) -----
+            // rimshot / clap hybrid
+            rimshotSynth = new Tone.NoiseSynth({
+                noise: { type: "white" },
+                envelope: { attack: 0.001, decay: 0.12, sustain: 0 },
+                volume: -8
+            });
+            rimshotSynth.connect(masterComp);
+
+            // main snare (chopped & punchy)
+            snareSynth = new Tone.MembraneSynth({
+                pitchDecay: 0.025,
+                octaves: 2.5,
+                envelope: { attack: 0.001, decay: 0.2, sustain: 0 },
+                volume: -6
+            }).connect(masterComp);
+
+            // cowbell (phonk signature)
+            cowbellSynth = new Tone.MetalSynth({
+                frequency: 640,
+                harmonicity: 7.2,
+                modulationIndex: 28,
+                resonance: 800,
+                envelope: { attack: 0.001, decay: 0.18, release: 0.1 }
+            }).connect(reverbBus);
+            cowbellSynth.volume.value = -12;
+
+            // closed hat via noise
+            const hatNoise = new Tone.Noise("pink");
+            const hatFilter = new Tone.Filter(6500, "highpass");
+            const hatEnv = new Tone.Gain(0);
+            hatNoise.connect(hatFilter);
+            hatFilter.connect(hatEnv);
+            hatEnv.connect(masterComp);
+            hatEnv.gain.value = 0;
+            // trigger method
+            window.hatTrigger = (time, velocity = 0.6) => {
+                hatEnv.gain.setValueAtTime(velocity * 0.5, time);
+                hatEnv.gain.exponentialRampToValueAtTime(0.0001, time + 0.12);
+                hatNoise.start(time);
+            };
+
+            // 808 kick substitute (extra punch)
+            const kickSynth = new Tone.MembraneSynth({
+                pitchDecay: 0.05,
+                octaves: 4.2,
+                envelope: { attack: 0.002, decay: 0.35, sustain: 0 }
+            }).connect(masterComp);
+            window.kickTrigger = (time, note = "C2") => {
+                kickSynth.triggerAttackRelease(note, "32n", time, 0.8);
+                subKick.triggerAttackRelease("C1", "16n", time, 0.7);
+            };
+
+            // store extras
+            window.kick = kickSynth;
+            window.hatNoise = hatNoise;
+        }
+
+        // --- DRIFT PHONK PATTERNS (16-step grid, 130 BPM)---
+        function buildSequences() {
+            // clear old loops if any
+            if (bassPatternLoop) bassPatternLoop.dispose();
+            if (drumLoop) drumLoop.dispose();
+            if (accentLoop) accentLoop.dispose();
+            if (partSequence) partSequence.dispose();
+
+            // 1) BASS PATTERN: heavy syncopated 808 with pitch slides
+            const bassNotes = [
+                { time: "0:0:0", note: "F#1", duration: "4n", slide: false },   // downbeat heavy
+                { time: "0:0:2", note: "F#1", duration: "8n", slide: false },
+                { time: "0:1:0", note: "E1", duration: "2n", slide: true },      // slide feel
+                { time: "0:2:0", note: "F#1", duration: "8n", slide: false },
+                { time: "0:2:2", note: "G1", duration: "8n", slide: false },
+                { time: "0:3:0", note: "E1", duration: "4n", slide: true },
+                { time: "1:0:0", note: "F#1", duration: "4n", slide: false },
+                { time: "1:0:2", note: "F#1", duration: "8n", slide: false },
+                { time: "1:1:0", note: "D#1", duration: "2n", slide: true },
+                { time: "1:2:0", note: "F#1", duration: "8n", slide: false },
+                { time: "1:2:2", note: "G1", duration: "8n", slide: false },
+                { time: "1:3:0", note: "E1", duration: "2n", slide: true }
+            ];
+
+            bassPatternLoop = new Tone.Part((time, noteObj) => {
+                const freq = Tone.Frequency(noteObj.note).toFrequency();
+                if (noteObj.slide) {
+                    bassSynth.triggerAttack(freq, time, 0.85);
+                    bassSynth.setNote(freq, time + 0.05);
+                } else {
+                    bassSynth.triggerAttackRelease(freq, noteObj.duration, time, 0.82);
+                }
+                // add subtle sub kick accent on bass hits
+                if (Math.random() > 0.65) {
+                    subKick.triggerAttackRelease("C1", "32n", time, 0.5);
+                }
+            }, bassNotes);
+            bassPatternLoop.loop = true;
+            bassPatternLoop.loopEnd = "2m";
+
+            // 2) DRUM PATTERN (phonk style: kick + rim/snare + hats)
+            const drumEvents = [
+                { time: "0:0:0", type: "kick", vel: 1.0 },
+                { time: "0:0:1", type: "hat", vel: 0.5 },
+                { time: "0:0:2", type: "rim", vel: 0.7 },
+                { time: "0:0:3", type: "hat", vel: 0.4 },
+                { time: "0:1:0", type: "kick", vel: 0.9 },
+                { time: "0:1:2", type: "snare", vel: 0.85 },
+                { time: "0:2:0", type: "kick", vel: 0.95 },
+                { time: "0:2:1", type: "hat", vel: 0.45 },
+                { time: "0:2:2", type: "rim", vel: 0.7 },
+                { time: "0:3:0", type: "kick", vel: 0.85 },
+                { time: "0:3:2", type: "snare", vel: 0.9 },
+                { time: "1:0:0", type: "kick", vel: 1.0 },
+                { time: "1:0:2", type: "rim", vel: 0.75 },
+                { time: "1:1:0", type: "kick", vel: 0.9 },
+                { time: "1:1:2", type: "snare", vel: 0.85 },
+                { time: "1:2:0", type: "kick", vel: 1.0 },
+                { time: "1:2:2", type: "rim", vel: 0.8 },
+                { time: "1:3:0", type: "kick", vel: 0.88 },
+                { time: "1:3:2", type: "snare", vel: 0.9 }
+            ];
+
+            drumLoop = new Tone.Part((time, d) => {
+                switch(d.type) {
+                    case "kick": window.kickTrigger(time, "C2"); break;
+                    case "rim": rimshotSynth.triggerAttackRelease("16n", time, d.vel); break;
+                    case "snare": snareSynth.triggerAttackRelease("C3", "8n", time, d.vel); break;
+                    case "hat": window.hatTrigger(time, d.vel * 0.7); break;
+                }
+            }, drumEvents);
+            drumLoop.loop = true;
+            drumLoop.loopEnd = "2m";
+
+            // 3) ACCENTS + COWBELL (phonk spice) and additional lo-fi fills
+            const accentEvents = [
+                { time: "0:0:2.5", type: "cowbell", note: "G4" },
+                { time: "0:1:2", type: "cowbell", note: "F#4" },
+                { time: "0:2:3", type: "cowbell", note: "A4" },
+                { time: "1:0:1.5", type: "cowbell", note: "G4" },
+                { time: "1:1:2", type: "cowbell", note: "E4" },
+                { time: "1:3:1", type: "cowbell", note: "B4" }
+            ];
+
+            accentLoop = new Tone.Part((time, ev) => {
+                if(ev.type === "cowbell") {
+                    cowbellSynth.triggerAttackRelease(ev.note, "16n", time, 0.65);
+                }
+            }, accentEvents);
+            accentLoop.loop = true;
+            accentLoop.loopEnd = "2m";
+
+            // 4) MAIN MELODY (bell + lead phrase) drift-phonk nostalgic vibe
+            const melodyPhrase = [
+                { time: "0:0:0", notes: ["F#4", "A4"], instrument: "bell" },
+                { time: "0:1:0", notes: ["E4"], instrument: "bell" },
+                { time: "0:2:0", notes: ["D4", "F#4"], instrument: "bell" },
+                { time: "1:0:0", notes: ["C#4", "E4"], instrument: "bell" },
+                { time: "1:1:0", notes: ["B3"], instrument: "bell" },
+                { time: "1:2:0", notes: ["A3", "C#4"], instrument: "bell" },
+                { time: "1:3:0", notes: ["E4", "G4"], instrument: "lead" },
+                { time: "2:0:0", notes: ["F#4"], instrument: "lead", bend: true },
+                { time: "2:1:2", notes: ["E4", "G4"], instrument: "lead" },
+                { time: "2:2:0", notes: ["D4"], instrument: "bell" },
+                { time: "3:0:0", notes: ["C#5", "E5"], instrument: "lead" }
+            ];
+
+            partSequence = new Tone.Part((time, ev) => {
+                ev.notes.forEach(note => {
+                    if(ev.instrument === "bell") {
+                        bellSynth.triggerAttackRelease(note, "8n", time, 0.55);
+                    } else if(ev.instrument === "lead") {
+                        leadSynth.triggerAttackRelease(note, "6n", time, 0.7);
+                        if(ev.bend) {
+                            // micro pitch slide for style
+                            const now = time;
+                            leadSynth.setNote(Tone.Frequency(note).transpose(0.2).toFrequency(), now + 0.08);
+                        }
+                    }
+                });
+            }, melodyPhrase);
+            partSequence.loop = true;
+            partSequence.loopEnd = "4m";
+        }
+
+        // start all sequences & transport
+        function startMusic() {
+            if(isPlaying) return;
+            Tone.Transport.bpm.value = 130;
+            Tone.Transport.swing = 0.12;
+            // schedule all loops
+            bassPatternLoop.start(0);
+            drumLoop.start(0);
+            accentLoop.start(0);
+            partSequence.start(0);
+
+            // Add subtle LFO filter movement on master filter for lo-fi texture
+            const lfo = new Tone.LFO(0.22, 800, 2100);
+            lfo.connect(filterBus.frequency);
+            lfo.start();
+            // store for cleanup optional but not needed on stop persistence, but fine.
+
+            Tone.Transport.start();
+            isPlaying = true;
+
+            // start visual meter emulating bass/kick energy
+            if(meterInterval) clearInterval(meterInterval);
+            meterInterval = setInterval(() => {
+                if(!isPlaying) return;
+                // simulate dynamic visual based on bass and drum activity (random-ish but feels alive)
+                const intensity = Math.sin(Date.now() * 0.012) * 0.4 + 0.5 + (Math.random() * 0.2);
+                const widthPercent = Math.min(85, Math.floor(20 + intensity * 65));
+                document.getElementById("bassMeter").style.width = widthPercent + "%";
+            }, 110);
+        }
+
+        function stopMusic() {
+            if(!isPlaying) return;
+            Tone.Transport.stop();
+            if(meterInterval) {
+                clearInterval(meterInterval);
+                meterInterval = null;
+            }
+            document.getElementById("bassMeter").style.width = "0%";
+            isPlaying = false;
+        }
+
+        // toggle play/pause with UI update
+        let audioInitialized = false;
+        const playBtn = document.getElementById("playButton");
+        const playSymbolSpan = document.getElementById("playSymbol");
+        const statusSpan = document.getElementById("transportStatus");
+
+        async function togglePlayback() {
+            if(!audioInitialized) {
+                statusSpan.innerText = "⚡ initializing audio engine...";
+                try {
+                    await initAudio();
+                    audioInitialized = true;
+                    startMusic();
+                    playSymbolSpan.innerText = "⏸";
+                    statusSpan.innerText = "◢ DRIFT MODE ACTIVE · heavy bass rotation";
+                } catch(e) {
+                    console.warn(e);
+                    statusSpan.innerText = "⚠️ error: tap again to enable audio";
+                }
+                return;
+            }
+
+            if(isPlaying) {
+                stopMusic();
+                playSymbolSpan.innerText = "▶";
+                statusSpan.innerText = "⛁ transport stopped · tap to resume drift";
+            } else {
+                startMusic();
+                playSymbolSpan.innerText = "⏸";
+                statusSpan.innerText = "♫ phonk waves · 808 slides active";
+            }
+        }
+
+        playBtn.addEventListener("click", togglePlayback);
+
+        // handle page visibility to avoid glitches (optional)
+        document.addEventListener("visibilitychange", () => {
+            if(document.hidden && isPlaying && audioInitialized) {
+                // do not stop, just optional, but Tone works fine
+            }
+        });
+
+        // small fallback instruction
+        statusSpan.innerText = "⛁ system ready · click to drift";
+    })();
+</script>
+</body>
+</html>
