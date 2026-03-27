@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Miniature Asian City - Three.js</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Microsoft YaHei', 'Noto Sans CJK JP', 'Segoe UI', 'PingFang SC', Roboto, 'Helvetica Neue', sans-serif;
+        }
+        #info {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            background: rgba(0,0,0,0.7);
+            color: #fffaec;
+            padding: 8px 16px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            pointer-events: none;
+            font-size: 14px;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            border-left: 3px solid #e3a56d;
+        }
+        #controls-hint {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            z-index: 100;
+            background: rgba(0,0,0,0.5);
+            color: #ccc;
+            padding: 5px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            pointer-events: none;
+            font-family: monospace;
+        }
+        @media (max-width: 600px) {
+            #info { font-size: 10px; top: 12px; left: 12px; }
+            #controls-hint { font-size: 8px; }
+        }
+    </style>
+</head>
+<body>
+<div id="info">
+    🏯 ミニチュア東アジア都市 | Miniature East Asian City
+</div>
+<div id="controls-hint">
+    🖱️ Drag to rotate | Right-click drag to pan | Scroll to zoom
+</div>
+
+<!-- Import Three.js core and add-ons from CDN -->
+<script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.128.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.128.0/examples/jsm/"
+        }
+    }
+</script>
+
+<script type="module">
+    import * as THREE from 'three';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+    import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
+
+    // --- Setup Scene, Camera, Renderers ---
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x071a3b); // deep twilight blue
+    scene.fog = new THREE.FogExp2(0x071a3b, 0.008); // subtle fog for depth
+
+    // Camera: perspective, positioned to view the city from a slight angle
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(18, 12, 22);
+    camera.lookAt(0, 0, 0);
+
+    // WebGL Renderer
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.shadowMap.enabled = true; // enable shadows for depth
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap; // softer shadows
+    renderer.setPixelRatio(window.devicePixelRatio);
+    document.body.appendChild(renderer.domElement);
+
+    // CSS2DRenderer for floating labels (Japanese/Chinese style name signs)
+    const labelRenderer = new CSS2DRenderer();
+    labelRenderer.setSize(window.innerWidth, window.innerHeight);
+    labelRenderer.domElement.style.position = 'absolute';
+    labelRenderer.domElement.style.top = '0px';
+    labelRenderer.domElement.style.left = '0px';
+    labelRenderer.domElement.style.pointerEvents = 'none';
+    document.body.appendChild(labelRenderer.domElement);
+
+    // --- Controls ---
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;      // smooth inertia
+    controls.dampingFactor = 0.05;
+    controls.rotateSpeed = 1.0;
+    controls.zoomSpeed = 1.2;
+    controls.panSpeed = 0.8;
+    controls.enableZoom = true;
+    controls.enablePan = true;
+    controls.target.set(0, 1.5, 0);
+
+    // --- Lighting (atmospheric & dramatic) ---
+
+    // Ambient light - soft cool tone
+    const ambientLight = new THREE.AmbientLight(0x404060, 0.65);
+    scene.add(ambientLight);
+
+    // Main directional light (sun/moon)
+    const mainLight = new THREE.DirectionalLight(0xfff5e0, 1.2);
+    mainLight.position.set(8, 20, 5);
+    mainLight.castShadow = true;
+    mainLight.receiveShadow = true;
+    mainLight.shadow.mapSize.width = 1024;
+    mainLight.shadow.mapSize.height = 1024;
+    mainLight.shadow.camera.near = 0.5;
+    mainLight.shadow.camera.far = 35;
+    mainLight.shadow.camera.left = -10;
+    mainLight.shadow.camera.right = 10;
+    mainLight.shadow.camera.top = 10;
+    mainLight.shadow.camera.bottom = -10;
+    scene.add(mainLight);
+
+    // Fill light from below (soft bounce)
+    const fillLight = new THREE.PointLight(0x88aaff, 0.35);
+    fillLight.position.set(0, -2, 0);
+    scene.add(fillLight);
+
+    // Warm back rim light to emphasize silhouettes
+    const rimLight = new THREE.PointLight(0xe3a56d, 0.5);
+    rimLight.position.set(-5, 6, -8);
+    scene.add(rimLight);
+
+    // Accent lantern-like point lights around city (will add later around pagodas)
+    const accentLights = [];
+
+    // Soft hemisphere light for sky reflection
+    const hemiLight = new THREE.HemisphereLight(0x6c8ebf, 0x3d5a3a, 0.4);
+    scene.add(hemiLight);
+
+    // --- Helper: Create ground plane with subtle grid and reflective feel ---
+    const groundPlane = new THREE.Mesh(
+        new THREE.PlaneGeometry(32, 32),
+        new THREE.MeshStandardMaterial({ color: 0x2a3e2f, roughness: 0.7, metalness: 0.1, side: THREE.DoubleSide })
+    );
+    groundPlane.rotation.x = -Math.PI / 2;
+    groundPlane.position.y = -0.2;
+    groundPlane.receiveShadow = true;
+    scene.add(groundPlane);
+
+    // Decorative grid helper
+    const gridHelper = new THREE.GridHelper(34, 24, 0x88aa77, 0x557755);
+    gridHelper.position.y = -0.15;
+    gridHelper.material.transparent = true;
+    gridHelper.material.opacity = 0.35;
+    scene.add(gridHelper);
+
+    // --- Core function to create Asian-style architecture elements ---
+
+    // 1. Pagoda Tower (multi-tiered, curved roof)
+    function createPagoda(x, z, scale = 1.0, colorScheme = 'traditional') {
+        const group = new THREE.Group();
+        const baseH = 0.4 * scale;
+        const baseW = 1.4 * scale;
+        const baseMat = new THREE.MeshStandardMaterial({ color: 0xbc9a6c, roughness: 0.4, metalness: 0.1 });
+        const roofMat = new THREE.MeshStandardMaterial({ color: 0x8b5a2b, roughness: 0.7, metalness: 0.05 });
+        const darkWood = new THREE.MeshStandardMaterial({ color: 0x6e4a2a, roughness: 0.5 });
+        const redAccent = new THREE.MeshStandardMaterial({ color: 0xb53b2a, roughness: 0.3 });
+
+        // Base platform
+        const platform = new THREE.Mesh(new THREE.BoxGeometry(baseW, baseH, baseW), baseMat);
+        platform.position.y = baseH/2;
+        platform.castShadow = true;
+        platform.receiveShadow = true;
+        group.add(platform);
+
+        let currentY = baseH;
+        const tiers = [0.92, 0.82, 0.72, 0.6];
+        const tierColors = [0xcfa87c, 0xc29a6a, 0xb58a5a, 0xa87a4a];
+
+        for (let i = 0; i < tiers.length; i++) {
+            const tierH = 0.45 * scale * (1 - i * 0.1);
+            const tierW = baseW * tiers[i];
+            const tierDepth = tierW;
+            const tierBody = new THREE.Mesh(new THREE.BoxGeometry(tierW, tierH, tierDepth), new THREE.MeshStandardMaterial({ color: tierColors[i], roughness: 0.45 }));
+            tierBody.position.y = currentY + tierH/2;
+            tierBody.castShadow = true;
+            group.add(tierBody);
+
+            // Curved roof (using extruded cone or octagon? Use cone geometry for simplicity with style)
+            const roofRad = tierW * 0.65;
+            const roofHeight = 0.55 * scale * (1 - i * 0.07);
+            const roof = new THREE.Mesh(new THREE.ConeGeometry(roofRad, roofHeight, 16), roofMat);
+            roof.position.y = currentY + tierH + roofHeight/2;
+            roof.castShadow = true;
+            group.add(roof);
+
+            // Add decorative upturned corners: small spheres or cubes
+            const cornerOffset = tierW/2 - 0.12;
+            const cornerMat = new THREE.MeshStandardMaterial({ color: 0xd9a13b });
+            const cornerPositions = [[-cornerOffset, roof.position.y - roofHeight/2 + 0.08, -cornerOffset],
+                                     [ cornerOffset, roof.position.y - roofHeight/2 + 0.08, -cornerOffset],
+                                     [-cornerOffset, roof.position.y - roofHeight/2 + 0.08,  cornerOffset],
+                                     [ cornerOffset, roof.position.y - roofHeight/2 + 0.08,  cornerOffset]];
+            cornerPositions.forEach(pos => {
+                const knob = new THREE.Mesh(new THREE.SphereGeometry(0.08 * scale, 8), cornerMat);
+                knob.position.set(pos[0], pos[1], pos[2]);
+                group.add(knob);
+            });
+
+            currentY += tierH + roofHeight;
+        }
+
+        // Top finial (sacred ornament)
+        const finial = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.22, 0.45, 8), new THREE.MeshStandardMaterial({ color: 0xd4af37, metalness: 0.7, roughness: 0.3 }));
+        finial.position.y = currentY + 0.2;
+        finial.castShadow = true;
+        group.add(finial);
+
+        group.position.set(x, 0, z);
+        return group;
+    }
+
+    // 2. Traditional House (Japanese/Chinese inspired: curved roof, wooden structure)
+    function createHouse(x, z, variant = 0, scale = 1.0) {
+        const group = new THREE.Group();
+        const width = 1.1 * scale;
+        const depth = 1.1 * scale;
+        const wallHeight = 0.7 * scale;
+        const wallMat = new THREE.MeshStandardMaterial({ color: 0xe8d3b0, roughness: 0.6 });
+        const woodMat = new THREE.MeshStandardMaterial({ color: 0xab8e64, roughness: 0.5 });
+        const roofMat = new THREE.MeshStandardMaterial({ color: 0x7c5a3a, roughness: 0.8 });
+
+        // Base / platform
+        const base = new THREE.Mesh(new THREE.BoxGeometry(width + 0.1, 0.1, depth + 0.1), woodMat);
+        base.position.y = 0.05;
+        base.castShadow = true;
+        group.add(base);
+
+        // Walls
+        const walls = new THREE.Mesh(new THREE.BoxGeometry(width, wallHeight, depth), wallMat);
+        walls.position.y = 0.05 + wallHeight/2;
+        walls.castShadow = true;
+        walls.receiveShadow = true;
+        group.add(walls);
+
+        // Roof (curved using two parts or simple extruded shape: use a rotated cube or a wedge shape? For asian look, use a steep roof with overhang)
+        const roofOverhang = 0.25 * scale;
+        const roofWidth = width + roofOverhang;
+        const roofDepth = depth + roofOverhang;
+        const roofHeightMain = 0.55 * scale;
+        const roofMain = new THREE.Mesh(new THREE.BoxGeometry(roofWidth, 0.12, roofDepth), roofMat);
+        roofMain.position.y = 0.05 + wallHeight + 0.06;
+        roofMain.castShadow = true;
+        group.add(roofMain);
+
+        // Upper roof ridge (curved style)
+        const ridge = new THREE.Mesh(new THREE.BoxGeometry(roofWidth * 0.9, 0.12, 0.2), new THREE.MeshStandardMaterial({ color: 0xc28b4a }));
+        ridge.position.y = 0.05 + wallHeight + 0.16;
+        ridge.castShadow = true;
+        group.add(ridge);
+
+        // Decorative roof corners (little upturned ornaments)
+        const cornerDeco = new THREE.MeshStandardMaterial({ color: 0xc67b3a });
+        const offsets = [[roofWidth/2 - 0.12, 0.05 + wallHeight + 0.12, roofDepth/2 - 0.12],
+                         [-roofWidth/2 + 0.12, 0.05 + wallHeight + 0.12, roofDepth/2 - 0.12],
+                         [roofWidth/2 - 0.12, 0.05 + wallHeight + 0.12, -roofDepth/2 + 0.12],
+                         [-roofWidth/2 + 0.12, 0.05 + wallHeight + 0.12, -roofDepth/2 + 0.12]];
+        offsets.forEach(off => {
+            const knob = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.12, 0.1, 6), cornerDeco);
+            knob.position.set(off[0], off[1], off[2]);
+            group.add(knob);
+        });
+
+        // add window/door details (simple)
+        const doorMat = new THREE.MeshStandardMaterial({ color: 0xbd7e4a });
+        const door = new THREE.Mesh(new THREE.BoxGeometry(0.35, 0.5, 0.05), doorMat);
+        door.position.set(0, 0.3, depth/2 + 0.03);
+        door.castShadow = true;
+        group.add(door);
+
+        // optional small lantern
+        if (variant % 2 === 0) {
+            const lantern = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.1, 0.2, 6), new THREE.MeshStandardMaterial({ color: 0xe07a3a, emissive: 0x441100 }));
+            lantern.position.set(0.45, 0.45, 0.55);
+            lantern.castShadow = true;
+            group.add(lantern);
+        }
+
+        group.position.set(x, 0, z);
+        return group;
+    }
+
+    // 3. Shrine Gate (Torii style or Chinese Pailou inspired)
+    function createGate(x, z, angleY = 0) {
+        const group = new THREE.Group();
+        const pillarMat = new THREE.MeshStandardMaterial({ color: 0xb55a3a, roughness: 0.3, metalness: 0.1 });
+        const beamMat = new THREE.MeshStandardMaterial({ color: 0xd47e4a, roughness: 0.4 });
+
+        // left pillar
+        const leftPillar = new THREE.Mesh(new THREE.BoxGeometry(0.25, 1.8, 0.35), pillarMat);
+        leftPillar.position.set(-0.8, 0.9, 0);
+        leftPillar.castShadow = true;
+        group.add(leftPillar);
+
+        // right pillar
+        const rightPillar = new THREE.Mesh(new THREE.BoxGeometry(0.25, 1.8, 0.35), pillarMat);
+        rightPillar.position.set(0.8, 0.9, 0);
+        rightPillar.castShadow = true;
+        group.add(rightPillar);
+
+        // top cross beam
+        const topBeam = new THREE.Mesh(new THREE.BoxGeometry(1.9, 0.25, 0.6), beamMat);
+        topBeam.position.set(0, 1.65, 0);
+        topBeam.castShadow = true;
+        group.add(topBeam);
+
+        // second curved beam (style)
+        const curveBeam = new THREE.Mesh(new THREE.BoxGeometry(2.0, 0.2, 0.5), new THREE.MeshStandardMaterial({ color: 0xc97a3e }));
+        curveBeam.position.set(0, 1.4, 0.05);
+        curveBeam.castShadow = true;
+        group.add(curveBeam);
+
+        // decorative top
+        const ornament = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.28, 0.3, 6), new THREE.MeshStandardMaterial({ color: 0xe3a145 }));
+        ornament.position.set(0, 1.85, 0);
+        group.add(ornament);
+
+        group.position.set(x, 0, z);
+        group.rotation.y = angleY;
+        return group;
+    }
+
+    // 4. Stone Lantern (Japanese Ishidoro)
+    function createLantern(x, z) {
+        const group = new THREE.Group();
+        const stoneMat = new THREE.MeshStandardMaterial({ color: 0x8f7a60, roughness: 0.8 });
+        const base = new THREE.Mesh(new THREE.CylinderGeometry(0.35, 0.45, 0.25, 6), stoneMat);
+        base.position.y = 0.12;
+        group.add(base);
+
+        const pillar = new THREE.Mesh(new THREE.BoxGeometry(0.28, 0.8, 0.28), stoneMat);
+        pillar.position.y = 0.12 + 0.4;
+        group.add(pillar);
+
+        const firebox = new THREE.Mesh(new THREE.BoxGeometry(0.55, 0.35, 0.55), stoneMat);
+        firebox.position.y = 0.12 + 0.8;
+        group.add(firebox);
+
+        const roofCap = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.65, 0.2, 6), stoneMat);
+        roofCap.position.y = 0.12 + 1.0;
+        group.add(roofCap);
+
+        group.position.set(x, 0, z);
+        return group;
+    }
+
+    // 5. Cherry Blossom Tree (simple stylized)
+    function createSakuraTree(x, z) {
+        const group = new THREE.Group();
+        const trunkMat = new THREE.MeshStandardMaterial({ color: 0x8b5a3c });
+        const trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.25, 0.4, 0.9, 6), trunkMat);
+        trunk.position.y = 0.45;
+        trunk.castShadow = true;
+        group.add(trunk);
+
+        const foliageMat = new THREE.MeshStandardMaterial({ color: 0xd69c9f, emissive: 0x331111 });
+        const foliage1 = new THREE.Mesh(new THREE.SphereGeometry(0.55, 8), foliageMat);
+        foliage1.position.y = 0.95;
+        foliage1.castShadow = true;
+        group.add(foliage1);
+
+        const foliage2 = new THREE.Mesh(new THREE.SphereGeometry(0.45, 8), new THREE.MeshStandardMaterial({ color: 0xeaacb0 }));
+        foliage2.position.y = 1.3;
+        foliage2.castShadow = true;
+        group.add(foliage2);
+
+        const flowers = new THREE.Mesh(new THREE.SphereGeometry(0.3, 6), new THREE.MeshStandardMaterial({ color: 0xffb7c5 }));
+        flowers.position.y = 1.55;
+        group.add(flowers);
+
+        group.position.set(x, 0, z);
+        return group;
+    }
+
+    // --- Generate City Layout (grid with variation) ---
+
+    // Central grand Pagoda (main landmark)
+    const mainPagoda = createPagoda(0, 0, 1.1);
+    scene.add(mainPagoda);
+
+    // Add floating label for main temple
+    const mainLabelDiv = document.createElement('div');
+    mainLabelDiv.textContent = '🏯 大観音寺 | Kannon-ji';
+    mainLabelDiv.style.backgroundColor = 'rgba(30,20,15,0.7)';
+    mainLabelDiv.style.color = '#f5e6c4';
+    mainLabelDiv.style.padding = '4px 12px';
+    mainLabelDiv.style.borderRadius = '24px';
+    mainLabelDiv.style.fontSize = '14px';
+    mainLabelDiv.style.fontWeight = 'bold';
+    mainLabelDiv.style.border = '1px solid #e3b87c';
+    mainLabelDiv.style.backdropFilter = 'blur(4px)';
+    mainLabelDiv.style.fontFamily = 'inherit';
+    const labelObj = new CSS2DObject(mainLabelDiv);
+    labelObj.position.set(0, 2.4, 0);
+    scene.add(labelObj);
+
+    // Surrounding houses, pagodas, gates in radial + grid pattern
+    const positions = [
+        // ring of houses and shrines around main pagoda
+        [-2.2, -2.5], [2.4, -2.3], [-2.5, 2.2], [2.6, 2.4],
+        [-3.5, -1.2], [3.4, -1.3], [-3.3, 1.5], [3.5, 1.6],
+        [-1.2, -3.4], [1.3, -3.6], [-1.5, 3.5], [1.4, 3.6],
+        // outer residential streets
+        [-5.2, -1.8], [-5.8, 0.5], [-5.0, 2.2], [-4.2, -3.0], [-4.0, 3.2],
+        [5.0, -2.0], [5.5, 0.2], [5.2, 1.9], [4.5, 3.0], [4.0, -3.1],
+        [0.8, -5.0], [-0.5, -5.4], [1.5, -4.5], [-1.2, -5.2], [0, -4.2],
+        [0.6, 5.1], [-0.8, 5.4], [1.9, 4.6], [-1.9, 4.9], [0, 4.6],
+        // diagonal accents
+        [-3.2, -3.5], [3.5, -3.2], [-3.0, 3.8], [3.3, 3.6]
+    ];
+
+    // Add variety: mix of houses and small pagodas
+    positions.forEach((pos, idx) => {
+        const [x, z] = pos;
+        let type = idx % 5;
+        if (type === 0) {
+            // small pagoda
+            const smallPag = createPagoda(x, z, 0.65, 'mini');
+            scene.add(smallPag);
+        } else if (type === 1) {
+            // gate structure
+            const gate = createGate(x, z, Math.atan2(z, x));
+            scene.add(gate);
+        } else if (type === 2) {
+            const lantern = createLantern(x, z);
+            scene.add(lantern);
+        } else {
+            const house = createHouse(x, z, idx, 0.9 + Math.random() * 0.2);
+            scene.add(house);
+        }
+    });
+
+    // Additional Cherry Blossom trees to enhance asian atmosphere
+    const treeSpots = [
+        [-4.5, -3.8], [-3.0, -4.5], [4.2, -4.0], [3.5, -4.8], [5.2, -3.2],
+        [-5.0, 3.5], [-3.8, 4.2], [4.5, 4.0], [3.2, 5.0], [0, -6.0],
+        [-6.0, 1.2], [6.0, -1.0], [5.8, 2.5], [-5.5, -2.0], [-6.2, -0.8]
+    ];
+    treeSpots.forEach(pos => {
+        const tree = createSakuraTree(pos[0], pos[1]);
+        scene.add(tree);
+    });
+
+    // Additional decorative stone lanterns along pathways
+    const lanternSpots = [
+        [-2.0, -2.8], [2.2, -2.7], [-2.3, 2.4], [2.5, 2.3],
+        [-4.0, -1.0], [3.9, -1.2], [-4.2, 1.5], [4.0, 1.6],
+        [-1.0, -4.2], [1.2, -4.0], [-1.4, 4.3], [1.5, 4.2]
+    ];
+    lanternSpots.forEach(pos => {
+        const lantern = createLantern(pos[0], pos[1]);
+        scene.add(lantern);
+    });
+
+    // Add a few additional torii gates at entrances
+    const gateSpots = [[-4.8, -1.5, 0.8], [5.0, -1.2, -0.5], [-1.5, 5.2, 0.3], [1.8, 5.0, -0.2], [-5.0, 2.0, 0.6]];
+    gateSpots.forEach(pos => {
+        const gate = createGate(pos[0], pos[1], pos[2]);
+        scene.add(gate);
+    });
+
+    // --- Ambient particles (fireflies / cherry petals atmosphere) ---
+    const particleCount = 800;
+    const particlesGeometry = new THREE.BufferGeometry();
+    const particlePositions = new Float32Array(particleCount * 3);
+    for (let i = 0; i < particleCount; i++) {
+        particlePositions[i*3] = (Math.random() - 0.5) * 45;
+        particlePositions[i*3+1] = Math.random() * 6;
+        particlePositions[i*3+2] = (Math.random() - 0.5) * 40;
+    }
+    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
+    const particleMaterial = new THREE.PointsMaterial({
+        color: 0xffaa77,
+        size: 0.06,
+        transparent: true,
+        opacity: 0.5,
+        blending: THREE.AdditiveBlending
+    });
+    const particles = new THREE.Points(particlesGeometry, particleMaterial);
+    scene.add(particles);
+
+    // Second particle set - floating dust/sakura petals
+    const petalGeo = new THREE.BufferGeometry();
+    const petalCount = 400;
+    const petalPos = new Float32Array(petalCount * 3);
+    for (let i = 0; i < petalCount; i++) {
+        petalPos[i*3] = (Math.random() - 0.5) * 40;
+        petalPos[i*3+1] = Math.random() * 4.5;
+        petalPos[i*3+2] = (Math.random() - 0.5) * 38;
+    }
+    petalGeo.setAttribute('position', new THREE.BufferAttribute(petalPos, 3));
+    const petalMat = new THREE.PointsMaterial({ color: 0xefb7b0, size: 0.045, transparent: true, opacity: 0.6 });
+    const petals = new THREE.Points(petalGeo, petalMat);
+    scene.add(petals);
+
+    // Simple starry background effect (tiny sprites via points)
+    const starGeo = new THREE.BufferGeometry();
+    const starCount = 1200;
+    const starPos = new Float32Array(starCount * 3);
+    for (let i = 0; i < starCount; i++) {
+        starPos[i*3] = (Math.random() - 0.5) * 400;
+        starPos[i*3+1] = (Math.random() - 0.5) * 150;
+        starPos[i*3+2] = -80 + (Math.random() * -30);
+    }
+    starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+    const starMat = new THREE.PointsMaterial({ color: 0xfdf6e3, size: 0.12, transparent: true, opacity: 0.7 });
+    const stars = new THREE.Points(starGeo, starMat);
+    scene.add(stars);
+
+    // Simple water pond effect (reflective disc)
+    const pondMat = new THREE.MeshStandardMaterial({ color: 0x4f8a8b, metalness: 0.6, roughness: 0.2, emissive: 0x113333 });
+    const pond = new THREE.Mesh(new THREE.CylinderGeometry(1.8, 1.8, 0.1, 24), pondMat);
+    pond.position.set(-2.8, -0.1, 2.5);
+    pond.receiveShadow = true;
+    scene.add(pond);
+
+    // Add some floating red lanterns (small spheres with emission)
+    const lanternRedMat = new THREE.MeshStandardMaterial({ color: 0xcc5544, emissive: 0x442211 });
+    const lanternPositions = [[-1.2, 1.2, -2.0], [1.5, 1.1, -1.8], [0.5, 1.3, 2.2], [-0.8, 1.4, 3.0], [3.2, 1.2, 0.5], [-3.0, 1.2, 1.2]];
+    lanternPositions.forEach(pos => {
+        const lanternSphere = new THREE.Mesh(new THREE.SphereGeometry(0.22, 16), lanternRedMat);
+        lanternSphere.position.set(pos[0], pos[1], pos[2]);
+        lanternSphere.castShadow = true;
+        scene.add(lanternSphere);
+    });
+
+    // --- Animation Loop ---
+    let time = 0;
+    function animate() {
+        requestAnimationFrame(animate);
+        time += 0.008;
+
+        // Gentle floating animation for particles
+        particles.rotation.y = Math.sin(time * 0.1) * 0.05;
+        petals.rotation.x = Math.sin(time * 0.2) * 0.03;
+        stars.rotation.y += 0.0005;
+
+        // Animate accent lights intensity subtly
+        const intensity = 0.45 + Math.sin(time * 1.5) * 0.1;
+        rimLight.intensity = intensity;
+
+        // Update controls
+        controls.update();
+
+        // Render
+        renderer.render(scene, camera);
+        labelRenderer.render(scene, camera);
+    }
+
+    animate();
+
+    // Handle window resize
+    window.addEventListener('resize', onWindowResize, false);
+    function onWindowResize() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        labelRenderer.setSize(window.innerWidth, window.innerHeight);
+    }
+
+    // small console log to confirm loaded
+    console.log('Miniature Asian City Loaded | 東アジアの街');
+</script>
+</body>
+</html>

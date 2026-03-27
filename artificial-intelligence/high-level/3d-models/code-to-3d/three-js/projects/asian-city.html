@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miniature Asian City • Three.js</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: #111;
+            font-family: Arial, sans-serif;
+        }
+        canvas {
+            display: block;
+        }
+        #info {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: #fff;
+            background: rgba(0,0,0,0.5);
+            padding: 10px 15px;
+            border-radius: 8px;
+            pointer-events: none;
+            font-size: 14px;
+        }
+        #controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.6);
+            padding: 10px 20px;
+            border-radius: 30px;
+            color: #fff;
+            display: flex;
+            gap: 15px;
+            font-size: 13px;
+        }
+        button {
+            background: #222;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #444;
+        }
+    </style>
+</head>
+<body>
+<div id="info">
+    Miniature East-Asian City • Drag to rotate • Scroll to zoom • Japanese & Chinese inspired architecture
+</div>
+<div id="controls">
+    <button onclick="resetCamera()">Reset View</button>
+    <button onclick="toggleFog()">Toggle Fog</button>
+    <button onclick="toggleLights()">Toggle Night Lights</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.134.0/examples/js/controls/OrbitControls.js"></script>
+
+<script>
+    // Scene setup
+    let scene = new THREE.Scene();
+    let camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 2000);
+    let renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.shadowMap.enabled = true;
+    document.body.appendChild(renderer.domElement);
+
+    // Orbit controls
+    let controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.08;
+    controls.maxPolarAngle = Math.PI * 0.48;
+    controls.minDistance = 30;
+    controls.maxDistance = 400;
+
+    // Camera position (nice overview of the miniature city)
+    camera.position.set(120, 90, 140);
+
+    // Lighting
+    let ambientLight = new THREE.AmbientLight(0xccccff, 0.6);
+    scene.add(ambientLight);
+
+    let directionalLight = new THREE.DirectionalLight(0xffeecc, 1.1);
+    directionalLight.position.set(100, 150, 80);
+    directionalLight.castShadow = true;
+    directionalLight.shadow.mapSize.width = 2048;
+    directionalLight.shadow.mapSize.height = 2048;
+    directionalLight.shadow.camera.near = 10;
+    directionalLight.shadow.camera.far = 500;
+    directionalLight.shadow.camera.left = -150;
+    directionalLight.shadow.camera.right = 150;
+    directionalLight.shadow.camera.top = 150;
+    directionalLight.shadow.camera.bottom = -150;
+    scene.add(directionalLight);
+
+    // Night accent lights (paper lanterns feel)
+    let nightLights = [];
+    let nightMode = false;
+
+    function createNightLight(x, z, height) {
+        let light = new THREE.PointLight(0xffaa66, 2, 60);
+        light.position.set(x, height + 8, z);
+        scene.add(light);
+        nightLights.push(light);
+        light.visible = false;
+    }
+
+    // Fog for atmospheric miniature feel
+    let fogEnabled = true;
+    scene.fog = new THREE.FogExp2(0x112233, 0.0035);
+
+    // Ground - traditional stone/earth base with subtle grid
+    let groundGeo = new THREE.PlaneGeometry(800, 800);
+    let groundMat = new THREE.MeshLambertMaterial({
+        color: 0x223322,
+        flatShading: true
+    });
+    let ground = new THREE.Mesh(groundGeo, groundMat);
+    ground.rotation.x = -Math.PI / 2;
+    ground.receiveShadow = true;
+    scene.add(ground);
+
+    // Subtle grid for "miniature base"
+    let grid = new THREE.GridHelper(800, 80, 0x445544, 0x334433);
+    grid.position.y = 0.1;
+    scene.add(grid);
+
+    // Materials for Asian architecture
+    let roofMat = new THREE.MeshLambertMaterial({ color: 0x992222 });     // classic red/orange tiles
+    let wallMat = new THREE.MeshLambertMaterial({ color: 0xeeddcc });     // light wooden/paper walls
+    let darkWallMat = new THREE.MeshLambertMaterial({ color: 0x886633 }); // darker wood
+    let pillarMat = new THREE.MeshLambertMaterial({ color: 0x664422 });
+    let windowMat = new THREE.MeshLambertMaterial({ color: 0xffee99, emissive: 0xffdd66 });
+
+    function createPagoda(x, z, baseSize, heightLevels) {
+        let group = new THREE.Group();
+
+        let currentY = 2;
+        let currentScale = baseSize;
+
+        // Base platform
+        let base = new THREE.Mesh(
+            new THREE.BoxGeometry(baseSize * 1.4, 4, baseSize * 1.4),
+            darkWallMat
+        );
+        base.position.set(x, currentY, z);
+        base.castShadow = true;
+        base.receiveShadow = true;
+        group.add(base);
+        currentY += 4;
+
+        for (let i = 0; i < heightLevels; i++) {
+            // Main floor body (slightly tapered)
+            let bodyHeight = 12;
+            let body = new THREE.Mesh(
+                new THREE.BoxGeometry(currentScale, bodyHeight, currentScale),
+                i % 2 === 0 ? wallMat : darkWallMat
+            );
+            body.position.set(x, currentY + bodyHeight/2, z);
+            body.castShadow = true;
+            body.receiveShadow = true;
+            group.add(body);
+
+            // Windows / lattice details
+            if (i % 2 === 0) {
+                let winGeo = new THREE.PlaneGeometry(currentScale * 0.7, bodyHeight * 0.6);
+                let win = new THREE.Mesh(winGeo, windowMat);
+                win.position.set(x, currentY + bodyHeight/2, z + currentScale/2 + 0.1);
+                win.rotation.y = Math.PI;
+                group.add(win);
+            }
+
+            currentY += bodyHeight + 2;
+
+            // Tiered roof (curved up at edges - approximated with multiple boxes + slight rotation)
+            let roofWidth = currentScale * 1.35;
+            let roof = new THREE.Mesh(
+                new THREE.BoxGeometry(roofWidth, 3, roofWidth),
+                roofMat
+            );
+            roof.position.set(x, currentY, z);
+            roof.castShadow = true;
+            group.add(roof);
+
+            // Roof edge highlight
+            let roofEdge = new THREE.Mesh(
+                new THREE.BoxGeometry(roofWidth + 2, 1.5, roofWidth + 2),
+                new THREE.MeshLambertMaterial({ color: 0xccaa44 })
+            );
+            roofEdge.position.set(x, currentY + 1.8, z);
+            group.add(roofEdge);
+
+            currentY += 5;
+            currentScale *= 0.82; // taper upwards
+        }
+
+        // Top spire / finial
+        let spire = new THREE.Mesh(
+            new THREE.CylinderGeometry(0.8, 2, 18, 8),
+            pillarMat
+        );
+        spire.position.set(x, currentY + 8, z);
+        spire.castShadow = true;
+        group.add(spire);
+
+        // Small golden top
+        let top = new THREE.Mesh(
+            new THREE.SphereGeometry(2.5, 16, 16),
+            new THREE.MeshLambertMaterial({ color: 0xffdd44 })
+        );
+        top.position.set(x, currentY + 18, z);
+        group.add(top);
+
+        // Add a night light at the top
+        createNightLight(x, z, currentY + 12);
+
+        return group;
+    }
+
+    function createTempleHall(x, z, width, depth, height) {
+        let group = new THREE.Group();
+
+        // Main hall base
+        let base = new THREE.Mesh(
+            new THREE.BoxGeometry(width, 8, depth),
+            darkWallMat
+        );
+        base.position.set(x, 4, z);
+        base.castShadow = true;
+        base.receiveShadow = true;
+        group.add(base);
+
+        // Walls
+        let walls = new THREE.Mesh(
+            new THREE.BoxGeometry(width * 0.95, height, depth * 0.95),
+            wallMat
+        );
+        walls.position.set(x, 8 + height/2, z);
+        walls.castShadow = true;
+        group.add(walls);
+
+        // Large curved roof
+        let roof = new THREE.Mesh(
+            new THREE.BoxGeometry(width * 1.25, 6, depth * 1.25),
+            roofMat
+        );
+        roof.position.set(x, 8 + height + 4, z);
+        roof.castShadow = true;
+        group.add(roof);
+
+        // Roof decoration
+        let ridge = new THREE.Mesh(
+            new THREE.BoxGeometry(width * 1.1, 2, 4),
+            new THREE.MeshLambertMaterial({ color: 0xeedd88 })
+        );
+        ridge.position.set(x, 8 + height + 9, z);
+        group.add(ridge);
+
+        // Pillars
+        let pillarPositions = [
+            [-width/2 + 6, z - depth/2 + 6],
+            [width/2 - 6, z - depth/2 + 6],
+            [-width/2 + 6, z + depth/2 - 6],
+            [width/2 - 6, z + depth/2 - 6]
+        ];
+
+        pillarPositions.forEach(pos => {
+            let pillar = new THREE.Mesh(
+                new THREE.CylinderGeometry(3, 3.5, height + 10, 12),
+                pillarMat
+            );
+            pillar.position.set(x + pos[0], (height + 10)/2 + 4, pos[1]);
+            pillar.castShadow = true;
+            group.add(pillar);
+        });
+
+        // Night accent lights near entrance
+        createNightLight(x - width/2 + 15, z - depth/2 + 10, 12);
+        createNightLight(x + width/2 - 15, z - depth/2 + 10, 12);
+
+        return group;
+    }
+
+    function createSimpleHouse(x, z) {
+        let group = new THREE.Group();
+
+        // Base
+        let base = new THREE.Mesh(
+            new THREE.BoxGeometry(18, 10, 22),
+            darkWallMat
+        );
+        base.position.set(x, 5, z);
+        base.castShadow = true;
+        group.add(base);
+
+        // Roof
+        let roof = new THREE.Mesh(
+            new THREE.BoxGeometry(24, 6, 28),
+            roofMat
+        );
+        roof.position.set(x, 18, z);
+        roof.castShadow = true;
+        group.add(roof);
+
+        // Small chimney / decoration
+        let deco = new THREE.Mesh(
+            new THREE.BoxGeometry(4, 8, 4),
+            pillarMat
+        );
+        deco.position.set(x + 6, 24, z - 6);
+        group.add(deco);
+
+        createNightLight(x + 4, z, 14);
+
+        return group;
+    }
+
+    // Generate the city
+    function generateCity() {
+        // Clear previous buildings if regenerating
+        while (scene.children.length > 5) {
+            let obj = scene.children[scene.children.length - 1];
+            if (obj.type === "Group" || obj.type === "Mesh" && obj !== ground && obj !== grid) {
+                scene.remove(obj);
+            } else {
+                break;
+            }
+        }
+
+        // Main central pagoda (tall landmark)
+        let centralPagoda = createPagoda(0, 0, 28, 6);
+        scene.add(centralPagoda);
+
+        // Surrounding temple halls
+        scene.add(createTempleHall(-70, -60, 45, 35, 22));
+        scene.add(createTempleHall(75, -55, 40, 38, 25));
+        scene.add(createTempleHall(-65, 70, 38, 42, 20));
+        scene.add(createTempleHall(80, 65, 48, 32, 24));
+
+        // Smaller houses and secondary pagodas
+        for (let i = 0; i < 35; i++) {
+            let x = (Math.random() - 0.5) * 420;
+            let z = (Math.random() - 0.5) * 420;
+
+            // Avoid center cluster
+            let dist = Math.sqrt(x*x + z*z);
+            if (dist < 90) continue;
+
+            if (Math.random() > 0.75) {
+                // Occasional taller pagoda
+                let levels = Math.random() > 0.6 ? 4 : 3;
+                let pagoda = createPagoda(x, z, 14 + Math.random() * 12, levels);
+                scene.add(pagoda);
+            } else {
+                // Regular houses
+                let house = createSimpleHouse(x, z);
+                // Random rotation for more organic feel
+                house.rotation.y = Math.random() * Math.PI * 2;
+                scene.add(house);
+            }
+        }
+
+        // Add some cherry-blossom style trees (simple)
+        let treeMat = new THREE.MeshLambertMaterial({ color: 0x226622 });
+        let trunkMat = new THREE.MeshLambertMaterial({ color: 0x553322 });
+
+        for (let i = 0; i < 120; i++) {
+            let x = (Math.random() - 0.5) * 650;
+            let z = (Math.random() - 0.5) * 650;
+            let dist = Math.sqrt(x*x + z*z);
+            if (dist < 45 || dist > 380) continue;
+
+            let trunk = new THREE.Mesh(
+                new THREE.CylinderGeometry(2, 2.5, 14, 8),
+                trunkMat
+            );
+            trunk.position.set(x, 7, z);
+            trunk.castShadow = true;
+            scene.add(trunk);
+
+            let foliage = new THREE.Mesh(
+                new THREE.SphereGeometry(9 + Math.random() * 5, 12, 12),
+                treeMat
+            );
+            foliage.position.set(x, 18 + Math.random() * 4, z);
+            foliage.castShadow = true;
+            scene.add(foliage);
+        }
+
+        // Stone paths / roads (simple planes)
+        let pathMat = new THREE.MeshLambertMaterial({ color: 0x555544 });
+        let path1 = new THREE.Mesh(new THREE.PlaneGeometry(600, 18), pathMat);
+        path1.rotation.x = -Math.PI / 2;
+        path1.position.set(0, 0.2, 0);
+        scene.add(path1);
+
+        let path2 = new THREE.Mesh(new THREE.PlaneGeometry(18, 600), pathMat);
+        path2.rotation.x = -Math.PI / 2;
+        path2.position.set(0, 0.2, 0);
+        scene.add(path2);
+    }
+
+    // Animation loop
+    let clock = new THREE.Clock();
+
+    function animate() {
+        requestAnimationFrame(animate);
+        let time = clock.getElapsedTime();
+
+        // Gentle wind sway on trees would require more complex setup; skip for simplicity
+
+        controls.update();
+        renderer.render(scene, camera);
+    }
+
+    // Helpers
+    window.resetCamera = function() {
+        camera.position.set(120, 90, 140);
+        controls.target.set(0, 20, 0);
+        controls.update();
+    };
+
+    window.toggleFog = function() {
+        fogEnabled = !fogEnabled;
+        if (fogEnabled) {
+            scene.fog = new THREE.FogExp2(0x112233, 0.0035);
+        } else {
+            scene.fog = null;
+        }
+    };
+
+    window.toggleLights = function() {
+        nightMode = !nightMode;
+        nightLights.forEach(light => {
+            light.visible = nightMode;
+            light.intensity = nightMode ? 2.5 : 0;
+        });
+        // Dim ambient slightly at night
+        ambientLight.intensity = nightMode ? 0.35 : 0.6;
+    };
+
+    // Resize handler
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // Initialize everything
+    generateCity();
+    animate();
+
+    // Initial night lights off
+    nightLights.forEach(l => l.visible = false);
+</script>
+</body>
+</html>

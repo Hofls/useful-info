@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miniature Asian City</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { margin: 0; overflow: hidden; background: linear-gradient(to bottom, #87CEEB 0%, #E0F6FF 50%, #FFF8DC 100%); }
+        #canvas-container { width: 100vw; height: 100vh; }
+        .ui-overlay {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 10;
+            pointer-events: none;
+        }
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Courier New', monospace;
+            color: #5c4033;
+            font-size: 1.5rem;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+    </style>
+    <base target="_blank">
+</head>
+<body>
+<div class="ui-overlay">
+    <h1 class="text-4xl font-bold text-amber-900 drop-shadow-lg" style="font-family: 'Georgia', serif;">
+        東方 miniature
+    </h1>
+    <p class="text-amber-800 mt-2 text-sm opacity-80">Drag to rotate • Scroll to zoom</p>
+</div>
+<div id="loading" class="loading">Building city...</div>
+<div id="canvas-container"></div>
+
+<script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+    }
+</script>
+
+<script type="module">
+    import * as THREE from 'three';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+    // Scene setup
+    const scene = new THREE.Scene();
+    scene.fog = new THREE.Fog(0xE0F6FF, 20, 150);
+
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(40, 30, 40);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+    controls.maxPolarAngle = Math.PI / 2 - 0.1;
+    controls.minDistance = 10;
+    controls.maxDistance = 100;
+    controls.target.set(0, 0, 0);
+
+    // Lighting
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+    scene.add(ambientLight);
+
+    const sunLight = new THREE.DirectionalLight(0xfff5e6, 1.2);
+    sunLight.position.set(50, 80, 30);
+    sunLight.castShadow = true;
+    sunLight.shadow.mapSize.width = 2048;
+    sunLight.shadow.mapSize.height = 2048;
+    sunLight.shadow.camera.near = 0.5;
+    sunLight.shadow.camera.far = 200;
+    sunLight.shadow.camera.left = -50;
+    sunLight.shadow.camera.right = 50;
+    sunLight.shadow.camera.top = 50;
+    sunLight.shadow.camera.bottom = -50;
+    scene.add(sunLight);
+
+    // Materials
+    const materials = {
+        wood: new THREE.MeshStandardMaterial({ color: 0x8B4513, roughness: 0.8 }),
+        woodDark: new THREE.MeshStandardMaterial({ color: 0x5c4033, roughness: 0.9 }),
+        roofRed: new THREE.MeshStandardMaterial({ color: 0xB22222, roughness: 0.6 }),
+        roofGrey: new THREE.MeshStandardMaterial({ color: 0x4a5568, roughness: 0.7 }),
+        wallWhite: new THREE.MeshStandardMaterial({ color: 0xf5f5dc, roughness: 0.9 }),
+        wallBeige: new THREE.MeshStandardMaterial({ color: 0xE8DCC4, roughness: 0.9 }),
+        stone: new THREE.MeshStandardMaterial({ color: 0x808080, roughness: 0.9 }),
+        gold: new THREE.MeshStandardMaterial({ color: 0xFFD700, metalness: 0.6, roughness: 0.3 }),
+        green: new THREE.MeshStandardMaterial({ color: 0x228B22, roughness: 0.8 }),
+        water: new THREE.MeshStandardMaterial({
+            color: 0x4fc3f7,
+            transparent: true,
+            opacity: 0.7,
+            roughness: 0.1,
+            metalness: 0.1
+        })
+    };
+
+    // Helper function to create box
+    function createBox(w, h, d, material, x, y, z, parent) {
+        const geometry = new THREE.BoxGeometry(w, h, d);
+        const mesh = new THREE.Mesh(geometry, material);
+        mesh.position.set(x, y, z);
+        mesh.castShadow = true;
+        mesh.receiveShadow = true;
+        if (parent) parent.add(mesh);
+        return mesh;
+    }
+
+    // Create Pagoda
+    function createPagoda(x, z, scale = 1) {
+        const group = new THREE.Group();
+        group.position.set(x, 0, z);
+        group.scale.set(scale, scale, scale);
+
+        // Base platform
+        createBox(8, 1, 8, materials.stone, 0, 0.5, 0, group);
+        createBox(7, 0.5, 7, materials.stone, 0, 1.25, 0, group);
+
+        // Central pillar
+        createBox(2, 12, 2, materials.woodDark, 0, 7, 0, group);
+
+        // Floors
+        const floors = [
+            { y: 3, w: 7, h: 2.5 },
+            { y: 6, w: 6, h: 2 },
+            { y: 8.5, w: 5, h: 1.8 },
+            { y: 10.5, w: 4, h: 1.5 }
+        ];
+
+        floors.forEach(floor => {
+            // Floor structure
+            createBox(floor.w, 0.3, floor.w, materials.wood, 0, floor.y, 0, group);
+
+            // Roof
+            const roofGeo = new THREE.ConeGeometry(floor.w * 0.9, 1.5, 4);
+            const roof = new THREE.Mesh(roofGeo, materials.roofRed);
+            roof.position.set(0, floor.y + floor.h/2 + 0.5, 0);
+            roof.rotation.y = Math.PI / 4;
+            roof.castShadow = true;
+            group.add(roof);
+
+            // Eaves extension
+            const eaveGeo = new THREE.ConeGeometry(floor.w * 1.1, 0.3, 4);
+            const eave = new THREE.Mesh(eaveGeo, materials.roofRed);
+            eave.position.set(0, floor.y + floor.h/2 - 0.2, 0);
+            eave.rotation.y = Math.PI / 4;
+            eave.castShadow = true;
+            group.add(eave);
+
+            // Balcony railings
+            const railH = 0.4;
+            createBox(floor.w - 0.2, railH, 0.2, materials.wood, 0, floor.y + railH/2, floor.w/2 - 0.1, group);
+            createBox(floor.w - 0.2, railH, 0.2, materials.wood, 0, floor.y + railH/2, -floor.w/2 + 0.1, group);
+            createBox(0.2, railH, floor.w - 0.4, materials.wood, floor.w/2 - 0.1, floor.y + railH/2, 0, group);
+            createBox(0.2, railH, floor.w - 0.4, materials.wood, -floor.w/2 + 0.1, floor.y + railH/2, 0, group);
+        });
+
+        // Top spire
+        const spireGeo = new THREE.ConeGeometry(0.3, 3, 8);
+        const spire = new THREE.Mesh(spireGeo, materials.gold);
+        spire.position.set(0, 13, 0);
+        spire.castShadow = true;
+        group.add(spire);
+
+        // Decorative rings
+        for (let i = 0; i < 5; i++) {
+            const ringGeo = new THREE.TorusGeometry(0.4 - i*0.05, 0.05, 8, 16);
+            const ring = new THREE.Mesh(ringGeo, materials.gold);
+            ring.position.set(0, 12 + i * 0.4, 0);
+            ring.rotation.x = Math.PI / 2;
+            group.add(ring);
+        }
+
+        scene.add(group);
+        return group;
+    }
+
+    // Create Traditional House
+    function createTraditionalHouse(x, z, rotation = 0, type = 'japanese') {
+        const group = new THREE.Group();
+        group.position.set(x, 0, z);
+        group.rotation.y = rotation;
+
+        const width = 6;
+        const depth = 5;
+        const wallHeight = 3;
+
+        // Stone foundation
+        createBox(width + 0.5, 0.5, depth + 0.5, materials.stone, 0, 0.25, 0, group);
+
+        // Walls
+        createBox(width, wallHeight, 0.3, materials.wallWhite, 0, wallHeight/2 + 0.5, depth/2, group);
+        createBox(width, wallHeight, 0.3, materials.wallWhite, 0, wallHeight/2 + 0.5, -depth/2, group);
+        createBox(0.3, wallHeight, depth - 0.6, materials.wallWhite, width/2, wallHeight/2 + 0.5, 0, group);
+        createBox(0.3, wallHeight, depth - 0.6, materials.wallWhite, -width/2, wallHeight/2 + 0.5, 0, group);
+
+        // Wooden beams
+        createBox(width + 0.2, 0.3, 0.4, materials.wood, 0, wallHeight + 0.5, depth/2, group);
+        createBox(width + 0.2, 0.3, 0.4, materials.wood, 0, wallHeight + 0.5, -depth/2, group);
+        createBox(0.4, 0.3, depth + 0.2, materials.wood, width/2, wallHeight + 0.5, 0, group);
+        createBox(0.4, 0.3, depth + 0.2, materials.wood, -width/2, wallHeight + 0.5, 0, group);
+
+        // Roof
+        const roofHeight = 2.5;
+        const roofOverhang = 1.5;
+
+        // Main roof prism
+        const roofShape = new THREE.Shape();
+        roofShape.moveTo(-width/2 - roofOverhang, 0);
+        roofShape.lineTo(0, roofHeight);
+        roofShape.lineTo(width/2 + roofOverhang, 0);
+        roofShape.lineTo(-width/2 - roofOverhang, 0);
+
+        const extrudeSettings = { depth: depth + roofOverhang * 2, bevelEnabled: false };
+        const roofGeo = new THREE.ExtrudeGeometry(roofShape, extrudeSettings);
+        const roof = new THREE.Mesh(roofGeo, type === 'japanese' ? materials.roofGrey : materials.roofRed);
+        roof.position.set(0, wallHeight + 0.7, -depth/2 - roofOverhang);
+        roof.castShadow = true;
+        group.add(roof);
+
+        // Entrance
+        createBox(1.5, 2.2, 0.1, materials.woodDark, 0, 1.6, depth/2 + 0.15, group);
+
+        // Door
+        createBox(1.2, 2, 0.05, materials.wood, 0, 1.5, depth/2 + 0.2, group);
+
+        // Windows (shoji style)
+        const windowSize = 1.2;
+        createBox(windowSize, windowSize, 0.1, materials.wallBeige, -1.5, 2, depth/2 + 0.15, group);
+        createBox(windowSize, windowSize, 0.1, materials.wallBeige, 1.5, 2, depth/2 + 0.15, group);
+
+        // Lantern
+        const lanternGroup = new THREE.Group();
+        lanternGroup.position.set(width/2 + 0.5, 2, depth/2 + 0.5);
+        createBox(0.3, 0.1, 0.3, materials.woodDark, 0, 0, 0, lanternGroup);
+        createBox(0.25, 0.4, 0.25, new THREE.MeshStandardMaterial({ color: 0xffaa00, emissive: 0xff6600, emissiveIntensity: 0.3 }), 0, 0.25, 0, lanternGroup);
+        createBox(0.3, 0.05, 0.3, materials.woodDark, 0, 0.5, 0, lanternGroup);
+        group.add(lanternGroup);
+
+        scene.add(group);
+        return group;
+    }
+
+    // Create Torii Gate
+    function createTorii(x, z, scale = 1) {
+        const group = new THREE.Group();
+        group.position.set(x, 0, z);
+        group.scale.set(scale, scale, scale);
+
+        const pillarH = 8;
+        const pillarW = 0.6;
+        const span = 6;
+
+        // Pillars
+        createBox(pillarW, pillarH, pillarW, materials.roofRed, -span/2, pillarH/2, 0, group);
+        createBox(pillarW, pillarH, pillarW, materials.roofRed, span/2, pillarH/2, 0, group);
+
+        // Base stones
+        createBox(pillarW + 0.4, 0.8, pillarW + 0.4, materials.stone, -span/2, 0.4, 0, group);
+        createBox(pillarW + 0.4, 0.8, pillarW + 0.4, materials.stone, span/2, 0.4, 0, group);
+
+        // Lower lintel (nuki)
+        createBox(span + 1, 0.4, 0.5, materials.wood, 0, pillarH * 0.6, 0, group);
+
+        // Upper lintel (kasagi) - curved
+        const upperLintelGeo = new THREE.BoxGeometry(span + 2, 0.6, 0.8);
+        const upperLintel = new THREE.Mesh(upperLintelGeo, materials.roofRed);
+        upperLintel.position.set(0, pillarH - 0.3, 0);
+        upperLintel.castShadow = true;
+
+        // Add curve effect by scaling ends
+        upperLintel.scale.set(1, 1, 1);
+        group.add(upperLintel);
+
+        // Top cap
+        createBox(span + 2.2, 0.15, 0.9, materials.roofRed, 0, pillarH + 0.1, 0, group);
+
+        // Center strut
+        createBox(0.4, pillarH * 0.35, 0.4, materials.roofRed, 0, pillarH * 0.8, 0, group);
+
+        scene.add(group);
+        return group;
+    }
+
+    // Create Cherry Blossom Tree
+    function createSakuraTree(x, z, scale = 1) {
+        const group = new THREE.Group();
+        group.position.set(x, 0, z);
+        group.scale.set(scale, scale, scale);
+
+        // Trunk
+        const trunkGeo = new THREE.CylinderGeometry(0.3, 0.5, 4, 8);
+        const trunk = new THREE.Mesh(trunkGeo, materials.woodDark);
+        trunk.position.y = 2;
+        trunk.castShadow = true;
+        group.add(trunk);
+
+        // Branches
+        const branchPositions = [
+            { x: 1, y: 3.5, z: 0, r: 0.2 },
+            { x: -0.8, y: 3.8, z: 0.5, r: 0.15 },
+            { x: 0, y: 4.2, z: -0.8, r: 0.18 }
+        ];
+
+        branchPositions.forEach(pos => {
+            const branchGeo = new THREE.CylinderGeometry(pos.r * 0.5, pos.r, 2, 6);
+            const branch = new THREE.Mesh(branchGeo, materials.woodDark);
+            branch.position.set(pos.x/2, pos.y, pos.z/2);
+            branch.rotation.z = -pos.x * 0.5;
+            branch.rotation.x = pos.z * 0.5;
+            group.add(branch);
+        });
+
+        // Foliage - pink spheres
+        const foliageMaterial = new THREE.MeshStandardMaterial({
+            color: 0xffb7c5,
+            roughness: 0.8,
+            transparent: true,
+            opacity: 0.9
+        });
+
+        const foliagePositions = [
+            { x: 0, y: 5, z: 0, s: 2.5 },
+            { x: 1.5, y: 4.5, z: 0, s: 1.8 },
+            { x: -1.2, y: 4.8, z: 0.8, s: 1.6 },
+            { x: 0.3, y: 5.5, z: -1, s: 1.9 },
+            { x: -0.5, y: 4.2, z: -0.5, s: 1.4 }
+        ];
+
+        foliagePositions.forEach(pos => {
+            const foliage = new THREE.Mesh(
+                new THREE.IcosahedronGeometry(pos.s, 1),
+                foliageMaterial
+            );
+            foliage.position.set(pos.x, pos.y, pos.z);
+            foliage.castShadow = true;
+            group.add(foliage);
+        });
+
+        scene.add(group);
+        return group;
+    }
+
+    // Create Stone Lantern (Toro)
+    function createStoneLantern(x, z) {
+        const group = new THREE.Group();
+        group.position.set(x, 0, z);
+
+        // Base
+        createBox(0.8, 0.4, 0.8, materials.stone, 0, 0.2, 0, group);
+        // Post
+        createBox(0.4, 1.5, 0.4, materials.stone, 0, 1.15, 0, group);
+        // Light box
+        createBox(0.6, 0.6, 0.6, materials.stone, 0, 2.2, 0, group);
+        // Roof
+        const roofGeo = new THREE.ConeGeometry(0.7, 0.4, 4);
+        const roof = new THREE.Mesh(roofGeo, materials.stone);
+        roof.position.set(0, 2.7, 0);
+        roof.rotation.y = Math.PI / 4;
+        group.add(roof);
+        // Top
+        createBox(0.2, 0.2, 0.2, materials.stone, 0, 3, 0, group);
+
+        scene.add(group);
+        return group;
+    }
+
+    // Create Bridge
+    function createBridge(x, z, rotation = 0) {
+        const group = new THREE.Group();
+        group.position.set(x, 0, z);
+        group.rotation.y = rotation;
+
+        const length = 12;
+        const width = 3;
+
+        // Arch curve
+        const segments = 10;
+        for (let i = 0; i <= segments; i++) {
+            const t = i / segments;
+            const xPos = (t - 0.5) * length;
+            const yPos = Math.sin(t * Math.PI) * 2;
+
+            // Deck
+            createBox(length/segments + 0.2, 0.3, width, materials.wood, xPos, yPos + 0.5, 0, group);
+
+            // Railings
+            createBox(length/segments + 0.2, 0.1, 0.1, materials.woodDark, xPos, yPos + 1.2, width/2 - 0.1, group);
+            createBox(length/segments + 0.2, 0.1, 0.1, materials.woodDark, xPos, yPos + 1.2, -width/2 + 0.1, group);
+
+            // Posts
+            if (i % 2 === 0) {
+                createBox(0.15, 0.8, 0.15, materials.woodDark, xPos, yPos + 0.9, width/2 - 0.1, group);
+                createBox(0.15, 0.8, 0.15, materials.woodDark, xPos, yPos + 0.9, -width/2 + 0.1, group);
+            }
+        }
+
+        scene.add(group);
+        return group;
+    }
+
+    // Create Pond
+    function createPond(x, z, radius) {
+        const geometry = new THREE.CircleGeometry(radius, 32);
+        const pond = new THREE.Mesh(geometry, materials.water);
+        pond.rotation.x = -Math.PI / 2;
+        pond.position.set(x, 0.1, z);
+        pond.receiveShadow = true;
+        scene.add(pond);
+
+        // Lily pads
+        for (let i = 0; i < 5; i++) {
+            const angle = (i / 5) * Math.PI * 2;
+            const dist = radius * 0.6 * Math.random();
+            const pad = new THREE.Mesh(
+                new THREE.CircleGeometry(0.4, 16),
+                materials.green
+            );
+            pad.rotation.x = -Math.PI / 2;
+            pad.position.set(
+                x + Math.cos(angle) * dist,
+                0.15,
+                z + Math.sin(angle) * dist
+            );
+            scene.add(pad);
+        }
+
+        return pond;
+    }
+
+    // Create Ground
+    function createGround() {
+        // Main grass
+        const groundGeo = new THREE.PlaneGeometry(120, 120);
+        const groundMat = new THREE.MeshStandardMaterial({
+            color: 0x7cb342,
+            roughness: 1
+        });
+        const ground = new THREE.Mesh(groundGeo, groundMat);
+        ground.rotation.x = -Math.PI / 2;
+        ground.receiveShadow = true;
+        scene.add(ground);
+
+        // Path
+        const pathShape = new THREE.Shape();
+        pathShape.moveTo(-2, 0);
+        pathShape.lineTo(2, 0);
+        pathShape.lineTo(2, 40);
+        pathShape.lineTo(-2, 40);
+        pathShape.lineTo(-2, 0);
+
+        const pathGeo = new THREE.PlaneGeometry(4, 80);
+        const pathMat = new THREE.MeshStandardMaterial({
+            color: 0xd2b48c,
+            roughness: 0.9
+        });
+        const path = new THREE.Mesh(pathGeo, pathMat);
+        path.rotation.x = -Math.PI / 2;
+        path.position.set(0, 0.02, 20);
+        path.receiveShadow = true;
+        scene.add(path);
+
+        // Side paths
+        const sidePath1 = new THREE.Mesh(new THREE.PlaneGeometry(3, 30), pathMat);
+        sidePath1.rotation.x = -Math.PI / 2;
+        sidePath1.rotation.z = Math.PI / 2;
+        sidePath1.position.set(-15, 0.02, 10);
+        scene.add(sidePath1);
+
+        const sidePath2 = new THREE.Mesh(new THREE.PlaneGeometry(3, 30), pathMat);
+        sidePath2.rotation.x = -Math.PI / 2;
+        sidePath2.rotation.z = Math.PI / 2;
+        sidePath2.position.set(15, 0.02, 10);
+        scene.add(sidePath2);
+    }
+
+    // Build the city
+    createGround();
+
+    // Central Pagoda
+    createPagoda(0, -10, 1.2);
+
+    // Torii gate at entrance
+    createTorii(0, 35, 1);
+
+    // Houses along paths
+    createTraditionalHouse(-12, 5, Math.PI / 2, 'japanese');
+    createTraditionalHouse(-12, 15, Math.PI / 2, 'chinese');
+    createTraditionalHouse(12, 5, -Math.PI / 2, 'chinese');
+    createTraditionalHouse(12, 15, -Math.PI / 2, 'japanese');
+    createTraditionalHouse(-12, 25, Math.PI / 2, 'japanese');
+    createTraditionalHouse(12, 25, -Math.PI / 2, 'chinese');
+
+    // Bridge over pond
+    createBridge(0, 20, 0);
+
+    // Ponds
+    createPond(-8, 20, 5);
+    createPond(8, 20, 5);
+
+    // Trees
+    const treePositions = [
+        [-6, 0], [-10, -5], [-8, 8], [-14, 12],
+        [6, 0], [10, -5], [8, 8], [14, 12],
+        [-5, 30], [5, 30], [-10, 35], [10, 35],
+        [-20, 0], [20, 0], [-18, 20], [18, 20]
+    ];
+
+    treePositions.forEach(pos => {
+        createSakuraTree(pos[0], pos[1], 0.8 + Math.random() * 0.4);
+    });
+
+    // Stone lanterns
+    createStoneLantern(-3, 25);
+    createStoneLantern(3, 25);
+    createStoneLantern(-3, 15);
+    createStoneLantern(3, 15);
+
+    // Decorative rocks
+    for (let i = 0; i < 15; i++) {
+        const rock = new THREE.Mesh(
+            new THREE.DodecahedronGeometry(0.5 + Math.random() * 0.5),
+            materials.stone
+        );
+        rock.position.set(
+            (Math.random() - 0.5) * 50,
+            0.3,
+            (Math.random() - 0.5) * 40 - 10
+        );
+        rock.castShadow = true;
+        rock.receiveShadow = true;
+        scene.add(rock);
+    }
+
+    // Falling petals particle system
+    const petalCount = 200;
+    const petalGeo = new THREE.PlaneGeometry(0.1, 0.1);
+    const petalMat = new THREE.MeshBasicMaterial({
+        color: 0xffb7c5,
+        side: THREE.DoubleSide,
+        transparent: true,
+        opacity: 0.8
+    });
+
+    const petals = [];
+    for (let i = 0; i < petalCount; i++) {
+        const petal = new THREE.Mesh(petalGeo, petalMat);
+        petal.position.set(
+            (Math.random() - 0.5) * 60,
+            Math.random() * 30 + 5,
+            (Math.random() - 0.5) * 60
+        );
+        petal.rotation.set(
+            Math.random() * Math.PI,
+            Math.random() * Math.PI,
+            Math.random() * Math.PI
+        );
+        petal.userData = {
+            speedY: 0.02 + Math.random() * 0.03,
+            speedRot: (Math.random() - 0.5) * 0.02,
+            sway: Math.random() * 0.02
+        };
+        scene.add(petal);
+        petals.push(petal);
+    }
+
+    // Remove loading text
+    document.getElementById('loading').style.display = 'none';
+
+    // Animation loop
+    function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+
+        // Animate petals
+        petals.forEach(petal => {
+            petal.position.y -= petal.userData.speedY;
+            petal.position.x += Math.sin(Date.now() * 0.001 + petal.position.y) * petal.userData.sway;
+            petal.rotation.x += petal.userData.speedRot;
+            petal.rotation.y += petal.userData.speedRot;
+
+            if (petal.position.y < 0) {
+                petal.position.y = 30;
+                petal.position.x = (Math.random() - 0.5) * 60;
+                petal.position.z = (Math.random() - 0.5) * 60;
+            }
+        });
+
+        renderer.render(scene, camera);
+    }
+
+    // Handle resize
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    animate();
+</script>
+</body>
+</html>
