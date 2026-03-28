@@ -1,0 +1,8 @@
+[project]
+name = "hello-world"
+version = "0.1"
+
+dependencies = [
+    "midiutil==1.2.1",
+]
+
