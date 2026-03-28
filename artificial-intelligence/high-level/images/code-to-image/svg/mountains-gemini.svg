@@ -1,0 +1,34 @@
+<svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg" style="background-color: #0a0a1a;">
+  <defs>
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#16213e;stop-opacity:1" />
+    </linearGradient>
+    
+    <radialGradient id="sunGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#ff2e63;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#08d9d6;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+
+  <rect width="800" height="500" fill="url(#skyGradient)" />
+
+  <circle cx="400" cy="250" r="120" fill="url(#sunGradient)" opacity="0.6">
+    <animate attributeName="r" values="120;130;120" dur="5s" repeatCount="indefinite" />
+  </circle>
+
+  <polygon points="0,500 200,200 400,350 600,150 800,500" fill="#0f3460" opacity="0.5" />
+
+  <polygon points="0,500 150,300 350,450 550,250 800,500" fill="#16213e" />
+
+  <path d="M-100 500 L300 150 L500 500 Z" fill="#090915" stroke="#08d9d6" stroke-width="1" />
+  
+  <g stroke="#08d9d6" stroke-width="0.5" opacity="0.2">
+    <line x1="0" y1="420" x2="800" y2="420" />
+    <line x1="0" y1="440" x2="800" y2="440" />
+    <line x1="0" y1="470" x2="800" y2="470" />
+    <line x1="400" y1="400" x2="0" y2="500" />
+    <line x1="400" y1="400" x2="400" y2="500" />
+    <line x1="400" y1="400" x2="800" y2="500" />
+  </g>
+</svg>

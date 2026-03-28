@@ -1,0 +1,78 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+
+    <!-- Background gradient -->
+    <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#1b1f3b"/>
+            <stop offset="40%" stop-color="#3b4a7a"/>
+            <stop offset="75%" stop-color="#f7b267"/>
+            <stop offset="100%" stop-color="#f79d65"/>
+        </linearGradient>
+
+        <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#1b2a49" stop-opacity="0.95"/>
+            <stop offset="100%" stop-color="#050816"/>
+        </linearGradient>
+
+        <radialGradient id="sunGlow" cx="50%" cy="55%" r="35%">
+            <stop offset="0%" stop-color="#ffe9b3" stop-opacity="1"/>
+            <stop offset="40%" stop-color="#ffd27f" stop-opacity="0.9"/>
+            <stop offset="100%" stop-color="#f79d65" stop-opacity="0"/>
+        </radialGradient>
+
+        <linearGradient id="horizonGlow" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#f7e7ce" stop-opacity="0.0"/>
+            <stop offset="50%" stop-color="#f7e7ce" stop-opacity="0.7"/>
+            <stop offset="100%" stop-color="#f7e7ce" stop-opacity="0.0"/>
+        </linearGradient>
+
+        <mask id="wavesMask">
+            <rect x="0" y="0" width="800" height="600" fill="white"/>
+            <!-- Carve subtle wave bands -->
+            <g fill="black" opacity="0.35">
+                <path d="M-50 420 Q 150 400 350 420 T 750 420 L 750 600 L -50 600 Z"/>
+                <path d="M-50 460 Q 150 440 350 460 T 750 460 L 750 600 L -50 600 Z"/>
+                <path d="M-50 500 Q 150 480 350 500 T 750 500 L 750 600 L -50 600 Z"/>
+            </g>
+        </mask>
+    </defs>
+
+    <!-- Sky -->
+    <rect x="0" y="0" width="800" height="600" fill="url(#sky)"/>
+
+    <!-- Sun glow -->
+    <circle cx="400" cy="320" r="220" fill="url(#sunGlow)"/>
+
+    <!-- Sun disk -->
+    <circle cx="400" cy="320" r="70" fill="#ffe9b3"/>
+
+    <!-- Horizon line glow -->
+    <rect x="0" y="360" width="800" height="40" fill="url(#horizonGlow)" opacity="0.9"/>
+
+    <!-- Sea -->
+    <rect x="0" y="360" width="800" height="240" fill="url(#sea)" mask="url(#wavesMask)"/>
+
+    <!-- Minimal mountains / silhouettes -->
+    <g fill="#0b1020">
+        <path d="M80 360 L220 260 L360 360 Z" opacity="0.85"/>
+        <path d="M440 360 L560 250 L720 360 Z" opacity="0.9"/>
+    </g>
+
+    <!-- Reflected sun on water -->
+    <g opacity="0.7">
+        <rect x="360" y="360" width="80" height="12" rx="6" fill="#f7e7ce"/>
+        <rect x="345" y="380" width="110" height="10" rx="5" fill="#f7e7ce" opacity="0.8"/>
+        <rect x="355" y="400" width="90" height="8" rx="4" fill="#f7e7ce" opacity="0.6"/>
+        <rect x="365" y="420" width="70" height="6" rx="3" fill="#f7e7ce" opacity="0.45"/>
+        <rect x="375" y="440" width="50" height="5" rx="2.5" fill="#f7e7ce" opacity="0.35"/>
+        <rect x="385" y="460" width="30" height="4" rx="2" fill="#f7e7ce" opacity="0.25"/>
+    </g>
+
+    <!-- Minimal “frame” lines -->
+    <rect x="40" y="40" width="720" height="520" fill="none" stroke="#f7e7ce" stroke-width="2" opacity="0.4"/>
+    <rect x="60" y="60" width="680" height="480" fill="none" stroke="#f7e7ce" stroke-width="1" opacity="0.25"/>
+
+    <!-- Tiny signature dot -->
+    <circle cx="735" cy="515" r="3" fill="#f7e7ce" opacity="0.8"/>
+
+</svg>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
+  <defs>
+    <!-- Gradients for depth and atmosphere -->
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a1a;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1a1a3e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2d1b4e;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffd700;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#ffed4e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ffb347;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="tealGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00d4aa;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#0099cc;stop-opacity:0.9" />
+    </linearGradient>
+
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
+    </radialGradient>
+
+    <!-- Filter for subtle glow effect -->
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="800" fill="url(#skyGradient)"/>
+
+  <!-- Distant stars -->
+  <g opacity="0.6">
+    <circle cx="100" cy="80" r="1.5" fill="#ffffff"/>
+    <circle cx="250" cy="120" r="1" fill="#ffffff"/>
+    <circle cx="500" cy="60" r="1.2" fill="#ffffff"/>
+    <circle cx="650" cy="150" r="1" fill="#ffffff"/>
+    <circle cx="720" cy="90" r="1.5" fill="#ffffff"/>
+    <circle cx="50" cy="200" r="1" fill="#ffffff"/>
+    <circle cx="400" cy="40" r="1" fill="#ffffff"/>
+    <circle cx="750" cy="250" r="1.2" fill="#ffffff"/>
+  </g>
+
+  <!-- Central composition: Golden Ratio spiral approximation using circles -->
+  <g transform="translate(400, 400)">
+    <!-- Outer glow -->
+    <circle cx="0" cy="0" r="280" fill="url(#glow)" opacity="0.5"/>
+
+    <!-- Large outer circle -->
+    <circle cx="0" cy="0" r="250" fill="none" stroke="url(#goldGradient)" stroke-width="2" opacity="0.3"/>
+
+    <!-- Fibonacci-inspired concentric circles -->
+    <circle cx="0" cy="0" r="200" fill="none" stroke="url(#tealGradient)" stroke-width="3" opacity="0.4"/>
+    <circle cx="0" cy="0" r="150" fill="none" stroke="url(#goldGradient)" stroke-width="2" opacity="0.6"/>
+    <circle cx="0" cy="0" r="100" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.4"/>
+    <circle cx="0" cy="0" r="60" fill="none" stroke="url(#tealGradient)" stroke-width="2" opacity="0.7"/>
+
+    <!-- Sacred geometry: Overlapping circles forming vesica piscis pattern -->
+    <g opacity="0.3">
+      <circle cx="-70" cy="0" r="140" fill="none" stroke="#ffd700" stroke-width="1"/>
+      <circle cx="70" cy="0" r="140" fill="none" stroke="#ffd700" stroke-width="1"/>
+      <circle cx="0" cy="-70" r="140" fill="none" stroke="#00d4aa" stroke-width="1"/>
+      <circle cx="0" cy="70" r="140" fill="none" stroke="#00d4aa" stroke-width="1"/>
+    </g>
+
+    <!-- Central mandala pattern -->
+    <g>
+      <!-- 8-pointed star formed by rotated squares -->
+      <rect x="-40" y="-40" width="80" height="80" fill="none" stroke="url(#goldGradient)" stroke-width="2" opacity="0.8"/>
+      <rect x="-40" y="-40" width="80" height="80" fill="none" stroke="url(#goldGradient)" stroke-width="2" opacity="0.6" transform="rotate(45)"/>
+
+      <!-- Inner diamond -->
+      <polygon points="0,-30 26,0 0,30 -26,0" fill="none" stroke="#00d4aa" stroke-width="2.5" opacity="0.9"/>
+
+      <!-- Core circle -->
+      <circle cx="0" cy="0" r="15" fill="url(#goldGradient)" opacity="0.9"/>
+      <circle cx="0" cy="0" r="8" fill="#ffffff" opacity="0.8"/>
+    </g>
+
+    <!-- Orbiting elements -->
+    <g opacity="0.7">
+      <!-- Orbital rings at different angles -->
+      <ellipse cx="0" cy="0" rx="220" ry="60" fill="none" stroke="#ffd700" stroke-width="1" transform="rotate(30)" opacity="0.3"/>
+      <ellipse cx="0" cy="0" rx="220" ry="60" fill="none" stroke="#00d4aa" stroke-width="1" transform="rotate(-30)" opacity="0.3"/>
+      <ellipse cx="0" cy="0" rx="220" ry="60" fill="none" stroke="#ffffff" stroke-width="1" transform="rotate(90)" opacity="0.2"/>
+    </g>
+
+    <!-- Decorative dots at cardinal directions -->
+    <g filter="url(#softGlow)">
+      <circle cx="0" cy="-180" r="6" fill="#ffd700" opacity="0.8"/>
+      <circle cx="180" cy="0" r="6" fill="#00d4aa" opacity="0.8"/>
+      <circle cx="0" cy="180" r="6" fill="#ffd700" opacity="0.8"/>
+      <circle cx="-180" cy="0" r="6" fill="#00d4aa" opacity="0.8"/>
+    </g>
+  </g>
+
+  <!-- Bottom accent: Flowing wave lines -->
+  <g transform="translate(0, 650)" opacity="0.4">
+    <path d="M0,50 Q200,20 400,50 T800,50" fill="none" stroke="url(#tealGradient)" stroke-width="2"/>
+    <path d="M0,70 Q200,40 400,70 T800,70" fill="none" stroke="url(#goldGradient)" stroke-width="1.5"/>
+    <path d="M0,90 Q200,60 400,90 T800,90" fill="none" stroke="#ffffff" stroke-width="1"/>
+  </g>
+
+  <!-- Corner accents -->
+  <g opacity="0.3">
+    <circle cx="50" cy="750" r="30" fill="none" stroke="#ffd700" stroke-width="1"/>
+    <circle cx="750" cy="750" r="30" fill="none" stroke="#00d4aa" stroke-width="1"/>
+    <circle cx="50" cy="50" r="20" fill="none" stroke="#00d4aa" stroke-width="1"/>
+    <circle cx="750" cy="50" r="20" fill="none" stroke="#ffd700" stroke-width="1"/>
+  </g>
+</svg>
