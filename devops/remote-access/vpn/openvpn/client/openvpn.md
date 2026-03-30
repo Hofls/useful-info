@@ -20,6 +20,7 @@
         * Replace IP address and certificates
     * Copy [password](files/passwd.conf) to `/etc/openvpn`
         * Replace login and password
+    * If you have `.ovpn` config - no problem, just rename it to `.conf`
 * Run
     * `systemctl start openvpn@dt-config`
     * Test - `curl http://INSERT_URL_HERE`

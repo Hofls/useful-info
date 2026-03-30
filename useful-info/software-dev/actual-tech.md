@@ -45,6 +45,7 @@
 * [List of popular websites](https://en.wikipedia.org/wiki/List_of_most-visited_websites)
 * Any job listings
 * Imageboards (ai/tech sections)
+* [Certificates popularity](https://certdemand.com/#certifications)
 * Low priority (skippable)
   * Online conferences (even schedule is enough)
   * Similar subreddits:

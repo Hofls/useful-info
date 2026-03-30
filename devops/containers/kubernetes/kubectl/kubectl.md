@@ -1,3 +1,8 @@
+#### Client on ubuntu
+* `apt install snapd`
+* `snap install kubectl --classic`
+* `kubectl --kubeconfig=example.conf get pods`
+
 #### Generic commands
 * List all resources
     * `kubectl api-resources`
