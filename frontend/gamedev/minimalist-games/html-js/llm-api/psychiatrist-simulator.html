@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Psychiatrist simulator</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: system-ui, sans-serif;
+  background: #111;
+  color: #ddd;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+header {
+  padding: 10px 18px;
+  border-bottom: 1px solid #222;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: #888;
+}
+header strong { color: #e05; font-size: 1rem; }
+
+.layout {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 220px;
+  border-right: 1px solid #222;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  overflow-y: auto;
+  background: #111;
+}
+
+.sidebar label {
+  display: block;
+  font-size: 0.72rem;
+  color: #666;
+  margin-bottom: 3px;
+}
+
+.sidebar input {
+  width: 100%;
+  padding: 6px 8px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 4px;
+  color: #ccc;
+  font-size: 0.8rem;
+}
+
+.sidebar input:focus { outline: none; border-color: #e05; }
+
+.field { margin-bottom: 8px; }
+
+hr { border: none; border-top: 1px solid #222; }
+
+.score { font-size: 0.78rem; color: #666; display: flex; justify-content: space-between; }
+.score span { color: #e05; font-weight: 600; }
+
+button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: opacity 0.15s;
+}
+button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.btn-primary { background: #e05; color: #fff; width: 100%; }
+.btn-primary:hover:not(:disabled) { background: #c04; }
+
+.btn-secondary { background: #222; color: #ccc; border: 1px solid #444; width: 100%; }
+.btn-secondary:hover:not(:disabled) { background: #2a2a2a; }
+
+#diagnosisInput {
+  width: 100%;
+  padding: 7px 8px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 4px;
+  color: #ccc;
+  font-size: 0.8rem;
+  resize: none;
+  min-height: 60px;
+  font-family: inherit;
+  margin-bottom: 6px;
+}
+#diagnosisInput:focus { outline: none; border-color: #e05; }
+
+/* CHAT */
+.chat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin-top: auto;
+  max-width: 700px;
+}
+
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.messages::-webkit-scrollbar { width: 4px; }
+.messages::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
+
+.msg {
+  max-width: 75%;
+  animation: fadeIn 0.2s ease;
+}
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+.msg.user { align-self: flex-end; }
+.msg.assistant { align-self: flex-start; }
+.msg.system { align-self: center; max-width: 90%; }
+
+.bubble {
+  padding: 9px 13px;
+  border-radius: 12px;
+  font-size: 0.87rem;
+  line-height: 1.5;
+}
+.msg.user .bubble { background: #e05; color: #fff; border-bottom-right-radius: 3px; }
+.msg.assistant .bubble { background: #1a1a1a; border: 1px solid #2a2a2a; border-bottom-left-radius: 3px; }
+.msg.system .bubble { background: transparent; color: #555; font-size: 0.78rem; text-align: center; }
+
+.msg.result .bubble {
+  border-radius: 8px;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+.msg.result.correct .bubble { background: rgba(76,175,80,0.1); border: 1px solid #4caf50; color: #81c784; }
+.msg.result.incorrect .bubble { background: rgba(220,50,50,0.1); border: 1px solid #e05; color: #ef9a9a; }
+
+.typing { align-self: flex-start; display: none; margin: 10px; }
+.typing.visible { display: flex; }
+.dots {
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  padding: 10px 14px;
+  display: flex;
+  gap: 4px;
+}
+.dots span {
+  width: 6px; height: 6px;
+  background: #666;
+  border-radius: 50%;
+  animation: bounce 1.2s infinite;
+}
+.dots span:nth-child(2) { animation-delay: 0.2s; }
+.dots span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes bounce { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-5px)} }
+
+.input-row {
+  padding: 12px 16px;
+  border-top: 1px solid #222;
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+#chatInput {
+  flex: 1;
+  padding: 9px 13px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 20px;
+  color: #ddd;
+  font-size: 0.87rem;
+  resize: none;
+  min-height: 40px;
+  max-height: 110px;
+  font-family: inherit;
+  line-height: 1.4;
+}
+#chatInput:focus { outline: none; border-color: #e05; }
+#chatInput:disabled { opacity: 0.4; }
+
+#sendBtn {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: #e05;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+#sendBtn:hover:not(:disabled) { background: #c04; }
+#sendBtn svg { width: 16px; height: 16px; fill: white; }
+
+.welcome {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #444;
+  text-align: center;
+  padding: 40px;
+}
+.welcome p { font-size: 0.85rem; line-height: 1.6; max-width: 300px; }
+</style>
+</head>
+<body>
+
+<header>
+  <strong>🧠 Psychiatrist simulator</strong>
+  <span id="statusText" style="margin-left:auto; font-size:0.75rem;">idle</span>
+</header>
+
+<div class="layout">
+  <div class="sidebar">
+    <div>
+      <div class="field"><label>Provider URL</label><input id="apiUrl" value="https://api.polza.ai/api/v1"></div>
+      <div class="field"><label>API Key</label><input type="password" id="apiKey" value="ak_SA-jdmr"></div>
+      <div class="field"><label>Model</label><input id="modelName" value="deepseek/deepseek-v4-flash"></div>
+    </div>
+    <hr>
+    <div class="score"><span>Score</span><span id="scoreDisplay">0 / 0</span></div>
+    <button class="btn-primary" id="newSessionBtn">New Patient</button>
+    <hr>
+    <div id="diagnosisArea" style="display:none;">
+      <label style="margin-bottom:6px;display:block;">Your diagnosis</label>
+      <textarea id="diagnosisInput" placeholder="Type your diagnosis..." disabled></textarea>
+      <button class="btn-secondary" id="submitDiagnosisBtn" disabled>Submit</button>
+    </div>
+  </div>
+
+  <div class="chat">
+    <div class="messages" id="messages">
+      <div class="welcome" id="welcome">
+        <p>Configure your API on the left, then click <strong>New Patient</strong>. Chat with a patient and figure out their diagnosis.</p>
+      </div>
+    </div>
+    <div class="typing" id="typing">
+      <div class="dots"><span></span><span></span><span></span></div>
+    </div>
+    <div class="input-row">
+      <textarea id="chatInput" placeholder="Ask your patient something..." disabled rows="1"></textarea>
+      <button id="sendBtn" disabled>
+        <svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+      const DIAGNOSES = [
+      {
+        "name": "Major depressive disorder (Depression)",
+        "description": "A mood disorder causing persistent sadness, loss of interest, fatigue, and hopelessness.",
+        "symptoms": ["persistent sadness", "anhedonia", "fatigue", "sleep disturbances", "worthlessness", "concentration problems"]
+      },
+      {
+        "name": "Anxiety Disorder",
+        "description": "Excessive, uncontrollable worry about various aspects of life.",
+        "symptoms": ["excessive worry", "restlessness", "muscle tension", "irritability", "sleep problems", "difficulty concentrating"]
+      },
+      {
+        "name": "Bipolar Disorder",
+        "description": "A condition defined by manic episodes lasting at least 7 days, often with depressive episodes.",
+        "symptoms": ["manic episodes", "euphoria", "decreased need for sleep", "grandiosity", "racing thoughts", "impulsive behavior"]
+      },
+      {
+        "name": "Schizophrenia",
+        "description": "A severe mental disorder characterized by hallucinations, delusions, and disorganized thinking.",
+        "symptoms": ["auditory hallucinations", "delusions", "disorganized speech", "flat affect", "social withdrawal", "paranoia"]
+      },
+      {
+        "name": "Obsessive-Compulsive Disorder (OCD)",
+        "description": "Characterized by unwanted recurring thoughts (obsessions) and repetitive behaviors (compulsions).",
+        "symptoms": ["intrusive thoughts", "compulsive rituals", "checking behaviors", "contamination fears", "need for symmetry", "distress"]
+      },
+      {
+        "name": "Post-Traumatic Stress Disorder (PTSD)",
+        "description": "Develops after exposure to a traumatic event, causing flashbacks, nightmares, and hypervigilance.",
+        "symptoms": ["flashbacks", "nightmares", "hypervigilance", "avoidance", "emotional numbness", "startle response"]
+      },
+      {
+        "name": "Borderline Personality Disorder",
+        "description": "Characterized by unstable moods, behavior, and relationships.",
+        "symptoms": ["fear of abandonment", "unstable relationships", "identity disturbance", "impulsivity", "self-harm", "emotional instability"]
+      },
+      {
+        "name": "Attention-Deficit/Hyperactivity Disorder (ADHD)",
+        "description": "A neurodevelopmental disorder characterized by inattention, hyperactivity, and impulsivity.",
+        "symptoms": ["inattention", "hyperactivity", "impulsivity", "forgetfulness", "difficulty organizing", "fidgeting"]
+      },
+      {
+        "name": "Social Anxiety Disorder",
+        "description": "Intense fear of social situations and being judged or embarrassed by others.",
+        "symptoms": ["fear of judgment", "avoidance of social situations", "blushing", "sweating", "trembling", "anticipatory anxiety"]
+      },
+      {
+        "name": "Narcissistic Personality Disorder",
+        "description": "A pattern of grandiosity, need for admiration, and lack of empathy.",
+        "symptoms": ["grandiosity", "need for admiration", "lack of empathy", "entitlement", "exploitative behavior", "envy"]
+      },
+      {
+        "name": "Anorexia Nervosa",
+        "description": "An eating disorder characterized by restricted food intake and intense fear of gaining weight.",
+        "symptoms": ["food restriction", "distorted body image", "intense fear of weight gain", "excessive exercise", "denial of hunger", "social withdrawal"]
+      },
+      {
+        "name": "Dissociative Identity Disorder",
+        "description": "The presence of two or more distinct personality states with memory gaps.",
+        "symptoms": ["identity alteration", "memory gaps", "depersonalization", "hearing internal voices", "time loss", "identity confusion"]
+      },
+      {
+        "name": "Hypochondria",
+        "description": "Excessive worry about having or developing a serious illness.",
+        "symptoms": ["health preoccupation", "frequent doctor visits", "body checking", "reassurance seeking", "medical anxiety", "misinterpreting symptoms"]
+      },
+      {
+        "name": "Antisocial Personality Disorder (Psychopathy/Sociopathy)",
+        "description": "A pattern of disregarding or violating the rights of others, often involving a lack of empathy and impulsive behavior.",
+        "symptoms": ["deceitfulness", "impulsivity", "irritability", "lack of remorse", "legal problems", "callousness"]
+      },
+      {
+        "name": "Autism Spectrum Disorder",
+        "description": "A developmental disorder affecting communication and behavior, characterized by challenges with social interaction and repetitive behaviors.",
+        "symptoms": ["social communication deficits", "repetitive patterns", "sensory sensitivities", "fixated interests", "difficulty with eye contact"]
+      },
+      {
+        "name": "Anxious Attachment",
+        "description": "An attachment style characterized by a deep need for closeness, a fear of rejection, and high sensitivity to a partner's moods.",
+        "symptoms": ["fear of abandonment", "constant reassurance seeking", "over-analyzing relationships", "emotional volatility", "clinginess"]
+      },
+      {
+        "name": "Avoidant Attachment",
+        "description": "An attachment style marked by a desire for independence and a tendency to distance oneself emotionally from others to avoid vulnerability.",
+        "symptoms": ["emotional withdrawal", "prioritizing autonomy", "suppression of feelings", "fear of commitment", "avoidance of intimacy"]
+      },
+      {
+        "name": "Disorganized Attachment",
+        "description": "Characterized by a desire for closeness coupled with an intense fear of trust and getting emotionally hurt.",
+        "symptoms": ["mixed signals", "difficulty trusting others", "emotional dysregulation", "high anxiety in relationships", "hyper-vigilance"]
+      },
+      {
+        "name": "Alzheimer's Disease / Dementia",
+        "description": "A progressive neurodegenerative condition resulting in a decline in cognitive function, memory loss, and behavioral changes.",
+        "symptoms": ["memory loss", "disorientation", "language difficulties", "poor judgment", "personality changes", "confusion"]
+      },
+      {
+        "name": "Substance Use Disorder",
+        "description": "A condition where the use of one or more substances leads to a clinically significant impairment or distress.",
+        "symptoms": ["cravings", "tolerance", "withdrawal", "failed attempts to quit", "neglect of responsibilities", "risky use"]
+      },
+      {
+        "name": "Bulimia Nervosa",
+        "description": "An eating disorder characterized by episodes of binge eating followed by compensatory behaviors such as purging.",
+        "symptoms": ["binge eating", "self-induced vomiting", "excessive exercise", "preoccupation with weight", "sore throat", "dental erosion"]
+      },
+      {
+        "name": "Paranoid Personality Disorder",
+        "description": "A pattern of pervasive distrust and suspiciousness of others such that their motives are interpreted as malevolent.",
+        "symptoms": ["unjustified suspicion", "grudges", "reluctance to confide", "perceived attacks on character", "hypersensitivity"]
+      },
+      {
+        "name": "Schizoid Personality Disorder",
+        "description": "A condition characterized by a lack of interest in social relationships and a restricted range of emotional expression.",
+        "symptoms": ["emotional coldness", "preference for solitary activities", "indifference to praise", "lack of close friends", "detachment"]
+      },
+      {
+        "name": "Schizotypal Personality Disorder",
+        "description": "A pattern of acute discomfort in close relationships, cognitive or perceptual distortions, and eccentricities of behavior.",
+        "symptoms": ["magical thinking", "odd speech", "social anxiety", "unusual perceptual experiences", "eccentric appearance"]
+      },
+      {
+        "name": "Histrionic Personality Disorder",
+        "description": "A pattern of excessive emotionality and attention-seeking behavior.",
+        "symptoms": ["need to be center of attention", "seductive behavior", "shallow emotions", "theatrical speech", "suggestibility"]
+      },
+      {
+        "name": "Avoidant Personality Disorder",
+        "description": "Pervasive feelings of social inhibition, inadequacy, and hypersensitivity to negative evaluation.",
+        "symptoms": ["fear of criticism", "avoidance of social contact", "feelings of inferiority", "reluctance to take risks", "social ineptness"]
+      },
+      {
+        "name": "Dependent Personality Disorder",
+        "description": "A pervasive and excessive need to be taken care of that leads to submissive and clinging behavior.",
+        "symptoms": ["difficulty making decisions", "need for others to assume responsibility", "fear of disagreement", "lack of self-confidence"]
+      },
+      {
+        "name": "Agoraphobia",
+        "description": "Fear of being in situations where escape might be difficult or help wouldn't be available if things go wrong.",
+        "symptoms": ["fear of open spaces", "fear of crowds", "inability to leave home", "dependence on a companion", "anxiety in public transport"]
+      },
+      {
+        "name": "Body Dysmorphic Disorder",
+        "description": "A mental health disorder in which you can't stop thinking about one or more perceived defects or flaws in your appearance.",
+        "symptoms": ["preoccupation with physical flaws", "excessive grooming", "mirror checking", "avoidance of social situations"]
+      },
+      {
+        "name": "Hoarding Disorder",
+        "description": "Persistent difficulty discarding or parting with possessions because of a perceived need to save them.",
+        "symptoms": ["clutter", "distress when discarding items", "excessive acquisition", "loss of living space", "indecisiveness"]
+      },
+      {
+        "name": "Gender Dysphoria",
+        "description": "Distress that may accompany the incongruence between one's experienced or expressed gender and one's assigned gender.",
+        "symptoms": ["desire to be of another gender", "dislike of sexual anatomy", "preference for cross-gender roles", "strong desire for sex characteristics of another gender"]
+      }
+    ];
+
+  let state = {
+    diagnosis: null,
+    messages: [],
+    active: false,
+    loading: false,
+    score: { correct: 0, total: 0 }
+  };
+
+  const $ = id => document.getElementById(id);
+  const messagesEl = $('messages');
+  const typing = $('typing');
+  const chatInput = $('chatInput');
+  const sendBtn = $('sendBtn');
+  const diagnosisInput = $('diagnosisInput');
+  const submitBtn = $('submitDiagnosisBtn');
+  const scoreDisplay = $('scoreDisplay');
+  const statusText = $('statusText');
+  const diagnosisArea = $('diagnosisArea');
+
+  function setStatus(s) { statusText.textContent = s; }
+  function scrollDown() { messagesEl.scrollTop = messagesEl.scrollHeight; }
+  function rand(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+  function setInputs(on) {
+    chatInput.disabled = !on;
+    sendBtn.disabled = !on;
+    diagnosisInput.disabled = !on;
+    submitBtn.disabled = !on;
+  }
+
+  function addMsg(role, content) {
+    const welcome = $('welcome');
+    if (welcome) welcome.remove();
+
+    const div = document.createElement('div');
+    div.className = `msg ${role}`;
+    div.innerHTML = `<div class="bubble">${content}</div>`;
+    messagesEl.appendChild(div);
+    scrollDown();
+    return div;
+  }
+
+  function showTyping(v) {
+    typing.className = v ? 'typing visible' : 'typing';
+    if (v) scrollDown();
+  }
+
+  async function callAI(messages) {
+    const url = $('apiUrl').value.trim().replace(/\/$/, '') + '/chat/completions';
+    const key = $('apiKey').value.trim();
+    const model = $('modelName').value.trim() || 'deepseek/deepseek-v4-flash';
+    if (!key) throw new Error('API key required.');
+
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` },
+      body: JSON.stringify({ model, messages, temperature: 0.9, max_tokens: 400 })
+    });
+    if (!res.ok) { const e = await res.json().catch(()=>({})); throw new Error(e?.error?.message || `HTTP ${res.status}`); }
+    const data = await res.json();
+    return data.choices[0].message.content;
+  }
+
+  async function startSession() {
+    if (state.loading) return;
+    state.diagnosis = rand(DIAGNOSES);
+    state.messages = [];
+    state.active = false;
+    state.loading = true;
+
+    messagesEl.innerHTML = '';
+    diagnosisInput.value = '';
+    diagnosisArea.style.display = 'none';
+
+    $('newSessionBtn').disabled = true;
+    setInputs(false);
+    setStatus('connecting…');
+
+    const d = state.diagnosis;
+    const systemPrompt = `
+      You are roleplaying as a patient at a psychiatrist's office. You have: ${d.name}.
+      Your symptoms: ${d.symptoms.join(', ')}.
+
+      Rules:
+      - Never name your condition or use clinical terms.
+      - Speak entirely through personal stories and everyday situations that reveal most of your symptoms.
+      - Start immediately with a specific real-life scenario or moment that brought you here. No introductions, no "Hi, I'm here because…" — drop straight into the story.
+      - Keep responses short (4–6 sentences)`;
+
+    const init = [
+      { role: 'system', content: systemPrompt },
+      { role: 'user', content: 'Begin.' }
+    ];
+
+    try {
+      showTyping(true);
+      const reply = await callAI(init);
+      showTyping(false);
+
+      state.messages = [{ role: 'system', content: systemPrompt }, { role: 'assistant', content: reply }];
+      addMsg('assistant', reply);
+      state.active = true;
+      state.loading = false;
+
+      setStatus('in session');
+      setInputs(true);
+      diagnosisArea.style.display = 'block';
+      $('newSessionBtn').disabled = false;
+    } catch (e) {
+      showTyping(false);
+      state.loading = false;
+      addMsg('system', e.message);
+      setStatus('error');
+      $('newSessionBtn').disabled = false;
+    }
+  }
+
+  async function sendMessage() {
+    const text = chatInput.value.trim();
+    if (!text || state.loading || !state.active) return;
+
+    chatInput.value = '';
+    chatInput.style.height = 'auto';
+    state.loading = true;
+    setInputs(false);
+    setStatus('thinking…');
+
+    addMsg('user', text);
+    state.messages.push({ role: 'user', content: text });
+
+    try {
+      showTyping(true);
+      const reply = await callAI(state.messages);
+      showTyping(false);
+      state.messages.push({ role: 'assistant', content: reply });
+      addMsg('assistant', reply);
+      state.loading = false;
+      setStatus('in session');
+      setInputs(true);
+    } catch (e) {
+      showTyping(false);
+      state.loading = false;
+      addMsg('system', e.message);
+      setStatus('in session');
+      setInputs(true);
+    }
+  }
+
+  function submitDiagnosis() {
+    const userDiag = diagnosisInput.value.trim();
+    if (!userDiag || !state.active) return;
+
+    const correct = state.diagnosis.name;
+    const words = correct.toLowerCase().split(/\s+/).filter(w => w.length > 3);
+    const matches = words.filter(w => userDiag.toLowerCase().includes(w)).length;
+    const isCorrect = matches >= Math.ceil(words.length * 0.5) || correct.toLowerCase().includes(userDiag.toLowerCase());
+
+    state.score.total++;
+    if (isCorrect) state.score.correct++;
+    scoreDisplay.textContent = `${state.score.correct} / ${state.score.total}`;
+
+    const div = document.createElement('div');
+    div.className = `msg result ${isCorrect ? 'correct' : 'incorrect'}`;
+    div.innerHTML = `<div class="bubble">${isCorrect ? '✅ Correct!' : '❌ Not quite.'} The diagnosis was <strong>${correct}</strong> — ${state.diagnosis.description}</div>`;
+    messagesEl.appendChild(div);
+    scrollDown();
+
+    state.active = false;
+    setInputs(false);
+    submitBtn.disabled = true;
+    setStatus('session ended');
+  }
+
+  $('newSessionBtn').addEventListener('click', startSession);
+  sendBtn.addEventListener('click', sendMessage);
+  submitBtn.addEventListener('click', submitDiagnosis);
+
+  chatInput.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); } });
+  chatInput.addEventListener('input', () => { chatInput.style.height = 'auto'; chatInput.style.height = Math.min(chatInput.scrollHeight, 110) + 'px'; });
+  diagnosisInput.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); submitDiagnosis(); } });
+</script>
+</body>
+</html>
