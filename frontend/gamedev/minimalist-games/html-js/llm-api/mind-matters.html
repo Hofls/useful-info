@@ -1,1057 +1,526 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mind Matters - Psychiatrist Simulator</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #1a1a2e;
-            color: #e0e0e0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
-
-        header {
-            background: #16213e;
-            padding: 12px 20px;
-            border-bottom: 2px solid #0f3460;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-shrink: 0;
-        }
-
-        header h1 {
-            font-size: 1.3rem;
-            color: #e94560;
-            letter-spacing: 1px;
-        }
-
-        header span {
-            font-size: 0.85rem;
-            color: #888;
-        }
-
-        .main-layout {
-            display: flex;
-            flex: 1;
-            overflow: hidden;
-        }
-
-        /* LEFT PANEL */
-        .left-panel {
-            width: 260px;
-            min-width: 220px;
-            background: #16213e;
-            border-right: 2px solid #0f3460;
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            overflow-y: auto;
-        }
-
-        .panel-section {
-            background: #0f3460;
-            border-radius: 8px;
-            padding: 14px;
-        }
-
-        .panel-section h3 {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #e94560;
-            margin-bottom: 12px;
-        }
-
-        .field-group {
-            margin-bottom: 10px;
-        }
-
-        .field-group label {
-            display: block;
-            font-size: 0.75rem;
-            color: #aaa;
-            margin-bottom: 4px;
-        }
-
-        .field-group input {
-            width: 100%;
-            padding: 7px 10px;
-            background: #1a1a2e;
-            border: 1px solid #0f3460;
-            border-radius: 5px;
-            color: #e0e0e0;
-            font-size: 0.82rem;
-            transition: border-color 0.2s;
-        }
-
-        .field-group input:focus {
-            outline: none;
-            border-color: #e94560;
-        }
-
-        .btn {
-            width: 100%;
-            padding: 9px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            font-weight: 600;
-            transition: all 0.2s;
-            letter-spacing: 0.5px;
-        }
-
-        .btn-primary {
-            background: #e94560;
-            color: white;
-        }
-
-        .btn-primary:hover:not(:disabled) {
-            background: #c73652;
-            transform: translateY(-1px);
-        }
-
-        .btn-secondary {
-            background: #0f3460;
-            color: #e0e0e0;
-            border: 1px solid #e94560;
-        }
-
-        .btn-secondary:hover:not(:disabled) {
-            background: #1a4a7a;
-        }
-
-        .btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .status-indicator {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.78rem;
-            color: #888;
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #555;
-        }
-
-        .status-dot.active {
-            background: #4caf50;
-            box-shadow: 0 0 6px #4caf50;
-        }
-
-        .status-dot.loading {
-            background: #ff9800;
-            animation: pulse 1s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
-
-        .session-info {
-            font-size: 0.78rem;
-            color: #aaa;
-            line-height: 1.6;
-        }
-
-        .session-info span {
-            color: #e94560;
-            font-weight: 600;
-        }
-
-        /* DIAGNOSIS PANEL */
-        .diagnosis-section {
-            background: #0f3460;
-            border-radius: 8px;
-            padding: 14px;
-            border: 1px solid transparent;
-            transition: border-color 0.3s;
-        }
-
-        .diagnosis-section.active {
-            border-color: #e94560;
-        }
-
-        .diagnosis-section h3 {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #e94560;
-            margin-bottom: 10px;
-        }
-
-        .diagnosis-section textarea {
-            width: 100%;
-            padding: 8px 10px;
-            background: #1a1a2e;
-            border: 1px solid #0f3460;
-            border-radius: 5px;
-            color: #e0e0e0;
-            font-size: 0.82rem;
-            resize: vertical;
-            min-height: 80px;
-            font-family: inherit;
-            transition: border-color 0.2s;
-        }
-
-        .diagnosis-section textarea:focus {
-            outline: none;
-            border-color: #e94560;
-        }
-
-        .diagnosis-section textarea:disabled {
-            opacity: 0.5;
-        }
-
-        .result-box {
-            display: none;
-            margin-top: 12px;
-            padding: 10px;
-            border-radius: 6px;
-            font-size: 0.82rem;
-            line-height: 1.5;
-        }
-
-        .result-box.correct {
-            background: rgba(76, 175, 80, 0.15);
-            border: 1px solid #4caf50;
-            color: #81c784;
-        }
-
-        .result-box.incorrect {
-            background: rgba(233, 69, 96, 0.15);
-            border: 1px solid #e94560;
-            color: #ef9a9a;
-        }
-
-        /* CENTER - CHAT */
-        .chat-panel {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            background: #1a1a2e;
-        }
-
-        .chat-header {
-            padding: 12px 20px;
-            background: #16213e;
-            border-bottom: 1px solid #0f3460;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-shrink: 0;
-        }
-
-        .patient-avatar {
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #e94560, #0f3460);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-        }
-
-        .patient-info h4 {
-            font-size: 0.9rem;
-            color: #e0e0e0;
-        }
-
-        .patient-info p {
-            font-size: 0.75rem;
-            color: #888;
-        }
-
-        .messages-container {
-            flex: 1;
-            overflow-y: auto;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        .messages-container::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .messages-container::-webkit-scrollbar-track {
-            background: #16213e;
-        }
-
-        .messages-container::-webkit-scrollbar-thumb {
-            background: #0f3460;
-            border-radius: 3px;
-        }
-
-        .message {
-            display: flex;
-            gap: 10px;
-            max-width: 80%;
-            animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .message.user {
-            align-self: flex-end;
-            flex-direction: row-reverse;
-        }
-
-        .message.assistant {
-            align-self: flex-start;
-        }
-
-        .message.system-msg {
-            align-self: center;
-            max-width: 90%;
-        }
-
-        .msg-avatar {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.85rem;
-            flex-shrink: 0;margin-top: 2px;
-        }
-
-        .msg-avatar.user-av {
-            background: linear-gradient(135deg, #0f3460, #e94560);
-        }
-
-        .msg-avatar.ai-av {
-            background: linear-gradient(135deg, #4a4a8a, #6a4a8a);
-        }
-
-        .msg-bubble {
-            padding: 10px 14px;
-            border-radius: 14px;
-            font-size: 0.88rem;
-            line-height: 1.55;
-        }
-
-        .message.user .msg-bubble {
-            background: #e94560;
-            color: white;
-            border-bottom-right-radius: 4px;
-        }
-
-        .message.assistant .msg-bubble {
-            background: #16213e;
-            color: #e0e0e0;
-            border-bottom-left-radius: 4px;
-            border: 1px solid #0f3460;
-        }
-
-        .message.system-msg .msg-bubble {
-            background: rgba(15, 52, 96, 0.5);
-            color: #aaa;
-            font-size: 0.8rem;
-            text-align: center;
-            border-radius: 20px;
-            border: 1px solid #0f3460;
-        }
-
-        .msg-time {
-            font-size: 0.68rem;
-            color: #666;
-            margin-top: 3px;
-            text-align: right;
-        }
-
-        .message.assistant .msg-time {
-            text-align: left;
-        }
-
-        .typing-indicator {
-            display: none;
-            align-self: flex-start;
-            gap: 10px;
-        }
-
-        .typing-indicator.visible {
-            display: flex;
-        }
-
-        .typing-dots {
-            background: #16213e;
-            border:1px solid #0f3460;
-            border-radius: 14px;
-            border-bottom-left-radius: 4px;
-            padding: 12px 16px;
-            display: flex;
-            gap: 4px;
-            align-items: center;
-        }
-
-        .typing-dots span {
-            width: 7px;
-            height: 7px;
-            background: #888;
-            border-radius: 50%;
-            animation: typingBounce 1.2s infinite;
-        }
-
-        .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
-        .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
-
-        @keyframes typingBounce {
-            0%, 60%, 100% { transform: translateY(0); }
-            30% { transform: translateY(-6px); }
-        }
-
-        .chat-input-area {
-            padding: 14px 20px;
-            background: #16213e;
-            border-top: 1px solid #0f3460;
-            display: flex;
-            gap: 10px;
-            align-items: flex-end;
-            flex-shrink: 0;
-        }
-
-        .chat-input-area textarea {
-            flex: 1;
-            padding: 10px 14px;
-            background: #1a1a2e;
-            border: 1px solid #0f3460;
-            border-radius: 20px;
-            color: #e0e0e0;
-            font-size: 0.88rem;
-            resize: none;
-            min-height: 42px;
-            max-height: 120px;
-            font-family: inherit;
-            line-height: 1.4;
-            transition: border-color 0.2s;
-        }
-
-        .chat-input-area textarea:focus {
-            outline: none;
-            border-color: #e94560;
-        }
-
-        .chat-input-area textarea:disabled {
-            opacity: 0.5;
-        }
-
-        .send-btn {
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            background: #e94560;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s;
-            flex-shrink: 0;
-        }
-
-        .send-btn:hover:not(:disabled) {
-            background: #c73652;
-            transform: scale(1.05);
-        }
-
-        .send-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .send-btn svg {
-            width: 18px;
-            height: 18px;
-            fill: white;
-        }
-
-        /* Welcome screen */
-        .welcome-screen {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            flex: 1;
-            gap: 16px;
-            color: #555;
-            padding: 40px;
-            text-align: center;
-        }
-
-        .welcome-screen .icon {
-            font-size: 4rem;
-            opacity: 0.4;
-        }
-
-        .welcome-screen h2 {
-            font-size: 1.2rem;
-            color: #666;
-        }
-
-        .welcome-screen p {
-            font-size: 0.85rem;
-            max-width: 340px;
-            line-height: 1.6;
-        }
-
-        /* Score */
-        .score-display {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.78rem;
-            color: #aaa;
-        }
-
-        .score-display span {
-            color: #e94560;
-            font-weight: 700;
-        }
-
-        /* Scrollbar for left panel */
-        .left-panel::-webkit-scrollbar {
-            width: 4px;
-        }
-
-        .left-panel::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        .left-panel::-webkit-scrollbar-thumb {
-            background: #0f3460;
-            border-radius: 2px;
-        }
-
-        .hint-text {
-            font-size: 0.72rem;
-            color: #666;
-            margin-top: 6px;
-            line-height: 1.4;
-        }
-
-        @media (max-width: 700px) {
-            .left-panel {
-                width: 200px;
-                min-width: 180px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mind Matters</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: system-ui, sans-serif;
+  background: #111;
+  color: #ddd;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+header {
+  padding: 10px 18px;
+  border-bottom: 1px solid #222;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: #888;
+}
+header strong { color: #e05; font-size: 1rem; }
+
+.layout {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 220px;
+  border-right: 1px solid #222;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  overflow-y: auto;
+  background: #111;
+}
+
+.sidebar label {
+  display: block;
+  font-size: 0.72rem;
+  color: #666;
+  margin-bottom: 3px;
+}
+
+.sidebar input {
+  width: 100%;
+  padding: 6px 8px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 4px;
+  color: #ccc;
+  font-size: 0.8rem;
+}
+
+.sidebar input:focus { outline: none; border-color: #e05; }
+
+.field { margin-bottom: 8px; }
+
+hr { border: none; border-top: 1px solid #222; }
+
+.score { font-size: 0.78rem; color: #666; display: flex; justify-content: space-between; }
+.score span { color: #e05; font-weight: 600; }
+
+button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: opacity 0.15s;
+}
+button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.btn-primary { background: #e05; color: #fff; width: 100%; }
+.btn-primary:hover:not(:disabled) { background: #c04; }
+
+.btn-secondary { background: #222; color: #ccc; border: 1px solid #444; width: 100%; }
+.btn-secondary:hover:not(:disabled) { background: #2a2a2a; }
+
+#diagnosisInput {
+  width: 100%;
+  padding: 7px 8px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 4px;
+  color: #ccc;
+  font-size: 0.8rem;
+  resize: none;
+  min-height: 60px;
+  font-family: inherit;
+  margin-bottom: 6px;
+}
+#diagnosisInput:focus { outline: none; border-color: #e05; }
+
+/* CHAT */
+.chat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin-top: auto;
+  max-width: 700px;
+}
+
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.messages::-webkit-scrollbar { width: 4px; }
+.messages::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
+
+.msg {
+  max-width: 75%;
+  animation: fadeIn 0.2s ease;
+}
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+.msg.user { align-self: flex-end; }
+.msg.assistant { align-self: flex-start; }
+.msg.system { align-self: center; max-width: 90%; }
+
+.bubble {
+  padding: 9px 13px;
+  border-radius: 12px;
+  font-size: 0.87rem;
+  line-height: 1.5;
+}
+.msg.user .bubble { background: #e05; color: #fff; border-bottom-right-radius: 3px; }
+.msg.assistant .bubble { background: #1a1a1a; border: 1px solid #2a2a2a; border-bottom-left-radius: 3px; }
+.msg.system .bubble { background: transparent; color: #555; font-size: 0.78rem; text-align: center; }
+
+.msg.result .bubble {
+  border-radius: 8px;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+.msg.result.correct .bubble { background: rgba(76,175,80,0.1); border: 1px solid #4caf50; color: #81c784; }
+.msg.result.incorrect .bubble { background: rgba(220,50,50,0.1); border: 1px solid #e05; color: #ef9a9a; }
+
+.typing { align-self: flex-start; display: none; margin: 10px; }
+.typing.visible { display: flex; }
+.dots {
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  padding: 10px 14px;
+  display: flex;
+  gap: 4px;
+}
+.dots span {
+  width: 6px; height: 6px;
+  background: #666;
+  border-radius: 50%;
+  animation: bounce 1.2s infinite;
+}
+.dots span:nth-child(2) { animation-delay: 0.2s; }
+.dots span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes bounce { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-5px)} }
+
+.input-row {
+  padding: 12px 16px;
+  border-top: 1px solid #222;
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+#chatInput {
+  flex: 1;
+  padding: 9px 13px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 20px;
+  color: #ddd;
+  font-size: 0.87rem;
+  resize: none;
+  min-height: 40px;
+  max-height: 110px;
+  font-family: inherit;
+  line-height: 1.4;
+}
+#chatInput:focus { outline: none; border-color: #e05; }
+#chatInput:disabled { opacity: 0.4; }
+
+#sendBtn {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: #e05;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+#sendBtn:hover:not(:disabled) { background: #c04; }
+#sendBtn svg { width: 16px; height: 16px; fill: white; }
+
+.welcome {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #444;
+  text-align: center;
+  padding: 40px;
+}
+.welcome p { font-size: 0.85rem; line-height: 1.6; max-width: 300px; }
+</style>
 </head>
 <body>
 
 <header>
-    <h1>🧠 Mind Matters</h1>
-    <span>Psychiatrist Simulator</span>
+  <strong>🧠 Mind Matters</strong>
+  <span>— psychiatrist simulator</span>
+  <span id="statusText" style="margin-left:auto; font-size:0.75rem;">idle</span>
 </header>
 
-<div class="main-layout">
-    <!-- LEFT PANEL -->
-    <div class="left-panel">
-        <div class="panel-section">
-            <h3>⚙️ API Config</h3>
-            <div class="field-group">
-                <label>Provider URL</label>
-                <input type="text" id="apiUrl" placeholder="https://api.polza.ai/api/v1" value="https://api.polza.ai/api/v1">
-            </div>
-            <div class="field-group">
-                <label>API Key</label>
-                <input type="password" id="apiKey" placeholder="ak_SA-jdmr" value="ak_SA-jdmr">
-            </div>
-            <div class="field-group">
-                <label>Model</label>
-                <input type="text" id="modelName" placeholder="deepseek/deepseek-v4-flash" value="deepseek/deepseek-v4-flash">
-            </div>
-        </div>
-
-        <div class="panel-section">
-            <h3>🏥 Session</h3>
-            <div class="status-indicator" style="margin-bottom:10px;">
-                <div class="status-dot" id="statusDot"></div>
-                <span id="statusText">Idle</span>
-            </div>
-            <div class="session-info" id="sessionInfo">
-                No active session.<br>Start a new session to begin.
-            </div>
-            <div style="margin-top:10px;">
-                <div class="score-display">
-                    <span>Score:</span>
-                    <span id="scoreDisplay">0 / 0</span>
-                </div></div>
-            <button class="btn btn-primary" id="newSessionBtn" style="margin-top:12px;">🎲 New Patient
-            </button>
-            <p class="hint-text">A random diagnosis will be assigned. Chat with the patient and figure out what's wrong.</p>
-        </div>
-
-        <!-- DIAGNOSIS -->
-        <div class="diagnosis-section" id="diagnosisSection">
-            <h3>📋 Your Diagnosis</h3>
-            <textarea id="diagnosisInput" placeholder="Type your diagnosis here..." disabled></textarea>
-            <button class="btn btn-secondary" id="submitDiagnosisBtn" style="margin-top:8px;" disabled>
-                ✅ Submit Diagnosis
-            </button>
-            <div class="result-box" id="resultBox"></div>
-        </div>
+<div class="layout">
+  <div class="sidebar">
+    <div>
+      <div class="field"><label>Provider URL</label><input id="apiUrl" value="https://api.polza.ai/api/v1"></div>
+      <div class="field"><label>API Key</label><input type="password" id="apiKey" value="ak_SA-jdmr"></div>
+      <div class="field"><label>Model</label><input id="modelName" value="deepseek/deepseek-v4-flash"></div>
     </div>
-
-    <!-- CENTER CHAT -->
-    <div class="chat-panel">
-        <div class="chat-header">
-            <div class="patient-avatar" id="patientAvatar">👤</div>
-            <div class="patient-info">
-                <h4 id="patientName">Waiting for patient...</h4>
-                <p id="patientStatus">No active session</p>
-            </div>
-        </div>
-
-        <div class="messages-container" id="messagesContainer">
-            <div class="welcome-screen" id="welcomeScreen">
-                <div class="icon">🏥</div>
-                <h2>Welcome, Doctor</h2>
-                <p>Configure your API settings on the left, then click<strong>"New Patient"</strong> to begin a session. A patient will walk into your office — it's up to you to diagnose them.</p>
-            </div></div>
-
-        <div class="typing-indicator" id="typingIndicator">
-            <div class="msg-avatar ai-av">👤</div>
-            <div class="typing-dots">
-                <span></span><span></span><span></span>
-            </div>
-        </div>
-
-        <div class="chat-input-area">
-            <textarea id="chatInput" placeholder="Say something to your patient..." disabled rows="1"></textarea>
-            <button class="send-btn" id="sendBtn" disabled>
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M2.01 21L23 122.01 3 210l15 2-15 2z"/>
-                </svg>
-            </button>
-        </div>
+    <hr>
+    <div class="score"><span>Score</span><span id="scoreDisplay">0 / 0</span></div>
+    <button class="btn-primary" id="newSessionBtn">New Patient</button>
+    <hr>
+    <div id="diagnosisArea" style="display:none;">
+      <label style="margin-bottom:6px;display:block;">Your diagnosis</label>
+      <textarea id="diagnosisInput" placeholder="Type your diagnosis..." disabled></textarea>
+      <button class="btn-secondary" id="submitDiagnosisBtn" disabled>Submit</button>
     </div>
+  </div>
+
+  <div class="chat">
+    <div class="messages" id="messages">
+      <div class="welcome" id="welcome">
+        <p>Configure your API on the left, then click <strong>New Patient</strong>. Chat with a patient and figure out their diagnosis.</p>
+      </div>
+    </div>
+    <div class="typing" id="typing">
+      <div class="dots"><span></span><span></span><span></span></div>
+    </div>
+    <div class="input-row">
+      <textarea id="chatInput" placeholder="Ask your patient something..." disabled rows="1"></textarea>
+      <button id="sendBtn" disabled>
+        <svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg>
+      </button>
+    </div>
+  </div>
 </div>
 
 <script>
-    // ─── DIAGNOSES LIST ───────────────────────────────────────────────────────
-    const DIAGNOSES = [
-        {
-            name: "Major Depressive Disorder",
-            description: "A mood disorder causing persistent sadness, loss of interest, fatigue, and hopelessness.",
-            symptoms: ["persistent sadness", "anhedonia", "fatigue", "sleep disturbances", "worthlessness", "concentration problems"]
-        },
-        {
-            name: "Generalized Anxiety Disorder",
-            description: "Excessive, uncontrollable worry about various aspects of life.",
-            symptoms: ["excessive worry", "restlessness", "muscle tension", "irritability", "sleep problems", "difficulty concentrating"]
-        },
-        {
-            name: "Bipolar I Disorder",
-            description: "Characterized by manic episodes lasting at least 7 days, often with depressive episodes.",
-            symptoms: ["manic episodes", "elevated mood", "decreased need for sleep", "grandiosity", "racing thoughts", "impulsive behavior"]
-        },
-        {
-            name: "Schizophrenia",
-            description: "A severe mental disorder characterized by hallucinations, delusions, and disorganized thinking.",
-            symptoms: ["auditory hallucinations", "delusions", "disorganized speech", "flat affect", "social withdrawal", "paranoia"]
-        },
-        {
-            name: "Obsessive-Compulsive Disorder",
-            description: "Characterized by unwanted recurring thoughts (obsessions) and repetitive behaviors (compulsions).",
-            symptoms: ["intrusive thoughts", "compulsive rituals", "checking behaviors", "contamination fears", "need for symmetry", "distress"]
-        },
-        {
-            name: "Post-Traumatic Stress Disorder",
-            description: "Develops after exposure to a traumatic event, causing flashbacks, nightmares, and hypervigilance.",
-            symptoms: ["flashbacks", "nightmares", "hypervigilance", "avoidance", "emotional numbness", "startle response"]
-        },
-        {
-            name: "Borderline Personality Disorder",
-            description: "Characterized by unstable moods, behavior, and relationships.",
-            symptoms: ["fear of abandonment", "unstable relationships", "identity disturbance", "impulsivity", "self-harm", "emotional instability"]
-        },
-        {
-            name: "Attention Deficit Hyperactivity Disorder",
-            description: "A neurodevelopmental disorder characterized by inattention, hyperactivity, and impulsivity.",
-            symptoms: ["inattention", "hyperactivity", "impulsivity", "forgetfulness", "difficulty organizing", "fidgeting"]
-        },
-        {
-            name: "Panic Disorder",
-            description: "Recurrent unexpected panic attacks with persistent concern about future attacks.",
-            symptoms: ["panic attacks", "heart palpitations", "shortness of breath", "derealization", "fear of dying", "avoidance behavior"]
-        },
-        {
-            name: "Social Anxiety Disorder",
-            description: "Intense fear of social situations and being judged or embarrassed by others.",
-            symptoms: ["fear of judgment", "avoidance of social situations", "blushing", "sweating", "trembling", "anticipatory anxiety"]
-        },
-        {
-            name: "Narcissistic Personality Disorder",
-            description: "A pattern of grandiosity, need for admiration, and lack of empathy.",
-            symptoms: ["grandiosity", "need for admiration", "lack of empathy", "entitlement", "exploitative behavior", "envy"]
-        },
-        {
-            name: "Anorexia Nervosa",
-            description: "An eating disorder characterized by restricted food intake and intense fear of gaining weight.",
-            symptoms: ["food restriction", "distorted body image", "intense fear of weight gain", "excessive exercise", "denial of hunger", "social withdrawal"]
-        },
-        {
-            name: "Dissociative Identity Disorder",
-            description: "The presence of two or more distinct personality states with memory gaps.",
-            symptoms: ["identity alteration", "memory gaps", "depersonalization", "hearing internal voices", "time loss", "identity confusion"]
-        },
-        {
-            name: "Hypochondria (Illness Anxiety Disorder)",
-            description: "Excessive worry about having or developing a serious illness.",
-            symptoms: ["health preoccupation", "frequent doctor visits", "body checking", "reassurance seeking", "medical anxiety", "misinterpreting symptoms"]
-        },
-        {
-            name: "Specific Phobia",
-            description: "Intense irrational fear of a specific object or situation.",
-            symptoms: ["intense fear", "avoidance", "immediate anxiety response", "recognition of irrationality", "interference with daily life", "anticipatory anxiety"]
-        }
+  const DIAGNOSES = [
+          {
+              name: "Depression",
+              description: "A mood disorder causing persistent sadness, loss of interest, fatigue, and hopelessness.",
+              symptoms: ["persistent sadness", "anhedonia", "fatigue", "sleep disturbances", "worthlessness", "concentration problems"]
+          },
+          {
+              name: "Anxiety Disorder",
+              description: "Excessive, uncontrollable worry about various aspects of life.",
+              symptoms: ["excessive worry", "restlessness", "muscle tension", "irritability", "sleep problems", "difficulty concentrating"]
+          },
+          {
+              name: "Bipolar Disorder",
+              description: "Characterized by manic episodes lasting at least 7 days, often with depressive episodes.",
+              symptoms: ["manic episodes", "elevated mood", "decreased need for sleep", "grandiosity", "racing thoughts", "impulsive behavior"]
+          },
+          {
+              name: "Schizophrenia",
+              description: "A severe mental disorder characterized by hallucinations, delusions, and disorganized thinking.",
+              symptoms: ["auditory hallucinations", "delusions", "disorganized speech", "flat affect", "social withdrawal", "paranoia"]
+          },
+          {
+              name: "Obsessive-Compulsive Disorder",
+              description: "Characterized by unwanted recurring thoughts (obsessions) and repetitive behaviors (compulsions).",
+              symptoms: ["intrusive thoughts", "compulsive rituals", "checking behaviors", "contamination fears", "need for symmetry", "distress"]
+          },
+          {
+              name: "Post-Traumatic Stress Disorder",
+              description: "Develops after exposure to a traumatic event, causing flashbacks, nightmares, and hypervigilance.",
+              symptoms: ["flashbacks", "nightmares", "hypervigilance", "avoidance", "emotional numbness", "startle response"]
+          },
+          {
+              name: "Borderline Personality Disorder",
+              description: "Characterized by unstable moods, behavior, and relationships.",
+              symptoms: ["fear of abandonment", "unstable relationships", "identity disturbance", "impulsivity", "self-harm", "emotional instability"]
+          },
+          {
+              name: "Attention Deficit Hyperactivity Disorder",
+              description: "A neurodevelopmental disorder characterized by inattention, hyperactivity, and impulsivity.",
+              symptoms: ["inattention", "hyperactivity", "impulsivity", "forgetfulness", "difficulty organizing", "fidgeting"]
+          },
+          {
+              name: "Panic Disorder",
+              description: "Recurrent unexpected panic attacks with persistent concern about future attacks.",
+              symptoms: ["panic attacks", "heart palpitations", "shortness of breath", "derealization", "fear of dying", "avoidance behavior"]
+          },
+          {
+              name: "Social Anxiety Disorder",
+              description: "Intense fear of social situations and being judged or embarrassed by others.",
+              symptoms: ["fear of judgment", "avoidance of social situations", "blushing", "sweating", "trembling", "anticipatory anxiety"]
+          },
+          {
+              name: "Narcissistic Personality Disorder",
+              description: "A pattern of grandiosity, need for admiration, and lack of empathy.",
+              symptoms: ["grandiosity", "need for admiration", "lack of empathy", "entitlement", "exploitative behavior", "envy"]
+          },
+          {
+              name: "Anorexia Nervosa",
+              description: "An eating disorder characterized by restricted food intake and intense fear of gaining weight.",
+              symptoms: ["food restriction", "distorted body image", "intense fear of weight gain", "excessive exercise", "denial of hunger", "social withdrawal"]
+          },
+          {
+              name: "Dissociative Identity Disorder",
+              description: "The presence of two or more distinct personality states with memory gaps.",
+              symptoms: ["identity alteration", "memory gaps", "depersonalization", "hearing internal voices", "time loss", "identity confusion"]
+          },
+          {
+              name: "Hypochondria",
+              description: "Excessive worry about having or developing a serious illness.",
+              symptoms: ["health preoccupation", "frequent doctor visits", "body checking", "reassurance seeking", "medical anxiety", "misinterpreting symptoms"]
+          }
+      ];
+
+  let state = {
+    diagnosis: null,
+    messages: [],
+    active: false,
+    loading: false,
+    score: { correct: 0, total: 0 }
+  };
+
+  const $ = id => document.getElementById(id);
+  const messagesEl = $('messages');
+  const typing = $('typing');
+  const chatInput = $('chatInput');
+  const sendBtn = $('sendBtn');
+  const diagnosisInput = $('diagnosisInput');
+  const submitBtn = $('submitDiagnosisBtn');
+  const scoreDisplay = $('scoreDisplay');
+  const statusText = $('statusText');
+  const diagnosisArea = $('diagnosisArea');
+
+  function setStatus(s) { statusText.textContent = s; }
+  function scrollDown() { messagesEl.scrollTop = messagesEl.scrollHeight; }
+  function rand(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+  function setInputs(on) {
+    chatInput.disabled = !on;
+    sendBtn.disabled = !on;
+    diagnosisInput.disabled = !on;
+    submitBtn.disabled = !on;
+  }
+
+  function addMsg(role, content) {
+    const welcome = $('welcome');
+    if (welcome) welcome.remove();
+
+    const div = document.createElement('div');
+    div.className = `msg ${role}`;
+    div.innerHTML = `<div class="bubble">${content}</div>`;
+    messagesEl.appendChild(div);
+    scrollDown();
+    return div;
+  }
+
+  function showTyping(v) {
+    typing.className = v ? 'typing visible' : 'typing';
+    if (v) scrollDown();
+  }
+
+  async function callAI(messages) {
+    const url = $('apiUrl').value.trim().replace(/\/$/, '') + '/chat/completions';
+    const key = $('apiKey').value.trim();
+    const model = $('modelName').value.trim() || 'deepseek/deepseek-v4-flash';
+    if (!key) throw new Error('API key required.');
+
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` },
+      body: JSON.stringify({ model, messages, temperature: 0.9, max_tokens: 400 })
+    });
+    if (!res.ok) { const e = await res.json().catch(()=>({})); throw new Error(e?.error?.message || `HTTP ${res.status}`); }
+    const data = await res.json();
+    return data.choices[0].message.content;
+  }
+
+  async function startSession() {
+    if (state.loading) return;
+    state.diagnosis = rand(DIAGNOSES);
+    state.messages = [];
+    state.active = false;
+    state.loading = true;
+
+    messagesEl.innerHTML = '';
+    diagnosisInput.value = '';
+    diagnosisArea.style.display = 'none';
+
+    $('newSessionBtn').disabled = true;
+    setInputs(false);
+    setStatus('connecting…');
+
+    const d = state.diagnosis;
+    const systemPrompt = `
+      You are roleplaying as a patient at a psychiatrist's office. You have: ${d.name}.
+      Your symptoms: ${d.symptoms.join(', ')}.
+
+      Rules:
+      - Never name your condition or use clinical terms.
+      - Speak entirely through personal stories and everyday situations that reveal most of your symptoms.
+      - Start immediately with a specific real-life scenario or moment that brought you here. No introductions, no "Hi, I'm here because…" — drop straight into the story.
+      - Keep responses 4–6 sentences.`;
+
+    const init = [
+      { role: 'system', content: systemPrompt },
+      { role: 'user', content: 'Begin.' }
     ];
 
-    // ─── STATE────────────────────────────────────────────────────────────────
-    let state = {
-        currentDiagnosis: null,
-        messages: [],         // {role, content}
-        sessionActive: false,
-        isLoading: false,
-        score: { correct: 0, total: 0 },
-        patientNames: ["Alex", "Jordan", "Morgan", "Casey", "Riley", "Taylor", "Sam", "Drew", "Avery", "Quinn"],
-        currentPatientName: ""
-    };
+    try {
+      showTyping(true);
+      const reply = await callAI(init);
+      showTyping(false);
 
-    // ─── DOM REFS ─────────────────────────────────────────────────────────────
-    const apiUrlInput= document.getElementById('apiUrl');
-    const apiKeyInput    = document.getElementById('apiKey');
-    const modelInput     = document.getElementById('modelName');
-    const newSessionBtn  = document.getElementById('newSessionBtn');
-    const chatInput      = document.getElementById('chatInput');
-    const sendBtn        = document.getElementById('sendBtn');
-    const messagesContainer = document.getElementById('messagesContainer');
-    const typingIndicator   = document.getElementById('typingIndicator');
-    const diagnosisInput    = document.getElementById('diagnosisInput');
-    const submitDiagnosisBtn = document.getElementById('submitDiagnosisBtn');
-    const resultBox= document.getElementById('resultBox');
-    const statusDot         = document.getElementById('statusDot');
-    const statusText        = document.getElementById('statusText');
-    const sessionInfo       = document.getElementById('sessionInfo');
-    const scoreDisplay      = document.getElementById('scoreDisplay');
-    const welcomeScreen     = document.getElementById('welcomeScreen');
-    const patientName       = document.getElementById('patientName');
-    const patientStatus     = document.getElementById('patientStatus');
-    const patientAvatar     = document.getElementById('patientAvatar');
-    const diagnosisSection  = document.getElementById('diagnosisSection');
+      state.messages = [{ role: 'system', content: systemPrompt }, { role: 'assistant', content: reply }];
+      addMsg('assistant', reply);
+      state.active = true;
+      state.loading = false;
 
-    // ─── HELPERS ──────────────────────────────────────────────────────────────
-    function setStatus(status, text) {
-        statusDot.className = 'status-dot';
-        if (status === 'active') statusDot.classList.add('active');
-        if (status === 'loading') statusDot.classList.add('loading');
-        statusText.textContent = text;
+      setStatus('in session');
+      setInputs(true);
+      diagnosisArea.style.display = 'block';
+      $('newSessionBtn').disabled = false;
+    } catch (e) {
+      showTyping(false);
+      state.loading = false;
+      addMsg('system', e.message);
+      setStatus('error');
+      $('newSessionBtn').disabled = false;
     }
+  }
 
-    function getTime() {
-        return new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+  async function sendMessage() {
+    const text = chatInput.value.trim();
+    if (!text || state.loading || !state.active) return;
+
+    chatInput.value = '';
+    chatInput.style.height = 'auto';
+    state.loading = true;
+    setInputs(false);
+    setStatus('thinking…');
+
+    addMsg('user', text);
+    state.messages.push({ role: 'user', content: text });
+
+    try {
+      showTyping(true);
+      const reply = await callAI(state.messages);
+      showTyping(false);
+      state.messages.push({ role: 'assistant', content: reply });
+      addMsg('assistant', reply);
+      state.loading = false;
+      setStatus('in session');
+      setInputs(true);
+    } catch (e) {
+      showTyping(false);
+      state.loading = false;
+      addMsg('system', e.message);
+      setStatus('in session');
+      setInputs(true);
     }
+  }
 
-    function randomItem(arr) {
-        return arr[Math.floor(Math.random() * arr.length)];
-    }
+  function submitDiagnosis() {
+    const userDiag = diagnosisInput.value.trim();
+    if (!userDiag || !state.active) return;
 
-    function scrollToBottom() {
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
-    }
+    const correct = state.diagnosis.name;
+    const words = correct.toLowerCase().split(/\s+/).filter(w => w.length > 3);
+    const matches = words.filter(w => userDiag.toLowerCase().includes(w)).length;
+    const isCorrect = matches >= Math.ceil(words.length * 0.5) || userDiag.toLowerCase().includes(correct.toLowerCase());
 
-    function appendMessage(role, content) {
-        // Remove welcome screen if present
-        if (welcomeScreen.parentNode) welcomeScreen.remove();
+    state.score.total++;
+    if (isCorrect) state.score.correct++;
+    scoreDisplay.textContent = `${state.score.correct} / ${state.score.total}`;
 
-        const wrapper = document.createElement('div');
-        wrapper.className = `message ${role === 'user' ? 'user' : role === 'system-msg' ? 'system-msg' : 'assistant'}`;
+    const div = document.createElement('div');
+    div.className = `msg result ${isCorrect ? 'correct' : 'incorrect'}`;
+    div.innerHTML = `<div class="bubble">${isCorrect ? '✅ Correct!' : '❌ Not quite.'} The diagnosis was <strong>${correct}</strong> — ${state.diagnosis.description}</div>`;
+    messagesEl.appendChild(div);
+    scrollDown();
 
-        if (role === 'system-msg') {
-            wrapper.innerHTML = `<div class="msg-bubble">${content}</div>`;
-        } else {
-            const avatar = role === 'user'
-                ? `<div class="msg-avatar user-av">👨‍⚕️</div>`
-                : `<div class="msg-avatar ai-av">👤</div>`;
-            wrapper.innerHTML = `
-                ${avatar}
-                <div>
-                    <div class="msg-bubble">${content}</div>
-                <div class="msg-time">${getTime()}</div>
-                </div>
-            `;
-        }
+    state.active = false;
+    setInputs(false);
+    submitBtn.disabled = true;
+    setStatus('session ended');
+  }
 
-        messagesContainer.appendChild(wrapper);
-        scrollToBottom();
-    }
+  $('newSessionBtn').addEventListener('click', startSession);
+  sendBtn.addEventListener('click', sendMessage);
+  submitBtn.addEventListener('click', submitDiagnosis);
 
-    function showTyping(show) {
-        typingIndicator.className = show ? 'typing-indicator visible' : 'typing-indicator';
-        if (show) scrollToBottom();
-    }
-
-    function setInputsEnabled(enabled) {
-        chatInput.disabled = !enabled;
-        sendBtn.disabled = !enabled;diagnosisInput.disabled = !enabled;
-        submitDiagnosisBtn.disabled = !enabled;
-    }
-
-    function updateSessionInfo() {
-        if (!state.sessionActive) {
-            sessionInfo.innerHTML = `No active session.<br>Start a new session to begin.`;
-        } else {
-            sessionInfo.innerHTML = `
-                Patient: <span>${state.currentPatientName}</span><br>Condition: <span>Unknown</span><br>
-                Status: <span>In session</span>
-            `;
-        }scoreDisplay.textContent = `${state.score.correct} / ${state.score.total}`;
-    }
-
-    // ─── API CALL ─────────────────────────────────────────────────────────────
-    async function callAI(messages) {
-        const url = (apiUrlInput.value.trim().replace(/\/$/, '')) + '/chat/completions';
-        const key = apiKeyInput.value.trim();
-        const model = modelInput.value.trim() || 'gpt-4o';
-
-        if (!key) throw new Error('API Key is required. Please enter it in the config panel.');
-
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${key}`
-            },
-            body: JSON.stringify({
-                model: model,
-                messages: messages,
-                temperature: 0.85,
-                max_tokens: 400
-            })
-        });
-
-        if (!response.ok) {
-            const err = await response.json().catch(() => ({}));
-            throw new Error(err?.error?.message || `HTTP ${response.status}`);
-        }
-
-        const data = await response.json();
-        return data.choices[0].message.content;
-    }
-
-    // ─── NEW SESSION ──────────────────────────────────────────────────────────
-    async function startNewSession() {
-        if (state.isLoading) return;
-
-        // Reset
-        state.currentDiagnosis = randomItem(DIAGNOSES);
-        state.messages = [];
-        state.sessionActive = false;
-        state.isLoading = true;
-        state.currentPatientName = randomItem(state.patientNames);
-
-        // Reset UI
-        messagesContainer.innerHTML = '';
-        resultBox.style.display = 'none';
-        resultBox.className = 'result-box';
-        diagnosisInput.value = '';
-        diagnosisSection.classList.remove('active');
-
-        newSessionBtn.disabled = true;
-        setInputsEnabled(false);
-        setStatus('loading', 'Connecting...');
-
-        patientName.textContent = state.currentPatientName;
-        patientStatus.textContent = 'Entering office...';
-        patientAvatar.textContent = '👤';
-
-        updateSessionInfo();
-
-        appendMessage('system-msg', `📋 A new patient has arrived. Begin your session with<strong>${state.currentPatientName}</strong>.`);
-
-        // Build system prompt
-        const d = state.currentDiagnosis;
-        const systemPrompt = `You are roleplaying as a patient visiting a psychiatrist's office for the first time. Your name is ${state.currentPatientName}.
-
-		You have been diagnosed with: ${d.name}
-		Description: ${d.description}
-		Your symptoms include: ${d.symptoms.join(', ')}
-
-		IMPORTANT RULES:
-
-		Never reveal your diagnosis directly. Never say the name of your condition.
-		Speak naturally as a patient would — confused, emotional, sometimes minimizing symptoms.
-		Show your symptoms through behavior, stories, and complaints rather than clinical terms.
-		Respond to the psychiatrist's questions in character.
-		Keep responses conversational and realistic (2-5 sentences usually).
-		You just walked into the office for the first time. Start by introducing yourself briefly and mentioning why you came in, in a vague, patient-like way.
-		React emotionally and authentically to questions.
-		Do NOT use clinical or diagnostic language.`;
-		const initMessages = [
-			{ role: 'system', content: systemPrompt },
-			{ role: 'user', content: 'The patient has just walked into your office. Please begin.' }
-		];
-
-		try {
-			showTyping(true);
-			const reply = await callAI(initMessages);
-			showTyping(false);
-
-			// Store conversation (system + opening)
-			state.messages = [
-				{ role: 'system', content: systemPrompt },
-				{ role: 'assistant', content: reply }
-			];
-
-			appendMessage('assistant', reply);
-			state.sessionActive = true;
-			state.isLoading = false;
-
-			setStatus('active', 'Session active');
-			patientStatus.textContent = 'In session';
-			setInputsEnabled(true);
-			diagnosisSection.classList.add('active');
-			updateSessionInfo();
-
-		} catch (err) {
-			showTyping(false);
-			state.isLoading = false;
-			appendMessage('system-msg', err.message);
-			setStatus('', 'Error');
-			newSessionBtn.disabled = false;
-		}
-	}
-
-		// ─── SEND MESSAGE ─────────────────────────────────────────────────────────
-	async function sendMessage() {
-		const text = chatInput.value.trim();
-		if (!text || state.isLoading || !state.sessionActive) return;
-
-		chatInput.value = '';
-		chatInput.style.height = 'auto';
-		state.isLoading = true;
-		setInputsEnabled(false);
-		setStatus('loading', 'Patient thinking...');
-
-		appendMessage('user', text);
-
-		// Add user message to history
-		state.messages.push({ role: 'user', content: text });
-
-		try {
-			showTyping(true);
-			const reply = await callAI(state.messages);
-			showTyping(false);
-
-			state.messages.push({ role: 'assistant', content: reply });
-			appendMessage('assistant', reply);
-
-			state.isLoading = false;
-			setStatus('active', 'Session active');
-			setInputsEnabled(true);} catch (err) {
-			showTyping(false);
-			state.isLoading = false;
-			appendMessage('system-msg', err.message);
-			setStatus('active', 'Session active');
-			setInputsEnabled(true);
-		}
-	}
-
-		// ─── SUBMIT DIAGNOSIS ─────────────────────────────────────────────────────
-	function submitDiagnosis() {
-		const userDiag = diagnosisInput.value.trim();
-		if (!userDiag || !state.sessionActive) return;
-
-		const correct = state.currentDiagnosis.name;
-		const userLower = userDiag.toLowerCase();
-		const correctLower = correct.toLowerCase();
-
-		// Simple matching: check if key words match
-		const correctWords = correctLower.split(/\s+/).filter(w => w.length > 3);
-		const matchCount = correctWords.filter(w => userLower.includes(w)).length;
-		const isCorrect = matchCount >= Math.ceil(correctWords.length * 0.5) || userLower.includes(correctLower);
-
-		state.score.total++;
-		if (isCorrect) state.score.correct++;
-
-		resultBox.style.display = 'block';
-		if (isCorrect) {
-			resultBox.className = 'result-box correct';
-			resultBox.innerHTML = `✅ <strong>Correct!</strong><br>The diagnosis was: <strong>${correct}</strong><br><em>${state.currentDiagnosis.description}</em>`;
-		} else {
-			resultBox.className = 'result-box incorrect';
-			resultBox.innerHTML = `❌ <strong>Not quite.</strong><br>The actual diagnosis was: <strong>${correct}</strong><br><em>${state.currentDiagnosis.description}</em>`;
-		}
-
-		// End session
-		state.sessionActive = false;
-		setInputsEnabled(false);
-		submitDiagnosisBtn.disabled = true;
-		newSessionBtn.disabled = false;
-		setStatus('', 'Session ended');
-		patientStatus.textContent = 'Session ended';
-		updateSessionInfo();
-
-		let result = isCorrect ? '✅ Correct diagnosis!' : '❌ Incorrect diagnosis.';
-		appendMessage('system-msg', `📋 Session ended. The patient had<strong>${result}</strong>.`);
-		scoreDisplay.textContent = state.score.correct / state.score.total;
-		}
-
-		// ─── EVENT LISTENERS ──────────────────────────────────────────────────────
-		newSessionBtn.addEventListener('click', startNewSession);
-		sendBtn.addEventListener('click', sendMessage);
-		submitDiagnosisBtn.addEventListener('click', submitDiagnosis);
-
-		chatInput.addEventListener('keydown', (e) => {
-		if (e.key === 'Enter' && !e.shiftKey) {
-			e.preventDefault();
-			sendMessage();
-		}
-		});
-
-		chatInput.addEventListener('input', () => {
-		chatInput.style.height = 'auto';
-		chatInput.style.height = Math.min(chatInput.scrollHeight, 120) + 'px';
-		});
-
-		diagnosisInput.addEventListener('keydown', (e) => {
-		if (e.key === 'Enter' && !e.shiftKey) {
-		e.preventDefault();
-		submitDiagnosis();
-	}
-});
-
-// Fix send button SVG
-sendBtn.innerHTML = '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:18px;height:18px;fill:white;"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg>';
+  chatInput.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); } });
+  chatInput.addEventListener('input', () => { chatInput.style.height = 'auto'; chatInput.style.height = Math.min(chatInput.scrollHeight, 110) + 'px'; });
+  diagnosisInput.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); submitDiagnosis(); } });
 </script>
 </body>
 </html>
