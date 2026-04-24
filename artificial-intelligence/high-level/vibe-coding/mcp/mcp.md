@@ -1,5 +1,6 @@
 ### Useful MCP from marketplaces:
 * File System
+* Browser
 * PostgreSQL reader
 * Puppeteer
 * Docker

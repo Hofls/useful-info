@@ -53,3 +53,4 @@
   * https://www.reddit.com/r/ClaudeAI/comments/1r5d576/small_company_leader_here_ai_agents_are_moving/
   * https://www.reddit.com/r/ClaudeAI/comments/1r0dxob/ive_used_ai_to_write_100_of_my_code_for_1_year_as/
   * https://www.reddit.com/r/ClaudeAI/comments/1s1ipep/the_5_levels_of_claude_code_and_how_to_know_when/
+  * https://github.com/shanraisshan/claude-code-best-practice?tab=readme-ov-file
