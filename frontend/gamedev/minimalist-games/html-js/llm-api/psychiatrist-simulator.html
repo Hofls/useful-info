@@ -280,8 +280,8 @@ button:disabled { opacity: 0.4; cursor: not-allowed; }
       },
       {
         "name": "Bipolar Disorder",
-        "description": "A condition defined by manic episodes lasting at least 7 days, often with depressive episodes.",
-        "symptoms": ["manic episodes", "euphoria", "decreased need for sleep", "grandiosity", "racing thoughts", "impulsive behavior"]
+        "description": "A condition defined by reoccurring manic and depressive episodes.",
+        "symptoms": ["manic episodes", "euphoria", "grandiosity", "racing thoughts", "depressive episodes", "anhedonia", "impulsive behavior"]
       },
       {
         "name": "Schizophrenia",
@@ -425,6 +425,9 @@ button:disabled { opacity: 0.4; cursor: not-allowed; }
       }
     ];
 
+  const DIAGNOSES_SHUFFLED = DIAGNOSES.sort(() => Math.random() - 0.5);
+  let diagnosisIndex = -1;
+
   let state = {
     diagnosis: null,
     messages: [],
@@ -490,7 +493,8 @@ button:disabled { opacity: 0.4; cursor: not-allowed; }
 
   async function startSession() {
     if (state.loading) return;
-    state.diagnosis = rand(DIAGNOSES);
+    diagnosisIndex = (diagnosisIndex + 1) % DIAGNOSES_SHUFFLED.length;
+    state.diagnosis = DIAGNOSES_SHUFFLED[diagnosisIndex];
     state.messages = [];
     state.active = false;
     state.loading = true;
