@@ -5,6 +5,7 @@
 ### Coding agents / Vibe coding
 * Disclaimer - better use VSCODE (lightweight), create new project only with relevant files
 * `Kilo code` - (BYOM/MCP marketplace) + (VSCODE/IDEA)
+  * Install version `5.16.1` (versions 7+ have no good default way of finding/reading files)
   * Settings -> Providers -> Pick `OpenAI Compatible` to add custom url/key/model
   * Settings -> Auto-Approve -> Disable command execution
   * Settings -> Context -> Workspace file context limit -> 50
