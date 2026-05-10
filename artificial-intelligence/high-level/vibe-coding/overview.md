@@ -3,6 +3,7 @@
 * [skills.md](skills/skills.md)
 
 ### Coding agents / Vibe coding
+* Disclaimer - better use VSCODE (lightweight), create new project only with relevant files
 * `Kilo code` - (BYOM/MCP marketplace) + (VSCODE/IDEA)
   * Settings -> Providers -> Pick `OpenAI Compatible` to add custom url/key/model
   * Settings -> Auto-Approve -> Disable command execution
