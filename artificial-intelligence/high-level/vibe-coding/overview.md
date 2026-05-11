@@ -10,13 +10,14 @@
   * Settings -> Auto-Approve -> Disable command execution
   * Settings -> Context -> Workspace file context limit -> 50
 * `Cline` - (BYOM/MCP) + (VSCODE/IDEA)
-* `BlackBox AI` - (BYOM/MCP marketplace/Skills) + (VSCODE/IDEA)
-  * Settings -> Auto-Approve -> Disable command execution
-  * Settings -> Context -> Workspace file context limit -> 50
-  * Settings -> Providers -> Pick `OpenAI Compatible` to add custom url/key/model
 * `Koda` - (BYOM/MCP) + (VSCODE)
 * `Roo Code` - (BYOM/MCP marketplace) + (VSCODE)
     * Pick `OpenAI Compatible` to add custom url/key/model
+* `BlackBox AI` - (BYOM/MCP marketplace/Skills) + (VSCODE/IDEA)
+  * Disclaimer - custom provider is broken in last versions of a plugin 
+  * Settings -> Auto-Approve -> Disable command execution
+  * Settings -> Context -> Workspace file context limit -> 50
+  * Settings -> Providers -> Pick `OpenAI Compatible` to add custom url/key/model
 * `Yandex Code Assistant` - (BYOM/MCP marketplace) + (VSCODE/IDEA)
     * Installation process is unusual - https://sourcecraft.dev/portal/docs/en/code-assistant/
     * Usage statistics - https://sourcecraft.dev/me/codeassistant/settings
