@@ -28,12 +28,6 @@
 * `Qodo Gen` - bad, no true BYOM, requires registration
 * `Cursor IDE` - bad, requires registration + sms verification
 
-### AI assistant / AI autocomplete
-* `Tabby` - bad, requires running an entire server
-* `Windsurf` - bad, requires auth, no true BYOM
-* `CodeGPT` - bad, requires auth, no true BYOM
-* `Tabnine` - bad, paywalled
-
 ### Workflows
 * Web chat:
   * Description - Manually gather relevant code/files/screenshots, paste into chat, tell AI what to do
