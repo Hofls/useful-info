@@ -1,3 +1,6 @@
+# Copy this file to tests folder
+# Run `python find-big-tests.py`
+
 import os, re
 
 def find_tests_in_file(path):
@@ -39,7 +42,7 @@ def main():
     with open('big_tests.txt', 'w', encoding='utf-8') as out:
         for size, file, name in results[:100]:
             out.write(f"{size:4} | {file} | {name}\n")
-    print("Results saved to largest_tests.txt")
+    print("Results saved to big_tests.txt")
 
 if __name__ == '__main__':
     main()
