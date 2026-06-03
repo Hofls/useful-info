@@ -127,6 +127,8 @@
   * Jfrog artifactory - generates commands with all parameters filled in, for easy pull/push (just copy/paste it, no need to waste time on reading docs)
 * Present necessary information right when it's needed
   * Google Chrome Dev Tools - `display: flex;` shows simple icons for all possible options (direction, wrap, align, justify etc)
+* Attempt to correct possible mistake (but do not force it):
+  * Youtube music - try add duplicate song to playlist, appears toast with text "This track is already in the playlist. Add anyway?"
 
 ##### Antipatterns
 * When copying a cell value from excel to text editor - excel adds linefeed to copied text, so user have to manually delete it
