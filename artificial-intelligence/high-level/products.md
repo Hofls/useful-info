@@ -76,8 +76,13 @@
 * 3D models:
   * https://www.meshy.ai/discover?tab=total_emoji_count
 
+### LLM benchmarks/rankings
+* They also allow to use any model for free (text/video/image)
+* https://arena.ai/leaderboard
+* https://llm-stats.com/
+* https://openrouter.ai/rankings - best cheap models
+
 ### Other products
-* `arena.ai` - top models list, use any model for free (text/video/image)
 * `openroute` - top models list
 * `Huggingface` - pre-trained models hub
 * `Kaggle` - pre-trained models hub
