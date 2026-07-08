@@ -46,7 +46,7 @@
 * WinGet:
     * todo
 
-## OS
+## Update/Install
 * Windows installation:
   * Download `.iso` image from [massgrave](https://massgrave.dev/genuine-installation-media)
   * Upload it to flash drive, using `rufus`
@@ -101,6 +101,8 @@
     `Sound` -> `Sound Control Panel` -> `Sounds` -> `Sound Scheme: No Sounds`
   * Show file extension (with ability to edit it): \
     `File explorer` -> `View` -> `File name extensions`
+* Show all files:
+  * Explorer -> View -> Hidden items
 * "Microsoft compatibility telemetry" can cause high CPU load. To turn it off:
   * MS search -> Services -> Connected User Experiences and Telemetry -> Properties -> Startup Type -> Disabled
 * Problem with the internet on PC:

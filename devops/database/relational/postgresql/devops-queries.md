@@ -44,7 +44,7 @@ limit 400;
 ```
 * Approximate count (if standard count is too slow)
 ```
-SELECT reltuples AS estimate FROM pg_class where relname = 'customer';
+SELECT to_char(reltuples, 'FM999,999,999,999') AS estimate FROM pg_class where relname = 'fluid_mark';
 ```
 * Table index usage
 ```
