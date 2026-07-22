@@ -19,8 +19,8 @@
         * Type - HTTP
         * Hostname - 125.44.214.78
         * Port - 8888
-        * Username - hofls
-        * Password - qwerty
+        * Username (optional) - hofls
+        * Password (optional) - qwerty
       * `Save` -> Extension icon -> Activate profile
     * Extension `FoxyProxy`. SOCKS5:
       * Type - `SOCKS5`
