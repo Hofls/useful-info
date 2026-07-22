@@ -1,4 +1,6 @@
 ### LLM
+* `kimi.com` - Chinese LLM
+* `chat.z.ai` - Chinese LLM
 * `chat.deepseek.com` - Chinese LLM
 * `chat.qwen.ai` - Chinese LLM, great at coding/programming (claude alternative)
 * `alice.yandex.ru` - Yandex LLM
