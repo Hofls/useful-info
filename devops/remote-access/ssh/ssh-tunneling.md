@@ -1,4 +1,9 @@
 ## SSH Tunneling (Port Forwarding)
+#### CMD
+* Run command:
+  * `ssh -N -L 18789:127.0.0.1:18789 -i D:\Programs\Programming\PuTTY\keys\ed25519\private-low-permissions hofls@44.124.144.240`
+* Open localhost:18789 in your browser
+
 #### Google chrome
 * Use case - app is running on a server, has web-interface on localhost. For some reason you cant open it to outside world.
 * Create SSH tunnel in `PUTTY`:
