@@ -14,3 +14,7 @@
   * https://mcpmarket.com/server
   * https://mcp.so/
   * https://mcpservers.org/
+
+### Use cases
+* Browser MCP:
+  * Use browser (MCP) to go to https://hofls.github.io/ - click around, fill fields with relevant text, press buttons, make sure everything is working

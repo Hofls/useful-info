@@ -3,12 +3,29 @@
 * [skills.md](skills/skills.md)
 
 ### Coding agents / Vibe coding
-* Disclaimer - better use VSCODE (lightweight), create new project only with relevant files
+* `Claude code` - (TERMINAL/VSCODE/JETBRAINS/DESKTOP (paid))
+  * Create `settings.json` in `C:\Users\%USERNAME%\.claude`, fill with:
+  ```
+  {
+    "env": {
+      "ANTHROPIC_BASE_URL": "https://api.deepseek.com/anthropic",
+      "ANTHROPIC_AUTH_TOKEN": "INSERT_YOUR_TOKEN_HERE",
+      "ANTHROPIC_MODEL": "deepseek-v4-flash[1m]",
+      "ANTHROPIC_DEFAULT_OPUS_MODEL": "deepseek-v4-pro[1m]",
+      "ANTHROPIC_DEFAULT_SONNET_MODEL": "deepseek-v4-flash[1m]",
+      "ANTHROPIC_DEFAULT_HAIKU_MODEL": "deepseek-v4-flash[1m]",
+      "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
+      "CLAUDE_CODE_EFFORT_LEVEL": "medium"
+    },
+    "effortLevel": "low",
+    "model": "haiku"
+  }
+  ```
 * `Kilo code` - (BYOM/MCP marketplace) + (VSCODE/IDEA)
-  * Install version `5.16.1` (versions 7+ have no good default way of finding/reading files)
   * Settings -> Providers -> Pick `OpenAI Compatible` to add custom url/key/model
   * Settings -> Auto-Approve -> Disable command execution
   * Settings -> Context -> Workspace file context limit -> 50
+  * MCP requires VPN in some regions
 * `Cline` - (BYOM/MCP) + (VSCODE/IDEA)
 * `Koda` - (BYOM/MCP) + (VSCODE)
 * `Roo Code` - (BYOM/MCP marketplace) + (VSCODE)

@@ -2,6 +2,8 @@
 * `kimi.com` - Chinese LLM
 * `chat.z.ai` - Chinese LLM
 * `chat.deepseek.com` - Chinese LLM
+  * OpenAI compatible - https://api.deepseek.com/chat/completions
+  * Anthropic compatible - https://api.deepseek.com/anthropic
 * `chat.qwen.ai` - Chinese LLM, great at coding/programming (claude alternative)
 * `alice.yandex.ru` - Yandex LLM
 * `kimi.com` - Chinese LLM
