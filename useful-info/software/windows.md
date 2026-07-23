@@ -1,4 +1,5 @@
 ## Commands (cmd)
+* Run `cmd`/`claude` or any other program in current folder - paste it into address bar (in explorer)
 * Find `java.exe` in environment variables
   * `for %i in (java.exe) do @echo.   %~$PATH:i`
 * Set environment variable
