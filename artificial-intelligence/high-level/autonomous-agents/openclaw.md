@@ -10,5 +10,6 @@
 * Ask OpenClaw to do something, for example:
   * Install java, create and build sample project (gradle + spring boot)
   * Find any png image, download it, modify it (make it black and white)
+* If you want to add another model/skill/plugin - `openclaw configure`
 * Workspace location:
   * `cd /home/hofls/.openclaw/workspace`
