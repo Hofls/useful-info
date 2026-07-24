@@ -26,6 +26,8 @@
   * Settings -> Auto-Approve -> Disable command execution
   * Settings -> Context -> Workspace file context limit -> 50
   * MCP requires VPN in some regions
+* `OpenCode` - (DESKTOP/TERMINAL/VSCODE/JETBRAINS)
+  * Thinks too much, does too little
 * `Cline` - (BYOM/MCP) + (VSCODE/IDEA)
 * `Koda` - (BYOM/MCP) + (VSCODE)
 * `Roo Code` - (BYOM/MCP marketplace) + (VSCODE)
@@ -40,10 +42,8 @@
     * Usage statistics - https://sourcecraft.dev/me/codeassistant/settings
 * `Continue` - (BYOM/MCP) + (VSCODE/IDEA)
     * Adding custom provider is scuffed (edit local config, add new model with `apiBase`, `apiKey`, `model`, `provider: openai` fields)
-* `OpenCode` - bad
-    * BYOM is super scuffed (gotta manually edit `C:\Users\%USERPROFILE%\.config\opencode\opencode.json`)
 * `Qodo Gen` - bad, no true BYOM, requires registration
-* `Cursor IDE` - bad, requires registration + sms verification
+* `Cursor IDE` - free version is very limited, requires registration + sms verification
 
 ### Workflows
 * Web chat:
