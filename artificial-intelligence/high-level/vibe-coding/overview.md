@@ -21,7 +21,7 @@
     "model": "haiku"
   }
   ```
-* `Kilo code` - (BYOM/MCP marketplace) + (VSCODE/IDEA)
+* `Kilo code` - (BYOM/MCP marketplace) + (TERMINAL/VSCODE/IDEA)
   * Settings -> Providers -> Pick `OpenAI Compatible` to add custom url/key/model
   * Settings -> Auto-Approve -> Disable command execution
   * Settings -> Context -> Workspace file context limit -> 50
