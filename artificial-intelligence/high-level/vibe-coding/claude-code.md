@@ -17,6 +17,7 @@
 "model": "haiku"
 }
 ```
+* On a new project always start with `/init` to create `CLAUDE.md`
 
 ### Claude Code - MCP
 * Browser:
@@ -25,4 +26,7 @@ claude mcp add --scope user playwright -- npx -y @playwright/mcp@latest
 claude mcp list
 Test - run claude, ask it to navigate to example.com
 ```
+
+### Claude Code - Skills
+* [Frontend design](https://github.com/anthropics/claude-code/blob/main/plugins/frontend-design/skills/frontend-design/SKILL.md)
 * 
