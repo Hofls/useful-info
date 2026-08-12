@@ -1,10 +1,12 @@
 ### Google
 * `Google analytics`
-  * Click on "Admin" (bottom left) -> Data collecton -> Data streams -> Add stream -> Web
+  * https://analytics.google.com/analytics
+  * Click on "Admin" (bottom left) -> Data collection -> Data streams -> Add stream -> Web
   * Fill site url, get js script, put it in <header> tags of your html page, deploy the page
 * `Google search`
+  * https://search.google.com/search-console
   * Add website/page to google:
-    * Add property (property = your website/page)
+    * Top left -> Add property (property = your website/page) -> URL prefix
     * Ownership (usually ownership is auto verified, thanks to google analytics)
   * Check if url is indexed by google:
     * Open "URL Inspection Tool", insert url

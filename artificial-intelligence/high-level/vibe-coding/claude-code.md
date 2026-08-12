@@ -1,5 +1,6 @@
 ### Claude Code
 * `Claude code` - (TERMINAL/VSCODE/JETBRAINS/DESKTOP (paid))
+* If a task is huge - automatically creates subagents and delegates to them (or you can ask for it manually)
 * Create `settings.json` in `C:\Users\%USERNAME%\.claude`, fill with:
 ```
 {
