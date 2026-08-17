@@ -24,6 +24,8 @@
     * https://www.thoughtworks.com/radar
     * https://www.infoq.com/infoq-trends-report/
 * Popularity
+    * AI based apps:
+      * https://openrouter.ai/rankings?view=trending#apps
     * Programming language:
         * https://innovationgraph.github.com/global-metrics/programming-languages
         * https://pypl.github.io/PYPL.html

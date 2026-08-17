@@ -1,4 +1,6 @@
 ### LLM
+* `openrouter.ai` - Multiple LLms
+  * Providers may be very slow (e.g. Deepseek providers have 25% of OG speed)
 * `kimi.com` - Chinese LLM
 * `chat.z.ai` - Chinese LLM
 * `chat.deepseek.com` - Chinese LLM
@@ -14,7 +16,6 @@
 * `monica.im` - GPT, Gemini, Llama, Claude
 * `phind.com` - Phind LLM
 * `hix.ai` - Online access to Claude/ChatGPT
-* `openrouter.ai` - Multiple LLms
 * `kimi.moonshot.cn` - AI + internet
 
 ### LLM (Unavailable in some regions)
