@@ -4,18 +4,28 @@
 * Create `settings.json` in `C:\Users\%USERNAME%\.claude`, fill with:
 ```
 {
-"env": {
-"ANTHROPIC_BASE_URL": "https://api.deepseek.com/anthropic",
-"ANTHROPIC_AUTH_TOKEN": "INSERT_YOUR_TOKEN_HERE",
-"ANTHROPIC_MODEL": "deepseek-v4-flash[1m]",
-"ANTHROPIC_DEFAULT_OPUS_MODEL": "deepseek-v4-pro[1m]",
-"ANTHROPIC_DEFAULT_SONNET_MODEL": "deepseek-v4-flash[1m]",
-"ANTHROPIC_DEFAULT_HAIKU_MODEL": "deepseek-v4-flash[1m]",
-"CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
-"CLAUDE_CODE_EFFORT_LEVEL": "medium"
-},
-"effortLevel": "low",
-"model": "haiku"
+    "env": {
+        "ANTHROPIC_BASE_URL": "https://api.deepseek.com/anthropic",
+        "ANTHROPIC_AUTH_TOKEN": "INSERT_YOUR_TOKEN_HERE",
+        "ANTHROPIC_MODEL": "deepseek-v4-flash[1m]",
+        "ANTHROPIC_DEFAULT_OPUS_MODEL": "deepseek-v4-pro[1m]",
+        "ANTHROPIC_DEFAULT_SONNET_MODEL": "deepseek-v4-flash[1m]",
+        "ANTHROPIC_DEFAULT_HAIKU_MODEL": "deepseek-v4-flash[1m]",
+        "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
+        "CLAUDE_CODE_EFFORT_LEVEL": "medium"
+    },
+    "effortLevel": "low",
+    "model": "haiku"
+}
+```
+* To configure proxy, add to `settings.json`:
+```
+{
+    "env": {
+        "HTTPS_PROXY": "http://username:password@proxy.example.com:8080",
+        "HTTP_PROXY": "http://username:password@proxy.example.com:8080",
+        "NO_PROXY": "localhost,127.0.0.1"
+    }
 }
 ```
 * On a new project always start with `/init` to create `CLAUDE.md`
