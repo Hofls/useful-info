@@ -1,6 +1,6 @@
 ### LLM
 * `openrouter.ai` - Multiple LLms
-  * Providers may be very slow (e.g. Deepseek providers have 25% of OG speed)
+  * Providers may be very slow (e.g. cheap Deepseek providers have 25% of OG speed, use at least 60 TPS)
 * `kimi.com` - Chinese LLM
 * `chat.z.ai` - Chinese LLM
 * `chat.deepseek.com` - Chinese LLM
