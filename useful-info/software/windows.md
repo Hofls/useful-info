@@ -1,5 +1,9 @@
 ## Commands (cmd)
 * Run `cmd`/`claude` or any other program in current folder - paste it into address bar (in explorer)
+* Call `java.exe` from (cmd)/(explorer address bar) by its name alone, without full path:
+  * Add path `C:\ProgramData\Oracle\Java\javapath` to `PATH` environment variable
+  * Check - `java --version`
+  * Also works with `.bat`, so you can run `npx @deepseek-ai/dsh web` like you do any exe
 * Find `java.exe` in environment variables
   * `for %i in (java.exe) do @echo.   %~$PATH:i`
 * Set environment variable
@@ -7,9 +11,6 @@
     * Restart console
 * Get environment variable
     * `echo %RANDOOP_JAR%`
-* Call `java.exe` from cmd by its name alone, without full path:
-    * Add path `C:\ProgramData\Oracle\Java\javapath` to `PATH` environment variable
-    * `java --version`
 * Copy text from console
     * Select text, `ctrl+c`
 * Find files/folders with name containing 'masdev' in this folder and all subfolders
