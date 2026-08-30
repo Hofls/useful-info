@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://health/health_player.gd" id="1_player"]
+[ext_resource type="Script" path="res://demo.gd" id="2_demo"]
+[ext_resource type="PackedScene" path="res://hazard/hazard.tscn" id="3_hazard"]
+[ext_resource type="PackedScene" path="res://heal/heal.tscn" id="4_heal"]
+
+[node name="Health" type="Node2D"]
+script = ExtResource("2_demo")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(576, 324)
+script = ExtResource("1_player")
+
+[node name="Hazard" parent="." instance=ExtResource("3_hazard")]
+position = Vector2(180, 180)
+
+[node name="Hazard2" parent="." instance=ExtResource("3_hazard")]
+position = Vector2(440, 380)
+
+[node name="Hazard3" parent="." instance=ExtResource("3_hazard")]
+position = Vector2(700, 180)
+
+[node name="Hazard4" parent="." instance=ExtResource("3_hazard")]
+position = Vector2(960, 380)
+
+[node name="Heal" parent="." instance=ExtResource("4_heal")]
+position = Vector2(120, 460)
+
+[node name="Heal2" parent="." instance=ExtResource("4_heal")]
+position = Vector2(500, 200)
+
+[node name="Heal3" parent="." instance=ExtResource("4_heal")]
+position = Vector2(900, 520)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Hp" type="Label" parent="CanvasLayer"]
+offset_left = 10.0
+offset_top = 6.0
+text = "HP: 3"

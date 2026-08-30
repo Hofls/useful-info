@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://game/player.gd" id="1_player"]
+[ext_resource type="Script" path="res://game/wall.gd" id="2_wall"]
+[ext_resource type="Script" path="res://demo.gd" id="3_demo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h"]
+size = Vector2(1300, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v"]
+size = Vector2(40, 700)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("3_demo")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(576, 324)
+script = ExtResource("1_player")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+
+[node name="WallTop" type="StaticBody2D" parent="."]
+position = Vector2(576, 20)
+script = ExtResource("2_wall")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallTop"]
+shape = SubResource("RectangleShape2D_h")
+
+[node name="WallBottom" type="StaticBody2D" parent="."]
+position = Vector2(576, 660)
+script = ExtResource("2_wall")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallBottom"]
+shape = SubResource("RectangleShape2D_h")
+
+[node name="WallLeft" type="StaticBody2D" parent="."]
+position = Vector2(20, 324)
+script = ExtResource("2_wall")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft"]
+shape = SubResource("RectangleShape2D_v")
+
+[node name="WallRight" type="StaticBody2D" parent="."]
+position = Vector2(1132, 324)
+script = ExtResource("2_wall")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallRight"]
+shape = SubResource("RectangleShape2D_v")
