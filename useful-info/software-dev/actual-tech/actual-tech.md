@@ -42,7 +42,7 @@
     * https://github.com/topics/awesome
 * Developer surveys
     * [stackoverflow](https://survey.stackoverflow.co/2025/)
-    * [jetbrains](https://www.jetbrains.com/lp/devecosystem-2024/)
+    * [jetbrains](https://www.jetbrains.com/lp/devecosystem-2025/)
 * [Testcontainers modules](https://testcontainers.com/modules/)
 * [List of popular websites](https://en.wikipedia.org/wiki/List_of_most-visited_websites)
 * Any job listings
