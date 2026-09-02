@@ -1,4 +1,4 @@
-# IT tech popularity
+# Software dev tech popularity
 
 ### Programming language
 * JavaScript/TypeScript - Almost all frontend in existence is built on that
@@ -71,6 +71,22 @@
 * Playwright - Simply the best
 * Selenium - Legacy, but still popular
 * Cypress 
+
+### Observability
+* Grafana
+* Datadog
+* Kibana
+
+### Analytics
+* Google Analytics
+* Adobe Analytics
+
+### Load testing
+* k6
+* Gatling
+* Locust
+* Apache JMeter - Legacy, but still popular
+* 
 
 ### Books
 * The Pragmatic Programmer - From writing adaptable code to taking responsibility for your career and tooling
