@@ -1,6 +1,8 @@
 ### Deepseek harness
 * Run `npx @deepseek-ai/dsh web`
   * Better create `.bat` file with this command and add it to `PATH`
+  * Windows antimalware/antivirus drastically reduces startup speed. Fix:
+    * Search -> Virus & threat protection -> Manage Settings -> Add or remove exclusions -> Process -> node.exe
 * Open http://127.0.0.1:3080
 * [List of plugins](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin)
 
