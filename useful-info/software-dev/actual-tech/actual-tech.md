@@ -22,7 +22,7 @@
     * https://stackshare.io/stacks
 * Technology macro trends
     * https://www.thoughtworks.com/radar
-    * https://www.infoq.com/infoq-trends-report/
+    * https://www.infoq.com/infoq-trends-report/ (skip podcasts, scroll down to articles)
 * Popularity
     * AI based apps:
       * https://openrouter.ai/rankings?view=trending#apps

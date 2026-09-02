@@ -11,7 +11,7 @@
 
 ### Database
 * PostgreSQL - Simply the best
-* MySQL - Classic database
+* MySQL - Classic time-proven database
 * SQLite - Embedded, zero-config database engine; runs inside mobile apps, browsers and edge runtimes
 * MongoDB - King of document-based NoSQL; flexible schema for fast prototyping
 * Microsoft SQL Server - Mostly used by enterprise
@@ -28,7 +28,7 @@
 * Microsoft Azure - Default for hybrid cloud and Microsoft-centric enterprise tech stacks
 * Alibaba Cloud - Mostly popular in Asia
 
-### Message Queue
+### Message broker
 * Kafka - Distributed event streaming platform, built for massive scale and high-throughput logs
 * RabbitMQ - Reliable message broker, flexible routing for asynchronous task queues
 * ActiveMQ - Legacy
@@ -41,7 +41,7 @@
 * Kubernetes - Industry standard for container orchestration
 * Docker - Universal tool for containerizing applications and environment standardization
 
-### Coding LLM
+### Coding LLMs
 * Claude - Consistently tops charts, but very expensive. Agentic tool - Claude Code
 * ChatGPT - Consistently tops charts, but very expensive. Agentic tool - Codex
 * DeepSeek - Best price to quality ratio. Agentic tool - DeepSeek Harness
@@ -72,12 +72,20 @@
 * Selenium - Legacy, but still popular
 * Cypress 
 
-### Developer OS
-* Windows
-* MacOS
-* Linux
+### Books
+* The Pragmatic Programmer - From writing adaptable code to taking responsibility for your career and tooling
+* Code Complete -
+* Design Patterns -
+* System Design Interview - Explains real-world distributed architectures
+* Designing Data-Intensive Applications
+* A Philosophy of Software Design - Focus on "deep modules" with simple interfaces to manage system complexity
+* The Phoenix Project -
+* Fundamentals of Software Architecture - About architectural styles, component identification, soft skills, and evaluating trade-offs
+* Working Effectively with Legacy Code - Provides mechanics for safely introducing tests into messy, coupled codebases
+* Clean Code / Clean Architecture - Controversial books, but still popular
+* Refactoring - Cataloged techniques to improve internal code structure without altering behavior
 
-### Community
+### Communities
 * Reddit
   * https://www.reddit.com/r/programming/
   * https://www.reddit.com/r/webdev/
@@ -85,3 +93,8 @@
   * https://www.reddit.com/r/ExperiencedDevs/
 * [Hacker News](https://news.ycombinator.com/)
 * [dev.to](https://dev.to/)
+
+### Developer OS
+* Windows
+* MacOS
+* Linux
