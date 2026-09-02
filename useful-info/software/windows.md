@@ -98,6 +98,7 @@
 ## Etc
 * Run on startup:
   *  `Win+R` -> `shell:startup` -> Paste shortcut there
+  * Alternatively - `C:\Users\%USERNAME%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`
 * Settings:
   * Turn annoying system sounds off: \
     `Sound` -> `Sound Control Panel` -> `Sounds` -> `Sound Scheme: No Sounds`

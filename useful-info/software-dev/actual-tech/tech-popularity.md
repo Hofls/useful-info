@@ -56,6 +56,7 @@
 * NGINX - Standard load balancer & reverse proxy
 * Traefik - Cloud-native edge router
 * HAProxy
+* Caddy
 
 ### CI/CD Tool
 * GitHub Action - Industry standard for automated workflows
