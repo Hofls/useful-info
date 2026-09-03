@@ -1,7 +1,9 @@
 # Resources to keep up with ever-changing technologies:
 
 #### General
+* Main - https://hofls.com/dev-tech-popularity/
 * Ask LLM:
+  * Find a page that lists "dev tech popularity rating - frameworks, databases, devops, testing tools, programming languages etc"
   * List top 50 software development terms/ideas/tools/techniques that appeared or became popular in 2025
   * Give modern 2025 tech stack example for web app (backend = java, everything else is up to you)
 * Reddit
