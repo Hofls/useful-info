@@ -30,12 +30,25 @@
 * On a new project always start with `/init` to create `CLAUDE.md`
 
 ### Claude Code - MCP
-* Browser:
-```
-claude mcp add --scope user playwright -- npx -y @playwright/mcp@latest
-claude mcp list
-Test - run claude, ask it to navigate to example.com
-```
+* Info:
+  * Config file located at `%USERPROFILE%\.claude.json` (ctrl+f `mcpServers`)
+* Browser automation via playwright:
+    ```
+    claude mcp add --scope user playwright -- npx -y @playwright/mcp@latest
+    claude mcp list
+    Test - run claude, ask it to navigate to example.com
+    ```
+* Generate 3d models via Blender:
+  * Install python package manager:
+    ```
+    powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex
+    uv --version
+    ```
+  * Download `addon.py` from https://github.com/ahujasid/blender-mcp
+  * Blender -> Edit -> Preferences -> Add-ons -> Install from disk... -> addon.py
+  * Run `claude mcp add --scope user blender uvx blender-mcp`
+  * Blender -> Press "n" -> MCP for Blender -> Connect to MCP server 
+  * Test - run claude, ask it to create simple 3d model in blender
 
 ### Claude Code - Skills
 * [Frontend design](https://github.com/anthropics/claude-code/blob/main/plugins/frontend-design/skills/frontend-design/SKILL.md)
