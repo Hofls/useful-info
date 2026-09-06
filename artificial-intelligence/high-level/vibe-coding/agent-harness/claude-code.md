@@ -39,6 +39,7 @@
     Test - run claude, ask it to navigate to example.com
     ```
 * Generate 3d models via Blender:
+  * Important! Use vision model, so it can look at result and self-correct 
   * Install python package manager:
     ```
     powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex
