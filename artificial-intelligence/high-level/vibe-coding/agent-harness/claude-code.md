@@ -31,7 +31,7 @@
 
 ### Claude Code - MCP
 * Info:
-  * Config file located at `%USERPROFILE%\.claude.json` (ctrl+f `mcpServers`)
+  * Config file located at `%USERPROFILE%\.claude.json` (ctrl+f `mcpServers`, last one)
 * Browser automation via playwright:
     ```
     claude mcp add --scope user playwright -- npx -y @playwright/mcp@latest

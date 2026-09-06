@@ -7,9 +7,11 @@
 * [List of plugins](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin)
 
 ### Deepseek harness - MCP
+* Main instruction is in claude-code.md
 * Insert text into `cordis.patch.yml` located at `C:\Users\%USERPROFILE%\.dsh\profiles\web`:
-```
-- insert:
+* Playwright:
+  ```
+  - insert:
     - id: mcp-playwright
       name: '@deepseek-ai/dsh-mcp-client'
       config:
@@ -17,5 +19,15 @@
         transport: stdio
         command: npx
         args: ['-y', '@playwright/mcp@latest']
-```
-* Run dsh, ask it to navigate to example.com
+  ```
+* Blender:
+  ```
+  - insert:
+    - id: mcp-blender
+      name: '@deepseek-ai/dsh-mcp-client'
+      config:
+        serverName: blender
+        transport: stdio
+        command: uvx
+        args: ['blender-mcp']
+  ```
