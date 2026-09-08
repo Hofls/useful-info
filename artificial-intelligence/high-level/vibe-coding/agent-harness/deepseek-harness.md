@@ -6,7 +6,7 @@
 * Open http://127.0.0.1:3080
 * [List of plugins](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin)
 
-### Deepseek harness - MCP
+### MCP
 * Main instruction is in claude-code.md
 * Insert text into `cordis.patch.yml` located at `C:\Users\%USERPROFILE%\.dsh\profiles\web`:
 * Playwright:
@@ -31,3 +31,8 @@
         command: uvx
         args: ['blender-mcp']
   ```
+  
+### Other
+* To run tests that require access to docker, add following text to CLAUDE.md:
+  * `escalate deepseek harness acccess (from current "Workspace write", to "Full access") and run mvn -pl ms-patient-service test -Dtest=PimServiceTest`
+* 
