@@ -12,14 +12,12 @@
   * Turn proxy into VPN - `devops/remote-access/vpn/nekobox-nekoray-socks5`
 
 ### Autoreconnect
-* Create autossh.bat with following text:
+* Create autossh.ps1 with following text:
 ```
-@echo off
-:loop
-echo SSH connection...
-ssh -i D:\Software\Keys\openssh-private-key -D 1080 -N hofls@125.44.214.78
-
-echo Connection lost. Reconnecting in 5 seconds...
-timeout /t 5 /nobreak > nul
-goto loop
+while ($true) {
+    Write-Host "$(Get-Date) SSH connection..."
+    ssh -i D:\Software\Keys\openssh-private-key -D 1080 -N hofls@125.44.214.78
+    Write-Host "$(Get-Date) Connection lost (exit $LASTEXITCODE), retry in 3s"
+    Start-Sleep 3
+}
 ```
