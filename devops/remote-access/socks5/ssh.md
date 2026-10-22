@@ -17,7 +17,7 @@
 while ($true) {
     Write-Host "$(Get-Date) SSH connection..."
     ssh -i D:\Software\Keys\openssh-private-key -D 1080 -N hofls@125.44.214.78
-    Write-Host "$(Get-Date) Connection lost (exit $LASTEXITCODE), retry in 3s"
-    Start-Sleep 3
+    Write-Host "$(Get-Date) Connection lost (exit $LASTEXITCODE), retry in 2s"
+    Start-Sleep 2
 }
 ```
