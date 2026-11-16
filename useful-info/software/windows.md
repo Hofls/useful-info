@@ -175,7 +175,7 @@
 * `Battle Encoder Shirase` to limit resources available to the process (CPU)
 * `CpuStres v2.0` to load CPU to 100%
     * Useful to see how frontend behaves on slow PCs (to reproduce bugs) 
-* To find and delete folders that take too much space:
+* To find and delete folders/files that take too much space:
   * `TreeSize Free` (run as Admin)
 * `Sandboxie` - safely run untrusted code (with persistence)
   * Old version: 
