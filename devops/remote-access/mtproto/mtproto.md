@@ -24,6 +24,7 @@ sudo docker run -d \
   -p "${PORT}:443" \
   -v tg-proxy-data:/data \
   -e SECRET="${SECRET}" \
+  --log-opt max-size=50m \
   telegrammessenger/proxy:latest
 
 echo ""
