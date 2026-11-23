@@ -10,6 +10,7 @@
 * `Save Page WE` - download html page
 * `Return youtube dislike`
 * `FoxyProxy` - HTTP/SOCKS5 proxy
+* `Music Mode for YouTube` - removes videos from music.youtube.com (leaves only audio to save traffic)
 * Speech to text (voice recognition):
  * `Voice In - Speech-To-Text Dictation`
  * `Speech Recognition Anywhere`
